@@ -33,23 +33,25 @@ namespace CommonComponentLibrary
         private void DrawGrid(Graphics e)
         {
             float unitPerPixel = (float)(WaferMap.Entity.DieSizeX * WaferMap.Entity.DieNumX) / canvas.Width;
+            using Pen p = new Pen(Color.Black);
             for (int i = 0; i < WaferMap.Entity.DieNumX; i++)
             {
-                e.DrawLine(new Pen(Color.Black), i * (float)WaferMap.Entity.DieSizeX / unitPerPixel, 0, i * (float)WaferMap.Entity.DieSizeX / unitPerPixel, canvas.Height);
+                e.DrawLine(p, i * (float)WaferMap.Entity.DieSizeX / unitPerPixel, 0, i * (float)WaferMap.Entity.DieSizeX / unitPerPixel, canvas.Height);
             }
             for (int i = 0; i < WaferMap.Entity.DieNumY; i++)
             {
-                e.DrawLine(new Pen(Color.Black), 0, i * (float)WaferMap.Entity.DieSizeY / unitPerPixel, canvas.Width, i * (float)WaferMap.Entity.DieSizeY / unitPerPixel);
+                e.DrawLine(p, 0, i * (float)WaferMap.Entity.DieSizeY / unitPerPixel, canvas.Width, i * (float)WaferMap.Entity.DieSizeY / unitPerPixel);
             }
         }
 
         private void DrawCircle(Graphics e)
         {
+            using Pen p = new Pen(Color.Black);
             double unitPerPixel = (WaferMap.Entity.DieSizeX * WaferMap.Entity.DieNumX) / canvas.Width;
             double centerX = (WaferMap.Entity.OriginDieX * WaferMap.Entity.DieSizeX + WaferMap.Entity.Center2OriginDieCornerX) / unitPerPixel;
             double centerY = (WaferMap.Entity.OriginDieY * WaferMap.Entity.DieSizeY + WaferMap.Entity.Center2OriginDieCornerY) / unitPerPixel;
             double D = 3000000 / unitPerPixel;
-            e.DrawArc(new Pen(Color.Black), (float)(centerX - D / 2), (float)(centerY - D / 2), (float)D, (float)D, 0, 360);
+            e.DrawArc(p, (float)(centerX - D / 2), (float)(centerY - D / 2), (float)D, (float)D, 0, 360);
 
             //float centerX1 = canvas.Width / 2;
             //float centerY1 = canvas.Height / 2; ;
@@ -72,9 +74,10 @@ namespace CommonComponentLibrary
         {
             double unitPerPixel = (WaferMap.Entity.DieSizeX * WaferMap.Entity.DieNumX) / canvas.Width;
 
+            using Pen p = new Pen((Color.White), 3);
             float width = (float)WaferMap.Entity.DieSizeX / (float)unitPerPixel;
             float height = (float)WaferMap.Entity.DieSizeY / (float)unitPerPixel;
-            e.DrawRectangle(new Pen((Color.White), 3), WaferMap.CurrentIndexX * width, WaferMap.CurrentIndexY * height, width, height);
+            e.DrawRectangle(p, WaferMap.CurrentIndexX * width, WaferMap.CurrentIndexY * height, width, height);
 
         }
 
@@ -82,7 +85,7 @@ namespace CommonComponentLibrary
         {
             //m_picture = canvas.CreateGraphics();
             Bitmap background = new Bitmap(canvas.Width, canvas.Height);
-            Graphics gp = Graphics.FromImage(background);
+            using Graphics gp = Graphics.FromImage(background);
 
             if (WaferMap.Entity.MappingPoints != null)
             {
@@ -99,6 +102,7 @@ namespace CommonComponentLibrary
             DrawGrid(gp);//方格
             DrawCircle(gp);//
             DrawIndex(gp);
+            canvas.BackgroundImage?.Dispose();
             canvas.BackgroundImage = background;
             //canvas.Refresh();
         }
