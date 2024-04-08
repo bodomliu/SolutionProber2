@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
-using System.Formats.Asn1;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using WaferMapLibrary;
 namespace MotionLibrary
 {
@@ -44,7 +37,7 @@ namespace MotionLibrary
             Encode2User = 1, //int Dir = 1,输入Encode，求用户坐标
         }
 
-        public static void SaveMap(WaferMapClass entity,string path)
+        public static void SaveMap(WaferMapClass entity, string path)
         {
             JsonSerializerOptions options = new()
             {
@@ -68,16 +61,29 @@ namespace MotionLibrary
         /// <returns>0 = 完整；1 = 标定区点位缺失；2 = 工作区点位缺失</returns>
         public static int Initial()
         {
-            LoadMap(out ErrorMapAlign, "Config/ErrorMapAlign.json");
-            //筛选可用的标定点，组成网格Grids
-            CalibrationGrids = GridsAvailable(ErrorMapAlign);
-            if (CalibrationGrids == null) return 1;
+            try
+            {
+                LoadMap(out ErrorMapAlign, "Config/ErrorMapAlign.json");
+                //筛选可用的标定点，组成网格Grids
+                CalibrationGrids = GridsAvailable(ErrorMapAlign);
+                if (CalibrationGrids == null) return 1;
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
 
-            LoadMap(out ErrorMapProbing, "Config/ErrorMapProbing.json");
-            //筛选可用的标定点，组成网格Grids
-            WorkingGrids = GridsAvailable(ErrorMapProbing);
-            if (WorkingGrids == null) return 2;
-
+            try
+            {
+                LoadMap(out ErrorMapProbing, "Config/ErrorMapProbing.json");
+                //筛选可用的标定点，组成网格Grids
+                WorkingGrids = GridsAvailable(ErrorMapProbing);
+                if (WorkingGrids == null) return 2;
+            }
+            catch (Exception)
+            {
+                return 2;
+            }
             return 0;
         }
 
@@ -100,7 +106,7 @@ namespace MotionLibrary
                 var NextX = CoordinatesPoints.Find(p => p.IndexX == point.IndexX + 1 && p.IndexY == point.IndexY);
                 var NextY = CoordinatesPoints.Find(p => p.IndexX == point.IndexX && p.IndexY == point.IndexY - 1);
                 var NextXY = CoordinatesPoints.Find(p => p.IndexX == point.IndexX + 1 && p.IndexY == point.IndexY - 1);
-                if (NextX!=null && NextY!=null && NextXY != null)
+                if (NextX != null && NextY != null && NextXY != null)
                 {
                     Grid grid = new();
                     grid.Pt[0] = point;
@@ -221,7 +227,7 @@ namespace MotionLibrary
         /// <param name="Xout"></param>
         /// <param name="Yout"></param>
         /// <returns>0 = 正确；1 = 标定点错误</returns>
-        public static int Transform(Area area, Dir dir, double Xin, double Yin,out double Xout,out double Yout)
+        public static int Transform(Area area, Dir dir, double Xin, double Yin, out double Xout, out double Yout)
         {
             //初始化XY输出
             Xout = 0; Yout = 0;
@@ -231,7 +237,7 @@ namespace MotionLibrary
             if (grids == null) { return 1; }
 
             //判断in的点距离哪个grids的中心最近，点可能出现在grids外，所以不能用是否在grids内部来做判断
-            Grid grid = NearestGrid(dir, grids,Xin,Yin);
+            Grid grid = NearestGrid(dir, grids, Xin, Yin);
 
             //根据mode进行双线性插值，或逆插值 
             double[] EncodeX = grid.Pt.Select(t => t.EncodeX).ToArray();
@@ -245,9 +251,9 @@ namespace MotionLibrary
             }
             else if (dir == Dir.Encode2User)
             {
-                InverseBilinearInterpolation(EncodeX, EncodeY,UserPosX, UserPosY, Xin, Yin, out Xout, out Yout);
+                InverseBilinearInterpolation(EncodeX, EncodeY, UserPosX, UserPosY, Xin, Yin, out Xout, out Yout);
             }
-            
+
             return 0;
         }
 
@@ -263,7 +269,7 @@ namespace MotionLibrary
         {
             //遍历所有能形成Grid的格子，User点到格子形心最短，则该格子选用
             List<double> Distance = new();
-            
+
             foreach (var grid in grids)
             {
                 double dist = double.PositiveInfinity;

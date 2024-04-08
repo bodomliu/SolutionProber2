@@ -56,10 +56,8 @@ namespace WaferMapLibrary
     public static class WaferMap
     {
         public static WaferMapClass Entity = new WaferMapClass();//定义WaferMap的实体
-
         public delegate void OnIndexChangeHander(int x,int y); //定义一个委托
         public static event OnIndexChangeHander? OnIndexChange;
-
         private static int currentIndexX = 0;
         public static int CurrentIndexX//当前index
         {
@@ -73,7 +71,6 @@ namespace WaferMapLibrary
                 if (OnIndexChange != null) OnIndexChange(currentIndexX, currentIndexY);
             }
         }
-
         private static int currentIndexY = 0;
         public static int CurrentIndexY//当前index
         {
@@ -88,7 +85,6 @@ namespace WaferMapLibrary
             }
 
         }
-
         public static void Save(string filePath)
         {
             JsonSerializerOptions options = new()
@@ -98,7 +94,6 @@ namespace WaferMapLibrary
             string jsonString = JsonSerializer.Serialize(Entity, options);
             File.WriteAllText(filePath, jsonString);
         }
-
         public static void Load(string filePath)
         {
             string jsonString = File.ReadAllText(filePath);
