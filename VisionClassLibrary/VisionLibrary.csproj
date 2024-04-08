@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="VisionAppDemo.cs" />
+    <Compile Remove="VisionLoader.cs" />
+    <Compile Remove="VisionMatching.cs" />
+    <Compile Remove="VisionPin.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.17" />
+    <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="halcondotnet">
+      <HintPath>D:\Program Files\MVTec\HALCON-20.11-Steady\bin\dotnet35\halcondotnet.dll</HintPath>
+    </Reference>
+    <Reference Include="MvCamCtrl.Net">
+      <HintPath>D:\Program Files (x86)\MVS\Development\DotNet\win64\MvCamCtrl.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="VisionConfig\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="VisionConfig\PinHighMag.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\PinHighMagCalibration.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="VisionConfig\PinLowMag.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\PinLowMagCalibration.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="VisionConfig\VisionConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="VisionConfig\WaferHighMag.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\WaferHighMagCalibration.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="VisionConfig\WaferLowMag.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\WaferLowMagCalibration.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

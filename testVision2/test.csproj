@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommonControlLibrary\CommonComponentLibrary.csproj" />
+    <ProjectReference Include="..\MotionLibrary\MotionLibrary.csproj" />
+    <ProjectReference Include="..\VisionClassLibrary\VisionLibrary.csproj" />
+  </ItemGroup>
+
+</Project>

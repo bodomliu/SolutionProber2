@@ -1,0 +1,4268 @@
+<EtherCATConfig>
+  <Config>
+    <Master AdapterIndex="0" IoUpdateFreq="4" StackDebugLevel="0">
+      <Info>
+        <Name>GOOGOL EtherCAT Master</Name>
+        <Destination>FFFFFFFFFFFF</Destination>
+        <Source>000000000000</Source>
+        <EtherType>A488</EtherType>
+      </Info>
+    </Master>
+    <Slave>
+      <Info>
+        <Name>EK1100 EtherCAT Coupler (2A E-Bus)</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>72100946</ProductCode>
+        <RevisionNo>1179648</RevisionNo>
+        <SerialNo>1179648</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData></ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL1889 16Ch. Dig. Input 24V, 3ms, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>123809874</ProductCode>
+        <RevisionNo>1245184</RevisionNo>
+        <SerialNo>1245184</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Inputs</Type>
+          <DefaultSize>2</DefaultSize>
+          <StartAddress>4096</StartAddress>
+          <ControlByte>0</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6656</Pdo>
+          <Pdo>6657</Pdo>
+          <Pdo>6658</Pdo>
+          <Pdo>6659</Pdo>
+          <Pdo>6660</Pdo>
+          <Pdo>6661</Pdo>
+          <Pdo>6662</Pdo>
+          <Pdo>6663</Pdo>
+          <Pdo>6664</Pdo>
+          <Pdo>6665</Pdo>
+          <Pdo>6666</Pdo>
+          <Pdo>6667</Pdo>
+          <Pdo>6668</Pdo>
+          <Pdo>6669</Pdo>
+          <Pdo>6670</Pdo>
+          <Pdo>6671</Pdo>
+        </Sm0>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a00</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x6000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a01</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x6010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a02</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x6020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a03</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x6030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a04</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a05</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x6050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a06</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x6060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a07</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x6070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a08</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x6080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a09</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x6090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x60a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x60b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x60c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x60d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x60e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x60f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL1889 16Ch. Dig. Input 24V, 3ms, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>123809874</ProductCode>
+        <RevisionNo>1245184</RevisionNo>
+        <SerialNo>1245184</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Inputs</Type>
+          <DefaultSize>2</DefaultSize>
+          <StartAddress>4096</StartAddress>
+          <ControlByte>0</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6656</Pdo>
+          <Pdo>6657</Pdo>
+          <Pdo>6658</Pdo>
+          <Pdo>6659</Pdo>
+          <Pdo>6660</Pdo>
+          <Pdo>6661</Pdo>
+          <Pdo>6662</Pdo>
+          <Pdo>6663</Pdo>
+          <Pdo>6664</Pdo>
+          <Pdo>6665</Pdo>
+          <Pdo>6666</Pdo>
+          <Pdo>6667</Pdo>
+          <Pdo>6668</Pdo>
+          <Pdo>6669</Pdo>
+          <Pdo>6670</Pdo>
+          <Pdo>6671</Pdo>
+        </Sm0>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a00</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x6000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a01</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x6010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a02</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x6020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a03</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x6030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a04</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a05</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x6050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a06</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x6060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a07</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x6070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a08</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x6080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a09</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x6090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x60a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x60b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x60c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x60d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x60e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x60f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL1889 16Ch. Dig. Input 24V, 3ms, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>123809874</ProductCode>
+        <RevisionNo>1245184</RevisionNo>
+        <SerialNo>1245184</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Inputs</Type>
+          <DefaultSize>2</DefaultSize>
+          <StartAddress>4096</StartAddress>
+          <ControlByte>0</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6656</Pdo>
+          <Pdo>6657</Pdo>
+          <Pdo>6658</Pdo>
+          <Pdo>6659</Pdo>
+          <Pdo>6660</Pdo>
+          <Pdo>6661</Pdo>
+          <Pdo>6662</Pdo>
+          <Pdo>6663</Pdo>
+          <Pdo>6664</Pdo>
+          <Pdo>6665</Pdo>
+          <Pdo>6666</Pdo>
+          <Pdo>6667</Pdo>
+          <Pdo>6668</Pdo>
+          <Pdo>6669</Pdo>
+          <Pdo>6670</Pdo>
+          <Pdo>6671</Pdo>
+        </Sm0>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a00</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x6000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a01</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x6010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a02</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x6020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a03</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x6030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a04</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a05</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x6050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a06</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x6060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a07</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x6070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a08</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x6080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a09</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x6090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x60a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x60b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x60c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x60d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x60e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x60f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL1889 16Ch. Dig. Input 24V, 3ms, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>123809874</ProductCode>
+        <RevisionNo>1245184</RevisionNo>
+        <SerialNo>1245184</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Inputs</Type>
+          <DefaultSize>2</DefaultSize>
+          <StartAddress>4096</StartAddress>
+          <ControlByte>0</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6656</Pdo>
+          <Pdo>6657</Pdo>
+          <Pdo>6658</Pdo>
+          <Pdo>6659</Pdo>
+          <Pdo>6660</Pdo>
+          <Pdo>6661</Pdo>
+          <Pdo>6662</Pdo>
+          <Pdo>6663</Pdo>
+          <Pdo>6664</Pdo>
+          <Pdo>6665</Pdo>
+          <Pdo>6666</Pdo>
+          <Pdo>6667</Pdo>
+          <Pdo>6668</Pdo>
+          <Pdo>6669</Pdo>
+          <Pdo>6670</Pdo>
+          <Pdo>6671</Pdo>
+        </Sm0>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a00</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x6000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a01</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x6010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a02</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x6020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a03</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x6030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a04</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a05</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x6050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a06</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x6060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a07</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x6070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a08</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x6080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a09</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x6090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x60a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x60b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x60c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x60d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x60e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x60f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL2889 16Ch. Dig. Output 24V, 0.5A, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>189345874</ProductCode>
+        <RevisionNo>1179648</RevisionNo>
+        <SerialNo>1179648</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3840</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5632</Pdo>
+          <Pdo>5633</Pdo>
+          <Pdo>5634</Pdo>
+          <Pdo>5635</Pdo>
+          <Pdo>5636</Pdo>
+          <Pdo>5637</Pdo>
+          <Pdo>5638</Pdo>
+          <Pdo>5639</Pdo>
+        </Sm0>
+        <Sm1>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3841</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5640</Pdo>
+          <Pdo>5641</Pdo>
+          <Pdo>5642</Pdo>
+          <Pdo>5643</Pdo>
+          <Pdo>5644</Pdo>
+          <Pdo>5645</Pdo>
+          <Pdo>5646</Pdo>
+          <Pdo>5647</Pdo>
+        </Sm1>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1600</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x7000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1601</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x7010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1602</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x7020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1603</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x7030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1604</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x7040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1605</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x7050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1606</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x7060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1607</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x7070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1608</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x7080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1609</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x7090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x70a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x70b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x70c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x70d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x70e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x70f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL2889 16Ch. Dig. Output 24V, 0.5A, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>189345874</ProductCode>
+        <RevisionNo>1179648</RevisionNo>
+        <SerialNo>1179648</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3840</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5632</Pdo>
+          <Pdo>5633</Pdo>
+          <Pdo>5634</Pdo>
+          <Pdo>5635</Pdo>
+          <Pdo>5636</Pdo>
+          <Pdo>5637</Pdo>
+          <Pdo>5638</Pdo>
+          <Pdo>5639</Pdo>
+        </Sm0>
+        <Sm1>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3841</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5640</Pdo>
+          <Pdo>5641</Pdo>
+          <Pdo>5642</Pdo>
+          <Pdo>5643</Pdo>
+          <Pdo>5644</Pdo>
+          <Pdo>5645</Pdo>
+          <Pdo>5646</Pdo>
+          <Pdo>5647</Pdo>
+        </Sm1>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1600</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x7000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1601</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x7010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1602</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x7020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1603</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x7030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1604</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x7040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1605</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x7050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1606</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x7060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1607</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x7070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1608</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x7080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1609</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x7090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x70a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x70b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x70c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x70d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x70e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x70f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL2889 16Ch. Dig. Output 24V, 0.5A, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>189345874</ProductCode>
+        <RevisionNo>1179648</RevisionNo>
+        <SerialNo>1179648</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3840</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5632</Pdo>
+          <Pdo>5633</Pdo>
+          <Pdo>5634</Pdo>
+          <Pdo>5635</Pdo>
+          <Pdo>5636</Pdo>
+          <Pdo>5637</Pdo>
+          <Pdo>5638</Pdo>
+          <Pdo>5639</Pdo>
+        </Sm0>
+        <Sm1>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3841</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5640</Pdo>
+          <Pdo>5641</Pdo>
+          <Pdo>5642</Pdo>
+          <Pdo>5643</Pdo>
+          <Pdo>5644</Pdo>
+          <Pdo>5645</Pdo>
+          <Pdo>5646</Pdo>
+          <Pdo>5647</Pdo>
+        </Sm1>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1600</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x7000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1601</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x7010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1602</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x7020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1603</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x7030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1604</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x7040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1605</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x7050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1606</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x7060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1607</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x7070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1608</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x7080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1609</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x7090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x70a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x70b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x70c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x70d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x70e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x70f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL2889 16Ch. Dig. Output 24V, 0.5A, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>189345874</ProductCode>
+        <RevisionNo>1179648</RevisionNo>
+        <SerialNo>1179648</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3840</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5632</Pdo>
+          <Pdo>5633</Pdo>
+          <Pdo>5634</Pdo>
+          <Pdo>5635</Pdo>
+          <Pdo>5636</Pdo>
+          <Pdo>5637</Pdo>
+          <Pdo>5638</Pdo>
+          <Pdo>5639</Pdo>
+        </Sm0>
+        <Sm1>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3841</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5640</Pdo>
+          <Pdo>5641</Pdo>
+          <Pdo>5642</Pdo>
+          <Pdo>5643</Pdo>
+          <Pdo>5644</Pdo>
+          <Pdo>5645</Pdo>
+          <Pdo>5646</Pdo>
+          <Pdo>5647</Pdo>
+        </Sm1>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1600</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x7000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1601</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x7010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1602</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x7020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1603</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x7030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1604</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x7040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1605</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x7050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1606</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x7060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1607</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x7070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1608</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x7080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1609</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x7090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x70a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x70b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x70c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x70d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x70e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x70f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EK1100 EtherCAT Coupler (2A E-Bus)</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>72100946</ProductCode>
+        <RevisionNo>1179648</RevisionNo>
+        <SerialNo>1179648</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData></ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL1889 16Ch. Dig. Input 24V, 3ms, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>123809874</ProductCode>
+        <RevisionNo>1245184</RevisionNo>
+        <SerialNo>1245184</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Inputs</Type>
+          <DefaultSize>2</DefaultSize>
+          <StartAddress>4096</StartAddress>
+          <ControlByte>0</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6656</Pdo>
+          <Pdo>6657</Pdo>
+          <Pdo>6658</Pdo>
+          <Pdo>6659</Pdo>
+          <Pdo>6660</Pdo>
+          <Pdo>6661</Pdo>
+          <Pdo>6662</Pdo>
+          <Pdo>6663</Pdo>
+          <Pdo>6664</Pdo>
+          <Pdo>6665</Pdo>
+          <Pdo>6666</Pdo>
+          <Pdo>6667</Pdo>
+          <Pdo>6668</Pdo>
+          <Pdo>6669</Pdo>
+          <Pdo>6670</Pdo>
+          <Pdo>6671</Pdo>
+        </Sm0>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a00</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x6000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a01</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x6010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a02</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x6020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a03</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x6030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a04</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a05</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x6050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a06</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x6060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a07</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x6070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a08</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x6080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a09</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x6090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x60a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x60b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x60c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x60d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x60e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x60f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL1889 16Ch. Dig. Input 24V, 3ms, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>123809874</ProductCode>
+        <RevisionNo>1245184</RevisionNo>
+        <SerialNo>1245184</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Inputs</Type>
+          <DefaultSize>2</DefaultSize>
+          <StartAddress>4096</StartAddress>
+          <ControlByte>0</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6656</Pdo>
+          <Pdo>6657</Pdo>
+          <Pdo>6658</Pdo>
+          <Pdo>6659</Pdo>
+          <Pdo>6660</Pdo>
+          <Pdo>6661</Pdo>
+          <Pdo>6662</Pdo>
+          <Pdo>6663</Pdo>
+          <Pdo>6664</Pdo>
+          <Pdo>6665</Pdo>
+          <Pdo>6666</Pdo>
+          <Pdo>6667</Pdo>
+          <Pdo>6668</Pdo>
+          <Pdo>6669</Pdo>
+          <Pdo>6670</Pdo>
+          <Pdo>6671</Pdo>
+        </Sm0>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a00</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x6000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a01</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x6010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a02</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x6020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a03</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x6030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a04</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a05</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x6050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a06</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x6060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a07</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x6070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a08</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x6080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a09</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x6090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x60a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x60b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x60c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x60d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x60e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+        <TxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1a0f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x60f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Input</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL2889 16Ch. Dig. Output 24V, 0.5A, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>189345874</ProductCode>
+        <RevisionNo>1179648</RevisionNo>
+        <SerialNo>1179648</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3840</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5632</Pdo>
+          <Pdo>5633</Pdo>
+          <Pdo>5634</Pdo>
+          <Pdo>5635</Pdo>
+          <Pdo>5636</Pdo>
+          <Pdo>5637</Pdo>
+          <Pdo>5638</Pdo>
+          <Pdo>5639</Pdo>
+        </Sm0>
+        <Sm1>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3841</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5640</Pdo>
+          <Pdo>5641</Pdo>
+          <Pdo>5642</Pdo>
+          <Pdo>5643</Pdo>
+          <Pdo>5644</Pdo>
+          <Pdo>5645</Pdo>
+          <Pdo>5646</Pdo>
+          <Pdo>5647</Pdo>
+        </Sm1>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1600</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x7000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1601</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x7010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1602</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x7020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1603</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x7030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1604</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x7040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1605</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x7050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1606</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x7060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1607</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x7070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1608</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x7080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1609</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x7090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x70a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x70b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x70c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x70d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x70e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x70f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>EL2889 16Ch. Dig. Output 24V, 0.5A, negative</Name>
+        <VendorId>2</VendorId>
+        <ProductCode>189345874</ProductCode>
+        <RevisionNo>1179648</RevisionNo>
+        <SerialNo>1179648</SerialNo>
+        <DevType>0</DevType>
+        <NChannel>0</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm0>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3840</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5632</Pdo>
+          <Pdo>5633</Pdo>
+          <Pdo>5634</Pdo>
+          <Pdo>5635</Pdo>
+          <Pdo>5636</Pdo>
+          <Pdo>5637</Pdo>
+          <Pdo>5638</Pdo>
+          <Pdo>5639</Pdo>
+        </Sm0>
+        <Sm1>
+          <Type>Outputs</Type>
+          <DefaultSize>1</DefaultSize>
+          <StartAddress>3841</StartAddress>
+          <ControlByte>68</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5640</Pdo>
+          <Pdo>5641</Pdo>
+          <Pdo>5642</Pdo>
+          <Pdo>5643</Pdo>
+          <Pdo>5644</Pdo>
+          <Pdo>5645</Pdo>
+          <Pdo>5646</Pdo>
+          <Pdo>5647</Pdo>
+        </Sm1>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1600</Index>
+          <Name LcId="1033">Channel 1</Name>
+          <Entry Fixed="false">
+            <Index>#x7000</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1601</Index>
+          <Name LcId="1033">Channel 2</Name>
+          <Entry Fixed="false">
+            <Index>#x7010</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1602</Index>
+          <Name LcId="1033">Channel 3</Name>
+          <Entry Fixed="false">
+            <Index>#x7020</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1603</Index>
+          <Name LcId="1033">Channel 4</Name>
+          <Entry Fixed="false">
+            <Index>#x7030</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1604</Index>
+          <Name LcId="1033">Channel 5</Name>
+          <Entry Fixed="false">
+            <Index>#x7040</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1605</Index>
+          <Name LcId="1033">Channel 6</Name>
+          <Entry Fixed="false">
+            <Index>#x7050</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1606</Index>
+          <Name LcId="1033">Channel 7</Name>
+          <Entry Fixed="false">
+            <Index>#x7060</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="0" Virtual="false">
+          <Index>#x1607</Index>
+          <Name LcId="1033">Channel 8</Name>
+          <Entry Fixed="false">
+            <Index>#x7070</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1608</Index>
+          <Name LcId="1033">Channel 9</Name>
+          <Entry Fixed="false">
+            <Index>#x7080</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x1609</Index>
+          <Name LcId="1033">Channel 10</Name>
+          <Entry Fixed="false">
+            <Index>#x7090</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160a</Index>
+          <Name LcId="1033">Channel 11</Name>
+          <Entry Fixed="false">
+            <Index>#x70a0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160b</Index>
+          <Name LcId="1033">Channel 12</Name>
+          <Entry Fixed="false">
+            <Index>#x70b0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160c</Index>
+          <Name LcId="1033">Channel 13</Name>
+          <Entry Fixed="false">
+            <Index>#x70c0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160d</Index>
+          <Name LcId="1033">Channel 14</Name>
+          <Entry Fixed="false">
+            <Index>#x70d0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160e</Index>
+          <Name LcId="1033">Channel 15</Name>
+          <Entry Fixed="false">
+            <Index>#x70e0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <RxPdo Fixed="true" Mandatory="true" Sm="1" Virtual="false">
+          <Index>#x160f</Index>
+          <Name LcId="1033">Channel 16</Name>
+          <Entry Fixed="false">
+            <Index>#x70f0</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>1</BitLen>
+            <Name LcId="1033">Output</Name>
+            <Comment></Comment>
+            <DataType>BOOL</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </RxPdo>
+      </ProcessData>
+      <DC>
+        <AssignActivate>0</AssignActivate>
+        <CycleTime0>0</CycleTime0>
+        <CycleTime1>0</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>SV660_1Axis_V0.10</Name>
+        <VendorId>1048576</VendorId>
+        <ProductCode>786701</ProductCode>
+        <RevisionNo>65536</RevisionNo>
+        <SerialNo>65536</SerialNo>
+        <DevType>1</DevType>
+        <NChannel>1</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm2>
+          <Type>Outputs</Type>
+          <DefaultSize>12</DefaultSize>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5889</Pdo>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <DefaultSize>28</DefaultSize>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6913</Pdo>
+        </Sm3>
+        <RxPdo Fixed="true" Mandatory="false" Sm="2" Virtual="false">
+          <Index>#x1701</Index>
+          <Name LcId="1033">Outputs</Name>
+          <Exclude>#x1600</Exclude>
+          <Exclude>#x1702</Exclude>
+          <Exclude>#x1703</Exclude>
+          <Exclude>#x1704</Exclude>
+          <Exclude>#x1705</Exclude>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Controlword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x607a</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Target position</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe function</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fe</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Physical outputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>2</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <TxPdo Fixed="true" Mandatory="false" Sm="3" Virtual="false">
+          <Index>#x1b01</Index>
+          <Name LcId="1033">Inputs</Name>
+          <Exclude>#x1a00</Exclude>
+          <Exclude>#x1b02</Exclude>
+          <Exclude>#x1b03</Exclude>
+          <Exclude>#x1b04</Exclude>
+          <Entry Fixed="false">
+            <Index>#x603f</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Error code</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Statusword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Position actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6077</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Torque actual value</Name>
+            <Comment></Comment>
+            <DataType>INT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60f4</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Following error actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe status</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60ba</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos1 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60bc</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos2 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fd</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Digital inputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox>
+        <Send>
+          <Start>4096</Start>
+          <Length>256</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>256</Length>
+        </Recv>
+        <Protocol>CoE</Protocol>
+        <CoE>
+          <InitCmds>
+            <InitCmd Fixed="false">
+              <Transition>PS</Transition>
+              <Comment>Modes of operation</Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>24672</Index>
+              <SubIndex>0</SubIndex>
+              <Data>08</Data>
+            </InitCmd>
+          </InitCmds>
+        </CoE>
+      </Mailbox>
+      <DC>
+        <AssignActivate>768</AssignActivate>
+        <CycleTime0>1000000</CycleTime0>
+        <CycleTime1>1000000</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>SV660_1Axis_V0.10</Name>
+        <VendorId>1048576</VendorId>
+        <ProductCode>786701</ProductCode>
+        <RevisionNo>65536</RevisionNo>
+        <SerialNo>65536</SerialNo>
+        <DevType>1</DevType>
+        <NChannel>1</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm2>
+          <Type>Outputs</Type>
+          <DefaultSize>12</DefaultSize>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5889</Pdo>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <DefaultSize>28</DefaultSize>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6913</Pdo>
+        </Sm3>
+        <RxPdo Fixed="true" Mandatory="false" Sm="2" Virtual="false">
+          <Index>#x1701</Index>
+          <Name LcId="1033">Outputs</Name>
+          <Exclude>#x1600</Exclude>
+          <Exclude>#x1702</Exclude>
+          <Exclude>#x1703</Exclude>
+          <Exclude>#x1704</Exclude>
+          <Exclude>#x1705</Exclude>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Controlword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x607a</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Target position</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe function</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fe</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Physical outputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>2</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <TxPdo Fixed="true" Mandatory="false" Sm="3" Virtual="false">
+          <Index>#x1b01</Index>
+          <Name LcId="1033">Inputs</Name>
+          <Exclude>#x1a00</Exclude>
+          <Exclude>#x1b02</Exclude>
+          <Exclude>#x1b03</Exclude>
+          <Exclude>#x1b04</Exclude>
+          <Entry Fixed="false">
+            <Index>#x603f</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Error code</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Statusword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Position actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6077</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Torque actual value</Name>
+            <Comment></Comment>
+            <DataType>INT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60f4</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Following error actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe status</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60ba</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos1 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60bc</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos2 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fd</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Digital inputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox>
+        <Send>
+          <Start>4096</Start>
+          <Length>256</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>256</Length>
+        </Recv>
+        <Protocol>CoE</Protocol>
+        <CoE>
+          <InitCmds>
+            <InitCmd Fixed="false">
+              <Transition>PS</Transition>
+              <Comment>Modes of operation</Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>24672</Index>
+              <SubIndex>0</SubIndex>
+              <Data>08</Data>
+            </InitCmd>
+          </InitCmds>
+        </CoE>
+      </Mailbox>
+      <DC>
+        <AssignActivate>768</AssignActivate>
+        <CycleTime0>1000000</CycleTime0>
+        <CycleTime1>1000000</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>SV660_1Axis_V0.10</Name>
+        <VendorId>1048576</VendorId>
+        <ProductCode>786701</ProductCode>
+        <RevisionNo>65536</RevisionNo>
+        <SerialNo>65536</SerialNo>
+        <DevType>1</DevType>
+        <NChannel>1</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm2>
+          <Type>Outputs</Type>
+          <DefaultSize>12</DefaultSize>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5889</Pdo>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <DefaultSize>28</DefaultSize>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6913</Pdo>
+        </Sm3>
+        <RxPdo Fixed="true" Mandatory="false" Sm="2" Virtual="false">
+          <Index>#x1701</Index>
+          <Name LcId="1033">Outputs</Name>
+          <Exclude>#x1600</Exclude>
+          <Exclude>#x1702</Exclude>
+          <Exclude>#x1703</Exclude>
+          <Exclude>#x1704</Exclude>
+          <Exclude>#x1705</Exclude>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Controlword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x607a</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Target position</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe function</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fe</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Physical outputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>2</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <TxPdo Fixed="true" Mandatory="false" Sm="3" Virtual="false">
+          <Index>#x1b01</Index>
+          <Name LcId="1033">Inputs</Name>
+          <Exclude>#x1a00</Exclude>
+          <Exclude>#x1b02</Exclude>
+          <Exclude>#x1b03</Exclude>
+          <Exclude>#x1b04</Exclude>
+          <Entry Fixed="false">
+            <Index>#x603f</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Error code</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Statusword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Position actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6077</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Torque actual value</Name>
+            <Comment></Comment>
+            <DataType>INT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60f4</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Following error actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe status</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60ba</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos1 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60bc</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos2 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fd</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Digital inputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox>
+        <Send>
+          <Start>4096</Start>
+          <Length>256</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>256</Length>
+        </Recv>
+        <Protocol>CoE</Protocol>
+        <CoE>
+          <InitCmds>
+            <InitCmd Fixed="false">
+              <Transition>PS</Transition>
+              <Comment>Modes of operation</Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>24672</Index>
+              <SubIndex>0</SubIndex>
+              <Data>08</Data>
+            </InitCmd>
+          </InitCmds>
+        </CoE>
+      </Mailbox>
+      <DC>
+        <AssignActivate>768</AssignActivate>
+        <CycleTime0>1000000</CycleTime0>
+        <CycleTime1>1000000</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>SV660_1Axis_V0.10</Name>
+        <VendorId>1048576</VendorId>
+        <ProductCode>786701</ProductCode>
+        <RevisionNo>65536</RevisionNo>
+        <SerialNo>65536</SerialNo>
+        <DevType>1</DevType>
+        <NChannel>1</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm2>
+          <Type>Outputs</Type>
+          <DefaultSize>12</DefaultSize>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5889</Pdo>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <DefaultSize>28</DefaultSize>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6913</Pdo>
+        </Sm3>
+        <RxPdo Fixed="true" Mandatory="false" Sm="2" Virtual="false">
+          <Index>#x1701</Index>
+          <Name LcId="1033">Outputs</Name>
+          <Exclude>#x1600</Exclude>
+          <Exclude>#x1702</Exclude>
+          <Exclude>#x1703</Exclude>
+          <Exclude>#x1704</Exclude>
+          <Exclude>#x1705</Exclude>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Controlword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x607a</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Target position</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe function</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fe</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Physical outputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>2</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <TxPdo Fixed="true" Mandatory="false" Sm="3" Virtual="false">
+          <Index>#x1b01</Index>
+          <Name LcId="1033">Inputs</Name>
+          <Exclude>#x1a00</Exclude>
+          <Exclude>#x1b02</Exclude>
+          <Exclude>#x1b03</Exclude>
+          <Exclude>#x1b04</Exclude>
+          <Entry Fixed="false">
+            <Index>#x603f</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Error code</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Statusword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Position actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6077</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Torque actual value</Name>
+            <Comment></Comment>
+            <DataType>INT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60f4</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Following error actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe status</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60ba</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos1 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60bc</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos2 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fd</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Digital inputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox>
+        <Send>
+          <Start>4096</Start>
+          <Length>256</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>256</Length>
+        </Recv>
+        <Protocol>CoE</Protocol>
+        <CoE>
+          <InitCmds>
+            <InitCmd Fixed="false">
+              <Transition>PS</Transition>
+              <Comment>Modes of operation</Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>24672</Index>
+              <SubIndex>0</SubIndex>
+              <Data>08</Data>
+            </InitCmd>
+          </InitCmds>
+        </CoE>
+      </Mailbox>
+      <DC>
+        <AssignActivate>768</AssignActivate>
+        <CycleTime0>1000000</CycleTime0>
+        <CycleTime1>1000000</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>SV660_1Axis_V0.10</Name>
+        <VendorId>1048576</VendorId>
+        <ProductCode>786701</ProductCode>
+        <RevisionNo>65536</RevisionNo>
+        <SerialNo>65536</SerialNo>
+        <DevType>1</DevType>
+        <NChannel>1</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm2>
+          <Type>Outputs</Type>
+          <DefaultSize>12</DefaultSize>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5889</Pdo>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <DefaultSize>28</DefaultSize>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6913</Pdo>
+        </Sm3>
+        <RxPdo Fixed="true" Mandatory="false" Sm="2" Virtual="false">
+          <Index>#x1701</Index>
+          <Name LcId="1033">Outputs</Name>
+          <Exclude>#x1600</Exclude>
+          <Exclude>#x1702</Exclude>
+          <Exclude>#x1703</Exclude>
+          <Exclude>#x1704</Exclude>
+          <Exclude>#x1705</Exclude>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Controlword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x607a</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Target position</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe function</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fe</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Physical outputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>2</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <TxPdo Fixed="true" Mandatory="false" Sm="3" Virtual="false">
+          <Index>#x1b01</Index>
+          <Name LcId="1033">Inputs</Name>
+          <Exclude>#x1a00</Exclude>
+          <Exclude>#x1b02</Exclude>
+          <Exclude>#x1b03</Exclude>
+          <Exclude>#x1b04</Exclude>
+          <Entry Fixed="false">
+            <Index>#x603f</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Error code</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Statusword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Position actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6077</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Torque actual value</Name>
+            <Comment></Comment>
+            <DataType>INT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60f4</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Following error actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe status</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60ba</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos1 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60bc</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos2 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fd</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Digital inputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox>
+        <Send>
+          <Start>4096</Start>
+          <Length>256</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>256</Length>
+        </Recv>
+        <Protocol>CoE</Protocol>
+        <CoE>
+          <InitCmds>
+            <InitCmd Fixed="false">
+              <Transition>PS</Transition>
+              <Comment>Modes of operation</Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>24672</Index>
+              <SubIndex>0</SubIndex>
+              <Data>08</Data>
+            </InitCmd>
+          </InitCmds>
+        </CoE>
+      </Mailbox>
+      <DC>
+        <AssignActivate>768</AssignActivate>
+        <CycleTime0>1000000</CycleTime0>
+        <CycleTime1>1000000</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+    <Slave>
+      <Info>
+        <Name>SV660_1Axis_V0.10</Name>
+        <VendorId>1048576</VendorId>
+        <ProductCode>786701</ProductCode>
+        <RevisionNo>65536</RevisionNo>
+        <SerialNo>65536</SerialNo>
+        <DevType>1</DevType>
+        <NChannel>1</NChannel>
+      </Info>
+      <ProcessData>
+        <Sm2>
+          <Type>Outputs</Type>
+          <DefaultSize>12</DefaultSize>
+          <StartAddress>6144</StartAddress>
+          <ControlByte>100</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>5889</Pdo>
+        </Sm2>
+        <Sm3>
+          <Type>Inputs</Type>
+          <DefaultSize>28</DefaultSize>
+          <StartAddress>7168</StartAddress>
+          <ControlByte>32</ControlByte>
+          <Enable>true</Enable>
+          <Pdo>6913</Pdo>
+        </Sm3>
+        <RxPdo Fixed="true" Mandatory="false" Sm="2" Virtual="false">
+          <Index>#x1701</Index>
+          <Name LcId="1033">Outputs</Name>
+          <Exclude>#x1600</Exclude>
+          <Exclude>#x1702</Exclude>
+          <Exclude>#x1703</Exclude>
+          <Exclude>#x1704</Exclude>
+          <Exclude>#x1705</Exclude>
+          <Entry Fixed="false">
+            <Index>#x6040</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Controlword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x607a</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Target position</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b8</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe function</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fe</Index>
+            <SubIndex>#x1</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Physical outputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>2</DefaultValue>
+          </Entry>
+        </RxPdo>
+        <TxPdo Fixed="true" Mandatory="false" Sm="3" Virtual="false">
+          <Index>#x1b01</Index>
+          <Name LcId="1033">Inputs</Name>
+          <Exclude>#x1a00</Exclude>
+          <Exclude>#x1b02</Exclude>
+          <Exclude>#x1b03</Exclude>
+          <Exclude>#x1b04</Exclude>
+          <Entry Fixed="false">
+            <Index>#x603f</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Error code</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6041</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Statusword</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6064</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Position actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x6077</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Torque actual value</Name>
+            <Comment></Comment>
+            <DataType>INT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60f4</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Following error actual value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60b9</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name LcId="1033">Touch probe status</Name>
+            <Comment></Comment>
+            <DataType>UINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60ba</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos1 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60bc</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Touch probe pos2 pos value</Name>
+            <Comment></Comment>
+            <DataType>DINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+          <Entry Fixed="false">
+            <Index>#x60fd</Index>
+            <SubIndex>#x0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name LcId="1033">Digital inputs</Name>
+            <Comment></Comment>
+            <DataType>UDINT</DataType>
+            <DefaultValue>0</DefaultValue>
+          </Entry>
+        </TxPdo>
+      </ProcessData>
+      <Mailbox>
+        <Send>
+          <Start>4096</Start>
+          <Length>256</Length>
+        </Send>
+        <Recv>
+          <Start>5120</Start>
+          <Length>256</Length>
+        </Recv>
+        <Protocol>CoE</Protocol>
+        <CoE>
+          <InitCmds>
+            <InitCmd Fixed="false">
+              <Transition>PS</Transition>
+              <Comment>Modes of operation</Comment>
+              <Timeout>0</Timeout>
+              <Ccs>1</Ccs>
+              <Index>24672</Index>
+              <SubIndex>0</SubIndex>
+              <Data>08</Data>
+            </InitCmd>
+          </InitCmds>
+        </CoE>
+      </Mailbox>
+      <DC>
+        <AssignActivate>768</AssignActivate>
+        <CycleTime0>1000000</CycleTime0>
+        <CycleTime1>1000000</CycleTime1>
+        <ShiftTime0>0</ShiftTime0>
+        <ShiftTime1>0</ShiftTime1>
+      </DC>
+    </Slave>
+  </Config>
+</EtherCATConfig>

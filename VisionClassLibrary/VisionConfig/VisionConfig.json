@@ -1,0 +1,32 @@
+{
+  "visionSettings": {},
+  "cameraSettings": {
+    "WaferLowMag": {
+      "DeviceID": "J12552370"
+    },
+    "WaferHighMag": {
+      "DeviceID": "J12552356"
+    },
+    "PinLowMag": {
+      "DeviceID": "J12552071"
+    },
+    "PinHighMag": {
+      "DeviceID": "J12552478"
+    },
+    "CassetteCamera": {
+      "DeviceID": "00J19317121"
+    },
+    "PreAlignCamera6": {
+      "DeviceID": "00J23884366"
+    },
+    "PreAlignCamera12": {
+      "DeviceID": "00J23884297"
+    },
+    "OCRCamera": {
+      "DeviceID": "00J23884317"
+    },
+    "JigCamera": {
+      "DeviceID": "J97114305"
+    }
+  }
+}
