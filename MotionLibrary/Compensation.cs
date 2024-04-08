@@ -68,16 +68,28 @@ namespace MotionLibrary
         /// <returns>0 = 完整；1 = 标定区点位缺失；2 = 工作区点位缺失</returns>
         public static int Initial()
         {
-            LoadMap(out ErrorMapAlign, "Config/ErrorMapAlign.json");
-            //筛选可用的标定点，组成网格Grids
-            CalibrationGrids = GridsAvailable(ErrorMapAlign);
-            if (CalibrationGrids == null) return 1;
+            try
+            {
+                LoadMap(out ErrorMapAlign, "Config/ErrorMapAlign.json");
+                //筛选可用的标定点，组成网格Grids
+                CalibrationGrids = GridsAvailable(ErrorMapAlign);
+                if (CalibrationGrids == null) return 1;
+            } 
+            catch (Exception)
+            {
+                return 1;
+            }
 
-            LoadMap(out ErrorMapProbing, "Config/ErrorMapProbing.json");
-            //筛选可用的标定点，组成网格Grids
-            WorkingGrids = GridsAvailable(ErrorMapProbing);
-            if (WorkingGrids == null) return 2;
-
+            try { 
+                LoadMap(out ErrorMapProbing, "Config/ErrorMapProbing.json");
+                //筛选可用的标定点，组成网格Grids
+                WorkingGrids = GridsAvailable(ErrorMapProbing);
+                if (WorkingGrids == null) return 2;
+            }
+            catch (Exception)
+            {
+                return 2;
+            }
             return 0;
         }
 
