@@ -17,6 +17,7 @@ namespace CommonComponentLibrary
         private PictureBox canvas = new();
         public WaferMapCanvas()
         {
+            this.Dock = DockStyle.Fill;
             InitializeComponent();
             this.Controls.Add(canvas);
             canvas.Dock = DockStyle.Fill;
@@ -50,7 +51,7 @@ namespace CommonComponentLibrary
             double unitPerPixel = (WaferMap.Entity.DieSizeX * WaferMap.Entity.DieNumX) / canvas.Width;
             double centerX = (WaferMap.Entity.OriginDieX * WaferMap.Entity.DieSizeX + WaferMap.Entity.Center2OriginDieCornerX) / unitPerPixel;
             double centerY = (WaferMap.Entity.OriginDieY * WaferMap.Entity.DieSizeY + WaferMap.Entity.Center2OriginDieCornerY) / unitPerPixel;
-            double D = 3000000 / unitPerPixel;
+            double D = WaferMap.Entity.WaferDiameter / unitPerPixel;
             e.DrawArc(p, (float)(centerX - D / 2), (float)(centerY - D / 2), (float)D, (float)D, 0, 360);
 
             //float centerX1 = canvas.Width / 2;
@@ -117,7 +118,8 @@ namespace CommonComponentLibrary
 
         public void test(int x,int y)            
         {
-            Console.WriteLine(x.ToString()+" ; "+y.ToString());
+            //Console.WriteLine(x.ToString()+" ; "+y.ToString());
+            RefreshCanvas();
         }
      }
 }
