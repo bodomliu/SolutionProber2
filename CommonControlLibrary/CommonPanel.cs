@@ -110,14 +110,18 @@ namespace CommonComponentLibrary
 
         private void TimMotion_Tick(object sender, EventArgs e)
         {
-            Motion.XYZ_GetEncPos(out double X, out double Y, out double Z);
-            //Motion.GetUserPos(Compensation.Area.Match, out double userPosX, out double userPosY);
-            txtEncodeX.Text = (X - OffX).ToString();
-            txtEncodeY.Text = (Y - OffY).ToString();
-            txtEncodeZ.Text = (Z - OffZ).ToString();
+            double X = double.NaN;double Y = double.NaN;
+            if (RbtnAlign.Checked) Motion.GetUserPos(Compensation.Area.Align, out X, out Y);
+            if (RbtnProbing.Checked) Motion.GetUserPos(Compensation.Area.Probing, out X, out Y);
+            if (RbtnMotion.Checked) Motion.XY_GetEncPos(out X, out Y);
+            
+            txtEncodeX.Text = (X - OffX).ToString("F0");
+            txtEncodeY.Text = (Y - OffY).ToString("F0");
 
+            double Z = Motion.GetEncPos(1, 3);
+            txtEncodeZ.Text = (Z - OffZ).ToString("F0");
             double R = Motion.GetEncPos(1, 4);
-            txtEncodeR.Text = R.ToString();
+            txtEncodeR.Text = R.ToString("F0");
         }
 
         private void BtnUp_MouseDown(object sender, MouseEventArgs e)

@@ -89,8 +89,8 @@ namespace MotionLibrary
             Graphics gp = Graphics.FromImage(bitmap);
             for (int i = 0; i < 9; i++)
             {
-                penWidth = (i == 4) ? 3: 1;//中间一根线粗一点
-                gp.DrawLine(new Pen(Color.Black,penWidth), 0, (i + 1) * pbX.Height / 10, pbX.Width, (i + 1) * pbX.Height / 10);
+                penWidth = (i == 4) ? 3 : 1;//中间一根线粗一点
+                gp.DrawLine(new Pen(Color.Black, penWidth), 0, (i + 1) * pbX.Height / 10, pbX.Width, (i + 1) * pbX.Height / 10);
             }
             pbX.Image = bitmap;
 
@@ -287,6 +287,11 @@ namespace MotionLibrary
             {
                 //Alignment.AdjustWaferHeight(37000, 39000, Vision.JigCamera);
             }
+        }
+
+        private void BtnResetErrorTable_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

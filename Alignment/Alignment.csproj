@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
@@ -10,12 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.17" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CommonControlLibrary\CommonComponentLibrary.csproj" />
     <ProjectReference Include="..\VisionClassLibrary\VisionLibrary.csproj" />
+    <ProjectReference Include="..\WaferMapLibrary\WaferMapLibrary.csproj" />
   </ItemGroup>
 
 </Project>

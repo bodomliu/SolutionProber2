@@ -35,6 +35,9 @@ namespace WaferMapLibrary
         public int Coordinates { get; set; }//0 = 不是坐标点，1 = 有效坐标点，2 = 需要进行标定的点
     }
 
+    /// <summary>
+    /// 代表注册的WaferMap信息
+    /// </summary>
     public class WaferMapClass
     {
         public int WaferSize { get; set; } = 12;//This is wafer size of current device. Value = 6/8/12
@@ -52,7 +55,10 @@ namespace WaferMapLibrary
         public double Corner2PatternY { get; set; } = 0;//DiePattern - Lower Left Corner
         public List<MappingPoint>? MappingPoints { get; set; }
     }
-    //当前WaferMap，用于操作
+
+    /// <summary>
+    /// 当前测试的这张Wafer信息
+    /// </summary>
     public static class WaferMap
     {
         public static WaferMapClass Entity = new WaferMapClass();//定义WaferMap的实体
@@ -85,6 +91,55 @@ namespace WaferMapLibrary
             }
 
         }
+
+
+        public delegate void OnAlignChangeHander(bool WaferCenter,bool LowAlign,bool HighAlign); //定义一个委托
+        public static event OnAlignChangeHander? OnAlignChange;
+        private static bool isWaferCenterCompleted = false;//晶圆圆心未寻找
+        public static bool IsWaferCenterCompleted//WaferCenter未寻找
+        {
+            get
+            {
+                return isWaferCenterCompleted;
+            }
+            set
+            {
+                isWaferCenterCompleted = value;
+                if (OnAlignChange != null) OnAlignChange(isWaferCenterCompleted, isLowAlignCompleted, isHighAlignCompleted);
+            }
+        }
+        private static bool isLowAlignCompleted = false;//粗定位未完成
+        public static bool IsLowAlignCompleted//精定位未完成
+        {
+            get
+            {
+                return isLowAlignCompleted;
+            }
+            set
+            {
+                isLowAlignCompleted = value;
+                if (OnAlignChange != null) OnAlignChange(isWaferCenterCompleted, isLowAlignCompleted, isHighAlignCompleted);
+            }
+        }
+        private static bool isHighAlignCompleted = false;//精定位未完成
+        public static bool IsHighAlignCompleted//精定位未完成
+        {
+            get
+            {
+                return isHighAlignCompleted;
+            }
+            set
+            {
+                isHighAlignCompleted = value;
+                if (OnAlignChange != null) OnAlignChange(isWaferCenterCompleted, isLowAlignCompleted, isHighAlignCompleted);
+            }
+        }
+
+        public static double WaferCenterX;//LowMag下的值 + XWAFERLOW2HIGHT：转UserPos
+        public static double WaferCenterY;//LowMag下的值 + YWAFERLOW2HIGHT：转UserPos
+        public static double WaferOffsetX;//HighMag下的值：实际RefDie - 注册RefDie：转UserPos
+        public static double WaferOffsetY;//HighMag下的值：实际RefDie - 注册RefDie：转UserPos
+
         public static void Save(string filePath)
         {
             JsonSerializerOptions options = new()

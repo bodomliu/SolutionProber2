@@ -1,8 +1,9 @@
 using VisionLibrary;
 using MotionLibrary;
 using CommonComponentLibrary;
+using System.Text.Encodings.Web;
 
-namespace testVision2
+namespace test
 {
     public partial class Form1 : Form
     {
@@ -14,7 +15,9 @@ namespace testVision2
             //CommonPanel
             commonPanel = new CommonPanel();
             this.panel1.Controls.Add(commonPanel);
-            this.panel1.Controls.SetChildIndex(commonPanel, 0);
+            //this.panel1.Controls.SetChildIndex(commonPanel, 0);//这个作用是将控件置于顶层，该处不需要
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,5 +50,7 @@ namespace testVision2
         {
             Vision.CameraList[comboBox1.SelectedIndex].halconClass.SetPart(1280, 1024);
         }
+
+      
     }
 }

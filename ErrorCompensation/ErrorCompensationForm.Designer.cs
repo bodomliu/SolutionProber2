@@ -56,6 +56,7 @@
             BtnAdjustWaferHeight = new Button();
             panelMapMini = new Panel();
             BtnSim = new Button();
+            BtnResetErrorTable = new Button();
             groupBox1.SuspendLayout();
             GboxIndexControl.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -354,11 +355,23 @@
             BtnSim.UseVisualStyleBackColor = true;
             BtnSim.Click += BtnSim_Click;
             // 
+            // BtnResetErrorTable
+            // 
+            BtnResetErrorTable.BackColor = Color.Red;
+            BtnResetErrorTable.Location = new Point(924, 92);
+            BtnResetErrorTable.Name = "BtnResetErrorTable";
+            BtnResetErrorTable.Size = new Size(95, 53);
+            BtnResetErrorTable.TabIndex = 72;
+            BtnResetErrorTable.Text = "Reset Error Table";
+            BtnResetErrorTable.UseVisualStyleBackColor = false;
+            BtnResetErrorTable.Click += BtnResetErrorTable_Click;
+            // 
             // ErrorCompensationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1764, 1026);
+            Controls.Add(BtnResetErrorTable);
             Controls.Add(panelMapMini);
             Controls.Add(BtnAdjustWaferHeight);
             Controls.Add(BtnZ);
@@ -422,5 +435,6 @@
         private Button BtnAdjustWaferHeight;
         private Panel panelMapMini;
         private Button BtnSim;
+        private Button BtnResetErrorTable;
     }
 }

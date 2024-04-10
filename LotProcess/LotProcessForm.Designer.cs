@@ -1,4 +1,4 @@
-﻿namespace CommonComponentLibrary
+﻿namespace MainForm
 {
     partial class LotProcessForm
     {
