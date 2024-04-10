@@ -85,13 +85,13 @@ namespace WaferMapLibrary
         [JsonIgnore]
         public int WaferDiameter { get; private set; }
 
-        private int dieSizeX = 10240;
+        private double dieSizeX = 10240;
 
         /// <summary>
         /// this is die size of current device; Also named Index size
         /// </summary>
         [JsonPropertyOrder(2)]
-        public int DieSizeX
+        public double DieSizeX
         {
             get { return this.dieSizeX; }
             set
@@ -101,13 +101,13 @@ namespace WaferMapLibrary
                 this.DieNumX = (int)Math.Ceiling((double)this.WaferDiameter / this.DieSizeX);
             }
         }
-        private int dieSizeY = 10240;
+        private double dieSizeY = 10240;
 
         /// <summary>
         /// this is die size of current device; Also named Index size
         /// </summary>
         [JsonPropertyOrder(2)]
-        public int DieSizeY
+        public double DieSizeY
         {
             get { return this.dieSizeY; }
 
@@ -225,18 +225,6 @@ namespace WaferMapLibrary
             isBlockIndexChange = false;
             if (OnIndexChange != null) OnIndexChange(currentIndexX, currentIndexY);
         }
-        /// <summary>
-        /// 获取Wafer中心点
-        /// </summary>
-        /// <returns></returns>
-        public static Point GetWaferCenterPoint()
-        {
-            Point point = new Point();
-            point.X = WaferMap.Entity.OriginDieX * WaferMap.Entity.DieSizeX + WaferMap.Entity.Center2OriginDieCornerX;
-            point.Y = WaferMap.Entity.OriginDieY * WaferMap.Entity.DieSizeY + WaferMap.Entity.Center2OriginDieCornerY;
-            return point;
-        }
-
 
         public delegate void OnAlignChangeHander(bool WaferCenter,bool LowAlign,bool HighAlign); //定义一个委托
         public static event OnAlignChangeHander? OnAlignChange;
@@ -284,7 +272,6 @@ namespace WaferMapLibrary
         public static double WaferCenterY;//LowMag下的值 + YWAFERLOW2HIGHT：转UserPos
         public static double WaferOffsetX;//HighMag下的值：实际RefDie - 注册RefDie：转UserPos
         public static double WaferOffsetY;//HighMag下的值：实际RefDie - 注册RefDie：转UserPos
-
         public static void Save(string filePath)
         {
             JsonSerializerOptions options = new()
