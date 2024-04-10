@@ -21,6 +21,13 @@ namespace CommonComponentLibrary
         private void WaferMapIndexControl_Load(object sender, EventArgs e)
         {
             UpdateIndex();
+            WaferMap.OnIndexChange += onIndexChange;
+        }
+
+        private void onIndexChange(int x, int y)
+        {
+            TxtIndexX.Text = x.ToString();
+            TxtIndexY.Text = y.ToString();
         }
 
         public void UpdateIndex()
@@ -32,7 +39,6 @@ namespace CommonComponentLibrary
         private void BtnUp_Click(object sender, EventArgs e)
         {
             WaferMap.CurrentIndexY--;
-            Console.WriteLine(WaferMap.CurrentIndexY.ToString());
             //UpdateIndex();
         }
 
@@ -56,13 +62,12 @@ namespace CommonComponentLibrary
 
         private void WaferMapIndexControl_Paint(object sender, PaintEventArgs e)
         {
-            UpdateIndex();
+            //UpdateIndex();
         }
 
         private void BtnEnter_Click(object sender, EventArgs e)
         {
-            WaferMap.CurrentIndexX = int.Parse(TxtIndexX.Text);
-            WaferMap.CurrentIndexY = int.Parse(TxtIndexY.Text);
+            WaferMap.setCurrentIndex(int.Parse(TxtIndexX.Text), int.Parse(TxtIndexY.Text));
             //UpdateIndex();
         }
     }
