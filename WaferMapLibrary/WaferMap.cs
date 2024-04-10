@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Reflection;
 using System.Text.Json.Serialization;
-using System.Drawing;
 
 namespace WaferMapLibrary
 {
@@ -43,8 +42,8 @@ namespace WaferMapLibrary
         public WaferMapClass()
         {
             this.WaferSize = 12;
-            this.DieSizeX = 10240;
-            this.DieSizeY = 10240;
+            this.DieSizeX = 102400;
+            this.DieSizeY = 102400;
         }
 
         private int waferSize;
@@ -61,13 +60,13 @@ namespace WaferMapLibrary
                 switch (value)
                 {
                     case 6:
-                        this.WaferDiameter = 150_000;
+                        this.WaferDiameter = 150_0000;
                         break;
                     case 8:
-                        this.WaferDiameter = 200_000;
+                        this.WaferDiameter = 200_0000;
                         break;
                     case 12:
-                        this.WaferDiameter = 300_000;
+                        this.WaferDiameter = 300_0000;
                         break;
                     default:
                         throw new Exception("WaferSize must be 6/8/12");
@@ -82,7 +81,7 @@ namespace WaferMapLibrary
         [JsonIgnore]
         public int WaferDiameter { get; private set; }
 
-        private int dieSizeX = 10240;
+        private int dieSizeX = 102400;
 
         /// <summary>
         /// this is die size of current device; Also named Index size
@@ -98,7 +97,7 @@ namespace WaferMapLibrary
                 this.DieNumX = (int)Math.Ceiling((double)this.WaferDiameter / this.DieSizeX);
             }
         }
-        private int dieSizeY = 10240;
+        private int dieSizeY = 102400;
 
         /// <summary>
         /// this is die size of current device; Also named Index size
@@ -146,8 +145,8 @@ namespace WaferMapLibrary
         public int OriginDieY { get; set; } = 10;
         public string DirectionX { get; set; } = "RIGHT";
         public string DirectionY { get; set; } = "DOWN";
-        public int Center2OriginDieCornerX { get; set; } = 0;//OriginDie的Left Lower Crorner X - CenterX
-        public int Center2OriginDieCornerY { get; set; } = 0;//OriginDie的Left Lower Crorner Y - CenterY
+        public double Center2OriginDieCornerX { get; set; } = 0;//OriginDie的Left Lower Crorner X - CenterX
+        public double Center2OriginDieCornerY { get; set; } = 0;//OriginDie的Left Lower Crorner Y - CenterY
         public double Corner2PatternX { get; set; } = 0;//DiePattern - Lower Left Corner
         public double Corner2PatternY { get; set; } = 0;//DiePattern - Lower Left Corner
         public List<MappingPoint>? MappingPoints { get; set; }
@@ -158,14 +157,7 @@ namespace WaferMapLibrary
         public static WaferMapClass Entity = new WaferMapClass();//定义WaferMap的实体
         public delegate void OnIndexChangeHander(int x,int y); //定义一个委托
         public static event OnIndexChangeHander? OnIndexChange;
-        /// <summary>
-        /// X 轴缩放比例
-        /// </summary>
-        public static double RatioX { get; set; } = 1;
-        /// <summary>
-        /// Y 轴缩放比例
-        /// </summary>
-        public static double RatioY { get; set; } = 1;
+        
         private static int currentIndexX = 0;
         public static int CurrentIndexX//当前index
         {
@@ -219,17 +211,7 @@ namespace WaferMapLibrary
             isBlockIndexChange = false;
             if (OnIndexChange != null) OnIndexChange(currentIndexX, currentIndexY);
         }
-        /// <summary>
-        /// 获取Wafer中心点
-        /// </summary>
-        /// <returns></returns>
-        public static Point GetWaferCenterPoint()
-        {
-            Point point = new Point();
-            point.X = WaferMap.Entity.OriginDieX * WaferMap.Entity.DieSizeX + WaferMap.Entity.Center2OriginDieCornerX;
-            point.Y = WaferMap.Entity.OriginDieY * WaferMap.Entity.DieSizeY + WaferMap.Entity.Center2OriginDieCornerY;
-            return point;
-        }
+ 
         public static void Save(string filePath)
         {
             JsonSerializerOptions options = new()
