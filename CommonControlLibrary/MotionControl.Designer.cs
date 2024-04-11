@@ -1,4 +1,4 @@
-﻿namespace CommonComponentLibrary
+﻿namespace MainForm
 {
     partial class MotionControl
     {
@@ -124,6 +124,50 @@
             label2 = new Label();
             label1 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            LoaderJog = new GroupBox();
+            btnAxis5Backward = new Button();
+            textBox15 = new TextBox();
+            btnAxis5Forward = new Button();
+            btnAxis4Backward = new Button();
+            textBox14 = new TextBox();
+            btnAxis4Forward = new Button();
+            btnAxis3Backward = new Button();
+            textBox13 = new TextBox();
+            btnAxis3Forward = new Button();
+            btnAxis2Backward = new Button();
+            textBox12 = new TextBox();
+            btnAxis2Forward = new Button();
+            btnAxis1Backward = new Button();
+            textBox11 = new TextBox();
+            btnAxis1Forward = new Button();
+            textBox10 = new TextBox();
+            Axis2label = new Label();
+            textBox9 = new TextBox();
+            Axis3label = new Label();
+            textBox8 = new TextBox();
+            Axis4label = new Label();
+            textBox7 = new TextBox();
+            Axis5label = new Label();
+            textBox6 = new TextBox();
+            Axis1label = new Label();
+            groupBox2 = new GroupBox();
+            MoveCenter = new Button();
+            MoveFront = new Button();
+            MoveBack = new Button();
+            ChuckCoolingAir = new Button();
+            groupBox3 = new GroupBox();
+            UnloadtoBack = new Button();
+            LoadFromBack = new Button();
+            groupBox4 = new GroupBox();
+            button13 = new Button();
+            button12 = new Button();
+            button11 = new Button();
+            button1 = new Button();
+            button10 = new Button();
+            button9 = new Button();
+            button4 = new Button();
+            button3 = new Button();
+            txb = new TextBox();
             stagejog.SuspendLayout();
             Loaderhome.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -147,10 +191,16 @@
             ((System.ComponentModel.ISupportInitialize)XpicAxisAlarm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)YpicAxisOn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)XpicAxisOn).BeginInit();
+            LoaderJog.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // BtnXforward
             // 
+            BtnXforward.FlatAppearance.BorderColor = Color.Lime;
+            BtnXforward.FlatStyle = FlatStyle.Flat;
             BtnXforward.Location = new Point(139, 30);
             BtnXforward.Name = "BtnXforward";
             BtnXforward.Size = new Size(66, 52);
@@ -190,10 +240,10 @@
             stagejog.Controls.Add(BtnXforward);
             stagejog.Location = new Point(16, 16);
             stagejog.Name = "stagejog";
-            stagejog.Size = new Size(515, 189);
+            stagejog.Size = new Size(504, 175);
             stagejog.TabIndex = 1;
             stagejog.TabStop = false;
-            stagejog.Text = "JOG状态";
+            stagejog.Text = "Stage Jog";
             // 
             // textBox5
             // 
@@ -205,6 +255,8 @@
             // 
             // button7
             // 
+            button7.FlatAppearance.BorderColor = Color.Lime;
+            button7.FlatStyle = FlatStyle.Flat;
             button7.Location = new Point(426, 121);
             button7.Name = "button7";
             button7.Size = new Size(66, 49);
@@ -214,6 +266,8 @@
             // 
             // button8
             // 
+            button8.FlatAppearance.BorderColor = Color.Lime;
+            button8.FlatStyle = FlatStyle.Flat;
             button8.Location = new Point(426, 31);
             button8.Name = "button8";
             button8.Size = new Size(66, 52);
@@ -231,6 +285,8 @@
             // 
             // button5
             // 
+            button5.FlatAppearance.BorderColor = Color.Lime;
+            button5.FlatStyle = FlatStyle.Flat;
             button5.Location = new Point(354, 121);
             button5.Name = "button5";
             button5.Size = new Size(66, 49);
@@ -240,6 +296,8 @@
             // 
             // button6
             // 
+            button6.FlatAppearance.BorderColor = Color.Lime;
+            button6.FlatStyle = FlatStyle.Flat;
             button6.Location = new Point(354, 31);
             button6.Name = "button6";
             button6.Size = new Size(66, 52);
@@ -257,6 +315,8 @@
             // 
             // BtnZbackward
             // 
+            BtnZbackward.FlatAppearance.BorderColor = Color.Lime;
+            BtnZbackward.FlatStyle = FlatStyle.Flat;
             BtnZbackward.Location = new Point(282, 120);
             BtnZbackward.Name = "BtnZbackward";
             BtnZbackward.Size = new Size(66, 49);
@@ -269,6 +329,8 @@
             // 
             // BtnZforward
             // 
+            BtnZforward.FlatAppearance.BorderColor = Color.Lime;
+            BtnZforward.FlatStyle = FlatStyle.Flat;
             BtnZforward.Location = new Point(282, 30);
             BtnZforward.Name = "BtnZforward";
             BtnZforward.Size = new Size(66, 52);
@@ -289,6 +351,8 @@
             // 
             // BtnYbackward
             // 
+            BtnYbackward.FlatAppearance.BorderColor = Color.Lime;
+            BtnYbackward.FlatStyle = FlatStyle.Flat;
             BtnYbackward.Location = new Point(210, 120);
             BtnYbackward.Name = "BtnYbackward";
             BtnYbackward.Size = new Size(66, 49);
@@ -301,6 +365,8 @@
             // 
             // BtnYforward
             // 
+            BtnYforward.FlatAppearance.BorderColor = Color.Lime;
+            BtnYforward.FlatStyle = FlatStyle.Flat;
             BtnYforward.Location = new Point(210, 30);
             BtnYforward.Name = "BtnYforward";
             BtnYforward.Size = new Size(66, 52);
@@ -321,6 +387,8 @@
             // 
             // BtnXbackward
             // 
+            BtnXbackward.FlatAppearance.BorderColor = Color.Lime;
+            BtnXbackward.FlatStyle = FlatStyle.Flat;
             BtnXbackward.Location = new Point(138, 120);
             BtnXbackward.Name = "BtnXbackward";
             BtnXbackward.Size = new Size(66, 49);
@@ -419,16 +487,16 @@
             Loaderhome.Controls.Add(U2Home);
             Loaderhome.Controls.Add(U1Home);
             Loaderhome.Controls.Add(Ahome);
-            Loaderhome.Location = new Point(16, 211);
+            Loaderhome.Location = new Point(3, 465);
             Loaderhome.Name = "Loaderhome";
-            Loaderhome.Size = new Size(609, 152);
+            Loaderhome.Size = new Size(605, 90);
             Loaderhome.TabIndex = 2;
             Loaderhome.TabStop = false;
-            Loaderhome.Text = "回原加载";
+            Loaderhome.Text = "Loader Home";
             // 
             // HomeII
             // 
-            HomeII.Location = new Point(387, 46);
+            HomeII.Location = new Point(387, 22);
             HomeII.Name = "HomeII";
             HomeII.Size = new Size(105, 62);
             HomeII.TabIndex = 5;
@@ -437,7 +505,7 @@
             // 
             // HomeIII
             // 
-            HomeIII.Location = new Point(498, 46);
+            HomeIII.Location = new Point(498, 22);
             HomeIII.Name = "HomeIII";
             HomeIII.Size = new Size(102, 62);
             HomeIII.TabIndex = 4;
@@ -447,7 +515,7 @@
             // 
             // Whome
             // 
-            Whome.Location = new Point(294, 46);
+            Whome.Location = new Point(289, 22);
             Whome.Name = "Whome";
             Whome.Size = new Size(92, 62);
             Whome.TabIndex = 3;
@@ -457,7 +525,7 @@
             // 
             // U2Home
             // 
-            U2Home.Location = new Point(198, 46);
+            U2Home.Location = new Point(193, 22);
             U2Home.Name = "U2Home";
             U2Home.Size = new Size(90, 62);
             U2Home.TabIndex = 2;
@@ -467,7 +535,7 @@
             // 
             // U1Home
             // 
-            U1Home.Location = new Point(104, 46);
+            U1Home.Location = new Point(99, 22);
             U1Home.Name = "U1Home";
             U1Home.Size = new Size(88, 62);
             U1Home.TabIndex = 1;
@@ -477,7 +545,7 @@
             // 
             // Ahome
             // 
-            Ahome.Location = new Point(12, 46);
+            Ahome.Location = new Point(7, 22);
             Ahome.Name = "Ahome";
             Ahome.Size = new Size(86, 62);
             Ahome.TabIndex = 0;
@@ -547,9 +615,9 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(16, 369);
+            groupBox1.Location = new Point(3, 561);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1077, 277);
+            groupBox1.Size = new Size(1077, 249);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "状态信息";
@@ -1082,15 +1150,513 @@
             timer1.Interval = 10;
             timer1.Tick += timer1_Tick;
             // 
+            // LoaderJog
+            // 
+            LoaderJog.Controls.Add(btnAxis5Backward);
+            LoaderJog.Controls.Add(textBox15);
+            LoaderJog.Controls.Add(btnAxis5Forward);
+            LoaderJog.Controls.Add(btnAxis4Backward);
+            LoaderJog.Controls.Add(textBox14);
+            LoaderJog.Controls.Add(btnAxis4Forward);
+            LoaderJog.Controls.Add(btnAxis3Backward);
+            LoaderJog.Controls.Add(textBox13);
+            LoaderJog.Controls.Add(btnAxis3Forward);
+            LoaderJog.Controls.Add(btnAxis2Backward);
+            LoaderJog.Controls.Add(textBox12);
+            LoaderJog.Controls.Add(btnAxis2Forward);
+            LoaderJog.Controls.Add(btnAxis1Backward);
+            LoaderJog.Controls.Add(textBox11);
+            LoaderJog.Controls.Add(btnAxis1Forward);
+            LoaderJog.Controls.Add(textBox10);
+            LoaderJog.Controls.Add(Axis2label);
+            LoaderJog.Controls.Add(textBox9);
+            LoaderJog.Controls.Add(Axis3label);
+            LoaderJog.Controls.Add(textBox8);
+            LoaderJog.Controls.Add(Axis4label);
+            LoaderJog.Controls.Add(textBox7);
+            LoaderJog.Controls.Add(Axis5label);
+            LoaderJog.Controls.Add(textBox6);
+            LoaderJog.Controls.Add(Axis1label);
+            LoaderJog.Location = new Point(16, 197);
+            LoaderJog.Name = "LoaderJog";
+            LoaderJog.Size = new Size(504, 196);
+            LoaderJog.TabIndex = 7;
+            LoaderJog.TabStop = false;
+            LoaderJog.Text = "Loader Jog";
+            // 
+            // btnAxis5Backward
+            // 
+            btnAxis5Backward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis5Backward.FlatStyle = FlatStyle.Flat;
+            btnAxis5Backward.Location = new Point(426, 125);
+            btnAxis5Backward.Name = "btnAxis5Backward";
+            btnAxis5Backward.Size = new Size(66, 52);
+            btnAxis5Backward.TabIndex = 26;
+            btnAxis5Backward.Tag = "1";
+            btnAxis5Backward.Text = "W-";
+            btnAxis5Backward.UseVisualStyleBackColor = true;
+            btnAxis5Backward.MouseDown += btnAxis5Backward_MouseDown;
+            btnAxis5Backward.MouseUp += btnAxis5Backward_MouseUp;
+            // 
+            // textBox15
+            // 
+            textBox15.Location = new Point(426, 95);
+            textBox15.Name = "textBox15";
+            textBox15.Size = new Size(66, 23);
+            textBox15.TabIndex = 25;
+            textBox15.Text = "100";
+            // 
+            // btnAxis5Forward
+            // 
+            btnAxis5Forward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis5Forward.FlatStyle = FlatStyle.Flat;
+            btnAxis5Forward.Location = new Point(426, 32);
+            btnAxis5Forward.Name = "btnAxis5Forward";
+            btnAxis5Forward.Size = new Size(66, 52);
+            btnAxis5Forward.TabIndex = 24;
+            btnAxis5Forward.Tag = "1";
+            btnAxis5Forward.Text = "W+";
+            btnAxis5Forward.UseVisualStyleBackColor = true;
+            btnAxis5Forward.MouseDown += btnAxis5Forward_MouseDown;
+            btnAxis5Forward.MouseUp += btnAxis5Forward_MouseUp;
+            // 
+            // btnAxis4Backward
+            // 
+            btnAxis4Backward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis4Backward.FlatStyle = FlatStyle.Flat;
+            btnAxis4Backward.Location = new Point(354, 125);
+            btnAxis4Backward.Name = "btnAxis4Backward";
+            btnAxis4Backward.Size = new Size(66, 52);
+            btnAxis4Backward.TabIndex = 23;
+            btnAxis4Backward.Tag = "1";
+            btnAxis4Backward.Text = "V-";
+            btnAxis4Backward.UseVisualStyleBackColor = true;
+            btnAxis4Backward.MouseDown += btnAxis4Backward_MouseDown;
+            btnAxis4Backward.MouseUp += btnAxis4Backward_MouseUp;
+            // 
+            // textBox14
+            // 
+            textBox14.Location = new Point(354, 95);
+            textBox14.Name = "textBox14";
+            textBox14.Size = new Size(66, 23);
+            textBox14.TabIndex = 22;
+            textBox14.Text = "100";
+            // 
+            // btnAxis4Forward
+            // 
+            btnAxis4Forward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis4Forward.FlatStyle = FlatStyle.Flat;
+            btnAxis4Forward.Location = new Point(354, 32);
+            btnAxis4Forward.Name = "btnAxis4Forward";
+            btnAxis4Forward.Size = new Size(66, 52);
+            btnAxis4Forward.TabIndex = 21;
+            btnAxis4Forward.Tag = "1";
+            btnAxis4Forward.Text = "V+";
+            btnAxis4Forward.UseVisualStyleBackColor = true;
+            btnAxis4Forward.MouseDown += btnAxis4Forward_MouseDown;
+            btnAxis4Forward.MouseUp += btnAxis4Forward_MouseUp;
+            // 
+            // btnAxis3Backward
+            // 
+            btnAxis3Backward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis3Backward.FlatStyle = FlatStyle.Flat;
+            btnAxis3Backward.Location = new Point(282, 123);
+            btnAxis3Backward.Name = "btnAxis3Backward";
+            btnAxis3Backward.Size = new Size(66, 52);
+            btnAxis3Backward.TabIndex = 20;
+            btnAxis3Backward.Tag = "1";
+            btnAxis3Backward.Text = "U2-";
+            btnAxis3Backward.UseVisualStyleBackColor = true;
+            btnAxis3Backward.MouseDown += btnAxis3Backward_MouseDown;
+            btnAxis3Backward.MouseUp += btnAxis3Backward_MouseUp;
+            // 
+            // textBox13
+            // 
+            textBox13.Location = new Point(282, 93);
+            textBox13.Name = "textBox13";
+            textBox13.Size = new Size(66, 23);
+            textBox13.TabIndex = 19;
+            textBox13.Text = "20000";
+            // 
+            // btnAxis3Forward
+            // 
+            btnAxis3Forward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis3Forward.FlatStyle = FlatStyle.Flat;
+            btnAxis3Forward.Location = new Point(282, 30);
+            btnAxis3Forward.Name = "btnAxis3Forward";
+            btnAxis3Forward.Size = new Size(66, 52);
+            btnAxis3Forward.TabIndex = 18;
+            btnAxis3Forward.Tag = "1";
+            btnAxis3Forward.Text = "U2+";
+            btnAxis3Forward.UseVisualStyleBackColor = true;
+            btnAxis3Forward.MouseDown += btnAxis3Forward_MouseDown;
+            btnAxis3Forward.MouseUp += btnAxis3Forward_MouseUp;
+            // 
+            // btnAxis2Backward
+            // 
+            btnAxis2Backward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis2Backward.FlatStyle = FlatStyle.Flat;
+            btnAxis2Backward.Location = new Point(210, 123);
+            btnAxis2Backward.Name = "btnAxis2Backward";
+            btnAxis2Backward.Size = new Size(66, 52);
+            btnAxis2Backward.TabIndex = 17;
+            btnAxis2Backward.Tag = "1";
+            btnAxis2Backward.Text = "U1-";
+            btnAxis2Backward.UseVisualStyleBackColor = true;
+            btnAxis2Backward.MouseDown += btnAxis2Backward_MouseDown;
+            btnAxis2Backward.MouseUp += btnAxis2Backward_MouseUp;
+            // 
+            // textBox12
+            // 
+            textBox12.Location = new Point(210, 93);
+            textBox12.Name = "textBox12";
+            textBox12.Size = new Size(66, 23);
+            textBox12.TabIndex = 16;
+            textBox12.Text = "20000";
+            // 
+            // btnAxis2Forward
+            // 
+            btnAxis2Forward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis2Forward.FlatStyle = FlatStyle.Flat;
+            btnAxis2Forward.Location = new Point(210, 30);
+            btnAxis2Forward.Name = "btnAxis2Forward";
+            btnAxis2Forward.Size = new Size(66, 52);
+            btnAxis2Forward.TabIndex = 15;
+            btnAxis2Forward.Tag = "1";
+            btnAxis2Forward.Text = "U1+";
+            btnAxis2Forward.UseVisualStyleBackColor = true;
+            btnAxis2Forward.MouseDown += btnAxis2Forward_MouseDown;
+            btnAxis2Forward.MouseUp += btnAxis2Forward_MouseUp;
+            // 
+            // btnAxis1Backward
+            // 
+            btnAxis1Backward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis1Backward.FlatStyle = FlatStyle.Flat;
+            btnAxis1Backward.Location = new Point(135, 121);
+            btnAxis1Backward.Name = "btnAxis1Backward";
+            btnAxis1Backward.Size = new Size(66, 52);
+            btnAxis1Backward.TabIndex = 14;
+            btnAxis1Backward.Tag = "1";
+            btnAxis1Backward.Text = "A-";
+            btnAxis1Backward.UseVisualStyleBackColor = true;
+            btnAxis1Backward.MouseDown += btnAxis1Backward_MouseDown;
+            btnAxis1Backward.MouseUp += btnAxis1Backward_MouseUp;
+            // 
+            // textBox11
+            // 
+            textBox11.Location = new Point(135, 91);
+            textBox11.Name = "textBox11";
+            textBox11.Size = new Size(66, 23);
+            textBox11.TabIndex = 13;
+            textBox11.Text = "1000";
+            // 
+            // btnAxis1Forward
+            // 
+            btnAxis1Forward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis1Forward.FlatStyle = FlatStyle.Flat;
+            btnAxis1Forward.Location = new Point(135, 28);
+            btnAxis1Forward.Name = "btnAxis1Forward";
+            btnAxis1Forward.Size = new Size(66, 52);
+            btnAxis1Forward.TabIndex = 10;
+            btnAxis1Forward.Tag = "1";
+            btnAxis1Forward.Text = "A+";
+            btnAxis1Forward.UseVisualStyleBackColor = true;
+            btnAxis1Forward.MouseDown += btnAxis1Forward_MouseDown;
+            btnAxis1Forward.MouseUp += btnAxis1Forward_MouseUp;
+            // 
+            // textBox10
+            // 
+            textBox10.Location = new Point(29, 57);
+            textBox10.Name = "textBox10";
+            textBox10.Size = new Size(100, 23);
+            textBox10.TabIndex = 9;
+            // 
+            // Axis2label
+            // 
+            Axis2label.AutoSize = true;
+            Axis2label.Location = new Point(1, 64);
+            Axis2label.Name = "Axis2label";
+            Axis2label.Size = new Size(27, 17);
+            Axis2label.TabIndex = 8;
+            Axis2label.Text = "U1:";
+            // 
+            // textBox9
+            // 
+            textBox9.Location = new Point(29, 87);
+            textBox9.Name = "textBox9";
+            textBox9.Size = new Size(100, 23);
+            textBox9.TabIndex = 7;
+            // 
+            // Axis3label
+            // 
+            Axis3label.AutoSize = true;
+            Axis3label.Location = new Point(3, 91);
+            Axis3label.Name = "Axis3label";
+            Axis3label.Size = new Size(27, 17);
+            Axis3label.TabIndex = 6;
+            Axis3label.Text = "U2:";
+            // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(29, 117);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(100, 23);
+            textBox8.TabIndex = 5;
+            // 
+            // Axis4label
+            // 
+            Axis4label.AutoSize = true;
+            Axis4label.Location = new Point(5, 121);
+            Axis4label.Name = "Axis4label";
+            Axis4label.Size = new Size(19, 17);
+            Axis4label.TabIndex = 4;
+            Axis4label.Text = "V:";
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(29, 146);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(100, 23);
+            textBox7.TabIndex = 3;
+            // 
+            // Axis5label
+            // 
+            Axis5label.AutoSize = true;
+            Axis5label.Location = new Point(2, 147);
+            Axis5label.Name = "Axis5label";
+            Axis5label.Size = new Size(23, 17);
+            Axis5label.TabIndex = 2;
+            Axis5label.Text = "W:";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(29, 28);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(100, 23);
+            textBox6.TabIndex = 1;
+            // 
+            // Axis1label
+            // 
+            Axis1label.AutoSize = true;
+            Axis1label.Location = new Point(4, 34);
+            Axis1label.Name = "Axis1label";
+            Axis1label.Size = new Size(19, 17);
+            Axis1label.TabIndex = 0;
+            Axis1label.Text = "A:";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(MoveCenter);
+            groupBox2.Controls.Add(MoveFront);
+            groupBox2.Controls.Add(MoveBack);
+            groupBox2.Location = new Point(554, 16);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(140, 153);
+            groupBox2.TabIndex = 8;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Stage Position";
+            // 
+            // MoveCenter
+            // 
+            MoveCenter.FlatAppearance.BorderColor = Color.Lime;
+            MoveCenter.FlatStyle = FlatStyle.Flat;
+            MoveCenter.Location = new Point(18, 59);
+            MoveCenter.Name = "MoveCenter";
+            MoveCenter.Size = new Size(116, 39);
+            MoveCenter.TabIndex = 35;
+            MoveCenter.Text = "Move to Center";
+            MoveCenter.UseVisualStyleBackColor = true;
+            // 
+            // MoveFront
+            // 
+            MoveFront.FlatAppearance.BorderColor = Color.Lime;
+            MoveFront.FlatStyle = FlatStyle.Flat;
+            MoveFront.Location = new Point(18, 104);
+            MoveFront.Name = "MoveFront";
+            MoveFront.Size = new Size(116, 40);
+            MoveFront.TabIndex = 34;
+            MoveFront.Text = "Move to Front";
+            MoveFront.UseVisualStyleBackColor = true;
+            // 
+            // MoveBack
+            // 
+            MoveBack.FlatAppearance.BorderColor = Color.Lime;
+            MoveBack.FlatStyle = FlatStyle.Flat;
+            MoveBack.Location = new Point(18, 17);
+            MoveBack.Name = "MoveBack";
+            MoveBack.Size = new Size(116, 36);
+            MoveBack.TabIndex = 33;
+            MoveBack.Text = "Move to back";
+            MoveBack.UseVisualStyleBackColor = true;
+            // 
+            // ChuckCoolingAir
+            // 
+            ChuckCoolingAir.BackColor = Color.FromArgb(255, 128, 0);
+            ChuckCoolingAir.Location = new Point(614, 487);
+            ChuckCoolingAir.Name = "ChuckCoolingAir";
+            ChuckCoolingAir.Size = new Size(102, 62);
+            ChuckCoolingAir.TabIndex = 9;
+            ChuckCoolingAir.Text = "Chuck Cooling Air";
+            ChuckCoolingAir.UseVisualStyleBackColor = false;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(UnloadtoBack);
+            groupBox3.Controls.Add(LoadFromBack);
+            groupBox3.Location = new Point(527, 175);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(200, 68);
+            groupBox3.TabIndex = 10;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Chuck Wafer Add/Remove";
+            // 
+            // UnloadtoBack
+            // 
+            UnloadtoBack.BackColor = Color.FromArgb(128, 255, 128);
+            UnloadtoBack.FlatAppearance.BorderColor = Color.Lime;
+            UnloadtoBack.FlatStyle = FlatStyle.Flat;
+            UnloadtoBack.Location = new Point(101, 17);
+            UnloadtoBack.Name = "UnloadtoBack";
+            UnloadtoBack.Size = new Size(84, 45);
+            UnloadtoBack.TabIndex = 36;
+            UnloadtoBack.Text = "Unload to Back";
+            UnloadtoBack.UseVisualStyleBackColor = false;
+            // 
+            // LoadFromBack
+            // 
+            LoadFromBack.BackColor = Color.FromArgb(128, 255, 128);
+            LoadFromBack.FlatAppearance.BorderColor = Color.Lime;
+            LoadFromBack.FlatStyle = FlatStyle.Flat;
+            LoadFromBack.Location = new Point(11, 17);
+            LoadFromBack.Name = "LoadFromBack";
+            LoadFromBack.Size = new Size(84, 45);
+            LoadFromBack.TabIndex = 35;
+            LoadFromBack.Text = "Load From Back";
+            LoadFromBack.UseVisualStyleBackColor = false;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(button13);
+            groupBox4.Controls.Add(button12);
+            groupBox4.Controls.Add(button11);
+            groupBox4.Controls.Add(button1);
+            groupBox4.Controls.Add(button10);
+            groupBox4.Controls.Add(button9);
+            groupBox4.Controls.Add(button4);
+            groupBox4.Controls.Add(button3);
+            groupBox4.Location = new Point(527, 249);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(200, 218);
+            groupBox4.TabIndex = 37;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Manual Wafer Unload";
+            // 
+            // button13
+            // 
+            button13.Location = new Point(98, 173);
+            button13.Name = "button13";
+            button13.Size = new Size(87, 42);
+            button13.TabIndex = 36;
+            button13.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            button12.Location = new Point(98, 120);
+            button12.Name = "button12";
+            button12.Size = new Size(87, 42);
+            button12.TabIndex = 36;
+            button12.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            button11.Location = new Point(98, 68);
+            button11.Name = "button11";
+            button11.Size = new Size(87, 42);
+            button11.TabIndex = 36;
+            button11.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(98, 20);
+            button1.Name = "button1";
+            button1.Size = new Size(87, 42);
+            button1.TabIndex = 36;
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            button10.BackColor = Color.White;
+            button10.FlatAppearance.BorderColor = Color.Red;
+            button10.FlatStyle = FlatStyle.Flat;
+            button10.ForeColor = Color.Red;
+            button10.Location = new Point(11, 170);
+            button10.Name = "button10";
+            button10.Size = new Size(84, 45);
+            button10.TabIndex = 35;
+            button10.Text = "No Wafer on  Arm2";
+            button10.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            button9.BackColor = Color.White;
+            button9.FlatAppearance.BorderColor = Color.Red;
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.ForeColor = Color.Red;
+            button9.Location = new Point(11, 119);
+            button9.Name = "button9";
+            button9.Size = new Size(84, 45);
+            button9.TabIndex = 35;
+            button9.Text = "No Wafer on Arm";
+            button9.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.White;
+            button4.FlatAppearance.BorderColor = Color.Red;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.ForeColor = Color.Red;
+            button4.Location = new Point(11, 68);
+            button4.Name = "button4";
+            button4.Size = new Size(84, 45);
+            button4.TabIndex = 35;
+            button4.Text = "No Wafer on PRE";
+            button4.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.White;
+            button3.FlatAppearance.BorderColor = Color.Red;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = Color.Red;
+            button3.Location = new Point(11, 17);
+            button3.Name = "button3";
+            button3.Size = new Size(84, 45);
+            button3.TabIndex = 35;
+            button3.Text = "No Wafer on Chuck";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // txb
+            // 
+            txb.Location = new Point(51, 436);
+            txb.Name = "txb";
+            txb.Size = new Size(100, 23);
+            txb.TabIndex = 38;
+            // 
             // MotionControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(txb);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(ChuckCoolingAir);
+            Controls.Add(groupBox2);
+            Controls.Add(LoaderJog);
             Controls.Add(groupBox1);
             Controls.Add(Loaderhome);
             Controls.Add(stagejog);
             Name = "MotionControl";
-            Size = new Size(1096, 646);
+            Size = new Size(1096, 860);
             Load += MotionControl_Load;
             stagejog.ResumeLayout(false);
             stagejog.PerformLayout();
@@ -1117,7 +1683,13 @@
             ((System.ComponentModel.ISupportInitialize)XpicAxisAlarm).EndInit();
             ((System.ComponentModel.ISupportInitialize)YpicAxisOn).EndInit();
             ((System.ComponentModel.ISupportInitialize)XpicAxisOn).EndInit();
+            LoaderJog.ResumeLayout(false);
+            LoaderJog.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -1217,5 +1789,49 @@
         private TextBox RMoveRel;
         private Button btnRMoveRel2;
         private Button btnRMoveRel1;
+        private GroupBox LoaderJog;
+        private Label Axis1label;
+        private TextBox textBox6;
+        private TextBox textBox10;
+        private Label Axis2label;
+        private TextBox textBox9;
+        private Label Axis3label;
+        private TextBox textBox8;
+        private Label Axis4label;
+        private TextBox textBox7;
+        private Label Axis5label;
+        private Button btnAxis1Forward;
+        private Button btnAxis1Backward;
+        private TextBox textBox11;
+        private Button btnAxis5Backward;
+        private TextBox textBox15;
+        private Button btnAxis5Forward;
+        private Button btnAxis4Backward;
+        private TextBox textBox14;
+        private Button btnAxis4Forward;
+        private Button btnAxis3Backward;
+        private TextBox textBox13;
+        private Button btnAxis3Forward;
+        private Button btnAxis2Backward;
+        private TextBox textBox12;
+        private Button btnAxis2Forward;
+        private GroupBox groupBox2;
+        private Button MoveCenter;
+        private Button MoveBack;
+        private Button MoveFront;
+        private Button ChuckCoolingAir;
+        private GroupBox groupBox3;
+        private Button UnloadtoBack;
+        private Button LoadFromBack;
+        private GroupBox groupBox4;
+        private Button button9;
+        private Button button4;
+        private Button button3;
+        private Button button10;
+        private Button button13;
+        private Button button12;
+        private Button button11;
+        private Button button1;
+        private TextBox txb;
     }
 }

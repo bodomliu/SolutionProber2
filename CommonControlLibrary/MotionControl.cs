@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using MotionLibrary;
 
-namespace CommonComponentLibrary
+namespace MainForm
 {
     public partial class MotionControl : UserControl
     {
@@ -28,6 +28,13 @@ namespace CommonComponentLibrary
             //Motion.AxisOn(1, 2);
             //Motion.AxisOn(1, 3);
             //Motion.AxisOn(1, 4);
+            ////新增
+            //Motion.AxisOn(2, 1);
+            //Motion.AxisOn(2, 2);
+            //Motion.AxisOn(2, 3);
+            //Motion.AxisOn(2, 4);
+            //Motion.AxisOn(2, 5);
+            //Motion.AxisOn(2, 6);
             timer1.Enabled = true;
             sw.Stop();
             Console.WriteLine("Motion Control " + sw.ElapsedMilliseconds + " ms");
@@ -175,6 +182,13 @@ namespace CommonComponentLibrary
             GTN.mc.GTN_ClrSts(1, 2, 1);
             GTN.mc.GTN_ClrSts(1, 3, 1);
             GTN.mc.GTN_ClrSts(1, 4, 1);
+            GTN.mc.GTN_ClrSts(2, 1, 1);
+            GTN.mc.GTN_ClrSts(2, 2, 1);
+            GTN.mc.GTN_ClrSts(2, 3, 1);
+            GTN.mc.GTN_ClrSts(2, 4, 1);
+            GTN.mc.GTN_ClrSts(2, 5, 1);
+            GTN.mc.GTN_ClrSts(2, 6, 1);
+
         }
 
         private void BtnZforward_MouseDown(object sender, MouseEventArgs e)
@@ -363,12 +377,18 @@ namespace CommonComponentLibrary
             Motion.AxisStop(1, 2, 0);
             Motion.AxisStop(1, 3, 0);
             Motion.AxisStop(1, 4, 0);
+            Motion.AxisStop(2, 1, 0);
+            Motion.AxisStop(2, 2, 0);
+            Motion.AxisStop(2, 3, 0);
+            Motion.AxisStop(2, 4, 0);
+            Motion.AxisStop(2, 5, 0);
+            Motion.AxisStop(2, 6, 0);
             Motion.homeToken.Cancel();
         }
 
         private void Ahome_Click(object sender, EventArgs e)
         {
-            Motion.AxisHome(1, 1, -1, 1, 1, 100, 10, 0);
+            Motion.EcatGoHome(1, 100000, 10000, 100000);
         }
 
         private void U1Home_Click(object sender, EventArgs e)
@@ -383,7 +403,7 @@ namespace CommonComponentLibrary
 
         private void Whome_Click(object sender, EventArgs e)
         {
-            Motion.AxisHome(1, 4, -1, 1, 1, 100, 10, 0);
+
         }
 
         private void btnAxisOn_Click(object sender, EventArgs e)
@@ -392,6 +412,12 @@ namespace CommonComponentLibrary
             Motion.AxisOn(1, 2);
             Motion.AxisOn(1, 3);
             Motion.AxisOn(1, 4);
+            Motion.AxisOn(2, 1);
+            Motion.AxisOn(2, 2);
+            Motion.AxisOn(2, 3);
+            Motion.AxisOn(2, 4);
+            Motion.AxisOn(2, 5);
+            Motion.AxisOn(2, 6);
 
         }
 
@@ -401,6 +427,12 @@ namespace CommonComponentLibrary
             Motion.AxisOff(1, 2);
             Motion.AxisOff(1, 3);
             Motion.AxisOff(1, 4);
+            Motion.AxisOff(2, 1);
+            Motion.AxisOff(2, 2);
+            Motion.AxisOff(2, 3);
+            Motion.AxisOff(2, 4);
+            Motion.AxisOff(2, 5);
+            Motion.AxisOff(2, 6);
         }
 
         private void btnRMoveRel1_Click(object sender, EventArgs e)
@@ -441,6 +473,155 @@ namespace CommonComponentLibrary
                 return;
 
             }
+        }
+
+
+
+        private void btnAxis1Forward_MouseDown(object sender, MouseEventArgs e)
+        {
+            double velJ = 100;//Jog正向运动的速度
+            double accJ = 10;//Jog正向运动的加速度
+            double decJ = 10;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 1, velJ, accJ, decJ, SmoothtimeJ);
+
+        }
+
+        private void btnAxis1Forward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 1, 0);
+        }
+
+        private void btnAxis1Backward_MouseDown(object sender, MouseEventArgs e)
+        {
+            double velJ = 100;//Jog正向运动的速度
+            double accJ = 10;//Jog正向运动的加速度
+            double decJ = 10;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 1, -velJ, accJ, decJ, SmoothtimeJ);
+
+        }
+
+        private void btnAxis1Backward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 1, 0);
+        }
+
+        private void btnAxis2Forward_MouseDown(object sender, MouseEventArgs e)
+        {
+            double velJ = 100;//Jog正向运动的速度
+            double accJ = 10;//Jog正向运动的加速度
+            double decJ = 10;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 2, velJ, accJ, decJ, SmoothtimeJ);
+        }
+
+        private void btnAxis2Forward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 2, 0);
+
+        }
+
+        private void btnAxis2Backward_MouseDown(object sender, MouseEventArgs e)
+        {
+            double velJ = 100;//Jog正向运动的速度
+            double accJ = 10;//Jog正向运动的加速度
+            double decJ = 10;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 2, -velJ, accJ, decJ, SmoothtimeJ);
+        }
+
+        private void btnAxis2Backward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 2, 0);
+        }
+
+        private void btnAxis3Forward_MouseDown(object sender, MouseEventArgs e)
+        {
+            double velJ = 50;//Jog正向运动的速度
+            double accJ = 5;//Jog正向运动的加速度
+            double decJ = 5;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 3, velJ, accJ, decJ, SmoothtimeJ);
+
+        }
+
+        private void btnAxis3Forward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 3, 0);
+        }
+
+        private void btnAxis3Backward_MouseDown(object sender, MouseEventArgs e)
+        {
+            double velJ = 50;//Jog正向运动的速度
+            double accJ = 5;//Jog正向运动的加速度
+            double decJ = 5;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 3, -velJ, accJ, decJ, SmoothtimeJ);
+
+        }
+
+        private void btnAxis3Backward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 3, 0);
+        }
+
+
+
+        private void btnAxis4Forward_MouseDown(object sender, MouseEventArgs e)
+        {
+            double velJ = 100;//Jog正向运动的速度
+            double accJ = 10;//Jog正向运动的加速度
+            double decJ = 10;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 4, velJ, accJ, decJ, SmoothtimeJ);
+        }
+
+        private void btnAxis4Forward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 4, 0);
+        }
+        private void btnAxis4Backward_MouseDown(object sender, MouseEventArgs e)
+        {
+            double velJ = 100;//Jog正向运动的速度
+            double accJ = 10;//Jog正向运动的加速度
+            double decJ = 10;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 4, -velJ, accJ, decJ, SmoothtimeJ);
+        }
+
+        private void btnAxis4Backward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 4, 0);
+        }
+
+        private void btnAxis5Forward_MouseDown(object sender, MouseEventArgs e)
+        {
+            double velJ = 100;//Jog正向运动的速度
+            double accJ = 10;//Jog正向运动的加速度
+            double decJ = 10;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 5, velJ, accJ, decJ, SmoothtimeJ);
+        }
+
+        private void btnAxis5Forward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 5, 0);
+        }
+
+        private void btnAxis5Backward_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            double velJ = 100;//Jog正向运动的速度
+            double accJ = 10;//Jog正向运动的加速度
+            double decJ = 10;//Jog正向运动的减速度
+            double SmoothtimeJ = 0;//Jog正向运动的平滑时间[0,1)
+            Motion.AxisJog(2, 5, -velJ, accJ, decJ, SmoothtimeJ);
+        }
+
+        private void btnAxis5Backward_MouseUp(object sender, MouseEventArgs e)
+        {
+            Motion.AxisStop(2, 5, 0);
         }
     }
 }

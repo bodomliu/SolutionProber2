@@ -669,6 +669,56 @@ namespace MotionLibrary
         }
 
         /// <summary>
+        /// Ecat回零。TODO多轴回零
+        /// </summary>
+        /// <param name="axis"></param>
+        /// <param name="speed1"></param>
+        /// <param name="speed2"></param>
+        /// <param name="acc"></param>
+        public static void EcatGoHome(short axis, double speed1, double speed2, double acc)
+        {
+            //EtherCat的轴回零是由驱动器本身完成的，主站只是指定回零方式和启动回零，回零状态也是从驱动器读过来的
+            //CIA402协议定义的回零模式有36种，不同厂家的驱动器回零模式可能有所不同
+            short method = 27;//回零方式
+            Thread threadHome;
+            ushort homeStatus;
+            int offset = 0;
+            ushort probeFunc = 0;
+            //if (threadHome != null)
+            //{
+            //    threadHome.Abort();
+            //}
+            threadHome = new Thread(() =>
+            {
+                //模式设为回零模式
+                Res = GTN.mc.GTN_SetHomingMode(2, axis, 6);
+                CommandHandler("GTN_SetHomingMode", Res);
+                //设置回零参数
+                Res = GTN.mc.GTN_SetEcatHomingPrm(2, axis, method, speed1, speed2, acc, offset, probeFunc);
+                CommandHandler("GTN_SetEcatHomingPrm", Res);
+                //启动回零
+                Res = GTN.mc.GTN_StartEcatHoming(2, axis);
+                CommandHandler("GTN_StartEcatHoming", Res);
+                do
+                {
+                    Res = GTN.mc.GTN_GetEcatHomingStatus(2, axis, out homeStatus);
+                    //txt_EcatHomeSts.Invoke(new Action(() =>
+                    //{
+                    //    txt_EcatHomeSts.Text = Convert.ToString(homeStatus);
+                    //}));
+
+                } while (3 != homeStatus);  // 等待搜索原点完成
+                Thread.Sleep(1000);//延时等待
+                Res = GTN.mc.GTN_ZeroPos(2, axis, 1);
+                Res = GTN.mc.GTN_ClrSts(2, axis, 1);
+                Res = GTN.mc.GTN_SetHomingMode(2, axis, 8); // 切换到位置控制模式
+                CommandHandler("GTN_SetHomingMode", Res);
+            })
+            { IsBackground = true };
+            threadHome.Start();
+        }
+
+        /// <summary>
         /// R轴回零，并等待完成
         /// </summary>
         public static void R_AxisHome()
