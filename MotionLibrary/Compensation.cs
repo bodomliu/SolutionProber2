@@ -6,8 +6,8 @@ namespace MotionLibrary
     {
         public static WaferMapClass ErrorMapAlign = new();
         public static WaferMapClass ErrorMapProbing = new();
-        static List<Grid>? CalibrationGrids = new();
-        static List<Grid>? WorkingGrids = new();
+        public static List<Grid>? CalibrationGrids = new();//为了给测试用来可视化Grids，所以pulbic
+        public static List<Grid>? WorkingGrids = new();//为了给测试用来可视化Grids，所以pulbic
 
         public class Grid
         {
@@ -67,6 +67,7 @@ namespace MotionLibrary
                 //筛选可用的标定点，组成网格Grids
                 CalibrationGrids = GridsAvailable(ErrorMapAlign);
                 if (CalibrationGrids == null) return 1;
+                if (CalibrationGrids.Count == 0) { return 1; }
             }
             catch (Exception)
             {
@@ -79,6 +80,7 @@ namespace MotionLibrary
                 //筛选可用的标定点，组成网格Grids
                 WorkingGrids = GridsAvailable(ErrorMapProbing);
                 if (WorkingGrids == null) return 2;
+                if (WorkingGrids.Count == 0) { return 2; }
             }
             catch (Exception)
             {
@@ -190,23 +192,21 @@ namespace MotionLibrary
             double v1 = (-B + Math.Sqrt(B * B - 4 * A * C)) / 2 / A;
             double v2 = (-B - Math.Sqrt(B * B - 4 * A * C)) / 2 / A;
 
+            double threshold = 100;//标定格的边长约为3w，实际需要逆差补的点不至于超过NearestGrid，300w个单位，故阈值设为100
+            double v0 = (Math.Abs(v1) < Math.Abs(v2)) ? v1 : v2;//取一个绝对值更小的
             double v;
             if (A == 0)
             {
-                v = -C / B;
+                v = -C / B;//Grid为平行四边形
             }
-            else if (v1 >= 0 && v1 <= 1)
+            else if (v0 < threshold)
             {
-                v = v1;
-            }
-            else if (v2 >= 0 && v2 <= 1)
-            {
-                v = v2;
+                v = v0;//点在距离NearestGrid的100倍范围内，当0<v<1，代表点在grid内部
             }
             else
             {
-                UserX = 0;
-                UserY = 0;
+                UserX = double.NaN;
+                UserY = double.NaN;
                 return 1;
             }
 
@@ -226,11 +226,11 @@ namespace MotionLibrary
         /// <param name="Yin"></param>
         /// <param name="Xout"></param>
         /// <param name="Yout"></param>
-        /// <returns>0 = 正确；1 = 标定点错误</returns>
+        /// <returns>0 = 正确；1 = 标定点错误; 2 = 标定点数量为0</returns>
         public static int Transform(Area area, Dir dir, double Xin, double Yin, out double Xout, out double Yout)
         {
             //初始化XY输出
-            Xout = 0; Yout = 0;
+            Xout = double.NaN; Yout = double.NaN;
 
             //判断标定点是否存在，不存在返回1
             List<Grid>? grids = (area == Area.Align) ? CalibrationGrids : WorkingGrids;

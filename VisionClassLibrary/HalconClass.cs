@@ -717,7 +717,7 @@ namespace VisionLibrary
         /// <param name="Column"></param>
         /// <param name="Angle"></param>
         /// <param name="Score"></param>
-        /// <returns></returns>
+        /// <returns>0：匹配成功  1：没有图像  2：匹配失败</returns>
         public int FindShapeModel(string ModelName, int NumLevels, out double DeltaX, out double DeltaY, out double[] Row, out double[] Column, out double[] Angle, out double[] Score)
         {
             int res = FindShapeModel(ModelName, NumLevels, out Row, out Column, out Angle, out Score);
@@ -817,18 +817,12 @@ namespace VisionLibrary
         #endregion
 
         #region Edge相关
-
         /// <summary>
-        /// 获取Chuck平台与晶圆片边缘距离视野中心最近的点（过中点做垂线与边缘相交），
-        /// 其与视野中心的DeltaX，和DeltaY，DeltaRow，DeltaColumn，
-        /// 边缘在视野中心右方，DeltaX > 0, DeltaColumn > 0,
-        /// 边缘在视野中心上方，DeltaY < 0, DeltaRow < 0
+        /// 获取Wafer在Roi内的Blob，并计算Blob质心到画面中心的位移XY
         /// </summary>
-        /// <param name="DeltaX">Chuck平台与晶圆片边缘x轴方向的差值</param>
-        /// <param name="DeltaY">Chuck平台与晶圆片边缘y轴方向的差值</param>
-        /// <param name="DeltaRow">Chuck平台与晶圆片边缘Y轴方向的差值</param>
-        /// <param name="DeltaColumn">Chuck平台与晶圆片边缘x轴方向的差值</param>
-        /// <returns>0:计算成功</returns>
+        /// <param name="DeltaX">Blob质心到画面中心的位移X</param>
+        /// <param name="DeltaY">Blob质心到画面中心的位移Y</param>
+        /// <returns>0:计算成功 1：obj数量不唯一</returns>
         public int GetWaferEdge(out double DeltaX, out double DeltaY)
         {
             return Blob(0, 30, 15000, 100000, out DeltaX, out DeltaY, out _, out _);           
@@ -846,6 +840,18 @@ namespace VisionLibrary
             return Blob(200, 255, 800, 2000, out DeltaX, out DeltaY, out _, out _);
         }
 
+        /// <summary>
+        /// Blob
+        /// </summary>
+        /// <param name="tresholdMin"></param>
+        /// <param name="tresholdMax"></param>
+        /// <param name="areaMin"></param>
+        /// <param name="areaMax"></param>
+        /// <param name="DeltaX"></param>
+        /// <param name="DeltaY"></param>
+        /// <param name="Row"></param>
+        /// <param name="Column"></param>
+        /// <returns>0: 计算成功 1：Object数量不唯一</returns>
         private int Blob(int tresholdMin, int tresholdMax, double areaMin, double areaMax,
             out double DeltaX, out double DeltaY, out double Row, out double Column)
         {

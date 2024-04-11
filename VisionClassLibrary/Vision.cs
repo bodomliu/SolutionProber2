@@ -196,6 +196,7 @@ namespace VisionLibrary
 
             //绑定halconwindow
             camera.halconClass.DisplayWindowsBind(m_HSmartWindowControl);
+
             //相机打到连拍模式
             camera.ContinuesMode();
 

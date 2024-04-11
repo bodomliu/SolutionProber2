@@ -49,7 +49,12 @@
             BtnStep = new Button();
             BtnIndex = new Button();
             BtnScan = new Button();
+            groupBox1 = new GroupBox();
+            RbtnAlign = new RadioButton();
+            RbtnProbing = new RadioButton();
+            RbtnMotion = new RadioButton();
             canvas.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // canvas
@@ -247,11 +252,58 @@
             BtnScan.UseVisualStyleBackColor = true;
             BtnScan.Click += BtnScan_Click;
             // 
+            // groupBox1
+            // 
+            groupBox1.BackColor = Color.White;
+            groupBox1.Controls.Add(RbtnMotion);
+            groupBox1.Controls.Add(RbtnProbing);
+            groupBox1.Controls.Add(RbtnAlign);
+            groupBox1.Location = new Point(345, 825);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(87, 89);
+            groupBox1.TabIndex = 27;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "coordinate";
+            // 
+            // RbtnAlign
+            // 
+            RbtnAlign.AutoSize = true;
+            RbtnAlign.Checked = true;
+            RbtnAlign.Location = new Point(6, 20);
+            RbtnAlign.Name = "RbtnAlign";
+            RbtnAlign.Size = new Size(55, 21);
+            RbtnAlign.TabIndex = 0;
+            RbtnAlign.TabStop = true;
+            RbtnAlign.Text = "Align";
+            RbtnAlign.UseVisualStyleBackColor = true;
+            // 
+            // RbtnProbing
+            // 
+            RbtnProbing.AutoSize = true;
+            RbtnProbing.Location = new Point(6, 41);
+            RbtnProbing.Name = "RbtnProbing";
+            RbtnProbing.Size = new Size(72, 21);
+            RbtnProbing.TabIndex = 1;
+            RbtnProbing.TabStop = true;
+            RbtnProbing.Text = "Probing";
+            RbtnProbing.UseVisualStyleBackColor = true;
+            // 
+            // RbtnMotion
+            // 
+            RbtnMotion.AutoSize = true;
+            RbtnMotion.Location = new Point(6, 61);
+            RbtnMotion.Name = "RbtnMotion";
+            RbtnMotion.Size = new Size(68, 21);
+            RbtnMotion.TabIndex = 28;
+            RbtnMotion.Text = "Motion";
+            RbtnMotion.UseVisualStyleBackColor = true;
+            // 
             // CommonPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(groupBox1);
             Controls.Add(BtnScan);
             Controls.Add(BtnIndex);
             Controls.Add(BtnStep);
@@ -272,6 +324,8 @@
             Load += UserControl_Load;
             canvas.ResumeLayout(false);
             canvas.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -297,5 +351,9 @@
         private Button BtnStep;
         private Button BtnIndex;
         private Button BtnScan;
+        private GroupBox groupBox1;
+        private RadioButton RbtnMotion;
+        private RadioButton RbtnProbing;
+        private RadioButton RbtnAlign;
     }
 }

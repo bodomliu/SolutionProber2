@@ -1,4 +1,4 @@
-﻿namespace testVision2
+﻿namespace test
 {
     partial class Form1
     {
@@ -65,7 +65,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1296, 1035);
+            ClientSize = new Size(1339, 1035);
             Controls.Add(BtnSetPart);
             Controls.Add(comboBox1);
             Controls.Add(panel1);

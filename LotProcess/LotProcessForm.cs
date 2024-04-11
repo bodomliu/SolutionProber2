@@ -1,8 +1,8 @@
 using log4net;
 using log4net.Config;
-using Microsoft.VisualBasic.Logging;
+using CommonComponentLibrary;
 
-namespace CommonComponentLibrary
+namespace MainForm
 {
     public partial class LotProcessForm : Form
     {

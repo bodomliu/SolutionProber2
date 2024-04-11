@@ -19,12 +19,12 @@ namespace MotionLibrary
         private static readonly double RAXISZERO = 3537091;//R轴零点位置
         
         //软限位
-        private static readonly int XLIMITP = 4170000;
-        private static readonly int XLIMITN = -150000;
-        private static readonly int YLIMITP = 8380000;
-        private static readonly int YLIMITN = -130000;
-        private static readonly int ZLIMITP = 150000;
-        private static readonly int ZLIMITN = -090000;
+        public static readonly int XLIMITP = 4170000;
+        public static readonly int XLIMITN = -150000;
+        public static readonly int YLIMITP = 8380000;
+        public static readonly int YLIMITN = -130000;
+        public static readonly int ZLIMITP = 150000;
+        public static readonly int ZLIMITN = -090000;
 
         //设备参数，粗定位晶圆相机到精定位晶圆相机
         public static readonly double XWAFERLOW2HIGHT = -370578;
@@ -289,7 +289,7 @@ namespace MotionLibrary
         }
 
         /// <summary>
-        /// 用户坐标系走点
+        /// 用户坐标系走点：绝对运动
         /// </summary>
         /// <param name="area">"Match"标定区；"Probing"工作区</param>
         /// <param name="userX"></param>
@@ -302,6 +302,20 @@ namespace MotionLibrary
             XY_AxisMoveAbs(1, FeedbackX, FeedbackY, 600, 10, 10, 20);
             return 0;
         }
+
+        /// <summary>
+        /// 用户坐标系走点：相对运动
+        /// </summary>
+        /// <param name="area">"Match"标定区；"Probing"工作区</param>
+        /// <param name="userPosX">相对位移</param>
+        /// <param name="userPosY">相对位移</param>
+        /// <returns>0 = 成功；1=取点失败</returns>
+        public static int UserPosMoveRel(Compensation.Area area, double userPosX, double userPosY)
+        {
+            GetUserPos(area, out double X, out double Y);//先获取当前XY的userPos
+            return UserPosMoveAbs(area, X + userPosX, Y + userPosY);//再绝对走一个坐标位置
+        }
+
 
         /// <summary>
         /// 读取R轴参数
@@ -383,7 +397,7 @@ namespace MotionLibrary
             {
                 Res = GTN.mc.GTN_GetSts(core, axis, out pStatus, 1, out uint pClock);
                 Thread.Sleep(10);
-                //Application.DoEvents();
+                Application.DoEvents();//方便调用，不卡界面
             } while ((pStatus & 0x800) == 0);//等待轴到位
             Thread.Sleep(POSTSLEEP);
         }
@@ -422,7 +436,7 @@ namespace MotionLibrary
             {
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 2, out uint pClock);
                 Thread.Sleep(10);
-                //Application.DoEvents();
+                Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0));//等待轴到位
             Thread.Sleep(POSTSLEEP);
         }
@@ -465,7 +479,7 @@ namespace MotionLibrary
             {
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 3, out uint pClock);
                 Thread.Sleep(10);
-                //Application.DoEvents();
+                Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0) || ((pStatus[2] & 0x800) == 0));//等待轴到位
 
             Thread.Sleep(POSTSLEEP);
@@ -505,7 +519,7 @@ namespace MotionLibrary
             {
                 Res = GTN.mc.GTN_GetSts(core, axis, out pStatus, 1, out pClock);
                 Thread.Sleep(10);
-                //Application.DoEvents();
+                Application.DoEvents();//方便调用，不卡界面
             } while ((pStatus & 0x800) == 0);//等待轴到位
 
             Thread.Sleep(POSTSLEEP);
@@ -548,7 +562,7 @@ namespace MotionLibrary
             {
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 2, out pClock);
                 Thread.Sleep(10);
-                //Application.DoEvents();
+                Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0));//等待轴到位
 
             Thread.Sleep(POSTSLEEP);
@@ -596,7 +610,7 @@ namespace MotionLibrary
             {
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 3, out pClock);
                 Thread.Sleep(10);
-                //Application.DoEvents();
+                Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0) || ((pStatus[2] & 0x800) == 0));//等待轴到位
 
             Thread.Sleep(POSTSLEEP);

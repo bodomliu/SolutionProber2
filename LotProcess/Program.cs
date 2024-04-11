@@ -1,4 +1,4 @@
-namespace CommonComponentLibrary
+namespace MainForm
 {
     internal static class Program
     {
