@@ -16,7 +16,7 @@ namespace MainForm
         ErrorCompensationForm errorCompensatioForm = new ErrorCompensationForm();
         MotionControl motionControl = new MotionControl();
         AlignmentForm alignmentForm = new AlignmentForm();
-
+        DeviceDataSettingsForm deviceDataSettingsForm = new ();
         public MainForm()
         {
             InitializeComponent();
@@ -57,6 +57,11 @@ namespace MainForm
         private void BtnAlignment_Click(object sender, EventArgs e)
         {
             ChangeForm(alignmentForm);
+        }
+
+        private void BtnDeviceSettings_Click(object sender, EventArgs e)
+        {
+            ChangeForm(deviceDataSettingsForm);
         }
 
         private void ChangeForm(Control form)

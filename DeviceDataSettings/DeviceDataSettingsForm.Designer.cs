@@ -1,4 +1,4 @@
-﻿namespace DeviceDataSettings
+﻿namespace MainForm
 {
     partial class DeviceDataSettingsForm
     {
@@ -77,6 +77,7 @@
             // 
             // panelFile
             // 
+            panelFile.BackColor = SystemColors.ActiveBorder;
             panelFile.Dock = DockStyle.Right;
             panelFile.Location = new Point(741, 100);
             panelFile.Name = "panelFile";

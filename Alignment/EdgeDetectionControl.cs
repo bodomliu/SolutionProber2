@@ -92,7 +92,8 @@ namespace MainForm
             //缩回ROI
             Vision.WaferLowMag.halconClass.m_Roi.Resize2(512, 640, 400, 400);
             //当关闭时，隐藏自己
-            this.Visible = false;
+            //this.Visible = false;
+            this.Dispose();
         }
 
         private void BtnToCenter_Click(object sender, EventArgs e)

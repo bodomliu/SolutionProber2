@@ -1,4 +1,4 @@
-namespace DeviceDataSettings
+namespace MainForm
 {
     internal static class Program
     {

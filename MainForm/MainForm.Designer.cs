@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
+            BtnDeviceSettings = new Button();
             BtnAlignment = new Button();
             BtnMotionControl = new Button();
             BtnErrorCompensation = new Button();
@@ -41,6 +42,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.DimGray;
+            panelMenu.Controls.Add(BtnDeviceSettings);
             panelMenu.Controls.Add(BtnAlignment);
             panelMenu.Controls.Add(BtnMotionControl);
             panelMenu.Controls.Add(BtnErrorCompensation);
@@ -51,10 +53,21 @@
             panelMenu.Size = new Size(323, 885);
             panelMenu.TabIndex = 3;
             // 
+            // BtnDeviceSettings
+            // 
+            BtnDeviceSettings.BackColor = Color.Teal;
+            BtnDeviceSettings.Location = new Point(127, 15);
+            BtnDeviceSettings.Name = "BtnDeviceSettings";
+            BtnDeviceSettings.Size = new Size(100, 60);
+            BtnDeviceSettings.TabIndex = 1;
+            BtnDeviceSettings.Text = "Device Settings";
+            BtnDeviceSettings.UseVisualStyleBackColor = false;
+            BtnDeviceSettings.Click += BtnDeviceSettings_Click;
+            // 
             // BtnAlignment
             // 
             BtnAlignment.BackColor = Color.YellowGreen;
-            BtnAlignment.Location = new Point(21, 222);
+            BtnAlignment.Location = new Point(21, 213);
             BtnAlignment.Name = "BtnAlignment";
             BtnAlignment.Size = new Size(100, 60);
             BtnAlignment.TabIndex = 1;
@@ -139,5 +152,6 @@
         private Button BtnErrorCompensation;
         private Button BtnMotionControl;
         private Button BtnAlignment;
+        private Button BtnDeviceSettings;
     }
 }

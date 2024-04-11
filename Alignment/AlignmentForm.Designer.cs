@@ -72,7 +72,7 @@
             txtIndexSizeY.Name = "txtIndexSizeY";
             txtIndexSizeY.Size = new Size(71, 23);
             txtIndexSizeY.TabIndex = 3;
-            txtIndexSizeY.Text = "162124.8";
+            txtIndexSizeY.Text = "0";
             txtIndexSizeY.TextChanged += txtIndexSizeY_TextChanged;
             // 
             // txtIndexSizeX
@@ -81,7 +81,7 @@
             txtIndexSizeX.Name = "txtIndexSizeX";
             txtIndexSizeX.Size = new Size(70, 23);
             txtIndexSizeX.TabIndex = 0;
-            txtIndexSizeX.Text = "126564.6";
+            txtIndexSizeX.Text = "0";
             txtIndexSizeX.TextChanged += txtIndexSizeX_TextChanged;
             // 
             // label3
@@ -196,9 +196,9 @@
             // 
             // BtnWaferAlignment
             // 
-            BtnWaferAlignment.Location = new Point(1189, 645);
+            BtnWaferAlignment.Location = new Point(1464, 518);
             BtnWaferAlignment.Name = "BtnWaferAlignment";
-            BtnWaferAlignment.Size = new Size(110, 47);
+            BtnWaferAlignment.Size = new Size(110, 59);
             BtnWaferAlignment.TabIndex = 53;
             BtnWaferAlignment.Text = "Wafer Alignment";
             BtnWaferAlignment.UseVisualStyleBackColor = true;
@@ -206,9 +206,9 @@
             // 
             // panelMap
             // 
-            panelMap.Location = new Point(1190, 706);
+            panelMap.Location = new Point(1190, 649);
             panelMap.Name = "panelMap";
-            panelMap.Size = new Size(300, 300);
+            panelMap.Size = new Size(384, 357);
             panelMap.TabIndex = 54;
             // 
             // BtnAutoHeight

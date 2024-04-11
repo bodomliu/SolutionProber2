@@ -1,5 +1,4 @@
-﻿//using HalconDotNet;
-using CommonComponentLibrary;
+﻿using CommonComponentLibrary;
 using VisionLibrary;
 using WaferMapLibrary;
 
@@ -9,87 +8,69 @@ namespace MainForm
     {
         LowModel lowModel = new LowModel();
         HighModel highModel = new HighModel();
-        EdgeDetectionControl edgeDetectionControl = new EdgeDetectionControl();
-        WaferMapCanvas waferMapCanvas = WaferMapCanvas.Canvas;
-        CommonPanel commonPanel = new CommonPanel();//引入通用的CommonPanel
-
         public AlignmentForm()
         {
             this.TopLevel = false; this.FormBorderStyle = FormBorderStyle.None;
 
             InitializeComponent();
 
+            //low model
             panelModel.Controls.Add(lowModel);
             lowModel.Dock = DockStyle.Fill;
-
+            //high model
             panelModel.Controls.Add(highModel);
             highModel.Dock = DockStyle.Fill;
-            highModel.Visible = false;
-
-            //默认不显示edgeDetection
-            this.Controls.Add(edgeDetectionControl);
-            edgeDetectionControl.Visible = false;
-
             //Map
+            WaferMapCanvas waferMapCanvas = WaferMapCanvas.Canvas;
             panelMap.Controls.Add(waferMapCanvas);
             waferMapCanvas.LoadCanvas();
 
             //CommonPanel
+            CommonPanel commonPanel = new CommonPanel();//引入通用的CommonPanel
             commonPanel = new CommonPanel();
             panel1.Controls.Add(commonPanel);
         }
-
-        public enum ActiveModel
+        /// <summary>
+        /// 更新界面上控件的状态
+        /// </summary>
+        public void UpdateUI()
         {
-            LowModel = 0,
-            HighModel = 1
+            bool isLowModel = (Vision.activeCamera == Camera.WaferLowMag) ? true : false;//确认当前的相机是什么
+            BtnLowMag.Enabled = !isLowModel;
+            BtnHighMag.Enabled = isLowModel;
+            BtnGoForModel.Text = (isLowModel) ? "Go For High Model" : "Go For Low Model";
+            lowModel.Visible = isLowModel;
+            highModel.Visible = !isLowModel;
+
+            txtIndexSizeX.Text= WaferMap.Entity.DieSizeX.ToString();
+            txtIndexSizeY.Text = WaferMap.Entity.DieSizeY.ToString();
         }
-
-        public ActiveModel activeModel;
-
         private void AlignmentForm_Load(object sender, EventArgs e)
         {
             //默认是低倍相机启动
             Vision.ChangeCamera(Vision.WaferLowMag);
             Thread.Sleep(200);
             Vision.WaferLowMag.halconClass.SetPart(1280, 1024);//1280*1024显示
-
-            BtnLowMag.Enabled = false; BtnHighMag.Enabled = true;
-            activeModel = ActiveModel.LowModel;
-
-            WaferMap.OnAlignChange += UpdateAlignFlag;//注册falg事件
+            
+            WaferMap.OnAlignChange += UpdateAlignFlag;//注册flag事件
+            UpdateUI();
         }
-
         private void BtnHighMag_Click(object sender, EventArgs e)
         {
             Vision.ChangeCamera(Vision.WaferHighMag);
-            BtnLowMag.Enabled = true; BtnHighMag.Enabled = false;
+            UpdateUI();
         }
-
         private void BtnLowMag_Click(object sender, EventArgs e)
         {
             Vision.ChangeCamera(Vision.WaferLowMag);
-            BtnLowMag.Enabled = false; BtnHighMag.Enabled = true;
+            UpdateUI(); 
         }
-
         private void BtnGoForModel_Click(object sender, EventArgs e)
         {
-            if (activeModel == ActiveModel.LowModel)
-            {
-                activeModel = ActiveModel.HighModel;
-                BtnGoForModel.Text = "Go For Low Model";
-                lowModel.Visible = false;
-                highModel.Visible = true;
-            }
-            else if (activeModel == ActiveModel.HighModel)
-            {
-                activeModel = ActiveModel.LowModel;
-                BtnGoForModel.Text = "Go For High Model";
-                lowModel.Visible = true;
-                highModel.Visible = false;
-            }
+            if (BtnGoForModel.Text == "Go For Low Model") Vision.ChangeCamera(Camera.WaferLowMag);
+            else Vision.ChangeCamera(Camera.WaferHighMag);
+            UpdateUI();
         }
-
         private void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
         {
             WaitingControl wf = new WaitingControl();
@@ -106,37 +87,32 @@ namespace MainForm
 
             wf.Dispose();
         }
-
         private void txtIndexSizeX_TextChanged(object sender, EventArgs e)
         {
             WaferMap.Entity.DieSizeX = double.Parse(txtIndexSizeX.Text);
         }
-
         private void txtIndexSizeY_TextChanged(object sender, EventArgs e)
         {
             WaferMap.Entity.DieSizeY = double.Parse(txtIndexSizeY.Text);
         }
-
         private void BtnVisionPara_Click(object sender, EventArgs e)
         {
-            edgeDetectionControl.Visible = true;
+            EdgeDetectionControl edgeDetectionControl = new EdgeDetectionControl();
             edgeDetectionControl.Location = new Point(1150, 150);
+            this.Controls.Add(edgeDetectionControl);
             edgeDetectionControl.BringToFront();
             Vision.ChangeCamera(Camera.WaferLowMag);//需要转到lowMag
         }
-
         private void BtnWaferAlignment_Click(object sender, EventArgs e)
         {
 
         }
-
-        public void UpdateAlignFlag(bool center ,bool low, bool high)
+        private void UpdateAlignFlag(bool center, bool low, bool high)
         {
-            lblWaferCenterFlag.BackColor = (center)? Color.Green: Color.Red;
+            lblWaferCenterFlag.BackColor = (center) ? Color.Green : Color.Red;
             lblLowAlignFlag.BackColor = (low) ? Color.Green : Color.Red;
             lblHighAlignFlag.BackColor = (high) ? Color.Green : Color.Red;
         }
-
         private void BtnAutoHeight_Click(object sender, EventArgs e)
         {
             //Vision.ChangeCamera(Vision.WaferHighMag);

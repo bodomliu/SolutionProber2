@@ -11,6 +11,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommonControlLibrary\CommonComponentLibrary.csproj" />
+    <ProjectReference Include="..\WaferMapLibrary\WaferMapLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Maps\0411.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

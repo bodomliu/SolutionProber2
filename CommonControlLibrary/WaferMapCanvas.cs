@@ -14,7 +14,7 @@ namespace CommonComponentLibrary
 {
     public partial class WaferMapCanvas : UserControl
     {
-        public static readonly WaferMapCanvas Canvas = new();
+        public static WaferMapCanvas Canvas => new();
         private PictureBox canvas = new();
         private WaferMapCanvas()
         {
