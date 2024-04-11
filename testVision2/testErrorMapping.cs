@@ -13,6 +13,7 @@ using WaferMapLibrary;
 using static MotionLibrary.Compensation;
 using System.Reflection;
 using System.Drawing.Imaging;
+using CommonComponentLibrary;
 
 namespace test
 {
@@ -31,6 +32,11 @@ namespace test
             TbarY.Maximum = Motion.YLIMITP;
             NumEncodeY.Minimum = Motion.YLIMITN;
             NumEncodeY.Maximum = Motion.YLIMITP;
+
+
+            WaferMapCanvas mapCanvas = WaferMapCanvas.Canvas;
+            panel1.Controls.Add(mapCanvas);
+            mapCanvas.LoadCanvas();
         }
 
         RectangleF[]? rects;
@@ -43,7 +49,7 @@ namespace test
             if (grids == null) return;
             rects = new RectangleF[grids.Count];
 
-            for (int i=0;i< grids.Count;i++)
+            for (int i = 0; i < grids.Count; i++)
             {
                 RectangleF rect = Grid2Rect(grids[i]);
                 rects[i] = rect;
@@ -61,7 +67,7 @@ namespace test
             double Xpar = (encodeX - Xmin) / (Xmax - Xmin);
             double Ypar = (encodeY - Ymin) / (Ymax - Ymin);
             pixelX = (float)Xpar * canvas.Width;
-            pixelY = (float)(1-Ypar) * canvas.Height;
+            pixelY = (float)(1 - Ypar) * canvas.Height;
         }
         private void TbarX_Scroll(object sender, EventArgs e)
         {
@@ -107,7 +113,7 @@ namespace test
             float penWidth = 1;//画线条的粗细，默认=1
             Bitmap bitmap = new Bitmap(canvas.Width, canvas.Height);
             Graphics gp = Graphics.FromImage(bitmap);
-            if(rects!=null)gp.DrawRectangles(new Pen(Color.Black, penWidth),rects);
+            if (rects != null) gp.DrawRectangles(new Pen(Color.Black, penWidth), rects);
             canvas.Image = bitmap;
         }
 
@@ -121,7 +127,7 @@ namespace test
             gp.FillEllipse(new SolidBrush(Color.Blue), pixelX, pixelY, 10, 10);
             //画NearestGird
             if (Compensation.CalibrationGrids == null) return;
-            Grid nearestGrid = Compensation.NearestGrid(Dir.Encode2User,Compensation.CalibrationGrids, encodeX, encodeY);
+            Grid nearestGrid = Compensation.NearestGrid(Dir.Encode2User, Compensation.CalibrationGrids, encodeX, encodeY);
             RectangleF rect = Grid2Rect(nearestGrid);
             gp.FillRectangle(new SolidBrush(Color.Purple), rect);
         }
@@ -140,5 +146,9 @@ namespace test
             return rect;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Form2().ShowDialog();
+        }
     }
 }

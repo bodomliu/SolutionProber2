@@ -43,6 +43,8 @@
             NumEncodeY = new NumericUpDown();
             NumEncodeX = new NumericUpDown();
             canvas = new PictureBox();
+            panel1 = new Panel();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbarY).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TbarX).BeginInit();
@@ -189,11 +191,31 @@
             canvas.TabIndex = 40;
             canvas.TabStop = false;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Black;
+            panel1.Location = new Point(853, 292);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(371, 341);
+            panel1.TabIndex = 41;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1139, 252);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 42;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // testErrorMapping
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1304, 1101);
+            Controls.Add(button1);
+            Controls.Add(panel1);
             Controls.Add(canvas);
             Controls.Add(groupBox1);
             Controls.Add(TxtUserPosY);
@@ -237,5 +259,7 @@
         private NumericUpDown NumEncodeY;
         private NumericUpDown NumEncodeX;
         private PictureBox canvas;
+        private Panel panel1;
+        private Button button1;
     }
 }
