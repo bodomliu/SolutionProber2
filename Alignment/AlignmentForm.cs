@@ -10,7 +10,7 @@ namespace MainForm
         LowModel lowModel = new LowModel();
         HighModel highModel = new HighModel();
         EdgeDetectionControl edgeDetectionControl = new EdgeDetectionControl();
-        WaferMapCanvas waferMapCanvas = new WaferMapCanvas();
+        WaferMapCanvas waferMapCanvas = WaferMapCanvas.Canvas;
         CommonPanel commonPanel = new CommonPanel();//引入通用的CommonPanel
 
         public AlignmentForm()
@@ -32,7 +32,7 @@ namespace MainForm
 
             //Map
             panelMap.Controls.Add(waferMapCanvas);
-            waferMapCanvas.Dock = DockStyle.Fill;
+            waferMapCanvas.LoadCanvas();
 
             //CommonPanel
             commonPanel = new CommonPanel();
