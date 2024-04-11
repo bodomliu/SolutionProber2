@@ -1,4 +1,6 @@
-﻿namespace CommonComponentLibrary
+﻿using WaferMapLibrary;
+
+namespace CommonComponentLibrary
 {
     partial class WaferMapCanvas
     {
@@ -13,6 +15,7 @@
         /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
+            WaferMap.OnIndexChange -= test;
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -38,6 +41,7 @@
             Name = "WaferMapCanvas";
             Size = new Size(670, 599);
             Load += WaferMapCanvas_Load;
+            MouseDown += WaferMapCanvas_MouseDown;
             ResumeLayout(false);
         }
 
