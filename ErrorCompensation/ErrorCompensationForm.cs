@@ -44,9 +44,9 @@ namespace MotionLibrary
             WaferMapIndexControl indexControl = new WaferMapIndexControl();
             panelIndexControl.Controls.Add(indexControl);
 
-            WaferMapCanvas mapCanvas = new WaferMapCanvas();
+            WaferMapCanvas mapCanvas = WaferMapCanvas.Canvas;
             panelMap.Controls.Add(mapCanvas);
-            mapCanvas.Dock = DockStyle.Fill;
+            mapCanvas.LoadCanvas();
 
             //WaferMapCanvas mapCanvasMini = new WaferMapCanvas();
             //panelMapMini.Controls.Add(mapCanvasMini);
