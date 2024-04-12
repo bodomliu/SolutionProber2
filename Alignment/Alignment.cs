@@ -1,7 +1,8 @@
 ﻿using MotionLibrary;
 using VisionLibrary;
+using WaferMapLibrary;
 
-namespace MainForm
+namespace UtityForm
 {
     static internal class Alignment
     {
@@ -15,21 +16,19 @@ namespace MainForm
         /// <param name="dieSizeX"></param>
         /// <param name="dieSizeY"></param>
         /// <returns>0：匹配成功  1：没有图像  2：匹配失败  3：水平角度大于5度  </returns>
-        public static int AlignX(CameraClass Mag, string pattenModel, int L, int R, double dieSizeX, double dieSizeY)
+        public static int AlignX(CameraClass Mag, string pattenModel, int L, int R, double dieSizeX)
         {
             int res = 0;
-            
             //运动到L点做精定位
-            Motion.AxisMoveRel(1, 1, L * dieSizeX, 600, 10, 10, 20);//TODO 变更为用户坐标系
+            Motion.UserPosMoveRel(Compensation.Area.Align, -L * dieSizeX, 0);
             res = Match(pattenModel, Mag,out _,out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
-            Motion.XYZ_GetEncPos(out double startX1, out double startY1, out _);//TODO 变更为用户坐标系
-
+            Motion.GetUserPos(Compensation.Area.Align, out double startX1, out double startY1);
             //运动到R点做精定位
-            Motion.AxisMoveRel(1, 1, -(L + R) * dieSizeX, 600, 10, 10, 20);// TODO 变更为用户坐标系
+            Motion.UserPosMoveRel(Compensation.Area.Align, (L+R) * dieSizeX, 0);
             res = Match(pattenModel, Mag, out _, out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
-            Motion.XYZ_GetEncPos(out double startX2, out double startY2, out _);// TODO 变更为用户坐标系
+            Motion.GetUserPos(Compensation.Area.Align, out double startX2, out double startY2);
 
             //计算结果
             double[] feedbackX = new double[2] { startX1, startX2 };
@@ -47,10 +46,12 @@ namespace MainForm
             Motion.AxisMoveRel(1, 4, feedbackR, 600, 10, 10, 20);
 
             //移回中点处
-            Motion.AxisMoveRel(1, 1, R * dieSizeX, 600, 10, 10, 20);// TODO 变更为用户坐标系
+            Motion.UserPosMoveRel(Compensation.Area.Align, -R * dieSizeX, 0);
 
             return 0;
         }
+
+
 
         /// <summary>
         /// TriggerExe 模板匹配 then 运动到位
@@ -111,7 +112,30 @@ namespace MainForm
             int res = (maxIndex == 0 || maxIndex == pos.Count - 1) ? 1 : 0;//如果最大值在两端，则报1
             return res;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="range"></param>
+        /// <param name="Mag"></param>
+        /// <returns></returns>
+        public static int AdjustWaferHeight(double waferThickness,CameraClass Mag)
+        {
+            double targetHigh = Motion.parameter.ZORIGIN - waferThickness;//46000 - 8000 = 38000
+            double targetLow = targetHigh- Motion.parameter.ZWAFERLOW2HIGHT;//38000 - （-8000）= 46000
+            double rangeHigh = 1000;
+            double rangeLow = 15000;
 
+            if (Mag == Vision.WaferLowMag)
+            {
+                return AdjustWaferHeight(targetLow - rangeLow, targetLow + rangeLow, Mag);
+            }
+            else if (Mag == Vision.WaferHighMag)
+            {
+                return AdjustWaferHeight(targetHigh - rangeHigh, targetHigh + rangeHigh, Mag);
+            }
+            else return -1;
+        }
         /// <summary>
         /// 计算下次Step值
         /// </summary>

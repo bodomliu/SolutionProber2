@@ -1,8 +1,9 @@
 ﻿using CommonComponentLibrary;
+using MotionLibrary;
 using VisionLibrary;
 using WaferMapLibrary;
 
-namespace MainForm
+namespace UtityForm
 {
     public partial class AlignmentForm : Form
     {
@@ -27,7 +28,6 @@ namespace MainForm
 
             //CommonPanel
             CommonPanel commonPanel = new CommonPanel();//引入通用的CommonPanel
-            commonPanel = new CommonPanel();
             panel1.Controls.Add(commonPanel);
         }
         /// <summary>
@@ -57,32 +57,44 @@ namespace MainForm
         }
         private void BtnHighMag_Click(object sender, EventArgs e)
         {
-            Vision.ChangeCamera(Vision.WaferHighMag);
-            UpdateUI();
+            GoForHighModel();
         }
         private void BtnLowMag_Click(object sender, EventArgs e)
         {
-            Vision.ChangeCamera(Vision.WaferLowMag);
-            UpdateUI(); 
+            GoForLowModel();
         }
         private void BtnGoForModel_Click(object sender, EventArgs e)
         {
-            if (BtnGoForModel.Text == "Go For Low Model") Vision.ChangeCamera(Camera.WaferLowMag);
-            else Vision.ChangeCamera(Camera.WaferHighMag);
+            BtnGoForModel.Enabled = false;
+            if (BtnGoForModel.Text == "Go For Low Model") GoForLowModel();
+            else GoForHighModel();
+            BtnGoForModel.Enabled = true;
+        }
+        private void GoForLowModel()
+        {
+            Vision.ChangeCamera(Vision.WaferLowMag);
+            Motion.TogglePosition(1);
+            UpdateUI();
+        }
+        private void GoForHighModel()
+        {
+            Vision.ChangeCamera(Vision.WaferHighMag);
+            Motion.TogglePosition(0);
             UpdateUI();
         }
         private void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
         {
             WaitingControl wf = new WaitingControl();
+            this.Controls.Add(wf);
             wf.Show();
 
             if (Vision.activeCamera == Camera.WaferLowMag)
             {
-                Alignment.AdjustWaferHeight(30000, 60000, Vision.WaferLowMag);
+                Alignment.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferLowMag);
             }
             else if (Vision.activeCamera == Camera.WaferHighMag)
             {
-                Alignment.AdjustWaferHeight(37000, 39000, Vision.WaferHighMag);
+                Alignment.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
             }
 
             wf.Dispose();

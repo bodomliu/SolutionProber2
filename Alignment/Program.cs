@@ -1,4 +1,4 @@
-namespace MainForm
+namespace UtityForm
 {
     internal static class Program
     {

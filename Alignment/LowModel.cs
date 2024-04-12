@@ -11,7 +11,7 @@ using VisionLibrary;
 using WaferMapLibrary;
 using CommonComponentLibrary;
 
-namespace MainForm
+namespace UtityForm
 {
     public partial class LowModel : UserControl
     {
@@ -36,7 +36,7 @@ namespace MainForm
             int L = int.Parse(txtL.Text);
             int R = int.Parse(txtR.Text);
 
-            Alignment.AlignX(Vision.WaferLowMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX, WaferMap.Entity.DieSizeX);
+            Alignment.AlignX(Vision.WaferLowMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX);
         }
 
         private void BtnTeachLowerLeftCorner_Click(object sender, EventArgs e)
@@ -75,11 +75,12 @@ namespace MainForm
             //double Y = WaferMap.WaferCenterY + WaferMap.Entity.Center2RefDieY;
             //Motion.XY_AxisMoveAbs(1, X, Y, 600, 10, 10, 20);
 
+
         }
 
         private void BtnMatch_Click(object sender, EventArgs e)
         {
-            //Alignment.Match(WaferMap.LowModelPattern1, Vision.WaferLowMag);
+            Alignment.Match(DeviceData.Entity.WaferAlignment.LowPattern, Vision.WaferLowMag,out _,out _);
         }
     }
 }

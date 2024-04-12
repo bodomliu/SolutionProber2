@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using VisionLibrary;
 using WaferMapLibrary;
 
-namespace MainForm
+namespace UtityForm
 {
     public partial class HighModel : UserControl
     {
@@ -36,7 +36,7 @@ namespace MainForm
             int L = int.Parse(txtL.Text);
             int R = int.Parse(txtR.Text);
 
-            Alignment.AlignX(Vision.WaferHighMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX, WaferMap.Entity.DieSizeX);
+            Alignment.AlignX(Vision.WaferHighMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX);
         }
 
         private void BtnMoveToRefDie_Click(object sender, EventArgs e)

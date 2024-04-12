@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace UtityForm
 {
     partial class AlignmentForm
     {
@@ -114,7 +114,7 @@
             // 
             BtnAdjustWaferHeight.Location = new Point(1189, 583);
             BtnAdjustWaferHeight.Name = "BtnAdjustWaferHeight";
-            BtnAdjustWaferHeight.Size = new Size(112, 47);
+            BtnAdjustWaferHeight.Size = new Size(112, 60);
             BtnAdjustWaferHeight.TabIndex = 21;
             BtnAdjustWaferHeight.Text = "Adjust Wafer Height";
             BtnAdjustWaferHeight.UseVisualStyleBackColor = true;
@@ -134,7 +134,7 @@
             // BtnGoForModel
             // 
             BtnGoForModel.BackColor = Color.Orange;
-            BtnGoForModel.Location = new Point(1189, 53);
+            BtnGoForModel.Location = new Point(1190, 53);
             BtnGoForModel.Name = "BtnGoForModel";
             BtnGoForModel.Size = new Size(116, 50);
             BtnGoForModel.TabIndex = 19;
@@ -156,7 +156,7 @@
             // BtnVisionPara
             // 
             BtnVisionPara.BackColor = Color.Orange;
-            BtnVisionPara.Location = new Point(1189, 3);
+            BtnVisionPara.Location = new Point(1191, 9);
             BtnVisionPara.Name = "BtnVisionPara";
             BtnVisionPara.Size = new Size(115, 44);
             BtnVisionPara.TabIndex = 24;
@@ -167,6 +167,7 @@
             // lblWaferCenterFlag
             // 
             lblWaferCenterFlag.AutoSize = true;
+            lblWaferCenterFlag.BackColor = Color.Red;
             lblWaferCenterFlag.BorderStyle = BorderStyle.FixedSingle;
             lblWaferCenterFlag.Location = new Point(1088, 9);
             lblWaferCenterFlag.Name = "lblWaferCenterFlag";
@@ -177,6 +178,7 @@
             // lblLowAlignFlag
             // 
             lblLowAlignFlag.AutoSize = true;
+            lblLowAlignFlag.BackColor = Color.Red;
             lblLowAlignFlag.BorderStyle = BorderStyle.FixedSingle;
             lblLowAlignFlag.Location = new Point(1088, 38);
             lblLowAlignFlag.Name = "lblLowAlignFlag";
@@ -187,6 +189,7 @@
             // lblHighAlignFlag
             // 
             lblHighAlignFlag.AutoSize = true;
+            lblHighAlignFlag.BackColor = Color.Red;
             lblHighAlignFlag.BorderStyle = BorderStyle.FixedSingle;
             lblHighAlignFlag.Location = new Point(1088, 67);
             lblHighAlignFlag.Name = "lblHighAlignFlag";
@@ -196,9 +199,9 @@
             // 
             // BtnWaferAlignment
             // 
-            BtnWaferAlignment.Location = new Point(1464, 518);
+            BtnWaferAlignment.Location = new Point(1307, 583);
             BtnWaferAlignment.Name = "BtnWaferAlignment";
-            BtnWaferAlignment.Size = new Size(110, 59);
+            BtnWaferAlignment.Size = new Size(110, 60);
             BtnWaferAlignment.TabIndex = 53;
             BtnWaferAlignment.Text = "Wafer Alignment";
             BtnWaferAlignment.UseVisualStyleBackColor = true;
@@ -213,7 +216,7 @@
             // 
             // BtnAutoHeight
             // 
-            BtnAutoHeight.Location = new Point(1343, 518);
+            BtnAutoHeight.Location = new Point(1464, 500);
             BtnAutoHeight.Name = "BtnAutoHeight";
             BtnAutoHeight.Size = new Size(110, 59);
             BtnAutoHeight.TabIndex = 55;
@@ -224,7 +227,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(1336, 629);
+            label9.Location = new Point(1464, 614);
             label9.Name = "label9";
             label9.Size = new Size(52, 17);
             label9.TabIndex = 60;
@@ -233,7 +236,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(1336, 598);
+            label6.Location = new Point(1464, 583);
             label6.Name = "label6";
             label6.Size = new Size(54, 17);
             label6.TabIndex = 61;
@@ -242,7 +245,7 @@
             // lblDiffZ
             // 
             lblDiffZ.AutoSize = true;
-            lblDiffZ.Location = new Point(1396, 629);
+            lblDiffZ.Location = new Point(1524, 614);
             lblDiffZ.Name = "lblDiffZ";
             lblDiffZ.Size = new Size(35, 17);
             lblDiffZ.TabIndex = 59;
@@ -251,7 +254,7 @@
             // lblAvgZ
             // 
             lblAvgZ.AutoSize = true;
-            lblAvgZ.Location = new Point(1396, 598);
+            lblAvgZ.Location = new Point(1524, 583);
             lblAvgZ.Name = "lblAvgZ";
             lblAvgZ.Size = new Size(37, 17);
             lblAvgZ.TabIndex = 58;

@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace UtityForm
 {
     partial class LowModel
     {
