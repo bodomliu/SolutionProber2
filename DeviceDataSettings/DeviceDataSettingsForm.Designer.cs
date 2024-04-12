@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace UtityForm
 {
     partial class DeviceDataSettingsForm
     {
@@ -33,7 +33,11 @@
             BtnDeviceData = new Button();
             panelForm = new Panel();
             panelFile = new Panel();
+            TxtFileName = new TextBox();
+            BtnSave = new Button();
+            BtnLoad = new Button();
             panelMenu.SuspendLayout();
+            panelFile.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenu
@@ -78,11 +82,43 @@
             // panelFile
             // 
             panelFile.BackColor = SystemColors.ActiveBorder;
+            panelFile.Controls.Add(TxtFileName);
+            panelFile.Controls.Add(BtnSave);
+            panelFile.Controls.Add(BtnLoad);
             panelFile.Dock = DockStyle.Right;
             panelFile.Location = new Point(741, 100);
             panelFile.Name = "panelFile";
             panelFile.Size = new Size(200, 350);
             panelFile.TabIndex = 0;
+            // 
+            // TxtFileName
+            // 
+            TxtFileName.Location = new Point(3, 6);
+            TxtFileName.Name = "TxtFileName";
+            TxtFileName.Size = new Size(191, 23);
+            TxtFileName.TabIndex = 1;
+            // 
+            // BtnSave
+            // 
+            BtnSave.BackColor = Color.Orange;
+            BtnSave.Location = new Point(38, 125);
+            BtnSave.Name = "BtnSave";
+            BtnSave.Size = new Size(134, 60);
+            BtnSave.TabIndex = 0;
+            BtnSave.Text = "Save";
+            BtnSave.UseVisualStyleBackColor = false;
+            BtnSave.Click += BtnSave_Click;
+            // 
+            // BtnLoad
+            // 
+            BtnLoad.BackColor = Color.Orange;
+            BtnLoad.Location = new Point(38, 59);
+            BtnLoad.Name = "BtnLoad";
+            BtnLoad.Size = new Size(134, 60);
+            BtnLoad.TabIndex = 0;
+            BtnLoad.Text = "Read File";
+            BtnLoad.UseVisualStyleBackColor = false;
+            BtnLoad.Click += BtnLoad_Click;
             // 
             // DeviceDataSettingsForm
             // 
@@ -95,6 +131,8 @@
             Name = "DeviceDataSettingsForm";
             Text = "Form1";
             panelMenu.ResumeLayout(false);
+            panelFile.ResumeLayout(false);
+            panelFile.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -105,5 +143,8 @@
         private Button BtnWaferMap;
         private Button BtnDeviceData;
         private Panel panelFile;
+        private TextBox TxtFileName;
+        private Button BtnSave;
+        private Button BtnLoad;
     }
 }

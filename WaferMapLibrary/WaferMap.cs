@@ -260,10 +260,10 @@ namespace WaferMapLibrary
             }
         }
 
-        public static double WaferCenterX;//LowMag下的值 + XWAFERLOW2HIGHT：转UserPos
-        public static double WaferCenterY;//LowMag下的值 + YWAFERLOW2HIGHT：转UserPos
-        public static double WaferOffsetX;//HighMag下的值：实际RefDie - 注册RefDie：转UserPos
-        public static double WaferOffsetY;//HighMag下的值：实际RefDie - 注册RefDie：转UserPos
+        public static double WaferCenterX;//LowMag下的Encode值 + XWAFERLOW2HIGHT
+        public static double WaferCenterY;//LowMag下的Encode值 + YWAFERLOW2HIGHT
+        public static double WaferOffsetX;//HighMag下的值：实际RefDie - 注册RefDie
+        public static double WaferOffsetY;//HighMag下的值：实际RefDie - 注册RefDie
         public static void Save(string filePath)
         {
             JsonSerializerOptions options = new()

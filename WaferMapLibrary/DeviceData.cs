@@ -12,12 +12,18 @@ namespace WaferMapLibrary
         public string DeviceName { get; set; } = "12INCH";//This is name of current device
         public int WaferSize { get; set; } = 12;//This is wafer size of current device. Value = 6/8/12
         //public double FlatAngle { get; set; } = 0;//this angle that wafer is loaded
-        public double Thickness { get; set; } = 10000;//this is wafer thickness of current device
+        public double Thickness { get; set; } = 8000;//this is wafer thickness of current device
     }
 
+    public class WaferAlignment
+    {
+        public string LowPattern { get; set; } = "VisionConfig/0411LowPattern.shm";//
+        public string HighPattern { get; set; } = "VisionConfig/0411HighPattern.shm";//
+    }
     public class DeviceDataClass
     {
-        public  PhysicalInformation PhysicalInformation = new PhysicalInformation();
+        public  PhysicalInformation PhysicalInformation { get; set; } = new PhysicalInformation();
+        public WaferAlignment WaferAlignment { get; set; } = new WaferAlignment();
     }
 
     //静态类方便操作

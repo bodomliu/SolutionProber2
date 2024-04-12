@@ -2,7 +2,7 @@ using log4net;
 using log4net.Config;
 using CommonComponentLibrary;
 
-namespace MainForm
+namespace UtityForm
 {
     public partial class LotProcessForm : Form
     {

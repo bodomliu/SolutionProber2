@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alignment", "Alignment\Alig
 		{EBDA895A-4FDF-4511-B90E-5476E3936CDE} = {EBDA895A-4FDF-4511-B90E-5476E3936CDE}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotionLibrary", "MotionLibrary\MotionLibrary.csproj", "{EBDA895A-4FDF-4511-B90E-5476E3936CDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotionLibrary", "MotionLibrary\MotionLibrary.csproj", "{EBDA895A-4FDF-4511-B90E-5476E3936CDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityForm", "UtityForm\UtilityForm.csproj", "{C72D0235-D190-4A7E-9BFA-F0E74D10C402}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,6 +112,11 @@ Global
 		{EBDA895A-4FDF-4511-B90E-5476E3936CDE}.Debug|x64.Build.0 = Debug|x64
 		{EBDA895A-4FDF-4511-B90E-5476E3936CDE}.Release|Any CPU.ActiveCfg = Release|x64
 		{EBDA895A-4FDF-4511-B90E-5476E3936CDE}.Release|x64.ActiveCfg = Release|x64
+		{C72D0235-D190-4A7E-9BFA-F0E74D10C402}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{C72D0235-D190-4A7E-9BFA-F0E74D10C402}.Debug|x64.ActiveCfg = Debug|x64
+		{C72D0235-D190-4A7E-9BFA-F0E74D10C402}.Debug|x64.Build.0 = Debug|x64
+		{C72D0235-D190-4A7E-9BFA-F0E74D10C402}.Release|Any CPU.ActiveCfg = Release|x64
+		{C72D0235-D190-4A7E-9BFA-F0E74D10C402}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

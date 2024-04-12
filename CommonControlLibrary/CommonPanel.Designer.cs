@@ -50,9 +50,9 @@
             BtnIndex = new Button();
             BtnScan = new Button();
             groupBox1 = new GroupBox();
-            RbtnAlign = new RadioButton();
-            RbtnProbing = new RadioButton();
             RbtnMotion = new RadioButton();
+            RbtnProbing = new RadioButton();
+            RbtnAlign = new RadioButton();
             canvas.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -265,17 +265,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "coordinate";
             // 
-            // RbtnAlign
+            // RbtnMotion
             // 
-            RbtnAlign.AutoSize = true;
-            RbtnAlign.Checked = true;
-            RbtnAlign.Location = new Point(6, 20);
-            RbtnAlign.Name = "RbtnAlign";
-            RbtnAlign.Size = new Size(55, 21);
-            RbtnAlign.TabIndex = 0;
-            RbtnAlign.TabStop = true;
-            RbtnAlign.Text = "Align";
-            RbtnAlign.UseVisualStyleBackColor = true;
+            RbtnMotion.AutoSize = true;
+            RbtnMotion.Location = new Point(6, 61);
+            RbtnMotion.Name = "RbtnMotion";
+            RbtnMotion.Size = new Size(68, 21);
+            RbtnMotion.TabIndex = 28;
+            RbtnMotion.Text = "Motion";
+            RbtnMotion.UseVisualStyleBackColor = true;
             // 
             // RbtnProbing
             // 
@@ -288,15 +286,17 @@
             RbtnProbing.Text = "Probing";
             RbtnProbing.UseVisualStyleBackColor = true;
             // 
-            // RbtnMotion
+            // RbtnAlign
             // 
-            RbtnMotion.AutoSize = true;
-            RbtnMotion.Location = new Point(6, 61);
-            RbtnMotion.Name = "RbtnMotion";
-            RbtnMotion.Size = new Size(68, 21);
-            RbtnMotion.TabIndex = 28;
-            RbtnMotion.Text = "Motion";
-            RbtnMotion.UseVisualStyleBackColor = true;
+            RbtnAlign.AutoSize = true;
+            RbtnAlign.Checked = true;
+            RbtnAlign.Location = new Point(6, 20);
+            RbtnAlign.Name = "RbtnAlign";
+            RbtnAlign.Size = new Size(55, 21);
+            RbtnAlign.TabIndex = 0;
+            RbtnAlign.TabStop = true;
+            RbtnAlign.Text = "Align";
+            RbtnAlign.UseVisualStyleBackColor = true;
             // 
             // CommonPanel
             // 
@@ -320,7 +320,7 @@
             Controls.Add(BtnUp);
             Controls.Add(canvas);
             Name = "CommonPanel";
-            Size = new Size(1080, 1003);
+            Size = new Size(1080, 1000);
             Load += UserControl_Load;
             canvas.ResumeLayout(false);
             canvas.PerformLayout();

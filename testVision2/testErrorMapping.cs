@@ -23,15 +23,15 @@ namespace test
         {
             InitializeComponent();
 
-            TbarX.Minimum = Motion.XLIMITN;
-            TbarX.Maximum = Motion.XLIMITP;
-            NumEncodeX.Minimum = Motion.XLIMITN;
-            NumEncodeX.Maximum = Motion.XLIMITP;
+            TbarX.Minimum = Motion.parameter.XLIMITN;
+            TbarX.Maximum = Motion.parameter.XLIMITP;
+            NumEncodeX.Minimum = Motion.parameter.XLIMITN;
+            NumEncodeX.Maximum = Motion.parameter.XLIMITP;
 
-            TbarY.Minimum = Motion.YLIMITN;
-            TbarY.Maximum = Motion.YLIMITP;
-            NumEncodeY.Minimum = Motion.YLIMITN;
-            NumEncodeY.Maximum = Motion.YLIMITP;
+            TbarY.Minimum = Motion.parameter.YLIMITN;
+            TbarY.Maximum = Motion.parameter.YLIMITP;
+            NumEncodeY.Minimum = Motion.parameter.YLIMITN;
+            NumEncodeY.Maximum = Motion.parameter.YLIMITP;
 
 
             WaferMapCanvas mapCanvas = WaferMapCanvas.Canvas;
@@ -148,7 +148,7 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new Form2().ShowDialog();
+            Motion.Save("Config/MotionParameter.json");
         }
     }
 }

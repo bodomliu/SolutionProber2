@@ -1,22 +1,11 @@
-﻿using HalconDotNet;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using VisionLibrary;
+﻿using VisionLibrary;
 using MotionLibrary;
 
 namespace CommonComponentLibrary
-
 {
     public partial class CommonPanel : UserControl
     {
-        private double OffX = 0, OffY = 0, OffZ = 0;//临时用户坐标系
+        private double ZeroX = 0, ZeroY = 0, ZeroZ = 0;//临时用户坐标系
         public CommonPanel()
         {
             InitializeComponent();
@@ -24,6 +13,7 @@ namespace CommonComponentLibrary
         private void UserControl_Load(object sender, EventArgs e)
         {
             TimMotion.Enabled = true;
+            BtnSetZeroPosition.Visible = false;
             JogSlow.BackColor = Color.Orange;
         }
 
@@ -85,27 +75,28 @@ namespace CommonComponentLibrary
 
         private void BtnTogglePosition_Click(object sender, EventArgs e)
         {
-            BtnTogglePosition.Enabled = false;
-            int pos = 0;
-            //switch (Vision.activeMag)
-            //{
-            //    case ActiveMag.WaferHighMag: pos = 0; break;
-            //    case ActiveMag.WaferLowMag: pos = 1; break;
-            //    case ActiveMag.PinHighMag: pos = 2; break;
-            //    case ActiveMag.PinLowMag: pos = 3; break;
-            //}
-
-            Motion.TogglePosition(pos);
-            //BtnTogglePosition.Text = MatchPosion ? "Toggle Position (Match)" : "Toggle Position (View)";
-
-            BtnTogglePosition.Enabled = true;
+            if (BtnSetZeroPosition.Visible)
+            {
+                //如果置零按钮可见，说明要切换到Zero = 0模式
+                BtnTogglePosition.Text =  "Toggle Position (View)";
+                ZeroX = 0; ZeroY = 0; ZeroZ = 0;
+            }
+            else 
+            {
+                //如果置零按钮不可见，说明要切换到Zero 用户配置模式
+                BtnTogglePosition.Text = "Toggle Position (Match)" ;
+            }
+            BtnSetZeroPosition.Visible = !BtnSetZeroPosition.Visible;//变更ZeroPosion可见性
         }
 
         private void BtnSetZeroPosition_Click(object sender, EventArgs e)
         {
-            OffX = double.Parse(txtEncodeX.Text);
-            OffY = double.Parse(txtEncodeY.Text);
-            OffZ = double.Parse(txtEncodeZ.Text);
+            //需要在相同坐标系来做差
+            if (RbtnAlign.Checked) Motion.GetUserPos(Compensation.Area.Align, out ZeroX, out ZeroY);
+            if (RbtnProbing.Checked) Motion.GetUserPos(Compensation.Area.Probing, out ZeroX, out ZeroY);
+            if (RbtnMotion.Checked) Motion.XY_GetEncPos(out ZeroX, out ZeroY);
+
+            ZeroZ = Motion.GetEncPos(1, 3);
         }
 
         private void TimMotion_Tick(object sender, EventArgs e)
@@ -115,11 +106,11 @@ namespace CommonComponentLibrary
             if (RbtnProbing.Checked) Motion.GetUserPos(Compensation.Area.Probing, out X, out Y);
             if (RbtnMotion.Checked) Motion.XY_GetEncPos(out X, out Y);
             
-            txtEncodeX.Text = (X - OffX).ToString("F0");
-            txtEncodeY.Text = (Y - OffY).ToString("F0");
+            txtEncodeX.Text = (X - ZeroX).ToString("F0");
+            txtEncodeY.Text = (Y - ZeroY).ToString("F0");
 
             double Z = Motion.GetEncPos(1, 3);
-            txtEncodeZ.Text = (Z - OffZ).ToString("F0");
+            txtEncodeZ.Text = (Z - ZeroZ).ToString("F0");
             double R = Motion.GetEncPos(1, 4);
             txtEncodeR.Text = R.ToString("F0");
         }

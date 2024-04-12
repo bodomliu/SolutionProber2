@@ -14,13 +14,4 @@
     <ProjectReference Include="..\WaferMapLibrary\WaferMapLibrary.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="DeviceData\0411WaferMap.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="DeviceData\0411DeviceData.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

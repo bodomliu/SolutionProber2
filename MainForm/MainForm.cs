@@ -1,10 +1,11 @@
 using CommonComponentLibrary;
 using log4net;
 using log4net.Config;
+using MainForm;
 using MotionLibrary;
 using VisionLibrary;
 
-namespace MainForm
+namespace UtityForm
 {
     public partial class MainForm : Form
     {
@@ -16,7 +17,8 @@ namespace MainForm
         ErrorCompensationForm errorCompensatioForm = new ErrorCompensationForm();
         MotionControl motionControl = new MotionControl();
         AlignmentForm alignmentForm = new AlignmentForm();
-        DeviceDataSettingsForm deviceDataSettingsForm = new ();
+        DeviceDataSettingsForm deviceDataSettingsForm = new();
+        UtilityForm utilityForm = new UtilityForm();
         public MainForm()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace MainForm
             this.WindowState = FormWindowState.Maximized;
 
             Vision.Initial();
-            Motion.OpenCard();
+            Motion.Initial();
             Motion.MultiAxisOn(1, 4);
             Compensation.Initial();
         }
@@ -64,6 +66,10 @@ namespace MainForm
             ChangeForm(deviceDataSettingsForm);
         }
 
+        private void BtnSetupUtility_Click(object sender, EventArgs e)
+        {
+            ChangeForm(utilityForm);
+        }
         private void ChangeForm(Control form)
         {
             panelForm.Controls.Clear();

@@ -3,56 +3,64 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using WaferMapLibrary;
 using static GTN.mc;
 using static GTN.mc_ringnet;
 
 namespace MotionLibrary
 {
-    static public class Motion
+    public class Parameter
     {
-        private static short Res;//返回值
-
-        private static readonly int PRESLEEP = 50;//读取信号前的sleep时间
-        private static readonly int POSTSLEEP = 50;//读取信号后的sleep时间
-
-        private static readonly double RAXISZERO = 3537091;//R轴零点位置
-        
+        public int PRESLEEP { get; set; } = 50;//读取信号前的sleep时间
+        public int POSTSLEEP { get; set; } = 50;//读取信号后的sleep时间
+        public double RAXISZERO { get; set; } = 3537091;//R轴零点位置
         //软限位
-        public static readonly int XLIMITP = 4170000;
-        public static readonly int XLIMITN = -150000;
-        public static readonly int YLIMITP = 8380000;
-        public static readonly int YLIMITN = -130000;
-        public static readonly int ZLIMITP = 150000;
-        public static readonly int ZLIMITN = -090000;
+        public int XLIMITP { get; set; } = 4170000;
+        public int XLIMITN { get; set; } = -150000;
+        public int YLIMITP { get; set; } = 8380000;
+        public int YLIMITN { get; set; } = -130000;
+        public int ZLIMITP { get; set; } = 150000;
+        public int ZLIMITN { get; set; } = -090000;
+
+        //设备参数，精定位下的原始位置坐标：X，Y为chuck到达highMag视野中心，Z为对焦完成（无晶圆）
+        public double XORIGIN { get; set; } = 2106910;
+        public double YORIGIN { get; set; } = 1701615;
+        public double ZORIGIN { get; set; } = 46000;
 
         //设备参数，粗定位晶圆相机到精定位晶圆相机
-        public static readonly double XWAFERLOW2HIGHT = -370578;
-        public static readonly double YWAFERLOW2HIGHT = -3832;
-        public static readonly double ZWAFERLOW2HIGHT = -8000;
+        public double XWAFERLOW2HIGHT { get; set; } = -370578;
+        public double YWAFERLOW2HIGHT { get; set; } = -3832;
+        public double ZWAFERLOW2HIGHT { get; set; } = -8000;
 
         //设备参数，精定位晶圆相机到Probe区域
-        public static readonly double XALIGN2PROBE = 225000;//216029//215942
-        public static readonly double YALIGN2PROBE = 4375000;//4365070//4364827
-        public static readonly double ZALIGN2PROBE = -137;
+        public double XALIGN2PROBE { get; set; } = 225000;//216029//215942
+        public double YALIGN2PROBE { get; set; } = 4375000;//4365070//4364827
+        public double ZALIGN2PROBE { get; set; } = -137;
 
         //设备参数，粗定位探针相机到精定位探针相机
-        public static readonly double XPINLOW2HIGH = 769641;
-        public static readonly double YPINLOW2HIGH = -1627;
+        public double XPINLOW2HIGH { get; set; } = 769641;
+        public double YPINLOW2HIGH { get; set; } = -1627;
 
         //设备参数，探针卡Plate的高度
-        public static readonly double ZPROBECARDUPPERPLATEBASE = 133500;
+        public double ZPROBECARDUPPERPLATEBASE { get; set; } = 133500;
 
         //LeftUp, RightUp,  RightDown, LeftDown
-        public static double[] EdgeX = new double[] { 3540000, 1410000, 1400000, 3560000 };
-        public static double[] EdgeY = new double[] { 580000, 580000, 2660000, 2660000 };
+        public double[] EdgeX { get; set; } = new double[] { 3540000, 1410000, 1400000, 3560000 };
+        public double[] EdgeY { get; set; } = new double[] { 580000, 580000, 2660000, 2660000 };
 
         //public static double ALIGNDIVIDEY = 3700000;
         //RefPin 位置(临时)
-        public static readonly double XPROBER = 2204128;
-        public static readonly double YPROBER = 4125209;
-        public static readonly double ZPROBER = 78481;
+        public  double XPROBER { get; set; } = 2204128;
+        public  double YPROBER { get; set; } = 4125209;
+        public  double ZPROBER { get; set; } = 78481;
+    }
 
+    static public class Motion
+    {
+        private static short Res;//返回值
+        public static Parameter parameter = new Parameter();//定义参数集   
         public class AxisStatus
         {
             public double PrfPos;
@@ -77,6 +85,30 @@ namespace MotionLibrary
             //插补运动 = 5,
             //PVT运动 = 6       
         }
+
+        public static void Initial()
+        {
+            Load("Config/MotionParameter.json");
+            OpenCard();
+            MultiAxisOn(1, 4);
+            MultiAxisOn(2, 6);
+        }
+        public static void Save(string filePath)
+        {
+            JsonSerializerOptions options = new()
+            {
+                WriteIndented = true,
+            };
+            string jsonString = JsonSerializer.Serialize(parameter, options);
+            File.WriteAllText(filePath, jsonString);
+        }
+        public static void Load(string filePath)
+        {
+            string jsonString = File.ReadAllText(filePath);
+            var item = JsonSerializer.Deserialize<Parameter>(jsonString);
+            if (item != null) parameter = item;
+        }
+
         /// <summary>
         /// 输出反馈
         /// </summary>
@@ -196,9 +228,9 @@ namespace MotionLibrary
             Res = GTN_SetAxisBand(1, 4, 10, 40);//设置轴的到位误差带 40 * 250us = 10ms
             Res = GTN.mc_ringnet.GTN_RN_SetEncMultiLinesEx(1, 4, 0);// 设置R轴多圈
 
-            Res = GTN_SetSoftLimit(1, 1, XLIMITP, XLIMITN);
-            Res = GTN_SetSoftLimit(1, 2, YLIMITP, YLIMITN);
-            Res = GTN_SetSoftLimit(1, 3, ZLIMITP, ZLIMITN);
+            Res = GTN_SetSoftLimit(1, 1, parameter.XLIMITP, parameter.XLIMITN);
+            Res = GTN_SetSoftLimit(1, 2, parameter.YLIMITP, parameter.YLIMITN);
+            Res = GTN_SetSoftLimit(1, 3, parameter.ZLIMITP, parameter.ZLIMITN);
 
             //0 SOFT_LIMIT_MODE_STOP //超越软限位位置后开始减速停止
             //1 SOFT_LIMIT_MODE_LIMIT //限制在软限位范围之内
@@ -391,7 +423,7 @@ namespace MotionLibrary
             CommandHandler("GTN_SetPos", Res);
             Res = GTN.mc.GTN_Update(core, 1 << (axis - 1));//更新轴运动
             CommandHandler("GTN_Update", Res);
-            Thread.Sleep(PRESLEEP);
+            Thread.Sleep(parameter.PRESLEEP);
             int pStatus;
             do
             {
@@ -399,7 +431,7 @@ namespace MotionLibrary
                 Thread.Sleep(10);
                 Application.DoEvents();//方便调用，不卡界面
             } while ((pStatus & 0x800) == 0);//等待轴到位
-            Thread.Sleep(POSTSLEEP);
+            Thread.Sleep(parameter.POSTSLEEP);
         }
 
         /// <summary>
@@ -430,7 +462,7 @@ namespace MotionLibrary
             Res = GTN.mc.GTN_SetPos(core, 2, (int)(pulseY));//设置目标位置
 
             Res = GTN.mc.GTN_Update(core, 3);//更新XYZ轴运动
-            Thread.Sleep(PRESLEEP);
+            Thread.Sleep(parameter.PRESLEEP);
             int[] pStatus = new int[2];
             do
             {
@@ -438,7 +470,7 @@ namespace MotionLibrary
                 Thread.Sleep(10);
                 Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0));//等待轴到位
-            Thread.Sleep(POSTSLEEP);
+            Thread.Sleep(parameter.POSTSLEEP);
         }
 
         /// <summary>
@@ -473,7 +505,7 @@ namespace MotionLibrary
             Res = GTN.mc.GTN_SetPos(core, 3, (int)(pulseZ));//设置目标位置
 
             Res = GTN.mc.GTN_Update(core, 7);//更新XYZ轴运动
-            Thread.Sleep(PRESLEEP);
+            Thread.Sleep(parameter.PRESLEEP);
             int[] pStatus = new int[3];
             do
             {
@@ -482,7 +514,7 @@ namespace MotionLibrary
                 Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0) || ((pStatus[2] & 0x800) == 0));//等待轴到位
 
-            Thread.Sleep(POSTSLEEP);
+            Thread.Sleep(parameter.POSTSLEEP);
         }
 
         /// <summary>
@@ -513,7 +545,7 @@ namespace MotionLibrary
             CommandHandler("GTN_SetPos", Res);
             Res = GTN.mc.GTN_Update(core, 1 << (axis - 1));//更新轴运动
             CommandHandler("GTN_Update", Res);
-            Thread.Sleep(PRESLEEP);
+            Thread.Sleep(parameter.PRESLEEP);
             int pStatus;
             do
             {
@@ -522,7 +554,7 @@ namespace MotionLibrary
                 Application.DoEvents();//方便调用，不卡界面
             } while ((pStatus & 0x800) == 0);//等待轴到位
 
-            Thread.Sleep(POSTSLEEP);
+            Thread.Sleep(parameter.POSTSLEEP);
         }
 
         /// <summary>
@@ -556,7 +588,7 @@ namespace MotionLibrary
 
             Res = GTN.mc.GTN_Update(core, 3);//更新XY轴运动
 
-            Thread.Sleep(PRESLEEP);
+            Thread.Sleep(parameter.PRESLEEP);
             int[] pStatus = new int[2];
             do
             {
@@ -565,7 +597,7 @@ namespace MotionLibrary
                 Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0));//等待轴到位
 
-            Thread.Sleep(POSTSLEEP);
+            Thread.Sleep(parameter.POSTSLEEP);
         }
 
         /// <summary>
@@ -604,7 +636,7 @@ namespace MotionLibrary
 
             Res = GTN.mc.GTN_Update(core, 7);//更新XYZ轴运动
 
-            Thread.Sleep(PRESLEEP);
+            Thread.Sleep(parameter.PRESLEEP);
             int[] pStatus = new int[3];
             do
             {
@@ -613,7 +645,7 @@ namespace MotionLibrary
                 Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0) || ((pStatus[2] & 0x800) == 0));//等待轴到位
 
-            Thread.Sleep(POSTSLEEP);
+            Thread.Sleep(parameter.POSTSLEEP);
         }
 
         //Thread threadHome;//回零线程
@@ -733,7 +765,7 @@ namespace MotionLibrary
 
             //24048为R轴的绝对编码器零点
             GTN.mc_ringnet.GTN_RN_GetAbsEncPosEx(1, 4, out long absEncPosEx);
-            double temp = RAXISZERO - absEncPosEx;
+            double temp = parameter.RAXISZERO - absEncPosEx;
             if (Math.Abs(temp) > 100000)
             {
                 Console.WriteLine("R : " + temp.ToString());
@@ -904,6 +936,84 @@ namespace MotionLibrary
             taskHomeR.Start();
         }
 
+        public static void LoaderAxisHome()
+        {
+            Task taskHomeAxisA = new Task(() =>
+            {
+                EcatGoHome(1, 100000, 10000, 100000);
+                try
+                {
+                    homeToken.Token.ThrowIfCancellationRequested();
+                    Console.WriteLine("A home executed");
+                }
+                catch
+                {
+                    Console.WriteLine("A home cancelled");
+                }
+            }, homeToken.Token);
+            taskHomeAxisA.Start();
+
+            Task taskHomeAxisV = new Task(() =>
+            {
+                EcatGoHome(2, 100000, 10000, 100000);
+                try
+                {
+                    homeToken.Token.ThrowIfCancellationRequested();
+                    Console.WriteLine("V home executed");
+                }
+                catch
+                {
+                    Console.WriteLine("V home cancelled");
+                }
+            }, homeToken.Token);
+            taskHomeAxisV.Start();
+
+            Task taskHomeAxisW = new Task(() =>
+            {
+                EcatGoHome(3, 100000, 10000, 100000);
+                try
+                {
+                    homeToken.Token.ThrowIfCancellationRequested();
+                    Console.WriteLine("W home executed");
+                }
+                catch
+                {
+                    Console.WriteLine("W home cancelled");
+                }
+            }, homeToken.Token);
+            taskHomeAxisW.Start();
+
+            Task taskHomeAxisU1 = new Task(() =>
+            {
+                EcatGoHome(4, 100000, 10000, 100000);
+                try
+                {
+                    homeToken.Token.ThrowIfCancellationRequested();
+                    Console.WriteLine("U1 home executed");
+                }
+                catch
+                {
+                    Console.WriteLine("U1 home cancelled");
+                }
+            }, homeToken.Token);
+            taskHomeAxisU1.Start();
+
+            Task taskHomeAxisU2 = new Task(() =>
+            {
+                EcatGoHome(5, 100000, 10000, 100000);
+                try
+                {
+                    homeToken.Token.ThrowIfCancellationRequested();
+                    Console.WriteLine("U2 home executed");
+                }
+                catch
+                {
+                    Console.WriteLine("U2 home cancelled");
+                }
+            }, homeToken.Token);
+            taskHomeAxisU2.Start();
+        }
+
         /// <summary>
         /// 获取轴状态
         /// </summary>
@@ -948,23 +1058,23 @@ namespace MotionLibrary
         /// <summary>
         /// 运动固定点的函数
         /// </summary>
-        /// <param name="position">0 = View to Match；1 = Match to View;2 = Pin Low to High；3 = Pin High to Low</param>
+        /// <param name="position">0 = Wafer Low to High；1 = Wafer High to Low;2 = Pin Low to High；3 = Pin High to Low</param>
         public static void TogglePosition(int position)
         {
             switch (position)
             {
                 case 0:
-                    XYZ_AxisMoveRel(1, XWAFERLOW2HIGHT, YWAFERLOW2HIGHT, ZWAFERLOW2HIGHT, 600, 10, 10, 20);
+                    XYZ_AxisMoveRel(1, parameter.XWAFERLOW2HIGHT, parameter.YWAFERLOW2HIGHT, parameter.ZWAFERLOW2HIGHT, 600, 10, 10, 20);
                     break;
                 case 1:
-                    XYZ_AxisMoveRel(1, -XWAFERLOW2HIGHT, -YWAFERLOW2HIGHT, -ZWAFERLOW2HIGHT, 600, 10, 10, 20);
+                    XYZ_AxisMoveRel(1, -parameter.XWAFERLOW2HIGHT, -parameter.YWAFERLOW2HIGHT, -parameter.ZWAFERLOW2HIGHT, 600, 10, 10, 20);
                     break;
                 case 2:
-                    XYZ_AxisMoveRel(1, XPINLOW2HIGH, YPINLOW2HIGH, 0, 600, 10, 10, 20);
+                    XYZ_AxisMoveRel(1, parameter.XPINLOW2HIGH, parameter.YPINLOW2HIGH, 0, 600, 10, 10, 20);
                     break;
                 case 3:
-                    XYZ_AxisMoveRel(1, -XPINLOW2HIGH, -YPINLOW2HIGH, 0, 600, 10, 10, 20);
-                    AxisMoveAbs(1, 3, Motion.ZPROBER, 600, 10, 10, 20);
+                    XYZ_AxisMoveRel(1, -parameter.XPINLOW2HIGH, -parameter.YPINLOW2HIGH, 0, 600, 10, 10, 20);
+                    AxisMoveAbs(1, 3, Motion.parameter.ZPROBER, 600, 10, 10, 20);
                     break;
                 default:
                     break;

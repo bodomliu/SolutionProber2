@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using MotionLibrary;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using MotionLibrary;
 
 namespace MainForm
 {
@@ -23,18 +13,7 @@ namespace MainForm
             Stopwatch sw = Stopwatch.StartNew();
             InitializeComponent();
             //开卡
-            //Motion.OpenCard();
-            //Motion.AxisOn(1, 1);
-            //Motion.AxisOn(1, 2);
-            //Motion.AxisOn(1, 3);
-            //Motion.AxisOn(1, 4);
-            ////新增
-            //Motion.AxisOn(2, 1);
-            //Motion.AxisOn(2, 2);
-            //Motion.AxisOn(2, 3);
-            //Motion.AxisOn(2, 4);
-            //Motion.AxisOn(2, 5);
-            //Motion.AxisOn(2, 6);
+            //Motion.Initial();
             timer1.Enabled = true;
             sw.Stop();
             Console.WriteLine("Motion Control " + sw.ElapsedMilliseconds + " ms");
@@ -389,23 +368,30 @@ namespace MainForm
         private void Ahome_Click(object sender, EventArgs e)
         {
             Motion.EcatGoHome(1, 100000, 10000, 100000);
-        }
 
+        }
         private void U1Home_Click(object sender, EventArgs e)
         {
-            Motion.AxisHome(1, 2, -1, 1, 1, 100, 10, 0);
+            Motion.EcatGoHome(4, 100000, 10000, 100000);
         }
 
         private void U2Home_Click(object sender, EventArgs e)
         {
-            Motion.AxisHome(1, 3, -1, 1, 1, 100, 10, 0);
+            Motion.EcatGoHome(5, 100000, 10000, 100000);
         }
-
+        private void VHome_Click(object sender, EventArgs e)
+        {
+            Motion.EcatGoHome(2, 100000, 10000, 100000);
+        }
         private void Whome_Click(object sender, EventArgs e)
         {
-
+            Motion.EcatGoHome(3, 100000, 10000, 100000);
         }
 
+        private void HomeII_Click(object sender, EventArgs e)
+        {
+            Motion.LoaderAxisHome();
+        }
         private void btnAxisOn_Click(object sender, EventArgs e)
         {
             Motion.AxisOn(1, 1);
@@ -566,8 +552,6 @@ namespace MainForm
             Motion.AxisStop(2, 3, 0);
         }
 
-
-
         private void btnAxis4Forward_MouseDown(object sender, MouseEventArgs e)
         {
             double velJ = 100;//Jog正向运动的速度
@@ -608,7 +592,6 @@ namespace MainForm
         {
             Motion.AxisStop(2, 5, 0);
         }
-
         private void btnAxis5Backward_MouseDown(object sender, MouseEventArgs e)
         {
 
@@ -623,5 +606,7 @@ namespace MainForm
         {
             Motion.AxisStop(2, 5, 0);
         }
+
+
     }
 }

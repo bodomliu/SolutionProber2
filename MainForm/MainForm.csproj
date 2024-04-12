@@ -17,6 +17,7 @@
     <ProjectReference Include="..\Alignment\Alignment.csproj" />
     <ProjectReference Include="..\ErrorCompensation\ErrorCompensation.csproj" />
     <ProjectReference Include="..\LotProcess\LotProcess.csproj" />
+    <ProjectReference Include="..\UtityForm\UtilityForm.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace UtityForm
 {
     partial class MainForm
     {
@@ -36,6 +36,7 @@
             BtnLotProcess = new Button();
             panelForm = new Panel();
             panelStatus = new Panel();
+            BtnSetupUtility = new Button();
             panelMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,6 +46,7 @@
             panelMenu.Controls.Add(BtnDeviceSettings);
             panelMenu.Controls.Add(BtnAlignment);
             panelMenu.Controls.Add(BtnMotionControl);
+            panelMenu.Controls.Add(BtnSetupUtility);
             panelMenu.Controls.Add(BtnErrorCompensation);
             panelMenu.Controls.Add(BtnLotProcess);
             panelMenu.Dock = DockStyle.Right;
@@ -128,6 +130,17 @@
             panelStatus.Size = new Size(1904, 100);
             panelStatus.TabIndex = 0;
             // 
+            // BtnSetupUtility
+            // 
+            BtnSetupUtility.BackColor = Color.Orange;
+            BtnSetupUtility.Location = new Point(127, 81);
+            BtnSetupUtility.Name = "BtnSetupUtility";
+            BtnSetupUtility.Size = new Size(100, 60);
+            BtnSetupUtility.TabIndex = 1;
+            BtnSetupUtility.Text = "Setup Utility";
+            BtnSetupUtility.UseVisualStyleBackColor = false;
+            BtnSetupUtility.Click += BtnSetupUtility_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -153,5 +166,6 @@
         private Button BtnMotionControl;
         private Button BtnAlignment;
         private Button BtnDeviceSettings;
+        private Button BtnSetupUtility;
     }
 }

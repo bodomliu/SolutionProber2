@@ -20,6 +20,9 @@ namespace CommonComponentLibrary
         private void WaitingControl_Load(object sender, EventArgs e)
         {
             this.Location = new Point(1000, 500);
+            this.BringToFront();
+            
         }
+
     }
 }

@@ -8,10 +8,10 @@
   "OriginDieY": 8,
   "DirectionX": "RIGHT",
   "DirectionY": "DOWN",
-  "Center2RefDieX": -3460,
-  "Center2RefDieY": 83430,
-  "Pattern2CornerX": 0,
-  "Pattern2CornerY": 0,
+  "Center2OriginDieCornerX": -1314,
+  "Center2OriginDieCornerY": 80397,
+  "Corner2PatternX": 0,
+  "Corner2PatternY": 0,
   "MappingPoints": [
     {
       "UserPosX": -1522272.4,

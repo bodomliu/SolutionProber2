@@ -262,13 +262,13 @@ namespace MotionLibrary
             //如果当前不在probe区，则去往probe；如果当前在Probe区，则回来Align
             if (!IsProbeArea)
             {
-                Motion.XYZ_AxisMoveRel(1, Motion.XALIGN2PROBE, Motion.YALIGN2PROBE, Motion.ZALIGN2PROBE, 600, 10, 10, 20);
+                Motion.XYZ_AxisMoveRel(1, Motion.parameter.XALIGN2PROBE, Motion.parameter.YALIGN2PROBE, Motion.parameter.ZALIGN2PROBE, 600, 10, 10, 20);
                 BtnZ.Text = "Z down";
                 BtnZ.BackColor = Color.Green;
             }
             else if (IsProbeArea)
             {
-                Motion.XYZ_AxisMoveRel(1, -Motion.XALIGN2PROBE, -Motion.YALIGN2PROBE, -Motion.ZALIGN2PROBE, 600, 10, 10, 20);
+                Motion.XYZ_AxisMoveRel(1, -Motion.parameter.XALIGN2PROBE, -Motion.parameter.YALIGN2PROBE, -Motion.parameter.ZALIGN2PROBE, 600, 10, 10, 20);
                 BtnZ.Text = "Z up";
                 BtnZ.BackColor = Color.Red;
             }

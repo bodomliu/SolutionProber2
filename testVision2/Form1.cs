@@ -26,7 +26,7 @@ namespace test
             //Vision.Save("VisionConfig.json");
             Vision.Initial();
             Compensation.Initial();
-            Motion.OpenCard();
+            Motion.Initial();
             Motion.MultiAxisOn(1, 4);
         }
 
