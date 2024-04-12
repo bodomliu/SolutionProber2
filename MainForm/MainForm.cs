@@ -1,11 +1,10 @@
 using CommonComponentLibrary;
 using log4net;
 using log4net.Config;
-using MainForm;
 using MotionLibrary;
 using VisionLibrary;
 
-namespace UtityForm
+namespace MainForm
 {
     public partial class MainForm : Form
     {
@@ -84,7 +83,5 @@ namespace UtityForm
             Vision.CloseAllCamera();
             Motion.CloseCard();
         }
-
-
     }
 }

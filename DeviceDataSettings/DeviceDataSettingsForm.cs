@@ -1,6 +1,6 @@
 using WaferMapLibrary;
 
-namespace UtityForm
+namespace MainForm
 {
     public partial class DeviceDataSettingsForm : Form
     {

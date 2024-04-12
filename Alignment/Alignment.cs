@@ -2,7 +2,7 @@
 using VisionLibrary;
 using WaferMapLibrary;
 
-namespace UtityForm
+namespace MainForm
 {
     static internal class Alignment
     {

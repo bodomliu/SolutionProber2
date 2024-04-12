@@ -1,4 +1,4 @@
-﻿namespace UtityForm
+﻿namespace MainForm
 {
     partial class EdgeDetectionControl
     {
