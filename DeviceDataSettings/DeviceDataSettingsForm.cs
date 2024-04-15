@@ -27,12 +27,14 @@ namespace MainForm
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            DeviceData.Save(TxtFileName.Text);
+            WaferMap.Save("DeviceData/0411WaferMap.json");
+            DeviceData.Save("DeviceData/0411DeviceData.json");
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            DeviceData.Load(TxtFileName.Text);
+            WaferMap.Load("DeviceData/0411WaferMap.json");
+            DeviceData.Load("DeviceData/0411DeviceData.json");
         }
     }
 }
