@@ -16,6 +16,13 @@ namespace CommonComponentLibrary
         protected override void Dispose(bool disposing)
         {
             WaferMap.OnIndexChange -= test;
+            this._backgroundBitmap?.Dispose();
+            this._backgroundBitmap = null;
+            this._simplifiedBitmap?.Dispose();
+            this._simplifiedBitmap = null;
+            this.canvas.Image?.Dispose();
+            this.canvas.Image = null;
+            base.Dispose(disposing);
             if (disposing && (components != null))
             {
                 components.Dispose();

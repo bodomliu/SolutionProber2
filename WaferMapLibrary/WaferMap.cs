@@ -97,7 +97,7 @@ namespace WaferMapLibrary
             {
                 this.dieSizeX = value;
                 // 向上取整
-                this.DieNumX = (int)Math.Ceiling((double)this.WaferDiameter / this.DieSizeX);
+                //this.DieNumX = (int)Math.Ceiling((double)this.WaferDiameter / this.DieSizeX);
             }
         }
         private double dieSizeY = 102400;
@@ -114,32 +114,32 @@ namespace WaferMapLibrary
             {
                 this.dieSizeY = value;
                 // 向上取整
-                this.DieNumY = (int)Math.Ceiling((double)this.WaferDiameter / this.DieSizeY);
+                //this.DieNumY = (int)Math.Ceiling((double)this.WaferDiameter / this.DieSizeY);
             }
         }
 
         private int dieNumX = 0;
-        [JsonIgnore]
+        //[JsonIgnore]
         public int DieNumX
         {
             get { return this.dieNumX; }
             private set
             {
                 this.dieNumX = value;
-                this.OriginDieX = value / 2;
+                //this.OriginDieX = value / 2;
             }
         }
 
         private int dieNumY = 0;
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public int DieNumY
         {
             get { return this.dieNumY; }
             private set
             {
                 this.dieNumY = value;
-                this.OriginDieY = value / 2;
+                //this.OriginDieY = value / 2;
             }
         }
         [JsonPropertyOrder(3)]
