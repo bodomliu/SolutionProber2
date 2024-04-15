@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MathNet.Numerics;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +17,7 @@ namespace CommonComponentLibrary
     public partial class WaferMapCanvas : UserControl
     {
         public static WaferMapCanvas Canvas => new();
-        private PictureBox canvas = new();
+        private readonly PictureBox canvas = new();
         private WaferMapCanvas()
         {
             InitializeComponent();
@@ -31,8 +33,10 @@ namespace CommonComponentLibrary
         /// </summary>
         public void LoadCanvas()
         {
-            //RatioX = 1;
-            //RatioY = 1;
+            RatioX = 1;
+            RatioY = 1;
+            _offsetX = 0;
+            _offsetY = 0;
             RefreshCanvas();
         }
 
@@ -40,18 +44,21 @@ namespace CommonComponentLibrary
         {
             Dock = DockStyle.Fill;
             BackColor = Color.LightGray;
-
+            ParentForm.FormClosed += (sender, e) =>
+            {
+                Dispose(true);
+            };
             WaferMap.OnIndexChange += test;//注册回调事件
         }
 
         /// <summary>
         /// map 图层
         /// </summary>
-        private Bitmap _backgroundBitmap;
+        private Bitmap? _backgroundBitmap;
         /// <summary>
         /// 放大后的简略图
         /// </summary>
-        private Bitmap _simplifiedBitmap;
+        private Bitmap? _simplifiedBitmap;
         /// <summary>
         /// X 轴缩放比例
         /// </summary>
@@ -74,6 +81,11 @@ namespace CommonComponentLibrary
 
         public void SetRatio(double ratioX, double ratioY)
         {
+            // 保持中心位置不变
+            // 计算中心点在缩放前的位置
+            _offsetX = (int)((-canvas.Width / 2 + _offsetX) / RatioX * ratioX + canvas.Width / 2);
+            _offsetY = (int)((-canvas.Height / 2 + _offsetY) / RatioY * ratioY + canvas.Height / 2);
+
             RatioX = ratioX;
             RatioY = ratioY;
             RefreshCanvas();
@@ -88,11 +100,11 @@ namespace CommonComponentLibrary
             using Pen p = new Pen(Color.Black);
             float ux = UnitPerPixelX;
             float uy = UnitPerPixelY;
-            for (int i = 0; i < WaferMap.Entity.DieNumX; i++)
+            for (int i = 0; i < WaferMap.Entity.DieNumX + 1; i++)
             {
                 e.DrawLine(p, i * (float)WaferMap.Entity.DieSizeX / ux, 0, i * (float)WaferMap.Entity.DieSizeX / ux, _backgroundBitmap.Height);
             }
-            for (int i = 0; i < WaferMap.Entity.DieNumY; i++)
+            for (int i = 0; i < WaferMap.Entity.DieNumY + 1; i++)
             {
                 e.DrawLine(p, 0, i * (float)WaferMap.Entity.DieSizeY / uy, _backgroundBitmap.Width, i * (float)WaferMap.Entity.DieSizeY / uy);
             }
@@ -154,7 +166,7 @@ namespace CommonComponentLibrary
             // 计算偏移后左上角在简略图上的位置
             int x = (int)(-_offsetX / RatioX / 4);
             int y = (int)(-_offsetY / RatioY / 4);
-            e.DrawRectangle(Pens.Red, x, y, _simplifiedBitmap.Width / 2, _simplifiedBitmap.Height / 2);
+            e.DrawRectangle(Pens.Red, x, y, (int)(_simplifiedBitmap.Width / RatioX), (int)(_simplifiedBitmap.Height / RatioY));
         }
 
         private void RefreshCanvas()
@@ -196,9 +208,17 @@ namespace CommonComponentLibrary
             using Graphics g = Graphics.FromImage(result);
             if (RatioX == 1.0 || RatioX == 1.0)
             {
+                _offsetX = 0;
+                _offsetY = 0;
                 g.DrawImage(_backgroundBitmap, 0, 0);
                 return result;
             }
+
+            if (_offsetX > 0) _offsetX = 0;
+            if (_offsetY > 0) _offsetY = 0;
+            if (_offsetX < canvas.Width - _backgroundBitmap.Width) _offsetX = canvas.Width - _backgroundBitmap.Width;
+            if (_offsetY < canvas.Height - _backgroundBitmap.Height) _offsetY = canvas.Height - _backgroundBitmap.Height;
+
             g.DrawImage(_backgroundBitmap, _offsetX, _offsetY);
             DrawSimplified();
             g.DrawImage(_simplifiedBitmap, 0, 0);
@@ -214,7 +234,7 @@ namespace CommonComponentLibrary
         }
 
 
-        private void WaferMapCanvas_MouseDown(object sender, MouseEventArgs e)
+        private void WaferMapCanvas_MouseDown(object? sender, MouseEventArgs e)
         {
             // 获得焦点
             Focus();
@@ -227,7 +247,7 @@ namespace CommonComponentLibrary
             }
         }
 
-        private void SimplifiedBitmap_MouseDown(object sender, MouseEventArgs e)
+        private void SimplifiedBitmap_MouseDown(object? sender, MouseEventArgs e)
         {
 
             int x = (int)(e.X * RatioX * 4);
@@ -239,10 +259,7 @@ namespace CommonComponentLibrary
 
             int offsetX = x - canvas.Width / 2;
             int offsetY = y - canvas.Height / 2;
-            if (offsetX < 0) offsetX = 0;
-            if (offsetY < 0) offsetY = 0;
-            if (offsetX > _backgroundBitmap.Width - canvas.Width) offsetX = _backgroundBitmap.Width - canvas.Width;
-            if (offsetY > _backgroundBitmap.Height - canvas.Height) offsetY = _backgroundBitmap.Height - canvas.Height;
+            
 
             _offsetX = -offsetX;
             _offsetY = -offsetY;

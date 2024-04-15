@@ -22,6 +22,10 @@ namespace CommonComponentLibrary
         {
             UpdateIndex();
             WaferMap.OnIndexChange += onIndexChange;
+            ParentForm.FormClosed += (sender, e) =>
+            {
+                Dispose(true);
+            };
         }
 
         private void onIndexChange(int x, int y)

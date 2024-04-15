@@ -1,3 +1,4 @@
+using DeviceDataSettings;
 using WaferMapLibrary;
 
 namespace MainForm
@@ -17,7 +18,7 @@ namespace MainForm
 
         private void BtnWaferMap_Click(object sender, EventArgs e)
         {
-
+            panelForm.Controls.Add(new WaferMapSettingControl());
         }
 
         private void BtnDeviceData_Click(object sender, EventArgs e)
