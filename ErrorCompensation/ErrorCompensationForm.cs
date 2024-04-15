@@ -44,7 +44,7 @@ namespace MotionLibrary
             WaferMapIndexControl indexControl = new WaferMapIndexControl();
             panelIndexControl.Controls.Add(indexControl);
 
-            WaferMapCanvas mapCanvas =  WaferMapCanvas.Canvas;
+            WaferMapCanvas mapCanvas = WaferMapCanvas.Canvas;
             panelMap.Controls.Add(mapCanvas);
             mapCanvas.LoadCanvas();
 
@@ -61,7 +61,7 @@ namespace MotionLibrary
 
             //默认
             commonPanel.Visible = false;
-
+            
             RefreshChart();
         }
 
