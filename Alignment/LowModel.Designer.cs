@@ -126,7 +126,7 @@
             BtnTeachLowerLeftCorner.BackColor = Color.Orange;
             BtnTeachLowerLeftCorner.Location = new Point(173, 15);
             BtnTeachLowerLeftCorner.Name = "BtnTeachLowerLeftCorner";
-            BtnTeachLowerLeftCorner.Size = new Size(192, 48);
+            BtnTeachLowerLeftCorner.Size = new Size(208, 48);
             BtnTeachLowerLeftCorner.TabIndex = 45;
             BtnTeachLowerLeftCorner.Text = "Teach Lower Left Corner";
             BtnTeachLowerLeftCorner.UseVisualStyleBackColor = false;
@@ -137,7 +137,7 @@
             BtnMatchIndex.BackColor = Color.Orange;
             BtnMatchIndex.Location = new Point(173, 204);
             BtnMatchIndex.Name = "BtnMatchIndex";
-            BtnMatchIndex.Size = new Size(192, 50);
+            BtnMatchIndex.Size = new Size(208, 50);
             BtnMatchIndex.TabIndex = 47;
             BtnMatchIndex.Text = "Match Index";
             BtnMatchIndex.UseVisualStyleBackColor = false;
@@ -180,7 +180,7 @@
             BtnMatch.BackColor = Color.Orange;
             BtnMatch.Location = new Point(277, 260);
             BtnMatch.Name = "BtnMatch";
-            BtnMatch.Size = new Size(88, 45);
+            BtnMatch.Size = new Size(104, 45);
             BtnMatch.TabIndex = 49;
             BtnMatch.Text = "Match";
             BtnMatch.UseVisualStyleBackColor = false;

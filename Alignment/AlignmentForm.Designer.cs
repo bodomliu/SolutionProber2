@@ -123,9 +123,9 @@
             // BtnLowMag
             // 
             BtnLowMag.BackColor = Color.Teal;
-            BtnLowMag.Location = new Point(1499, 53);
+            BtnLowMag.Location = new Point(1454, 13);
             BtnLowMag.Name = "BtnLowMag";
-            BtnLowMag.Size = new Size(75, 50);
+            BtnLowMag.Size = new Size(120, 104);
             BtnLowMag.TabIndex = 18;
             BtnLowMag.Text = "LowMag";
             BtnLowMag.UseVisualStyleBackColor = false;
@@ -134,9 +134,9 @@
             // BtnGoForModel
             // 
             BtnGoForModel.BackColor = Color.Orange;
-            BtnGoForModel.Location = new Point(1190, 53);
+            BtnGoForModel.Location = new Point(1189, 66);
             BtnGoForModel.Name = "BtnGoForModel";
-            BtnGoForModel.Size = new Size(116, 50);
+            BtnGoForModel.Size = new Size(120, 50);
             BtnGoForModel.TabIndex = 19;
             BtnGoForModel.Text = "Go For High Model";
             BtnGoForModel.UseVisualStyleBackColor = false;
@@ -145,9 +145,9 @@
             // BtnHighMag
             // 
             BtnHighMag.BackColor = Color.Teal;
-            BtnHighMag.Location = new Point(1414, 53);
+            BtnHighMag.Location = new Point(1321, 11);
             BtnHighMag.Name = "BtnHighMag";
-            BtnHighMag.Size = new Size(75, 50);
+            BtnHighMag.Size = new Size(120, 105);
             BtnHighMag.TabIndex = 20;
             BtnHighMag.Text = "HighMag";
             BtnHighMag.UseVisualStyleBackColor = false;
@@ -156,9 +156,9 @@
             // BtnVisionPara
             // 
             BtnVisionPara.BackColor = Color.Orange;
-            BtnVisionPara.Location = new Point(1191, 9);
+            BtnVisionPara.Location = new Point(1190, 9);
             BtnVisionPara.Name = "BtnVisionPara";
-            BtnVisionPara.Size = new Size(115, 44);
+            BtnVisionPara.Size = new Size(120, 52);
             BtnVisionPara.TabIndex = 24;
             BtnVisionPara.Text = "Vision Para";
             BtnVisionPara.UseVisualStyleBackColor = false;

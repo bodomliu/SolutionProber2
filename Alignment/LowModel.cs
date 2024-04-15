@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VisionLibrary;
 using WaferMapLibrary;
 using CommonComponentLibrary;
+using MotionLibrary;
 
 namespace MainForm
 {
@@ -36,17 +37,21 @@ namespace MainForm
             int L = int.Parse(txtL.Text);
             int R = int.Parse(txtR.Text);
 
-            Alignment.AlignX(Vision.WaferLowMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX);
+            int res = Alignment.AlignX(Vision.WaferLowMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX);
+            if (res != 0) MessageBox.Show(res.ToString());
         }
 
         private void BtnTeachLowerLeftCorner_Click(object sender, EventArgs e)
         {
-
+            Motion.XY_GetEncPos(out double X, out double Y);
+            WaferMap.Entity.Center2OriginDieCornerX = X + Motion.parameter.XWAFERLOW2HIGHT - WaferMap.WaferCenterX;
+            WaferMap.Entity.Center2OriginDieCornerY = Y + Motion.parameter.YWAFERLOW2HIGHT - WaferMap.WaferCenterY;
         }
 
         private void BtnMatchIndex_Click(object sender, EventArgs e)
         {
-
+            //临时测试代码
+            Alignment.Match(PattenModel1, Vision.WaferLowMag, out double X, out double Y);
         }
 
         private void BtnAlignConfirm_Click(object sender, EventArgs e)

@@ -130,6 +130,7 @@
             BtnDown.TabIndex = 21;
             BtnDown.Text = "Down";
             BtnDown.UseVisualStyleBackColor = true;
+            BtnDown.Click += BtnDown_Click;
             BtnDown.MouseDown += BtnDown_MouseDown;
             BtnDown.MouseUp += BtnDown_MouseUp;
             // 
@@ -141,6 +142,7 @@
             BtnRight.TabIndex = 19;
             BtnRight.Text = "Right";
             BtnRight.UseVisualStyleBackColor = true;
+            BtnRight.Click += BtnRight_Click;
             BtnRight.MouseDown += BtnRight_MouseDown;
             BtnRight.MouseUp += BtnRight_MouseUp;
             // 
@@ -152,6 +154,7 @@
             BtnLeft.TabIndex = 20;
             BtnLeft.Text = "Left";
             BtnLeft.UseVisualStyleBackColor = true;
+            BtnLeft.Click += BtnLeft_Click;
             BtnLeft.MouseDown += BtnLeft_MouseDown;
             BtnLeft.MouseUp += BtnLeft_MouseUp;
             // 
@@ -163,6 +166,7 @@
             BtnUp.TabIndex = 18;
             BtnUp.Text = "Up";
             BtnUp.UseVisualStyleBackColor = true;
+            BtnUp.Click += BtnUp_Click;
             BtnUp.MouseDown += BtnUp_MouseDown;
             BtnUp.MouseUp += BtnUp_MouseUp;
             // 

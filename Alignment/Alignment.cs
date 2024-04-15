@@ -19,13 +19,17 @@ namespace MainForm
         public static int AlignX(CameraClass Mag, string pattenModel, int L, int R, double dieSizeX)
         {
             int res = 0;
+            //记录初始位置
+            Motion.GetUserPos(Compensation.Area.Align, out double startX0, out double startY0);
+
             //运动到L点做精定位
-            Motion.UserPosMoveRel(Compensation.Area.Align, -L * dieSizeX, 0);
+            Motion.UserPosMoveAbs(Compensation.Area.Align, startX0 - L * dieSizeX, startY0);
             res = Match(pattenModel, Mag,out _,out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
             Motion.GetUserPos(Compensation.Area.Align, out double startX1, out double startY1);
+
             //运动到R点做精定位
-            Motion.UserPosMoveRel(Compensation.Area.Align, (L+R) * dieSizeX, 0);
+            Motion.UserPosMoveAbs(Compensation.Area.Align, startX0 + R * dieSizeX, startY0);
             res = Match(pattenModel, Mag, out _, out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
             Motion.GetUserPos(Compensation.Area.Align, out double startX2, out double startY2);
@@ -42,11 +46,11 @@ namespace MainForm
                 MessageBox.Show("Error Angle");
                 return 3;//角度错误
             }
-            int feedbackR = -(int)Math.Round(Angle * 10000, 0);
+            int feedbackR = (int)Math.Round(Angle * 10000, 0);
             Motion.AxisMoveRel(1, 4, feedbackR, 600, 10, 10, 20);
 
             //移回中点处
-            Motion.UserPosMoveRel(Compensation.Area.Align, -R * dieSizeX, 0);
+            Motion.UserPosMoveAbs(Compensation.Area.Align, startX0, startY0);
 
             return 0;
         }
@@ -68,9 +72,15 @@ namespace MainForm
             //匹配pattenModel
             int res = Mag.halconClass.FindShapeModel(pattenModel, 0, out DeltaX, out DeltaY, out double[] X, out double[] Y,
                 out double[] Angle, out double[] Score);
-            if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
+            if (res != 0)
+            {
+                Mag.ContinuesMode();//连拍模式，匹配完，切回连拍模式
+                return res;//若匹配失败，直接返回findShapeModel错误结果
+            }
             //相对运动到匹配点
             Motion.XYZ_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 0, 600, 10, 10, 20);
+            Mag.TriggerExec();//触发一帧
+            Thread.Sleep(500);//显示补偿效果
             Mag.ContinuesMode();//连拍模式，匹配完，切回连拍模式
             return 0;
         }
