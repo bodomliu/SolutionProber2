@@ -1,5 +1,6 @@
 {
   "WaferSize": 12,
+  "WaferDiameter": 3000000,
   "DieSizeX": 126567.7,
   "DieSizeY": 162124,
   "DieNumX": 24,
@@ -8,10 +9,10 @@
   "OriginDieY": 8,
   "DirectionX": "RIGHT",
   "DirectionY": "DOWN",
-  "Center2OriginDieCornerX": -1314,
-  "Center2OriginDieCornerY": 80397,
-  "Corner2PatternX": 0,
-  "Corner2PatternY": 0,
+  "Center2OriginDieCornerX": -49.975763243448455,
+  "Center2OriginDieCornerY": 81171.70891035405,
+  "Corner2PatternX": 3542.302220044716,
+  "Corner2PatternY": -159695.0246673963,
   "MappingPoints": [
     {
       "UserPosX": -1522272.4,

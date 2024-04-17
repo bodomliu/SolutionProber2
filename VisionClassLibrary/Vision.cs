@@ -38,17 +38,16 @@ namespace VisionLibrary
     public class CameraInfo
     {
         public string DeviceID { get; set; } = "";
-
     }
+
 
     public class VisionSettings
     {
-        
+
     }
 
     public class CameraSettings
     {
-        //public List<CameraInfo> CameraInfos { get; set; }
         public CameraInfo WaferLowMag { get; set; } = new();
         public CameraInfo WaferHighMag { get; set; } = new();
         public CameraInfo PinLowMag { get; set; } = new();
@@ -57,7 +56,7 @@ namespace VisionLibrary
         public CameraInfo PreAlignCamera6 { get; set; } = new();
         public CameraInfo PreAlignCamera12 { get; set; } = new();
         public CameraInfo OCRCamera { get; set; } = new();
-        public CameraInfo? JigCamera { get; set; }
+        public CameraInfo JigCamera { get; set; } = new();
 
     }
 
@@ -132,7 +131,7 @@ namespace VisionLibrary
             CameraList.Add(PreAlignCamera6);
             CameraList.Add(PreAlignCamera12);
             CameraList.Add(OCRCamera);
-            //CameraList.Add(JigCamera);
+            CameraList.Add(JigCamera);
 
             //对所有相机DeviceID赋值
             WaferLowMag.DeviceID = config.cameraSettings.WaferLowMag.DeviceID;
@@ -144,7 +143,7 @@ namespace VisionLibrary
             PreAlignCamera6.DeviceID = config.cameraSettings.PreAlignCamera6.DeviceID;
             PreAlignCamera12.DeviceID = config.cameraSettings.PreAlignCamera12.DeviceID;
             OCRCamera.DeviceID = config.cameraSettings.OCRCamera.DeviceID;
-            //JigCamera.DeviceID = config.cameraSettings.JigCamera.DeviceID;
+            JigCamera.DeviceID = config.cameraSettings.JigCamera.DeviceID;
 
             //载入标定文件
             WaferLowMag.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/WaferLowMag.bin");            

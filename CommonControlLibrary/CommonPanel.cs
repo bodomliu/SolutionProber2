@@ -16,8 +16,8 @@ namespace CommonComponentLibrary
             TimMotion.Enabled = true;
             BtnSetZeroPosition.Visible = false;
 
-            JogSlow_Click(JogSlow,e);
-            BtnStep_Click(BtnStep,e);
+            JogSlow_Click(JogSlow,e);//初始slow速度
+            BtnStep_Click(BtnStep,e);//初始Step模式
         }
         private double JogSpeed = 1, Acc = 1, Dec = 1;
         private void JogSlow_Click(object sender, EventArgs e)
@@ -103,6 +103,8 @@ namespace CommonComponentLibrary
             txtEncodeZ.Text = (Z - ZeroZ).ToString("F0");
             double R = Motion.GetEncPos(1, 4);
             txtEncodeR.Text = R.ToString("F0");
+
+            TxtIndex.Text = "X: " + WaferMap.CurrentIndexX.ToString() + "  Y: " + WaferMap.CurrentIndexY.ToString();
         }
         private void BtnUp_MouseDown(object? sender, MouseEventArgs e)
         {
@@ -209,15 +211,15 @@ namespace CommonComponentLibrary
         }
         private void BtnRight_Click(object? sender, EventArgs e)
         {
-            IndexMoveRel(1, 0);//向左
+            IndexMoveRel(1, 0);//向右
         }
         private void BtnUp_Click(object? sender, EventArgs e)
         {
-            IndexMoveRel(0, -1);//向左
+            IndexMoveRel(0, -1);//向上
         }
         private void BtnDown_Click(object? sender, EventArgs e)
         {
-            IndexMoveRel(0, 1);//向左
+            IndexMoveRel(0, 1);//向下
         }
         private void IndexMoveRel(int X, int Y)
         {
@@ -233,6 +235,8 @@ namespace CommonComponentLibrary
             {
                 Motion.XY_AxisMoveRel(1,-X * WaferMap.Entity.DieSizeX, -Y * WaferMap.Entity.DieSizeY,600,20,20,10);
             }
+            WaferMap.CurrentIndexX += X;
+            WaferMap.CurrentIndexY += Y;
         }
     }
 }

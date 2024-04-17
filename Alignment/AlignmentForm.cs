@@ -24,6 +24,7 @@ namespace MainForm
             //Map
             WaferMapCanvas waferMapCanvas = WaferMapCanvas.Canvas;
             panelMap.Controls.Add(waferMapCanvas);
+            waferMapCanvas.SetRatio(1, 1);
             waferMapCanvas.LoadCanvas();
 
             //CommonPanel

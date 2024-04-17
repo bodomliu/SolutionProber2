@@ -852,7 +852,7 @@ namespace VisionLibrary
         /// <param name="Row"></param>
         /// <param name="Column"></param>
         /// <returns>0: 计算成功 1：Object数量不唯一</returns>
-        private int Blob(int tresholdMin, int tresholdMax, double areaMin, double areaMax,
+        public int Blob(int tresholdMin, int tresholdMax, double areaMin, double areaMax,
             out double DeltaX, out double DeltaY, out double Row, out double Column)
         {
             DeltaX = 0;

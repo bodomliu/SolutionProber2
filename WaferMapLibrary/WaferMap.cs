@@ -77,10 +77,10 @@ namespace WaferMapLibrary
         public int OriginDieY { get; set; } = 9;
         public string DirectionX { get; set; } = "RIGHT";
         public string DirectionY { get; set; } = "DOWN";
-        public double Center2OriginDieCornerX { get; set; } = 0;//OriginDie的Left Lower Crorner X - CenterX
-        public double Center2OriginDieCornerY { get; set; } = 0;//OriginDie的Left Lower Crorner Y - CenterY
-        public double Corner2PatternX { get; set; } = 0;//DiePattern - Lower Left Corner
-        public double Corner2PatternY { get; set; } = 0;//DiePattern - Lower Left Corner
+        public double Center2OriginDieCornerX { get; set; } = 0;//OriginDie的Left Lower Crorner X - CenterX :转换到UserPos下
+        public double Center2OriginDieCornerY { get; set; } = 0;//OriginDie的Left Lower Crorner Y - CenterY :转换到UserPos下
+        public double Corner2PatternX { get; set; } = 0;//DiePattern - Lower Left Corner: 转换到UserPos下 :转用户坐标系
+        public double Corner2PatternY { get; set; } = 0;//DiePattern - Lower Left Corner: 转换到UserPos下 :转用户坐标系
         public List<MappingPoint>? MappingPoints { get; set; }
     }
     /// <summary>
@@ -186,10 +186,10 @@ namespace WaferMapLibrary
             }
         }
 
-        public static double WaferCenterX;//LowMag下的Encode值 + XWAFERLOW2HIGHT
-        public static double WaferCenterY;//LowMag下的Encode值 + YWAFERLOW2HIGHT
-        public static double WaferOffsetX;//HighMag下的值：实际RefDie - 注册RefDie
-        public static double WaferOffsetY;//HighMag下的值：实际RefDie - 注册RefDie
+        public static double WaferCenterX;//LowMag下的Encode值
+        public static double WaferCenterY;//LowMag下的Encode值
+        public static double WaferOffsetX;//HighMag下的值：实际RefDie - 注册RefDie :转用户坐标系
+        public static double WaferOffsetY;//HighMag下的值：实际RefDie - 注册RefDie :转用户坐标系
         /// <summary>
         /// 初始化WaferMap的DieNum和OriginNum
         /// </summary>

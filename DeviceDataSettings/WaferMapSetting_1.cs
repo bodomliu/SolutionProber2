@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -64,8 +65,48 @@ namespace DeviceDataSettings
 
         private void Generation_Click(object sender, EventArgs e)
         {
+            WaferMap.Entity.MappingPoints?.Clear();
+            WaferMap.Entity.MappingPoints = new List<MappingPoint>();
 
+            WaferMapCanvas.CircleCentre(out double ccx, out double ccy);
+
+            for (int i = 0; i < WaferMap.Entity.DieNumX; i++)
+            {
+                for (int j = 0; j < WaferMap.Entity.DieNumY; j++)
+                {
+                    MappingPoint mp = new MappingPoint();
+                    mp.IndexX = i;
+                    mp.IndexY = j;
+
+                    double pointX = WaferMap.Entity.DieSizeX * i;
+                    double pointY = WaferMap.Entity.DieSizeY * j;
+                    int count = 0;
+                    if (Math.Pow(pointX - ccx, 2) + Math.Pow(pointY - ccy, 2) < Math.Pow(WaferMap.Entity.WaferDiameter / 2, 2))
+                        count++;
+                    pointX += WaferMap.Entity.DieSizeX;
+                    if (Math.Pow(pointX - ccx, 2) + Math.Pow(pointY - ccy, 2) < Math.Pow(WaferMap.Entity.WaferDiameter / 2, 2))
+                        count++;
+                    pointY += WaferMap.Entity.DieSizeY;
+                    if (Math.Pow(pointX - ccx, 2) + Math.Pow(pointY - ccy, 2) < Math.Pow(WaferMap.Entity.WaferDiameter / 2, 2))
+                        count++;
+                    pointX -= WaferMap.Entity.DieSizeX;
+                    if (Math.Pow(pointX - ccx, 2) + Math.Pow(pointY - ccy, 2) < Math.Pow(WaferMap.Entity.WaferDiameter / 2, 2))
+                        count++;
+
+                    if (count == 4)
+                        mp.BIN = 1;
+                    else if(count == 0)
+                        mp.BIN = 0;
+                    else mp.BIN = 3;
+
+                    WaferMap.Entity.MappingPoints.Add(mp);
+                }
+            }
+            _waferMap.LoadCanvas();
         }
+
+
+        // 判断 die 是否在 圆内
 
         private void label4_Click(object sender, EventArgs e)
         {

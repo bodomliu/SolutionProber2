@@ -39,7 +39,7 @@
             lblWaferCenterFlag = new Label();
             lblWaferCenterX = new TextBox();
             lblWaferCenterY = new TextBox();
-            Blob = new Button();
+            BtnBlob = new Button();
             Apply = new Button();
             Close = new Button();
             Filter = new TextBox();
@@ -153,12 +153,13 @@
             // 
             // Blob
             // 
-            Blob.Location = new Point(51, 184);
-            Blob.Name = "Blob";
-            Blob.Size = new Size(62, 52);
-            Blob.TabIndex = 0;
-            Blob.Text = "Blob";
-            Blob.UseVisualStyleBackColor = true;
+            BtnBlob.Location = new Point(51, 184);
+            BtnBlob.Name = "Blob";
+            BtnBlob.Size = new Size(62, 52);
+            BtnBlob.TabIndex = 0;
+            BtnBlob.Text = "Blob";
+            BtnBlob.UseVisualStyleBackColor = true;
+            BtnBlob.Click += BtnBlob_Click;
             // 
             // Apply
             // 
@@ -217,7 +218,7 @@
             Controls.Add(lblWaferCenterX);
             Controls.Add(Close);
             Controls.Add(Apply);
-            Controls.Add(Blob);
+            Controls.Add(BtnBlob);
             Controls.Add(lblWaferCenterFlag);
             Controls.Add(BtnAutoDetectWaferCenter);
             Controls.Add(BtnToCenter);
@@ -248,7 +249,7 @@
         private Label lblWaferCenterFlag;
         private TextBox lblWaferCenterX;
         private TextBox lblWaferCenterY;
-        private Button Blob;
+        private Button BtnBlob;
         private Button Apply;
         private Button Close;
         private TextBox Filter;

@@ -43,6 +43,7 @@
             BtnPat2Reg = new Button();
             BtnMatch = new Button();
             panelIndex = new Panel();
+            BtnApply = new Button();
             SuspendLayout();
             // 
             // LblModel
@@ -168,9 +169,9 @@
             // BtnPat2Reg
             // 
             BtnPat2Reg.BackColor = Color.Orange;
-            BtnPat2Reg.Location = new Point(176, 311);
+            BtnPat2Reg.Location = new Point(173, 311);
             BtnPat2Reg.Name = "BtnPat2Reg";
-            BtnPat2Reg.Size = new Size(95, 45);
+            BtnPat2Reg.Size = new Size(98, 45);
             BtnPat2Reg.TabIndex = 49;
             BtnPat2Reg.Text = "Pat 2 Reg";
             BtnPat2Reg.UseVisualStyleBackColor = false;
@@ -194,6 +195,17 @@
             panelIndex.Size = new Size(205, 132);
             panelIndex.TabIndex = 50;
             // 
+            // BtnApply
+            // 
+            BtnApply.BackColor = Color.Red;
+            BtnApply.Location = new Point(9, 308);
+            BtnApply.Name = "BtnApply";
+            BtnApply.Size = new Size(156, 48);
+            BtnApply.TabIndex = 45;
+            BtnApply.Text = "Apply to WaferMap";
+            BtnApply.UseVisualStyleBackColor = false;
+            BtnApply.Click += BtnApply_Click;
+            // 
             // LowModel
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -204,6 +216,7 @@
             Controls.Add(BtnPat1Reg);
             Controls.Add(BtnAlignConfirm);
             Controls.Add(BtnMatchIndex);
+            Controls.Add(BtnApply);
             Controls.Add(BtnTeachLowerLeftCorner);
             Controls.Add(BtnSetRefDie);
             Controls.Add(BtnMoveToRefDie);
@@ -236,5 +249,6 @@
         private Button BtnPat2Reg;
         private Button BtnMatch;
         private Panel panelIndex;
+        private Button BtnApply;
     }
 }

@@ -128,16 +128,16 @@
             LoaderJog = new GroupBox();
             btnAxis5Backward = new Button();
             textBox15 = new TextBox();
-            btnAxis5Forward = new Button();
-            btnAxis4Backward = new Button();
             textBox14 = new TextBox();
-            btnAxis4Forward = new Button();
             btnAxis3Backward = new Button();
+            btnAxis5Forward = new Button();
             textBox13 = new TextBox();
             btnAxis3Forward = new Button();
-            btnAxis2Backward = new Button();
+            btnAxis4Backward = new Button();
             textBox12 = new TextBox();
+            btnAxis2Backward = new Button();
             btnAxis2Forward = new Button();
+            btnAxis4Forward = new Button();
             btnAxis1Backward = new Button();
             textBox11 = new TextBox();
             btnAxis1Forward = new Button();
@@ -168,6 +168,8 @@
             button9 = new Button();
             button4 = new Button();
             button3 = new Button();
+            groupBox5 = new GroupBox();
+            ZHome = new Button();
             stagejog.SuspendLayout();
             Loaderhome.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -195,6 +197,7 @@
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // BtnXforward
@@ -483,23 +486,22 @@
             // 
             Loaderhome.Controls.Add(VHome);
             Loaderhome.Controls.Add(HomeII);
-            Loaderhome.Controls.Add(HomeIII);
             Loaderhome.Controls.Add(Whome);
             Loaderhome.Controls.Add(U2Home);
             Loaderhome.Controls.Add(U1Home);
             Loaderhome.Controls.Add(Ahome);
-            Loaderhome.Location = new Point(3, 465);
+            Loaderhome.Location = new Point(3, 473);
             Loaderhome.Name = "Loaderhome";
-            Loaderhome.Size = new Size(566, 90);
+            Loaderhome.Size = new Size(528, 82);
             Loaderhome.TabIndex = 2;
             Loaderhome.TabStop = false;
             Loaderhome.Text = "Loader Home";
             // 
             // VHome
             // 
-            VHome.Location = new Point(80, 22);
+            VHome.Location = new Point(93, 22);
             VHome.Name = "VHome";
-            VHome.Size = new Size(75, 46);
+            VHome.Size = new Size(80, 45);
             VHome.TabIndex = 6;
             VHome.Text = "V Home";
             VHome.UseVisualStyleBackColor = true;
@@ -507,9 +509,9 @@
             // 
             // HomeII
             // 
-            HomeII.Location = new Point(408, 22);
+            HomeII.Location = new Point(437, 23);
             HomeII.Name = "HomeII";
-            HomeII.Size = new Size(80, 46);
+            HomeII.Size = new Size(80, 45);
             HomeII.TabIndex = 5;
             HomeII.Text = "Home II";
             HomeII.UseVisualStyleBackColor = true;
@@ -517,9 +519,9 @@
             // 
             // HomeIII
             // 
-            HomeIII.Location = new Point(494, 22);
+            HomeIII.Location = new Point(92, 23);
             HomeIII.Name = "HomeIII";
-            HomeIII.Size = new Size(68, 46);
+            HomeIII.Size = new Size(80, 45);
             HomeIII.TabIndex = 4;
             HomeIII.Text = "Home III";
             HomeIII.UseVisualStyleBackColor = true;
@@ -527,9 +529,9 @@
             // 
             // Whome
             // 
-            Whome.Location = new Point(161, 22);
+            Whome.Location = new Point(179, 22);
             Whome.Name = "Whome";
-            Whome.Size = new Size(69, 46);
+            Whome.Size = new Size(80, 45);
             Whome.TabIndex = 3;
             Whome.Text = "W Home";
             Whome.UseVisualStyleBackColor = true;
@@ -537,9 +539,9 @@
             // 
             // U2Home
             // 
-            U2Home.Location = new Point(319, 22);
+            U2Home.Location = new Point(351, 22);
             U2Home.Name = "U2Home";
-            U2Home.Size = new Size(83, 46);
+            U2Home.Size = new Size(80, 45);
             U2Home.TabIndex = 2;
             U2Home.Text = "U2 Home";
             U2Home.UseVisualStyleBackColor = true;
@@ -547,9 +549,9 @@
             // 
             // U1Home
             // 
-            U1Home.Location = new Point(236, 22);
+            U1Home.Location = new Point(265, 22);
             U1Home.Name = "U1Home";
-            U1Home.Size = new Size(79, 46);
+            U1Home.Size = new Size(80, 45);
             U1Home.TabIndex = 1;
             U1Home.Text = "U1 Home";
             U1Home.UseVisualStyleBackColor = true;
@@ -559,7 +561,7 @@
             // 
             Ahome.Location = new Point(7, 22);
             Ahome.Name = "Ahome";
-            Ahome.Size = new Size(67, 46);
+            Ahome.Size = new Size(80, 45);
             Ahome.TabIndex = 0;
             Ahome.Text = "A Home";
             Ahome.UseVisualStyleBackColor = true;
@@ -1218,34 +1220,6 @@
             textBox15.TabIndex = 25;
             textBox15.Text = "100";
             // 
-            // btnAxis5Forward
-            // 
-            btnAxis5Forward.FlatAppearance.BorderColor = Color.Orange;
-            btnAxis5Forward.FlatStyle = FlatStyle.Flat;
-            btnAxis5Forward.Location = new Point(282, 29);
-            btnAxis5Forward.Name = "btnAxis5Forward";
-            btnAxis5Forward.Size = new Size(66, 52);
-            btnAxis5Forward.TabIndex = 24;
-            btnAxis5Forward.Tag = "1";
-            btnAxis5Forward.Text = "W+";
-            btnAxis5Forward.UseVisualStyleBackColor = true;
-            btnAxis5Forward.MouseDown += btnAxis3Forward_MouseDown;
-            btnAxis5Forward.MouseUp += btnAxis3Forward_MouseUp;
-            // 
-            // btnAxis4Backward
-            // 
-            btnAxis4Backward.FlatAppearance.BorderColor = Color.Orange;
-            btnAxis4Backward.FlatStyle = FlatStyle.Flat;
-            btnAxis4Backward.Location = new Point(209, 122);
-            btnAxis4Backward.Name = "btnAxis4Backward";
-            btnAxis4Backward.Size = new Size(66, 52);
-            btnAxis4Backward.TabIndex = 23;
-            btnAxis4Backward.Tag = "1";
-            btnAxis4Backward.Text = "V-";
-            btnAxis4Backward.UseVisualStyleBackColor = true;
-            btnAxis4Backward.MouseDown += btnAxis2Backward_MouseDown;
-            btnAxis4Backward.MouseUp += btnAxis2Backward_MouseUp;
-            // 
             // textBox14
             // 
             textBox14.Location = new Point(210, 91);
@@ -1253,20 +1227,6 @@
             textBox14.Size = new Size(66, 23);
             textBox14.TabIndex = 22;
             textBox14.Text = "100";
-            // 
-            // btnAxis4Forward
-            // 
-            btnAxis4Forward.FlatAppearance.BorderColor = Color.Orange;
-            btnAxis4Forward.FlatStyle = FlatStyle.Flat;
-            btnAxis4Forward.Location = new Point(209, 29);
-            btnAxis4Forward.Name = "btnAxis4Forward";
-            btnAxis4Forward.Size = new Size(66, 52);
-            btnAxis4Forward.TabIndex = 21;
-            btnAxis4Forward.Tag = "1";
-            btnAxis4Forward.Text = "V+";
-            btnAxis4Forward.UseVisualStyleBackColor = true;
-            btnAxis4Forward.MouseDown += btnAxis2Forward_MouseDown;
-            btnAxis4Forward.MouseUp += btnAxis2Forward_MouseUp;
             // 
             // btnAxis3Backward
             // 
@@ -1281,6 +1241,20 @@
             btnAxis3Backward.UseVisualStyleBackColor = true;
             btnAxis3Backward.MouseDown += btnAxis5Backward_MouseDown;
             btnAxis3Backward.MouseUp += btnAxis5Backward_MouseUp;
+            // 
+            // btnAxis5Forward
+            // 
+            btnAxis5Forward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis5Forward.FlatStyle = FlatStyle.Flat;
+            btnAxis5Forward.Location = new Point(282, 29);
+            btnAxis5Forward.Name = "btnAxis5Forward";
+            btnAxis5Forward.Size = new Size(66, 52);
+            btnAxis5Forward.TabIndex = 24;
+            btnAxis5Forward.Tag = "1";
+            btnAxis5Forward.Text = "W+";
+            btnAxis5Forward.UseVisualStyleBackColor = true;
+            btnAxis5Forward.MouseDown += btnAxis3Forward_MouseDown;
+            btnAxis5Forward.MouseUp += btnAxis3Forward_MouseUp;
             // 
             // textBox13
             // 
@@ -1304,6 +1278,28 @@
             btnAxis3Forward.MouseDown += btnAxis5Forward_MouseDown;
             btnAxis3Forward.MouseUp += btnAxis5Forward_MouseUp;
             // 
+            // btnAxis4Backward
+            // 
+            btnAxis4Backward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis4Backward.FlatStyle = FlatStyle.Flat;
+            btnAxis4Backward.Location = new Point(209, 122);
+            btnAxis4Backward.Name = "btnAxis4Backward";
+            btnAxis4Backward.Size = new Size(66, 52);
+            btnAxis4Backward.TabIndex = 23;
+            btnAxis4Backward.Tag = "1";
+            btnAxis4Backward.Text = "V-";
+            btnAxis4Backward.UseVisualStyleBackColor = true;
+            btnAxis4Backward.MouseDown += btnAxis2Backward_MouseDown;
+            btnAxis4Backward.MouseUp += btnAxis2Backward_MouseUp;
+            // 
+            // textBox12
+            // 
+            textBox12.Location = new Point(425, 95);
+            textBox12.Name = "textBox12";
+            textBox12.Size = new Size(66, 23);
+            textBox12.TabIndex = 16;
+            textBox12.Text = "20000";
+            // 
             // btnAxis2Backward
             // 
             btnAxis2Backward.FlatAppearance.BorderColor = Color.Orange;
@@ -1318,14 +1314,6 @@
             btnAxis2Backward.MouseDown += btnAxis4Backward_MouseDown;
             btnAxis2Backward.MouseUp += btnAxis4Backward_MouseUp;
             // 
-            // textBox12
-            // 
-            textBox12.Location = new Point(425, 95);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(66, 23);
-            textBox12.TabIndex = 16;
-            textBox12.Text = "20000";
-            // 
             // btnAxis2Forward
             // 
             btnAxis2Forward.FlatAppearance.BorderColor = Color.Orange;
@@ -1339,6 +1327,20 @@
             btnAxis2Forward.UseVisualStyleBackColor = true;
             btnAxis2Forward.MouseDown += btnAxis4Forward_MouseDown;
             btnAxis2Forward.MouseUp += btnAxis4Forward_MouseUp;
+            // 
+            // btnAxis4Forward
+            // 
+            btnAxis4Forward.FlatAppearance.BorderColor = Color.Orange;
+            btnAxis4Forward.FlatStyle = FlatStyle.Flat;
+            btnAxis4Forward.Location = new Point(209, 29);
+            btnAxis4Forward.Name = "btnAxis4Forward";
+            btnAxis4Forward.Size = new Size(66, 52);
+            btnAxis4Forward.TabIndex = 21;
+            btnAxis4Forward.Tag = "1";
+            btnAxis4Forward.Text = "V+";
+            btnAxis4Forward.UseVisualStyleBackColor = true;
+            btnAxis4Forward.MouseDown += btnAxis2Forward_MouseDown;
+            btnAxis4Forward.MouseUp += btnAxis2Forward_MouseUp;
             // 
             // btnAxis1Backward
             // 
@@ -1504,7 +1506,7 @@
             // ChuckCoolingAir
             // 
             ChuckCoolingAir.BackColor = Color.FromArgb(255, 128, 0);
-            ChuckCoolingAir.Location = new Point(575, 487);
+            ChuckCoolingAir.Location = new Point(978, 479);
             ChuckCoolingAir.Name = "ChuckCoolingAir";
             ChuckCoolingAir.Size = new Size(102, 62);
             ChuckCoolingAir.TabIndex = 9;
@@ -1647,10 +1649,32 @@
             button3.Text = "No Wafer on Chuck";
             button3.UseVisualStyleBackColor = false;
             // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(ZHome);
+            groupBox5.Controls.Add(HomeIII);
+            groupBox5.Location = new Point(538, 473);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(189, 85);
+            groupBox5.TabIndex = 38;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Chuck Home";
+            // 
+            // ZHome
+            // 
+            ZHome.Location = new Point(6, 22);
+            ZHome.Name = "ZHome";
+            ZHome.Size = new Size(80, 45);
+            ZHome.TabIndex = 4;
+            ZHome.Text = "Z Home";
+            ZHome.UseVisualStyleBackColor = true;
+            ZHome.Click += ZHome_Click;
+            // 
             // MotionControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(ChuckCoolingAir);
@@ -1692,6 +1716,7 @@
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -1836,5 +1861,7 @@
         private Button button11;
         private Button button1;
         private Button VHome;
+        private GroupBox groupBox5;
+        private Button ZHome;
     }
 }

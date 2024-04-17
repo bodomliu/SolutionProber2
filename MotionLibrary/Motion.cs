@@ -348,7 +348,6 @@ namespace MotionLibrary
             return UserPosMoveAbs(area, X + userPosX, Y + userPosY);//再绝对走一个坐标位置
         }
 
-
         /// <summary>
         /// 读取R轴参数
         /// </summary>

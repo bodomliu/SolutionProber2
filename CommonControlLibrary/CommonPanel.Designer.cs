@@ -53,6 +53,7 @@
             RbtnMotion = new RadioButton();
             RbtnProbing = new RadioButton();
             RbtnAlign = new RadioButton();
+            TxtIndex = new TextBox();
             canvas.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -60,6 +61,7 @@
             // canvas
             // 
             canvas.BackColor = Color.Black;
+            canvas.Controls.Add(TxtIndex);
             canvas.Controls.Add(txtEncodeR);
             canvas.Controls.Add(txtEncodeZ);
             canvas.Controls.Add(txtEncodeY);
@@ -302,6 +304,13 @@
             RbtnAlign.Text = "Align";
             RbtnAlign.UseVisualStyleBackColor = true;
             // 
+            // TxtIndex
+            // 
+            TxtIndex.Location = new Point(27, 21);
+            TxtIndex.Name = "TxtIndex";
+            TxtIndex.Size = new Size(100, 23);
+            TxtIndex.TabIndex = 1;
+            // 
             // CommonPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -359,5 +368,6 @@
         private RadioButton RbtnMotion;
         private RadioButton RbtnProbing;
         private RadioButton RbtnAlign;
+        private TextBox TxtIndex;
     }
 }

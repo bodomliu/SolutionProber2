@@ -1,5 +1,6 @@
 ﻿using MotionLibrary;
 using System.Diagnostics;
+using static GTN.mc;
 
 namespace MainForm
 {
@@ -607,6 +608,9 @@ namespace MainForm
             Motion.AxisStop(2, 5, 0);
         }
 
-
+        private void ZHome_Click(object sender, EventArgs e)
+        {
+            Motion.AxisHome(1, 3, -1, 1, 1, 100, 10, 0);
+        }
     }
 }

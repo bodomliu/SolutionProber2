@@ -33,10 +33,10 @@ namespace CommonComponentLibrary
         /// </summary>
         public void LoadCanvas()
         {
-            RatioX = 1;
-            RatioY = 1;
-            _offsetX = 0;
-            _offsetY = 0;
+            //RatioX = 1;
+            //RatioY = 1;
+            //_offsetX = 0;
+            //_offsetY = 0;
             RefreshCanvas();
         }
 
@@ -62,16 +62,16 @@ namespace CommonComponentLibrary
         /// <summary>
         /// X 轴缩放比例
         /// </summary>
-        public double RatioX { get; private set; } = 2;
+        public double RatioX { get; private set; } = 1;
         /// <summary>
         /// Y 轴缩放比例
         /// </summary>
-        public double RatioY { get; private set; } = 2;
+        public double RatioY { get; private set; } = 1;
 
         /// <summary>
         /// 缩放后 x 轴偏移
         /// </summary>
-        private int _offsetX = 100;
+        private int _offsetX = 0;
 
         /// <summary>
         /// 缩放后 Y 轴偏移
@@ -91,6 +91,12 @@ namespace CommonComponentLibrary
             RefreshCanvas();
         }
 
+        // 圆心坐标
+        public static void CircleCentre(out double x, out double y)
+        {
+            x = WaferMap.Entity.OriginDieX * WaferMap.Entity.DieSizeX + WaferMap.Entity.Center2OriginDieCornerX;
+            y = WaferMap.Entity.OriginDieY * WaferMap.Entity.DieSizeY + WaferMap.Entity.Center2OriginDieCornerY;
+        }
         private float UnitPerPixelX => (float)(WaferMap.Entity.DieSizeX * WaferMap.Entity.DieNumX) / _backgroundBitmap.Width;
 
         private float UnitPerPixelY => (float)(WaferMap.Entity.DieSizeY * WaferMap.Entity.DieNumY) / _backgroundBitmap.Height;
@@ -112,8 +118,9 @@ namespace CommonComponentLibrary
         private void DrawCircle(Graphics e, double unitPerPixelX, double unitPerPixelY, Boolean isDrawCenterOfCircle = false)
         {
             using Pen p = new Pen(Color.Black);
-            double centerX = (WaferMap.Entity.OriginDieX * WaferMap.Entity.DieSizeX + WaferMap.Entity.Center2OriginDieCornerX) / unitPerPixelX;
-            double centerY = (WaferMap.Entity.OriginDieY * WaferMap.Entity.DieSizeY + WaferMap.Entity.Center2OriginDieCornerY) / unitPerPixelY;
+            CircleCentre(out double x, out double y);
+            double centerX = x / unitPerPixelX;
+            double centerY = y / unitPerPixelY;
             double Dx = WaferMap.Entity.WaferDiameter / unitPerPixelX;
             double Dy = WaferMap.Entity.WaferDiameter / unitPerPixelY;
 
@@ -182,10 +189,8 @@ namespace CommonComponentLibrary
             {
                 foreach (MappingPoint pt in WaferMap.Entity.MappingPoints)
                 {
-                    //if (pt.Coordinates == 1) DrawRect(pt.IndexX, pt.IndexY, gp, Color.Green);
-                    //if (pt.Coordinates == 2) DrawRect(pt.IndexX, pt.IndexY, gp, Color.Yellow);
-                    if (pt.BIN == 1) DrawRect(pt.IndexX, pt.IndexY, gp, Color.Yellow);
-                    if (pt.BIN == 4) DrawRect(pt.IndexX, pt.IndexY, gp, Color.Green);
+
+                    DrawRect(pt.IndexX, pt.IndexY, gp, WaferMapColorCard.colors[pt.BIN]);
                 }
             }
 

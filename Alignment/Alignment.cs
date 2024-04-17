@@ -46,7 +46,7 @@ namespace MainForm
                 MessageBox.Show("Error Angle");
                 return 3;//角度错误
             }
-            int feedbackR = (int)Math.Round(Angle * 10000, 0);
+            int feedbackR = (int)Math.Round(Angle * 10000, 0);//TODO:如果用轴运动坐标系，符号相反，待兼容
             Motion.AxisMoveRel(1, 4, feedbackR, 600, 10, 10, 20);
 
             //移回中点处
@@ -54,8 +54,6 @@ namespace MainForm
 
             return 0;
         }
-
-
 
         /// <summary>
         /// TriggerExe 模板匹配 then 运动到位
