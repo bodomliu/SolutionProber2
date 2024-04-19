@@ -184,7 +184,6 @@
         #endregion
 
         private PictureBox Card;
-        private Label label1;
         private BorderedLabel borderedLabel2;
         private BorderedLabel borderedLabel1;
         private BorderedLabel borderedLabel3;

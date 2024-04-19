@@ -44,6 +44,17 @@ namespace DeviceDataSettings
             NumY.Text = WaferMap.Entity.DieNumY.ToString();
         }
 
+        protected override void OnBindingContextChanged(EventArgs e)
+        {
+            base.OnBindingContextChanged(e);
+            if (null == this.ParentForm)
+            {
+                this._waferMap.SetRatio(1, 1);
+                ratioX.Text = 1.ToString();
+                ratioY.Text = 1.ToString();
+            }
+        }
+
         private void Apply_Click(object sender, EventArgs e)
         {
             WaferMap.Entity.WaferSize = int.Parse(WaferSize.Text);
@@ -102,15 +113,10 @@ namespace DeviceDataSettings
                     WaferMap.Entity.MappingPoints.Add(mp);
                 }
             }
-            _waferMap.LoadCanvas();
+            _waferMap.RefreshCanvas();
         }
 
+        
 
-        // 判断 die 是否在 圆内
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
