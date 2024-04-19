@@ -1,6 +1,7 @@
 ﻿using VisionLibrary;
 using MotionLibrary;
 using WaferMapLibrary;
+using HalconDotNet;
 
 namespace CommonComponentLibrary
 {
@@ -10,6 +11,7 @@ namespace CommonComponentLibrary
         public CommonPanel()
         {
             InitializeComponent();
+            canvas.MouseWheel += M_HSmartWindowControl_HMouseWheel;
         }
         private void UserControl_Load(object sender, EventArgs e)
         {
@@ -104,7 +106,7 @@ namespace CommonComponentLibrary
             double R = Motion.GetEncPos(1, 4);
             txtEncodeR.Text = R.ToString("F0");
 
-            TxtIndex.Text = "X: " + WaferMap.CurrentIndexX.ToString() + "  Y: " + WaferMap.CurrentIndexY.ToString();
+            TxtIndex.Text = "X: " + WaferMap.CurrentIndexX.ToString() + "    Y: " + WaferMap.CurrentIndexY.ToString();
         }
         private void BtnUp_MouseDown(object? sender, MouseEventArgs e)
         {
@@ -126,6 +128,10 @@ namespace CommonComponentLibrary
         {
             canvas.Controls.Add(Vision.m_HSmartWindowControl);
             Vision.m_HSmartWindowControl.Dock = DockStyle.Fill;
+        }
+        private void M_HSmartWindowControl_HMouseWheel(object? sender, MouseEventArgs e)
+        {
+            Vision.m_HSmartWindowControl.HSmartWindowControl_MouseWheel(sender, e);
         }
         private void BtnJogZup_MouseDown(object sender, MouseEventArgs e)
         {

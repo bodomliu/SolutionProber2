@@ -41,9 +41,9 @@
             BtnAlignConfirm = new Button();
             BtnPat1Reg = new Button();
             BtnPat2Reg = new Button();
-            BtnMatch = new Button();
+            BtnMatch1 = new Button();
             panelIndex = new Panel();
-            BtnApply = new Button();
+            BtnMatch2 = new Button();
             SuspendLayout();
             // 
             // LblModel
@@ -175,17 +175,18 @@
             BtnPat2Reg.TabIndex = 49;
             BtnPat2Reg.Text = "Pat 2 Reg";
             BtnPat2Reg.UseVisualStyleBackColor = false;
+            BtnPat2Reg.Click += BtnPat2Reg_Click;
             // 
-            // BtnMatch
+            // BtnMatch1
             // 
-            BtnMatch.BackColor = Color.Orange;
-            BtnMatch.Location = new Point(277, 260);
-            BtnMatch.Name = "BtnMatch";
-            BtnMatch.Size = new Size(104, 45);
-            BtnMatch.TabIndex = 49;
-            BtnMatch.Text = "Match";
-            BtnMatch.UseVisualStyleBackColor = false;
-            BtnMatch.Click += BtnMatch_Click;
+            BtnMatch1.BackColor = Color.Orange;
+            BtnMatch1.Location = new Point(277, 260);
+            BtnMatch1.Name = "BtnMatch1";
+            BtnMatch1.Size = new Size(104, 45);
+            BtnMatch1.TabIndex = 49;
+            BtnMatch1.Text = "Match1";
+            BtnMatch1.UseVisualStyleBackColor = false;
+            BtnMatch1.Click += BtnMatch1_Click;
             // 
             // panelIndex
             // 
@@ -195,16 +196,16 @@
             panelIndex.Size = new Size(205, 132);
             panelIndex.TabIndex = 50;
             // 
-            // BtnApply
+            // BtnMatch2
             // 
-            BtnApply.BackColor = Color.Red;
-            BtnApply.Location = new Point(9, 308);
-            BtnApply.Name = "BtnApply";
-            BtnApply.Size = new Size(156, 48);
-            BtnApply.TabIndex = 45;
-            BtnApply.Text = "Apply to WaferMap";
-            BtnApply.UseVisualStyleBackColor = false;
-            BtnApply.Click += BtnApply_Click;
+            BtnMatch2.BackColor = Color.Orange;
+            BtnMatch2.Location = new Point(277, 311);
+            BtnMatch2.Name = "BtnMatch2";
+            BtnMatch2.Size = new Size(104, 45);
+            BtnMatch2.TabIndex = 49;
+            BtnMatch2.Text = "Match 2";
+            BtnMatch2.UseVisualStyleBackColor = false;
+            BtnMatch2.Click += BtnMatch2_Click;
             // 
             // LowModel
             // 
@@ -212,11 +213,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panelIndex);
             Controls.Add(BtnPat2Reg);
-            Controls.Add(BtnMatch);
+            Controls.Add(BtnMatch2);
+            Controls.Add(BtnMatch1);
             Controls.Add(BtnPat1Reg);
             Controls.Add(BtnAlignConfirm);
             Controls.Add(BtnMatchIndex);
-            Controls.Add(BtnApply);
             Controls.Add(BtnTeachLowerLeftCorner);
             Controls.Add(BtnSetRefDie);
             Controls.Add(BtnMoveToRefDie);
@@ -247,8 +248,8 @@
         private Button BtnAlignConfirm;
         private Button BtnPat1Reg;
         private Button BtnPat2Reg;
-        private Button BtnMatch;
+        private Button BtnMatch1;
         private Panel panelIndex;
-        private Button BtnApply;
+        private Button BtnMatch2;
     }
 }

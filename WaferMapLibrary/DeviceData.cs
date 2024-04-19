@@ -17,8 +17,10 @@ namespace WaferMapLibrary
 
     public class WaferAlignment
     {
-        public string LowPattern { get; set; } = "VisionConfig/0411LowPattern.shm";//
-        public string HighPattern { get; set; } = "VisionConfig/0411HighPattern.shm";//
+        public string LowPattern1 { get; set; } = "VisionConfig/0411LowPattern1.shm";//
+        public string LowPattern2 { get; set; } = "VisionConfig/0411LowPattern2.shm";//
+        public string HighPattern1 { get; set; } = "VisionConfig/0411HighPattern1.shm";//
+        public string HighPattern2 { get; set; } = "VisionConfig/0411HighPattern2.shm";//
     }
     public class DeviceDataClass
     {

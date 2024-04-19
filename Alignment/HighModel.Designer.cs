@@ -89,7 +89,7 @@
             // 
             // BtnIstantHighAlign
             // 
-            BtnIstantHighAlign.Location = new Point(16, 74);
+            BtnIstantHighAlign.Location = new Point(16, 70);
             BtnIstantHighAlign.Name = "BtnIstantHighAlign";
             BtnIstantHighAlign.Size = new Size(85, 56);
             BtnIstantHighAlign.TabIndex = 44;
@@ -100,7 +100,7 @@
             // BtnMoveToRefDie
             // 
             BtnMoveToRefDie.BackColor = Color.Green;
-            BtnMoveToRefDie.Location = new Point(25, 159);
+            BtnMoveToRefDie.Location = new Point(16, 136);
             BtnMoveToRefDie.Name = "BtnMoveToRefDie";
             BtnMoveToRefDie.Size = new Size(156, 59);
             BtnMoveToRefDie.TabIndex = 49;
@@ -111,7 +111,7 @@
             // BtnPat2Reg
             // 
             BtnPat2Reg.BackColor = Color.Orange;
-            BtnPat2Reg.Location = new Point(187, 173);
+            BtnPat2Reg.Location = new Point(178, 156);
             BtnPat2Reg.Name = "BtnPat2Reg";
             BtnPat2Reg.Size = new Size(84, 45);
             BtnPat2Reg.TabIndex = 50;
@@ -121,7 +121,7 @@
             // BtnPat1Reg
             // 
             BtnPat1Reg.BackColor = Color.Orange;
-            BtnPat1Reg.Location = new Point(187, 122);
+            BtnPat1Reg.Location = new Point(178, 105);
             BtnPat1Reg.Name = "BtnPat1Reg";
             BtnPat1Reg.Size = new Size(84, 45);
             BtnPat1Reg.TabIndex = 51;
@@ -132,7 +132,7 @@
             // BtnAlignConfirm
             // 
             BtnAlignConfirm.BackColor = Color.Orange;
-            BtnAlignConfirm.Location = new Point(25, 224);
+            BtnAlignConfirm.Location = new Point(16, 207);
             BtnAlignConfirm.Name = "BtnAlignConfirm";
             BtnAlignConfirm.Size = new Size(156, 101);
             BtnAlignConfirm.TabIndex = 52;
@@ -143,17 +143,18 @@
             // BtnLowMagAlign
             // 
             BtnLowMagAlign.BackColor = Color.Orange;
-            BtnLowMagAlign.Location = new Point(187, 37);
+            BtnLowMagAlign.Location = new Point(174, 20);
             BtnLowMagAlign.Name = "BtnLowMagAlign";
             BtnLowMagAlign.Size = new Size(160, 79);
             BtnLowMagAlign.TabIndex = 51;
             BtnLowMagAlign.Text = "Low Mag Match";
             BtnLowMagAlign.UseVisualStyleBackColor = false;
+            BtnLowMagAlign.Click += BtnLowMagAlign_Click;
             // 
             // BtnMatch
             // 
             BtnMatch.BackColor = Color.Orange;
-            BtnMatch.Location = new Point(277, 122);
+            BtnMatch.Location = new Point(264, 106);
             BtnMatch.Name = "BtnMatch";
             BtnMatch.Size = new Size(70, 45);
             BtnMatch.TabIndex = 51;
@@ -163,12 +164,11 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Gray;
-            panel1.Location = new Point(192, 231);
+            panel1.BackColor = Color.Black;
+            panel1.Location = new Point(178, 207);
             panel1.Name = "panel1";
-            panel1.Size = new Size(142, 140);
+            panel1.Size = new Size(169, 140);
             panel1.TabIndex = 53;
-            panel1.Paint += panel1_Paint;
             // 
             // HighModel
             // 

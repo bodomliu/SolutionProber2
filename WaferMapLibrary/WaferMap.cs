@@ -73,14 +73,16 @@ namespace WaferMapLibrary
         public double DieSizeY { get; set; } = 150000;      
         public int DieNumX { get; set; } = 20;
         public int DieNumY { get; set; } = 20;
-        public int OriginDieX { get; set; } = 9;
-        public int OriginDieY { get; set; } = 9;
+        public int RefDieX { get; set; } = 9;
+        public int RefDieY { get; set; } = 9;
         public string DirectionX { get; set; } = "RIGHT";
         public string DirectionY { get; set; } = "DOWN";
-        public double Center2OriginDieCornerX { get; set; } = 0;//OriginDie的Left Lower Crorner X - CenterX :转换到UserPos下
-        public double Center2OriginDieCornerY { get; set; } = 0;//OriginDie的Left Lower Crorner Y - CenterY :转换到UserPos下
-        public double Corner2PatternX { get; set; } = 0;//DiePattern - Lower Left Corner: 转换到UserPos下 :转用户坐标系
-        public double Corner2PatternY { get; set; } = 0;//DiePattern - Lower Left Corner: 转换到UserPos下 :转用户坐标系
+        public double Center2RefDieCornerX { get; set; } = 0;//RefDie的Left Lower Crorner X - CenterX :转换到UserPos下
+        public double Center2RefDieCornerY { get; set; } = 0;//RefDie的Left Lower Crorner Y - CenterY :转换到UserPos下
+        public double Corner2OrgX { get; set; } = 0;//DieOrg - Lower Left Corner: 转换到UserPos下
+        public double Corner2OrgY { get; set; } = 0;//DieOrg - Lower Left Corner: 转换到UserPos下
+        public double Org2PatIIX { get; set; } = 0;//Die Pattern2 - DieOrg : 转换到UserPos下
+        public double Org2PatIIY{ get; set; } = 0;//Die Pattern2 - DieOrg : 转换到UserPos下
         public List<MappingPoint>? MappingPoints { get; set; }
     }
     /// <summary>
@@ -186,8 +188,8 @@ namespace WaferMapLibrary
             }
         }
 
-        public static double WaferCenterX;//LowMag下的Encode值
-        public static double WaferCenterY;//LowMag下的Encode值
+        public static double WaferCenterX;//LowMag下的值:转用户坐标系
+        public static double WaferCenterY;//LowMag下的值:转用户坐标系
         public static double WaferOffsetX;//HighMag下的值：实际RefDie - 注册RefDie :转用户坐标系
         public static double WaferOffsetY;//HighMag下的值：实际RefDie - 注册RefDie :转用户坐标系
         /// <summary>
@@ -203,8 +205,8 @@ namespace WaferMapLibrary
             Entity.DieSizeY = DieSizeY;
             Entity.DieNumX = (int)Math.Ceiling(Entity.WaferDiameter / DieSizeX);
             Entity.DieNumY = (int)Math.Ceiling(Entity.WaferDiameter / DieSizeY);
-            Entity.OriginDieX = Entity.DieNumX / 2;
-            Entity.OriginDieY = Entity.DieNumY / 2;
+            Entity.RefDieX = Entity.DieNumX / 2;
+            Entity.RefDieY = Entity.DieNumY / 2;
         }
         public static void Save(string filePath)
         {

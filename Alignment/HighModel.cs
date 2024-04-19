@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonComponentLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,13 +10,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VisionLibrary;
 using WaferMapLibrary;
-
+using MotionLibrary;
 namespace MainForm
 {
     public partial class HighModel : UserControl
     {
         //作为临时性的shm模板
         public string PattenModel1 = "tempSHM";
+        //HighMag下，Wafer的偏移量
+        public double WaferOffsetX = 0;
+        public double WaferOffsetY = 0;
         public HighModel()
         {
             InitializeComponent();
@@ -31,7 +35,7 @@ namespace MainForm
 
             Vision.WaferHighMag.halconClass.CreateShapeModel(PattenModel1);
             //做模板完了后加延时 TODO 增加校验处理
-            Thread.Sleep(500);
+            //Thread.Sleep(500);
 
             int L = int.Parse(txtL.Text);
             int R = int.Parse(txtR.Text);
@@ -41,9 +45,8 @@ namespace MainForm
 
         private void BtnMoveToRefDie_Click(object sender, EventArgs e)
         {
-            //WaferMap.GetMapUserPos(WaferMap.Entity.RefDieIndexX, WaferMap.Entity.RefDieIndexY, out double X, out double Y);
-            //Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, X + WaferMap.WaferOffsetX, Y + WaferMap.WaferOffsetY, out double encodeX, out double encodeY);
-            //Motion.XYZ_AxisMoveAbs(1, encodeX, encodeY, WaferMap.Thickness, 600, 10, 10, 20);
+            CommonFunctions.GetMapUserPos(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, out double X, out double Y);
+            Motion.UserPosMoveAbs(Compensation.Area.Align,X, Y);
         }
 
         private void BtnAlignConfirm_Click(object sender, EventArgs e)
@@ -65,11 +68,6 @@ namespace MainForm
             //Alignment.Match(WaferMap.HighModelPattern1, Vision.WaferHighMag);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            //panel1.Controls.Add(WaferMap.IndexControl);
-        }
-
         private void BtnPat1Reg_Click(object sender, EventArgs e)
         {
             //SaveFileDialog sfd = new SaveFileDialog();
@@ -78,6 +76,11 @@ namespace MainForm
             //{
             //    Vision.WaferHighMag.halconClass.CreateShapeModel(sfd.FileName);
             //}
+        }
+
+        private void BtnLowMagAlign_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -94,8 +94,8 @@ namespace CommonComponentLibrary
         // 圆心坐标
         public static void CircleCentre(out double x, out double y)
         {
-            x = WaferMap.Entity.OriginDieX * WaferMap.Entity.DieSizeX + WaferMap.Entity.Center2OriginDieCornerX;
-            y = WaferMap.Entity.OriginDieY * WaferMap.Entity.DieSizeY + WaferMap.Entity.Center2OriginDieCornerY;
+            x = WaferMap.Entity.RefDieX * WaferMap.Entity.DieSizeX + WaferMap.Entity.Center2RefDieCornerX;
+            y = WaferMap.Entity.RefDieY * WaferMap.Entity.DieSizeY + WaferMap.Entity.Center2RefDieCornerY;
         }
         private float UnitPerPixelX => (float)(WaferMap.Entity.DieSizeX * WaferMap.Entity.DieNumX) / _backgroundBitmap.Width;
 
@@ -194,7 +194,7 @@ namespace CommonComponentLibrary
                 }
             }
 
-            DrawRect(WaferMap.Entity.OriginDieX, WaferMap.Entity.OriginDieY, gp, Color.Purple);//画参考die
+            DrawRect(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, gp, Color.Purple);//画参考die
             DrawGrid(gp);//方格
             DrawCircle(gp, UnitPerPixelX, UnitPerPixelY);//
             DrawIndex(gp);

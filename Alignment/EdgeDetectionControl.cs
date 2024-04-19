@@ -62,7 +62,7 @@ namespace MainForm
             {
                 if (DetecetEdge(i) != 0) { return; }
                 //这里采集了边缘点，所以就不用userpos来计算了                
-                Motion.XY_GetEncPos(out EdgeX[i], out EdgeY[i]);
+                Motion.GetUserPos(Compensation.Area.Align,out EdgeX[i], out EdgeY[i]);
             }
 
             //生成拟合圆，CenterX 和 CenterY是粗定位下的坐标
@@ -89,7 +89,7 @@ namespace MainForm
         private void BtnToCenter_Click(object sender, EventArgs e)
         {
             //粗定位 TODO：确认方向，暂时这么处理，X反向，Y同向
-            Motion.XY_AxisMoveAbs(1, WaferMap.WaferCenterX, WaferMap.WaferCenterY, 600, 20, 20, 10);
+            Motion.UserPosMoveAbs(Compensation.Area.Align, WaferMap.WaferCenterX, WaferMap.WaferCenterY);
         }
         private void BtnBlob_Click(object sender, EventArgs e)
         {

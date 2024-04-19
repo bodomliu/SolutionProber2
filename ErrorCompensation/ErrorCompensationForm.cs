@@ -153,7 +153,7 @@ namespace MotionLibrary
 
         private void AlignCrossX()
         {
-            int OriginY = WaferMap.Entity.OriginDieY;
+            int OriginY = WaferMap.Entity.RefDieY;
             for (int indexX = 0; indexX < WaferMap.Entity.DieNumX; indexX++)
             {
                 AlignPosition(indexX, OriginY);
@@ -162,7 +162,7 @@ namespace MotionLibrary
 
         private void AlignCrossY()
         {
-            int OriginX = WaferMap.Entity.OriginDieX;
+            int OriginX = WaferMap.Entity.RefDieX;
             for (int indexY = 0; indexY < WaferMap.Entity.DieNumY; indexY++)
             {
                 AlignPosition(OriginX, indexY);
