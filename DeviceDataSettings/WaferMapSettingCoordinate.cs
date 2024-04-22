@@ -26,8 +26,8 @@ namespace DeviceDataSettings
         {
             leftOrRight.Text = WaferMap.Entity.DirectionX;
             upOrDown.Text = WaferMap.Entity.DirectionY;
-            originX.Text = WaferMap.Entity.OriginDieX.ToString();
-            originY.Text = WaferMap.Entity.OriginDieY.ToString();
+            originX.Text = WaferMap.Entity.RefDieX.ToString();
+            originY.Text = WaferMap.Entity.RefDieY.ToString();
         }
 
         private void leftOrRight_Click(object sender, EventArgs e)
@@ -56,8 +56,8 @@ namespace DeviceDataSettings
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WaferMap.Entity.OriginDieX = int.Parse(originX.Text);
-            WaferMap.Entity.OriginDieY = int.Parse(originY.Text);
+            WaferMap.Entity.RefDieX = int.Parse(originX.Text);
+            WaferMap.Entity.RefDieY = int.Parse(originY.Text);
             _wmc.RefreshCanvas();
         }
     }

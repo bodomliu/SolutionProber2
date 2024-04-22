@@ -50,8 +50,8 @@ namespace DeviceDataSettings
             WaferMap.Entity.DieNumX = (WaferMap.Entity.DieNumX + deltaLeft + deltaRight);
             WaferMap.Entity.DieNumY = (WaferMap.Entity.DieNumY + deltaTop + deltaBottom);
 
-            WaferMap.Entity.OriginDieX += deltaLeft;
-            WaferMap.Entity.OriginDieY += deltaTop;
+            WaferMap.Entity.RefDieX += deltaLeft;
+            WaferMap.Entity.RefDieY += deltaTop;
 
             _wmc.RefreshCanvas();
             textBox.Text = WaferMap.Entity.DieNumX.ToString() + " * " + WaferMap.Entity.DieNumY.ToString();

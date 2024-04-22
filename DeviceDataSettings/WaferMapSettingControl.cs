@@ -17,22 +17,25 @@ namespace DeviceDataSettings
 
         private readonly WaferMapCanvas _waferMap = WaferMapCanvas.Canvas;
 
-        private readonly WaferMapSetting_1 _wms1;
+        private readonly WaferMapSettingBase _wmsb;
 
         private readonly WaferMapSettingMargin _wmsm;
 
         private readonly WaferMapSettingCoordinate _wmsc;
+
+        private readonly WaferMapSettingMap _wmsmap;
         public WaferMapSettingControl()
         {
             InitializeComponent();
-            this._wms1 = new(_waferMap);
+            this._wmsb = new(_waferMap);
             this._wmsm = new(_waferMap);
             this._wmsc = new(_waferMap);
+            this._wmsmap = new(_waferMap);
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            panel2.Controls.Add(_wms1);
+            panel2.Controls.Add(_wmsb);
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -46,7 +49,7 @@ namespace DeviceDataSettings
             if (radioButton.Checked)
             {
                 panel2.Controls.Clear();
-                panel2.Controls.Add(_wms1);
+                panel2.Controls.Add(_wmsb);
             }
         }
 
@@ -80,6 +83,14 @@ namespace DeviceDataSettings
             panel5.Controls.Add(new WaferMapColorCard());
         }
 
-        
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                panel2.Controls.Clear();
+                panel2.Controls.Add(_wmsmap);
+            }
+        }
     }
 }

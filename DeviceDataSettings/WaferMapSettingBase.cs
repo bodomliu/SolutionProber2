@@ -13,11 +13,11 @@ using WaferMapLibrary;
 
 namespace DeviceDataSettings
 {
-    public partial class WaferMapSetting_1 : UserControl
+    public partial class WaferMapSettingBase : UserControl
     {
 
         private readonly WaferMapCanvas _waferMap;
-        public WaferMapSetting_1(WaferMapCanvas waferMap)
+        public WaferMapSettingBase(WaferMapCanvas waferMap)
         {
             InitializeComponent();
             // wafer 默认尺寸
@@ -27,7 +27,34 @@ namespace DeviceDataSettings
             // Y 默认放大倍数
             ratioY.SelectedIndex = 0;
             this._waferMap = waferMap;
+            this.ControlRemoved += WaferMapSettingBase_ControlRemoved;
+            this.ControlAdded += WaferMapSettingBase_ControlAdded;
+            this.BindingContextChanged += WaferMapSettingBase_BindingContextChanged;
 
+        }
+
+        private void WaferMapSettingBase_BindingContextChanged(object? sender, EventArgs e)
+        {
+            if (this.ParentForm is not null && this.ParentForm.Controls.Contains(this))
+            {
+                Console.WriteLine("AAAAA");
+            }
+        }
+
+        protected override void OnControlAdded(ControlEventArgs e)
+        {
+            base.OnControlAdded(e);
+        }
+
+        private void WaferMapSettingBase_ControlAdded(object? sender, ControlEventArgs e)
+        {
+            Console.WriteLine("aaaa");
+            
+        }
+
+        private void WaferMapSettingBase_ControlRemoved(object? sender, ControlEventArgs e)
+        {
+            Console.WriteLine("wwww");
         }
 
         private void SetRatio_Click(object sender, EventArgs e)
@@ -42,6 +69,9 @@ namespace DeviceDataSettings
 
             NumX.Text = WaferMap.Entity.DieNumX.ToString();
             NumY.Text = WaferMap.Entity.DieNumY.ToString();
+
+            offsetX.Text = WaferMap.Entity.Center2RefDieCornerX.ToString();
+            offsetY.Text = WaferMap.Entity.Center2RefDieCornerY.ToString();
         }
 
         protected override void OnBindingContextChanged(EventArgs e)
@@ -66,6 +96,10 @@ namespace DeviceDataSettings
 
             ratioX.Text = 1.ToString();
             ratioY.Text = 1.ToString();
+
+            WaferMap.Entity.Center2RefDieCornerX = int.Parse(offsetX.Text);
+            WaferMap.Entity.Center2RefDieCornerY = int.Parse(offsetY.Text);
+
             _waferMap.LoadCanvas();
         }
 
@@ -74,49 +108,12 @@ namespace DeviceDataSettings
 
         }
 
-        private void Generation_Click(object sender, EventArgs e)
-        {
-            WaferMap.Entity.MappingPoints?.Clear();
-            WaferMap.Entity.MappingPoints = new List<MappingPoint>();
+        //private void Generation_Click(object sender, EventArgs e)
+        //{
+            
+        //}
 
-            WaferMapCanvas.CircleCentre(out double ccx, out double ccy);
 
-            for (int i = 0; i < WaferMap.Entity.DieNumX; i++)
-            {
-                for (int j = 0; j < WaferMap.Entity.DieNumY; j++)
-                {
-                    MappingPoint mp = new MappingPoint();
-                    mp.IndexX = i;
-                    mp.IndexY = j;
-
-                    double pointX = WaferMap.Entity.DieSizeX * i;
-                    double pointY = WaferMap.Entity.DieSizeY * j;
-                    int count = 0;
-                    if (Math.Pow(pointX - ccx, 2) + Math.Pow(pointY - ccy, 2) < Math.Pow(WaferMap.Entity.WaferDiameter / 2, 2))
-                        count++;
-                    pointX += WaferMap.Entity.DieSizeX;
-                    if (Math.Pow(pointX - ccx, 2) + Math.Pow(pointY - ccy, 2) < Math.Pow(WaferMap.Entity.WaferDiameter / 2, 2))
-                        count++;
-                    pointY += WaferMap.Entity.DieSizeY;
-                    if (Math.Pow(pointX - ccx, 2) + Math.Pow(pointY - ccy, 2) < Math.Pow(WaferMap.Entity.WaferDiameter / 2, 2))
-                        count++;
-                    pointX -= WaferMap.Entity.DieSizeX;
-                    if (Math.Pow(pointX - ccx, 2) + Math.Pow(pointY - ccy, 2) < Math.Pow(WaferMap.Entity.WaferDiameter / 2, 2))
-                        count++;
-
-                    if (count == 4)
-                        mp.BIN = 1;
-                    else if(count == 0)
-                        mp.BIN = 0;
-                    else mp.BIN = 3;
-
-                    WaferMap.Entity.MappingPoints.Add(mp);
-                }
-            }
-            _waferMap.RefreshCanvas();
-        }
-
-        
 
     }
 }
