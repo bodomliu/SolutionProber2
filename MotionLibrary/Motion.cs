@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using WaferMapLibrary;
 using static GTN.mc;
 using static GTN.mc_ringnet;
+using static MotionLibrary.Compensation;
 
 namespace MotionLibrary
 {
@@ -85,7 +86,6 @@ namespace MotionLibrary
             //插补运动 = 5,
             //PVT运动 = 6       
         }
-
         public static void Initial()
         {
             Load("Config/MotionParameter.json");

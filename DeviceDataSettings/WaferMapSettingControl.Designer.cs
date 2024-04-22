@@ -102,6 +102,7 @@
             radioButton4.TabStop = true;
             radioButton4.Text = "4. Map";
             radioButton4.UseVisualStyleBackColor = true;
+            radioButton4.CheckedChanged += radioButton4_CheckedChanged;
             // 
             // radioButton3
             // 

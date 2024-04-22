@@ -32,6 +32,11 @@ namespace CommonComponentLibrary
             return 0;
         }
 
+        public static void IndexMove(int indexX, int intexY)
+        { 
+            //TODO：需要知道是粗定位还是精定位下的坐标
+        }
+
         /// <summary>
         /// 根据index值，获得轴坐标系坐标
         /// </summary>

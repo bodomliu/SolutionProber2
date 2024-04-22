@@ -1,6 +1,6 @@
 ﻿namespace DeviceDataSettings
 {
-    partial class WaferMapSetting_1
+    partial class WaferMapSettingBase
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -36,8 +36,6 @@
             WaferSize = new ComboBox();
             label1 = new Label();
             Apply = new Button();
-            Margin = new Button();
-            Generation = new Button();
             panel1 = new Panel();
             SizeY = new TextBox();
             SizeX = new TextBox();
@@ -45,7 +43,13 @@
             label4 = new Label();
             NumX = new TextBox();
             NumY = new TextBox();
+            panel2 = new Panel();
+            label6 = new Label();
+            label7 = new Label();
+            offsetX = new TextBox();
+            offsetY = new TextBox();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // SetRatio
@@ -125,26 +129,6 @@
             Apply.UseVisualStyleBackColor = true;
             Apply.Click += Apply_Click;
             // 
-            // Margin
-            // 
-            Margin.Location = new Point(165, 137);
-            Margin.Name = "Margin";
-            Margin.Size = new Size(111, 44);
-            Margin.TabIndex = 9;
-            Margin.Text = "Symmetric Offset && Margin";
-            Margin.UseVisualStyleBackColor = true;
-            Margin.Click += Margin_Click;
-            // 
-            // Generation
-            // 
-            Generation.Location = new Point(165, 187);
-            Generation.Name = "Generation";
-            Generation.Size = new Size(111, 44);
-            Generation.TabIndex = 10;
-            Generation.Text = "Auto Map Generation";
-            Generation.UseVisualStyleBackColor = true;
-            Generation.Click += Generation_Click;
-            // 
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.Fixed3D;
@@ -152,7 +136,7 @@
             panel1.Controls.Add(SizeX);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
-            panel1.Location = new Point(15, 137);
+            panel1.Location = new Point(15, 117);
             panel1.Name = "panel1";
             panel1.Size = new Size(113, 62);
             panel1.TabIndex = 11;
@@ -195,7 +179,7 @@
             NumX.Enabled = false;
             NumX.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             NumX.ForeColor = SystemColors.Window;
-            NumX.Location = new Point(15, 109);
+            NumX.Location = new Point(15, 89);
             NumX.Name = "NumX";
             NumX.ReadOnly = true;
             NumX.Size = new Size(46, 28);
@@ -209,7 +193,7 @@
             NumY.Enabled = false;
             NumY.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             NumY.ForeColor = SystemColors.Window;
-            NumY.Location = new Point(77, 109);
+            NumY.Location = new Point(77, 89);
             NumY.Name = "NumY";
             NumY.ReadOnly = true;
             NumY.Size = new Size(46, 28);
@@ -217,15 +201,58 @@
             NumY.Text = "50";
             NumY.TextAlign = HorizontalAlignment.Center;
             // 
-            // WaferMapSetting_1
+            // panel2
+            // 
+            panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(offsetY);
+            panel2.Controls.Add(offsetX);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(label6);
+            panel2.Location = new Point(15, 185);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(261, 82);
+            panel2.TabIndex = 14;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(3, 18);
+            label6.Name = "label6";
+            label6.Size = new Size(156, 17);
+            label6.TabIndex = 0;
+            label6.Text = "Center2OriginDieCornerX";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(3, 51);
+            label7.Name = "label7";
+            label7.Size = new Size(155, 17);
+            label7.TabIndex = 1;
+            label7.Text = "Center2OriginDieCornerY";
+            // 
+            // offsetX
+            // 
+            offsetX.Location = new Point(163, 15);
+            offsetX.Name = "offsetX";
+            offsetX.Size = new Size(91, 23);
+            offsetX.TabIndex = 2;
+            // 
+            // offsetY
+            // 
+            offsetY.Location = new Point(163, 48);
+            offsetY.Name = "offsetY";
+            offsetY.Size = new Size(91, 23);
+            offsetY.TabIndex = 3;
+            // 
+            // WaferMapSettingBase
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel2);
             Controls.Add(NumY);
             Controls.Add(NumX);
             Controls.Add(panel1);
-            Controls.Add(Generation);
-            Controls.Add(Margin);
             Controls.Add(Apply);
             Controls.Add(SetRatio);
             Controls.Add(ratioY);
@@ -234,11 +261,13 @@
             Controls.Add(label2);
             Controls.Add(WaferSize);
             Controls.Add(label1);
-            Name = "WaferMapSetting_1";
+            Name = "WaferMapSettingBase";
             Size = new Size(283, 270);
             Load += WaferMapSetting_1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -254,8 +283,6 @@
         #endregion
 
         private Button Apply;
-        private Button Margin;
-        private Button Generation;
         private Panel panel1;
         private Label label4;
         private Label label5;
@@ -263,5 +290,10 @@
         private TextBox SizeX;
         private TextBox NumX;
         private TextBox NumY;
+        private Panel panel2;
+        private Label label6;
+        private Label label7;
+        private TextBox offsetY;
+        private TextBox offsetX;
     }
 }

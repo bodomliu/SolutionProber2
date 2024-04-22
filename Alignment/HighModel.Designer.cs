@@ -39,8 +39,9 @@
             BtnPat1Reg = new Button();
             BtnAlignConfirm = new Button();
             BtnLowMagAlign = new Button();
-            BtnMatch = new Button();
+            BtnMatch1 = new Button();
             panel1 = new Panel();
+            BtnMatch2 = new Button();
             SuspendLayout();
             // 
             // LblModel
@@ -99,7 +100,7 @@
             // 
             // BtnMoveToRefDie
             // 
-            BtnMoveToRefDie.BackColor = Color.Green;
+            BtnMoveToRefDie.BackColor = Color.YellowGreen;
             BtnMoveToRefDie.Location = new Point(16, 136);
             BtnMoveToRefDie.Name = "BtnMoveToRefDie";
             BtnMoveToRefDie.Size = new Size(156, 59);
@@ -110,20 +111,21 @@
             // 
             // BtnPat2Reg
             // 
-            BtnPat2Reg.BackColor = Color.Orange;
+            BtnPat2Reg.BackColor = Color.Teal;
             BtnPat2Reg.Location = new Point(178, 156);
             BtnPat2Reg.Name = "BtnPat2Reg";
-            BtnPat2Reg.Size = new Size(84, 45);
+            BtnPat2Reg.Size = new Size(134, 45);
             BtnPat2Reg.TabIndex = 50;
             BtnPat2Reg.Text = "Pat 2 Reg";
             BtnPat2Reg.UseVisualStyleBackColor = false;
+            BtnPat2Reg.Click += BtnPat2Reg_Click;
             // 
             // BtnPat1Reg
             // 
             BtnPat1Reg.BackColor = Color.Orange;
             BtnPat1Reg.Location = new Point(178, 105);
             BtnPat1Reg.Name = "BtnPat1Reg";
-            BtnPat1Reg.Size = new Size(84, 45);
+            BtnPat1Reg.Size = new Size(134, 46);
             BtnPat1Reg.TabIndex = 51;
             BtnPat1Reg.Text = "Pat 1 Reg";
             BtnPat1Reg.UseVisualStyleBackColor = false;
@@ -145,30 +147,41 @@
             BtnLowMagAlign.BackColor = Color.Orange;
             BtnLowMagAlign.Location = new Point(174, 20);
             BtnLowMagAlign.Name = "BtnLowMagAlign";
-            BtnLowMagAlign.Size = new Size(160, 79);
+            BtnLowMagAlign.Size = new Size(214, 79);
             BtnLowMagAlign.TabIndex = 51;
             BtnLowMagAlign.Text = "Low Mag Match";
             BtnLowMagAlign.UseVisualStyleBackColor = false;
             BtnLowMagAlign.Click += BtnLowMagAlign_Click;
             // 
-            // BtnMatch
+            // BtnMatch1
             // 
-            BtnMatch.BackColor = Color.Orange;
-            BtnMatch.Location = new Point(264, 106);
-            BtnMatch.Name = "BtnMatch";
-            BtnMatch.Size = new Size(70, 45);
-            BtnMatch.TabIndex = 51;
-            BtnMatch.Text = "Match";
-            BtnMatch.UseVisualStyleBackColor = false;
-            BtnMatch.Click += BtnMatch_Click;
+            BtnMatch1.BackColor = Color.Orange;
+            BtnMatch1.Location = new Point(318, 106);
+            BtnMatch1.Name = "BtnMatch1";
+            BtnMatch1.Size = new Size(70, 45);
+            BtnMatch1.TabIndex = 51;
+            BtnMatch1.Text = "Match";
+            BtnMatch1.UseVisualStyleBackColor = false;
+            BtnMatch1.Click += BtnMatch1_Click;
             // 
             // panel1
             // 
             panel1.BackColor = Color.Black;
             panel1.Location = new Point(178, 207);
             panel1.Name = "panel1";
-            panel1.Size = new Size(169, 140);
+            panel1.Size = new Size(206, 132);
             panel1.TabIndex = 53;
+            // 
+            // BtnMatch2
+            // 
+            BtnMatch2.BackColor = Color.Orange;
+            BtnMatch2.Location = new Point(318, 157);
+            BtnMatch2.Name = "BtnMatch2";
+            BtnMatch2.Size = new Size(70, 45);
+            BtnMatch2.TabIndex = 51;
+            BtnMatch2.Text = "Match";
+            BtnMatch2.UseVisualStyleBackColor = false;
+            BtnMatch2.Click += BtnMatch2_Click;
             // 
             // HighModel
             // 
@@ -178,7 +191,8 @@
             Controls.Add(BtnAlignConfirm);
             Controls.Add(BtnPat2Reg);
             Controls.Add(BtnLowMagAlign);
-            Controls.Add(BtnMatch);
+            Controls.Add(BtnMatch2);
+            Controls.Add(BtnMatch1);
             Controls.Add(BtnPat1Reg);
             Controls.Add(BtnMoveToRefDie);
             Controls.Add(label3);
@@ -188,7 +202,7 @@
             Controls.Add(BtnIstantHighAlign);
             Controls.Add(LblModel);
             Name = "HighModel";
-            Size = new Size(350, 400);
+            Size = new Size(400, 380);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -206,7 +220,8 @@
         private Button BtnPat1Reg;
         private Button BtnAlignConfirm;
         private Button BtnLowMagAlign;
-        private Button BtnMatch;
+        private Button BtnMatch1;
         private Panel panel1;
+        private Button BtnMatch2;
     }
 }

@@ -16,12 +16,7 @@ namespace MainForm
             panelIndex.Controls.Add(new WaferMapIndexControl());
         }
         private void BtnIstantLowAlign_Click(object sender, EventArgs e)
-        {
-            if (Vision.activeCamera != Camera.WaferLowMag)
-            {
-                MessageBox.Show("Please Change Camera to Low Mag,");
-                return;
-            }
+        {            
             Vision.WaferLowMag.halconClass.CreateShapeModel(PattenModel1);
             //做模板完了后加延时,TODO 增加校验步骤，延时不太可靠
             //Thread.Sleep(500);
@@ -95,21 +90,7 @@ namespace MainForm
 
         private void BtnPat2Reg_Click(object sender, EventArgs e)
         {
-            Motion.GetUserPos(Compensation.Area.Align, out double Pattern2X, out double Pattern2Y);
-
-            double org2part2X = Pattern2X - (WaferMap.WaferCenterX + WaferMap.Entity.Center2RefDieCornerX + WaferMap.Entity.Corner2OrgX);//LowerLeftCorner是粗略坐标
-            double org2part2Y = Pattern2Y - (WaferMap.WaferCenterY + WaferMap.Entity.Center2RefDieCornerY + WaferMap.Entity.Corner2OrgY);//LowerLeftCorner是粗略坐标
-
-            string str = "Org2PatII X: " + WaferMap.Entity.Org2PatIIX.ToString() + " → " + org2part2X.ToString() + "\r\n";
-            str += "Org2PatII Y: " + WaferMap.Entity.Org2PatIIY.ToString() + " → " + org2part2Y.ToString();
-            //如果要测准，则用精定位去定位LowerLeftCorner与RefDie
-            DialogResult res = MessageBox.Show(str, "Caution", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (res == DialogResult.OK)
-            {
-                WaferMap.Entity.Org2PatIIX = org2part2X;
-                WaferMap.Entity.Org2PatIIY = org2part2Y;
-                Vision.WaferLowMag.halconClass.CreateShapeModel(DeviceData.Entity.WaferAlignment.LowPattern2);
-            }
+            Vision.WaferLowMag.halconClass.CreateShapeModel(DeviceData.Entity.WaferAlignment.LowPattern2);
         }
 
         private void BtnMatch1_Click(object sender, EventArgs e)

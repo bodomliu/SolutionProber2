@@ -51,6 +51,7 @@ namespace CommonComponentLibrary
             WaferMap.OnIndexChange += test;//注册回调事件
         }
 
+        #region 定义属性
         /// <summary>
         /// map 图层
         /// </summary>
@@ -85,8 +86,9 @@ namespace CommonComponentLibrary
         public int MarginRight { get; set; } = 0;
 
         public int MarginBottom { get; set; } = 0;
+        #endregion
 
-
+        #region 画图
         public void SetRatio(double ratioX, double ratioY)
         {
             // 保持中心位置不变
@@ -102,8 +104,8 @@ namespace CommonComponentLibrary
         // 圆心坐标
         public static void CircleCentre(out double x, out double y)
         {
-            x = WaferMap.Entity.OriginDieX * WaferMap.Entity.DieSizeX - WaferMap.Entity.Center2OriginDieCornerX;
-            y = (WaferMap.Entity.OriginDieY + 1) * WaferMap.Entity.DieSizeY - WaferMap.Entity.Center2OriginDieCornerY;
+            x = WaferMap.Entity.RefDieX * WaferMap.Entity.DieSizeX - WaferMap.Entity.Center2RefDieCornerX;
+            y = (WaferMap.Entity.RefDieY + 1) * WaferMap.Entity.DieSizeY - WaferMap.Entity.Center2RefDieCornerY;
         }
         private float UnitPerPixelX => (float)(WaferMap.Entity.DieSizeX * WaferMap.Entity.DieNumX) / _backgroundBitmap.Width;
 
@@ -246,11 +248,13 @@ namespace CommonComponentLibrary
             RefreshCanvas();
         }
 
+        #endregion
 
+        #region 鼠标左击
         private void WaferMapCanvas_MouseDown(object? sender, MouseEventArgs e)
         {
             // 获得焦点
-            Focus();
+            //Focus();
 
             // 点击简略图
             if ((RatioX != 1 || RatioX != 1.0) && e.X < _simplifiedBitmap.Width && e.Y < _simplifiedBitmap.Height)
@@ -258,6 +262,12 @@ namespace CommonComponentLibrary
                 SimplifiedBitmap_MouseDown(sender, e);
                 return;
             }
+
+
+            float width = (float)WaferMap.Entity.DieSizeX / UnitPerPixelX;
+            float height = (float)WaferMap.Entity.DieSizeY / UnitPerPixelY;
+
+            WaferMap.setCurrentIndex((int)((e.X - _offsetX) / width), (int)((e.Y - _offsetY) / height));
         }
 
         private void SimplifiedBitmap_MouseDown(object? sender, MouseEventArgs e)
@@ -280,6 +290,7 @@ namespace CommonComponentLibrary
             RefreshCanvas();
 
         }
+        #endregion
 
     }
 }

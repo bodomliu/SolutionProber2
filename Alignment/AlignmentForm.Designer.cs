@@ -50,6 +50,7 @@
             lblDiffZ = new Label();
             lblAvgZ = new Label();
             panel1 = new Panel();
+            TxtAlignData = new RichTextBox();
             groupBox4.SuspendLayout();
             SuspendLayout();
             // 
@@ -268,11 +269,20 @@
             panel1.Size = new Size(1080, 1003);
             panel1.TabIndex = 62;
             // 
+            // TxtAlignData
+            // 
+            TxtAlignData.Location = new Point(1088, 103);
+            TxtAlignData.Name = "TxtAlignData";
+            TxtAlignData.Size = new Size(95, 185);
+            TxtAlignData.TabIndex = 63;
+            TxtAlignData.Text = "";
+            // 
             // AlignmentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1847, 1126);
+            Controls.Add(TxtAlignData);
             Controls.Add(panel1);
             Controls.Add(label9);
             Controls.Add(label6);
@@ -323,5 +333,6 @@
         private Label lblDiffZ;
         private Label lblAvgZ;
         private Panel panel1;
+        private RichTextBox TxtAlignData;
     }
 }

@@ -102,7 +102,7 @@
             // 
             // BtnMoveToRefDie
             // 
-            BtnMoveToRefDie.BackColor = Color.Green;
+            BtnMoveToRefDie.BackColor = Color.YellowGreen;
             BtnMoveToRefDie.Location = new Point(9, 139);
             BtnMoveToRefDie.Name = "BtnMoveToRefDie";
             BtnMoveToRefDie.Size = new Size(75, 59);
@@ -113,7 +113,7 @@
             // 
             // BtnSetRefDie
             // 
-            BtnSetRefDie.BackColor = Color.Green;
+            BtnSetRefDie.BackColor = Color.Teal;
             BtnSetRefDie.Location = new Point(90, 139);
             BtnSetRefDie.Name = "BtnSetRefDie";
             BtnSetRefDie.Size = new Size(75, 59);
@@ -124,7 +124,7 @@
             // 
             // BtnTeachLowerLeftCorner
             // 
-            BtnTeachLowerLeftCorner.BackColor = Color.Orange;
+            BtnTeachLowerLeftCorner.BackColor = Color.Teal;
             BtnTeachLowerLeftCorner.Location = new Point(173, 15);
             BtnTeachLowerLeftCorner.Name = "BtnTeachLowerLeftCorner";
             BtnTeachLowerLeftCorner.Size = new Size(208, 48);
@@ -135,7 +135,7 @@
             // 
             // BtnMatchIndex
             // 
-            BtnMatchIndex.BackColor = Color.Orange;
+            BtnMatchIndex.BackColor = Color.YellowGreen;
             BtnMatchIndex.Location = new Point(173, 204);
             BtnMatchIndex.Name = "BtnMatchIndex";
             BtnMatchIndex.Size = new Size(208, 50);
@@ -157,7 +157,7 @@
             // 
             // BtnPat1Reg
             // 
-            BtnPat1Reg.BackColor = Color.Orange;
+            BtnPat1Reg.BackColor = Color.Teal;
             BtnPat1Reg.Location = new Point(173, 260);
             BtnPat1Reg.Name = "BtnPat1Reg";
             BtnPat1Reg.Size = new Size(98, 45);

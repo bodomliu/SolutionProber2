@@ -102,11 +102,6 @@ namespace WaferMapLibrary
             }
             set
             {
-                if (value < 0)
-                    value = 0;
-                else if (value >= WaferMap.Entity.DieNumX)
-                    value = WaferMap.Entity.DieNumX - 1;
-
                 currentIndexX = value;
                 if (OnIndexChange != null && !isBlockIndexChange) OnIndexChange(currentIndexX, currentIndexY);
             }
@@ -120,10 +115,6 @@ namespace WaferMapLibrary
             }
             set
             {
-                if (value < 0)
-                    value = 0;
-                else if (value >= WaferMap.Entity.DieNumY)
-                    value = WaferMap.Entity.DieNumY - 1;
                 currentIndexY = value;
                 if (OnIndexChange != null && !isBlockIndexChange) OnIndexChange(currentIndexX, currentIndexY);
             }
@@ -188,8 +179,8 @@ namespace WaferMapLibrary
             }
         }
 
-        public static double WaferCenterX;//LowMag下的值:转用户坐标系
-        public static double WaferCenterY;//LowMag下的值:转用户坐标系
+        public static double WaferCenterX;//LowMag下的值:转用户坐标系  只能用来做粗定位
+        public static double WaferCenterY;//LowMag下的值:转用户坐标系  只能用来做粗定位
         public static double WaferOffsetX;//HighMag下的值：实际RefDie - 注册RefDie :转用户坐标系
         public static double WaferOffsetY;//HighMag下的值：实际RefDie - 注册RefDie :转用户坐标系
         /// <summary>

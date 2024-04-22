@@ -125,6 +125,9 @@ namespace MainForm
             lblWaferCenterFlag.BackColor = (center) ? Color.Green : Color.Red;
             lblLowAlignFlag.BackColor = (low) ? Color.Green : Color.Red;
             lblHighAlignFlag.BackColor = (high) ? Color.Green : Color.Red;
+
+            TxtAlignData.Text = "WaferOffset :\r\n" + WaferMap.WaferOffsetX.ToString() 
+                + "\r\n" + WaferMap.WaferOffsetY.ToString();
         }
         private void BtnAutoHeight_Click(object sender, EventArgs e)
         {
