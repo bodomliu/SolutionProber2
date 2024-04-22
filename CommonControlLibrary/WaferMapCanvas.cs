@@ -33,10 +33,10 @@ namespace CommonComponentLibrary
         /// </summary>
         public void LoadCanvas()
         {
-            //RatioX = 1;
-            //RatioY = 1;
-            //_offsetX = 0;
-            //_offsetY = 0;
+            RatioX = 1;
+            RatioY = 1;
+            _offsetX = 0;
+            _offsetY = 0;
             RefreshCanvas();
         }
 
@@ -78,6 +78,14 @@ namespace CommonComponentLibrary
         /// </summary>
         private int _offsetY = 0;
 
+        public int MarginTop { get; set; } = 0;
+
+        public int MarginLeft { get; set; } = 0;
+
+        public int MarginRight { get; set; } = 0;
+
+        public int MarginBottom { get; set; } = 0;
+
 
         public void SetRatio(double ratioX, double ratioY)
         {
@@ -94,8 +102,8 @@ namespace CommonComponentLibrary
         // 圆心坐标
         public static void CircleCentre(out double x, out double y)
         {
-            x = WaferMap.Entity.RefDieX * WaferMap.Entity.DieSizeX + WaferMap.Entity.Center2RefDieCornerX;
-            y = WaferMap.Entity.RefDieY * WaferMap.Entity.DieSizeY + WaferMap.Entity.Center2RefDieCornerY;
+            x = WaferMap.Entity.OriginDieX * WaferMap.Entity.DieSizeX - WaferMap.Entity.Center2OriginDieCornerX;
+            y = (WaferMap.Entity.OriginDieY + 1) * WaferMap.Entity.DieSizeY - WaferMap.Entity.Center2OriginDieCornerY;
         }
         private float UnitPerPixelX => (float)(WaferMap.Entity.DieSizeX * WaferMap.Entity.DieNumX) / _backgroundBitmap.Width;
 
@@ -176,7 +184,7 @@ namespace CommonComponentLibrary
             e.DrawRectangle(Pens.Red, x, y, (int)(_simplifiedBitmap.Width / RatioX), (int)(_simplifiedBitmap.Height / RatioY));
         }
 
-        private void RefreshCanvas()
+        public void RefreshCanvas()
         {
             //m_picture = canvas.CreateGraphics();
             _backgroundBitmap?.Dispose();

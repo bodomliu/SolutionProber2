@@ -64,10 +64,10 @@
             radioButton7.AutoSize = true;
             radioButton7.Location = new Point(3, 175);
             radioButton7.Name = "radioButton7";
-            radioButton7.Size = new Size(113, 21);
+            radioButton7.Size = new Size(98, 21);
             radioButton7.TabIndex = 6;
             radioButton7.TabStop = true;
-            radioButton7.Text = "7. Map Margin";
+            radioButton7.Text = "7. Die Status";
             radioButton7.UseVisualStyleBackColor = true;
             // 
             // radioButton6
@@ -75,10 +75,10 @@
             radioButton6.AutoSize = true;
             radioButton6.Location = new Point(3, 148);
             radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(98, 21);
+            radioButton6.Size = new Size(146, 21);
             radioButton6.TabIndex = 5;
             radioButton6.TabStop = true;
-            radioButton6.Text = "6. Die Status";
+            radioButton6.Text = "6. Probing Sequence";
             radioButton6.UseVisualStyleBackColor = true;
             // 
             // radioButton5
@@ -86,10 +86,10 @@
             radioButton5.AutoSize = true;
             radioButton5.Location = new Point(3, 121);
             radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(146, 21);
+            radioButton5.Size = new Size(131, 21);
             radioButton5.TabIndex = 4;
             radioButton5.TabStop = true;
-            radioButton5.Text = "5. Probing Sequence";
+            radioButton5.Text = "5. Dut information";
             radioButton5.UseVisualStyleBackColor = true;
             // 
             // radioButton4
@@ -97,10 +97,10 @@
             radioButton4.AutoSize = true;
             radioButton4.Location = new Point(3, 94);
             radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(131, 21);
+            radioButton4.Size = new Size(67, 21);
             radioButton4.TabIndex = 3;
             radioButton4.TabStop = true;
-            radioButton4.Text = "4. Dut information";
+            radioButton4.Text = "4. Map";
             radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton3
@@ -108,11 +108,12 @@
             radioButton3.AutoSize = true;
             radioButton3.Location = new Point(3, 67);
             radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(67, 21);
+            radioButton3.Size = new Size(105, 21);
             radioButton3.TabIndex = 2;
             radioButton3.TabStop = true;
-            radioButton3.Text = "3. Map";
+            radioButton3.Text = "3. Coordinate";
             radioButton3.UseVisualStyleBackColor = true;
+            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
             // 
             // radioButton2
             // 
@@ -120,10 +121,10 @@
             radioButton2.BackColor = SystemColors.ControlDark;
             radioButton2.Location = new Point(3, 40);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(105, 21);
+            radioButton2.Size = new Size(113, 21);
             radioButton2.TabIndex = 1;
             radioButton2.TabStop = true;
-            radioButton2.Text = "2. Coordinate";
+            radioButton2.Text = "2. Map Margin";
             radioButton2.UseVisualStyleBackColor = false;
             radioButton2.CheckedChanged += radioButton2_CheckedChanged;
             // 

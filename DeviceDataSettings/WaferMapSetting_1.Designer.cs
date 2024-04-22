@@ -188,7 +188,6 @@
             label4.Size = new Size(43, 17);
             label4.TabIndex = 0;
             label4.Text = "X Size";
-            label4.Click += label4_Click;
             // 
             // NumX
             // 
