@@ -17,6 +17,10 @@ namespace DeviceDataSettings
 
         private readonly WaferMapCanvas _waferMap;
 
+        private int _chooserBin = 0;
+
+        private int _testDieCount = 0;
+
         public WaferMapSettingMap(WaferMapCanvas waferMap)
         {
             InitializeComponent();
@@ -59,6 +63,17 @@ namespace DeviceDataSettings
                         mp.BIN = 0;
                     else mp.BIN = 3;
 
+                    double deltaX = (i - WaferMap.Entity.RefDieX) * WaferMap.Entity.DieSizeX;
+                    if ("LEFT".Equals(WaferMap.Entity.DirectionX))
+                        deltaX = -deltaX;
+
+                    double deltaY = (j - WaferMap.Entity.RefDieY) * WaferMap.Entity.DieSizeY;
+                    if ("UP".Equals(WaferMap.Entity.DirectionY)) 
+                        deltaY = -deltaY;
+
+                    mp.UserPosX = WaferMap.Entity.Center2RefDieCornerX + deltaX;
+                    mp.UserPosY = WaferMap.Entity.Center2RefDieCornerY + deltaY;
+
                     WaferMap.Entity.MappingPoints.Add(mp);
                 }
             }
@@ -68,23 +83,80 @@ namespace DeviceDataSettings
 
         private void WaferMapSettingMap_Load(object sender, EventArgs e)
         {
-            int count = 0;
+            _testDieCount = 0;
             if (WaferMap.Entity.MappingPoints != null)
             {
                 foreach (var item in WaferMap.Entity.MappingPoints)
                 {
                     if (item.BIN == 1)
-                        count++;
+                        _testDieCount++;
                 }
             }
-            testDieNum.Text = count.ToString();
+            testDieNum.Text = _testDieCount.ToString();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            this.Focus();
-            Console.WriteLine(this.ContainsFocus);
-            
+
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                _chooserBin = 0;
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                _chooserBin = 1;
+            }
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                _chooserBin = 2;
+            }
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                _chooserBin = 3;
+            }
+        }
+
+        private void Apply_Click(object sender, EventArgs e)
+        {
+            MappingPoint? mp = getMappingPint(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
+            if (null == mp)
+                return;
+            if (mp.BIN == 1)
+                _testDieCount--;
+            if (_chooserBin == 1)
+                _testDieCount++;
+            testDieNum.Text = _testDieCount.ToString();
+            mp.BIN = _chooserBin;
+            _waferMap.RefreshCanvas();
+        }
+
+        private MappingPoint? getMappingPint(int x, int y)
+        {
+            // 计算具体的 index
+            int index = WaferMap.Entity.DieNumX * x + y;
+            var p = WaferMap.Entity.MappingPoints?[index];
+            if (null == p || p.IndexX != x || p.IndexY != y)
+            {
+                return WaferMap.Entity.MappingPoints?.Find(f => f.IndexX == x && f.IndexY == y);
+            }
+
+            return p;
         }
     }
 }

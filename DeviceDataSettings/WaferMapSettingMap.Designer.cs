@@ -36,6 +36,7 @@
             generationButton = new Button();
             label1 = new Label();
             testDieNum = new TextBox();
+            Apply = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             radioButton4.TabStop = true;
             radioButton4.Text = "MARK DIE";
             radioButton4.UseVisualStyleBackColor = true;
+            radioButton4.CheckedChanged += radioButton4_CheckedChanged;
             // 
             // radioButton3
             // 
@@ -72,6 +74,7 @@
             radioButton3.TabStop = true;
             radioButton3.Text = "SKIP DIE";
             radioButton3.UseVisualStyleBackColor = true;
+            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
             // 
             // radioButton2
             // 
@@ -83,10 +86,12 @@
             radioButton2.TabStop = true;
             radioButton2.Text = "TEST DIE";
             radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
             // 
             // radioButton1
             // 
             radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
             radioButton1.Location = new Point(7, 11);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(90, 21);
@@ -125,10 +130,21 @@
             testDieNum.Text = "0";
             testDieNum.TextAlign = HorizontalAlignment.Center;
             // 
+            // Apply
+            // 
+            Apply.Location = new Point(147, 100);
+            Apply.Name = "Apply";
+            Apply.Size = new Size(118, 45);
+            Apply.TabIndex = 4;
+            Apply.Text = "Apply";
+            Apply.UseVisualStyleBackColor = true;
+            Apply.Click += Apply_Click;
+            // 
             // WaferMapSettingMap
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(Apply);
             Controls.Add(testDieNum);
             Controls.Add(label1);
             Controls.Add(generationButton);
@@ -152,5 +168,6 @@
         private Button generationButton;
         private Label label1;
         private TextBox testDieNum;
+        private Button Apply;
     }
 }
