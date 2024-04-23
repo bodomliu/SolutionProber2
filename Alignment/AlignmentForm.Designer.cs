@@ -71,6 +71,7 @@
             // 
             txtIndexSizeY.Location = new Point(32, 48);
             txtIndexSizeY.Name = "txtIndexSizeY";
+            txtIndexSizeY.ReadOnly = true;
             txtIndexSizeY.Size = new Size(71, 23);
             txtIndexSizeY.TabIndex = 3;
             txtIndexSizeY.Text = "0";
@@ -80,6 +81,7 @@
             // 
             txtIndexSizeX.Location = new Point(33, 22);
             txtIndexSizeX.Name = "txtIndexSizeX";
+            txtIndexSizeX.ReadOnly = true;
             txtIndexSizeX.Size = new Size(70, 23);
             txtIndexSizeX.TabIndex = 0;
             txtIndexSizeX.Text = "0";
@@ -271,7 +273,7 @@
             // 
             // TxtAlignData
             // 
-            TxtAlignData.Location = new Point(1088, 103);
+            TxtAlignData.Location = new Point(1088, 141);
             TxtAlignData.Name = "TxtAlignData";
             TxtAlignData.Size = new Size(95, 185);
             TxtAlignData.TabIndex = 63;

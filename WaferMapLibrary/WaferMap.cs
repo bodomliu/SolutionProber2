@@ -29,10 +29,14 @@ namespace WaferMapLibrary
         /// 5 = Fail Die;
         /// 6 = Cur Die;
         /// 7 = Teach Die;
-        /// 8 = Sample Die.
+        /// 8 = Sample Die. 
+        /// ...
+        /// 100 = 待标定点（黄色）
+        /// 101 = 有效坐标点（绿色）
+        /// 102 = Match失败的点（红色）
         /// </summary>
         public int BIN { get; set; }
-        public int Coordinates { get; set; }//0 = 不是坐标点，1 = 有效坐标点，2 = 需要进行标定的点
+        public int Coordinates { get; set; }
     }
     /// <summary>
     /// 代表注册的WaferMap信息

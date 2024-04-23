@@ -33,13 +33,20 @@
             TxtExpo = new TextBox();
             BtnSetPart = new Button();
             comboBox1 = new ComboBox();
+            BtnCreateModel = new Button();
+            BtnMatch = new Button();
+            BtnClearAll = new Button();
+            button1 = new Button();
+            BtnGenCalibration = new Button();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // BtnSaveImg
             // 
-            BtnSaveImg.Location = new Point(130, 63);
+            BtnSaveImg.Location = new Point(130, 61);
             BtnSaveImg.Name = "BtnSaveImg";
-            BtnSaveImg.Size = new Size(75, 49);
+            BtnSaveImg.Size = new Size(92, 49);
             BtnSaveImg.TabIndex = 33;
             BtnSaveImg.Text = "Save Image";
             BtnSaveImg.UseVisualStyleBackColor = true;
@@ -47,9 +54,9 @@
             // 
             // BtnSetExpo
             // 
-            BtnSetExpo.Location = new Point(130, 34);
+            BtnSetExpo.Location = new Point(130, 32);
             BtnSetExpo.Name = "BtnSetExpo";
-            BtnSetExpo.Size = new Size(75, 23);
+            BtnSetExpo.Size = new Size(92, 23);
             BtnSetExpo.TabIndex = 32;
             BtnSetExpo.Text = "Set Expo";
             BtnSetExpo.UseVisualStyleBackColor = true;
@@ -66,7 +73,7 @@
             // 
             BtnSetPart.Location = new Point(130, 3);
             BtnSetPart.Name = "BtnSetPart";
-            BtnSetPart.Size = new Size(75, 23);
+            BtnSetPart.Size = new Size(92, 23);
             BtnSetPart.TabIndex = 30;
             BtnSetPart.Text = "Set Part";
             BtnSetPart.UseVisualStyleBackColor = true;
@@ -82,17 +89,80 @@
             comboBox1.TabIndex = 29;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
+            // BtnCreateModel
+            // 
+            BtnCreateModel.Location = new Point(130, 116);
+            BtnCreateModel.Name = "BtnCreateModel";
+            BtnCreateModel.Size = new Size(92, 50);
+            BtnCreateModel.TabIndex = 34;
+            BtnCreateModel.Text = "Create Model";
+            BtnCreateModel.UseVisualStyleBackColor = true;
+            // 
+            // BtnMatch
+            // 
+            BtnMatch.Location = new Point(231, 176);
+            BtnMatch.Name = "BtnMatch";
+            BtnMatch.Size = new Size(92, 50);
+            BtnMatch.TabIndex = 35;
+            BtnMatch.Text = "Match";
+            BtnMatch.UseVisualStyleBackColor = true;
+            BtnMatch.Click += BtnMatch_Click;
+            // 
+            // BtnClearAll
+            // 
+            BtnClearAll.Location = new Point(231, 288);
+            BtnClearAll.Name = "BtnClearAll";
+            BtnClearAll.Size = new Size(92, 50);
+            BtnClearAll.TabIndex = 35;
+            BtnClearAll.Text = "Clear All";
+            BtnClearAll.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(231, 232);
+            button1.Name = "button1";
+            button1.Size = new Size(92, 50);
+            button1.TabIndex = 35;
+            button1.Text = "Clear";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // BtnGenCalibration
+            // 
+            BtnGenCalibration.Location = new Point(231, 344);
+            BtnGenCalibration.Name = "BtnGenCalibration";
+            BtnGenCalibration.Size = new Size(92, 50);
+            BtnGenCalibration.TabIndex = 35;
+            BtnGenCalibration.Text = "Gen Calibration";
+            BtnGenCalibration.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(4, 176);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(219, 218);
+            dataGridView1.TabIndex = 37;
+            // 
             // VisionControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Silver;
+            Controls.Add(dataGridView1);
+            Controls.Add(BtnGenCalibration);
+            Controls.Add(button1);
+            Controls.Add(BtnClearAll);
+            Controls.Add(BtnMatch);
+            Controls.Add(BtnCreateModel);
             Controls.Add(BtnSaveImg);
             Controls.Add(BtnSetExpo);
             Controls.Add(TxtExpo);
             Controls.Add(BtnSetPart);
             Controls.Add(comboBox1);
             Name = "VisionControl";
-            Size = new Size(212, 453);
+            Size = new Size(330, 565);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -104,5 +174,11 @@
         private TextBox TxtExpo;
         private Button BtnSetPart;
         private ComboBox comboBox1;
+        private Button BtnCreateModel;
+        private Button BtnMatch;
+        private Button BtnClearAll;
+        private Button button1;
+        private Button BtnGenCalibration;
+        private DataGridView dataGridView1;
     }
 }

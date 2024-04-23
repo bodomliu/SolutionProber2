@@ -1,5 +1,6 @@
 ﻿using CommonComponentLibrary;
 using MotionLibrary;
+using System.Threading;
 using VisionLibrary;
 using WaferMapLibrary;
 
@@ -95,12 +96,12 @@ namespace MainForm
 
         private void BtnMatch1_Click(object sender, EventArgs e)
         {
-            Alignment.Match(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out _, out _);
+            CommonFunctions.Match(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, true,out _, out _);
         }
 
         private void BtnMatch2_Click(object sender, EventArgs e)
         {
-            Alignment.Match(DeviceData.Entity.WaferAlignment.LowPattern2, Vision.WaferLowMag, out _, out _);
+            CommonFunctions.Match(DeviceData.Entity.WaferAlignment.LowPattern2, Vision.WaferLowMag, true,out _, out _);
         }
     }
 }

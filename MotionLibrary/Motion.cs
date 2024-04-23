@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using WaferMapLibrary;
+﻿using System.Text.Json;
 using static GTN.mc;
-using static GTN.mc_ringnet;
-using static MotionLibrary.Compensation;
 
 namespace MotionLibrary
 {
@@ -53,9 +44,9 @@ namespace MotionLibrary
 
         //public static double ALIGNDIVIDEY = 3700000;
         //RefPin 位置(临时)
-        public  double XPROBER { get; set; } = 2204128;
-        public  double YPROBER { get; set; } = 4125209;
-        public  double ZPROBER { get; set; } = 78481;
+        public double XPROBER { get; set; } = 2204128;
+        public double YPROBER { get; set; } = 4125209;
+        public double ZPROBER { get; set; } = 78481;
     }
 
     static public class Motion
@@ -138,7 +129,7 @@ namespace MotionLibrary
         /// </summary>
         /// <param name="core"></param>
         /// <param name="axisCount"></param>
-        public static void MultiAxisOn(short core,short axisCount)
+        public static void MultiAxisOn(short core, short axisCount)
         {
             //核1=4轴，核2=6轴
             GTN.mc.GTN_ClrSts(core, 1, axisCount);//清除轴状态
@@ -661,7 +652,7 @@ namespace MotionLibrary
         private static void SmartHome(short core, short axis, GTN.mc.THomePrm homePrm, out GTN.mc.THomeStatus pHomeStatus)
         {
             //软限位无效
-            GTN_LmtsOffEx(core, axis, MC_LIMIT_NEGATIVE,1);
+            GTN_LmtsOffEx(core, axis, MC_LIMIT_NEGATIVE, 1);
 
             int pStatus;
             uint pClock;
@@ -1077,9 +1068,9 @@ namespace MotionLibrary
                     break;
                 default:
                     break;
-            
+
             }
-                
+
             return;
         }
     }

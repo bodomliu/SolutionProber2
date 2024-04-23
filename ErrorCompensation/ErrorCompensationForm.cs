@@ -1,14 +1,4 @@
 ﻿using CommonComponentLibrary;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using VisionLibrary;
 using WaferMapLibrary;
 //using static CommonComponentLibrary.AlignmentForm;
@@ -48,9 +38,9 @@ namespace MotionLibrary
             panelMap.Controls.Add(mapCanvas);
             mapCanvas.LoadCanvas();
 
-            //WaferMapCanvas mapCanvasMini = new WaferMapCanvas();
-            //panelMapMini.Controls.Add(mapCanvasMini);
-            //mapCanvasMini.Dock = DockStyle.Fill;
+            WaferMapCanvas mapCanvas1 = WaferMapCanvas.Canvas;
+            panelMapMini.Controls.Add(mapCanvas1);
+            mapCanvas1.LoadCanvas();
         }
 
         private void ErrorCompensationForm_Load(object sender, EventArgs e)
@@ -61,7 +51,7 @@ namespace MotionLibrary
 
             //默认
             commonPanel.Visible = false;
-            
+
             RefreshChart();
         }
 
@@ -185,36 +175,46 @@ namespace MotionLibrary
         {
             if (StopFlag) return;
 
-            ////获取该index位置的用户位置posx和posy
-            //WaferMap.GetMapPointValue(indexX, indexY, out double userPosX, out double userPosY, out _, out _, out _, out int coordinates);
-            ////不是标定点，不需要进行后续align
-            //if (coordinates == 0) return;
+            //获取该index位置的用户位置posx和posy
+            //不是标定点，不需要进行后续align
+            if (CommonFunctions.GetBIN(indexX, indexY) == 0) return;
 
-            ////计算插补后的坐标位置，需要加上highAlign后的晶圆偏移
-            //Compensation.Area area = (IsProbeArea) ? Compensation.Area.Probing : Compensation.Area.Align;
-            //Compensation.Transform(area, Compensation.Dir.User2Encode, userPosX + WaferMap.WaferOffsetX, userPosY + WaferMap.WaferOffsetY, out double encodeX, out double encodeY);
+            //计算插补后的坐标位置，需要加上highAlign后的晶圆偏移
+            Compensation.Area area = (IsProbeArea) ? Compensation.Area.Probing : Compensation.Area.Align;
+            CommonFunctions.IndexMove(indexX, indexY);
 
-            ////为了绘制WaferMapCanvas
-            //WaferMap.IndexX = indexX; WaferMap.IndexY = indexY;
+            //去做运动校准
+            CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
+            int res = CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, mag, false, out double deltaX, out double deltaY);
+            //未匹配到模板
+            if (res != 0) { SetMappingValue(indexX, indexY, double.NaN, double.NaN, 102); return; }
+            if (RbtnCheckOnly.Checked)
+            {
+                //绘制点，插值计算后的走点 - 校准后的理想点 = 差异
+                DrawPoint(indexX, indexY, deltaX, deltaY);
+            }
 
-            ////去做运动校准
-            //VisionClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
-            //int res = Alignment.Align(WaferMap.HighModelPattern1, mag, encodeX, encodeY, out double encodeAfterAlignX, out double encodeAfterAlignY);
-            ////未匹配到模板
-            //if (res != 0) return;
+            //完事后覆盖encode值
+            if (RbtnWriteData.Checked)
+            {
+                Motion.XY_GetEncPos(out double X, out double Y);
+                SetMappingValue(indexX, indexY, X, Y, 101);
+            }
+        }
 
-            //if (RbtnCheckOnly.Checked)
-            //{
-            //    //绘制点，插值计算后的走点 - 校准后的理想点 = 差异
-            //    DrawPoint(indexX, indexY, encodeX - encodeAfterAlignX, encodeY - encodeAfterAlignY);
-            //}
+        private static int SetMappingValue(int indexX, int indexY, double encodeX, double encodeY,int bin)
+        {
+            if (WaferMap.Entity.MappingPoints == null) return 1;
 
-            ////完事后覆盖encode值
-            //if (RbtnWriteData.Checked)
-            //{
-            //    WaferMap.SetMapPointValue(indexX, indexY, userPosX + WaferMap.WaferOffsetX, userPosY + WaferMap.WaferOffsetY,
-            //        encodeAfterAlignX, encodeAfterAlignY, 4, 1);
-            //}
+            var point = WaferMap.Entity.MappingPoints.Find(p => p.IndexX == indexX && p.IndexY == indexY);
+            if (point == null) return 2;
+
+            //point.UserPosX = userPosX; point.UserPosY = userPosY;
+            point.EncodeX = encodeX; point.EncodeY = encodeY;
+            point.BIN = bin; 
+            //point.Coordinates = 1;
+
+            return 0;
         }
 
         private void BtnStop_Click(object sender, EventArgs e)

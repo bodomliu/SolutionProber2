@@ -32,11 +32,11 @@
             BtnDeviceSettings = new Button();
             BtnAlignment = new Button();
             BtnMotionControl = new Button();
+            BtnSetupUtility = new Button();
             BtnErrorCompensation = new Button();
             BtnLotProcess = new Button();
             panelForm = new Panel();
             panelStatus = new Panel();
-            BtnSetupUtility = new Button();
             panelMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,7 +69,7 @@
             // BtnAlignment
             // 
             BtnAlignment.BackColor = Color.YellowGreen;
-            BtnAlignment.Location = new Point(21, 213);
+            BtnAlignment.Location = new Point(21, 279);
             BtnAlignment.Name = "BtnAlignment";
             BtnAlignment.Size = new Size(100, 60);
             BtnAlignment.TabIndex = 1;
@@ -80,13 +80,24 @@
             // BtnMotionControl
             // 
             BtnMotionControl.BackColor = Color.YellowGreen;
-            BtnMotionControl.Location = new Point(21, 147);
+            BtnMotionControl.Location = new Point(21, 213);
             BtnMotionControl.Name = "BtnMotionControl";
             BtnMotionControl.Size = new Size(100, 60);
             BtnMotionControl.TabIndex = 1;
             BtnMotionControl.Text = "Motion Control";
             BtnMotionControl.UseVisualStyleBackColor = false;
             BtnMotionControl.Click += BtnMotionControl_Click;
+            // 
+            // BtnSetupUtility
+            // 
+            BtnSetupUtility.BackColor = Color.Orange;
+            BtnSetupUtility.Location = new Point(21, 147);
+            BtnSetupUtility.Name = "BtnSetupUtility";
+            BtnSetupUtility.Size = new Size(100, 60);
+            BtnSetupUtility.TabIndex = 1;
+            BtnSetupUtility.Text = "Setup Utility";
+            BtnSetupUtility.UseVisualStyleBackColor = false;
+            BtnSetupUtility.Click += BtnSetupUtility_Click;
             // 
             // BtnErrorCompensation
             // 
@@ -129,17 +140,6 @@
             panelStatus.Name = "panelStatus";
             panelStatus.Size = new Size(1904, 100);
             panelStatus.TabIndex = 0;
-            // 
-            // BtnSetupUtility
-            // 
-            BtnSetupUtility.BackColor = Color.Orange;
-            BtnSetupUtility.Location = new Point(127, 81);
-            BtnSetupUtility.Name = "BtnSetupUtility";
-            BtnSetupUtility.Size = new Size(100, 60);
-            BtnSetupUtility.TabIndex = 1;
-            BtnSetupUtility.Text = "Setup Utility";
-            BtnSetupUtility.UseVisualStyleBackColor = false;
-            BtnSetupUtility.Click += BtnSetupUtility_Click;
             // 
             // MainForm
             // 

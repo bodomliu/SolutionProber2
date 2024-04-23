@@ -11,9 +11,9 @@ namespace MainForm
             InitializeComponent();
 
             //¡Ÿ ±¥˙¬Î
-            WaferMap.Load("DeviceData/0411WaferMap.json");
-            DeviceData.Load("DeviceData/0411DeviceData.json");
-            TxtFileName.Text = "DeviceData/0411DeviceData.json";
+            WaferMap.Load("DeviceData/ErrorMapWaferMap.json");
+            DeviceData.Load("DeviceData/ErrorMapDeviceData.json");
+            TxtFileName.Text = "DeviceData/ErrorMapDeviceData.json";
         }
 
         private void BtnWaferMap_Click(object sender, EventArgs e)
@@ -28,14 +28,14 @@ namespace MainForm
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            WaferMap.Save("DeviceData/0411WaferMap.json");
-            DeviceData.Save("DeviceData/0411DeviceData.json");
+            WaferMap.Save("DeviceData/ErrorMapWaferMap.json");
+            DeviceData.Save("DeviceData/ErrorMapDeviceData.json");
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            WaferMap.Load("DeviceData/0411WaferMap.json");
-            DeviceData.Load("DeviceData/0411DeviceData.json");
+            WaferMap.Load("DeviceData/ErrorMapWaferMap.json");
+            DeviceData.Load("DeviceData/ErrorMapDeviceData.json");
         }
     }
 }

@@ -24,7 +24,8 @@ namespace MainForm
         private void BtnVision_Click(object sender, EventArgs e)
         {
             VisionControl visionControl = new VisionControl();
-            panelForm.Controls.Add(visionControl);
+            panelForm.Controls.Clear();
+           panelForm.Controls.Add(visionControl);
             visionControl.Dock = DockStyle.Right;
 
             //Ìí¼ÓcommonPanel

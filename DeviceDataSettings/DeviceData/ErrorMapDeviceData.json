@@ -1,0 +1,13 @@
+{
+  "PhysicalInformation": {
+    "DeviceName": "12INCH",
+    "WaferSize": 12,
+    "Thickness": 8000
+  },
+  "WaferAlignment": {
+    "LowPattern1": "VisionConfig/ErrorMapLowPattern1.shm",
+    "LowPattern2": "VisionConfig/ErrorMapLowPattern2.shm",
+    "HighPattern1": "VisionConfig/ErrorMapHighPattern1.shm",
+    "HighPattern2": "VisionConfig/ErrorMapHighPattern2.shm"
+  }
+}
