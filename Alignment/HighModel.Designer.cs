@@ -103,7 +103,7 @@
             BtnMoveToRefDie.BackColor = Color.YellowGreen;
             BtnMoveToRefDie.Location = new Point(16, 136);
             BtnMoveToRefDie.Name = "BtnMoveToRefDie";
-            BtnMoveToRefDie.Size = new Size(156, 59);
+            BtnMoveToRefDie.Size = new Size(156, 65);
             BtnMoveToRefDie.TabIndex = 49;
             BtnMoveToRefDie.Text = "Move To Ref Die";
             BtnMoveToRefDie.UseVisualStyleBackColor = false;
@@ -112,7 +112,7 @@
             // BtnPat2Reg
             // 
             BtnPat2Reg.BackColor = Color.Teal;
-            BtnPat2Reg.Location = new Point(178, 156);
+            BtnPat2Reg.Location = new Point(174, 155);
             BtnPat2Reg.Name = "BtnPat2Reg";
             BtnPat2Reg.Size = new Size(134, 45);
             BtnPat2Reg.TabIndex = 50;
@@ -123,7 +123,7 @@
             // BtnPat1Reg
             // 
             BtnPat1Reg.BackColor = Color.Orange;
-            BtnPat1Reg.Location = new Point(178, 105);
+            BtnPat1Reg.Location = new Point(174, 103);
             BtnPat1Reg.Name = "BtnPat1Reg";
             BtnPat1Reg.Size = new Size(134, 46);
             BtnPat1Reg.TabIndex = 51;
@@ -156,9 +156,9 @@
             // BtnMatch1
             // 
             BtnMatch1.BackColor = Color.Orange;
-            BtnMatch1.Location = new Point(318, 106);
+            BtnMatch1.Location = new Point(314, 103);
             BtnMatch1.Name = "BtnMatch1";
-            BtnMatch1.Size = new Size(70, 45);
+            BtnMatch1.Size = new Size(70, 46);
             BtnMatch1.TabIndex = 51;
             BtnMatch1.Text = "Match";
             BtnMatch1.UseVisualStyleBackColor = false;
@@ -175,7 +175,7 @@
             // BtnMatch2
             // 
             BtnMatch2.BackColor = Color.Orange;
-            BtnMatch2.Location = new Point(318, 157);
+            BtnMatch2.Location = new Point(314, 155);
             BtnMatch2.Name = "BtnMatch2";
             BtnMatch2.Size = new Size(70, 45);
             BtnMatch2.TabIndex = 51;
