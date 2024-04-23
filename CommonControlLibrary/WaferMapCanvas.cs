@@ -26,6 +26,8 @@ namespace CommonComponentLibrary
             canvas.BorderStyle = BorderStyle.FixedSingle;
 
             canvas.MouseDown += WaferMapCanvas_MouseDown;
+            this._backgroundBitmap = new Bitmap(this.Width, this.Height);
+            this._simplifiedBitmap = new Bitmap(this.Width, this.Height);
         }
 
         /// <summary>
@@ -55,11 +57,11 @@ namespace CommonComponentLibrary
         /// <summary>
         /// map 图层
         /// </summary>
-        private Bitmap? _backgroundBitmap;
+        private Bitmap _backgroundBitmap;
         /// <summary>
         /// 放大后的简略图
         /// </summary>
-        private Bitmap? _simplifiedBitmap;
+        private Bitmap _simplifiedBitmap;
         /// <summary>
         /// X 轴缩放比例
         /// </summary>
@@ -152,14 +154,14 @@ namespace CommonComponentLibrary
             using var sb = new SolidBrush(color);
             e.FillRectangle(sb, idxX * width, idxY * height, width, height);
         }
-        private void DrawIndex(Graphics e)
+        private void DrawIndex(int idxX, int idxY, Graphics e, Color color)
         {
 
-            using Pen p = new Pen((Color.White), 3);
+            using Pen p = new Pen(color, 3);
             float width = (float)WaferMap.Entity.DieSizeX / UnitPerPixelX;
             float height = (float)WaferMap.Entity.DieSizeY / UnitPerPixelY;
-            e.DrawRectangle(p, WaferMap.CurrentIndexX * width, WaferMap.CurrentIndexY * height, width, height);
-
+            //e.DrawRectangle(p, WaferMap.CurrentIndexX * width, WaferMap.CurrentIndexY * height, width, height);
+            e.DrawRectangle(p, idxX * width, idxY * height, width, height);
         }
 
         /// <summary>
@@ -204,10 +206,10 @@ namespace CommonComponentLibrary
                 }
             }
 
-            DrawRect(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, gp, Color.Purple);//画参考die
+            DrawIndex(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, gp, Color.Purple);//画参考die
             DrawGrid(gp);//方格
             DrawCircle(gp, UnitPerPixelX, UnitPerPixelY);//
-            DrawIndex(gp);
+            DrawIndex(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, gp, Color.White);
             canvas.Image?.Dispose();
             canvas.Image = MergeBitmap();
 
