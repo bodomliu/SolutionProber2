@@ -825,7 +825,7 @@ namespace VisionLibrary
         /// <returns>0:计算成功 1：obj数量不唯一</returns>
         public int GetWaferEdge(out double DeltaX, out double DeltaY)
         {
-            return Blob(0, 30, 15000, 100000, out DeltaX, out DeltaY, out _, out _);           
+            return Blob(0, 20, 15000, 100000, out DeltaX, out DeltaY, out _, out _);           
         }
 
         /// <summary>

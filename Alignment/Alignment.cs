@@ -26,13 +26,13 @@ namespace MainForm
 
             //运动到L点做精定位
             Motion.UserPosMoveAbs(Compensation.Area.Align, startX0 - L * dieSizeX, startY0);
-            res = CommonFunctions.Match(pattenModel, Mag,true,out _,out _);
+            res = CommonFunctions.Match(pattenModel, Mag,out _,out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
             Motion.GetUserPos(Compensation.Area.Align, out double startX1, out double startY1);
 
             //运动到R点做精定位
             Motion.UserPosMoveAbs(Compensation.Area.Align, startX0 + R * dieSizeX, startY0);
-            res = CommonFunctions.Match(pattenModel, Mag, true,out _, out _);
+            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
             Motion.GetUserPos(Compensation.Area.Align, out double startX2, out double startY2);
 

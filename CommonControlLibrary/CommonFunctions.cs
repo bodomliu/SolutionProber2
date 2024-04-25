@@ -145,7 +145,7 @@ namespace CommonComponentLibrary
         /// <param name="DeltaX">X轴Match过程相对位移</param>
         /// <param name="DeltaY">Y轴Match过程相对位移</param>
         /// <returns>0：匹配成功  1：没有图像  2：匹配失败</returns>
-        public static int Match(string pattenModel, CameraClass Mag, bool delay,out double DeltaX, out double DeltaY)
+        public static int Match(string pattenModel, CameraClass Mag,out double DeltaX, out double DeltaY)
         {
             Mag.TriggerMode();//单拍模式，对相机模式的切换写在这里合适吗？
             Mag.TriggerExec();//触发一帧
@@ -159,23 +159,28 @@ namespace CommonComponentLibrary
             }
             //相对运动到匹配点
             Motion.XYZ_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 0, 600, 10, 10, 20);
-            if (delay) 
-            {
-                Mag.TriggerExec();//触发一帧
-                Thread.Sleep(500);//显示补偿效果
-            }
+
+            Mag.TriggerExec();//触发一帧
+            Thread.Sleep(500);//显示补偿效果
+
             Mag.ContinuesMode();//连拍模式，匹配完，切回连拍模式
             return 0;
         }
 
-        public static int GetBIN(int indexX, int indexY)
+        public static int FastMatch(string pattenModel, CameraClass Mag, out double deltaX,out double deltaY,out double encodeX, out double encodeY)
         {
-            if (WaferMap.Entity.MappingPoints == null) return int.MaxValue;
+            Mag.TriggerExec();//触发一帧
+            //匹配pattenModel
+            int res = Mag.halconClass.FindShapeModel(pattenModel, 0, out deltaX, out deltaY, out _, out _, out _, out _);
 
-            var point = WaferMap.Entity.MappingPoints.Find(p => p.IndexX == indexX && p.IndexY == indexY);
-            if (point == null) return int.MaxValue;
-
-            return point.BIN;
+            Motion.XY_GetEncPos(out encodeX, out encodeY);
+            encodeX += deltaX;
+            encodeY += deltaY;
+            if (res != 0)
+            {                
+                return res;//若匹配失败，直接返回findShapeModel错误结果
+            }
+            return 0;
         }
 
         /// <summary>

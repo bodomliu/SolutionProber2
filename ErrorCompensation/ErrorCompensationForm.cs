@@ -63,13 +63,15 @@ namespace MotionLibrary
 
         private void RbtnWaferCamera_CheckedChanged(object sender, EventArgs e)
         {
-            Vision.ChangeCamera(Vision.WaferHighMag);
-            Vision.WaferHighMag.ContinuesMode();
-        }
-
-        private void RbtnJigCamera_CheckedChanged(object sender, EventArgs e)
-        {
-            Vision.ChangeCamera(Vision.JigCamera);
+            //两个radio button都会指向同一个事件
+            if (RbtnWaferCamera.Checked)
+            {
+                Vision.ChangeCamera(Vision.WaferHighMag);
+            }
+            else if (RbtnJigCamera.Checked)
+            {
+                Vision.ChangeCamera(Vision.JigCamera);
+            }
         }
 
         private void RefreshChart()
@@ -122,6 +124,8 @@ namespace MotionLibrary
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
+            CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
+            mag.TriggerMode();
             StopFlag = false;//只有点了Start才置Flag
 
             //临时代码，先将高度运动到平均高度，定好位再做，不然不行
@@ -138,7 +142,9 @@ namespace MotionLibrary
             else if (RbtnSelective.Checked)
             {
 
+
             }
+            mag.ContinuesMode();
         }
 
         private void AlignCrossX()
@@ -173,11 +179,11 @@ namespace MotionLibrary
         //特征校准
         private void AlignPosition(int indexX, int indexY)
         {
-            if (StopFlag) return;
+            if (StopFlag)return; 
 
             //获取该index位置的用户位置posx和posy
             //不是标定点，不需要进行后续align
-            if (CommonFunctions.GetBIN(indexX, indexY) == 0) return;
+            if (WaferMap.GetBIN(indexX, indexY) != 1) return;
 
             //计算插补后的坐标位置，需要加上highAlign后的晶圆偏移
             Compensation.Area area = (IsProbeArea) ? Compensation.Area.Probing : Compensation.Area.Align;
@@ -185,20 +191,19 @@ namespace MotionLibrary
 
             //去做运动校准
             CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
-            int res = CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, mag, false, out double deltaX, out double deltaY);
+            int res = CommonFunctions.FastMatch(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double deltaX,out double deltaY,out double encodeX, out double encodeY);
             //未匹配到模板
-            if (res != 0) { SetMappingValue(indexX, indexY, double.NaN, double.NaN, 102); return; }
+            if (res != 0) { WaferMap.SetBIN(indexX, indexY, 5); return; }
             if (RbtnCheckOnly.Checked)
             {
                 //绘制点，插值计算后的走点 - 校准后的理想点 = 差异
                 DrawPoint(indexX, indexY, deltaX, deltaY);
-            }
-
-            //完事后覆盖encode值
-            if (RbtnWriteData.Checked)
+                WaferMap.SetBIN(indexX, indexY, 4);
+            }            
+            else if (RbtnWriteData.Checked)
             {
-                Motion.XY_GetEncPos(out double X, out double Y);
-                SetMappingValue(indexX, indexY, X, Y, 101);
+                ////完事后覆盖encode值
+                SetMappingValue(indexX, indexY, encodeX, encodeY, 4);
             }
         }
 
@@ -224,16 +229,17 @@ namespace MotionLibrary
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            if (WaferMap.Entity.MappingPoints == null) return;
+            WaferMap.Load("DeviceData/ErrorMapWaferMap.json");
+            //if (WaferMap.Entity.MappingPoints == null) return;
 
-            foreach (var pt in WaferMap.Entity.MappingPoints)
-            {
-                pt.EncodeX = 0;
-                pt.EncodeY = 0;
-                if (pt.Coordinates == 1) { pt.Coordinates = 2; pt.BIN = 1; }
-                if (pt.Coordinates == 2) { pt.Coordinates = 2; pt.BIN = 1; }
-            }
-            //WaferMap.Canvas.RefreshCanvas();
+            //foreach (var pt in WaferMap.Entity.MappingPoints)
+            //{
+            //    pt.EncodeX = double.NaN;
+            //    pt.EncodeY = double.NaN;
+            //    if (pt.BIN == 1) { pt.Coordinates = 2; pt.BIN = 1; }
+            //    if (pt.BIN == 2) { pt.Coordinates = 2; pt.BIN = 1; }
+            //}
+            WaferMapCanvas.Canvas.RefreshCanvas();
         }
 
         private void BtnClearPicturebox_Click(object sender, EventArgs e)

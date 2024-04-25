@@ -1,8 +1,8 @@
 {
   "WaferSize": 12,
   "WaferDiameter": 3000000,
-  "DieSizeX": 25820,
-  "DieSizeY": 33918.325,
+  "DieSizeX": 25820.25,
+  "DieSizeY": 33918.34,
   "DieNumX": 118,
   "DieNumY": 91,
   "RefDieX": 58,

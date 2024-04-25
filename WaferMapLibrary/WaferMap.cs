@@ -30,10 +30,6 @@ namespace WaferMapLibrary
         /// 6 = Cur Die;
         /// 7 = Teach Die;
         /// 8 = Sample Die. 
-        /// ...
-        /// 100 = 待标定点（黄色）
-        /// 101 = 有效坐标点（绿色）
-        /// 102 = Match失败的点（红色）
         /// </summary>
         public int BIN { get; set; }
         public int Coordinates { get; set; }
@@ -217,6 +213,29 @@ namespace WaferMapLibrary
             string jsonString = File.ReadAllText(filePath);
             var item = JsonSerializer.Deserialize<WaferMapClass>(jsonString);
             if (item != null) Entity = item;
+        }
+        public static int GetBIN(int indexX, int indexY)
+        {
+            if (Entity.MappingPoints == null) return int.MaxValue;
+
+            var point = Entity.MappingPoints.Find(p => p.IndexX == indexX && p.IndexY == indexY);
+            if (point == null) return int.MaxValue;
+
+            return point.BIN;
+        }
+        public static int SetBIN(int indexX, int indexY, int bin)
+        {
+            if (Entity.MappingPoints == null) return 1;
+
+            var point = Entity.MappingPoints.Find(p => p.IndexX == indexX && p.IndexY == indexY);
+            if (point == null) return 2;
+
+            //point.UserPosX = userPosX; point.UserPosY = userPosY;
+            //point.EncodeX = encodeX; point.EncodeY = encodeY;
+            point.BIN = bin;
+            //point.Coordinates = 1;
+
+            return 0;
         }
     }
 }

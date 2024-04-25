@@ -106,7 +106,6 @@
             RbtnJigCamera.TabIndex = 1;
             RbtnJigCamera.Text = "Jig Camera";
             RbtnJigCamera.UseVisualStyleBackColor = true;
-            RbtnJigCamera.CheckedChanged += RbtnJigCamera_CheckedChanged;
             // 
             // RbtnWaferCamera
             // 
