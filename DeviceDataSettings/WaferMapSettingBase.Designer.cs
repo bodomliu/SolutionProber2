@@ -48,8 +48,14 @@
             offsetX = new TextBox();
             label7 = new Label();
             label6 = new Label();
+            panel3 = new Panel();
+            label8 = new Label();
+            label9 = new Label();
+            Org2PatIIX = new TextBox();
+            Org2PatIIY = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // SetRatio
@@ -136,7 +142,7 @@
             panel1.Controls.Add(SizeX);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
-            panel1.Location = new Point(15, 117);
+            panel1.Location = new Point(15, 105);
             panel1.Name = "panel1";
             panel1.Size = new Size(113, 62);
             panel1.TabIndex = 11;
@@ -179,7 +185,7 @@
             NumX.Enabled = false;
             NumX.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             NumX.ForeColor = SystemColors.Window;
-            NumX.Location = new Point(15, 89);
+            NumX.Location = new Point(15, 77);
             NumX.Name = "NumX";
             NumX.ReadOnly = true;
             NumX.Size = new Size(46, 28);
@@ -193,7 +199,7 @@
             NumY.Enabled = false;
             NumY.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             NumY.ForeColor = SystemColors.Window;
-            NumY.Location = new Point(77, 89);
+            NumY.Location = new Point(77, 77);
             NumY.Name = "NumY";
             NumY.ReadOnly = true;
             NumY.Size = new Size(46, 28);
@@ -208,7 +214,7 @@
             panel2.Controls.Add(offsetX);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
-            panel2.Location = new Point(15, 185);
+            panel2.Location = new Point(15, 173);
             panel2.Name = "panel2";
             panel2.Size = new Size(261, 82);
             panel2.TabIndex = 14;
@@ -245,10 +251,55 @@
             label6.TabIndex = 0;
             label6.Text = "Center2RefDieCornerX";
             // 
+            // panel3
+            // 
+            panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Controls.Add(Org2PatIIY);
+            panel3.Controls.Add(Org2PatIIX);
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(label8);
+            panel3.Location = new Point(15, 261);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(261, 80);
+            panel3.TabIndex = 4;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(70, 15);
+            label8.Name = "label8";
+            label8.Size = new Size(72, 17);
+            label8.TabIndex = 0;
+            label8.Text = "Org2PatIIX";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(69, 48);
+            label9.Name = "label9";
+            label9.Size = new Size(71, 17);
+            label9.TabIndex = 1;
+            label9.Text = "Org2PatIIY";
+            // 
+            // Org2PatIIX
+            // 
+            Org2PatIIX.Location = new Point(163, 12);
+            Org2PatIIX.Name = "Org2PatIIX";
+            Org2PatIIX.Size = new Size(91, 23);
+            Org2PatIIX.TabIndex = 2;
+            // 
+            // Org2PatIIY
+            // 
+            Org2PatIIY.Location = new Point(163, 45);
+            Org2PatIIY.Name = "Org2PatIIY";
+            Org2PatIIY.Size = new Size(91, 23);
+            Org2PatIIY.TabIndex = 3;
+            // 
             // WaferMapSettingBase
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(NumY);
             Controls.Add(NumX);
@@ -262,12 +313,14 @@
             Controls.Add(WaferSize);
             Controls.Add(label1);
             Name = "WaferMapSettingBase";
-            Size = new Size(283, 270);
-            Load += WaferMapSetting_1_Load;
+            Size = new Size(283, 350);
+            Load += WaferMapSettingBaseLoad;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -295,5 +348,10 @@
         private Label label7;
         private TextBox offsetY;
         private TextBox offsetX;
+        private Panel panel3;
+        private Label label9;
+        private Label label8;
+        private TextBox Org2PatIIY;
+        private TextBox Org2PatIIX;
     }
 }

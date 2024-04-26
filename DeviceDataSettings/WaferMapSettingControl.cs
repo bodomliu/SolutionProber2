@@ -65,6 +65,7 @@ namespace DeviceDataSettings
             {
                 panel2.Controls.Clear();
                 panel2.Controls.Add(_wmsb);
+                _wmsb.ReLoad();
             }
         }
 
@@ -75,6 +76,7 @@ namespace DeviceDataSettings
             {
                 panel2.Controls.Clear();
                 panel2.Controls.Add(_wmsm);
+                _wmsm.Reload();
             }
         }
 
@@ -85,6 +87,7 @@ namespace DeviceDataSettings
             {
                 panel2.Controls.Clear();
                 panel2.Controls.Add(_wmsc);
+                _wmsc.Reload();
             }
         }
 
@@ -105,6 +108,7 @@ namespace DeviceDataSettings
             {
                 panel2.Controls.Clear();
                 panel2.Controls.Add(_wmsmap);
+                _wmsmap.Reload();
             }
         }
 

@@ -152,8 +152,12 @@ namespace DeviceDataSettings
 
         private MappingPoint? getMappingPint(int x, int y)
         {
+            if (null == WaferMap.Entity.MappingPoints)
+                return null;
             // 计算具体的 index
             int index = WaferMap.Entity.DieNumX * y + x;
+            if (index >= WaferMap.Entity.MappingPoints.Count)
+                return null;
             var p = WaferMap.Entity.MappingPoints?[index];
             if (null == p || p.IndexX != x || p.IndexY != y)
             {
