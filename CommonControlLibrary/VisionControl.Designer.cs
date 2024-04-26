@@ -97,6 +97,7 @@
             BtnCreateModel.TabIndex = 34;
             BtnCreateModel.Text = "Create Model";
             BtnCreateModel.UseVisualStyleBackColor = true;
+            BtnCreateModel.Click += BtnCreateModel_Click;
             // 
             // BtnMatch
             // 
@@ -116,6 +117,7 @@
             BtnClearAll.TabIndex = 35;
             BtnClearAll.Text = "Clear All";
             BtnClearAll.UseVisualStyleBackColor = true;
+            BtnClearAll.Click += BtnClearAll_Click;
             // 
             // button1
             // 
@@ -125,6 +127,7 @@
             button1.TabIndex = 35;
             button1.Text = "Clear";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += BtnClear_Click;
             // 
             // BtnGenCalibration
             // 
@@ -134,6 +137,7 @@
             BtnGenCalibration.TabIndex = 35;
             BtnGenCalibration.Text = "Gen Calibration";
             BtnGenCalibration.UseVisualStyleBackColor = true;
+            BtnGenCalibration.Click += BtnGenCalibration_Click;
             // 
             // dataGridView1
             // 

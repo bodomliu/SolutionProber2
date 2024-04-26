@@ -11,11 +11,15 @@ namespace MainForm
             InitializeComponent();
 
             //¡Ÿ ±¥˙¬Î
-            WaferMap.Load("DeviceData/ErrorMapWaferMap.json");
-            DeviceData.Load("DeviceData/ErrorMapDeviceData.json");
-            TxtFileName.Text = "DeviceData/ErrorMapDeviceData.json";
+            DirectoryInfo folder = new DirectoryInfo("DeviceData/"); 
+            foreach (FileInfo file in folder.GetFiles("*.*", SearchOption.AllDirectories))
+            {   
+                CbxDeviceData.Items.Add(file.Name);
+                CbxWaferMap.Items.Add(file.Name);
+            }
+            CbxDeviceData.SelectedItem = "0411DeviceData.json";
+            CbxWaferMap.SelectedItem = "0411WaferMap.json";
         }
-
         private void BtnWaferMap_Click(object sender, EventArgs e)
         {
             panelForm.Controls.Add(new WaferMapSettingControl());
@@ -28,14 +32,21 @@ namespace MainForm
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            WaferMap.Save("DeviceData/ErrorMapWaferMap.json");
-            DeviceData.Save("DeviceData/ErrorMapDeviceData.json");
+            DeviceData.Save("DeviceData/"+ CbxDeviceData.SelectedItem);
+            WaferMap.Save("DeviceData/" + CbxWaferMap.SelectedItem);
+            MessageBox.Show("File Save Success!","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            WaferMap.Load("DeviceData/ErrorMapWaferMap.json");
-            DeviceData.Load("DeviceData/ErrorMapDeviceData.json");
+            DeviceData.Load("DeviceData/" + CbxDeviceData.SelectedItem);
+            WaferMap.Load("DeviceData/" + CbxWaferMap.SelectedItem);
+            MessageBox.Show("File Load Success!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void DeviceDataSettingsForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

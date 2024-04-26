@@ -33,9 +33,12 @@
             BtnDeviceData = new Button();
             panelForm = new Panel();
             panelFile = new Panel();
-            TxtFileName = new TextBox();
+            CbxWaferMap = new ComboBox();
+            CbxDeviceData = new ComboBox();
             BtnSave = new Button();
             BtnLoad = new Button();
+            label1 = new Label();
+            label2 = new Label();
             panelMenu.SuspendLayout();
             panelFile.SuspendLayout();
             SuspendLayout();
@@ -82,7 +85,10 @@
             // panelFile
             // 
             panelFile.BackColor = SystemColors.ActiveBorder;
-            panelFile.Controls.Add(TxtFileName);
+            panelFile.Controls.Add(label2);
+            panelFile.Controls.Add(label1);
+            panelFile.Controls.Add(CbxWaferMap);
+            panelFile.Controls.Add(CbxDeviceData);
             panelFile.Controls.Add(BtnSave);
             panelFile.Controls.Add(BtnLoad);
             panelFile.Dock = DockStyle.Right;
@@ -91,19 +97,28 @@
             panelFile.Size = new Size(200, 350);
             panelFile.TabIndex = 0;
             // 
-            // TxtFileName
+            // CbxWaferMap
             // 
-            TxtFileName.Location = new Point(3, 6);
-            TxtFileName.Name = "TxtFileName";
-            TxtFileName.Size = new Size(191, 23);
-            TxtFileName.TabIndex = 1;
+            CbxWaferMap.FormattingEnabled = true;
+            CbxWaferMap.Location = new Point(3, 82);
+            CbxWaferMap.Name = "CbxWaferMap";
+            CbxWaferMap.Size = new Size(182, 25);
+            CbxWaferMap.TabIndex = 2;
+            // 
+            // CbxDeviceData
+            // 
+            CbxDeviceData.FormattingEnabled = true;
+            CbxDeviceData.Location = new Point(3, 28);
+            CbxDeviceData.Name = "CbxDeviceData";
+            CbxDeviceData.Size = new Size(182, 25);
+            CbxDeviceData.TabIndex = 2;
             // 
             // BtnSave
             // 
             BtnSave.BackColor = Color.Orange;
-            BtnSave.Location = new Point(38, 125);
+            BtnSave.Location = new Point(0, 191);
             BtnSave.Name = "BtnSave";
-            BtnSave.Size = new Size(134, 60);
+            BtnSave.Size = new Size(188, 60);
             BtnSave.TabIndex = 0;
             BtnSave.Text = "Save";
             BtnSave.UseVisualStyleBackColor = false;
@@ -112,13 +127,31 @@
             // BtnLoad
             // 
             BtnLoad.BackColor = Color.Orange;
-            BtnLoad.Location = new Point(38, 59);
+            BtnLoad.Location = new Point(0, 125);
             BtnLoad.Name = "BtnLoad";
-            BtnLoad.Size = new Size(134, 60);
+            BtnLoad.Size = new Size(188, 60);
             BtnLoad.TabIndex = 0;
             BtnLoad.Text = "Read File";
             BtnLoad.UseVisualStyleBackColor = false;
             BtnLoad.Click += BtnLoad_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(3, 6);
+            label1.Name = "label1";
+            label1.Size = new Size(73, 17);
+            label1.TabIndex = 3;
+            label1.Text = "DeviceData";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(3, 62);
+            label2.Name = "label2";
+            label2.Size = new Size(70, 17);
+            label2.TabIndex = 3;
+            label2.Text = "WaferMap";
             // 
             // DeviceDataSettingsForm
             // 
@@ -130,6 +163,7 @@
             Controls.Add(panelMenu);
             Name = "DeviceDataSettingsForm";
             Text = "Form1";
+            Load += DeviceDataSettingsForm_Load;
             panelMenu.ResumeLayout(false);
             panelFile.ResumeLayout(false);
             panelFile.PerformLayout();
@@ -143,8 +177,11 @@
         private Button BtnWaferMap;
         private Button BtnDeviceData;
         private Panel panelFile;
-        private TextBox TxtFileName;
         private Button BtnSave;
         private Button BtnLoad;
+        private ComboBox CbxWaferMap;
+        private ComboBox CbxDeviceData;
+        private Label label2;
+        private Label label1;
     }
 }

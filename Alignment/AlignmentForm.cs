@@ -1,5 +1,5 @@
 ﻿using CommonComponentLibrary;
-using MotionLibrary;
+using MainForm;
 using VisionLibrary;
 using WaferMapLibrary;
 
@@ -26,10 +26,7 @@ namespace MainForm
             panelMap.Controls.Add(waferMapCanvas);
             waferMapCanvas.SetRatio(1, 1);
             waferMapCanvas.LoadCanvas();
-
-            //CommonPanel
-            CommonPanel commonPanel = new CommonPanel();//引入通用的CommonPanel
-            panel1.Controls.Add(commonPanel);
+            
         }
         /// <summary>
         /// 更新界面上控件的状态
@@ -126,8 +123,10 @@ namespace MainForm
             lblLowAlignFlag.BackColor = (low) ? Color.Green : Color.Red;
             lblHighAlignFlag.BackColor = (high) ? Color.Green : Color.Red;
 
-            TxtAlignData.Text = "WaferOffset :\r\n" + WaferMap.WaferOffsetX.ToString()
-                + "\r\n" + WaferMap.WaferOffsetY.ToString();
+            TxtWaferCenterX.Text = WaferMap.WaferCenterX.ToString("F0");
+            TxtWaferCenterY.Text = WaferMap.WaferCenterY.ToString("F0");
+            TxtWaferOffsetX.Text = WaferMap.WaferOffsetX.ToString("F0");
+            TxtWaferOffsetY.Text = WaferMap.WaferOffsetY.ToString("F0");
         }
         /// <summary>
         /// 临时做一下高度
@@ -157,6 +156,13 @@ namespace MainForm
             Motion.AxisMoveAbs(1, 3, height, 600, 20, 20, 10);
             lblAvgZ.Text = Z.Average().ToString();
             lblDiffZ.Text = (Z.Max() - Z.Min()).ToString();
+        }
+
+        private void AlignmentForm_VisibleChanged(object sender, EventArgs e)
+        {
+            //静态添加commonpanel
+            if(this.Visible)panel1.Controls.Add(CommonPanel.Entity);
+            //TODO 会出现多次
         }
     }
 }

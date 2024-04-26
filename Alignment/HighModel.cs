@@ -1,6 +1,5 @@
 ﻿using CommonComponentLibrary;
-using MotionLibrary;
-using System.Threading;
+using MainForm;
 using VisionLibrary;
 using WaferMapLibrary;
 namespace MainForm
@@ -38,6 +37,8 @@ namespace MainForm
                 WaferMap.WaferCenterY + WaferMap.Entity.Center2RefDieCornerY + WaferMap.Entity.Corner2OrgY,
                 out double encodeX, out double encodeY);
             Motion.XY_AxisMoveAbs(1, encodeX + Motion.parameter.XWAFERLOW2HIGHT, encodeY + Motion.parameter.YWAFERLOW2HIGHT, 600, 20, 20, 10);
+            WaferMap.CurrentIndexX = WaferMap.Entity.RefDieX;
+            WaferMap.CurrentIndexY = WaferMap.Entity.RefDieY;
         }
 
         private void BtnAlignConfirm_Click(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace MainForm
 
         private void BtnMatch1_Click(object sender, EventArgs e)
         {
-            CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, Vision.WaferHighMag,  out _, out _);
+            CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, Vision.WaferHighMag, out _, out _);
         }
 
         private void BtnMatch2_Click(object sender, EventArgs e)

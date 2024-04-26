@@ -1,7 +1,7 @@
 ﻿using WaferMapLibrary;
-using MotionLibrary;
+using MainForm;
 using VisionLibrary;
-using System;
+
 namespace CommonComponentLibrary
 {
     public static class CommonFunctions
@@ -54,6 +54,7 @@ namespace CommonComponentLibrary
         {
             double targetHigh = Motion.parameter.ZORIGIN - waferThickness;//46000 - 8000 = 38000
             double targetLow = targetHigh - Motion.parameter.ZWAFERLOW2HIGHT;//38000 - （-8000）= 46000
+            double targetJig = targetHigh + Motion.parameter.ZALIGN2PROBE;//38000 + 45823 = 83823
             double rangeHigh = 1000;
             double rangeLow = 15000;
 
@@ -64,6 +65,10 @@ namespace CommonComponentLibrary
             else if (Mag == Vision.WaferHighMag)
             {
                 return AdjustWaferHeight(targetHigh - rangeHigh, targetHigh + rangeHigh, Mag);
+            }
+            else if (Mag == Vision.JigCamera)
+            {
+                return AdjustWaferHeight(targetJig - rangeHigh, targetJig + rangeHigh, Mag);
             }
             else return -1;
         }
@@ -167,6 +172,16 @@ namespace CommonComponentLibrary
             return 0;
         }
 
+        /// <summary>
+        /// 只拍照看要补偿多少，却不去做移动匹配的动作了，用于errorMap
+        /// </summary>
+        /// <param name="pattenModel"></param>
+        /// <param name="Mag"></param>
+        /// <param name="deltaX"></param>
+        /// <param name="deltaY"></param>
+        /// <param name="encodeX"></param>
+        /// <param name="encodeY"></param>
+        /// <returns></returns>
         public static int FastMatch(string pattenModel, CameraClass Mag, out double deltaX,out double deltaY,out double encodeX, out double encodeY)
         {
             Mag.TriggerExec();//触发一帧
@@ -204,22 +219,34 @@ namespace CommonComponentLibrary
             return 0;
         }
 
-        public static void IndexMove(int indexX, int indexY)
+        /// <summary>
+        /// 指定区域，和index，进行补偿运动
+        /// </summary>
+        /// <param name="area"></param>
+        /// <param name="indexX"></param>
+        /// <param name="indexY"></param>
+        public static void IndexMove(Compensation.Area area,int indexX, int indexY)
+        {
+            //TODO：需要知道是粗定位还是精定位下的坐标
+            IndexUserPos(indexX, indexY, out double UserPosX, out double UserPosY);
+            Motion.UserPosMoveAbs(area, UserPosX, UserPosY);
+            //刷新当前位置
+            WaferMap.CurrentIndexX = indexX;WaferMap.CurrentIndexY = indexY;
+            CommonPanel.IndexX = indexX; CommonPanel.IndexY = indexY;
+        }
+
+        public static void IndexUserPos(int indexX, int indexY, out double userPosX, out double userPosY)
         {
             //TODO：需要知道是粗定位还是精定位下的坐标
             //求refDieOrg的坐标
             double refDieOrgX = 0 + WaferMap.Entity.Center2RefDieCornerX + WaferMap.Entity.Corner2OrgX;
             double refDieOrgY = 0 + WaferMap.Entity.Center2RefDieCornerY + WaferMap.Entity.Corner2OrgY;
             //求DieOrg的坐标
-            double UserPosX = (indexX - WaferMap.Entity.RefDieX) * WaferMap.Entity.DieSizeX + refDieOrgX;
-            double UserPosY = (indexY - WaferMap.Entity.RefDieY) * WaferMap.Entity.DieSizeY + refDieOrgY;
+            userPosX = (indexX - WaferMap.Entity.RefDieX) * WaferMap.Entity.DieSizeX + refDieOrgX;
+            userPosY = (indexY - WaferMap.Entity.RefDieY) * WaferMap.Entity.DieSizeY + refDieOrgY;
             //加offset
-            UserPosX += WaferMap.WaferOffsetX; UserPosY += WaferMap.WaferOffsetY;
-            Motion.UserPosMoveAbs(Compensation.Area.Align,UserPosX, UserPosY);
-            //刷新当前位置
-            WaferMap.CurrentIndexX = indexX;WaferMap.CurrentIndexY = indexY;
+            userPosX += WaferMap.WaferOffsetX; userPosY += WaferMap.WaferOffsetY;
         }
-
         /// <summary>
         /// 根据index值，获得轴坐标系坐标
         /// </summary>

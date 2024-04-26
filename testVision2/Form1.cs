@@ -1,24 +1,16 @@
-using VisionLibrary;
-using MotionLibrary;
 using CommonComponentLibrary;
-using System.Text.Encodings.Web;
-using MathNet.Numerics.LinearAlgebra.Factorization;
+using MainForm;
+using VisionLibrary;
+using static MainForm.Compensation;
+using WaferMapLibrary;
 
 namespace test
 {
     public partial class Form1 : Form
     {
-        CommonPanel commonPanel;//引入通用的CommonPanel
         public Form1()
         {
             InitializeComponent();
-
-            //CommonPanel
-            commonPanel = new CommonPanel();
-            this.panel1.Controls.Add(commonPanel);
-            //this.panel1.Controls.SetChildIndex(commonPanel, 0);//这个作用是将控件置于顶层，该处不需要
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -102,8 +94,30 @@ namespace test
 
         private void BtnSaveImg_Click(object sender, EventArgs e)
         {
-            string path = DateTime.Now.ToString("yyyyMMddHHMMmmfff")+".bmp";
+            string path = DateTime.Now.ToString("yyyyMMddHHMMmmfff") + ".bmp";
             Vision.CameraList[comboBox1.SelectedIndex].halconClass.SaveImage(path);
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (ErrorMapAlign.MappingPoints == null) { MessageBox.Show("No Points!"); return ; }
+            //遍历ErrorMap，BIN = 1
+            //List<MappingPoint> CoordinatesPoints = ErrorMapProbing.MappingPoints.Where(p => p.BIN == 4).ToList();
+            //if (CoordinatesPoints.Count == 0) { MessageBox.Show("No Mapping Points Bin =4!"); return ; }
+
+            //遍历CoordinatesPoints，选取所有能形成Grid（该点为左下角）的点            
+            //List<Grid> grids = new();
+            foreach (var point in ErrorMapAlign.MappingPoints)
+            {
+                point.EncodeX += Motion.parameter.XALIGN2PROBE;
+                point.EncodeY += Motion.parameter.YALIGN2PROBE;
+            }
+            Compensation.SaveMap(ErrorMapAlign, "ErrorMapProbing.json");
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            panel1.Controls.Add(CommonPanel.Entity);
         }
     }
 }

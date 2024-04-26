@@ -1,6 +1,6 @@
-using MotionLibrary;
+using MainForm;
 
-namespace MotionLibrary
+namespace MainForm
 {
     internal static class Program
     {

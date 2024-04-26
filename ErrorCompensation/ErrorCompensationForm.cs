@@ -1,24 +1,14 @@
 ﻿using CommonComponentLibrary;
 using VisionLibrary;
 using WaferMapLibrary;
-//using static CommonComponentLibrary.AlignmentForm;
 
-namespace MotionLibrary
+namespace MainForm
 {
-    /// <summary>
-    /// 0 = 标定区；1 = 工作区
-    /// </summary>
-    public enum Area
-    {
-        Align = 0,
-        Probing = 1,
-    }
-
     public partial class ErrorCompensationForm : Form
     {
         //WaferMapCanvas mapCanvas = new();
 
-        CommonPanel commonPanel;//引入通用的CommonPanel
+        CommonPanel commonPanel = CommonPanel.Entity;//引入通用的CommonPanel
 
         bool StopFlag = true;//连续运行的flag
         public ErrorCompensationForm()
@@ -26,10 +16,7 @@ namespace MotionLibrary
             this.TopLevel = false; this.FormBorderStyle = FormBorderStyle.None;
 
             InitializeComponent();
-            //CommonPanelt添加
-            commonPanel = new CommonPanel();
-            this.Controls.Add(commonPanel);
-            this.Controls.SetChildIndex(commonPanel, 0);
+
 
             WaferMapIndexControl indexControl = new WaferMapIndexControl();
             panelIndexControl.Controls.Add(indexControl);
@@ -54,7 +41,15 @@ namespace MotionLibrary
 
             RefreshChart();
         }
-
+        private void ErrorCompensationForm_VisibleChanged(object sender, EventArgs e)
+        {
+            //静态添加
+            if (this.Visible)
+            {
+                this.Controls.Add(commonPanel);
+                commonPanel.BringToFront();
+            }
+        }
         private void BtnMapScreen_Click(object sender, EventArgs e)
         {
             commonPanel.Visible = !commonPanel.Visible;
@@ -179,27 +174,29 @@ namespace MotionLibrary
         //特征校准
         private void AlignPosition(int indexX, int indexY)
         {
-            if (StopFlag)return; 
+            if (StopFlag) return;
 
             //获取该index位置的用户位置posx和posy
             //不是标定点，不需要进行后续align
             if (WaferMap.GetBIN(indexX, indexY) != 1) return;
 
-            //计算插补后的坐标位置，需要加上highAlign后的晶圆偏移
-            Compensation.Area area = (IsProbeArea) ? Compensation.Area.Probing : Compensation.Area.Align;
-            CommonFunctions.IndexMove(indexX, indexY);
+            //计算插补后的坐标位置，需要加上highAlign后的晶圆偏移，根据哪支相机被激活了，确认去哪个区域标定
+            Compensation.Area area = (RbtnWaferCamera.Checked)  ? Compensation.Area.Align : Compensation.Area.Probing;
+            CommonFunctions.IndexMove(area,indexX, indexY);
 
             //去做运动校准
             CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
-            int res = CommonFunctions.FastMatch(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double deltaX,out double deltaY,out double encodeX, out double encodeY);
+            
+            int res = CommonFunctions.FastMatch(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double deltaX, out double deltaY, out double encodeX, out double encodeY);
             //未匹配到模板
             if (res != 0) { WaferMap.SetBIN(indexX, indexY, 5); return; }
+
             if (RbtnCheckOnly.Checked)
             {
                 //绘制点，插值计算后的走点 - 校准后的理想点 = 差异
                 DrawPoint(indexX, indexY, deltaX, deltaY);
                 WaferMap.SetBIN(indexX, indexY, 4);
-            }            
+            }
             else if (RbtnWriteData.Checked)
             {
                 ////完事后覆盖encode值
@@ -207,7 +204,7 @@ namespace MotionLibrary
             }
         }
 
-        private static int SetMappingValue(int indexX, int indexY, double encodeX, double encodeY,int bin)
+        private static int SetMappingValue(int indexX, int indexY, double encodeX, double encodeY, int bin)
         {
             if (WaferMap.Entity.MappingPoints == null) return 1;
 
@@ -216,7 +213,7 @@ namespace MotionLibrary
 
             //point.UserPosX = userPosX; point.UserPosY = userPosY;
             point.EncodeX = encodeX; point.EncodeY = encodeY;
-            point.BIN = bin; 
+            point.BIN = bin;
             //point.Coordinates = 1;
 
             return 0;
@@ -229,16 +226,7 @@ namespace MotionLibrary
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            WaferMap.Load("DeviceData/ErrorMapWaferMap.json");
-            //if (WaferMap.Entity.MappingPoints == null) return;
-
-            //foreach (var pt in WaferMap.Entity.MappingPoints)
-            //{
-            //    pt.EncodeX = double.NaN;
-            //    pt.EncodeY = double.NaN;
-            //    if (pt.BIN == 1) { pt.Coordinates = 2; pt.BIN = 1; }
-            //    if (pt.BIN == 2) { pt.Coordinates = 2; pt.BIN = 1; }
-            //}
+            WaferMap.Load("DeviceData/" + DeviceData.Entity.PhysicalInformation.DeviceName + "WaferMap.json");
             WaferMapCanvas.Canvas.RefreshCanvas();
         }
 
@@ -261,43 +249,64 @@ namespace MotionLibrary
             BtnApply.Enabled = true;
         }
 
-        private static bool IsProbeArea = false;//默认不是probe区域，而是Align区
+        //private static bool IsProbeArea = false;//默认不是probe区域，而是Align区
         private void BtnZ_Click(object sender, EventArgs e)
         {
             BtnZ.Enabled = false;//临时性禁止点击
             //如果当前不在probe区，则去往probe；如果当前在Probe区，则回来Align
-            if (!IsProbeArea)
+            if (Motion.CurrentArea == Compensation.Area.Align)
             {
                 Motion.XYZ_AxisMoveRel(1, Motion.parameter.XALIGN2PROBE, Motion.parameter.YALIGN2PROBE, Motion.parameter.ZALIGN2PROBE, 600, 10, 10, 20);
                 BtnZ.Text = "Z down";
                 BtnZ.BackColor = Color.Green;
             }
-            else if (IsProbeArea)
+            else if (Motion.CurrentArea == Compensation.Area.Probing)
             {
                 Motion.XYZ_AxisMoveRel(1, -Motion.parameter.XALIGN2PROBE, -Motion.parameter.YALIGN2PROBE, -Motion.parameter.ZALIGN2PROBE, 600, 10, 10, 20);
                 BtnZ.Text = "Z up";
                 BtnZ.BackColor = Color.Red;
             }
-
-            IsProbeArea = !IsProbeArea;
             BtnZ.Enabled = true;//恢复
         }
 
         private void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
         {
-            if (RbtnWaferCamera.Checked)
+            WaitingControl wf = new WaitingControl();
+            this.Controls.Add(wf);
+            wf.Show();
+
+            if (Vision.activeCamera == Camera.JigCamera)
             {
-                //Alignment.AdjustWaferHeight(37000, 39000, Vision.WaferHighMag);
+                //jigcamera thickness = 
+                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.JigCamera);
             }
-            else if (RbtnJigCamera.Checked)
+            else if (Vision.activeCamera == Camera.WaferHighMag)
             {
-                //Alignment.AdjustWaferHeight(37000, 39000, Vision.JigCamera);
+                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
             }
+
+            wf.Dispose();
         }
 
         private void BtnResetErrorTable_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void BtnWaferAlignment_Click(object sender, EventArgs e)
+        {
+            //临时代码
+
+        }
+
+        private void BtnMatch_Click(object sender, EventArgs e)
+        {
+            //去做运动校准
+            CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
+
+            CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double DeltaX, out double DeltaY);
+        }
+
+
     }
 }

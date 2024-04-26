@@ -1,6 +1,5 @@
 ﻿using CommonComponentLibrary;
-using MotionLibrary;
-using System.Threading;
+using MainForm;
 using VisionLibrary;
 using WaferMapLibrary;
 
@@ -17,7 +16,7 @@ namespace MainForm
             panelIndex.Controls.Add(new WaferMapIndexControl());
         }
         private void BtnIstantLowAlign_Click(object sender, EventArgs e)
-        {            
+        {
             Vision.WaferLowMag.halconClass.CreateShapeModel(PattenModel1);
             //做模板完了后加延时,TODO 增加校验步骤，延时不太可靠
             //Thread.Sleep(500);
@@ -47,8 +46,8 @@ namespace MainForm
 
         private void BtnMatchIndex_Click(object sender, EventArgs e)
         {
-            //临时测试代码
-            //Alignment.Match(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out double X, out double Y);
+            CommonPanel.IndexX = WaferMap.CurrentIndexX;
+            CommonPanel.IndexY = WaferMap.CurrentIndexY;
         }
 
         private void BtnAlignConfirm_Click(object sender, EventArgs e)
@@ -82,11 +81,12 @@ namespace MainForm
                 Vision.WaferLowMag.halconClass.CreateShapeModel(DeviceData.Entity.WaferAlignment.LowPattern1);
             }
         }
-
         private void BtnMoveToRefDie_Click(object sender, EventArgs e)
         {
             Motion.UserPosMoveAbs(Compensation.Area.Align, WaferMap.WaferCenterX + WaferMap.Entity.Center2RefDieCornerX + WaferMap.Entity.Corner2OrgX,
                 WaferMap.WaferCenterY + WaferMap.Entity.Center2RefDieCornerY + WaferMap.Entity.Corner2OrgY);
+            WaferMap.CurrentIndexX = WaferMap.Entity.RefDieX;
+            WaferMap.CurrentIndexY = WaferMap.Entity.RefDieY;
         }
 
         private void BtnPat2Reg_Click(object sender, EventArgs e)

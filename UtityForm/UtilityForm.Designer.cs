@@ -55,7 +55,7 @@
             BtnChuckFlatness.TabIndex = 0;
             BtnChuckFlatness.Text = "Chuck Flatness";
             BtnChuckFlatness.UseVisualStyleBackColor = true;
-            BtnChuckFlatness.Click += this.BtnChuckFlatness_Click;
+            BtnChuckFlatness.Click += BtnChuckFlatness_Click;
             // 
             // panelForm
             // 
@@ -92,6 +92,7 @@
             Controls.Add(panelMenu);
             Name = "UtilityForm";
             Text = "Form1";
+            VisibleChanged += UtilityForm_VisibleChanged;
             panelMenu.ResumeLayout(false);
             panelForm.ResumeLayout(false);
             ResumeLayout(false);

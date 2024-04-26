@@ -42,6 +42,8 @@
             TxtExpo = new TextBox();
             BtnSetExpo = new Button();
             BtnSaveImg = new Button();
+            button1 = new Button();
+            panel2 = new Panel();
             SuspendLayout();
             // 
             // panel1
@@ -167,11 +169,30 @@
             BtnSaveImg.UseVisualStyleBackColor = true;
             BtnSaveImg.Click += BtnSaveImg_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(1097, 388);
+            button1.Name = "button1";
+            button1.Size = new Size(104, 58);
+            button1.TabIndex = 29;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // panel2
+            // 
+            panel2.Location = new Point(1098, 475);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(229, 210);
+            panel2.TabIndex = 30;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1339, 1035);
+            Controls.Add(panel2);
+            Controls.Add(button1);
             Controls.Add(BtnSaveImg);
             Controls.Add(BtnSetExpo);
             Controls.Add(TxtExpo);
@@ -188,6 +209,7 @@
             Controls.Add(panel1);
             Name = "Form1";
             Text = "Form1";
+            Activated += Form1_Activated;
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             ResumeLayout(false);
@@ -210,5 +232,7 @@
         private TextBox TxtExpo;
         private Button BtnSetExpo;
         private Button BtnSaveImg;
+        private Button button1;
+        private Panel panel2;
     }
 }

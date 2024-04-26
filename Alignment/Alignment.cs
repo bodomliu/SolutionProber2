@@ -1,8 +1,6 @@
 ﻿using CommonComponentLibrary;
-using MotionLibrary;
-using System.Threading;
+using MainForm;
 using VisionLibrary;
-using WaferMapLibrary;
 
 namespace MainForm
 {
@@ -26,7 +24,7 @@ namespace MainForm
 
             //运动到L点做精定位
             Motion.UserPosMoveAbs(Compensation.Area.Align, startX0 - L * dieSizeX, startY0);
-            res = CommonFunctions.Match(pattenModel, Mag,out _,out _);
+            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
             Motion.GetUserPos(Compensation.Area.Align, out double startX1, out double startY1);
 

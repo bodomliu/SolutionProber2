@@ -9,7 +9,7 @@ namespace WaferMapLibrary
 {
     public class PhysicalInformation
     {
-        public string DeviceName { get; set; } = "12INCH";//This is name of current device
+        public string DeviceName { get; set; } = "0411";//This is name of current device
         public int WaferSize { get; set; } = 12;//This is wafer size of current device. Value = 6/8/12
         //public double FlatAngle { get; set; } = 0;//this angle that wafer is loaded
         public double Thickness { get; set; } = 8000;//this is wafer thickness of current device
@@ -22,10 +22,15 @@ namespace WaferMapLibrary
         public string HighPattern1 { get; set; } = "VisionConfig/0411HighPattern1.shm";//
         public string HighPattern2 { get; set; } = "VisionConfig/0411HighPattern2.shm";//
     }
+    public class PinAlignment
+    {
+
+    }
     public class DeviceDataClass
     {
         public  PhysicalInformation PhysicalInformation { get; set; } = new PhysicalInformation();
         public WaferAlignment WaferAlignment { get; set; } = new WaferAlignment();
+        public PinAlignment PinAlignment { get; set; } = new PinAlignment();
     }
 
     //静态类方便操作

@@ -64,6 +64,9 @@
     <None Update="VisionConfig\ErrorMapLowPattern2.shm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="VisionConfig\JigCamera.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="VisionConfig\PinHighMag.bin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

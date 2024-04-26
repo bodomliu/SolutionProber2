@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using static GTN.mc;
 
-namespace MotionLibrary
+namespace MainForm
 {
     public class Parameter
     {
@@ -41,18 +41,24 @@ namespace MotionLibrary
         //LeftUp, RightUp,  RightDown, LeftDown
         public double[] EdgeX { get; set; } = new double[] { 3540000, 1410000, 1400000, 3560000 };
         public double[] EdgeY { get; set; } = new double[] { 580000, 580000, 2660000, 2660000 };
-
-        //public static double ALIGNDIVIDEY = 3700000;
+        //设备参数，标定区和探针区的分界线
+        public double ALIGNDIVIDEY { get; set; } = 3700000;
         //RefPin 位置(临时)
         public double XPROBER { get; set; } = 2204128;
         public double YPROBER { get; set; } = 4125209;
         public double ZPROBER { get; set; } = 78481;
     }
+    /// <summary>
+    /// 0 = 标定区；1 = 工作区
+    /// </summary>
+
 
     static public class Motion
     {
         private static short Res;//返回值
-        public static Parameter parameter = new Parameter();//定义参数集   
+        public static Parameter parameter = new Parameter();//定义参数集
+        //public static bool IsProbeArea = false;//定义当前轴是否在探针区，默认在标定区
+        public static Compensation.Area CurrentArea = Compensation.Area.Align;
         public class AxisStatus
         {
             public double PrfPos;

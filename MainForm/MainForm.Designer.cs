@@ -50,9 +50,9 @@
             panelMenu.Controls.Add(BtnErrorCompensation);
             panelMenu.Controls.Add(BtnLotProcess);
             panelMenu.Dock = DockStyle.Right;
-            panelMenu.Location = new Point(1581, 100);
+            panelMenu.Location = new Point(1581, 63);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(323, 885);
+            panelMenu.Size = new Size(323, 922);
             panelMenu.TabIndex = 3;
             // 
             // BtnDeviceSettings
@@ -126,9 +126,9 @@
             panelForm.BackColor = Color.Gray;
             panelForm.BorderStyle = BorderStyle.Fixed3D;
             panelForm.Dock = DockStyle.Fill;
-            panelForm.Location = new Point(0, 100);
+            panelForm.Location = new Point(0, 63);
             panelForm.Name = "panelForm";
-            panelForm.Size = new Size(1581, 885);
+            panelForm.Size = new Size(1581, 922);
             panelForm.TabIndex = 4;
             // 
             // panelStatus
@@ -138,7 +138,7 @@
             panelStatus.Dock = DockStyle.Top;
             panelStatus.Location = new Point(0, 0);
             panelStatus.Name = "panelStatus";
-            panelStatus.Size = new Size(1904, 100);
+            panelStatus.Size = new Size(1904, 63);
             panelStatus.TabIndex = 0;
             // 
             // MainForm
