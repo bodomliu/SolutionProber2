@@ -22,12 +22,17 @@ namespace DeviceDataSettings
             this._wmc = wmc;
         }
 
-        private void WaferMapSettingCoordinate_Load(object sender, EventArgs e)
+        public void Reload()
         {
             leftOrRight.Text = WaferMap.Entity.DirectionX;
             upOrDown.Text = WaferMap.Entity.DirectionY;
             originX.Text = WaferMap.Entity.RefDieX.ToString();
             originY.Text = WaferMap.Entity.RefDieY.ToString();
+        }
+
+        private void WaferMapSettingCoordinate_Load(object sender, EventArgs e)
+        {
+            Reload();
         }
 
         private void leftOrRight_Click(object sender, EventArgs e)

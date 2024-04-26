@@ -47,7 +47,7 @@
             panelMenu.Dock = DockStyle.Top;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(941, 100);
+            panelMenu.Size = new Size(1565, 100);
             panelMenu.TabIndex = 0;
             // 
             // BtnWaferMap
@@ -76,7 +76,7 @@
             panelForm.Dock = DockStyle.Fill;
             panelForm.Location = new Point(0, 100);
             panelForm.Name = "panelForm";
-            panelForm.Size = new Size(741, 350);
+            panelForm.Size = new Size(1365, 746);
             panelForm.TabIndex = 1;
             // 
             // panelFile
@@ -86,9 +86,9 @@
             panelFile.Controls.Add(BtnSave);
             panelFile.Controls.Add(BtnLoad);
             panelFile.Dock = DockStyle.Right;
-            panelFile.Location = new Point(741, 100);
+            panelFile.Location = new Point(1365, 100);
             panelFile.Name = "panelFile";
-            panelFile.Size = new Size(200, 350);
+            panelFile.Size = new Size(200, 746);
             panelFile.TabIndex = 0;
             // 
             // TxtFileName
@@ -124,7 +124,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(941, 450);
+            ClientSize = new Size(1565, 846);
             Controls.Add(panelForm);
             Controls.Add(panelFile);
             Controls.Add(panelMenu);

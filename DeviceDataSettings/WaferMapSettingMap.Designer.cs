@@ -59,7 +59,6 @@
             radioButton4.Name = "radioButton4";
             radioButton4.Size = new Size(86, 21);
             radioButton4.TabIndex = 3;
-            radioButton4.TabStop = true;
             radioButton4.Text = "MARK DIE";
             radioButton4.UseVisualStyleBackColor = true;
             radioButton4.CheckedChanged += radioButton4_CheckedChanged;
@@ -71,7 +70,6 @@
             radioButton3.Name = "radioButton3";
             radioButton3.Size = new Size(76, 21);
             radioButton3.TabIndex = 2;
-            radioButton3.TabStop = true;
             radioButton3.Text = "SKIP DIE";
             radioButton3.UseVisualStyleBackColor = true;
             radioButton3.CheckedChanged += radioButton3_CheckedChanged;
@@ -83,7 +81,6 @@
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(78, 21);
             radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
             radioButton2.Text = "TEST DIE";
             radioButton2.UseVisualStyleBackColor = true;
             radioButton2.CheckedChanged += radioButton2_CheckedChanged;

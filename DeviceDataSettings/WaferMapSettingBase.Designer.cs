@@ -44,10 +44,10 @@
             NumX = new TextBox();
             NumY = new TextBox();
             panel2 = new Panel();
-            label6 = new Label();
-            label7 = new Label();
-            offsetX = new TextBox();
             offsetY = new TextBox();
+            offsetX = new TextBox();
+            label7 = new Label();
+            label6 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -213,23 +213,12 @@
             panel2.Size = new Size(261, 82);
             panel2.TabIndex = 14;
             // 
-            // label6
+            // offsetY
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(3, 18);
-            label6.Name = "label6";
-            label6.Size = new Size(156, 17);
-            label6.TabIndex = 0;
-            label6.Text = "Center2OriginDieCornerX";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(3, 51);
-            label7.Name = "label7";
-            label7.Size = new Size(155, 17);
-            label7.TabIndex = 1;
-            label7.Text = "Center2OriginDieCornerY";
+            offsetY.Location = new Point(163, 48);
+            offsetY.Name = "offsetY";
+            offsetY.Size = new Size(91, 23);
+            offsetY.TabIndex = 3;
             // 
             // offsetX
             // 
@@ -238,12 +227,23 @@
             offsetX.Size = new Size(91, 23);
             offsetX.TabIndex = 2;
             // 
-            // offsetY
+            // label7
             // 
-            offsetY.Location = new Point(163, 48);
-            offsetY.Name = "offsetY";
-            offsetY.Size = new Size(91, 23);
-            offsetY.TabIndex = 3;
+            label7.AutoSize = true;
+            label7.Location = new Point(3, 51);
+            label7.Name = "label7";
+            label7.Size = new Size(138, 17);
+            label7.TabIndex = 1;
+            label7.Text = "Center2RefDieCornerY";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(3, 18);
+            label6.Name = "label6";
+            label6.Size = new Size(139, 17);
+            label6.TabIndex = 0;
+            label6.Text = "Center2RefDieCornerX";
             // 
             // WaferMapSettingBase
             // 

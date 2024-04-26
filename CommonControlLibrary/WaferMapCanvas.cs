@@ -39,6 +39,12 @@ namespace CommonComponentLibrary
             RatioY = 1;
             _offsetX = 0;
             _offsetY = 0;
+
+            MarginLeft = 0;
+            MarginRight = 0;
+            MarginTop = 0;
+            MarginBottom = 0;
+
             RefreshCanvas();
         }
 
@@ -253,6 +259,8 @@ namespace CommonComponentLibrary
         #endregion
 
         #region 鼠标左击
+
+        public Boolean MouseClickDefineCurrentIndex { get; set; } = false;
         private void WaferMapCanvas_MouseDown(object? sender, MouseEventArgs e)
         {
             // 获得焦点
@@ -265,11 +273,12 @@ namespace CommonComponentLibrary
                 return;
             }
 
+            if (MouseClickDefineCurrentIndex) {
+                float width = (float)WaferMap.Entity.DieSizeX / UnitPerPixelX;
+                float height = (float)WaferMap.Entity.DieSizeY / UnitPerPixelY;
 
-            float width = (float)WaferMap.Entity.DieSizeX / UnitPerPixelX;
-            float height = (float)WaferMap.Entity.DieSizeY / UnitPerPixelY;
-
-            WaferMap.setCurrentIndex((int)((e.X - _offsetX) / width), (int)((e.Y - _offsetY) / height));
+                WaferMap.setCurrentIndex((int)((e.X - _offsetX) / width), (int)((e.Y - _offsetY) / height));
+            }
         }
 
         private void SimplifiedBitmap_MouseDown(object? sender, MouseEventArgs e)

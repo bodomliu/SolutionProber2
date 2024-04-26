@@ -33,10 +33,9 @@ namespace DeviceDataSettings
             WaferMap.Entity.MappingPoints = new List<MappingPoint>();
 
             WaferMapCanvas.CircleCentre(out double ccx, out double ccy);
-
-            for (int i = 0; i < WaferMap.Entity.DieNumX; i++)
+            for (int j = 0; j < WaferMap.Entity.DieNumY; j++)
             {
-                for (int j = 0; j < WaferMap.Entity.DieNumY; j++)
+                for (int i = 0; i < WaferMap.Entity.DieNumX; i++)
                 {
                     MappingPoint mp = new MappingPoint();
                     mp.IndexX = i;
@@ -78,10 +77,10 @@ namespace DeviceDataSettings
                 }
             }
             _waferMap.RefreshCanvas();
-            WaferMapSettingMap_Load(sender, EventArgs.Empty);
+            Reload();
         }
 
-        private void WaferMapSettingMap_Load(object sender, EventArgs e)
+        public void Reload()
         {
             _testDieCount = 0;
             if (WaferMap.Entity.MappingPoints != null)
@@ -93,6 +92,11 @@ namespace DeviceDataSettings
                 }
             }
             testDieNum.Text = _testDieCount.ToString();
+        }
+
+        private void WaferMapSettingMap_Load(object sender, EventArgs e)
+        {
+            Reload();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -149,7 +153,7 @@ namespace DeviceDataSettings
         private MappingPoint? getMappingPint(int x, int y)
         {
             // 计算具体的 index
-            int index = WaferMap.Entity.DieNumX * x + y;
+            int index = WaferMap.Entity.DieNumX * y + x;
             var p = WaferMap.Entity.MappingPoints?[index];
             if (null == p || p.IndexX != x || p.IndexY != y)
             {

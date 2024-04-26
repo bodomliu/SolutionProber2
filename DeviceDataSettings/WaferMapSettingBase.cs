@@ -20,41 +20,26 @@ namespace DeviceDataSettings
         public WaferMapSettingBase(WaferMapCanvas waferMap)
         {
             InitializeComponent();
-            // wafer 默认尺寸
-            WaferSize.SelectedIndex = 2;
+            this._waferMap = waferMap;
+        }
+
+        public void ReLoad()
+        {
+            WaferSize.Text = WaferMap.Entity.WaferSize.ToString();
             // X 默认放大倍数
             ratioX.SelectedIndex = 0;
             // Y 默认放大倍数
             ratioY.SelectedIndex = 0;
-            this._waferMap = waferMap;
-            this.ControlRemoved += WaferMapSettingBase_ControlRemoved;
-            this.ControlAdded += WaferMapSettingBase_ControlAdded;
-            this.BindingContextChanged += WaferMapSettingBase_BindingContextChanged;
 
-        }
+            SizeX.Text = WaferMap.Entity.DieSizeX.ToString();
+            SizeY.Text = WaferMap.Entity.DieSizeY.ToString();
 
-        private void WaferMapSettingBase_BindingContextChanged(object? sender, EventArgs e)
-        {
-            if (this.ParentForm is not null && this.ParentForm.Controls.Contains(this))
-            {
-                Console.WriteLine("AAAAA");
-            }
-        }
+            NumX.Text = WaferMap.Entity.DieNumX.ToString();
+            NumY.Text = WaferMap.Entity.DieNumY.ToString();
 
-        protected override void OnControlAdded(ControlEventArgs e)
-        {
-            base.OnControlAdded(e);
-        }
+            offsetX.Text = WaferMap.Entity.Center2RefDieCornerX.ToString();
+            offsetY.Text = WaferMap.Entity.Center2RefDieCornerY.ToString();
 
-        private void WaferMapSettingBase_ControlAdded(object? sender, ControlEventArgs e)
-        {
-            Console.WriteLine("aaaa");
-            
-        }
-
-        private void WaferMapSettingBase_ControlRemoved(object? sender, ControlEventArgs e)
-        {
-            Console.WriteLine("wwww");
         }
 
         private void SetRatio_Click(object sender, EventArgs e)
@@ -64,14 +49,7 @@ namespace DeviceDataSettings
 
         private void WaferMapSetting_1_Load(object sender, EventArgs e)
         {
-            SizeX.Text = WaferMap.Entity.DieSizeX.ToString();
-            SizeY.Text = WaferMap.Entity.DieSizeY.ToString();
-
-            NumX.Text = WaferMap.Entity.DieNumX.ToString();
-            NumY.Text = WaferMap.Entity.DieNumY.ToString();
-
-            offsetX.Text = WaferMap.Entity.Center2RefDieCornerX.ToString();
-            offsetY.Text = WaferMap.Entity.Center2RefDieCornerY.ToString();
+            ReLoad();
         }
 
         protected override void OnBindingContextChanged(EventArgs e)
@@ -91,6 +69,9 @@ namespace DeviceDataSettings
             WaferMap.Entity.DieSizeX = double.Parse(SizeX.Text);
             WaferMap.Entity.DieSizeY = double.Parse(SizeY.Text);
 
+            WaferMap.Entity.DieNumX = (int)(WaferMap.Entity.WaferDiameter / WaferMap.Entity.DieSizeX);
+            WaferMap.Entity.DieNumY = (int)(WaferMap.Entity.WaferDiameter / WaferMap.Entity.DieSizeY);
+
             NumX.Text = WaferMap.Entity.DieNumX.ToString();
             NumY.Text = WaferMap.Entity.DieNumY.ToString();
 
@@ -100,6 +81,7 @@ namespace DeviceDataSettings
             WaferMap.Entity.Center2RefDieCornerX = int.Parse(offsetX.Text);
             WaferMap.Entity.Center2RefDieCornerY = int.Parse(offsetY.Text);
 
+            
             _waferMap.LoadCanvas();
         }
 
@@ -110,7 +92,7 @@ namespace DeviceDataSettings
 
         //private void Generation_Click(object sender, EventArgs e)
         //{
-            
+
         //}
 
 

@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WaferMapLibrary;
 
 namespace DeviceDataSettings
 {
@@ -24,13 +25,27 @@ namespace DeviceDataSettings
         private readonly WaferMapSettingCoordinate _wmsc;
 
         private readonly WaferMapSettingMap _wmsmap;
+
+        private readonly WaferMapSettingStatus _wmss;
         public WaferMapSettingControl()
         {
             InitializeComponent();
+            _waferMap.MouseClickDefineCurrentIndex = true;
             this._wmsb = new(_waferMap);
             this._wmsm = new(_waferMap);
             this._wmsc = new(_waferMap);
             this._wmsmap = new(_waferMap);
+            this._wmss = new();
+            WaferMap.OnWaferMapChange += WaferMap_OnWaferMapChange;
+        }
+
+        private void WaferMap_OnWaferMapChange()
+        {
+            _waferMap.LoadCanvas();
+            _wmsb.ReLoad();
+            _wmsm.Reload();
+            _wmsc.Reload();
+            _wmsmap.Reload();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -90,6 +105,16 @@ namespace DeviceDataSettings
             {
                 panel2.Controls.Clear();
                 panel2.Controls.Add(_wmsmap);
+            }
+        }
+
+        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                panel2.Controls.Clear();
+                panel2.Controls.Add(_wmss);
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace DeviceDataSettings
+﻿using WaferMapLibrary;
+
+namespace DeviceDataSettings
 {
     partial class WaferMapSettingControl
     {
@@ -13,6 +15,7 @@
         /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
+            WaferMap.OnWaferMapChange -= WaferMap_OnWaferMapChange;
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -54,7 +57,7 @@
             panel1.Controls.Add(radioButton2);
             panel1.Controls.Add(radioButton1);
             panel1.ForeColor = SystemColors.Control;
-            panel1.Location = new Point(402, 3);
+            panel1.Location = new Point(749, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(283, 218);
             panel1.TabIndex = 0;
@@ -69,6 +72,7 @@
             radioButton7.TabStop = true;
             radioButton7.Text = "7. Die Status";
             radioButton7.UseVisualStyleBackColor = true;
+            radioButton7.CheckedChanged += radioButton7_CheckedChanged;
             // 
             // radioButton6
             // 
@@ -107,12 +111,12 @@
             // radioButton3
             // 
             radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(3, 67);
+            radioButton3.Location = new Point(3, 40);
             radioButton3.Name = "radioButton3";
             radioButton3.Size = new Size(105, 21);
             radioButton3.TabIndex = 2;
             radioButton3.TabStop = true;
-            radioButton3.Text = "3. Coordinate";
+            radioButton3.Text = "2. Coordinate";
             radioButton3.UseVisualStyleBackColor = true;
             radioButton3.CheckedChanged += radioButton3_CheckedChanged;
             // 
@@ -120,12 +124,12 @@
             // 
             radioButton2.AutoSize = true;
             radioButton2.BackColor = SystemColors.ControlDark;
-            radioButton2.Location = new Point(3, 40);
+            radioButton2.Location = new Point(3, 67);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(113, 21);
             radioButton2.TabIndex = 1;
             radioButton2.TabStop = true;
-            radioButton2.Text = "2. Map Margin";
+            radioButton2.Text = "3. Map Margin";
             radioButton2.UseVisualStyleBackColor = false;
             radioButton2.CheckedChanged += radioButton2_CheckedChanged;
             // 
@@ -146,9 +150,9 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Location = new Point(402, 227);
+            panel2.Location = new Point(749, 226);
             panel2.Name = "panel2";
-            panel2.Size = new Size(283, 270);
+            panel2.Size = new Size(283, 354);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
             // 
@@ -156,13 +160,13 @@
             // 
             panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(393, 393);
+            panel3.Size = new Size(740, 740);
             panel3.TabIndex = 2;
             panel3.Paint += panel3_Paint;
             // 
             // panel4
             // 
-            panel4.Location = new Point(191, 402);
+            panel4.Location = new Point(937, 586);
             panel4.Name = "panel4";
             panel4.Size = new Size(205, 132);
             panel4.TabIndex = 3;
@@ -170,7 +174,7 @@
             // 
             // panel5
             // 
-            panel5.Location = new Point(3, 402);
+            panel5.Location = new Point(749, 586);
             panel5.Name = "panel5";
             panel5.Size = new Size(182, 157);
             panel5.TabIndex = 4;
@@ -187,7 +191,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "WaferMapSettingControl";
-            Size = new Size(688, 562);
+            Size = new Size(1365, 746);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

@@ -21,14 +21,19 @@ namespace DeviceDataSettings
             _wmc = wmc;
         }
 
-        private void WaferMapSettingMargin_Load(object sender, EventArgs e)
+        public void Reload()
         {
+
             _left.Text = _wmc.MarginLeft.ToString();
             _right.Text = _wmc.MarginRight.ToString();
             _top.Text = _wmc.MarginTop.ToString();
             _bottom.Text = _wmc.MarginBottom.ToString();
-
             textBox.Text = WaferMap.Entity.DieNumX.ToString() + " * " + WaferMap.Entity.DieNumY.ToString();
+        }
+
+        private void WaferMapSettingMargin_Load(object sender, EventArgs e)
+        {
+            Reload();
         }
 
         private void Apply_Click(object sender, EventArgs e)
