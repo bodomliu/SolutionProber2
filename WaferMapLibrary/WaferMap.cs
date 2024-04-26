@@ -208,11 +208,18 @@ namespace WaferMapLibrary
             string jsonString = JsonSerializer.Serialize(Entity, options);
             File.WriteAllText(filePath, jsonString);
         }
+
+        public delegate void OnWaferMapChangeHander(); //定义一个委托
+        public static event OnWaferMapChangeHander? OnWaferMapChange;
         public static void Load(string filePath)
         {
             string jsonString = File.ReadAllText(filePath);
             var item = JsonSerializer.Deserialize<WaferMapClass>(jsonString);
-            if (item != null) Entity = item;
+            if (item != null)
+            {
+                Entity = item;
+                OnWaferMapChange?.Invoke();
+            }
         }
     }
 }

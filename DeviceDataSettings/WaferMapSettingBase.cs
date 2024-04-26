@@ -21,6 +21,10 @@ namespace DeviceDataSettings
         {
             InitializeComponent();
             this._waferMap = waferMap;
+            SizeY.KeyPress += this.CheckFloat;
+            SizeX.KeyPress += this.CheckFloat;
+            offsetX.KeyPress += this.CheckFloat;
+            offsetY.KeyPress += this.CheckFloat;
         }
 
         public void ReLoad()
@@ -81,7 +85,7 @@ namespace DeviceDataSettings
             WaferMap.Entity.Center2RefDieCornerX = int.Parse(offsetX.Text);
             WaferMap.Entity.Center2RefDieCornerY = int.Parse(offsetY.Text);
 
-            
+
             _waferMap.LoadCanvas();
         }
 

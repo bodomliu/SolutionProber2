@@ -20,6 +20,8 @@ namespace DeviceDataSettings
         {
             InitializeComponent();
             this._wmc = wmc;
+            originX.KeyPress += this.CheckInteger;
+            originY.KeyPress += this.CheckInteger;
         }
 
         public void Reload()
