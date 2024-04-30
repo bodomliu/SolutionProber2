@@ -8,7 +8,7 @@ namespace CommonComponentLibrary
 {
     public static class CheckKeyPress
     {
-        public static void CheckInteger(this Control control, object? sender, KeyPressEventArgs e)
+        public static void CheckInteger(this Control _, object? sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && '-' != e.KeyChar)
             {
@@ -27,7 +27,7 @@ namespace CommonComponentLibrary
             }
         }
 
-        public static void CheckFloat(this Control control, object? sender, KeyPressEventArgs e)
+        public static void CheckFloat(this Control _, object? sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && '.' != e.KeyChar && '-' == e.KeyChar)
             {

@@ -27,6 +27,8 @@ namespace DeviceDataSettings
             offsetY.KeyPress += this.CheckFloat;
             Org2PatIIX.KeyPress += this.CheckFloat;
             Org2PatIIY.KeyPress += this.CheckFloat;
+            Corner2OrgX.KeyPress += this.CheckFloat;
+            Corner2OrgY.KeyPress += this.CheckFloat;
         }
 
         public void ReLoad()
@@ -49,6 +51,8 @@ namespace DeviceDataSettings
             Org2PatIIX.Text = WaferMap.Entity.Org2PatIIX.ToString();
             Org2PatIIY.Text = WaferMap.Entity.Org2PatIIY.ToString();
 
+            Corner2OrgX.Text = WaferMap.Entity.Corner2OrgX.ToString();
+            Corner2OrgY.Text = WaferMap.Entity.Corner2OrgY.ToString();
         }
 
         private void SetRatio_Click(object sender, EventArgs e)

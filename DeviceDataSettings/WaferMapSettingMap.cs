@@ -67,7 +67,7 @@ namespace DeviceDataSettings
                         deltaX = -deltaX;
 
                     double deltaY = (j - WaferMap.Entity.RefDieY) * WaferMap.Entity.DieSizeY;
-                    if ("UP".Equals(WaferMap.Entity.DirectionY)) 
+                    if ("UP".Equals(WaferMap.Entity.DirectionY))
                         deltaY = -deltaY;
 
                     mp.UserPosX = WaferMap.Entity.Center2RefDieCornerX + deltaX;

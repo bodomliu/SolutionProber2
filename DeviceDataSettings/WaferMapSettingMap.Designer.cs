@@ -111,7 +111,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(27, 206);
+            label1.Location = new Point(27, 216);
             label1.Name = "label1";
             label1.Size = new Size(127, 17);
             label1.TabIndex = 2;
@@ -119,7 +119,7 @@
             // 
             // testDieNum
             // 
-            testDieNum.Location = new Point(160, 203);
+            testDieNum.Location = new Point(160, 213);
             testDieNum.Name = "testDieNum";
             testDieNum.ReadOnly = true;
             testDieNum.Size = new Size(76, 23);
