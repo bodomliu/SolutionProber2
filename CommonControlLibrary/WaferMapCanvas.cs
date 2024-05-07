@@ -229,7 +229,7 @@ namespace CommonComponentLibrary
         {
             Bitmap result = new(canvas.Width, canvas.Height);
             using Graphics g = Graphics.FromImage(result);
-            if (RatioX == 1.0 || RatioX == 1.0)
+            if (RatioX == 1.0 && RatioY == 1.0)
             {
                 _offsetX = 0;
                 _offsetY = 0;
@@ -267,7 +267,7 @@ namespace CommonComponentLibrary
             //Focus();
 
             // 点击简略图
-            if ((RatioX != 1 || RatioX != 1.0) && e.X < _simplifiedBitmap.Width && e.Y < _simplifiedBitmap.Height)
+            if ((RatioX != 1 || RatioY != 1.0) && e.X < _simplifiedBitmap.Width && e.Y < _simplifiedBitmap.Height)
             {
                 SimplifiedBitmap_MouseDown(sender, e);
                 return;
