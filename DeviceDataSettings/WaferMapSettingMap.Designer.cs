@@ -147,7 +147,7 @@
             Controls.Add(generationButton);
             Controls.Add(panel1);
             Name = "WaferMapSettingMap";
-            Size = new Size(283, 270);
+            Size = new Size(283, 350);
             Load += WaferMapSettingMap_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

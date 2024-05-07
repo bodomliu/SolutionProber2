@@ -183,7 +183,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "WaferMapSettingCoordinate";
-            Size = new Size(283, 270);
+            Size = new Size(283, 350);
             Load += WaferMapSettingCoordinate_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
