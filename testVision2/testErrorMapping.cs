@@ -1,19 +1,6 @@
-﻿using MainForm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static GTN.mc_la;
-using WaferMapLibrary;
-using static MainForm.Compensation;
-using System.Reflection;
-using System.Drawing.Imaging;
-using CommonComponentLibrary;
+﻿using CommonComponentLibrary;
+using MotionLibrary;
+using static MotionLibrary.Compensation;
 
 namespace test
 {

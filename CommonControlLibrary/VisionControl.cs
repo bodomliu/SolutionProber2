@@ -1,8 +1,5 @@
-﻿using MainForm;
-using VisionLibrary;
-using WaferMapLibrary;
-using static GTN.mc;
-
+﻿using VisionLibrary;
+using MotionLibrary;
 namespace CommonComponentLibrary
 {
     public partial class VisionControl : UserControl

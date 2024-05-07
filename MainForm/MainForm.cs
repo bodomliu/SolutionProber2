@@ -1,8 +1,10 @@
 using log4net;
 using log4net.Config;
-using MainForm;
+using WaferMapLibrary;
+using System.Windows.Forms;
 using VisionLibrary;
-
+using CommonComponentLibrary;
+using MotionLibrary;
 namespace MainForm
 {
     public partial class MainForm : Form
@@ -81,6 +83,16 @@ namespace MainForm
         {
             Vision.CloseAllCamera();
             Motion.CloseCard();
+        }
+
+        private void BtnPadRegistration_Click(object sender, EventArgs e)
+        {
+            ChangeForm(new PadRegistrationForm());//当没有静态变量需要保持时，可以用这种方案
+        }
+
+        private void BtnPinRegistration_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using WaferMapLibrary;
-using MainForm;
+using MotionLibrary;
 namespace CommonComponentLibrary
 {
     public partial class WaferMapIndexControl : UserControl

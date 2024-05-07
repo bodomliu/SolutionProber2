@@ -57,7 +57,6 @@
             panelMapMini = new Panel();
             BtnSim = new Button();
             BtnResetErrorTable = new Button();
-            CBTest = new CheckBox();
             BtnMatch = new Button();
             groupBox1.SuspendLayout();
             GboxIndexControl.SuspendLayout();
@@ -368,16 +367,6 @@
             BtnResetErrorTable.UseVisualStyleBackColor = false;
             BtnResetErrorTable.Click += BtnResetErrorTable_Click;
             // 
-            // CBTest
-            // 
-            CBTest.AutoSize = true;
-            CBTest.Location = new Point(1262, 469);
-            CBTest.Name = "CBTest";
-            CBTest.Size = new Size(51, 21);
-            CBTest.TabIndex = 73;
-            CBTest.Text = "Test";
-            CBTest.UseVisualStyleBackColor = true;
-            // 
             // BtnMatch
             // 
             BtnMatch.Location = new Point(1099, 496);
@@ -393,7 +382,6 @@
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1764, 1026);
-            Controls.Add(CBTest);
             Controls.Add(BtnResetErrorTable);
             Controls.Add(panelMapMini);
             Controls.Add(BtnAdjustWaferHeight);
@@ -428,7 +416,6 @@
             ((System.ComponentModel.ISupportInitialize)pbY).EndInit();
             groupBox6.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -461,7 +448,6 @@
         private Panel panelMapMini;
         private Button BtnSim;
         private Button BtnResetErrorTable;
-        private CheckBox CBTest;
         private Button BtnMatch;
     }
 }

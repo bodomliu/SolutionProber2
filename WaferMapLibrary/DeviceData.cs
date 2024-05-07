@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace WaferMapLibrary
 {
@@ -17,6 +12,7 @@ namespace WaferMapLibrary
 
     public class WaferAlignment
     {
+        public string WaferMapPath { get; set; } = "DeviceData/0411WaferMap.json";
         public string LowPattern1 { get; set; } = "VisionConfig/0411LowPattern1.shm";//
         public string LowPattern2 { get; set; } = "VisionConfig/0411LowPattern2.shm";//
         public string HighPattern1 { get; set; } = "VisionConfig/0411HighPattern1.shm";//
@@ -24,18 +20,19 @@ namespace WaferMapLibrary
     }
     public class PinAlignment
     {
-
+        public string PadDataPath { get; set; } = "DeviceData/0411PadData.json";
+        public string PadPatten { get; set; } = "VisionConfig/pad.shm";//for pad model
     }
     public class DeviceDataClass
     {
-        public  PhysicalInformation PhysicalInformation { get; set; } = new PhysicalInformation();
+        public PhysicalInformation PhysicalInformation { get; set; } = new PhysicalInformation();
         public WaferAlignment WaferAlignment { get; set; } = new WaferAlignment();
         public PinAlignment PinAlignment { get; set; } = new PinAlignment();
     }
 
     //静态类方便操作
     public static class DeviceData
-    {        
+    {
         public static DeviceDataClass Entity = new DeviceDataClass();//定义DeviceData的实体
 
         public static void Save(string filePath)

@@ -35,7 +35,8 @@
             // 
             statusText.Location = new Point(3, 3);
             statusText.Name = "statusText";
-            statusText.Size = new Size(280, 264);
+            statusText.ReadOnly = true;
+            statusText.Size = new Size(277, 344);
             statusText.TabIndex = 1;
             statusText.Text = "";
             // 
@@ -45,7 +46,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(statusText);
             Name = "WaferMapSettingStatus";
-            Size = new Size(283, 270);
+            Size = new Size(283, 350);
             Load += WaferMapSettingStatus_Load;
             ResumeLayout(false);
         }

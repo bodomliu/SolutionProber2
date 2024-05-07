@@ -1,7 +1,6 @@
-﻿using MainForm;
+﻿using WaferMapLibrary;
 using VisionLibrary;
-using WaferMapLibrary;
-
+using MotionLibrary;
 namespace CommonComponentLibrary
 {
     public partial class CommonPanel : UserControl

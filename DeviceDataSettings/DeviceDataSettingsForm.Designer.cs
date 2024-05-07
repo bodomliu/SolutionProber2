@@ -33,12 +33,10 @@
             BtnDeviceData = new Button();
             panelForm = new Panel();
             panelFile = new Panel();
-            CbxWaferMap = new ComboBox();
+            label1 = new Label();
             CbxDeviceData = new ComboBox();
             BtnSave = new Button();
             BtnLoad = new Button();
-            label1 = new Label();
-            label2 = new Label();
             panelMenu.SuspendLayout();
             panelFile.SuspendLayout();
             SuspendLayout();
@@ -85,9 +83,7 @@
             // panelFile
             // 
             panelFile.BackColor = SystemColors.ActiveBorder;
-            panelFile.Controls.Add(label2);
             panelFile.Controls.Add(label1);
-            panelFile.Controls.Add(CbxWaferMap);
             panelFile.Controls.Add(CbxDeviceData);
             panelFile.Controls.Add(BtnSave);
             panelFile.Controls.Add(BtnLoad);
@@ -97,13 +93,14 @@
             panelFile.Size = new Size(200, 746);
             panelFile.TabIndex = 0;
             // 
-            // CbxWaferMap
+            // label1
             // 
-            CbxWaferMap.FormattingEnabled = true;
-            CbxWaferMap.Location = new Point(3, 82);
-            CbxWaferMap.Name = "CbxWaferMap";
-            CbxWaferMap.Size = new Size(182, 25);
-            CbxWaferMap.TabIndex = 2;
+            label1.AutoSize = true;
+            label1.Location = new Point(3, 6);
+            label1.Name = "label1";
+            label1.Size = new Size(73, 17);
+            label1.TabIndex = 3;
+            label1.Text = "DeviceData";
             // 
             // CbxDeviceData
             // 
@@ -135,24 +132,6 @@
             BtnLoad.UseVisualStyleBackColor = false;
             BtnLoad.Click += BtnLoad_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 6);
-            label1.Name = "label1";
-            label1.Size = new Size(73, 17);
-            label1.TabIndex = 3;
-            label1.Text = "DeviceData";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(3, 62);
-            label2.Name = "label2";
-            label2.Size = new Size(70, 17);
-            label2.TabIndex = 3;
-            label2.Text = "WaferMap";
-            // 
             // DeviceDataSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -179,9 +158,7 @@
         private Panel panelFile;
         private Button BtnSave;
         private Button BtnLoad;
-        private ComboBox CbxWaferMap;
         private ComboBox CbxDeviceData;
-        private Label label2;
         private Label label1;
     }
 }
