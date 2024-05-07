@@ -181,12 +181,12 @@ namespace MainForm
             if (WaferMap.GetBIN(indexX, indexY) != 1) return;
 
             //计算插补后的坐标位置，需要加上highAlign后的晶圆偏移，根据哪支相机被激活了，确认去哪个区域标定
-            Compensation.Area area = (RbtnWaferCamera.Checked)  ? Compensation.Area.Align : Compensation.Area.Probing;
-            CommonFunctions.IndexMove(area,indexX, indexY);
+            Compensation.Area area = (RbtnWaferCamera.Checked) ? Compensation.Area.Align : Compensation.Area.Probing;
+            CommonFunctions.IndexMove(area, indexX, indexY);
 
             //去做运动校准
             CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
-            
+
             int res = CommonFunctions.FastMatch(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double deltaX, out double deltaY, out double encodeX, out double encodeY);
             //未匹配到模板
             if (res != 0) { WaferMap.SetBIN(indexX, indexY, 5); return; }
