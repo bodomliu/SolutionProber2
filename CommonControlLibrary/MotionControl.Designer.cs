@@ -58,11 +58,11 @@
             Loaderhome = new GroupBox();
             VHome = new Button();
             HomeII = new Button();
-            HomeIII = new Button();
             Whome = new Button();
             U2Home = new Button();
             U1Home = new Button();
             Ahome = new Button();
+            HomeIII = new Button();
             groupBox1 = new GroupBox();
             RMoveRel = new TextBox();
             btnRMoveRel2 = new Button();
@@ -76,7 +76,6 @@
             btnYMoveRel1 = new Button();
             XMoveRel = new TextBox();
             btnXMoveRel2 = new Button();
-            btnXMoveRel1 = new Button();
             label12 = new Label();
             ToYposition = new TextBox();
             ToZposition = new TextBox();
@@ -124,6 +123,7 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            BtnLoadParameter = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             LoaderJog = new GroupBox();
             btnAxis5Backward = new Button();
@@ -517,16 +517,6 @@
             HomeII.UseVisualStyleBackColor = true;
             HomeII.Click += HomeII_Click;
             // 
-            // HomeIII
-            // 
-            HomeIII.Location = new Point(92, 23);
-            HomeIII.Name = "HomeIII";
-            HomeIII.Size = new Size(80, 45);
-            HomeIII.TabIndex = 4;
-            HomeIII.Text = "Home III";
-            HomeIII.UseVisualStyleBackColor = true;
-            HomeIII.Click += HomeIII_Click;
-            // 
             // Whome
             // 
             Whome.Location = new Point(179, 22);
@@ -567,6 +557,16 @@
             Ahome.UseVisualStyleBackColor = true;
             Ahome.Click += Ahome_Click;
             // 
+            // HomeIII
+            // 
+            HomeIII.Location = new Point(92, 23);
+            HomeIII.Name = "HomeIII";
+            HomeIII.Size = new Size(80, 45);
+            HomeIII.TabIndex = 4;
+            HomeIII.Text = "Home III";
+            HomeIII.UseVisualStyleBackColor = true;
+            HomeIII.Click += HomeIII_Click;
+            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(RMoveRel);
@@ -581,7 +581,6 @@
             groupBox1.Controls.Add(btnYMoveRel1);
             groupBox1.Controls.Add(XMoveRel);
             groupBox1.Controls.Add(btnXMoveRel2);
-            groupBox1.Controls.Add(btnXMoveRel1);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(ToYposition);
             groupBox1.Controls.Add(ToZposition);
@@ -743,16 +742,6 @@
             btnXMoveRel2.Text = "相对运动-";
             btnXMoveRel2.UseVisualStyleBackColor = true;
             btnXMoveRel2.Click += btnXMoveRel2_Click;
-            // 
-            // btnXMoveRel1
-            // 
-            btnXMoveRel1.Location = new Point(534, 30);
-            btnXMoveRel1.Name = "btnXMoveRel1";
-            btnXMoveRel1.Size = new Size(110, 49);
-            btnXMoveRel1.TabIndex = 20;
-            btnXMoveRel1.Text = "相对运动+";
-            btnXMoveRel1.UseVisualStyleBackColor = true;
-            btnXMoveRel1.Click += btnMoveRel_Click;
             // 
             // label12
             // 
@@ -1158,6 +1147,16 @@
             label1.Size = new Size(28, 17);
             label1.TabIndex = 0;
             label1.Text = "X轴";
+            // 
+            // BtnLoadParameter
+            // 
+            BtnLoadParameter.Location = new Point(978, 424);
+            BtnLoadParameter.Name = "BtnLoadParameter";
+            BtnLoadParameter.Size = new Size(102, 49);
+            BtnLoadParameter.TabIndex = 20;
+            BtnLoadParameter.Text = "Load Parameter";
+            BtnLoadParameter.UseVisualStyleBackColor = true;
+            BtnLoadParameter.Click += BtnLoadParameter_Click;
             // 
             // timer1
             // 
@@ -1683,6 +1682,7 @@
             Controls.Add(groupBox1);
             Controls.Add(Loaderhome);
             Controls.Add(stagejog);
+            Controls.Add(BtnLoadParameter);
             Name = "MotionControl";
             Size = new Size(1096, 860);
             Load += MotionControl_Load;
@@ -1797,7 +1797,7 @@
         private TextBox REncVel;
         private System.Windows.Forms.Timer timer1;
         private Button MoveAbs;
-        private Button btnXMoveRel1;
+        private Button BtnLoadParameter;
         private TextBox ToXposition;
         private TextBox ToYposition;
         private TextBox ToZposition;

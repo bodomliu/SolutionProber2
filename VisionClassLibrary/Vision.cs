@@ -150,7 +150,7 @@ namespace VisionLibrary
             WaferHighMag.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/WaferHighMag.bin");
             PinLowMag.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/PinLowMag.bin");
             PinHighMag.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/PinHighMag.bin");
-            //JigCamera.halconClass.m_Calibration.LoadHomMat2d("HighCalibration.bin");
+            JigCamera.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/JigCamera.bin");
 
             OpenAllCamera();
         }

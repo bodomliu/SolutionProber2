@@ -50,7 +50,12 @@
             lblDiffZ = new Label();
             lblAvgZ = new Label();
             panel1 = new Panel();
-            TxtAlignData = new RichTextBox();
+            label1 = new Label();
+            TxtWaferOffsetX = new TextBox();
+            TxtWaferOffsetY = new TextBox();
+            label2 = new Label();
+            TxtWaferCenterX = new TextBox();
+            TxtWaferCenterY = new TextBox();
             groupBox4.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,8 +74,10 @@
             // 
             // txtIndexSizeY
             // 
+            txtIndexSizeY.BackColor = Color.White;
             txtIndexSizeY.Location = new Point(32, 48);
             txtIndexSizeY.Name = "txtIndexSizeY";
+            txtIndexSizeY.ReadOnly = true;
             txtIndexSizeY.Size = new Size(71, 23);
             txtIndexSizeY.TabIndex = 3;
             txtIndexSizeY.Text = "0";
@@ -78,8 +85,10 @@
             // 
             // txtIndexSizeX
             // 
+            txtIndexSizeX.BackColor = Color.White;
             txtIndexSizeX.Location = new Point(33, 22);
             txtIndexSizeX.Name = "txtIndexSizeX";
+            txtIndexSizeX.ReadOnly = true;
             txtIndexSizeX.Size = new Size(70, 23);
             txtIndexSizeX.TabIndex = 0;
             txtIndexSizeX.Text = "0";
@@ -269,20 +278,71 @@
             panel1.Size = new Size(1080, 1003);
             panel1.TabIndex = 62;
             // 
-            // TxtAlignData
+            // label1
             // 
-            TxtAlignData.Location = new Point(1088, 103);
-            TxtAlignData.Name = "TxtAlignData";
-            TxtAlignData.Size = new Size(95, 185);
-            TxtAlignData.TabIndex = 63;
-            TxtAlignData.Text = "";
+            label1.AutoSize = true;
+            label1.Location = new Point(1091, 187);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 17);
+            label1.TabIndex = 64;
+            label1.Text = "WaferOffset";
+            // 
+            // TxtWaferOffsetX
+            // 
+            TxtWaferOffsetX.BackColor = Color.White;
+            TxtWaferOffsetX.Location = new Point(1088, 207);
+            TxtWaferOffsetX.Name = "TxtWaferOffsetX";
+            TxtWaferOffsetX.ReadOnly = true;
+            TxtWaferOffsetX.Size = new Size(96, 23);
+            TxtWaferOffsetX.TabIndex = 65;
+            // 
+            // TxtWaferOffsetY
+            // 
+            TxtWaferOffsetY.BackColor = Color.White;
+            TxtWaferOffsetY.Location = new Point(1088, 236);
+            TxtWaferOffsetY.Name = "TxtWaferOffsetY";
+            TxtWaferOffsetY.ReadOnly = true;
+            TxtWaferOffsetY.Size = new Size(96, 23);
+            TxtWaferOffsetY.TabIndex = 65;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(1088, 100);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 17);
+            label2.TabIndex = 64;
+            label2.Text = "WaferCenter";
+            // 
+            // TxtWaferCenterX
+            // 
+            TxtWaferCenterX.BackColor = Color.White;
+            TxtWaferCenterX.Location = new Point(1088, 122);
+            TxtWaferCenterX.Name = "TxtWaferCenterX";
+            TxtWaferCenterX.ReadOnly = true;
+            TxtWaferCenterX.Size = new Size(96, 23);
+            TxtWaferCenterX.TabIndex = 65;
+            // 
+            // TxtWaferCenterY
+            // 
+            TxtWaferCenterY.BackColor = Color.White;
+            TxtWaferCenterY.Location = new Point(1088, 151);
+            TxtWaferCenterY.Name = "TxtWaferCenterY";
+            TxtWaferCenterY.ReadOnly = true;
+            TxtWaferCenterY.Size = new Size(96, 23);
+            TxtWaferCenterY.TabIndex = 65;
             // 
             // AlignmentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1847, 1126);
-            Controls.Add(TxtAlignData);
+            Controls.Add(TxtWaferOffsetY);
+            Controls.Add(TxtWaferCenterY);
+            Controls.Add(TxtWaferCenterX);
+            Controls.Add(TxtWaferOffsetX);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(label9);
             Controls.Add(label6);
@@ -304,6 +364,7 @@
             Name = "AlignmentForm";
             Text = "AlignmentForm";
             Load += AlignmentForm_Load;
+            VisibleChanged += AlignmentForm_VisibleChanged;
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             ResumeLayout(false);
@@ -333,6 +394,11 @@
         private Label lblDiffZ;
         private Label lblAvgZ;
         private Panel panel1;
-        private RichTextBox TxtAlignData;
+        private Label label1;
+        private TextBox TxtWaferOffsetX;
+        private TextBox TxtWaferOffsetY;
+        private Label label2;
+        private TextBox TxtWaferCenterX;
+        private TextBox TxtWaferCenterY;
     }
 }

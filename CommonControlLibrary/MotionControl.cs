@@ -1,4 +1,4 @@
-﻿using MotionLibrary;
+﻿using MainForm;
 using System.Diagnostics;
 using static GTN.mc;
 
@@ -432,7 +432,7 @@ namespace MainForm
                 short smoothtime = 0;//增量运动的平滑时间[0,50]
 
 
-                Motion.AxisMoveRel(1, 4, Convert.ToInt32(ZMoveRel.Text), vel, acc, dec, smoothtime);
+                Motion.AxisMoveRel(1, 4, Convert.ToInt32(RMoveRel.Text), vel, acc, dec, smoothtime);
             }
             catch
             {
@@ -452,7 +452,7 @@ namespace MainForm
                 short smoothtime = 0;//增量运动的平滑时间[0,50]
 
 
-                Motion.AxisMoveRel(1, 4, -Convert.ToInt32(ZMoveRel.Text), vel, acc, dec, smoothtime);
+                Motion.AxisMoveRel(1, 4, -Convert.ToInt32(RMoveRel.Text), vel, acc, dec, smoothtime);
             }
             catch
             {
@@ -611,6 +611,10 @@ namespace MainForm
         private void ZHome_Click(object sender, EventArgs e)
         {
             Motion.AxisHome(1, 3, -1, 1, 1, 100, 10, 0);
+        }
+        private void BtnLoadParameter_Click(object sender, EventArgs e)
+        {
+            Motion.Load("Config/MotionParameter.json");
         }
     }
 }

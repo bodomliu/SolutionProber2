@@ -1,4 +1,4 @@
-﻿using MotionLibrary;
+﻿using MainForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static GTN.mc_la;
 using WaferMapLibrary;
-using static MotionLibrary.Compensation;
+using static MainForm.Compensation;
 using System.Reflection;
 using System.Drawing.Imaging;
 using CommonComponentLibrary;
@@ -45,7 +45,7 @@ namespace test
             Compensation.Initial();
 
             //将grids的值都赋值给RectangleF
-            var grids = Compensation.CalibrationGrids;
+            var grids = Compensation.WorkingGrids;
             if (grids == null) return;
             rects = new RectangleF[grids.Count];
 
@@ -96,7 +96,7 @@ namespace test
             double X = double.NaN; double Y = double.NaN;
             if (RbtnAlign.Checked) Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User,
                 (double)NumEncodeX.Value, (double)NumEncodeY.Value, out X, out Y);
-            if (RbtnProbing.Checked) Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User,
+            if (RbtnProbing.Checked) Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.Encode2User,
                 (double)NumEncodeX.Value, (double)NumEncodeY.Value, out X, out Y);
 
             TxtUserPosX.Text = X.ToString();

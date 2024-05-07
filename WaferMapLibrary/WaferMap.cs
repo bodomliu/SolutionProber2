@@ -29,10 +29,10 @@ namespace WaferMapLibrary
         /// 5 = Fail Die;
         /// 6 = Cur Die;
         /// 7 = Teach Die;
-        /// 8 = Sample Die.
+        /// 8 = Sample Die. 
         /// </summary>
         public int BIN { get; set; }
-        public int Coordinates { get; set; }//0 = 不是坐标点，1 = 有效坐标点，2 = 需要进行标定的点
+        public int Coordinates { get; set; }
     }
     /// <summary>
     /// 代表注册的WaferMap信息
@@ -220,6 +220,29 @@ namespace WaferMapLibrary
                 Entity = item;
                 OnWaferMapChange?.Invoke();
             }
+        }
+        public static int GetBIN(int indexX, int indexY)
+        {
+            if (Entity.MappingPoints == null) return int.MaxValue;
+
+            var point = Entity.MappingPoints.Find(p => p.IndexX == indexX && p.IndexY == indexY);
+            if (point == null) return int.MaxValue;
+
+            return point.BIN;
+        }
+        public static int SetBIN(int indexX, int indexY, int bin)
+        {
+            if (Entity.MappingPoints == null) return 1;
+
+            var point = Entity.MappingPoints.Find(p => p.IndexX == indexX && p.IndexY == indexY);
+            if (point == null) return 2;
+
+            //point.UserPosX = userPosX; point.UserPosY = userPosY;
+            //point.EncodeX = encodeX; point.EncodeY = encodeY;
+            point.BIN = bin;
+            //point.Coordinates = 1;
+
+            return 0;
         }
     }
 }

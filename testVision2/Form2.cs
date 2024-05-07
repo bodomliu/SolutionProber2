@@ -16,15 +16,25 @@ namespace test
         public Form2()
         {
             InitializeComponent();
-
-            WaferMapCanvas mapCanvas = WaferMapCanvas.Canvas;
-            panel1.Controls.Add(mapCanvas);
-            mapCanvas.LoadCanvas();
+            this.TopLevel = false;
+            //WaferMapCanvas mapCanvas = WaferMapCanvas.Canvas;
+            panel1.Controls.Add(CommonPanel.Entity);
+            //mapCanvas.LoadCanvas();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            Console.WriteLine(this.Visible.ToString());
+        }
 
+        private void Form2_VisibleChanged(object sender, EventArgs e)
+        {
+            //Console.WriteLine(this.Visible.ToString());
+        }
+
+        private void Form2_Shown(object sender, EventArgs e)
+        {
+            
         }
     }
 }

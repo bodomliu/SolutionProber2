@@ -34,9 +34,9 @@
             // panel1
             // 
             panel1.BackColor = Color.Black;
-            panel1.Location = new Point(90, 35);
+            panel1.Location = new Point(29, 33);
             panel1.Name = "panel1";
-            panel1.Size = new Size(452, 344);
+            panel1.Size = new Size(679, 405);
             panel1.TabIndex = 0;
             // 
             // Form2
@@ -48,6 +48,8 @@
             Name = "Form2";
             Text = "Form2";
             Load += Form2_Load;
+            Shown += Form2_Shown;
+            VisibleChanged += Form2_VisibleChanged;
             ResumeLayout(false);
         }
 

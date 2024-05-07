@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using WaferMapLibrary;
-namespace MotionLibrary
+namespace MainForm
 {
     public static class Compensation
     {
@@ -98,7 +98,7 @@ namespace MotionLibrary
         {
             if (map.MappingPoints == null) { return null; }
             //遍历ErrorMap，选取所有Coordinates = 1
-            List<MappingPoint> CoordinatesPoints = map.MappingPoints.Where(p => p.Coordinates == 1).ToList();
+            List<MappingPoint> CoordinatesPoints = map.MappingPoints.Where(p => p.BIN == 4).ToList();
             if (CoordinatesPoints.Count == 0) { return null; }
 
             //遍历CoordinatesPoints，选取所有能形成Grid（该点为左下角）的点            

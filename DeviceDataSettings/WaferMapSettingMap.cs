@@ -70,8 +70,8 @@ namespace DeviceDataSettings
                     if ("UP".Equals(WaferMap.Entity.DirectionY))
                         deltaY = -deltaY;
 
-                    mp.UserPosX = WaferMap.Entity.Center2RefDieCornerX + deltaX;
-                    mp.UserPosY = WaferMap.Entity.Center2RefDieCornerY + deltaY;
+                    mp.UserPosX = WaferMap.Entity.Center2RefDieCornerX + deltaX + WaferMap.Entity.Corner2OrgX;//临时代码
+                    mp.UserPosY = WaferMap.Entity.Center2RefDieCornerY + deltaY + WaferMap.Entity.Corner2OrgY;//临时代码
 
                     WaferMap.Entity.MappingPoints.Add(mp);
                 }

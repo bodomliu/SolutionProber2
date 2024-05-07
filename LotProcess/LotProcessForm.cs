@@ -17,18 +17,17 @@ namespace MainForm
 
             GlobalContext.Properties["name"] = this.GetType().Name;//存log时，自定义文件名
             XmlConfigurator.Configure(new FileInfo("log4net.config"));//读取配置
-            
-
         }
 
         private void BtnVision_Click(object sender, EventArgs e)
         {
             VisionControl visionControl = new VisionControl();
+            panelForm.Controls.Clear();
             panelForm.Controls.Add(visionControl);
             visionControl.Dock = DockStyle.Right;
 
-            //添加commonPanel
-            CommonPanel visionPanel = new CommonPanel();
+            //添加commonPanel静态添加
+            CommonPanel visionPanel = CommonPanel.Entity;
             panelForm.Controls.Add(visionPanel);
             visionPanel.Dock = DockStyle.Fill;
         }

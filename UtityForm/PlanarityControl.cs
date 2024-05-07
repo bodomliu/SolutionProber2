@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Nodes;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CommonComponentLibrary;
 using MainForm;
 using VisionLibrary;
+using WaferMapLibrary;
 
 namespace MainForm
 {
@@ -33,12 +24,10 @@ namespace MainForm
         //int[] Points12inch_Z = new int[9];
 
         //Label[] labels = new Label[9];
-
         public PlanarityControl()
         {
             InitializeComponent();
         }
-
         private void PlanarityControl_Load(object sender, EventArgs e)
         {
             //默认是With Wafer模式
@@ -48,7 +37,6 @@ namespace MainForm
             RbtnWaferCamera.Checked = true;
             Vision.ChangeCamera(Vision.WaferHighMag);
         }
-
         private void UpdateZ(double[] Z)
         {
             lblAvgZ.Text = Z.Average().ToString();
@@ -74,9 +62,6 @@ namespace MainForm
             Diff8.Text = (Z[7] - Z[8]).ToString();
             Diff9.Text = (Z[8] - Z[8]).ToString();
         }
-
-
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             //JsonArray Pointsinch12 = new JsonArray();
@@ -100,7 +85,6 @@ namespace MainForm
             //Console.WriteLine(jasonString.ToJsonString(options));
             //File.WriteAllText("PlanarityPoints.json", jasonString.ToJsonString(options));
         }
-
         private void btnLoad_Click(object sender, EventArgs e)
         {
             //string json = File.ReadAllText("PlanarityPoints.json");
@@ -120,7 +104,6 @@ namespace MainForm
             //}
             //UpdatePos();
         }
-
         private void btnMove_Click(object sender, EventArgs e)
         {
             int index = 0;
@@ -133,81 +116,72 @@ namespace MainForm
                 index = int.Parse(item) - 1;
             }
 
-            //WaferMap.Generate9Pionts(out double[] userX, out double[] userY);
+            CommonFunctions.Generate9Pionts(out double[] userX, out double[] userY);
 
-            //Motion.UserPosMoveAbs(Compensation.Area.Align, userX[index], userY[index]);
+            Motion.UserPosMoveAbs(Compensation.Area.Align, userX[index], userY[index]);
         }
-
-
         private void btnCheckAllPos_Click(object sender, EventArgs e)
         {
-            //double[] Z = new double[9];
+            double[] Z = new double[9];
 
-            //WaferMap.Generate9Pionts(out double[] userX, out double[] userY);
+            CommonFunctions.Generate9Pionts(out double[] userX, out double[] userY);
 
-            //for (int i = 0; i < 9; i++)
-            //{
-            //    Application.DoEvents();
+            for (int i = 0; i < 9; i++)
+            {
+                Application.DoEvents();
+                if (RbtnWaferCamera.Checked) Motion.UserPosMoveAbs(Compensation.Area.Align, userX[i], userY[i]);
+                double thickness = (RbtnWithWafer.Checked) ? DeviceData.Entity.PhysicalInformation.Thickness : 0;
+                int res = CommonFunctions.AdjustWaferHeight(thickness, Vision.WaferHighMag);
+                if (res != 0) { MessageBox.Show("Adjust Wafer Height wrong "); return; }
+                Z[i] = Motion.GetEncPos(1, 3);
+            }
 
-            //    if (RbtnWaferCamera.Checked) Motion.UserPosMoveAbs(Compensation.Area.Align, userX[i], userY[i]);
-            //    if (RbtnWithWafer.Checked)
-            //    {
-            //        int res = Alignment.AdjustWaferHeight(37000, 39000, Vision.WaferHighMag);
-            //        if (res != 0) { MessageBox.Show("Adjust Wafer Height wrong "); return; }
-            //    } 
-
-            //    Z[i] = Motion.GetEncPos(1, 3);
-            //}
-
-
-            //UpdateZ(Z);
+            UpdateZ(Z);
         }
-
         private void btnUpdatePos_Click(object sender, EventArgs e)
         {
-            //WaferMap.Generate9Pionts(out double[] userX, out double[] userY);
+            CommonFunctions.Generate9Pionts(out double[] userX, out double[] userY);
 
-            //X1.Text = userX[0].ToString();
-            //Y1.Text = userY[0].ToString();
-            //X2.Text = userX[1].ToString();
-            //Y2.Text = userY[1].ToString();
-            //X3.Text = userX[2].ToString();
-            //Y3.Text = userY[2].ToString();
-            //X4.Text = userX[3].ToString();
-            //Y4.Text = userY[3].ToString();
-            //X5.Text = userX[4].ToString();
-            //Y5.Text = userY[4].ToString();
-            //X6.Text = userX[5].ToString();
-            //Y6.Text = userY[5].ToString();
-            //X7.Text = userX[6].ToString();
-            //Y7.Text = userY[6].ToString();
-            //X8.Text = userX[7].ToString();
-            //Y8.Text = userY[7].ToString();
-            //X9.Text = userX[8].ToString();
-            //Y9.Text = userY[8].ToString();
+            X1.Text = userX[0].ToString();
+            Y1.Text = userY[0].ToString();
+            X2.Text = userX[1].ToString();
+            Y2.Text = userY[1].ToString();
+            X3.Text = userX[2].ToString();
+            Y3.Text = userY[2].ToString();
+            X4.Text = userX[3].ToString();
+            Y4.Text = userY[3].ToString();
+            X5.Text = userX[4].ToString();
+            Y5.Text = userY[4].ToString();
+            X6.Text = userX[5].ToString();
+            Y6.Text = userY[5].ToString();
+            X7.Text = userX[6].ToString();
+            Y7.Text = userY[6].ToString();
+            X8.Text = userX[7].ToString();
+            Y8.Text = userY[7].ToString();
+            X9.Text = userX[8].ToString();
+            Y9.Text = userY[8].ToString();
         }
-
-        private void RbtnWaferCamera_CheckedChanged(object sender, EventArgs e)
-        {
-            Vision.ChangeCamera(Vision.WaferHighMag);
-        }
-
         private void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
         {
-            //int res = 0;
+            WaitingControl wf = new WaitingControl();
+            this.Controls.Add(wf);
+            wf.Show();
 
-            //if (RbtnWaferCamera.Checked)
-            //{
-            //    if (RbtnWithWafer.Checked) 
-            //    { 
-            //         res = Alignment.AdjustWaferHeight(37000, 39000, Vision.WaferHighMag);
-            //    }
-                
-                
-            //}
+            if (Vision.activeCamera == Camera.WaferLowMag)
+            {
+                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferLowMag);
+            }
+            else if (Vision.activeCamera == Camera.WaferHighMag)
+            {
+                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
+            }
 
-            //if (res != 0) { MessageBox.Show("Adjust Wafer Height wrong "); return; }
+            wf.Dispose();
         }
-
+        private void RbtnWaferCamera_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbtnWaferCamera.Checked) Vision.ChangeCamera(Vision.WaferHighMag);
+            else if (RbtnJigCamera.Checked) Vision.ChangeCamera(Vision.JigCamera);
+        }
     }
 }

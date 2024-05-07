@@ -1,4 +1,4 @@
-﻿namespace MotionLibrary
+﻿namespace MainForm
 {
     partial class ErrorCompensationForm
     {
@@ -57,6 +57,8 @@
             panelMapMini = new Panel();
             BtnSim = new Button();
             BtnResetErrorTable = new Button();
+            CBTest = new CheckBox();
+            BtnMatch = new Button();
             groupBox1.SuspendLayout();
             GboxIndexControl.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -106,7 +108,6 @@
             RbtnJigCamera.TabIndex = 1;
             RbtnJigCamera.Text = "Jig Camera";
             RbtnJigCamera.UseVisualStyleBackColor = true;
-            RbtnJigCamera.CheckedChanged += RbtnJigCamera_CheckedChanged;
             // 
             // RbtnWaferCamera
             // 
@@ -139,12 +140,13 @@
             // 
             // BtnWaferAlignment
             // 
-            BtnWaferAlignment.Location = new Point(1099, 493);
+            BtnWaferAlignment.Location = new Point(1099, 447);
             BtnWaferAlignment.Name = "BtnWaferAlignment";
-            BtnWaferAlignment.Size = new Size(159, 43);
+            BtnWaferAlignment.Size = new Size(105, 43);
             BtnWaferAlignment.TabIndex = 60;
             BtnWaferAlignment.Text = "Wafer Alignment";
             BtnWaferAlignment.UseVisualStyleBackColor = true;
+            BtnWaferAlignment.Click += BtnWaferAlignment_Click;
             // 
             // groupBox3
             // 
@@ -329,9 +331,9 @@
             // 
             // BtnAdjustWaferHeight
             // 
-            BtnAdjustWaferHeight.Location = new Point(1099, 419);
+            BtnAdjustWaferHeight.Location = new Point(1099, 398);
             BtnAdjustWaferHeight.Name = "BtnAdjustWaferHeight";
-            BtnAdjustWaferHeight.Size = new Size(159, 47);
+            BtnAdjustWaferHeight.Size = new Size(103, 43);
             BtnAdjustWaferHeight.TabIndex = 70;
             BtnAdjustWaferHeight.Text = "Adjust Wafer Height";
             BtnAdjustWaferHeight.UseVisualStyleBackColor = true;
@@ -366,11 +368,32 @@
             BtnResetErrorTable.UseVisualStyleBackColor = false;
             BtnResetErrorTable.Click += BtnResetErrorTable_Click;
             // 
+            // CBTest
+            // 
+            CBTest.AutoSize = true;
+            CBTest.Location = new Point(1262, 469);
+            CBTest.Name = "CBTest";
+            CBTest.Size = new Size(51, 21);
+            CBTest.TabIndex = 73;
+            CBTest.Text = "Test";
+            CBTest.UseVisualStyleBackColor = true;
+            // 
+            // BtnMatch
+            // 
+            BtnMatch.Location = new Point(1099, 496);
+            BtnMatch.Name = "BtnMatch";
+            BtnMatch.Size = new Size(105, 43);
+            BtnMatch.TabIndex = 60;
+            BtnMatch.Text = "Match";
+            BtnMatch.UseVisualStyleBackColor = true;
+            BtnMatch.Click += BtnMatch_Click;
+            // 
             // ErrorCompensationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1764, 1026);
+            Controls.Add(CBTest);
             Controls.Add(BtnResetErrorTable);
             Controls.Add(panelMapMini);
             Controls.Add(BtnAdjustWaferHeight);
@@ -383,6 +406,7 @@
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
+            Controls.Add(BtnMatch);
             Controls.Add(BtnWaferAlignment);
             Controls.Add(GboxIndexControl);
             Controls.Add(groupBox1);
@@ -391,7 +415,7 @@
             Name = "ErrorCompensationForm";
             Text = "ErrorCompensationForm";
             Load += ErrorCompensationForm_Load;
-            Paint += ErrorCompensationForm_Paint;
+            VisibleChanged += ErrorCompensationForm_VisibleChanged;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             GboxIndexControl.ResumeLayout(false);
@@ -404,6 +428,7 @@
             ((System.ComponentModel.ISupportInitialize)pbY).EndInit();
             groupBox6.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -436,5 +461,7 @@
         private Panel panelMapMini;
         private Button BtnSim;
         private Button BtnResetErrorTable;
+        private CheckBox CBTest;
+        private Button BtnMatch;
     }
 }

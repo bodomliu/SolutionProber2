@@ -1,5 +1,5 @@
 ﻿using CommonComponentLibrary;
-using MotionLibrary;
+using MainForm;
 using VisionLibrary;
 using WaferMapLibrary;
 
@@ -26,10 +26,7 @@ namespace MainForm
             panelMap.Controls.Add(waferMapCanvas);
             waferMapCanvas.SetRatio(1, 1);
             waferMapCanvas.LoadCanvas();
-
-            //CommonPanel
-            CommonPanel commonPanel = new CommonPanel();//引入通用的CommonPanel
-            panel1.Controls.Add(commonPanel);
+            
         }
         /// <summary>
         /// 更新界面上控件的状态
@@ -43,7 +40,7 @@ namespace MainForm
             lowModel.Visible = isLowModel;
             highModel.Visible = !isLowModel;
 
-            txtIndexSizeX.Text= WaferMap.Entity.DieSizeX.ToString();
+            txtIndexSizeX.Text = WaferMap.Entity.DieSizeX.ToString();
             txtIndexSizeY.Text = WaferMap.Entity.DieSizeY.ToString();
         }
         private void AlignmentForm_Load(object sender, EventArgs e)
@@ -52,7 +49,7 @@ namespace MainForm
             Vision.ChangeCamera(Vision.WaferLowMag);
             Thread.Sleep(200);
             Vision.WaferLowMag.halconClass.SetPart(1280, 1024);//1280*1024显示
-            
+
             WaferMap.OnAlignChange += UpdateAlignFlag;//注册flag事件
             UpdateUI();
         }
@@ -91,11 +88,11 @@ namespace MainForm
 
             if (Vision.activeCamera == Camera.WaferLowMag)
             {
-                Alignment.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferLowMag);
+                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferLowMag);
             }
             else if (Vision.activeCamera == Camera.WaferHighMag)
             {
-                Alignment.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
+                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
             }
 
             wf.Dispose();
@@ -118,7 +115,7 @@ namespace MainForm
         }
         private void BtnWaferAlignment_Click(object sender, EventArgs e)
         {
-
+            CommonFunctions.InitialMappingPoints();
         }
         private void UpdateAlignFlag(bool center, bool low, bool high)
         {
@@ -126,31 +123,46 @@ namespace MainForm
             lblLowAlignFlag.BackColor = (low) ? Color.Green : Color.Red;
             lblHighAlignFlag.BackColor = (high) ? Color.Green : Color.Red;
 
-            TxtAlignData.Text = "WaferOffset :\r\n" + WaferMap.WaferOffsetX.ToString() 
-                + "\r\n" + WaferMap.WaferOffsetY.ToString();
+            TxtWaferCenterX.Text = WaferMap.WaferCenterX.ToString("F0");
+            TxtWaferCenterY.Text = WaferMap.WaferCenterY.ToString("F0");
+            TxtWaferOffsetX.Text = WaferMap.WaferOffsetX.ToString("F0");
+            TxtWaferOffsetY.Text = WaferMap.WaferOffsetY.ToString("F0");
         }
+        /// <summary>
+        /// 临时做一下高度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAutoHeight_Click(object sender, EventArgs e)
         {
-            //Vision.ChangeCamera(Vision.WaferHighMag);
-            //double[] Z = new double[9];
+            Vision.ChangeCamera(Vision.WaferHighMag);
+            double[] Z = new double[9];
 
-            //WaferMap.Generate9Pionts(out double[] userX, out double[] userY);
+            CommonFunctions.Generate9Pionts(out double[] userX, out double[] userY);
 
-            //for (int i = 0; i < 9; i++)
-            //{
-            //    Application.DoEvents();
+            for (int i = 0; i < 9; i++)
+            {
+                Application.DoEvents();
 
-            //    Motion.UserPosMoveAbs(Compensation.Area.Align, userX[i], userY[i]);
+                Motion.UserPosMoveAbs(Compensation.Area.Align, userX[i], userY[i]);
 
-            //    int res = Alignment.AdjustWaferHeight(37000, 39000, Vision.WaferHighMag);
-            //    if (res != 0) { MessageBox.Show("Focus Error"); return; }
+                int res = CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
+                if (res != 0) { MessageBox.Show("Focus Error"); return; }
 
-            //    Z[i] = Motion.GetEncPos(1, 3);
-            //}
+                Z[i] = Motion.GetEncPos(1, 3);
+            }
 
-            //WaferMap.Thickness = Z.Average();
-            //lblAvgZ.Text = Z.Average().ToString();
-            //lblDiffZ.Text = (Z.Max() - Z.Min()).ToString();
+            double height = Z.Average();
+            Motion.AxisMoveAbs(1, 3, height, 600, 20, 20, 10);
+            lblAvgZ.Text = Z.Average().ToString();
+            lblDiffZ.Text = (Z.Max() - Z.Min()).ToString();
+        }
+
+        private void AlignmentForm_VisibleChanged(object sender, EventArgs e)
+        {
+            //静态添加commonpanel
+            if(this.Visible)panel1.Controls.Add(CommonPanel.Entity);
+            //TODO 会出现多次
         }
     }
 }

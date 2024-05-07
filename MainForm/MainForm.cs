@@ -1,7 +1,6 @@
-using CommonComponentLibrary;
 using log4net;
 using log4net.Config;
-using MotionLibrary;
+using MainForm;
 using VisionLibrary;
 
 namespace MainForm

@@ -1,12 +1,14 @@
-﻿using VisionLibrary;
-using MotionLibrary;
+﻿using MainForm;
+using VisionLibrary;
 using WaferMapLibrary;
-using HalconDotNet;
 
 namespace CommonComponentLibrary
 {
     public partial class CommonPanel : UserControl
     {
+        public static CommonPanel Entity = new CommonPanel();//改为静态变量，避免消耗太多资源
+        public static int IndexX = 0;//独立的用于显示的Index
+        public static int IndexY = 0;//独立的用于显示的Index
         private double ZeroX = 0, ZeroY = 0, ZeroZ = 0;//临时用户坐标系
         public CommonPanel()
         {
@@ -18,8 +20,8 @@ namespace CommonComponentLibrary
             TimMotion.Enabled = true;
             BtnSetZeroPosition.Visible = false;
 
-            JogSlow_Click(JogSlow,e);//初始slow速度
-            BtnStep_Click(BtnStep,e);//初始Step模式
+            JogSlow_Click(JogSlow, e);//初始slow速度
+            BtnStep_Click(BtnStep, e);//初始Step模式
         }
         private double JogSpeed = 1, Acc = 1, Dec = 1;
         private void JogSlow_Click(object sender, EventArgs e)
@@ -85,19 +87,38 @@ namespace CommonComponentLibrary
         private void BtnSetZeroPosition_Click(object sender, EventArgs e)
         {
             //需要在相同坐标系来做差
-            if (RbtnAlign.Checked) Motion.GetUserPos(Compensation.Area.Align, out ZeroX, out ZeroY);
-            if (RbtnProbing.Checked) Motion.GetUserPos(Compensation.Area.Probing, out ZeroX, out ZeroY);
-            if (RbtnMotion.Checked) Motion.XY_GetEncPos(out ZeroX, out ZeroY);
-
+            if (CbCompensation.Checked)
+            {
+                Motion.GetUserPos(Motion.CurrentArea, out ZeroX, out ZeroY);
+            }
+            else 
+            {
+                Motion.XY_GetEncPos(out ZeroX, out ZeroY); 
+            }
             ZeroZ = Motion.GetEncPos(1, 3);
         }
         private void TimMotion_Tick(object sender, EventArgs e)
         {
-            double X = double.NaN; double Y = double.NaN;
-            if (RbtnAlign.Checked) Motion.GetUserPos(Compensation.Area.Align, out X, out Y);
-            if (RbtnProbing.Checked) Motion.GetUserPos(Compensation.Area.Probing, out X, out Y);
-            if (RbtnMotion.Checked) Motion.XY_GetEncPos(out X, out Y);
-
+            //当Y值很大时，Area变更
+            Motion.XY_GetEncPos(out double X, out double Y);
+            if (Y > Motion.parameter.ALIGNDIVIDEY)
+            {
+                Motion.CurrentArea = Compensation.Area.Probing;
+                LblIsProbingArea.Text = "Probing Area";
+                LblIsProbingArea.BackColor = Color.Red;
+            }
+            else
+            {
+                Motion.CurrentArea = Compensation.Area.Align;
+                LblIsProbingArea.Text = "Align Area";
+                LblIsProbingArea.BackColor = Color.LimeGreen;
+            }
+            //如果使用用户坐标系
+            if (CbCompensation.Checked)
+            {
+                Motion.GetUserPos(Motion.CurrentArea, out X, out Y);
+            }
+            //注意当跨区使用时，不能用户坐标系
             txtEncodeX.Text = (X - ZeroX).ToString("F0");
             txtEncodeY.Text = (Y - ZeroY).ToString("F0");
 
@@ -106,7 +127,7 @@ namespace CommonComponentLibrary
             double R = Motion.GetEncPos(1, 4);
             txtEncodeR.Text = R.ToString("F0");
 
-            TxtIndex.Text = "X: " + WaferMap.CurrentIndexX.ToString() + "    Y: " + WaferMap.CurrentIndexY.ToString();
+            TxtIndex.Text = "X: " + IndexX.ToString() + "    Y: " + IndexY.ToString();
         }
         private void BtnUp_MouseDown(object? sender, MouseEventArgs e)
         {
@@ -210,10 +231,9 @@ namespace CommonComponentLibrary
             Button btn = (Button)sender;
             btn.BackColor = Color.Orange;
         }
-
         private void BtnLeft_Click(object? sender, EventArgs e)
         {
-            IndexMoveRel(-1,0);//向左
+            IndexMoveRel(-1, 0);//向左
         }
         private void BtnRight_Click(object? sender, EventArgs e)
         {
@@ -229,20 +249,16 @@ namespace CommonComponentLibrary
         }
         private void IndexMoveRel(int X, int Y)
         {
-            if (RbtnAlign.Checked)
+            if (CbCompensation.Checked)
             {
-                Motion.UserPosMoveRel(Compensation.Area.Align, X * WaferMap.Entity.DieSizeX, Y * WaferMap.Entity.DieSizeY);
-            }
-            else if (RbtnProbing.Checked)
+                Motion.UserPosMoveRel(Motion.CurrentArea, X * WaferMap.Entity.DieSizeX, Y * WaferMap.Entity.DieSizeY);
+}
+            else
             {
-                Motion.UserPosMoveRel(Compensation.Area.Probing, X * WaferMap.Entity.DieSizeX, Y * WaferMap.Entity.DieSizeY);
+                Motion.XY_AxisMoveRel(1, -X * WaferMap.Entity.DieSizeX, Y * WaferMap.Entity.DieSizeY, 600, 20, 20, 10);
             }
-            else if (RbtnMotion.Checked)
-            {
-                Motion.XY_AxisMoveRel(1,-X * WaferMap.Entity.DieSizeX, -Y * WaferMap.Entity.DieSizeY,600,20,20,10);
-            }
-            WaferMap.CurrentIndexX += X;
-            WaferMap.CurrentIndexY += Y;
+            IndexX += X;
+            IndexY += Y;
         }
     }
 }

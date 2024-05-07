@@ -32,11 +32,11 @@
             BtnDeviceSettings = new Button();
             BtnAlignment = new Button();
             BtnMotionControl = new Button();
+            BtnSetupUtility = new Button();
             BtnErrorCompensation = new Button();
             BtnLotProcess = new Button();
             panelForm = new Panel();
             panelStatus = new Panel();
-            BtnSetupUtility = new Button();
             panelMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,9 +50,9 @@
             panelMenu.Controls.Add(BtnErrorCompensation);
             panelMenu.Controls.Add(BtnLotProcess);
             panelMenu.Dock = DockStyle.Right;
-            panelMenu.Location = new Point(1581, 100);
+            panelMenu.Location = new Point(1581, 63);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(323, 885);
+            panelMenu.Size = new Size(323, 922);
             panelMenu.TabIndex = 3;
             // 
             // BtnDeviceSettings
@@ -69,7 +69,7 @@
             // BtnAlignment
             // 
             BtnAlignment.BackColor = Color.YellowGreen;
-            BtnAlignment.Location = new Point(21, 213);
+            BtnAlignment.Location = new Point(21, 279);
             BtnAlignment.Name = "BtnAlignment";
             BtnAlignment.Size = new Size(100, 60);
             BtnAlignment.TabIndex = 1;
@@ -80,13 +80,24 @@
             // BtnMotionControl
             // 
             BtnMotionControl.BackColor = Color.YellowGreen;
-            BtnMotionControl.Location = new Point(21, 147);
+            BtnMotionControl.Location = new Point(21, 213);
             BtnMotionControl.Name = "BtnMotionControl";
             BtnMotionControl.Size = new Size(100, 60);
             BtnMotionControl.TabIndex = 1;
             BtnMotionControl.Text = "Motion Control";
             BtnMotionControl.UseVisualStyleBackColor = false;
             BtnMotionControl.Click += BtnMotionControl_Click;
+            // 
+            // BtnSetupUtility
+            // 
+            BtnSetupUtility.BackColor = Color.Orange;
+            BtnSetupUtility.Location = new Point(21, 147);
+            BtnSetupUtility.Name = "BtnSetupUtility";
+            BtnSetupUtility.Size = new Size(100, 60);
+            BtnSetupUtility.TabIndex = 1;
+            BtnSetupUtility.Text = "Setup Utility";
+            BtnSetupUtility.UseVisualStyleBackColor = false;
+            BtnSetupUtility.Click += BtnSetupUtility_Click;
             // 
             // BtnErrorCompensation
             // 
@@ -115,9 +126,9 @@
             panelForm.BackColor = Color.Gray;
             panelForm.BorderStyle = BorderStyle.Fixed3D;
             panelForm.Dock = DockStyle.Fill;
-            panelForm.Location = new Point(0, 100);
+            panelForm.Location = new Point(0, 63);
             panelForm.Name = "panelForm";
-            panelForm.Size = new Size(1581, 885);
+            panelForm.Size = new Size(1581, 922);
             panelForm.TabIndex = 4;
             // 
             // panelStatus
@@ -127,19 +138,8 @@
             panelStatus.Dock = DockStyle.Top;
             panelStatus.Location = new Point(0, 0);
             panelStatus.Name = "panelStatus";
-            panelStatus.Size = new Size(1904, 100);
+            panelStatus.Size = new Size(1904, 63);
             panelStatus.TabIndex = 0;
-            // 
-            // BtnSetupUtility
-            // 
-            BtnSetupUtility.BackColor = Color.Orange;
-            BtnSetupUtility.Location = new Point(127, 81);
-            BtnSetupUtility.Name = "BtnSetupUtility";
-            BtnSetupUtility.Size = new Size(100, 60);
-            BtnSetupUtility.TabIndex = 1;
-            BtnSetupUtility.Text = "Setup Utility";
-            BtnSetupUtility.UseVisualStyleBackColor = false;
-            BtnSetupUtility.Click += BtnSetupUtility_Click;
             // 
             // MainForm
             // 

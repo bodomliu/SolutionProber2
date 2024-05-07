@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             canvas = new Panel();
+            TxtIndex = new TextBox();
             txtEncodeR = new TextBox();
             txtEncodeZ = new TextBox();
             txtEncodeY = new TextBox();
@@ -49,13 +50,9 @@
             BtnStep = new Button();
             BtnIndex = new Button();
             BtnScan = new Button();
-            groupBox1 = new GroupBox();
-            RbtnMotion = new RadioButton();
-            RbtnProbing = new RadioButton();
-            RbtnAlign = new RadioButton();
-            TxtIndex = new TextBox();
+            LblIsProbingArea = new Label();
+            CbCompensation = new CheckBox();
             canvas.SuspendLayout();
-            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // canvas
@@ -71,6 +68,13 @@
             canvas.Size = new Size(960, 768);
             canvas.TabIndex = 2;
             canvas.Paint += canvas_Paint;
+            // 
+            // TxtIndex
+            // 
+            TxtIndex.Location = new Point(27, 21);
+            TxtIndex.Name = "TxtIndex";
+            TxtIndex.Size = new Size(100, 23);
+            TxtIndex.TabIndex = 1;
             // 
             // txtEncodeR
             // 
@@ -258,65 +262,34 @@
             BtnScan.UseVisualStyleBackColor = true;
             BtnScan.Click += BtnScan_Click;
             // 
-            // groupBox1
+            // LblIsProbingArea
             // 
-            groupBox1.BackColor = Color.White;
-            groupBox1.Controls.Add(RbtnMotion);
-            groupBox1.Controls.Add(RbtnProbing);
-            groupBox1.Controls.Add(RbtnAlign);
-            groupBox1.Location = new Point(345, 825);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(87, 89);
-            groupBox1.TabIndex = 27;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "coordinate";
+            LblIsProbingArea.AutoSize = true;
+            LblIsProbingArea.BackColor = Color.LimeGreen;
+            LblIsProbingArea.BorderStyle = BorderStyle.FixedSingle;
+            LblIsProbingArea.Location = new Point(247, 851);
+            LblIsProbingArea.Name = "LblIsProbingArea";
+            LblIsProbingArea.Size = new Size(37, 19);
+            LblIsProbingArea.TabIndex = 28;
+            LblIsProbingArea.Text = "Area";
             // 
-            // RbtnMotion
+            // CbCompensation
             // 
-            RbtnMotion.AutoSize = true;
-            RbtnMotion.Location = new Point(6, 61);
-            RbtnMotion.Name = "RbtnMotion";
-            RbtnMotion.Size = new Size(68, 21);
-            RbtnMotion.TabIndex = 28;
-            RbtnMotion.Text = "Motion";
-            RbtnMotion.UseVisualStyleBackColor = true;
-            // 
-            // RbtnProbing
-            // 
-            RbtnProbing.AutoSize = true;
-            RbtnProbing.Location = new Point(6, 41);
-            RbtnProbing.Name = "RbtnProbing";
-            RbtnProbing.Size = new Size(72, 21);
-            RbtnProbing.TabIndex = 1;
-            RbtnProbing.TabStop = true;
-            RbtnProbing.Text = "Probing";
-            RbtnProbing.UseVisualStyleBackColor = true;
-            // 
-            // RbtnAlign
-            // 
-            RbtnAlign.AutoSize = true;
-            RbtnAlign.Checked = true;
-            RbtnAlign.Location = new Point(6, 20);
-            RbtnAlign.Name = "RbtnAlign";
-            RbtnAlign.Size = new Size(55, 21);
-            RbtnAlign.TabIndex = 0;
-            RbtnAlign.TabStop = true;
-            RbtnAlign.Text = "Align";
-            RbtnAlign.UseVisualStyleBackColor = true;
-            // 
-            // TxtIndex
-            // 
-            TxtIndex.Location = new Point(27, 21);
-            TxtIndex.Name = "TxtIndex";
-            TxtIndex.Size = new Size(100, 23);
-            TxtIndex.TabIndex = 1;
+            CbCompensation.AutoSize = true;
+            CbCompensation.Location = new Point(247, 827);
+            CbCompensation.Name = "CbCompensation";
+            CbCompensation.Size = new Size(111, 21);
+            CbCompensation.TabIndex = 29;
+            CbCompensation.Text = "Compensation";
+            CbCompensation.UseVisualStyleBackColor = true;
             // 
             // CommonPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(groupBox1);
+            Controls.Add(CbCompensation);
+            Controls.Add(LblIsProbingArea);
             Controls.Add(BtnScan);
             Controls.Add(BtnIndex);
             Controls.Add(BtnStep);
@@ -337,9 +310,8 @@
             Load += UserControl_Load;
             canvas.ResumeLayout(false);
             canvas.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -364,10 +336,8 @@
         private Button BtnStep;
         private Button BtnIndex;
         private Button BtnScan;
-        private GroupBox groupBox1;
-        private RadioButton RbtnMotion;
-        private RadioButton RbtnProbing;
-        private RadioButton RbtnAlign;
         private TextBox TxtIndex;
+        private Label LblIsProbingArea;
+        private CheckBox CbCompensation;
     }
 }
