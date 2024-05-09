@@ -84,6 +84,7 @@ namespace DeviceDataSettings
             radioButton6.TabStop = true;
             radioButton6.Text = "6. Probing Sequence";
             radioButton6.UseVisualStyleBackColor = true;
+            radioButton6.CheckedChanged += radioButton6_CheckedChanged;
             // 
             // radioButton5
             // 

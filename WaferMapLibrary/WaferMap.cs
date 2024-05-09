@@ -33,6 +33,11 @@ namespace WaferMapLibrary
         /// </summary>
         public int BIN { get; set; }
         public int Coordinates { get; set; }
+
+        /// <summary>
+        /// 探测顺序
+        /// </summary>
+        public int Order { get; set; }
     }
     /// <summary>
     /// 代表注册的WaferMap信息

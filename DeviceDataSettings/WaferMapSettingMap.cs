@@ -138,7 +138,7 @@ namespace DeviceDataSettings
 
         private void Apply_Click(object sender, EventArgs e)
         {
-            MappingPoint? mp = getMappingPint(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
+            MappingPoint? mp = WaferMapSettingBase.getMappingPint(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
             if (null == mp)
                 return;
             if (mp.BIN == 1)
@@ -150,21 +150,6 @@ namespace DeviceDataSettings
             _waferMap.RefreshCanvas();
         }
 
-        private MappingPoint? getMappingPint(int x, int y)
-        {
-            if (null == WaferMap.Entity.MappingPoints)
-                return null;
-            // 计算具体的 index
-            int index = WaferMap.Entity.DieNumX * y + x;
-            if (index >= WaferMap.Entity.MappingPoints.Count)
-                return null;
-            var p = WaferMap.Entity.MappingPoints?[index];
-            if (null == p || p.IndexX != x || p.IndexY != y)
-            {
-                return WaferMap.Entity.MappingPoints?.Find(f => f.IndexX == x && f.IndexY == y);
-            }
-
-            return p;
-        }
+        
     }
 }

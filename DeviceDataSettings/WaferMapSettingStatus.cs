@@ -18,7 +18,7 @@ namespace DeviceDataSettings
             InitializeComponent();
         }
 
-        private void WaferMapSettingStatus_Load(object sender, EventArgs e)
+        public void Reload()
         {
             string s = "Device Name : " + DeviceData.Entity.PhysicalInformation.DeviceName + "\n"
                 + "Wafer Size : " + WaferMap.Entity.WaferSize.ToString() + "\n"
@@ -33,6 +33,11 @@ namespace DeviceDataSettings
 
 
             this.statusText.Text = s;
+        }
+
+        private void WaferMapSettingStatus_Load(object sender, EventArgs e)
+        {
+            Reload();
         }
     }
 }

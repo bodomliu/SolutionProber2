@@ -207,8 +207,12 @@ namespace CommonComponentLibrary
             {
                 foreach (MappingPoint pt in WaferMap.Entity.MappingPoints)
                 {
-
-                    DrawRect(pt.IndexX, pt.IndexY, gp, WaferMapColorCard.colors[pt.BIN]);
+                    Color c = WaferMapColorCard.colors[pt.BIN];
+                    if (IsDisplaySequenceOrder && pt.Order > 0)
+                    {
+                        c = Color.Crimson;
+                    }
+                    DrawRect(pt.IndexX, pt.IndexY, gp, c);
                 }
             }
 
@@ -222,6 +226,8 @@ namespace CommonComponentLibrary
             // canvas.Image = backgroundBitmap;
             //canvas.Refresh();
         }
+
+        public Boolean IsDisplaySequenceOrder { get; set; } = false;
         /// <summary>
         /// 合并图层
         /// </summary>

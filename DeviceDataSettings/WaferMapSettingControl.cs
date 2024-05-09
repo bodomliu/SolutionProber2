@@ -27,6 +27,8 @@ namespace DeviceDataSettings
         private readonly WaferMapSettingMap _wmsmap;
 
         private readonly WaferMapSettingStatus _wmss;
+
+        private readonly WaferMapSettingProbingSequenceControl _wmsps;
         public WaferMapSettingControl()
         {
             InitializeComponent();
@@ -36,6 +38,7 @@ namespace DeviceDataSettings
             this._wmsc = new(_waferMap);
             this._wmsmap = new(_waferMap);
             this._wmss = new();
+            this._wmsps = new(_waferMap);
             WaferMap.OnWaferMapChange += WaferMap_OnWaferMapChange;
         }
 
@@ -119,6 +122,21 @@ namespace DeviceDataSettings
             {
                 panel2.Controls.Clear();
                 panel2.Controls.Add(_wmss);
+                _wmss.Reload();
+            }
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                panel2.Controls.Clear();
+                panel2.Controls.Add(_wmsps);
+                _wmsps.Reload();
+            } else
+            {
+                _wmsps.Unload();
             }
         }
     }
