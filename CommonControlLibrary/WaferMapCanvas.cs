@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WaferMapLibrary;
-
 namespace CommonComponentLibrary
 {
     public partial class WaferMapCanvas : UserControl
@@ -266,7 +265,7 @@ namespace CommonComponentLibrary
 
         #region 鼠标左击
 
-        public Boolean MouseClickDefineCurrentIndex { get; set; } = false;
+        public Boolean MouseClickDefineCurrentIndex { get; set; } = true;
         private void WaferMapCanvas_MouseDown(object? sender, MouseEventArgs e)
         {
             // 获得焦点

@@ -1,8 +1,8 @@
-﻿using MainForm;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using MotionLibrary;
 using static GTN.mc;
 
-namespace MainForm
+namespace CommonComponentLibrary
 {
     public partial class MotionControl : UserControl
     {
@@ -29,6 +29,9 @@ namespace MainForm
         private void HomeIII_Click(object sender, EventArgs e)
         {
             Motion.XYZR_AxisHome();
+            WaferMapLibrary.WaferMap.IsHighAlignCompleted = false;
+            WaferMapLibrary.WaferMap.IsLowAlignCompleted = false;
+            WaferMapLibrary.WaferMap.IsWaferCenterCompleted = false;
         }
         public void UpdateUI()
         {

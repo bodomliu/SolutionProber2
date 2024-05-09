@@ -29,7 +29,7 @@ namespace test
 
         private void Form2_VisibleChanged(object sender, EventArgs e)
         {
-            //Console.WriteLine(this.Visible.ToString());
+            Console.WriteLine(this.Visible.ToString());
         }
 
         private void Form2_Shown(object sender, EventArgs e)

@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WaferMapLibrary;
-
 namespace DeviceDataSettings
 {
     public partial class WaferMapSettingControl : UserControl

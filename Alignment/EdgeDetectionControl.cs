@@ -1,8 +1,6 @@
-﻿using MainForm;
-using System.Reflection;
-using VisionLibrary;
+﻿using VisionLibrary;
+using MotionLibrary;
 using WaferMapLibrary;
-using static GTN.mc;
 namespace MainForm
 {
     public partial class EdgeDetectionControl : UserControl
@@ -38,14 +36,14 @@ namespace MainForm
             //运动到Edge 定位并获取值
             Motion.XYZ_AxisMoveAbs(1, Motion.parameter.EdgeX[index], Motion.parameter.EdgeY[index], 54000, 600, 10, 10, 20);//运动到边缘点
             //执行Blob
-            int res = Blob(true ,out double DeltaX, out double DeltaY);//先bigROI找
+            int res = Blob(true, out double DeltaX, out double DeltaY);//先bigROI找
             if (res != 0) { MessageBox.Show("Edge Detected Error."); return res; }
 
             //相对运动，进行Match
             Motion.XY_AxisMoveRel(1, DeltaX, DeltaY, 600, 10, 10, 20);
 
             //为了绘图+确认，再单拍一张
-            res = Blob(false,out _, out _);//再SmallROI确认
+            res = Blob(false, out _, out _);//再SmallROI确认
             //如果匹配错误则返回
             if (res != 0) { MessageBox.Show("Edge Confirm Error."); return res; }
             return 0;
@@ -62,7 +60,7 @@ namespace MainForm
             {
                 if (DetecetEdge(i) != 0) { return; }
                 //这里采集了边缘点，所以就不用userpos来计算了                
-                Motion.GetUserPos(Compensation.Area.Align,out EdgeX[i], out EdgeY[i]);
+                Motion.GetUserPos(Compensation.Area.Align, out EdgeX[i], out EdgeY[i]);
             }
 
             //生成拟合圆，CenterX 和 CenterY是粗定位下的坐标
@@ -93,7 +91,7 @@ namespace MainForm
         }
         private void BtnBlob_Click(object sender, EventArgs e)
         {
-            int res = Blob(false,out double DeltaX, out double DeltaY);
+            int res = Blob(false, out double DeltaX, out double DeltaY);
             //如果匹配错误则返回
             if (res != 0) MessageBox.Show("Error Code = " + res.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -104,7 +102,7 @@ namespace MainForm
         /// <param name="DeltaX"></param>
         /// <param name="DeltaY"></param>
         /// <returns></returns>
-        private int Blob(bool BigROI,out double DeltaX, out double DeltaY)
+        private int Blob(bool BigROI, out double DeltaX, out double DeltaY)
         {
             //切换到单拍模式
             Vision.WaferLowMag.TriggerMode();

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using WaferMapLibrary;
-namespace MainForm
+namespace MotionLibrary
 {
     public static class Compensation
     {

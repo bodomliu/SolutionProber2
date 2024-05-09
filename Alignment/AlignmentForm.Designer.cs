@@ -179,7 +179,7 @@
             lblWaferCenterFlag.AutoSize = true;
             lblWaferCenterFlag.BackColor = Color.Red;
             lblWaferCenterFlag.BorderStyle = BorderStyle.FixedSingle;
-            lblWaferCenterFlag.Location = new Point(1088, 9);
+            lblWaferCenterFlag.Location = new Point(1088, 13);
             lblWaferCenterFlag.Name = "lblWaferCenterFlag";
             lblWaferCenterFlag.Size = new Size(83, 19);
             lblWaferCenterFlag.TabIndex = 51;
@@ -201,7 +201,7 @@
             lblHighAlignFlag.AutoSize = true;
             lblHighAlignFlag.BackColor = Color.Red;
             lblHighAlignFlag.BorderStyle = BorderStyle.FixedSingle;
-            lblHighAlignFlag.Location = new Point(1088, 67);
+            lblHighAlignFlag.Location = new Point(1088, 66);
             lblHighAlignFlag.Name = "lblHighAlignFlag";
             lblHighAlignFlag.Size = new Size(66, 19);
             lblHighAlignFlag.TabIndex = 52;

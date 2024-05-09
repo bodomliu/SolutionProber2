@@ -276,6 +276,8 @@
             // CbCompensation
             // 
             CbCompensation.AutoSize = true;
+            CbCompensation.Checked = true;
+            CbCompensation.CheckState = CheckState.Checked;
             CbCompensation.Location = new Point(247, 827);
             CbCompensation.Name = "CbCompensation";
             CbCompensation.Size = new Size(111, 21);

@@ -1,7 +1,6 @@
 ﻿using CommonComponentLibrary;
-using MainForm;
 using VisionLibrary;
-
+using MotionLibrary;
 namespace MainForm
 {
     static internal class Alignment

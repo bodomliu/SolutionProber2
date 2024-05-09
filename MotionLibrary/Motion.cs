@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using static GTN.mc;
 
-namespace MainForm
+namespace MotionLibrary
 {
     public class Parameter
     {

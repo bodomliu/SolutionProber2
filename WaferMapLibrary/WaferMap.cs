@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Reflection;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json;
 
 namespace WaferMapLibrary
 {
@@ -75,7 +68,7 @@ namespace WaferMapLibrary
         /// </summary>
         public int WaferDiameter { get; set; } = 300_0000;
         public double DieSizeX { get; set; } = 150000;
-        public double DieSizeY { get; set; } = 150000;      
+        public double DieSizeY { get; set; } = 150000;
         public int DieNumX { get; set; } = 20;
         public int DieNumY { get; set; } = 20;
         public int RefDieX { get; set; } = 9;
@@ -87,7 +80,7 @@ namespace WaferMapLibrary
         public double Corner2OrgX { get; set; } = 0;//DieOrg - Lower Left Corner: 转换到UserPos下
         public double Corner2OrgY { get; set; } = 0;//DieOrg - Lower Left Corner: 转换到UserPos下
         public double Org2PatIIX { get; set; } = 0;//Die Pattern2 - DieOrg : 转换到UserPos下
-        public double Org2PatIIY{ get; set; } = 0;//Die Pattern2 - DieOrg : 转换到UserPos下
+        public double Org2PatIIY { get; set; } = 0;//Die Pattern2 - DieOrg : 转换到UserPos下
         public List<MappingPoint>? MappingPoints { get; set; }
     }
     /// <summary>
@@ -96,7 +89,7 @@ namespace WaferMapLibrary
     public static class WaferMap
     {
         public static WaferMapClass Entity = new WaferMapClass();//定义WaferMap的实体
-        public delegate void OnIndexChangeHander(int x,int y); //定义一个委托
+        public delegate void OnIndexChangeHander(int x, int y); //定义一个委托
         public static event OnIndexChangeHander? OnIndexChange;
         private static int currentIndexX = 0;
         public static int CurrentIndexX//当前index
@@ -142,7 +135,7 @@ namespace WaferMapLibrary
             isBlockIndexChange = false;
             if (OnIndexChange != null) OnIndexChange(currentIndexX, currentIndexY);
         }
-        public delegate void OnAlignChangeHander(bool WaferCenter,bool LowAlign,bool HighAlign); //定义一个委托
+        public delegate void OnAlignChangeHander(bool WaferCenter, bool LowAlign, bool HighAlign); //定义一个委托
         public static event OnAlignChangeHander? OnAlignChange;
         private static bool isWaferCenterCompleted = false;//晶圆圆心未寻找
         public static bool IsWaferCenterCompleted//WaferCenter未寻找
@@ -194,7 +187,7 @@ namespace WaferMapLibrary
         /// <param name="waferSize"></param>
         /// <param name="DieSizeX"></param>
         /// <param name="DieSizeY"></param>
-        public static void Initial(int waferSize,double DieSizeX,double DieSizeY)
+        public static void Initial(int waferSize, double DieSizeX, double DieSizeY)
         {
             Entity.WaferSize = waferSize;
             Entity.DieSizeX = DieSizeX;

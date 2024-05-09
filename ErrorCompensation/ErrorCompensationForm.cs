@@ -1,5 +1,6 @@
 ﻿using CommonComponentLibrary;
 using VisionLibrary;
+using MotionLibrary;
 using WaferMapLibrary;
 
 namespace MainForm
@@ -7,7 +8,6 @@ namespace MainForm
     public partial class ErrorCompensationForm : Form
     {
         //WaferMapCanvas mapCanvas = new();
-
         CommonPanel commonPanel = CommonPanel.Entity;//引入通用的CommonPanel
 
         bool StopFlag = true;//连续运行的flag
@@ -16,7 +16,6 @@ namespace MainForm
             this.TopLevel = false; this.FormBorderStyle = FormBorderStyle.None;
 
             InitializeComponent();
-
 
             WaferMapIndexControl indexControl = new WaferMapIndexControl();
             panelIndexControl.Controls.Add(indexControl);
@@ -29,7 +28,6 @@ namespace MainForm
             panelMapMini.Controls.Add(mapCanvas1);
             mapCanvas1.LoadCanvas();
         }
-
         private void ErrorCompensationForm_Load(object sender, EventArgs e)
         {
             //默认是Align Camera
@@ -49,13 +47,13 @@ namespace MainForm
                 this.Controls.Add(commonPanel);
                 commonPanel.BringToFront();
             }
+            else { commonPanel.Visible = true; }
         }
         private void BtnMapScreen_Click(object sender, EventArgs e)
         {
             commonPanel.Visible = !commonPanel.Visible;
             BtnMapScreen.Text = (commonPanel.Visible) ? "Map Screen" : "Camera Screen";
         }
-
         private void RbtnWaferCamera_CheckedChanged(object sender, EventArgs e)
         {
             //两个radio button都会指向同一个事件
@@ -68,7 +66,6 @@ namespace MainForm
                 Vision.ChangeCamera(Vision.JigCamera);
             }
         }
-
         private void RefreshChart()
         {
             float penWidth = 1;//画线条的粗细，默认=1
@@ -92,7 +89,6 @@ namespace MainForm
             }
             pbY.Image = bitmap2;
         }
-
         private void DrawPoint(int indexX, int indexY, double errorX, double errorY)
         {
             Graphics gp = Graphics.FromImage(pbX.Image);
@@ -107,7 +103,6 @@ namespace MainForm
             gp.FillEllipse(new SolidBrush(Color.Blue), PointX, PointY, 4, 4);
             pbY.Refresh();
         }
-
         private void ErrorCompensationForm_Paint(object sender, PaintEventArgs e)
         {
             //panelMap.Controls.Add(WaferMap.Canvas);
@@ -116,7 +111,6 @@ namespace MainForm
 
             //panelIndexControl.Controls.Add(WaferMap.IndexControl);
         }
-
         private void BtnStart_Click(object sender, EventArgs e)
         {
             CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
@@ -141,7 +135,6 @@ namespace MainForm
             }
             mag.ContinuesMode();
         }
-
         private void AlignCrossX()
         {
             int OriginY = WaferMap.Entity.RefDieY;
@@ -150,7 +143,6 @@ namespace MainForm
                 AlignPosition(indexX, OriginY);
             }
         }
-
         private void AlignCrossY()
         {
             int OriginX = WaferMap.Entity.RefDieX;
@@ -159,7 +151,6 @@ namespace MainForm
                 AlignPosition(OriginX, indexY);
             }
         }
-
         private void AlignAllMap()
         {
             for (int indexY = 0; indexY < WaferMap.Entity.DieNumY; indexY++)
@@ -170,7 +161,6 @@ namespace MainForm
                 }
             }
         }
-
         //特征校准
         private void AlignPosition(int indexX, int indexY)
         {
@@ -203,7 +193,6 @@ namespace MainForm
                 SetMappingValue(indexX, indexY, encodeX, encodeY, 4);
             }
         }
-
         private static int SetMappingValue(int indexX, int indexY, double encodeX, double encodeY, int bin)
         {
             if (WaferMap.Entity.MappingPoints == null) return 1;
@@ -218,18 +207,15 @@ namespace MainForm
 
             return 0;
         }
-
         private void BtnStop_Click(object sender, EventArgs e)
         {
             StopFlag = true;
         }
-
         private void BtnClear_Click(object sender, EventArgs e)
         {
             WaferMap.Load("DeviceData/" + DeviceData.Entity.PhysicalInformation.DeviceName + "WaferMap.json");
             WaferMapCanvas.Canvas.RefreshCanvas();
         }
-
         private void BtnClearPicturebox_Click(object sender, EventArgs e)
         {
             RefreshChart();
@@ -255,20 +241,23 @@ namespace MainForm
             BtnZ.Enabled = false;//临时性禁止点击
             //如果当前不在probe区，则去往probe；如果当前在Probe区，则回来Align
             if (Motion.CurrentArea == Compensation.Area.Align)
-            {
-                Motion.XYZ_AxisMoveRel(1, Motion.parameter.XALIGN2PROBE, Motion.parameter.YALIGN2PROBE, Motion.parameter.ZALIGN2PROBE, 600, 10, 10, 20);
+            {             
+                Motion.GetUserPos(Compensation.Area.Align,out double userPosX,out double userPosY);                
+                Motion.UserPosMoveAbs(Compensation.Area.Probing,userPosX,userPosY);
+                Motion.AxisMoveRel(1, 3, Motion.parameter.ZALIGN2PROBE, 600, 10, 10, 20);
                 BtnZ.Text = "Z down";
                 BtnZ.BackColor = Color.Green;
             }
             else if (Motion.CurrentArea == Compensation.Area.Probing)
             {
-                Motion.XYZ_AxisMoveRel(1, -Motion.parameter.XALIGN2PROBE, -Motion.parameter.YALIGN2PROBE, -Motion.parameter.ZALIGN2PROBE, 600, 10, 10, 20);
+                Motion.GetUserPos(Compensation.Area.Probing, out double userPosX, out double userPosY);
+                Motion.AxisMoveRel(1, 3, -Motion.parameter.ZALIGN2PROBE, 600, 10, 10, 20);
+                Motion.UserPosMoveAbs(Compensation.Area.Align, userPosX, userPosY);
                 BtnZ.Text = "Z up";
                 BtnZ.BackColor = Color.Red;
             }
             BtnZ.Enabled = true;//恢复
         }
-
         private void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
         {
             WaitingControl wf = new WaitingControl();
@@ -287,18 +276,15 @@ namespace MainForm
 
             wf.Dispose();
         }
-
         private void BtnResetErrorTable_Click(object sender, EventArgs e)
         {
 
         }
-
         private void BtnWaferAlignment_Click(object sender, EventArgs e)
         {
             //临时代码
 
         }
-
         private void BtnMatch_Click(object sender, EventArgs e)
         {
             //去做运动校准
@@ -306,7 +292,5 @@ namespace MainForm
 
             CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double DeltaX, out double DeltaY);
         }
-
-
     }
 }

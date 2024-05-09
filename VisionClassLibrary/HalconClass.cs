@@ -39,7 +39,10 @@ namespace VisionLibrary
         /// ROI的高度
         /// </summary>
         public int Height { get; set; }
-
+        /// <summary>
+        /// Roi的颜色
+        /// </summary>
+        public string Color { get; set; }
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -55,6 +58,7 @@ namespace VisionLibrary
             Column2 = column2;
             Width = column2 - column1;
             Height = row2 - row1;
+            Color = "red";
         }
         /// <summary>
         /// 重新裁剪ROI图像，并显示图像
@@ -89,6 +93,15 @@ namespace VisionLibrary
             Column2 = columnCenter + width / 2; ;
             Width = width;
             Height = height;
+        }
+
+        /// <summary>
+        /// 默认设置长宽512，640
+        /// </summary>
+        public void DefaultStyle()
+        {
+            Resize2(512,640,400,400);
+            Color = "red";
         }
     }
 
@@ -329,7 +342,7 @@ namespace VisionLibrary
                 if (bDisplayROI)
                 {
                     if (m_Window == null) return 3;
-                    m_Window.SetColor("red");
+                    m_Window.SetColor(m_Roi.Color);
                     HOperatorSet.GenRectangle2ContourXld(out HObject rectangle, (m_Roi.Row1 + m_Roi.Row2) / 2, (m_Roi.Column1 + m_Roi.Column2) / 2, 0, m_Roi.Width / 2, m_Roi.Height / 2);
                     HXLD m_hxld = new(rectangle);
                     m_Window.DispXld(m_hxld);
@@ -737,34 +750,30 @@ namespace VisionLibrary
 
             return res;
         }
-
         /// <summary>
-        /// 通过模板匹配寻找Pad
+        /// 重载，用于查找pad
         /// </summary>
         /// <param name="ModelName"></param>
         /// <param name="NumLevels"></param>
+        /// <param name="HalfWidth"></param>
+        /// <param name="HalfHeight"></param>
         /// <param name="DeltaX"></param>
         /// <param name="DeltaY"></param>
-        /// <param name="Row"></param>
-        /// <param name="Column"></param>
-        /// <param name="Angle"></param>
-        /// <param name="Score"></param>
         /// <returns></returns>
-        public int FindShapeModelPad(string ModelName, int NumLevels, out double DeltaX, out double DeltaY, out double[] Row, out double[] Column, out double[] Angle, out double[] Score)
+        public int FindShapeModel(string ModelName, int NumLevels, double HalfWidth,double HalfHeight,out double DeltaX, out double DeltaY)
         {
             //因为Pad很小，容易出现一个视野里出现多个pad，故先剪切图片
-            HOperatorSet.GenRectangle2(out HObject m_Rect, 512, 640, 0, 100, 100);
+            HOperatorSet.GenRectangle2(out HObject m_Rect, 512, 640, 0, HalfWidth, HalfHeight);
             //Reduce图像,得到m_ImageReduced(原始图像尺寸大小)
             HOperatorSet.ReduceDomain(m_Image, m_Rect, out HObject m_ImageReduced);
             m_Image = m_ImageReduced;
 
-            int res = FindShapeModel(ModelName, NumLevels, out Row, out Column, out Angle, out Score);
+            int res = FindShapeModel(ModelName, NumLevels, out double[] Row, out double[] Column, out double[] Angle, out double[] Score);
             if (res != 0)
             {
                 DeltaX = 0.0; DeltaY = 0.0;
                 return res;
             }
-
             //获得整张图像的中心点，即视野中心
             HOperatorSet.AreaCenter(m_Image, out _, out HTuple Row_imageCenter, out HTuple Column_imageCenter);
 

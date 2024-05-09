@@ -5,9 +5,11 @@
     "Thickness": 8000
   },
   "WaferAlignment": {
+    "WaferMapPath": "DeviceData/0411WaferMap.json",
     "LowPattern1": "VisionConfig/0411LowPattern1.shm",
     "LowPattern2": "VisionConfig/0411LowPattern2.shm",
     "HighPattern1": "VisionConfig/0411HighPattern1.shm",
     "HighPattern2": "VisionConfig/0411HighPattern2.shm"
-  }
+  },
+  "PinAlignment": {}
 }
