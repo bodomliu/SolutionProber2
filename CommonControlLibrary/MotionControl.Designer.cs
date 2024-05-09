@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace CommonComponentLibrary
 {
     partial class MotionControl
     {

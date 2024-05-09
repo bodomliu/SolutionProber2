@@ -1,6 +1,5 @@
 using DeviceDataSettings;
 using WaferMapLibrary;
-
 namespace MainForm
 {
     public partial class DeviceDataSettingsForm : Form
@@ -15,10 +14,8 @@ namespace MainForm
             foreach (FileInfo file in folder.GetFiles("*.*", SearchOption.AllDirectories))
             {   
                 CbxDeviceData.Items.Add(file.Name);
-                CbxWaferMap.Items.Add(file.Name);
             }
             CbxDeviceData.SelectedItem = "0411DeviceData.json";
-            CbxWaferMap.SelectedItem = "0411WaferMap.json";
         }
         private void BtnWaferMap_Click(object sender, EventArgs e)
         {
@@ -33,14 +30,14 @@ namespace MainForm
         private void BtnSave_Click(object sender, EventArgs e)
         {
             DeviceData.Save("DeviceData/"+ CbxDeviceData.SelectedItem);
-            WaferMap.Save("DeviceData/" + CbxWaferMap.SelectedItem);
+            WaferMap.Save(DeviceData.Entity.WaferAlignment.WaferMapPath);
             MessageBox.Show("File Save Success!","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
             DeviceData.Load("DeviceData/" + CbxDeviceData.SelectedItem);
-            WaferMap.Load("DeviceData/" + CbxWaferMap.SelectedItem);
+            WaferMap.Load(DeviceData.Entity.WaferAlignment.WaferMapPath);
             MessageBox.Show("File Load Success!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

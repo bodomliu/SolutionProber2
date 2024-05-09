@@ -1,8 +1,7 @@
 ﻿using CommonComponentLibrary;
-using MainForm;
 using VisionLibrary;
+using MotionLibrary;
 using WaferMapLibrary;
-
 namespace MainForm
 {
     public partial class AlignmentForm : Form
@@ -63,10 +62,16 @@ namespace MainForm
         }
         private void BtnGoForModel_Click(object sender, EventArgs e)
         {
+            WaitingControl wf = new WaitingControl();
+            this.Controls.Add(wf);
+            wf.Show();
+
             BtnGoForModel.Enabled = false;
             if (BtnGoForModel.Text == "Go For Low Model") GoForLowModel();
             else GoForHighModel();
             BtnGoForModel.Enabled = true;
+
+            wf.Dispose();
         }
         private void GoForLowModel()
         {

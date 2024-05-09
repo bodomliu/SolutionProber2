@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WaferMapLibrary;
-
 namespace CommonComponentLibrary
 {
     public partial class WaferMapCanvas : UserControl

@@ -5,6 +5,7 @@
     "Thickness": 8000
   },
   "WaferAlignment": {
+    "WaferMapPath": "DeviceData/ErrorMapWaferMap.json",
     "LowPattern1": "VisionConfig/ErrorMapLowPattern1.shm",
     "LowPattern2": "VisionConfig/ErrorMapLowPattern2.shm",
     "HighPattern1": "VisionConfig/ErrorMapHighPattern1.shm",

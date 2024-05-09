@@ -1,8 +1,8 @@
-﻿using MainForm;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using MotionLibrary;
 using static GTN.mc;
 
-namespace MainForm
+namespace CommonComponentLibrary
 {
     public partial class MotionControl : UserControl
     {

@@ -1,8 +1,7 @@
 using CommonComponentLibrary;
-using MainForm;
+using MotionLibrary;
 using VisionLibrary;
-using static MainForm.Compensation;
-using WaferMapLibrary;
+using static MotionLibrary.Compensation;
 
 namespace test
 {

@@ -1,7 +1,6 @@
 ﻿using WaferMapLibrary;
-using MainForm;
 using VisionLibrary;
-
+using MotionLibrary;
 namespace CommonComponentLibrary
 {
     public static class CommonFunctions
@@ -228,14 +227,21 @@ namespace CommonComponentLibrary
         public static void IndexMove(Compensation.Area area,int indexX, int indexY)
         {
             //TODO：需要知道是粗定位还是精定位下的坐标
-            IndexUserPos(indexX, indexY, out double UserPosX, out double UserPosY);
+            IndexUserPosAfterAlign(indexX, indexY, out double UserPosX, out double UserPosY);
             Motion.UserPosMoveAbs(area, UserPosX, UserPosY);
             //刷新当前位置
             WaferMap.CurrentIndexX = indexX;WaferMap.CurrentIndexY = indexY;
             CommonPanel.IndexX = indexX; CommonPanel.IndexY = indexY;
         }
 
-        public static void IndexUserPos(int indexX, int indexY, out double userPosX, out double userPosY)
+        /// <summary>
+        /// 带了Offset的精确定位
+        /// </summary>
+        /// <param name="indexX"></param>
+        /// <param name="indexY"></param>
+        /// <param name="userPosX"></param>
+        /// <param name="userPosY"></param>
+        public static void IndexUserPosAfterAlign(int indexX, int indexY, out double userPosX, out double userPosY)
         {
             //TODO：需要知道是粗定位还是精定位下的坐标
             //求refDieOrg的坐标

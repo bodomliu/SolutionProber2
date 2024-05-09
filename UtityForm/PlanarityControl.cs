@@ -1,8 +1,7 @@
 ﻿using CommonComponentLibrary;
-using MainForm;
 using VisionLibrary;
+using MotionLibrary;
 using WaferMapLibrary;
-
 namespace MainForm
 {
     public partial class PlanarityControl : UserControl
