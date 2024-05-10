@@ -52,6 +52,9 @@
     <None Update="VisionConfig\0411LowPattern2.shm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="VisionConfig\0411Pad.shm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="VisionConfig\ErrorMapHighPattern1.shm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -11,5 +11,8 @@
     "HighPattern1": "VisionConfig/0411HighPattern1.shm",
     "HighPattern2": "VisionConfig/0411HighPattern2.shm"
   },
-  "PinAlignment": {}
+  "PinAlignment": {
+    "PadDataPath": "DeviceData/0411PadData.json",
+    "PadPatten": "VisionConfig/0411Pad.shm"
+  }
 }

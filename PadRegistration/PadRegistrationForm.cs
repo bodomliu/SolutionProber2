@@ -41,29 +41,21 @@ namespace MainForm
                 PadData.Entity.DieOrg2RefPadY = DieOrg2RefPadY;
                 Vision.WaferHighMag.halconClass.CreateShapeModel(DeviceData.Entity.PinAlignment.PadPatten);
             }
+            PadData.Entity.Pads.Add(new Pad { PosX = 0, PosY = 0 });
+            UpdateUI();
         }
 
         private void UpdateUI()
         {
-            if (PadData.CurrentIndex == -1)
-            {
-                lblFromRefPadX.Text = ("0");
-                lblFromRefPadY.Text = ("0");
-                lblFromDieOrgX.Text = (PadData.Entity.DieOrg2RefPadX).ToString("F0");
-                lblFromDieOrgY.Text = (PadData.Entity.DieOrg2RefPadY).ToString("F0");
-
-                TxtCurrentPad.Text = "REF";
-            }
-            else
+            if (PadData.Entity.Pads.Count > 0)
             {
                 lblFromRefPadX.Text = (PadData.Entity.Pads[PadData.CurrentIndex].PosX).ToString("F0");
                 lblFromRefPadY.Text = (PadData.Entity.Pads[PadData.CurrentIndex].PosY).ToString("F0");
                 lblFromDieOrgX.Text = (PadData.Entity.Pads[PadData.CurrentIndex].PosX + PadData.Entity.DieOrg2RefPadX).ToString("F0");
                 lblFromDieOrgY.Text = (PadData.Entity.Pads[PadData.CurrentIndex].PosY + PadData.Entity.DieOrg2RefPadY).ToString("F0");
                 TxtCurrentPad.Text = PadData.CurrentIndex.ToString();
+                TxtTotalPad.Text = PadData.Entity.Pads.Count.ToString();
             }
-
-            TxtTotalPad.Text = PadData.Entity.Pads.Count.ToString();
         }
 
         private void btnReadyToApply_Click(object sender, EventArgs e)
@@ -95,6 +87,7 @@ namespace MainForm
             double posY = RefPadY - (OrgY + PadData.Entity.DieOrg2RefPadY);//以refdie为原点的坐标
 
             PadData.Entity.Pads.Add(new Pad { PosX = posX, PosY = posY });
+            PadData.CurrentIndex = PadData.Entity.Pads.Count - 1;
             UpdateUI();
         }
         private void btnUpdatePad_Click(object sender, EventArgs e)
@@ -112,8 +105,9 @@ namespace MainForm
 
         private void btnDeleteAllPad_Click(object sender, EventArgs e)
         {
-            PadData.Entity.Pads.Clear();
+            PadData.Entity.Pads.Clear();//TODO test if ok
             PadData.Entity.Pads = new List<Pad> { };
+            PadData.CurrentIndex = 0;
             UpdateUI();
         }
 
@@ -143,6 +137,7 @@ namespace MainForm
                 panel1.Controls.Add(CommonPanel.Entity);
                 Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, PadData.Entity.PadWidth, PadData.Entity.PadHeight);
                 Vision.WaferHighMag.halconClass.m_Roi.Color = "green";
+                UpdateUI();
             }
             else
             {
@@ -158,7 +153,7 @@ namespace MainForm
 
         private void btnRefPad_Click(object sender, EventArgs e)
         {
-            PadData.CurrentIndex = -1;
+            PadData.CurrentIndex = 0;
             //求带offset的坐标
             CommonFunctions.IndexUserPosAfterAlign(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, out double X, out double Y);
             Motion.UserPosMoveAbs(Compensation.Area.Align, X + PadData.Entity.DieOrg2RefPadX, Y + PadData.Entity.DieOrg2RefPadY);
