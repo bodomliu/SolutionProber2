@@ -13,13 +13,17 @@ namespace MainForm
         // Logger instance named "MainForm".
         private static readonly ILog log = LogManager.GetLogger(typeof(MainForm));
 
-        LotProcessForm lotProcessForm = new LotProcessForm();
-        ErrorCompensationForm errorCompensatioForm = new ErrorCompensationForm();
-        MotionControl motionControl = new MotionControl();
-        AlignmentForm alignmentForm = new AlignmentForm();
-        DeviceDataSettingsForm deviceDataSettingsForm = new();
-        UtilityForm utilityForm = new UtilityForm();
-        PadRegistrationForm padRegistrationFrom = new PadRegistrationForm();
+        readonly LotProcessForm lotProcessForm = new ();
+        readonly ErrorCompensationForm errorCompensatioForm = new();
+        readonly MotionControl motionControl = new();
+        readonly AlignmentForm alignmentForm = new();
+        readonly DeviceDataSettingsForm deviceDataSettingsForm = new();
+        readonly UtilityForm utilityForm = new();
+        readonly PadRegistrationForm padRegistrationFrom = new();
+        readonly PinRegistrationForm pinRegistrationFrom = new();
+        readonly InspectionForm inspectionForm = new();
+        readonly ManualForm manualForm = new();
+
         public MainForm()
         {
             InitializeComponent();
@@ -40,6 +44,18 @@ namespace MainForm
             Motion.Initial();
             Motion.MultiAxisOn(1, 4);
             Compensation.Initial();
+
+            Controls.Add(WaitingControl.WF);
+            panelForm.Controls.Add(lotProcessForm);
+            panelForm.Controls.Add(errorCompensatioForm);
+            panelForm.Controls.Add(motionControl);
+            panelForm.Controls.Add(alignmentForm);
+            panelForm.Controls.Add(deviceDataSettingsForm);
+            panelForm.Controls.Add(utilityForm);
+            panelForm.Controls.Add(padRegistrationFrom);
+            panelForm.Controls.Add(pinRegistrationFrom);
+            panelForm.Controls.Add(inspectionForm);
+            panelForm.Controls.Add(manualForm);
         }
 
         private void BtnLotProcess_Click(object sender, EventArgs e)
@@ -73,12 +89,22 @@ namespace MainForm
         }
         private void ChangeForm(Control form)
         {
-            panelForm.Controls.Clear();
-            panelForm.Controls.Add(form);
+            //Clear 和 Add会触发Control.VisibleChange事件两次，Visible从false到true            
+            lotProcessForm.Hide();
+            errorCompensatioForm.Hide();
+            motionControl.Hide();
+            alignmentForm.Hide();
+            deviceDataSettingsForm.Hide();
+            utilityForm.Hide();
+            padRegistrationFrom.Hide();
+            pinRegistrationFrom.Hide();
+            inspectionForm.Hide();
+            manualForm.Hide(); 
+            
             form.Show();
             form.Dock = DockStyle.Fill;
-            //Console.WriteLine(panelForm.Controls.Count);
         }
+
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -88,12 +114,22 @@ namespace MainForm
 
         private void BtnPadRegistration_Click(object sender, EventArgs e)
         {
-            ChangeForm(padRegistrationFrom);//当没有静态变量需要保持时，可以用这种方案
+            ChangeForm(padRegistrationFrom);//当没有静态变量需要保持时，可以用new Form();
         }
 
         private void BtnPinRegistration_Click(object sender, EventArgs e)
         {
+            ChangeForm(pinRegistrationFrom);
+        }
 
+        private void BtnInspection_Click(object sender, EventArgs e)
+        {
+            ChangeForm(inspectionForm);
+        }
+
+        private void BtnManual_Click(object sender, EventArgs e)
+        {
+            ChangeForm(manualForm);
         }
     }
 }

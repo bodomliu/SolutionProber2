@@ -32,6 +32,7 @@ namespace MainForm
             DeviceData.Save("DeviceData/"+ CbxDeviceData.SelectedItem);
             WaferMap.Save(DeviceData.Entity.WaferAlignment.WaferMapPath);
             PadData.Save(DeviceData.Entity.PinAlignment.PadDataPath);
+            PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
             MessageBox.Show("File Save Success!","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
@@ -40,6 +41,7 @@ namespace MainForm
             DeviceData.Load("DeviceData/" + CbxDeviceData.SelectedItem);
             WaferMap.Load(DeviceData.Entity.WaferAlignment.WaferMapPath);
             PadData.Load(DeviceData.Entity.PinAlignment.PadDataPath);
+            PinData.Load(DeviceData.Entity.PinAlignment.PinDataPath);
             MessageBox.Show("File Load Success!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

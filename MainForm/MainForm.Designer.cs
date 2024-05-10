@@ -29,7 +29,11 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
+            BtnPinRegistration = new Button();
+            BtnPadRegistration = new Button();
             BtnDeviceSettings = new Button();
+            BtnManual = new Button();
+            BtnInspection = new Button();
             BtnAlignment = new Button();
             BtnMotionControl = new Button();
             BtnSetupUtility = new Button();
@@ -37,8 +41,6 @@
             BtnLotProcess = new Button();
             panelForm = new Panel();
             panelStatus = new Panel();
-            BtnPadRegistration = new Button();
-            BtnPinRegistration = new Button();
             panelMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,6 +50,8 @@
             panelMenu.Controls.Add(BtnPinRegistration);
             panelMenu.Controls.Add(BtnPadRegistration);
             panelMenu.Controls.Add(BtnDeviceSettings);
+            panelMenu.Controls.Add(BtnManual);
+            panelMenu.Controls.Add(BtnInspection);
             panelMenu.Controls.Add(BtnAlignment);
             panelMenu.Controls.Add(BtnMotionControl);
             panelMenu.Controls.Add(BtnSetupUtility);
@@ -59,10 +63,32 @@
             panelMenu.Size = new Size(323, 922);
             panelMenu.TabIndex = 3;
             // 
+            // BtnPinRegistration
+            // 
+            BtnPinRegistration.BackColor = Color.Teal;
+            BtnPinRegistration.Location = new Point(3, 204);
+            BtnPinRegistration.Name = "BtnPinRegistration";
+            BtnPinRegistration.Size = new Size(100, 60);
+            BtnPinRegistration.TabIndex = 3;
+            BtnPinRegistration.Text = "Pin Registration";
+            BtnPinRegistration.UseVisualStyleBackColor = false;
+            BtnPinRegistration.Click += BtnPinRegistration_Click;
+            // 
+            // BtnPadRegistration
+            // 
+            BtnPadRegistration.BackColor = Color.Teal;
+            BtnPadRegistration.Location = new Point(3, 138);
+            BtnPadRegistration.Name = "BtnPadRegistration";
+            BtnPadRegistration.Size = new Size(100, 60);
+            BtnPadRegistration.TabIndex = 2;
+            BtnPadRegistration.Text = "Pad Registration";
+            BtnPadRegistration.UseVisualStyleBackColor = false;
+            BtnPadRegistration.Click += BtnPadRegistration_Click;
+            // 
             // BtnDeviceSettings
             // 
             BtnDeviceSettings.BackColor = Color.Teal;
-            BtnDeviceSettings.Location = new Point(112, 6);
+            BtnDeviceSettings.Location = new Point(3, 6);
             BtnDeviceSettings.Name = "BtnDeviceSettings";
             BtnDeviceSettings.Size = new Size(100, 60);
             BtnDeviceSettings.TabIndex = 1;
@@ -70,21 +96,43 @@
             BtnDeviceSettings.UseVisualStyleBackColor = false;
             BtnDeviceSettings.Click += BtnDeviceSettings_Click;
             // 
+            // BtnManual
+            // 
+            BtnManual.BackColor = Color.YellowGreen;
+            BtnManual.Location = new Point(107, 72);
+            BtnManual.Name = "BtnManual";
+            BtnManual.Size = new Size(100, 60);
+            BtnManual.TabIndex = 1;
+            BtnManual.Text = "Manual";
+            BtnManual.UseVisualStyleBackColor = false;
+            BtnManual.Click += BtnManual_Click;
+            // 
+            // BtnInspection
+            // 
+            BtnInspection.BackColor = Color.YellowGreen;
+            BtnInspection.Location = new Point(107, 138);
+            BtnInspection.Name = "BtnInspection";
+            BtnInspection.Size = new Size(100, 60);
+            BtnInspection.TabIndex = 1;
+            BtnInspection.Text = "Inspection";
+            BtnInspection.UseVisualStyleBackColor = false;
+            BtnInspection.Click += BtnInspection_Click;
+            // 
             // BtnAlignment
             // 
-            BtnAlignment.BackColor = Color.YellowGreen;
-            BtnAlignment.Location = new Point(6, 270);
+            BtnAlignment.BackColor = Color.Teal;
+            BtnAlignment.Location = new Point(3, 72);
             BtnAlignment.Name = "BtnAlignment";
             BtnAlignment.Size = new Size(100, 60);
             BtnAlignment.TabIndex = 1;
-            BtnAlignment.Text = "Alignment";
+            BtnAlignment.Text = "Alignment Settings";
             BtnAlignment.UseVisualStyleBackColor = false;
             BtnAlignment.Click += BtnAlignment_Click;
             // 
             // BtnMotionControl
             // 
             BtnMotionControl.BackColor = Color.YellowGreen;
-            BtnMotionControl.Location = new Point(6, 204);
+            BtnMotionControl.Location = new Point(107, 6);
             BtnMotionControl.Name = "BtnMotionControl";
             BtnMotionControl.Size = new Size(100, 60);
             BtnMotionControl.TabIndex = 1;
@@ -95,7 +143,7 @@
             // BtnSetupUtility
             // 
             BtnSetupUtility.BackColor = Color.Orange;
-            BtnSetupUtility.Location = new Point(6, 138);
+            BtnSetupUtility.Location = new Point(211, 138);
             BtnSetupUtility.Name = "BtnSetupUtility";
             BtnSetupUtility.Size = new Size(100, 60);
             BtnSetupUtility.TabIndex = 1;
@@ -106,7 +154,7 @@
             // BtnErrorCompensation
             // 
             BtnErrorCompensation.BackColor = Color.Orange;
-            BtnErrorCompensation.Location = new Point(6, 72);
+            BtnErrorCompensation.Location = new Point(211, 72);
             BtnErrorCompensation.Name = "BtnErrorCompensation";
             BtnErrorCompensation.Size = new Size(100, 60);
             BtnErrorCompensation.TabIndex = 1;
@@ -117,7 +165,7 @@
             // BtnLotProcess
             // 
             BtnLotProcess.BackColor = Color.MediumPurple;
-            BtnLotProcess.Location = new Point(6, 6);
+            BtnLotProcess.Location = new Point(211, 6);
             BtnLotProcess.Name = "BtnLotProcess";
             BtnLotProcess.Size = new Size(100, 60);
             BtnLotProcess.TabIndex = 0;
@@ -144,28 +192,6 @@
             panelStatus.Name = "panelStatus";
             panelStatus.Size = new Size(1904, 63);
             panelStatus.TabIndex = 0;
-            // 
-            // BtnPadRegistration
-            // 
-            BtnPadRegistration.BackColor = Color.Teal;
-            BtnPadRegistration.Location = new Point(112, 72);
-            BtnPadRegistration.Name = "BtnPadRegistration";
-            BtnPadRegistration.Size = new Size(100, 60);
-            BtnPadRegistration.TabIndex = 2;
-            BtnPadRegistration.Text = "Pad Registration";
-            BtnPadRegistration.UseVisualStyleBackColor = false;
-            BtnPadRegistration.Click += BtnPadRegistration_Click;
-            // 
-            // BtnPinRegistration
-            // 
-            BtnPinRegistration.BackColor = Color.Teal;
-            BtnPinRegistration.Location = new Point(112, 138);
-            BtnPinRegistration.Name = "BtnPinRegistration";
-            BtnPinRegistration.Size = new Size(100, 60);
-            BtnPinRegistration.TabIndex = 3;
-            BtnPinRegistration.Text = "Pin Registration";
-            BtnPinRegistration.UseVisualStyleBackColor = false;
-            BtnPinRegistration.Click += BtnPinRegistration_Click;
             // 
             // MainForm
             // 
@@ -195,5 +221,7 @@
         private Button BtnSetupUtility;
         private Button BtnPinRegistration;
         private Button BtnPadRegistration;
+        private Button BtnInspection;
+        private Button BtnManual;
     }
 }

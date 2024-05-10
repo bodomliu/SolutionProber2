@@ -32,7 +32,7 @@ namespace test
             Compensation.Initial();
 
             //将grids的值都赋值给RectangleF
-            var grids = Compensation.WorkingGrids;
+            var grids = Compensation.CalibrationGrids;
             if (grids == null) return;
             rects = new RectangleF[grids.Count];
 
@@ -135,7 +135,17 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Motion.Save("Config/MotionParameter.json");
+            int axs = 512;
+            int a = axs & 0x800;
+            Console.WriteLine(a.ToString() );
+        }
+
+        private void BtnUser2Encode_Click(object sender, EventArgs e)
+        {
+            Transform(Area.Align,Dir.User2Encode,double.Parse(TxtUserPosX.Text),double.Parse(TxtUserPosY.Text),
+                out double X,out double Y);
+            NumEncodeX.Value = (int)X;
+            NumEncodeY.Value = (int)Y;
         }
     }
 }

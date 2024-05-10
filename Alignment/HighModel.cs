@@ -26,7 +26,7 @@ namespace MainForm
             int L = int.Parse(txtL.Text);
             int R = int.Parse(txtR.Text);
 
-            Alignment.AlignX(Vision.WaferHighMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX);
+            CommonFunctions.AlignX(Vision.WaferHighMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX,out _);
         }
 
         private void BtnMoveToRefDie_Click(object sender, EventArgs e)

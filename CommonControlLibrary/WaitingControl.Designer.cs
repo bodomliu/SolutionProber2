@@ -35,7 +35,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft YaHei UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(55, 38);
+            label1.Location = new Point(47, 30);
             label1.Name = "label1";
             label1.Size = new Size(106, 28);
             label1.TabIndex = 0;
@@ -46,9 +46,11 @@
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Orange;
+            BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(label1);
+            DoubleBuffered = true;
             Name = "WaitingControl";
-            Size = new Size(224, 106);
+            Size = new Size(208, 87);
             Load += WaitingControl_Load;
             ResumeLayout(false);
             PerformLayout();

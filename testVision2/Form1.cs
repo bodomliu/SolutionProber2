@@ -1,7 +1,6 @@
 using CommonComponentLibrary;
 using MotionLibrary;
 using VisionLibrary;
-using static MotionLibrary.Compensation;
 
 namespace test
 {
@@ -10,8 +9,15 @@ namespace test
         public Form1()
         {
             InitializeComponent();
+            this.Controls.Add(WaitingControl.WF);
+            WaitingControl.WF.BringToFront();
+            //panel2.Controls.Add(form2);
+            //form2.Show();
+
+            panel1.Controls.Add(new CommonPanel());
         }
 
+        //Form2 form2 = new Form2();
         private void Form1_Load(object sender, EventArgs e)
         {
             //Vision.ResetConfig();
@@ -20,6 +26,8 @@ namespace test
             Compensation.Initial();
             Motion.Initial();
             Motion.MultiAxisOn(1, 4);
+            
+            //WaitingControl.WF.Start();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -96,27 +104,43 @@ namespace test
             string path = DateTime.Now.ToString("yyyyMMddHHMMmmfff") + ".bmp";
             Vision.CameraList[comboBox1.SelectedIndex].halconClass.SaveImage(path);
         }
-        
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (ErrorMapAlign.MappingPoints == null) { MessageBox.Show("No Points!"); return ; }
-            //遍历ErrorMap，BIN = 1
-            //List<MappingPoint> CoordinatesPoints = ErrorMapProbing.MappingPoints.Where(p => p.BIN == 4).ToList();
-            //if (CoordinatesPoints.Count == 0) { MessageBox.Show("No Mapping Points Bin =4!"); return ; }
 
-            //遍历CoordinatesPoints，选取所有能形成Grid（该点为左下角）的点            
-            //List<Grid> grids = new();
-            foreach (var point in ErrorMapAlign.MappingPoints)
+        private void work()
+        {
+            for (int i = 0; i < 5; i++)
             {
-                point.EncodeX += Motion.parameter.XALIGN2PROBE;
-                point.EncodeY += Motion.parameter.YALIGN2PROBE;
+                Thread.Sleep(1000);
+                Console.WriteLine(i.ToString());
             }
-            Compensation.SaveMap(ErrorMapAlign, "ErrorMapProbing.json");
         }
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                await Task.Run(() => work());
+            }
+
+            Console.WriteLine("done");
+        }
+
 
         private void Form1_Activated(object sender, EventArgs e)
         {
-            panel1.Controls.Add(CommonPanel.Entity);
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var a = Task.Run(() => work());
+            a.Wait();
+            Console.WriteLine("done");
+        }
+
+        private  void button2_Click(object sender, EventArgs e)
+        {
+            WaitingControl.WF.Start();           
+            Thread.Sleep(3000);
+            WaitingControl.WF.End();
         }
     }
 }

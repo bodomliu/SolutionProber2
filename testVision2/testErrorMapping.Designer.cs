@@ -45,6 +45,7 @@
             canvas = new PictureBox();
             panel1 = new Panel();
             button1 = new Button();
+            BtnUser2Encode = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbarY).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TbarX).BeginInit();
@@ -209,11 +210,22 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // BtnUser2Encode
+            // 
+            BtnUser2Encode.Location = new Point(976, 6);
+            BtnUser2Encode.Name = "BtnUser2Encode";
+            BtnUser2Encode.Size = new Size(95, 54);
+            BtnUser2Encode.TabIndex = 43;
+            BtnUser2Encode.Text = "User2Encode";
+            BtnUser2Encode.UseVisualStyleBackColor = true;
+            BtnUser2Encode.Click += BtnUser2Encode_Click;
+            // 
             // testErrorMapping
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1304, 1101);
+            Controls.Add(BtnUser2Encode);
             Controls.Add(button1);
             Controls.Add(panel1);
             Controls.Add(canvas);
@@ -261,5 +273,6 @@
         private PictureBox canvas;
         private Panel panel1;
         private Button button1;
+        private Button BtnUser2Encode;
     }
 }

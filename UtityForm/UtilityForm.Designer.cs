@@ -33,6 +33,7 @@
             panelForm = new Panel();
             panel2 = new Panel();
             panel1 = new Panel();
+            BtnChuckCenter = new Button();
             panelMenu.SuspendLayout();
             panelForm.SuspendLayout();
             SuspendLayout();
@@ -40,6 +41,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = SystemColors.ActiveBorder;
+            panelMenu.Controls.Add(BtnChuckCenter);
             panelMenu.Controls.Add(BtnChuckFlatness);
             panelMenu.Dock = DockStyle.Top;
             panelMenu.Location = new Point(0, 0);
@@ -83,6 +85,16 @@
             panel1.Size = new Size(1080, 1000);
             panel1.TabIndex = 0;
             // 
+            // BtnChuckCenter
+            // 
+            BtnChuckCenter.Location = new Point(150, 14);
+            BtnChuckCenter.Name = "BtnChuckCenter";
+            BtnChuckCenter.Size = new Size(120, 36);
+            BtnChuckCenter.TabIndex = 0;
+            BtnChuckCenter.Text = "Chuck Center";
+            BtnChuckCenter.UseVisualStyleBackColor = true;
+            BtnChuckCenter.Click += BtnChuckCenter_Click;
+            // 
             // UtilityForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -105,5 +117,6 @@
         private Button BtnChuckFlatness;
         private Panel panel1;
         private Panel panel2;
+        private Button BtnChuckCenter;
     }
 }

@@ -9,7 +9,6 @@ namespace CommonComponentLibrary
             InitializeComponent();
         }
 
-
         private void BtnSetPart_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == null) return;

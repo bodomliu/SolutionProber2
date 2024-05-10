@@ -42,7 +42,7 @@ namespace MainForm
         private void ErrorCompensationForm_VisibleChanged(object sender, EventArgs e)
         {
             //静态添加
-            if (this.Visible)
+            if (Visible)
             {
                 this.Controls.Add(commonPanel);
                 commonPanel.BringToFront();

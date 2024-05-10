@@ -187,6 +187,21 @@ namespace VisionLibrary
             return 0;
         }
 
+        public int AffineTransPoint2dInvert(double FeedbackX, double FeedbackY, out double Row, out double Column)
+        {
+            Row = 0;
+            Column = 0;
+            if (m_HomMat2d == null) return 1;
+            HOperatorSet.HomMat2dInvert(m_HomMat2d, out HTuple homMat2DInvert);//获得逆矩阵
+            HOperatorSet.AffineTransPoint2d(homMat2DInvert, FeedbackX, FeedbackY, out HTuple qx, out HTuple qy);
+
+            //规范的HTuple转double的用法，当HTuple为数组，则使用HTuple.DArr
+            Row = qx.D;
+            Column = qy.D;
+
+            return 0;
+        }
+
         /// <summary>
         /// 保存HomMat2d
         /// </summary>
@@ -331,14 +346,10 @@ namespace VisionLibrary
                     m_Window.SetColor("green");
                     m_Window.DispCross(hHeight / 2, hWidth / 2, hWidth, 0);
                 }
-                //if (bDisplayPad)
-                //{
-                //    if (m_Window == null) return 3;
-                //    m_Window.SetColor("green");
-                //    HOperatorSet.GenRectangle2ContourXld(out HObject rectangle, hHeight / 2, hWidth / 2, 0, m_Pad.Width, m_Pad.Height);
-                //    HXLD m_hxld = new(rectangle);
-                //    m_Window.DispXld(m_hxld);
-                //}
+                if (OnPaintEvent!=null)
+                {
+                    OnPaintEvent();
+                }
                 if (bDisplayROI)
                 {
                     if (m_Window == null) return 3;
@@ -365,6 +376,9 @@ namespace VisionLibrary
             // ch: 显示 || display
             return HalconDisplay(m_Image, Height, Width);
         }
+
+        public delegate void OnPaintEventHander(); //定义一个委托用于自定义绘画
+        public event OnPaintEventHander? OnPaintEvent;
 
         /// <summary>
         /// 提供SmartControl应用开发的绑定方式
@@ -1137,7 +1151,64 @@ namespace VisionLibrary
             area = (qx[0] * qy[1] - qy[0] * qx[1] + qx[1] * qy[2] - qy[1] * qx[2]
                  + qx[2] * qy[3] - qy[2] * qx[3] + qx[3] * qy[0] - qy[3] * qx[0]) / 2;
         }
+        #endregion
 
+        #region 用户自定义绘图
+        /// <summary>
+        /// 传入Pin的坐标，并指定Index在视野正中间
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <param name="CurrentIndex"></param>
+        /// <param name="Angle"></param>
+        public void PaintPins(double[]? X, double[]? Y, int CurrentIndex, double Angle)
+        {
+            if (X == null || Y == null) return;
+            //先转好角度
+            rotatePoints(X, Y, Angle, out double[] Xout, out double[] Yout);
+            //获得整张图像的中心点，即视野中心
+            HOperatorSet.AreaCenter(m_Image, out _, out HTuple Row_imageCenter, out HTuple Column_imageCenter);
+            //中心点对应的encodeX和encodeY
+            m_Calibration.AffineTransPoint2d(Row_imageCenter, Column_imageCenter, out double EncodeCenterX, out double EncodeCenterY);
+            //index点移动到图像中心，其他点跟随平移
+            double DeltaX = Xout[CurrentIndex] - EncodeCenterX;
+            double DeltaY = Yout[CurrentIndex] - EncodeCenterY;
+            //开始绘图
+            HOperatorSet.SetColor(m_Window, "white");
+            for (int i = 0; i < X.Length; i++)
+            {
+                Xout[i] -= DeltaX; Yout[i] -= DeltaY;//变换坐标系，所有点平移
+                m_Calibration.AffineTransPoint2dInvert(Xout[i], Yout[i], out double Row, out double Column);
+                if (Row > 1024 || Row < 0) continue;
+                if (Column > 1280 || Column < 0) continue;
+                HOperatorSet.GenCircleContourXld(out HObject conCircle, Row, Column, 6, 0, 2 * Math.PI, "positive", 1.0);
+                HTuple str =(i == 0)? "#REF":"#"+i.ToString();
+                HOperatorSet.DispXld(conCircle, m_Window);
+                HOperatorSet.SetTposition(m_Window, Row + 6, Column - 3);
+                HOperatorSet.WriteString(m_Window, str);
+            }
+
+            //绘制完以后，将颜色改回默认白色
+            HOperatorSet.SetColor(m_Window, "white");
+        }
+
+        /// <summary>
+        /// 所有点绕原点旋转Angle角度
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <param name="Angle">10000 = 1 degree，逆时针为正</param>
+        private void rotatePoints(double[] X, double[] Y, double Angle,out double[] Xout,out double[] Yout)
+        {
+            int cnt = X.Length;
+            double ang = Angle * Math.PI / 10000 / 180;
+            Xout = new double[cnt];Yout = new double[cnt];
+            for (int i = 0;i < cnt;i++) 
+            {
+                Xout[i] = X[i] * Math.Cos(ang) - Y[i] * Math.Sin(ang);
+                Yout[i] = X[i] * Math.Sin(ang) + Y[i] * Math.Cos(ang);
+            }
+        }
 
         #endregion
     }

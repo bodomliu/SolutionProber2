@@ -181,6 +181,7 @@ namespace WaferMapLibrary
         public static double WaferCenterY;//LowMag下的值:转用户坐标系  只能用来做粗定位
         public static double WaferOffsetX;//HighMag下的值：实际RefDie - 注册RefDie :转用户坐标系
         public static double WaferOffsetY;//HighMag下的值：实际RefDie - 注册RefDie :转用户坐标系
+        public static double WaferHeight;//当前的晶圆高度，encode坐标系
         /// <summary>
         /// 初始化WaferMap的DieNum和OriginNum
         /// </summary>

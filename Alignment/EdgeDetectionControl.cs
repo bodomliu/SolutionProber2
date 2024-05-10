@@ -1,6 +1,7 @@
 ﻿using VisionLibrary;
 using MotionLibrary;
 using WaferMapLibrary;
+using CommonComponentLibrary;
 namespace MainForm
 {
     public partial class EdgeDetectionControl : UserControl
@@ -48,7 +49,7 @@ namespace MainForm
             if (res != 0) { MessageBox.Show("Edge Confirm Error."); return res; }
             return 0;
         }
-        private void BtnAutoDetectWaferCenter_Click(object sender, EventArgs e)
+        private async void BtnAutoDetectWaferCenter_Click(object sender, EventArgs e)
         {
             double[] EdgeX = new double[4];
             double[] EdgeY = new double[4];
@@ -58,7 +59,13 @@ namespace MainForm
 
             for (int i = 0; i < 4; i++)
             {
-                if (DetecetEdge(i) != 0) { return; }
+               // Task<int> task = new Task<int>(() => DetecetEdge(i));
+
+                var res = await Task.Run<int>(() => 
+                {
+                    return DetecetEdge(i); 
+                });
+                if (res != 0) { return; }
                 //这里采集了边缘点，所以就不用userpos来计算了                
                 Motion.GetUserPos(Compensation.Area.Align, out EdgeX[i], out EdgeY[i]);
             }

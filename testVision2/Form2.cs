@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VisionLibrary;
 
 namespace test
 {
@@ -16,9 +17,9 @@ namespace test
         public Form2()
         {
             InitializeComponent();
-            this.TopLevel = false;
+            this.TopLevel = true;
             //WaferMapCanvas mapCanvas = WaferMapCanvas.Canvas;
-            panel1.Controls.Add(CommonPanel.Entity);
+            panel1.Controls.Add(new CommonPanel());
             //mapCanvas.LoadCanvas();
         }
 
@@ -34,7 +35,12 @@ namespace test
 
         private void Form2_Shown(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Vision.ChangeCamera(0);
         }
     }
 }

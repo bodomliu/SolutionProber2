@@ -172,6 +172,7 @@ namespace CommonComponentLibrary
             GTN.mc.GTN_ClrSts(2, 5, 1);
             GTN.mc.GTN_ClrSts(2, 6, 1);
 
+
         }
 
         private void BtnZforward_MouseDown(object sender, MouseEventArgs e)
@@ -232,8 +233,7 @@ namespace CommonComponentLibrary
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
-        private void btnMoveRel_Click(object sender, EventArgs e)
+        private void btnXMoveRel1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -251,7 +251,6 @@ namespace CommonComponentLibrary
                 return;
 
             }
-
         }
 
         private void btnXMoveRel2_Click(object sender, EventArgs e)
@@ -618,6 +617,31 @@ namespace CommonComponentLibrary
         private void BtnLoadParameter_Click(object sender, EventArgs e)
         {
             Motion.Load("Config/MotionParameter.json");
+        }
+
+        private void BtnSaveParameter_Click(object sender, EventArgs e)
+        {
+            Motion.Save("Config/MotionParameter.json");
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Motion.TogglePosition(2);
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            Motion.TogglePosition(3);
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            Motion.TogglePosition(0);
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            Motion.TogglePosition(1);
         }
     }
 }
