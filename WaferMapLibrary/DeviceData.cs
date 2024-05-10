@@ -22,6 +22,9 @@ namespace WaferMapLibrary
     {
         public string PadDataPath { get; set; } = "DeviceData/0411PadData.json";
         public string PadPatten { get; set; } = "VisionConfig/pad.shm";//for pad model
+        public int TipFocusXArea { get; set; } = 100;
+        public int TipFocusYArea { get; set; } = 100;
+        public double NeddleTipFocusOffset { get; set; } = 60000;//neddle tip to probe card upper plate base is 6mm
     }
     public class DeviceDataClass
     {

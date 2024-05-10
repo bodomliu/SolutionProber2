@@ -1,7 +1,6 @@
 using CommonComponentLibrary;
 using MotionLibrary;
 using VisionLibrary;
-using static MotionLibrary.Compensation;
 
 namespace test
 {
@@ -99,19 +98,7 @@ namespace test
         
         private void button1_Click(object sender, EventArgs e)
         {
-            if (ErrorMapAlign.MappingPoints == null) { MessageBox.Show("No Points!"); return ; }
-            //遍历ErrorMap，BIN = 1
-            //List<MappingPoint> CoordinatesPoints = ErrorMapProbing.MappingPoints.Where(p => p.BIN == 4).ToList();
-            //if (CoordinatesPoints.Count == 0) { MessageBox.Show("No Mapping Points Bin =4!"); return ; }
-
-            //遍历CoordinatesPoints，选取所有能形成Grid（该点为左下角）的点            
-            //List<Grid> grids = new();
-            foreach (var point in ErrorMapAlign.MappingPoints)
-            {
-                point.EncodeX += Motion.parameter.XALIGN2PROBE;
-                point.EncodeY += Motion.parameter.YALIGN2PROBE;
-            }
-            Compensation.SaveMap(ErrorMapAlign, "ErrorMapProbing.json");
+            //Vision.WaferLowMag.halconClass.OnPaintEvent += Vision.WaferLowMag.halconClass.testPaint;
         }
 
         private void Form1_Activated(object sender, EventArgs e)

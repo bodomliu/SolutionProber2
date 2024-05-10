@@ -18,6 +18,7 @@
     <ProjectReference Include="..\ErrorCompensation\ErrorCompensation.csproj" />
     <ProjectReference Include="..\LotProcess\LotProcess.csproj" />
     <ProjectReference Include="..\PadRegistration\PadRegistration.csproj" />
+    <ProjectReference Include="..\PinRegistration\PinRegistration.csproj" />
     <ProjectReference Include="..\UtityForm\UtilityForm.csproj" />
   </ItemGroup>
 

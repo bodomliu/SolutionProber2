@@ -20,6 +20,7 @@ namespace MainForm
         DeviceDataSettingsForm deviceDataSettingsForm = new();
         UtilityForm utilityForm = new UtilityForm();
         PadRegistrationForm padRegistrationFrom = new PadRegistrationForm();
+        PinRegistrationForm pinRegistrationFrom = new PinRegistrationForm();
         public MainForm()
         {
             InitializeComponent();
@@ -73,13 +74,12 @@ namespace MainForm
         }
         private void ChangeForm(Control form)
         {
+            //Clear 和 Add会触发Control.VisibleChange事件两次，Visible从false到true
             panelForm.Controls.Clear();
             panelForm.Controls.Add(form);
             form.Show();
             form.Dock = DockStyle.Fill;
-            //Console.WriteLine(panelForm.Controls.Count);
         }
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Vision.CloseAllCamera();
@@ -88,12 +88,12 @@ namespace MainForm
 
         private void BtnPadRegistration_Click(object sender, EventArgs e)
         {
-            ChangeForm(padRegistrationFrom);//当没有静态变量需要保持时，可以用这种方案
+            ChangeForm(padRegistrationFrom);//当没有静态变量需要保持时，可以用new Form();
         }
 
         private void BtnPinRegistration_Click(object sender, EventArgs e)
         {
-
+          ChangeForm(pinRegistrationFrom);
         }
     }
 }

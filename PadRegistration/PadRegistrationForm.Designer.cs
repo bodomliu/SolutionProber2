@@ -406,7 +406,7 @@
             Name = "PadRegistrationForm";
             Text = "PadForm";
             Load += PadRegistrationForm_Load;
-            VisibleChanged += PadRegistrationForm_VisibleChanged;
+            ParentChanged += PadRegistrationForm_ParentChanged;
             ResumeLayout(false);
             PerformLayout();
         }

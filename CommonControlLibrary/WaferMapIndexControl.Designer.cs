@@ -44,7 +44,7 @@ namespace CommonComponentLibrary
             // 
             // BtnUp
             // 
-            BtnUp.Location = new Point(118, 3);
+            BtnUp.Location = new System.Drawing.Point(118, 3);
             BtnUp.Name = "BtnUp";
             BtnUp.Size = new Size(40, 40);
             BtnUp.TabIndex = 0;
@@ -54,7 +54,7 @@ namespace CommonComponentLibrary
             // 
             // BtnDown
             // 
-            BtnDown.Location = new Point(118, 85);
+            BtnDown.Location = new System.Drawing.Point(118, 85);
             BtnDown.Name = "BtnDown";
             BtnDown.Size = new Size(40, 40);
             BtnDown.TabIndex = 0;
@@ -64,7 +64,7 @@ namespace CommonComponentLibrary
             // 
             // BtnLeft
             // 
-            BtnLeft.Location = new Point(77, 44);
+            BtnLeft.Location = new System.Drawing.Point(77, 44);
             BtnLeft.Name = "BtnLeft";
             BtnLeft.Size = new Size(40, 40);
             BtnLeft.TabIndex = 0;
@@ -74,7 +74,7 @@ namespace CommonComponentLibrary
             // 
             // BtnRight
             // 
-            BtnRight.Location = new Point(159, 44);
+            BtnRight.Location = new System.Drawing.Point(159, 44);
             BtnRight.Name = "BtnRight";
             BtnRight.Size = new Size(40, 40);
             BtnRight.TabIndex = 0;
@@ -85,7 +85,7 @@ namespace CommonComponentLibrary
             // BtnEnter
             // 
             BtnEnter.BackColor = Color.Orange;
-            BtnEnter.Location = new Point(118, 44);
+            BtnEnter.Location = new System.Drawing.Point(118, 44);
             BtnEnter.Name = "BtnEnter";
             BtnEnter.Size = new Size(40, 40);
             BtnEnter.TabIndex = 0;
@@ -95,14 +95,14 @@ namespace CommonComponentLibrary
             // 
             // TxtIndexX
             // 
-            TxtIndexX.Location = new Point(25, 6);
+            TxtIndexX.Location = new System.Drawing.Point(25, 6);
             TxtIndexX.Name = "TxtIndexX";
             TxtIndexX.Size = new Size(42, 23);
             TxtIndexX.TabIndex = 1;
             // 
             // TxtIndexY
             // 
-            TxtIndexY.Location = new Point(25, 35);
+            TxtIndexY.Location = new System.Drawing.Point(25, 35);
             TxtIndexY.Name = "TxtIndexY";
             TxtIndexY.Size = new Size(42, 23);
             TxtIndexY.TabIndex = 1;
@@ -110,7 +110,7 @@ namespace CommonComponentLibrary
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(5, 9);
+            label1.Location = new System.Drawing.Point(5, 9);
             label1.Name = "label1";
             label1.Size = new Size(16, 17);
             label1.TabIndex = 2;
@@ -119,7 +119,7 @@ namespace CommonComponentLibrary
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(5, 38);
+            label2.Location = new System.Drawing.Point(5, 38);
             label2.Name = "label2";
             label2.Size = new Size(15, 17);
             label2.TabIndex = 2;

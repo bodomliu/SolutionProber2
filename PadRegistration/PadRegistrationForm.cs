@@ -13,17 +13,14 @@ namespace MainForm
             panel2.Controls.Add(new PadCanvas());
             //WaferMapLibrary.Load("Pad.json");
         }
-
         private void PadRegistrationForm_Load(object sender, EventArgs e)
         {
             PadData.OnIndexChange += PadData_OnIndexChange;
         }
-
         private void PadData_OnIndexChange(int index)
         {
             UpdateUI();
         }
-
         private void btnRefPadReg_Click(object sender, EventArgs e)
         {
             //获得当前XY坐标
@@ -44,7 +41,6 @@ namespace MainForm
             PadData.Entity.Pads.Add(new Pad { PosX = 0, PosY = 0 });
             UpdateUI();
         }
-
         private void UpdateUI()
         {
             if (PadData.Entity.Pads.Count > 0)
@@ -57,13 +53,11 @@ namespace MainForm
                 TxtTotalPad.Text = PadData.Entity.Pads.Count.ToString();
             }
         }
-
         private void btnReadyToApply_Click(object sender, EventArgs e)
         {
             PadData.Save(DeviceData.Entity.PinAlignment.PadDataPath);
             MessageBox.Show("Pads Saved!");
         }
-
         private void BtnHighMag_Click(object sender, EventArgs e)
         {
             Vision.ChangeCamera(Vision.WaferHighMag);
@@ -102,7 +96,6 @@ namespace MainForm
             PadData.Entity.Pads[PadData.CurrentIndex].PosY = posY;
             UpdateUI();
         }
-
         private void btnDeleteAllPad_Click(object sender, EventArgs e)
         {
             PadData.Entity.Pads.Clear();//TODO test if ok
@@ -110,13 +103,11 @@ namespace MainForm
             PadData.CurrentIndex = 0;
             UpdateUI();
         }
-
         private void btnDeletePad_Click(object sender, EventArgs e)
         {
             if (PadData.Entity.Pads == null) return;
             PadData.Entity.Pads.RemoveAt(PadData.CurrentIndex);
         }
-
         private void BtnInsertPad_Click(object sender, EventArgs e)
         {
             //获得当前XY坐标
@@ -128,29 +119,10 @@ namespace MainForm
             PadData.Entity.Pads.Insert(PadData.CurrentIndex, new Pad { PosX = posX, PosY = posY });
             UpdateUI();
         }
-
-        private void PadRegistrationForm_VisibleChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine(this.Visible);
-            if (this.Visible)
-            {
-                panel1.Controls.Add(CommonPanel.Entity);
-                Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, PadData.Entity.PadWidth, PadData.Entity.PadHeight);
-                Vision.WaferHighMag.halconClass.m_Roi.Color = "green";
-                UpdateUI();
-            }
-            else
-            {
-                Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, 400, 400);
-                Vision.WaferHighMag.halconClass.m_Roi.Color = "red";
-            }
-        }
-
         private void btnPadN_Click(object sender, EventArgs e)
         {
             //PadData.Entity.PadWidth--;
         }
-
         private void btnRefPad_Click(object sender, EventArgs e)
         {
             PadData.CurrentIndex = 0;
@@ -163,21 +135,18 @@ namespace MainForm
             //已好精定位，直接IndexMove
             CommonFunctions.IndexMove(Compensation.Area.Align, WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY);
         }
-
         private void btnPrevPad_Click(object sender, EventArgs e)
         {
             if (PadData.Entity.Pads == null) return;
             int Index = (PadData.CurrentIndex <= 0) ? PadData.Entity.Pads.Count - 1 : PadData.CurrentIndex - 1;
             PadMoveFromRefPad(Index);
         }
-
         private void btnNextPad_Click(object sender, EventArgs e)
         {
             if (PadData.Entity.Pads == null) return;
             int Index = (PadData.CurrentIndex >= PadData.Entity.Pads.Count - 1) ? 0 : PadData.CurrentIndex + 1;
             PadMoveFromRefPad(Index);
         }
-
         private void PadMoveFromRefPad(int Index)
         {
             if (PadData.Entity.Pads == null) return;
@@ -201,6 +170,21 @@ namespace MainForm
 
             Motion.XY_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 600, 10, 10, 20);
             Vision.WaferHighMag.ContinuesMode();
+        }
+        private void PadRegistrationForm_ParentChanged(object sender, EventArgs e)
+        {
+            if (this.Parent!=null)
+            {
+                panel1.Controls.Add(CommonPanel.Entity);
+                Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, PadData.Entity.PadWidth, PadData.Entity.PadHeight);
+                Vision.WaferHighMag.halconClass.m_Roi.Color = "green";
+                UpdateUI();
+            }
+            else
+            {
+                Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, 400, 400);
+                Vision.WaferHighMag.halconClass.m_Roi.Color = "red";
+            }
         }
     }
 }

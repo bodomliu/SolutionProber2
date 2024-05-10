@@ -39,7 +39,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotionLibrary", "MotionLibr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilityForm", "UtityForm\UtilityForm.csproj", "{C72D0235-D190-4A7E-9BFA-F0E74D10C402}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PadRegistration", "PadRegistration\PadRegistration.csproj", "{699F1003-C0B7-4BCC-B385-A8E97C093370}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PadRegistration", "PadRegistration\PadRegistration.csproj", "{699F1003-C0B7-4BCC-B385-A8E97C093370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinRegistration", "PinRegistration\PinRegistration.csproj", "{BB75946E-7563-43DE-8366-BB1377C562EB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EBDA895A-4FDF-4511-B90E-5476E3936CDE} = {EBDA895A-4FDF-4511-B90E-5476E3936CDE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -132,6 +137,11 @@ Global
 		{699F1003-C0B7-4BCC-B385-A8E97C093370}.Debug|x64.Build.0 = Debug|x64
 		{699F1003-C0B7-4BCC-B385-A8E97C093370}.Release|Any CPU.ActiveCfg = Release|x64
 		{699F1003-C0B7-4BCC-B385-A8E97C093370}.Release|x64.ActiveCfg = Release|x64
+		{BB75946E-7563-43DE-8366-BB1377C562EB}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{BB75946E-7563-43DE-8366-BB1377C562EB}.Debug|x64.ActiveCfg = Debug|x64
+		{BB75946E-7563-43DE-8366-BB1377C562EB}.Debug|x64.Build.0 = Debug|x64
+		{BB75946E-7563-43DE-8366-BB1377C562EB}.Release|Any CPU.ActiveCfg = Release|x64
+		{BB75946E-7563-43DE-8366-BB1377C562EB}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -43,15 +43,22 @@ namespace MotionLibrary
         public double[] EdgeY { get; set; } = new double[] { 580000, 580000, 2660000, 2660000 };
         //设备参数，标定区和探针区的分界线
         public double ALIGNDIVIDEY { get; set; } = 3700000;
-        //RefPin 位置(临时)
-        public double XPROBER { get; set; } = 2204128;
-        public double YPROBER { get; set; } = 4125209;
-        public double ZPROBER { get; set; } = 78481;
+        public PinPadContact PROBING { get; set; } = new PinPadContact();
     }
-    /// <summary>
-    /// 0 = 标定区；1 = 工作区
-    /// </summary>
-
+    public class PinPadContact
+    {
+        public double XAbsPin { get; set; } = 2970651;//定机台参数时，Abspin X
+        public double YAbsPin { get; set; } = 4129205;//定机台参数时，refpin Y
+        public double ZAbsPin { get; set; } = 73979;//定机台参数时，refpin高度
+        public double ZAbsWaferHeight { get; set; } = 38422;//定机台参数时，wafer高度
+        public double XPad2Pin { get; set; } = 13083;//定机台参数时，pin需要位移Xpin2Pad才能扎到中心      
+        public double YPad2Pin { get; set; } = -3937;//定机台参数时，pin需要位移Ypin2Pad才能扎到中心            
+        public double ZClearance { get; set; } = 88000;//定机台参数时，晶圆从Zwafer上升Clearance时，正好扎到针        
+        public double FirstContactHeight { get; set; } = 0;
+        public double AllContactHeight { get; set; } = 0;
+        public double ProbingShiftX { get; set; } = 0;
+        public double ProbingShiftY { get; set; } = 0;
+    }
 
     static public class Motion
     {
@@ -1070,7 +1077,7 @@ namespace MotionLibrary
                     break;
                 case 3:
                     XYZ_AxisMoveRel(1, -parameter.XPINLOW2HIGH, -parameter.YPINLOW2HIGH, 0, 600, 10, 10, 20);
-                    AxisMoveAbs(1, 3, Motion.parameter.ZPROBER, 600, 10, 10, 20);
+                    //AxisMoveAbs(1, 3, Motion.parameter.ZPROBER, 600, 10, 10, 20);
                     break;
                 default:
                     break;
