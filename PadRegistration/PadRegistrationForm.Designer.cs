@@ -231,7 +231,7 @@
             panel2.BackColor = Color.Black;
             panel2.Location = new Point(1089, 559);
             panel2.Name = "panel2";
-            panel2.Size = new Size(399, 387);
+            panel2.Size = new Size(399, 399);
             panel2.TabIndex = 64;
             // 
             // label1

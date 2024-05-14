@@ -37,6 +37,7 @@
             BackColor = Color.Gray;
             Name = "PadCanvas";
             Size = new Size(262, 245);
+            Load += PadCanvas_Load;
             ResumeLayout(false);
         }
 
