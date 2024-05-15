@@ -46,6 +46,9 @@ namespace MainForm
             int hu = (int)(PadData.Entity.PadWidth / unitPerPixel);
             int hv = (int)(PadData.Entity.PadHeight / unitPerPixel);
 
+            hu = Math.Max(hu, 1);
+            hv = Math.Max(hv, 1);
+
             for (int i = 0; i < PadData.Entity.Pads.Count; i++)
             {
                 var pad = PadData.Entity.Pads[i];
