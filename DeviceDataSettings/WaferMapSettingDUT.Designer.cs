@@ -33,11 +33,11 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            textBox1 = new TextBox();
+            CardId = new TextBox();
             YSize = new TextBox();
             XSize = new TextBox();
             SiteNum = new TextBox();
-            textBox5 = new TextBox();
+            Location = new TextBox();
             ButtonUP = new Button();
             ButtonDown = new Button();
             ButtonLeft = new Button();
@@ -91,12 +91,12 @@
             label5.TabIndex = 4;
             label5.Text = "Card ID";
             // 
-            // textBox1
+            // CardId
             // 
-            textBox1.Location = new Point(80, 79);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(74, 23);
-            textBox1.TabIndex = 5;
+            CardId.Location = new Point(80, 79);
+            CardId.Name = "CardId";
+            CardId.Size = new Size(74, 23);
+            CardId.TabIndex = 5;
             // 
             // YSize
             // 
@@ -122,12 +122,12 @@
             SiteNum.Size = new Size(44, 23);
             SiteNum.TabIndex = 8;
             // 
-            // textBox5
+            // Location
             // 
-            textBox5.Location = new Point(217, 53);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(44, 23);
-            textBox5.TabIndex = 9;
+            Location.Location = new Point(217, 53);
+            Location.Name = "Location";
+            Location.Size = new Size(44, 23);
+            Location.TabIndex = 9;
             // 
             // ButtonUP
             // 
@@ -199,11 +199,11 @@
             Controls.Add(ButtonLeft);
             Controls.Add(ButtonDown);
             Controls.Add(ButtonUP);
-            Controls.Add(textBox5);
+            Controls.Add(Location);
             Controls.Add(SiteNum);
             Controls.Add(XSize);
             Controls.Add(YSize);
-            Controls.Add(textBox1);
+            Controls.Add(CardId);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -223,11 +223,11 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox textBox1;
+        private TextBox CardId;
         private TextBox YSize;
         private TextBox XSize;
         private TextBox SiteNum;
-        private TextBox textBox5;
+        private TextBox Location;
         private Button ButtonUP;
         private Button ButtonDown;
         private Button ButtonLeft;
