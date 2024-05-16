@@ -56,7 +56,7 @@ namespace DeviceDataSettings
             panel1.Controls.Add(radioButton2);
             panel1.Controls.Add(radioButton1);
             panel1.ForeColor = SystemColors.Control;
-            panel1.Location = new System.Drawing.Point(749, 3);
+            panel1.Location = new Point(749, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(283, 218);
             panel1.TabIndex = 0;
@@ -64,7 +64,7 @@ namespace DeviceDataSettings
             // radioButton7
             // 
             radioButton7.AutoSize = true;
-            radioButton7.Location = new System.Drawing.Point(3, 175);
+            radioButton7.Location = new Point(3, 175);
             radioButton7.Name = "radioButton7";
             radioButton7.Size = new Size(98, 21);
             radioButton7.TabIndex = 6;
@@ -76,7 +76,7 @@ namespace DeviceDataSettings
             // radioButton6
             // 
             radioButton6.AutoSize = true;
-            radioButton6.Location = new System.Drawing.Point(3, 148);
+            radioButton6.Location = new Point(3, 148);
             radioButton6.Name = "radioButton6";
             radioButton6.Size = new Size(146, 21);
             radioButton6.TabIndex = 5;
@@ -88,18 +88,19 @@ namespace DeviceDataSettings
             // radioButton5
             // 
             radioButton5.AutoSize = true;
-            radioButton5.Location = new System.Drawing.Point(3, 121);
+            radioButton5.Location = new Point(3, 121);
             radioButton5.Name = "radioButton5";
             radioButton5.Size = new Size(131, 21);
             radioButton5.TabIndex = 4;
             radioButton5.TabStop = true;
             radioButton5.Text = "5. Dut information";
             radioButton5.UseVisualStyleBackColor = true;
+            radioButton5.CheckedChanged += radioButton5_CheckedChanged;
             // 
             // radioButton4
             // 
             radioButton4.AutoSize = true;
-            radioButton4.Location = new System.Drawing.Point(3, 94);
+            radioButton4.Location = new Point(3, 94);
             radioButton4.Name = "radioButton4";
             radioButton4.Size = new Size(67, 21);
             radioButton4.TabIndex = 3;
@@ -111,7 +112,7 @@ namespace DeviceDataSettings
             // radioButton3
             // 
             radioButton3.AutoSize = true;
-            radioButton3.Location = new System.Drawing.Point(3, 40);
+            radioButton3.Location = new Point(3, 40);
             radioButton3.Name = "radioButton3";
             radioButton3.Size = new Size(105, 21);
             radioButton3.TabIndex = 2;
@@ -124,7 +125,7 @@ namespace DeviceDataSettings
             // 
             radioButton2.AutoSize = true;
             radioButton2.BackColor = SystemColors.ControlDark;
-            radioButton2.Location = new System.Drawing.Point(3, 67);
+            radioButton2.Location = new Point(3, 67);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(113, 21);
             radioButton2.TabIndex = 1;
@@ -138,7 +139,7 @@ namespace DeviceDataSettings
             radioButton1.AutoSize = true;
             radioButton1.Checked = true;
             radioButton1.ForeColor = SystemColors.Control;
-            radioButton1.Location = new System.Drawing.Point(3, 13);
+            radioButton1.Location = new Point(3, 13);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(152, 21);
             radioButton1.TabIndex = 0;
@@ -150,7 +151,7 @@ namespace DeviceDataSettings
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Location = new System.Drawing.Point(749, 226);
+            panel2.Location = new Point(749, 226);
             panel2.Name = "panel2";
             panel2.Size = new Size(283, 354);
             panel2.TabIndex = 1;
@@ -158,7 +159,7 @@ namespace DeviceDataSettings
             // 
             // panel3
             // 
-            panel3.Location = new System.Drawing.Point(3, 3);
+            panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
             panel3.Size = new Size(740, 740);
             panel3.TabIndex = 2;
@@ -166,7 +167,7 @@ namespace DeviceDataSettings
             // 
             // panel4
             // 
-            panel4.Location = new System.Drawing.Point(937, 586);
+            panel4.Location = new Point(937, 586);
             panel4.Name = "panel4";
             panel4.Size = new Size(205, 132);
             panel4.TabIndex = 3;
@@ -174,7 +175,7 @@ namespace DeviceDataSettings
             // 
             // panel5
             // 
-            panel5.Location = new System.Drawing.Point(749, 586);
+            panel5.Location = new Point(749, 586);
             panel5.Name = "panel5";
             panel5.Size = new Size(182, 157);
             panel5.TabIndex = 4;

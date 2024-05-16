@@ -28,9 +28,14 @@ namespace DeviceDataSettings
         private readonly WaferMapSettingStatus _wmss;
 
         private readonly WaferMapSettingProbingSequenceControl _wmsps;
+
+        private readonly WaferMapSettingDUT _wmsDUT;
+
+        private readonly DUTCanvas dUTCanvas;
         public WaferMapSettingControl()
         {
             InitializeComponent();
+            dUTCanvas = new();
             _waferMap.MouseClickDefineCurrentIndex = true;
             this._wmsb = new(_waferMap);
             this._wmsm = new(_waferMap);
@@ -38,6 +43,7 @@ namespace DeviceDataSettings
             this._wmsmap = new(_waferMap);
             this._wmss = new();
             this._wmsps = new(_waferMap);
+            _wmsDUT = new(dUTCanvas);
             WaferMap.OnWaferMapChange += WaferMap_OnWaferMapChange;
         }
 
@@ -133,9 +139,29 @@ namespace DeviceDataSettings
                 panel2.Controls.Clear();
                 panel2.Controls.Add(_wmsps);
                 _wmsps.Reload();
-            } else
+            }
+            else
             {
                 _wmsps.Unload();
+            }
+        }
+
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                panel2.Controls.Clear();
+                panel2.Controls.Add(_wmsDUT);
+                panel3.Controls.Clear();
+                panel3.Controls.Add(dUTCanvas);
+                dUTCanvas.RefreshCanvas();
+            }
+            else
+            {
+                panel3.Controls.Clear();
+                panel3.Controls.Add(_waferMap);
             }
         }
     }
