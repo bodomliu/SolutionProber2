@@ -1,4 +1,6 @@
-﻿namespace DeviceDataSettings
+﻿using WaferMapLibrary;
+
+namespace DeviceDataSettings
 {
     partial class WaferMapSettingDUT
     {
@@ -13,6 +15,7 @@
         /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
+            DUTData.OnIndexChange -= DUTData_OnIndexChange;
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -44,6 +47,8 @@
             ButtonRight = new Button();
             ButtonAdd = new Button();
             ButtonDelete = new Button();
+            ButtonEdit = new Button();
+            ButtonEnable = new Button();
             SuspendLayout();
             // 
             // label1
@@ -171,6 +176,7 @@
             // 
             // ButtonAdd
             // 
+            ButtonAdd.Enabled = false;
             ButtonAdd.Location = new Point(186, 134);
             ButtonAdd.Name = "ButtonAdd";
             ButtonAdd.Size = new Size(75, 39);
@@ -181,6 +187,7 @@
             // 
             // ButtonDelete
             // 
+            ButtonDelete.Enabled = false;
             ButtonDelete.Location = new Point(186, 179);
             ButtonDelete.Name = "ButtonDelete";
             ButtonDelete.Size = new Size(75, 37);
@@ -189,10 +196,32 @@
             ButtonDelete.UseVisualStyleBackColor = true;
             ButtonDelete.Click += ButtonDelete_Click;
             // 
+            // ButtonEdit
+            // 
+            ButtonEdit.Location = new Point(186, 91);
+            ButtonEdit.Name = "ButtonEdit";
+            ButtonEdit.Size = new Size(75, 37);
+            ButtonEdit.TabIndex = 16;
+            ButtonEdit.Text = "Edit";
+            ButtonEdit.UseVisualStyleBackColor = true;
+            ButtonEdit.Click += ButtonEdit_Click;
+            // 
+            // ButtonEnable
+            // 
+            ButtonEnable.Location = new Point(186, 234);
+            ButtonEnable.Name = "ButtonEnable";
+            ButtonEnable.Size = new Size(75, 37);
+            ButtonEnable.TabIndex = 17;
+            ButtonEnable.Text = "Enable";
+            ButtonEnable.UseVisualStyleBackColor = true;
+            ButtonEnable.Click += ButtonE_Click;
+            // 
             // WaferMapSettingDUT
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ButtonEnable);
+            Controls.Add(ButtonEdit);
             Controls.Add(ButtonDelete);
             Controls.Add(ButtonAdd);
             Controls.Add(ButtonRight);
@@ -234,5 +263,7 @@
         private Button ButtonRight;
         private Button ButtonAdd;
         private Button ButtonDelete;
+        private Button ButtonEdit;
+        private Button ButtonEnable;
     }
 }

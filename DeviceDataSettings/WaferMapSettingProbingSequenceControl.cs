@@ -21,6 +21,7 @@ namespace DeviceDataSettings
         {
             InitializeComponent();
             _wmc = wmc;
+
         }
 
         int _totalNum = 0;
@@ -41,6 +42,35 @@ namespace DeviceDataSettings
             TotalNum.Text = _totalNum.ToString();
             _wmc.IsDisplaySequenceOrder = true;
             _wmc.RefreshCanvas();
+
+            panel1.Controls.Clear();
+            checkBoxes.Clear();
+            for (int i = 0; i < DUTData.Entity.DUTs.Count; i++)
+            {
+                CheckBox checkBox = new CheckBox();
+                checkBox.Name = "checkBox" + i;
+                checkBox.Text = "Dut " + i.ToString();
+
+                checkBox.AutoSize = true;
+                if (i > 12)
+                {
+                    checkBox.Location = new Point(73, 3 + 20 * (i - 13));
+                }
+                else
+                {
+                    checkBox.Location = new Point(3, 3 + 20 * i);
+                }
+                checkBox.Size = new Size(89, 21);
+                checkBox.TabIndex = i;
+                checkBox.UseVisualStyleBackColor = true;
+                checkBox.Checked = DUTData.Entity.DUTs[i].Enable;
+
+                checkBox.CheckedChanged += CheckBox_CheckedChanged;
+                panel1.Controls.Add(checkBox);
+                checkBoxes.Add(checkBox);
+            }
+            panel1.Refresh();
+
         }
 
 
@@ -103,9 +133,15 @@ namespace DeviceDataSettings
             _wmc.RefreshCanvas();
         }
 
+        private Boolean add()
+        {
+
+            return false;
+        }
+
         private void Automatic_Click(object sender, EventArgs e)
         {
-            
+
             for (int i = 0; i < WaferMap.Entity.DieNumY; i++)
             {
                 for (int j = 0; j < WaferMap.Entity.DieNumX; j++)
@@ -147,6 +183,22 @@ namespace DeviceDataSettings
             });
             CurrentNum.Text = "0";
             TotalNum.Text = _totalNum.ToString();
+            _wmc.RefreshCanvas();
+        }
+
+        private List<CheckBox> checkBoxes = new List<CheckBox>();
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_CheckedChanged(object? sender, EventArgs e)
+        {
+            if (null == sender)
+                return;
+            CheckBox checkBox = (CheckBox)sender;
+            int index = int.Parse(checkBox.Name.Substring(8));
+            DUTData.Entity.DUTs[index].Enable = checkBox.Checked;
             _wmc.RefreshCanvas();
         }
     }

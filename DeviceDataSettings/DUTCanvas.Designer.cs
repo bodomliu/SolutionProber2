@@ -1,4 +1,6 @@
-﻿namespace DeviceDataSettings
+﻿using WaferMapLibrary;
+
+namespace DeviceDataSettings
 {
     partial class DUTCanvas
     {

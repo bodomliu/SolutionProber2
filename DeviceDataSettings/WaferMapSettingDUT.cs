@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WaferMapLibrary;
 
 namespace DeviceDataSettings
 {
@@ -18,6 +19,26 @@ namespace DeviceDataSettings
         {
             InitializeComponent();
             _dut = dut;
+            DUTData.OnIndexChange += DUTData_OnIndexChange;
+        }
+
+        private void DUTData_OnIndexChange()
+        {
+            var d = DUTData.Entity.DUTs.Find(x => x.X == DUTData.CurrentIndexX && x.Y == DUTData.CurrentIndexY);
+            if (d == null)
+            {
+                ButtonEnable.Enabled = false;
+                return;
+            }
+            ButtonEnable.Enabled = true;
+            if (d.Enable)
+            {
+                ButtonEnable.Text = "Disable";
+            }
+            else
+            {
+                ButtonEnable.Text = "Enable";
+            }
         }
 
         private void WaferMapSettingDUT_Load(object sender, EventArgs e)
@@ -46,6 +67,13 @@ namespace DeviceDataSettings
             XSize.Text = maxX - minX + 1 + "";
             YSize.Text = maxY - minY + 1 + "";
             SiteNum.Text = DUTData.Entity.DUTs.Count + "";
+        }
+
+        public void Reload()
+        {
+            ButtonEdit.Enabled = true;
+            ButtonAdd.Enabled = false;
+            ButtonDelete.Enabled = false;
         }
 
         #region 按钮事件
@@ -79,6 +107,7 @@ namespace DeviceDataSettings
             DUTData.Entity.DUTs.Add(new DUT() { X = DUTData.CurrentIndexX, Y = DUTData.CurrentIndexY });
             _dut.RefreshCanvas();
             RefreshText();
+            DUTData_OnIndexChange();
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e)
@@ -95,8 +124,27 @@ namespace DeviceDataSettings
             DUTData.Entity.DUTs.Remove(d);
             _dut.RefreshCanvas();
             RefreshText();
+            DUTData_OnIndexChange();
+        }
+
+        private void ButtonEdit_Click(object sender, EventArgs e)
+        {
+            ButtonAdd.Enabled = true;
+            ButtonDelete.Enabled = true;
+            ButtonEdit.Enabled = false;
         }
         #endregion
 
+        private void ButtonE_Click(object sender, EventArgs e)
+        {
+            var d = DUTData.Entity.DUTs.Find(x => x.X == DUTData.CurrentIndexX && x.Y == DUTData.CurrentIndexY);
+            if (d == null)
+            {
+                return;
+            }
+            d.Enable = !d.Enable;
+            DUTData_OnIndexChange();
+            _dut.RefreshCanvas();
+        }
     }
 }

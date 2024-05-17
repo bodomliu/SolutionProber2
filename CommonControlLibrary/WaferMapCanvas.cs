@@ -218,7 +218,7 @@ namespace CommonComponentLibrary
             DrawIndex(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, gp, Color.Purple);//画参考die
             DrawGrid(gp);//方格
             DrawCircle(gp, UnitPerPixelX, UnitPerPixelY);//
-            DrawIndex(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, gp, Color.White);
+            DrawCurrentIndex(gp);
             canvas.Image?.Dispose();
             canvas.Image = MergeBitmap();
 
@@ -226,6 +226,32 @@ namespace CommonComponentLibrary
             //canvas.Refresh();
         }
 
+        private void DrawCurrentIndex(Graphics gp)
+        {
+            
+            if (IsDisplaySequenceOrder)
+            {
+                for (int i = 0; i < DUTData.Entity.DUTs.Count; i++)
+                {
+
+                    var color = Color.White;
+                    if (!DUTData.Entity.DUTs[i].Enable)
+                    {
+                        color = Color.Black;
+                    }
+                    DrawIndex(WaferMap.CurrentIndexX + DUTData.Entity.DUTs[i].X,
+                            WaferMap.CurrentIndexY + DUTData.Entity.DUTs[i].Y, gp, color);
+                }
+            }
+            else
+            {
+                DrawIndex(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, gp, Color.White);
+            }
+        }
+
+        /// <summary>
+        /// 显示序列号
+        /// </summary>
         public Boolean IsDisplaySequenceOrder { get; set; } = false;
         /// <summary>
         /// 合并图层

@@ -154,12 +154,15 @@ namespace DeviceDataSettings
             {
                 panel2.Controls.Clear();
                 panel2.Controls.Add(_wmsDUT);
+                _wmsDUT.Reload();
+
                 panel3.Controls.Clear();
                 panel3.Controls.Add(dUTCanvas);
                 dUTCanvas.RefreshCanvas();
             }
             else
             {
+                panel2.Controls.Clear();
                 panel3.Controls.Clear();
                 panel3.Controls.Add(_waferMap);
             }
