@@ -15,10 +15,13 @@ namespace DeviceDataSettings
     {
 
         private readonly DUTCanvas _dut;
-        public WaferMapSettingDUT(DUTCanvas dut)
+
+        private WaferMapSettingProbingSequenceControl _psc;
+        public WaferMapSettingDUT(DUTCanvas dut, WaferMapSettingProbingSequenceControl psc)
         {
             InitializeComponent();
             _dut = dut;
+            _psc = psc;
             DUTData.OnIndexChange += DUTData_OnIndexChange;
         }
 
@@ -132,6 +135,7 @@ namespace DeviceDataSettings
             ButtonAdd.Enabled = true;
             ButtonDelete.Enabled = true;
             ButtonEdit.Enabled = false;
+            _psc.DeleteAll();
         }
         #endregion
 

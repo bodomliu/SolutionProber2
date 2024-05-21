@@ -43,7 +43,7 @@ namespace DeviceDataSettings
             this._wmsmap = new(_waferMap);
             this._wmss = new();
             this._wmsps = new(_waferMap);
-            _wmsDUT = new(dUTCanvas);
+            _wmsDUT = new(dUTCanvas, _wmsps);
             WaferMap.OnWaferMapChange += WaferMap_OnWaferMapChange;
         }
 

@@ -212,6 +212,15 @@ namespace CommonComponentLibrary
                         c = Color.Crimson;
                     }
                     DrawRect(pt.IndexX, pt.IndexY, gp, c);
+#if DEBUG
+                    if (IsDisplaySequenceOrder && pt.BIN == 1)
+                    {
+                        float width = (float)WaferMap.Entity.DieSizeX / UnitPerPixelX;
+                        float height = (float)WaferMap.Entity.DieSizeY / UnitPerPixelY;
+                        gp.DrawString(pt.Order.ToString(), new Font("Arial", 5), Brushes.Black,
+                            pt.IndexX * width, pt.IndexY * height);
+                    }
+#endif
                 }
             }
 
