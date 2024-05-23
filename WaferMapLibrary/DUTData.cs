@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace WaferMapLibrary
@@ -75,6 +76,29 @@ namespace WaferMapLibrary
 
         public static event OnIndexChangeHander? OnIndexChange;
 
+        public static void Save(string filePath)
+        {
+            JsonSerializerOptions options = new()
+            {
+                WriteIndented = true,
+            };
+            string jsonString = JsonSerializer.Serialize(Entity, options);
+            File.WriteAllText(filePath, jsonString);
+        }
 
+        public static void Load(string filePath)
+        {
+            try { 
+                string jsonString = File.ReadAllText(filePath);
+                var item = JsonSerializer.Deserialize<DUTClass>(jsonString);
+                if (item != null)
+                {
+                    Entity = item;
+                }
+            }
+            catch (Exception e)
+            {
+            }
+        }
     }
 }

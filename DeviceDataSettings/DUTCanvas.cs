@@ -75,7 +75,7 @@ namespace DeviceDataSettings
             // 计算每个单元格的大小
             int cellWidth = _cellWidth;
             int cellHeight = _cellHeight;
-            using Pen pen = new(Color.Blue, 3);
+            using Pen pen = new(Color.White, 3);
             // 画矩形
             g.DrawRectangle(pen, cellWidth * (DUTData.CurrentIndexX + 5), cellHeight * (DUTData.CurrentIndexY + 5), cellWidth, cellHeight);
         }
@@ -84,7 +84,7 @@ namespace DeviceDataSettings
         {
             Bitmap bitmap = new(pictureBox.Width, pictureBox.Height);
             using Graphics g = Graphics.FromImage(bitmap);
-            g.Clear(Color.White);
+            g.Clear(Color.LightGray);
             DrawDUT(g);
             DrawGrid(g);
             DrawCurrentIndex(g);

@@ -1,0 +1,36 @@
+{
+  "DUTs": [
+    {
+      "X": 0,
+      "Y": 0,
+      "Enable": true
+    },
+    {
+      "X": 1,
+      "Y": 0,
+      "Enable": true
+    },
+    {
+      "X": 0,
+      "Y": 1,
+      "Enable": true
+    },
+    {
+      "X": 1,
+      "Y": 1,
+      "Enable": true
+    },
+    {
+      "X": 0,
+      "Y": 2,
+      "Enable": true
+    },
+    {
+      "X": 1,
+      "Y": 2,
+      "Enable": true
+    }
+  ],
+  "CardId": "1-0",
+  "Location": "FF"
+}

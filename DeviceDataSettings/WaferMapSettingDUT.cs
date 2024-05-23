@@ -47,7 +47,7 @@ namespace DeviceDataSettings
         private void WaferMapSettingDUT_Load(object sender, EventArgs e)
         {
             RefreshText();
-            Location.TextChanged += Location_TextChanged;
+            TextBoxLocation.TextChanged += Location_TextChanged;
             CardId.TextChanged += CardId_TextChanged;
         }
 
@@ -58,7 +58,7 @@ namespace DeviceDataSettings
 
         private void Location_TextChanged(object? sender, EventArgs e)
         {
-            DUTData.Entity.Location = Location.Text;
+            DUTData.Entity.Location = TextBoxLocation.Text;
         }
 
         private void RefreshText()
@@ -77,6 +77,9 @@ namespace DeviceDataSettings
             ButtonEdit.Enabled = true;
             ButtonAdd.Enabled = false;
             ButtonDelete.Enabled = false;
+
+            CardId.Text = DUTData.Entity.CardId;
+            TextBoxLocation.Text = DUTData.Entity.Location;
         }
 
         #region 按钮事件

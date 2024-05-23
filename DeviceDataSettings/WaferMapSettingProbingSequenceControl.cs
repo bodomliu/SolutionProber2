@@ -31,13 +31,9 @@ namespace DeviceDataSettings
             WaferMap.OnIndexChange += WaferMap_OnIndexChange;
             RefreshCurrentNum(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
             _totalNum = 0;
-            if (null != WaferMap.Entity.MappingPoints)
+            if (null != WaferMap.Entity.OrderClasses)
             {
-                foreach (var mp in WaferMap.Entity.MappingPoints)
-                {
-                    if (mp.Order > 0)
-                        _totalNum++;
-                }
+                _totalNum = WaferMap.Entity.OrderClasses.Count;
             }
             TotalNum.Text = _totalNum.ToString();
             _wmc.IsDisplaySequenceOrder = true;

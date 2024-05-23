@@ -40,7 +40,7 @@ namespace DeviceDataSettings
             YSize = new TextBox();
             XSize = new TextBox();
             SiteNum = new TextBox();
-            Location = new TextBox();
+            TextBoxLocation = new TextBox();
             ButtonUP = new Button();
             ButtonDown = new Button();
             ButtonLeft = new Button();
@@ -129,10 +129,10 @@ namespace DeviceDataSettings
             // 
             // Location
             // 
-            Location.Location = new Point(217, 53);
-            Location.Name = "Location";
-            Location.Size = new Size(44, 23);
-            Location.TabIndex = 9;
+            TextBoxLocation.Location = new Point(217, 53);
+            TextBoxLocation.Name = "Location";
+            TextBoxLocation.Size = new Size(44, 23);
+            TextBoxLocation.TabIndex = 9;
             // 
             // ButtonUP
             // 
@@ -228,7 +228,7 @@ namespace DeviceDataSettings
             Controls.Add(ButtonLeft);
             Controls.Add(ButtonDown);
             Controls.Add(ButtonUP);
-            Controls.Add(Location);
+            Controls.Add(TextBoxLocation);
             Controls.Add(SiteNum);
             Controls.Add(XSize);
             Controls.Add(YSize);
@@ -256,7 +256,7 @@ namespace DeviceDataSettings
         private TextBox YSize;
         private TextBox XSize;
         private TextBox SiteNum;
-        private TextBox Location;
+        private TextBox TextBoxLocation;
         private Button ButtonUP;
         private Button ButtonDown;
         private Button ButtonLeft;
