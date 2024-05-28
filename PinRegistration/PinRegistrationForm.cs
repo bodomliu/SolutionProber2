@@ -68,7 +68,7 @@ namespace MainForm
             {
                 //CommonFunctions.AdjustWaferHeight(37000, 39000, Vision.PinLowMag);
                 MessageBox.Show("Change to High Mag!"); return;
-            }
+        }
             else if (Vision.activeCamera == Camera.PinHighMag)
             {
                 WaitingControl.WF.Start();
@@ -148,13 +148,13 @@ namespace MainForm
         }
 
         private void BtnGoToRefPin_Click(object sender, EventArgs e)
-        {
+            {
             CommonFunctions.GoToPin(0);
             UpdateUI();
-        }
+            }
 
         private void BtnUpdatePinWPad_Click(object sender, EventArgs e)
-        {
+            {
             //获得当前XY坐标
             Motion.GetUserPos(Compensation.Area.Probing, out double X, out double Y);
             Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.Encode2User,
@@ -165,7 +165,7 @@ namespace MainForm
             PinData.Entity.Pins[PinData.CurrentIndex].PosX = posX;
             PinData.Entity.Pins[PinData.CurrentIndex].PosY = posY;
             UpdateUI();
-        }
+            }
 
         #region 绘图
         private void PinRegistrationForm_ParentChanged(object sender, EventArgs e)
