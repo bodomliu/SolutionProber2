@@ -38,9 +38,9 @@
             TxtTotal = new TextBox();
             TxtIndex = new TextBox();
             BtnGoToPin = new Button();
-            button2 = new Button();
+            BtnGoToNextPin = new Button();
             BtnGoToRefPin = new Button();
-            button1 = new Button();
+            BtnGoToPrevPin = new Button();
             groupBox2 = new GroupBox();
             BtnDeletePinWPad = new Button();
             BtnUpdatePinWPad = new Button();
@@ -60,6 +60,7 @@
             NumRefPinOffsetR = new NumericUpDown();
             label6 = new Label();
             BtnUpdateDegree = new Button();
+            BtnFocusInitial = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumRefPinOffsetR).BeginInit();
@@ -116,9 +117,9 @@
             groupBox1.Controls.Add(TxtTotal);
             groupBox1.Controls.Add(TxtIndex);
             groupBox1.Controls.Add(BtnGoToPin);
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(BtnGoToNextPin);
             groupBox1.Controls.Add(BtnGoToRefPin);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(BtnGoToPrevPin);
             groupBox1.Controls.Add(BtnNeedleTipFocus);
             groupBox1.Location = new Point(1223, 296);
             groupBox1.Name = "groupBox1";
@@ -172,15 +173,15 @@
             BtnGoToPin.UseVisualStyleBackColor = true;
             BtnGoToPin.Click += BtnGoToPin_Click;
             // 
-            // button2
+            // BtnGoToNextPin
             // 
-            button2.Location = new Point(142, 22);
-            button2.Name = "button2";
-            button2.Size = new Size(64, 56);
-            button2.TabIndex = 26;
-            button2.Text = "Next Pin";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            BtnGoToNextPin.Location = new Point(142, 22);
+            BtnGoToNextPin.Name = "BtnGoToNextPin";
+            BtnGoToNextPin.Size = new Size(64, 56);
+            BtnGoToNextPin.TabIndex = 26;
+            BtnGoToNextPin.Text = "Next Pin";
+            BtnGoToNextPin.UseVisualStyleBackColor = true;
+            BtnGoToNextPin.Click += BtnGoToNextPin_Click;
             // 
             // BtnGoToRefPin
             // 
@@ -192,14 +193,15 @@
             BtnGoToRefPin.UseVisualStyleBackColor = true;
             BtnGoToRefPin.Click += BtnGoToRefPin_Click;
             // 
-            // button1
+            // BtnGoToPrevPin
             // 
-            button1.Location = new Point(6, 22);
-            button1.Name = "button1";
-            button1.Size = new Size(62, 56);
-            button1.TabIndex = 26;
-            button1.Text = "Prev Pin";
-            button1.UseVisualStyleBackColor = true;
+            BtnGoToPrevPin.Location = new Point(6, 22);
+            BtnGoToPrevPin.Name = "BtnGoToPrevPin";
+            BtnGoToPrevPin.Size = new Size(62, 56);
+            BtnGoToPrevPin.TabIndex = 26;
+            BtnGoToPrevPin.Text = "Prev Pin";
+            BtnGoToPrevPin.UseVisualStyleBackColor = true;
+            BtnGoToPrevPin.Click += BtnGoToPrevPin_Click;
             // 
             // groupBox2
             // 
@@ -238,7 +240,7 @@
             // 
             // BtnRefreshPinDataFromPadData
             // 
-            BtnRefreshPinDataFromPadData.Location = new Point(93, 158);
+            BtnRefreshPinDataFromPadData.Location = new Point(93, 99);
             BtnRefreshPinDataFromPadData.Name = "BtnRefreshPinDataFromPadData";
             BtnRefreshPinDataFromPadData.Size = new Size(113, 57);
             BtnRefreshPinDataFromPadData.TabIndex = 0;
@@ -249,7 +251,7 @@
             // BtnReadyToApply
             // 
             BtnReadyToApply.BackColor = Color.Red;
-            BtnReadyToApply.Location = new Point(93, 97);
+            BtnReadyToApply.Location = new Point(93, 158);
             BtnReadyToApply.Name = "BtnReadyToApply";
             BtnReadyToApply.Size = new Size(113, 57);
             BtnReadyToApply.TabIndex = 0;
@@ -385,6 +387,16 @@
             BtnUpdateDegree.UseVisualStyleBackColor = false;
             BtnUpdateDegree.Click += BtnUpdateDegree_Click;
             // 
+            // BtnFocusInitial
+            // 
+            BtnFocusInitial.Location = new Point(1118, 442);
+            BtnFocusInitial.Name = "BtnFocusInitial";
+            BtnFocusInitial.Size = new Size(99, 54);
+            BtnFocusInitial.TabIndex = 25;
+            BtnFocusInitial.Text = "Focus Initial";
+            BtnFocusInitial.UseVisualStyleBackColor = true;
+            BtnFocusInitial.Click += BtnFocusInitial_Click;
+            // 
             // PinRegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -398,6 +410,7 @@
             Controls.Add(LblPinOffsetZ);
             Controls.Add(LblPinOffsetY);
             Controls.Add(LblPinOffsetX);
+            Controls.Add(BtnFocusInitial);
             Controls.Add(label6);
             Controls.Add(label3);
             Controls.Add(BtnMovePinToTheCenter);
@@ -427,8 +440,8 @@
         private Button BtnNeedleTipFocus;
         private Button BtnMovePinToTheCenter;
         private GroupBox groupBox1;
-        private Button button2;
-        private Button button1;
+        private Button BtnGoToNextPin;
+        private Button BtnGoToPrevPin;
         private Button BtnGoToPin;
         private TextBox TxtIndex;
         private GroupBox groupBox2;
@@ -454,5 +467,6 @@
         private NumericUpDown NumRefPinOffsetR;
         private Label label6;
         private Button BtnUpdateDegree;
+        private Button BtnFocusInitial;
     }
 }

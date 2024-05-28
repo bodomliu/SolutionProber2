@@ -27,6 +27,8 @@ namespace MainForm
             panelMap.Controls.Add(waferMapCanvas);
             waferMapCanvas.SetRatio(1, 1);
             waferMapCanvas.LoadCanvas();
+
+            PadData.OnIndexChange += PadData_OnIndexChange;
         }
 
         private void InspectionForm_Load(object sender, EventArgs e)
@@ -34,39 +36,36 @@ namespace MainForm
             TxtShiftX.Text = DeviceData.Entity.Probing.ProbingShiftX.ToString();
             TxtShiftY.Text = DeviceData.Entity.Probing.ProbingShiftY.ToString();
         }
+        private void PadData_OnIndexChange(int index)
+        {
+            TxtIndex.Text = index.ToString();
+        }
 
         private void btnNextPad_Click(object sender, EventArgs e)
         {
             if (PadData.Entity.Pads == null) return;
             int Index = (PadData.CurrentIndex >= PadData.Entity.Pads.Count - 1) ? 0 : PadData.CurrentIndex + 1;
-            TxtIndex.Text = Index.ToString();
-            MoveToPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            WaitingControl.WF.Start();
+            CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            WaitingControl.WF.End();
         }
 
         private void btnPrevPad_Click(object sender, EventArgs e)
         {
             if (PadData.Entity.Pads == null) return;
             int Index = (PadData.CurrentIndex <= 0) ? PadData.Entity.Pads.Count - 1 : PadData.CurrentIndex - 1;
-            TxtIndex.Text = Index.ToString();
-            MoveToPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            WaitingControl.WF.Start();
+            CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            WaitingControl.WF.End();
         }
         private void btnMoveToPad_Click(object sender, EventArgs e)
         {
             int Index = int.Parse(TxtIndex.Text);
-            MoveToPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            WaitingControl.WF.Start();
+            CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            WaitingControl.WF.End();
         }
 
-        private void MoveToPad(int DieIndexX, int DieIndexY, int PadIndex)
-        {
-            if (PadData.Entity.Pads == null) return;
-
-            //IndexX,IndexY Align后的用户坐标
-            CommonFunctions.IndexUserPosAfterAlign(DieIndexX, DieIndexY, out double userPosX, out double userPosY);
-            //加上WaferOffset和Pad
-            Motion.UserPosMoveAbs(Compensation.Area.Align, userPosX + PadData.Entity.Pads[PadIndex].PosX,
-                userPosY + PadData.Entity.Pads[PadIndex].PosY);
-            PadData.CurrentIndex = PadIndex;
-        }
         private void BtnMoveToDie_Click(object sender, EventArgs e)
         {
             CommonFunctions.IndexMove(Compensation.Area.Align, WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);

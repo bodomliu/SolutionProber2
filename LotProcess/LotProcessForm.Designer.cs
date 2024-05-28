@@ -50,7 +50,7 @@
             panelMenu.Dock = DockStyle.Top;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(800, 82);
+            panelMenu.Size = new Size(1110, 82);
             panelMenu.TabIndex = 0;
             // 
             // BtnCassette
@@ -114,14 +114,14 @@
             panelForm.Dock = DockStyle.Fill;
             panelForm.Location = new Point(0, 82);
             panelForm.Name = "panelForm";
-            panelForm.Size = new Size(800, 368);
+            panelForm.Size = new Size(1110, 632);
             panelForm.TabIndex = 1;
             // 
             // LotProcessForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1110, 714);
             Controls.Add(panelForm);
             Controls.Add(panelMenu);
             Name = "LotProcessForm";

@@ -35,6 +35,7 @@ namespace MainForm
         private void LotProcessForm_Load(object sender, EventArgs e)
         {
             log.Debug("Entering LotProcessForm.");
+            Dock = DockStyle.Fill;
         }
     }
 }

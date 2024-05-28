@@ -1,12 +1,11 @@
 ﻿using WaferMapLibrary;
 using VisionLibrary;
 using MotionLibrary;
-using log4net;
+
 namespace CommonComponentLibrary
 {
     public static class CommonFunctions
     {
-
         /// <summary>
         /// 对焦函数
         /// </summary>
@@ -14,14 +13,13 @@ namespace CommonComponentLibrary
         /// <param name="end"></param>
         /// <param name="Mag"></param>
         /// <returns></returns>
-        public static int AdjustWaferHeight(double start, double end, CameraClass Mag)
+        public static int AdjustHeight(double start, double end, CameraClass Mag)
         {
             Mag.TriggerMode();
 
             List<double> def = new();
             List<double> pos = new();
             bool SlowFlag = false;
-
 
             for (double z = start; z < end;)
             {
@@ -62,17 +60,31 @@ namespace CommonComponentLibrary
 
             if (Mag == Vision.WaferLowMag)
             {
-                return AdjustWaferHeight(targetLow - rangeLow, targetLow + rangeLow, Mag);
+                return AdjustHeight(targetLow - rangeLow, targetLow + rangeLow, Mag);
             }
             else if (Mag == Vision.WaferHighMag)
             {
-                return AdjustWaferHeight(targetHigh - rangeHigh, targetHigh + rangeHigh, Mag);
+                return AdjustHeight(targetHigh - rangeHigh, targetHigh + rangeHigh, Mag);
             }
             else if (Mag == Vision.JigCamera)
             {
-                return AdjustWaferHeight(targetJig - rangeHigh, targetJig + rangeHigh, Mag);
+                return AdjustHeight(targetJig - rangeHigh, targetJig + rangeHigh, Mag);
             }
             else return -1;
+        }
+        public static int AdjustPinHeight(bool FocusInitial = true)
+        {
+            int TipFocusXArea = DeviceData.Entity.PinAlignment.TipFocusXArea;
+            int TipFocusYArea = DeviceData.Entity.PinAlignment.TipFocusYArea;
+            Vision.PinHighMag.halconClass.m_Roi.Resize2(512, 640, TipFocusXArea, TipFocusYArea);//blobROI
+            Vision.PinHighMag.SetExposureTime(DeviceData.Entity.PinAlignment.TipFocusExposureTime);//blob曝光
+            Thread.Sleep(500);//避免没生效
+            //FocusInitial = 133500 - 60000 = 73500
+            double target = (FocusInitial) ?
+                Motion.parameter.ZPROBECARDUPPERPLATEBASE - DeviceData.Entity.PinAlignment.NeddleTipFocusOffset
+                : PinData.Entity.RefPinZ;
+            double range = (FocusInitial) ? 10000 : 1000;
+            return AdjustHeight(target - range, target + range, Vision.PinHighMag);
         }
         /// <summary>
         /// 计算下次Step值
@@ -139,7 +151,7 @@ namespace CommonComponentLibrary
             {
                 slowStep = 1000;
                 fastStep = 3000;
-                endStep = 100000;
+                endStep = 10000;
                 slopThreshold = 1;
             }
             else
@@ -449,41 +461,73 @@ namespace CommonComponentLibrary
                 }
             }
         }
-
         #region PinAlignment
+        public static void GotoPad(int DieX,int DieY,int PadIndex)
+        {
+            if (PadData.Entity.Pads == null) return;
+            //先获得当前Die Org的用户坐标
+            IndexUserPosAfterAlign(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double X, out double Y);
+            //获得Pad的坐标
+            X += PadData.Entity.DieOrg2RefPadX + PadData.Entity.Pads[PadIndex].PosX;
+            Y += PadData.Entity.DieOrg2RefPadY + PadData.Entity.Pads[PadIndex].PosY;
+            //运动到Pad
+            Motion.UserPosMoveAbs(Compensation.Area.Align, X, Y);
+            //上升
+            Motion.AxisMoveAbs(1, 3, WaferMap.WaferHeight,600,10,10,20);
+            WaferMap.CurrentIndexX = DieX;WaferMap.CurrentIndexY = DieY;
+            PadData.CurrentIndex = PadIndex;//改Index
+        }
         public static void MovePinToCenter()
         {
+            int GetPinXArea = DeviceData.Entity.PinAlignment.GetPinXArea;
+            int GetPinYArea = DeviceData.Entity.PinAlignment.GetPinYArea;
+            Vision.PinHighMag.halconClass.m_Roi.Resize2(512, 640, GetPinXArea, GetPinYArea);//blobROI
+            float expo = DeviceData.Entity.PinAlignment.GetPinExposureTime;
+            Vision.PinHighMag.SetExposureTime(expo);//blob曝光
+            Thread.Sleep(500);//避免没生效
             Vision.PinHighMag.TriggerMode();
             Vision.PinHighMag.TriggerExec();
-
             int res = Vision.PinHighMag.halconClass.GetPin(out double DeltaX, out double DeltaY);
-            if (res != 0) { MessageBox.Show("Move To Pin Error."); return; }
-
-            Motion.XYZ_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 0, 600, 10, 10, 20);
+            if (res != 0)
+            {
+                MessageBox.Show("Move To Pin Error.");
+            }
+            else 
+            {
+                Motion.XY_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 600, 10, 10, 20);
+            }
             Vision.PinHighMag.ContinuesMode();
         }
-        public static void GoToPin(int index)
+        public static void GoToPin(int index,bool isLowMode = false)
         {
             if (index > PinData.Entity.Pins.Count) return;
-            //TODO 根据粗精模式走点
-
-            double X = PinData.Entity.RefPinX + PinData.Entity.Pins[index].PosX;
-            double Y = PinData.Entity.RefPinY + PinData.Entity.Pins[index].PosY;
-            Motion.XY_AxisMoveAbs(1, X, Y, 600, 10, 10, 20);
+            //根据粗精模式走点
+            double refPinX = PinData.Entity.RefPinX;
+            double refPinY = PinData.Entity.RefPinY;
+            double refPinZ = PinData.Entity.RefPinZ;
+            if (isLowMode)
+            {
+                refPinX -= Motion.parameter.XPINLOW2HIGH;
+                refPinY -= Motion.parameter.YPINLOW2HIGH;
+            }
+            //第一步，将refpin转成用户坐标
+            Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.Encode2User,
+                refPinX, refPinY, out double userX, out double userY);
+            //第二步，得到目标Pin用户坐标
+            userX += PinData.Entity.Pins[index].PosX;
+            userY += PinData.Entity.Pins[index].PosY;
+            //第三步，走用户坐标
+            Motion.UserPosMoveAbs(Compensation.Area.Probing,userX,userY);
+            //第四步，上针
+            Motion.AxisMoveAbs(1, 3, refPinZ, 600, 10, 10, 20);
             PinData.CurrentIndex = index;
         }
-        public static void UpdateProbePosition()
-        {
-            double waferOffset = WaferMap.WaferHeight - Motion.parameter.PROBING.ZOrgWaferHeight;//wafer比注册高了waferOffset
-            double pinOffset = PinData.Entity.RefPinZ - Motion.parameter.PROBING.ZOrgPin;//pin比注册高了pinOffset
-            double upPos = Motion.parameter.PROBING.ZOrgWaferHeight + Motion.parameter.PROBING.ZPad2Pin;//注册时候upPos
 
-            DeviceData.Entity.Probing.ZUpPosition = upPos - waferOffset + pinOffset;//当前的upPos理论值
-            DeviceData.Entity.Probing.ZDownPosition = DeviceData.Entity.Probing.ZUpPosition + DeviceData.Entity.Probing.ZClearance;
-        }
         #endregion
+        
         public static void Delay(int mm)
         {
+            //慎用
             while (DateTime.Now.AddMilliseconds((double)mm) > DateTime.Now)
             {
               Thread.Sleep(1);

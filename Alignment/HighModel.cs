@@ -50,8 +50,9 @@ namespace MainForm
             double OrgY = 0 + WaferMap.Entity.Center2RefDieCornerY + WaferMap.Entity.Corner2OrgY;
             WaferMap.WaferOffsetX = HighMagOrgX - OrgX;
             WaferMap.WaferOffsetY = HighMagOrgY - OrgY;
-
+            WaferMap.WaferHeight = Motion.GetEncPos(1, 3);
             WaferMap.IsHighAlignCompleted = true;
+            
             MessageBox.Show("High Alignment Successful.");
         }
 

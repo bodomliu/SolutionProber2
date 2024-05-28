@@ -30,9 +30,10 @@ namespace MotionLibrary
         public double YWAFERLOW2HIGHT { get; set; } = -3832;
         public double ZWAFERLOW2HIGHT { get; set; } = -8000;
 
-        //设备参数，精定位晶圆相机到Probe区域
-        public double XALIGN2PROBE { get; set; } = 225000;//216029//215942
-        public double YALIGN2PROBE { get; set; } = 4375000;//4365070//4364827
+        //设备参数，精定位晶圆相机到JigCamera（Probe区域）
+        //因为不是每个die（或pad）从Align区到Probe区都是该固定值（encode值未校准），所以只用作去probe区域标定用
+        public double XALIGN2PROBE { get; set; } = 225000;//encode值
+        public double YALIGN2PROBE { get; set; } = 4375000;//encode值
         public double ZALIGN2PROBE { get; set; } = -137;
 
         //设备参数，粗定位探针相机到精定位探针相机
@@ -52,13 +53,13 @@ namespace MotionLibrary
     }
     public class PinPadContact
     {
-        public double XOrgPin { get; set; } = 2970651;//定机台参数时，Abspin X
-        public double YOrgPin { get; set; } = 4129205;//定机台参数时，refpin Y
-        public double ZOrgPin { get; set; } = 73979;//定机台参数时，refpin高度
+        public double XOrgPin { get; set; } = 2982674;//定机台参数时，Abspin X
+        public double YOrgPin { get; set; } = 4125571;//定机台参数时，refpin Y
+        public double ZOrgPin { get; set; } = 77120;//定机台参数时，refpin高度
         public double ZOrgWaferHeight { get; set; } = 38422;//定机台参数时，wafer高度
-        public double XPad2Pin { get; set; } = 13083;//定机台参数时，pad需要位移XPad2Pin才能扎到中心      
-        public double YPad2Pin { get; set; } = -3937;//定机台参数时，pad需要位移YPad2Pin才能扎到中心            
-        public double ZPad2Pin { get; set; } = 88000;//定机台参数时，pad从Zwafer上升ZPad2Pin时，正好扎到针
+        public double XPad2Pin { get; set; } = 0;//13083定机台参数时，pad需要位移XPad2Pin才能扎到中心      
+        public double YPad2Pin { get; set; } = 0;//-3937定机台参数时，pad需要位移YPad2Pin才能扎到中心            
+        public double ZPad2Pin { get; set; } = 0;//88000定机台参数时，pad从Zwafer上升ZPad2Pin时，正好扎到针
     }
 
     static public class Motion

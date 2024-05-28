@@ -623,25 +623,5 @@ namespace CommonComponentLibrary
         {
             Motion.Save("Config/MotionParameter.json");
         }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-            Motion.TogglePosition(2);
-        }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-            Motion.TogglePosition(3);
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            Motion.TogglePosition(0);
-        }
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            Motion.TogglePosition(1);
-        }
     }
 }

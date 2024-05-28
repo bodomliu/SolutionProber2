@@ -172,10 +172,6 @@
             groupBox5 = new GroupBox();
             ZHome = new Button();
             BtnSaveParameter = new Button();
-            button14 = new Button();
-            button15 = new Button();
-            button16 = new Button();
-            button18 = new Button();
             stagejog.SuspendLayout();
             Loaderhome.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -1695,54 +1691,10 @@
             BtnSaveParameter.UseVisualStyleBackColor = true;
             BtnSaveParameter.Click += BtnSaveParameter_Click;
             // 
-            // button14
-            // 
-            button14.Location = new Point(889, 279);
-            button14.Name = "button14";
-            button14.Size = new Size(75, 23);
-            button14.TabIndex = 39;
-            button14.Text = "toggle2";
-            button14.UseVisualStyleBackColor = true;
-            button14.Click += button14_Click;
-            // 
-            // button15
-            // 
-            button15.Location = new Point(978, 279);
-            button15.Name = "button15";
-            button15.Size = new Size(75, 23);
-            button15.TabIndex = 39;
-            button15.Text = "toggle3";
-            button15.UseVisualStyleBackColor = true;
-            button15.Click += button15_Click;
-            // 
-            // button16
-            // 
-            button16.Location = new Point(889, 240);
-            button16.Name = "button16";
-            button16.Size = new Size(75, 23);
-            button16.TabIndex = 39;
-            button16.Text = "toggle0";
-            button16.UseVisualStyleBackColor = true;
-            button16.Click += button16_Click;
-            // 
-            // button18
-            // 
-            button18.Location = new Point(978, 242);
-            button18.Name = "button18";
-            button18.Size = new Size(75, 23);
-            button18.TabIndex = 39;
-            button18.Text = "toggle1";
-            button18.UseVisualStyleBackColor = true;
-            button18.Click += button18_Click;
-            // 
             // MotionControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(button18);
-            Controls.Add(button15);
-            Controls.Add(button16);
-            Controls.Add(button14);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
@@ -1936,9 +1888,5 @@
         private Button ZHome;
         private Button BtnSaveParameter;
         private Button btnXMoveRel1;
-        private Button button14;
-        private Button button15;
-        private Button button16;
-        private Button button18;
     }
 }

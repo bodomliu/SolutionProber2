@@ -17,7 +17,11 @@
     "PinDataPath": "DeviceData/0411PinData.json",
     "NeddleTipFocusOffset": 60000,
     "TipFocusXArea": 100,
-    "TipFocusYArea": 100
+    "TipFocusYArea": 100,
+    "TipFocusExposureTime": 200,
+    "GetPinXArea": 800,
+    "GetPinYArea": 800,
+    "GetPinExposureTime": 500
   },
   "Probing": {
     "Overdrive": -2000,

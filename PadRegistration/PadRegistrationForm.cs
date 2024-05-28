@@ -112,13 +112,9 @@ namespace MainForm
         }
         private void btnRefPad_Click(object sender, EventArgs e)
         {
-            PadData.CurrentIndex = 0;
-            //求带offset的坐标
-            CommonFunctions.IndexUserPosAfterAlign(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, out double X, out double Y);
-            WaitingControl wf = new WaitingControl();
-            this.Controls.Add(wf);
-            Motion.UserPosMoveAbs(Compensation.Area.Align, X + PadData.Entity.DieOrg2RefPadX, Y + PadData.Entity.DieOrg2RefPadY);
-            wf.Dispose();
+            WaitingControl.WF.Start();
+            CommonFunctions.GotoPad(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, 0);
+            WaitingControl.WF.End();
         }
         private void btnRefDie_Click(object sender, EventArgs e)
         {
@@ -129,29 +125,19 @@ namespace MainForm
         {
             if (PadData.Entity.Pads == null) return;
             int Index = (PadData.CurrentIndex <= 0) ? PadData.Entity.Pads.Count - 1 : PadData.CurrentIndex - 1;
-            PadMoveFromRefPad(Index);
+            WaitingControl.WF.Start();
+            CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            WaitingControl.WF.End();
         }
         private void btnNextPad_Click(object sender, EventArgs e)
         {
             if (PadData.Entity.Pads == null) return;
             int Index = (PadData.CurrentIndex >= PadData.Entity.Pads.Count - 1) ? 0 : PadData.CurrentIndex + 1;
-            PadMoveFromRefPad(Index);
+            WaitingControl.WF.Start();
+            CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            WaitingControl.WF.End();
         }
-        private void PadMoveFromRefPad(int Index)
-        {
-            WaitingControl wf = new WaitingControl();
-            this.Controls.Add(wf);
-            if (PadData.Entity.Pads == null) return;
-            //先获得当前Die Org的用户坐标
-            CommonFunctions.IndexUserPosAfterAlign(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double X, out double Y);
-            //获得Pad的坐标
-            X += PadData.Entity.DieOrg2RefPadX + PadData.Entity.Pads[Index].PosX;
-            Y += PadData.Entity.DieOrg2RefPadY + PadData.Entity.Pads[Index].PosY;
-            //运动到Pad
-            Motion.UserPosMoveAbs(Compensation.Area.Align, X, Y);
-            PadData.CurrentIndex = Index;//改Index
-            wf.Dispose();
-        }
+       
         private void btnMoveToPad_Click(object sender, EventArgs e)
         {
             Vision.WaferHighMag.TriggerMode();

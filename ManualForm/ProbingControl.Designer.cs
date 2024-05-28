@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             BtnWaferPinAlign = new Button();
             BtnInspection = new Button();
@@ -49,6 +50,7 @@
             BtnFirstContact = new Button();
             BtnAllContact = new Button();
             groupBox3 = new GroupBox();
+            CbCompensation = new CheckBox();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
@@ -57,8 +59,17 @@
             txtEncodeR = new TextBox();
             txtEncodeY = new TextBox();
             txtEncodeZ = new TextBox();
-            paneIndexControl = new Panel();
+            panelIndexControl = new Panel();
             groupBox4 = new GroupBox();
+            label5 = new Label();
+            label6 = new Label();
+            TxtZUpPosition = new TextBox();
+            TxtZDownPosition = new TextBox();
+            timer1 = new System.Windows.Forms.Timer(components);
+            label7 = new Label();
+            label8 = new Label();
+            txtPad2PinX = new TextBox();
+            txtPad2PinY = new TextBox();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -101,9 +112,9 @@
             groupBox2.Controls.Add(Rbtn1um);
             groupBox2.Controls.Add(BtnJogDown);
             groupBox2.Controls.Add(BtnJogUp);
-            groupBox2.Location = new Point(1098, 154);
+            groupBox2.Location = new Point(1098, 184);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(134, 169);
+            groupBox2.Size = new Size(134, 179);
             groupBox2.TabIndex = 60;
             groupBox2.TabStop = false;
             groupBox2.Text = "Jog on Z up Status";
@@ -111,7 +122,7 @@
             // Rbtn5um
             // 
             Rbtn5um.AutoSize = true;
-            Rbtn5um.Location = new Point(16, 92);
+            Rbtn5um.Location = new Point(33, 98);
             Rbtn5um.Name = "Rbtn5um";
             Rbtn5um.Size = new Size(60, 21);
             Rbtn5um.TabIndex = 1;
@@ -122,7 +133,7 @@
             // 
             Rbtn1um.AutoSize = true;
             Rbtn1um.Checked = true;
-            Rbtn1um.Location = new Point(16, 66);
+            Rbtn1um.Location = new Point(33, 71);
             Rbtn1um.Name = "Rbtn1um";
             Rbtn1um.Size = new Size(60, 21);
             Rbtn1um.TabIndex = 1;
@@ -132,7 +143,7 @@
             // 
             // BtnJogDown
             // 
-            BtnJogDown.Location = new Point(6, 119);
+            BtnJogDown.Location = new Point(6, 125);
             BtnJogDown.Name = "BtnJogDown";
             BtnJogDown.Size = new Size(122, 40);
             BtnJogDown.TabIndex = 0;
@@ -163,7 +174,7 @@
             groupBox1.Controls.Add(TxtOverDrive);
             groupBox1.Controls.Add(BtnDown);
             groupBox1.Controls.Add(BtnUp);
-            groupBox1.Location = new Point(815, 144);
+            groupBox1.Location = new Point(815, 184);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(277, 179);
             groupBox1.TabIndex = 59;
@@ -179,6 +190,7 @@
             BtnSetOverDrive.TabIndex = 4;
             BtnSetOverDrive.Text = "Set Over Drive";
             BtnSetOverDrive.UseVisualStyleBackColor = false;
+            BtnSetOverDrive.Click += BtnSetOverDrive_Click;
             // 
             // BtnZToggle
             // 
@@ -207,6 +219,7 @@
             BtnDown.TabIndex = 0;
             BtnDown.Text = "Down";
             BtnDown.UseVisualStyleBackColor = true;
+            BtnDown.Click += BtnDown_Click;
             // 
             // BtnUp
             // 
@@ -216,6 +229,7 @@
             BtnUp.TabIndex = 0;
             BtnUp.Text = "Up";
             BtnUp.UseVisualStyleBackColor = true;
+            BtnUp.Click += BtnUp_Click;
             // 
             // TxtFirstContact
             // 
@@ -228,9 +242,9 @@
             // BtnApply
             // 
             BtnApply.BackColor = Color.Orange;
-            BtnApply.Location = new Point(218, 22);
+            BtnApply.Location = new Point(1042, 369);
             BtnApply.Name = "BtnApply";
-            BtnApply.Size = new Size(95, 76);
+            BtnApply.Size = new Size(95, 109);
             BtnApply.TabIndex = 56;
             BtnApply.Text = "Apply";
             BtnApply.UseVisualStyleBackColor = false;
@@ -238,9 +252,9 @@
             // 
             // BtnReset
             // 
-            BtnReset.Location = new Point(316, 22);
+            BtnReset.Location = new Point(1143, 369);
             BtnReset.Name = "BtnReset";
-            BtnReset.Size = new Size(95, 76);
+            BtnReset.Size = new Size(89, 109);
             BtnReset.TabIndex = 53;
             BtnReset.Text = "Reset";
             BtnReset.UseVisualStyleBackColor = true;
@@ -267,6 +281,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(CbCompensation);
             groupBox3.Controls.Add(label4);
             groupBox3.Controls.Add(label3);
             groupBox3.Controls.Add(label2);
@@ -277,15 +292,27 @@
             groupBox3.Controls.Add(txtEncodeZ);
             groupBox3.Location = new Point(1062, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(170, 145);
+            groupBox3.Size = new Size(170, 170);
             groupBox3.TabIndex = 64;
             groupBox3.TabStop = false;
             groupBox3.Text = "Current Machine Position";
             // 
+            // CbCompensation
+            // 
+            CbCompensation.AutoSize = true;
+            CbCompensation.Checked = true;
+            CbCompensation.CheckState = CheckState.Checked;
+            CbCompensation.Location = new Point(49, 17);
+            CbCompensation.Name = "CbCompensation";
+            CbCompensation.Size = new Size(111, 21);
+            CbCompensation.TabIndex = 68;
+            CbCompensation.Text = "Compensation";
+            CbCompensation.UseVisualStyleBackColor = true;
+            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 115);
+            label4.Location = new Point(11, 134);
             label4.Name = "label4";
             label4.Size = new Size(19, 17);
             label4.TabIndex = 57;
@@ -294,7 +321,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(6, 85);
+            label3.Location = new Point(11, 104);
             label3.Name = "label3";
             label3.Size = new Size(18, 17);
             label3.TabIndex = 57;
@@ -303,7 +330,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 55);
+            label2.Location = new Point(11, 74);
             label2.Name = "label2";
             label2.Size = new Size(18, 17);
             label2.TabIndex = 57;
@@ -312,7 +339,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 25);
+            label1.Location = new Point(11, 44);
             label1.Name = "label1";
             label1.Size = new Size(19, 17);
             label1.TabIndex = 57;
@@ -320,7 +347,7 @@
             // 
             // txtEncodeX
             // 
-            txtEncodeX.Location = new Point(46, 22);
+            txtEncodeX.Location = new Point(49, 41);
             txtEncodeX.Name = "txtEncodeX";
             txtEncodeX.RightToLeft = RightToLeft.No;
             txtEncodeX.Size = new Size(100, 23);
@@ -328,7 +355,7 @@
             // 
             // txtEncodeR
             // 
-            txtEncodeR.Location = new Point(46, 112);
+            txtEncodeR.Location = new Point(49, 131);
             txtEncodeR.Name = "txtEncodeR";
             txtEncodeR.RightToLeft = RightToLeft.No;
             txtEncodeR.Size = new Size(100, 23);
@@ -336,7 +363,7 @@
             // 
             // txtEncodeY
             // 
-            txtEncodeY.Location = new Point(46, 52);
+            txtEncodeY.Location = new Point(49, 71);
             txtEncodeY.Name = "txtEncodeY";
             txtEncodeY.RightToLeft = RightToLeft.No;
             txtEncodeY.Size = new Size(100, 23);
@@ -344,43 +371,124 @@
             // 
             // txtEncodeZ
             // 
-            txtEncodeZ.Location = new Point(46, 82);
+            txtEncodeZ.Location = new Point(49, 101);
             txtEncodeZ.Name = "txtEncodeZ";
             txtEncodeZ.RightToLeft = RightToLeft.No;
             txtEncodeZ.Size = new Size(100, 23);
             txtEncodeZ.TabIndex = 54;
             // 
-            // paneIndexControl
+            // panelIndexControl
             // 
-            paneIndexControl.BackColor = Color.Gray;
-            paneIndexControl.Location = new Point(815, 3);
-            paneIndexControl.Name = "paneIndexControl";
-            paneIndexControl.Size = new Size(221, 131);
-            paneIndexControl.TabIndex = 63;
+            panelIndexControl.BackColor = Color.Black;
+            panelIndexControl.Location = new Point(815, 10);
+            panelIndexControl.Name = "panelIndexControl";
+            panelIndexControl.Size = new Size(221, 131);
+            panelIndexControl.TabIndex = 63;
             // 
             // groupBox4
             // 
             groupBox4.Controls.Add(TxtFirstContact);
             groupBox4.Controls.Add(BtnAllContact);
             groupBox4.Controls.Add(BtnFirstContact);
-            groupBox4.Controls.Add(BtnReset);
-            groupBox4.Controls.Add(BtnApply);
             groupBox4.Controls.Add(TxtAllContact);
-            groupBox4.Location = new Point(815, 329);
+            groupBox4.Location = new Point(815, 369);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(417, 109);
+            groupBox4.Size = new Size(221, 109);
             groupBox4.TabIndex = 65;
             groupBox4.TabStop = false;
             groupBox4.Text = "Setup Contact Height";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(814, 497);
+            label5.Name = "label5";
+            label5.Size = new Size(36, 17);
+            label5.TabIndex = 66;
+            label5.Text = "Z Up";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(814, 527);
+            label6.Name = "label6";
+            label6.Size = new Size(52, 17);
+            label6.TabIndex = 66;
+            label6.Text = "Z Down";
+            // 
+            // TxtZUpPosition
+            // 
+            TxtZUpPosition.Location = new Point(872, 491);
+            TxtZUpPosition.Name = "TxtZUpPosition";
+            TxtZUpPosition.ReadOnly = true;
+            TxtZUpPosition.Size = new Size(64, 23);
+            TxtZUpPosition.TabIndex = 67;
+            // 
+            // TxtZDownPosition
+            // 
+            TxtZDownPosition.Location = new Point(872, 524);
+            TxtZDownPosition.Name = "TxtZDownPosition";
+            TxtZDownPosition.ReadOnly = true;
+            TxtZDownPosition.Size = new Size(65, 23);
+            TxtZDownPosition.TabIndex = 67;
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(955, 497);
+            label7.Name = "label7";
+            label7.Size = new Size(64, 17);
+            label7.TabIndex = 66;
+            label7.Text = "pad2pinX";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(955, 527);
+            label8.Name = "label8";
+            label8.Size = new Size(63, 17);
+            label8.TabIndex = 66;
+            label8.Text = "pad2pinY";
+            // 
+            // txtPad2PinX
+            // 
+            txtPad2PinX.Location = new Point(1028, 491);
+            txtPad2PinX.Name = "txtPad2PinX";
+            txtPad2PinX.ReadOnly = true;
+            txtPad2PinX.Size = new Size(64, 23);
+            txtPad2PinX.TabIndex = 67;
+            // 
+            // txtPad2PinY
+            // 
+            txtPad2PinY.Location = new Point(1028, 524);
+            txtPad2PinY.Name = "txtPad2PinY";
+            txtPad2PinY.ReadOnly = true;
+            txtPad2PinY.Size = new Size(65, 23);
+            txtPad2PinY.TabIndex = 67;
             // 
             // ProbingControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DimGray;
+            Controls.Add(txtPad2PinY);
+            Controls.Add(TxtZDownPosition);
+            Controls.Add(txtPad2PinX);
+            Controls.Add(TxtZUpPosition);
+            Controls.Add(label8);
+            Controls.Add(label6);
+            Controls.Add(label7);
+            Controls.Add(label5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
-            Controls.Add(paneIndexControl);
+            Controls.Add(panelIndexControl);
+            Controls.Add(BtnReset);
             Controls.Add(BtnWaferPinAlign);
+            Controls.Add(BtnApply);
             Controls.Add(BtnInspection);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -398,6 +506,7 @@
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -431,7 +540,17 @@
         private TextBox txtEncodeR;
         private TextBox txtEncodeY;
         private TextBox txtEncodeZ;
-        private Panel paneIndexControl;
+        private Panel panelIndexControl;
         private GroupBox groupBox4;
+        private Label label5;
+        private Label label6;
+        private TextBox TxtZUpPosition;
+        private TextBox TxtZDownPosition;
+        private System.Windows.Forms.Timer timer1;
+        private CheckBox CbCompensation;
+        private Label label7;
+        private Label label8;
+        private TextBox txtPad2PinX;
+        private TextBox txtPad2PinY;
     }
 }

@@ -26,6 +26,10 @@ namespace WaferMapLibrary
         public double NeddleTipFocusOffset { get; set; } = 60000;//neddle tip to probe card upper plate base is 6mm
         public int TipFocusXArea { get; set; } = 100;
         public int TipFocusYArea { get; set; } = 100;
+        public float TipFocusExposureTime { get; set; } = 200;
+        public int GetPinXArea { get; set; } = 800;
+        public int GetPinYArea { get; set; } = 800;
+        public float GetPinExposureTime { get; set; } = 500;
     }
     public class Probing
     {

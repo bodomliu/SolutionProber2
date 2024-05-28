@@ -17,9 +17,7 @@ namespace MainForm
         public AlignmentForm()
         {
             this.TopLevel = false; this.FormBorderStyle = FormBorderStyle.None;
-
             InitializeComponent();
-
             GlobalContext.Properties["name"] = this.GetType().Name;//指定文件名
             XmlConfigurator.Configure(new FileInfo("log4net.config"));//读取配置
             log.Info("Entering AlignmentForm.");
@@ -185,13 +183,13 @@ namespace MainForm
                 {
                     //默认是低倍相机启动
                     Vision.ChangeCamera(Vision.WaferLowMag);
-                    CommonFunctions.Delay(200);
+                    Thread.Sleep(200);
                     Vision.WaferLowMag.halconClass.SetPart(1280, 1024);//1280*1024显示
                 }
                 else
                 {
                     Vision.ChangeCamera(Vision.WaferHighMag);
-                    CommonFunctions.Delay(200);
+                    Thread.Sleep(200);
                     Vision.WaferHighMag.halconClass.SetPart(1280, 1024);//1280*1024显示
                 }
                 UpdateUI();

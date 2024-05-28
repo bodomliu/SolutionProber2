@@ -860,7 +860,7 @@ namespace VisionLibrary
         /// <returns>0：计算成功，结果保存到Definition  1：图像不存在  2：ROI未指定</returns>
         public int GetPin(out double DeltaX, out double DeltaY)
         {
-            return Blob(200, 255, 800, 2000, out DeltaX, out DeltaY, out _, out _);
+            return Blob(200, 255, 800, 20000, out DeltaX, out DeltaY, out _, out _);
         }
 
         /// <summary>
