@@ -71,7 +71,7 @@ namespace DeviceDataSettings
             radioButton7.TabStop = true;
             radioButton7.Text = "7. Die Status";
             radioButton7.UseVisualStyleBackColor = true;
-            radioButton7.CheckedChanged += radioButton7_CheckedChanged;
+            radioButton7.CheckedChanged += RadioButton7_CheckedChanged;
             // 
             // radioButton6
             // 
@@ -83,7 +83,7 @@ namespace DeviceDataSettings
             radioButton6.TabStop = true;
             radioButton6.Text = "6. Probing Sequence";
             radioButton6.UseVisualStyleBackColor = true;
-            radioButton6.CheckedChanged += radioButton6_CheckedChanged;
+            radioButton6.CheckedChanged += RadioButton6_CheckedChanged;
             // 
             // radioButton5
             // 
@@ -95,7 +95,7 @@ namespace DeviceDataSettings
             radioButton5.TabStop = true;
             radioButton5.Text = "5. Dut information";
             radioButton5.UseVisualStyleBackColor = true;
-            radioButton5.CheckedChanged += radioButton5_CheckedChanged;
+            radioButton5.CheckedChanged += RadioButton5_CheckedChanged;
             // 
             // radioButton4
             // 
@@ -107,7 +107,7 @@ namespace DeviceDataSettings
             radioButton4.TabStop = true;
             radioButton4.Text = "4. Map";
             radioButton4.UseVisualStyleBackColor = true;
-            radioButton4.CheckedChanged += radioButton4_CheckedChanged;
+            radioButton4.CheckedChanged += RadioButton4_CheckedChanged;
             // 
             // radioButton3
             // 
@@ -119,7 +119,7 @@ namespace DeviceDataSettings
             radioButton3.TabStop = true;
             radioButton3.Text = "2. Coordinate";
             radioButton3.UseVisualStyleBackColor = true;
-            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
+            radioButton3.CheckedChanged += RadioButton3_CheckedChanged;
             // 
             // radioButton2
             // 
@@ -132,7 +132,7 @@ namespace DeviceDataSettings
             radioButton2.TabStop = true;
             radioButton2.Text = "3. Map Margin";
             radioButton2.UseVisualStyleBackColor = false;
-            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            radioButton2.CheckedChanged += RadioButton2_CheckedChanged;
             // 
             // radioButton1
             // 
@@ -146,7 +146,7 @@ namespace DeviceDataSettings
             radioButton1.TabStop = true;
             radioButton1.Text = "1. Wafer && Index Size";
             radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            radioButton1.CheckedChanged += RadioButton1_CheckedChanged;
             // 
             // panel2
             // 
@@ -155,7 +155,7 @@ namespace DeviceDataSettings
             panel2.Name = "panel2";
             panel2.Size = new Size(283, 354);
             panel2.TabIndex = 1;
-            panel2.Paint += panel2_Paint;
+            panel2.Paint += Panel2_Paint;
             // 
             // panel3
             // 
@@ -163,7 +163,7 @@ namespace DeviceDataSettings
             panel3.Name = "panel3";
             panel3.Size = new Size(740, 740);
             panel3.TabIndex = 2;
-            panel3.Paint += panel3_Paint;
+            panel3.Paint += Panel3_Paint;
             // 
             // panel4
             // 
@@ -171,7 +171,7 @@ namespace DeviceDataSettings
             panel4.Name = "panel4";
             panel4.Size = new Size(205, 132);
             panel4.TabIndex = 3;
-            panel4.Paint += panel4_Paint;
+            panel4.Paint += Panel4_Paint;
             // 
             // panel5
             // 
@@ -179,7 +179,7 @@ namespace DeviceDataSettings
             panel5.Name = "panel5";
             panel5.Size = new Size(182, 157);
             panel5.TabIndex = 4;
-            panel5.Paint += panel5_Paint;
+            panel5.Paint += Panel5_Paint;
             // 
             // WaferMapSettingControl
             // 

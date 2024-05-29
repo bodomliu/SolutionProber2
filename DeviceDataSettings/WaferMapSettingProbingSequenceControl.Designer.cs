@@ -52,7 +52,7 @@
             // 
             // Automatic
             // 
-            Automatic.Location = new Point(14, 177);
+            Automatic.Location = new Point(14, 128);
             Automatic.Name = "Automatic";
             Automatic.Size = new Size(114, 51);
             Automatic.TabIndex = 2;
@@ -62,7 +62,7 @@
             // 
             // DeleteCurrent
             // 
-            DeleteCurrent.Location = new Point(14, 128);
+            DeleteCurrent.Location = new Point(14, 184);
             DeleteCurrent.Name = "DeleteCurrent";
             DeleteCurrent.Size = new Size(114, 43);
             DeleteCurrent.TabIndex = 3;

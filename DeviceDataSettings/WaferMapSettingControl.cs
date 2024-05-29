@@ -56,17 +56,17 @@ namespace DeviceDataSettings
             _wmsmap.Reload();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void Panel2_Paint(object sender, PaintEventArgs e)
         {
             panel2.Controls.Add(_wmsb);
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void Panel3_Paint(object sender, PaintEventArgs e)
         {
             panel3.Controls.Add(_waferMap);
             _waferMap.LoadCanvas();
         }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -77,7 +77,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -88,7 +88,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton3_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -99,17 +99,17 @@ namespace DeviceDataSettings
             }
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
+        private void Panel4_Paint(object sender, PaintEventArgs e)
         {
             panel4.Controls.Add(new WaferMapIndexControl());
         }
 
-        private void panel5_Paint(object sender, PaintEventArgs e)
+        private void Panel5_Paint(object sender, PaintEventArgs e)
         {
             panel5.Controls.Add(new WaferMapColorCard());
         }
 
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton4_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -120,7 +120,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton7_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -131,7 +131,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton6_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -147,7 +147,7 @@ namespace DeviceDataSettings
         }
 
 
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton5_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)

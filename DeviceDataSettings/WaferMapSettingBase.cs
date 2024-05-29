@@ -103,7 +103,7 @@ namespace DeviceDataSettings
 
         }
 
-        internal static MappingPoint? getMappingPint(int x, int y)
+        internal static MappingPoint? GetMappingPint(int x, int y)
         {
             if (null == WaferMap.Entity.MappingPoints)
                 return null;

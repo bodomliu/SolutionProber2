@@ -16,7 +16,7 @@ namespace DeviceDataSettings
 
         private readonly DUTCanvas _dut;
 
-        private WaferMapSettingProbingSequenceControl _psc;
+        private readonly WaferMapSettingProbingSequenceControl _psc;
         public WaferMapSettingDUT(DUTCanvas dut, WaferMapSettingProbingSequenceControl psc)
         {
             InitializeComponent();

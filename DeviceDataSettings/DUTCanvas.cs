@@ -14,7 +14,7 @@ namespace DeviceDataSettings
 {
     public partial class DUTCanvas : UserControl
     {
-        PictureBox pictureBox;
+        readonly PictureBox pictureBox;
         public DUTCanvas()
         {
             InitializeComponent();
@@ -32,15 +32,15 @@ namespace DeviceDataSettings
 
         #region 画图
 
-        private int _cellWidth { get { return pictureBox.Width / 11; } }
+        private int CellWidth { get { return pictureBox.Width / 11; } }
 
-        private int _cellHeight { get { return pictureBox.Height / 11; } }
+        private int CellHeight { get { return pictureBox.Height / 11; } }
 
         private void DrawGrid(Graphics g)
         {
             // 计算每个单元格的大小
-            int cellWidth = _cellWidth;
-            int cellHeight = _cellHeight;
+            int cellWidth = CellWidth;
+            int cellHeight = CellHeight;
             for (int i = 0; i <= 11; i++)
             {
                 // 画横线
@@ -53,8 +53,8 @@ namespace DeviceDataSettings
         private void DrawDUT(Graphics g)
         {
             // 计算每个单元格的大小
-            int cellWidth = _cellWidth;
-            int cellHeight = _cellHeight;
+            int cellWidth = CellWidth;
+            int cellHeight = CellHeight;
             for (int i = 0; i < DUTData.Entity.DUTs.Count; i++)
             {
                 var dut = DUTData.Entity.DUTs[i];
@@ -73,8 +73,8 @@ namespace DeviceDataSettings
         private void DrawCurrentIndex(Graphics g)
         {
             // 计算每个单元格的大小
-            int cellWidth = _cellWidth;
-            int cellHeight = _cellHeight;
+            int cellWidth = CellWidth;
+            int cellHeight = CellHeight;
             using Pen pen = new(Color.White, 3);
             // 画矩形
             g.DrawRectangle(pen, cellWidth * (DUTData.CurrentIndexX + 5), cellHeight * (DUTData.CurrentIndexY + 5), cellWidth, cellHeight);
@@ -99,8 +99,8 @@ namespace DeviceDataSettings
         private void PictureBox_Click(object? sender, MouseEventArgs e)
         {
             // 计算点击的位置
-            int cellWidth = _cellWidth;
-            int cellHeight = _cellHeight;
+            int cellWidth = CellWidth;
+            int cellHeight = CellHeight;
             int x = e.X;
             int y = e.Y;
             int indexX = x / cellWidth - 5;

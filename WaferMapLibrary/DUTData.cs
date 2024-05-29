@@ -25,8 +25,10 @@ namespace WaferMapLibrary
 
         public DUTClass()
         {
-            DUTs = new List<DUT>();
-            DUTs.Add(new DUT() { X = 0, Y = 0, Enable = true });
+            DUTs = new List<DUT>
+            {
+                new DUT() { X = 0, Y = 0, Enable = true }
+            };
             CardId = "1-0";
             Location = "FF";
         }
@@ -34,7 +36,7 @@ namespace WaferMapLibrary
 
     public class DUTData
     {
-        public static DUTClass Entity = new DUTClass();
+        public static DUTClass Entity = new();
 
         private static int currentIndex = 0;
         public static int CurrentIndexX
@@ -46,7 +48,7 @@ namespace WaferMapLibrary
             set
             {
                 currentIndex = value;
-                if (OnIndexChange != null) OnIndexChange();
+                OnIndexChange?.Invoke();
             }
         }
 
@@ -88,7 +90,8 @@ namespace WaferMapLibrary
 
         public static void Load(string filePath)
         {
-            try { 
+            try
+            { 
                 string jsonString = File.ReadAllText(filePath);
                 var item = JsonSerializer.Deserialize<DUTClass>(jsonString);
                 if (item != null)
@@ -96,7 +99,7 @@ namespace WaferMapLibrary
                     Entity = item;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
         }

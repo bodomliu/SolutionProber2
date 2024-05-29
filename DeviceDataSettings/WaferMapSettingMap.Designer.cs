@@ -61,7 +61,7 @@
             radioButton4.TabIndex = 3;
             radioButton4.Text = "MARK DIE";
             radioButton4.UseVisualStyleBackColor = true;
-            radioButton4.CheckedChanged += radioButton4_CheckedChanged;
+            radioButton4.CheckedChanged += RadioButton4_CheckedChanged;
             // 
             // radioButton3
             // 
@@ -72,7 +72,7 @@
             radioButton3.TabIndex = 2;
             radioButton3.Text = "SKIP DIE";
             radioButton3.UseVisualStyleBackColor = true;
-            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
+            radioButton3.CheckedChanged += RadioButton3_CheckedChanged;
             // 
             // radioButton2
             // 
@@ -83,7 +83,7 @@
             radioButton2.TabIndex = 1;
             radioButton2.Text = "TEST DIE";
             radioButton2.UseVisualStyleBackColor = true;
-            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            radioButton2.CheckedChanged += RadioButton2_CheckedChanged;
             // 
             // radioButton1
             // 
@@ -96,7 +96,7 @@
             radioButton1.TabStop = true;
             radioButton1.Text = "NOT EXIST";
             radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            radioButton1.CheckedChanged += RadioButton1_CheckedChanged;
             // 
             // generationButton
             // 
@@ -106,7 +106,7 @@
             generationButton.TabIndex = 1;
             generationButton.Text = "Auto Map Generation";
             generationButton.UseVisualStyleBackColor = true;
-            generationButton.Click += generationButton_Click;
+            generationButton.Click += GenerationButton_Click;
             // 
             // label1
             // 

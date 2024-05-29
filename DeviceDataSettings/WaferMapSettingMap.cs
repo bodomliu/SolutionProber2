@@ -27,7 +27,7 @@ namespace DeviceDataSettings
             this._waferMap = waferMap;
         }
 
-        private void generationButton_Click(object sender, EventArgs e)
+        private void GenerationButton_Click(object sender, EventArgs e)
         {
             WaferMap.Entity.MappingPoints?.Clear();
             WaferMap.Entity.MappingPoints = new List<MappingPoint>();
@@ -99,7 +99,7 @@ namespace DeviceDataSettings
             Reload();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
             RadioButton radioButton = (RadioButton)sender;
@@ -109,7 +109,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -118,7 +118,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton3_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -127,7 +127,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton4_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -138,7 +138,7 @@ namespace DeviceDataSettings
 
         private void Apply_Click(object sender, EventArgs e)
         {
-            MappingPoint? mp = WaferMapSettingBase.getMappingPint(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
+            MappingPoint? mp = WaferMapSettingBase.GetMappingPint(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
             if (null == mp)
                 return;
             if (mp.BIN == 1)

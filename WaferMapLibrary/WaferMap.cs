@@ -39,7 +39,7 @@ namespace WaferMapLibrary
 
         public int IndexY { get; set; }
 
-        public List<int> pmi { get; set; }
+        public List<int>? PMI { get; set; }
     }
     /// <summary>
     /// 代表注册的WaferMap信息

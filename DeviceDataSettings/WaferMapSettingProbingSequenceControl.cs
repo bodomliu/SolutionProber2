@@ -43,11 +43,18 @@ namespace DeviceDataSettings
             checkBoxes.Clear();
             for (int i = 0; i < DUTData.Entity.DUTs.Count; i++)
             {
-                CheckBox checkBox = new CheckBox();
-                checkBox.Name = "checkBox" + i;
-                checkBox.Text = "Dut " + i.ToString();
+                CheckBox checkBox = new()
+                {
+                    Name = "checkBox" + i,
+                    Text = "Dut " + i.ToString(),
+                    AutoSize = true,
+                    Size = new Size(89, 21),
+                    TabIndex = i,
+                    UseVisualStyleBackColor = true,
+                    Checked = DUTData.Entity.DUTs[i].Enable,
+                };
+                checkBox.CheckedChanged += CheckBox_CheckedChanged;
 
-                checkBox.AutoSize = true;
                 if (i > 12)
                 {
                     checkBox.Location = new Point(73, 3 + 20 * (i - 13));
@@ -56,12 +63,7 @@ namespace DeviceDataSettings
                 {
                     checkBox.Location = new Point(3, 3 + 20 * i);
                 }
-                checkBox.Size = new Size(89, 21);
-                checkBox.TabIndex = i;
-                checkBox.UseVisualStyleBackColor = true;
-                checkBox.Checked = DUTData.Entity.DUTs[i].Enable;
 
-                checkBox.CheckedChanged += CheckBox_CheckedChanged;
                 panel1.Controls.Add(checkBox);
                 checkBoxes.Add(checkBox);
             }
@@ -77,7 +79,7 @@ namespace DeviceDataSettings
 
         private void RefreshCurrentNum(int x, int y)
         {
-            MappingPoint? mp = WaferMapSettingBase.getMappingPint(x, y);
+            MappingPoint? mp = WaferMapSettingBase.GetMappingPint(x, y);
             if (null == mp)
                 CurrentNum.Text = "0";
             else CurrentNum.Text = mp.Order.ToString();
@@ -94,7 +96,7 @@ namespace DeviceDataSettings
         {
             int x = WaferMap.CurrentIndexX;
             int y = WaferMap.CurrentIndexY;
-            if (add(x, y))
+            if (Add(x, y))
             {
                 CurrentNum.Text = _totalNum.ToString();
                 TotalNum.Text = _totalNum.ToString();
@@ -102,7 +104,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private Boolean add(int indexX, int indexY)
+        private Boolean Add(int indexX, int indexY)
         {
             int count = 0;
             for (int i = 0; i < DUTData.Entity.DUTs.Count; i++)
@@ -111,7 +113,7 @@ namespace DeviceDataSettings
                     continue;
                 int x = indexX + DUTData.Entity.DUTs[i].X;
                 int y = indexY + DUTData.Entity.DUTs[i].Y;
-                var mp = WaferMapSettingBase.getMappingPint(x, y);
+                var mp = WaferMapSettingBase.GetMappingPint(x, y);
                 if (mp == null)
                     return false;
                 if (mp.Order > 0)
@@ -128,21 +130,23 @@ namespace DeviceDataSettings
             if (null == WaferMap.Entity.OrderClasses)
                 WaferMap.Entity.OrderClasses = new List<OrderClass>();
 
-            OrderClass oc = new();
-            oc.IndexX = indexX;
-            oc.IndexY = indexY;
-            oc.pmi = new();
+            OrderClass oc = new()
+            {
+                IndexX = indexX,
+                IndexY = indexY,
+                PMI = new()
+            };
             for (int i = 0; i < DUTData.Entity.DUTs.Count; i++)
             {
                 if (!DUTData.Entity.DUTs[i].Enable)
                     continue;
                 int x = indexX + DUTData.Entity.DUTs[i].X;
                 int y = indexY + DUTData.Entity.DUTs[i].Y;
-                var mp = WaferMapSettingBase.getMappingPint(x, y);
+                var mp = WaferMapSettingBase.GetMappingPint(x, y);
                 if (mp == null)
                     continue;
                 mp.Order = _totalNum;
-                oc.pmi.Add(i);
+                oc.PMI.Add(i);
             }
             WaferMap.Entity.OrderClasses.Add(oc);
 
@@ -153,7 +157,7 @@ namespace DeviceDataSettings
         {
             int x = WaferMap.CurrentIndexX;
             int y = WaferMap.CurrentIndexY;
-            var mp = WaferMapSettingBase.getMappingPint(x, y);
+            var mp = WaferMapSettingBase.GetMappingPint(x, y);
             if (mp == null)
                 return;
             if (mp.Order == 0)
@@ -184,14 +188,14 @@ namespace DeviceDataSettings
             {
                 for (int j = 0; j < WaferMap.Entity.DieNumX; j++)
                 {
-                    add(j, i);
+                    Add(j, i);
                 }
                 i++;
                 if (i >= WaferMap.Entity.DieNumY)
                     break;
                 for (int j = WaferMap.Entity.DieNumX - 1; j >= 0; j--)
                 {
-                    add(j, i);
+                    Add(j, i);
                 }
             }
             TotalNum.Text = _totalNum.ToString();
@@ -230,7 +234,7 @@ namespace DeviceDataSettings
             _wmc.RefreshCanvas();
         }
 
-        private List<CheckBox> checkBoxes = new List<CheckBox>();
+        private readonly List<CheckBox> checkBoxes = new();
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -241,7 +245,7 @@ namespace DeviceDataSettings
             if (null == sender)
                 return;
             CheckBox checkBox = (CheckBox)sender;
-            int index = int.Parse(checkBox.Name.Substring(8));
+            int index = int.Parse(checkBox.Name[8..]);
             DUTData.Entity.DUTs[index].Enable = checkBox.Checked;
             _wmc.RefreshCanvas();
         }
@@ -254,10 +258,10 @@ namespace DeviceDataSettings
             for (int i = 0; i < WaferMap.Entity.OrderClasses.Count; i++)
             {
                 var oc = WaferMap.Entity.OrderClasses[i];
-                oc.pmi = oc.pmi.OrderBy(o => o).ToList();
-                for (int j = 0; j < oc.pmi.Count; j++)
+                oc.PMI = oc.PMI?.OrderBy(o => o).ToList();
+                for (int j = 0; j < oc.PMI?.Count; j++)
                 {
-                    var mp = WaferMapSettingBase.getMappingPint(oc.IndexX + DUTData.Entity.DUTs[oc.pmi[j]].X, oc.IndexY + DUTData.Entity.DUTs[oc.pmi[j]].Y);
+                    var mp = WaferMapSettingBase.GetMappingPint(oc.IndexX + DUTData.Entity.DUTs[oc.PMI[j]].X, oc.IndexY + DUTData.Entity.DUTs[oc.PMI[j]].Y);
                     if (null == mp)
                         continue;
                     mp.Order = i + 1;
