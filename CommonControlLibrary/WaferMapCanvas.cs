@@ -55,7 +55,7 @@ namespace CommonComponentLibrary
             {
                 Dispose(true);
             };
-            WaferMap.OnIndexChange += test;//注册回调事件
+            WaferMap.OnIndexChange += Test;//注册回调事件
         }
 
         #region 定义属性
@@ -120,7 +120,7 @@ namespace CommonComponentLibrary
 
         private void DrawGrid(Graphics e)
         {
-            using Pen p = new Pen(Color.Black);
+            using Pen p = new(Color.Black);
             float ux = UnitPerPixelX;
             float uy = UnitPerPixelY;
             for (int i = 0; i < WaferMap.Entity.DieNumX + 1; i++)
@@ -132,9 +132,9 @@ namespace CommonComponentLibrary
                 e.DrawLine(p, 0, i * (float)WaferMap.Entity.DieSizeY / uy, _backgroundBitmap.Width, i * (float)WaferMap.Entity.DieSizeY / uy);
             }
         }
-        private void DrawCircle(Graphics e, double unitPerPixelX, double unitPerPixelY, Boolean isDrawCenterOfCircle = false)
+        private static void DrawCircle(Graphics e, double unitPerPixelX, double unitPerPixelY, Boolean isDrawCenterOfCircle = false)
         {
-            using Pen p = new Pen(Color.Black);
+            using Pen p = new(Color.Black);
             CircleCentre(out double x, out double y);
             double centerX = x / unitPerPixelX;
             double centerY = y / unitPerPixelY;
@@ -145,7 +145,7 @@ namespace CommonComponentLibrary
 
             if (isDrawCenterOfCircle)
             {
-                using SolidBrush sb = new SolidBrush(Color.White);
+                using SolidBrush sb = new(Color.White);
                 // 画圆心
                 e.FillEllipse(sb, (float)centerX - 2, (float)centerY - 2, 4, 4);
             }
@@ -162,7 +162,7 @@ namespace CommonComponentLibrary
         private void DrawIndex(int idxX, int idxY, Graphics e, Color color)
         {
 
-            using Pen p = new Pen(color, 3);
+            using Pen p = new(color, 3);
             float width = (float)WaferMap.Entity.DieSizeX / UnitPerPixelX;
             float height = (float)WaferMap.Entity.DieSizeY / UnitPerPixelY;
             //e.DrawRectangle(p, WaferMap.CurrentIndexX * width, WaferMap.CurrentIndexY * height, width, height);
@@ -212,13 +212,22 @@ namespace CommonComponentLibrary
                         c = Color.Crimson;
                     }
                     DrawRect(pt.IndexX, pt.IndexY, gp, c);
+#if DEBUG
+                    if (IsDisplaySequenceOrder && pt.BIN == 1)
+                    {
+                        float width = (float)WaferMap.Entity.DieSizeX / UnitPerPixelX;
+                        float height = (float)WaferMap.Entity.DieSizeY / UnitPerPixelY;
+                        gp.DrawString(pt.Order.ToString(), new Font("Arial", 5), Brushes.Black,
+                            pt.IndexX * width, pt.IndexY * height);
+                    }
+#endif
                 }
             }
 
             DrawIndex(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, gp, Color.Purple);//画参考die
             DrawGrid(gp);//方格
             DrawCircle(gp, UnitPerPixelX, UnitPerPixelY);//
-            DrawIndex(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, gp, Color.White);
+            DrawCurrentIndex(gp);
             canvas.Image?.Dispose();
             canvas.Image = MergeBitmap();
 
@@ -226,6 +235,32 @@ namespace CommonComponentLibrary
             //canvas.Refresh();
         }
 
+        private void DrawCurrentIndex(Graphics gp)
+        {
+            
+            if (IsDisplaySequenceOrder)
+            {
+                for (int i = 0; i < DUTData.Entity.DUTs.Count; i++)
+                {
+
+                    var color = Color.White;
+                    if (!DUTData.Entity.DUTs[i].Enable)
+                    {
+                        color = Color.Black;
+                    }
+                    DrawIndex(WaferMap.CurrentIndexX + DUTData.Entity.DUTs[i].X,
+                            WaferMap.CurrentIndexY + DUTData.Entity.DUTs[i].Y, gp, color);
+                }
+            }
+            else
+            {
+                DrawIndex(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, gp, Color.White);
+            }
+        }
+
+        /// <summary>
+        /// 显示序列号
+        /// </summary>
         public Boolean IsDisplaySequenceOrder { get; set; } = false;
         /// <summary>
         /// 合并图层
@@ -255,7 +290,7 @@ namespace CommonComponentLibrary
         }
 
 
-        public void test(int x, int y)
+        public void Test(int x, int y)
         {
             //Console.WriteLine(x.ToString()+" ; "+y.ToString());
             RefreshCanvas();

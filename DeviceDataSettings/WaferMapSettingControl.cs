@@ -28,9 +28,14 @@ namespace DeviceDataSettings
         private readonly WaferMapSettingStatus _wmss;
 
         private readonly WaferMapSettingProbingSequenceControl _wmsps;
+
+        private readonly WaferMapSettingDUT _wmsDUT;
+
+        private readonly DUTCanvas dUTCanvas;
         public WaferMapSettingControl()
         {
             InitializeComponent();
+            dUTCanvas = new();
             _waferMap.MouseClickDefineCurrentIndex = true;
             this._wmsb = new(_waferMap);
             this._wmsm = new(_waferMap);
@@ -38,6 +43,7 @@ namespace DeviceDataSettings
             this._wmsmap = new(_waferMap);
             this._wmss = new();
             this._wmsps = new(_waferMap);
+            _wmsDUT = new(dUTCanvas, _wmsps);
             WaferMap.OnWaferMapChange += WaferMap_OnWaferMapChange;
         }
 
@@ -50,17 +56,17 @@ namespace DeviceDataSettings
             _wmsmap.Reload();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void Panel2_Paint(object sender, PaintEventArgs e)
         {
             panel2.Controls.Add(_wmsb);
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void Panel3_Paint(object sender, PaintEventArgs e)
         {
             panel3.Controls.Add(_waferMap);
             _waferMap.LoadCanvas();
         }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -71,7 +77,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -82,7 +88,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton3_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -93,17 +99,17 @@ namespace DeviceDataSettings
             }
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
+        private void Panel4_Paint(object sender, PaintEventArgs e)
         {
             panel4.Controls.Add(new WaferMapIndexControl());
         }
 
-        private void panel5_Paint(object sender, PaintEventArgs e)
+        private void Panel5_Paint(object sender, PaintEventArgs e)
         {
             panel5.Controls.Add(new WaferMapColorCard());
         }
 
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton4_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -114,7 +120,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton7_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -125,7 +131,7 @@ namespace DeviceDataSettings
             }
         }
 
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton6_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
             if (radioButton.Checked)
@@ -133,9 +139,32 @@ namespace DeviceDataSettings
                 panel2.Controls.Clear();
                 panel2.Controls.Add(_wmsps);
                 _wmsps.Reload();
-            } else
+            }
+            else
             {
                 _wmsps.Unload();
+            }
+        }
+
+
+        private void RadioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                panel2.Controls.Clear();
+                panel2.Controls.Add(_wmsDUT);
+                _wmsDUT.Reload();
+
+                panel3.Controls.Clear();
+                panel3.Controls.Add(dUTCanvas);
+                dUTCanvas.RefreshCanvas();
+            }
+            else
+            {
+                panel2.Controls.Clear();
+                panel3.Controls.Clear();
+                panel3.Controls.Add(_waferMap);
             }
         }
     }

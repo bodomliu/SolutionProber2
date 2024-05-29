@@ -1,6 +1,8 @@
-﻿namespace MainForm
+﻿using WaferMapLibrary;
+
+namespace DeviceDataSettings
 {
-    partial class PadCanvas
+    partial class DUTCanvas
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -13,6 +15,9 @@
         /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
+
+            DUTData.OnIndexChange -= RefreshCanvas;
+            pictureBox.Image?.Dispose();
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -30,14 +35,12 @@
         {
             SuspendLayout();
             // 
-            // PadCanvas
+            // DUTCanvas
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Gray;
-            Name = "PadCanvas";
-            Size = new Size(262, 245);
-            Load += PadCanvas_Load;
+            Name = "DUTCanvas";
+            Load += DUTCanvas_Load;
             ResumeLayout(false);
         }
 

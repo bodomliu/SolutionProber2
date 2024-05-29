@@ -37,7 +37,7 @@ namespace DeviceDataSettings
             Reload();
         }
 
-        private void leftOrRight_Click(object sender, EventArgs e)
+        private void LeftOrRight_Click(object sender, EventArgs e)
         {
             string lr = leftOrRight.Text;
             if (lr == "RIGHT")
@@ -49,7 +49,7 @@ namespace DeviceDataSettings
             leftOrRight.Text = lr;
         }
 
-        private void upOrDown_Click(object sender, EventArgs e)
+        private void UpOrDown_Click(object sender, EventArgs e)
         {
             string ud = upOrDown.Text;
             if (ud == "UP")
@@ -61,7 +61,7 @@ namespace DeviceDataSettings
             upOrDown.Text = ud;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             WaferMap.Entity.RefDieX = int.Parse(originX.Text);
             WaferMap.Entity.RefDieY = int.Parse(originY.Text);

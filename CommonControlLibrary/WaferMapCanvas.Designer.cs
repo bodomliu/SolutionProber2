@@ -15,7 +15,7 @@ namespace CommonComponentLibrary
         /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
-            WaferMap.OnIndexChange -= test;
+            WaferMap.OnIndexChange -= Test;
             this._backgroundBitmap?.Dispose();
             this._backgroundBitmap = null;
             this._simplifiedBitmap?.Dispose();

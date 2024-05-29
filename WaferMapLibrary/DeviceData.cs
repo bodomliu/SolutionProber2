@@ -13,6 +13,7 @@ namespace WaferMapLibrary
     public class WaferAlignment
     {
         public string WaferMapPath { get; set; } = "DeviceData/0411WaferMap.json";
+        public string DutPath { get; set; } = "DeviceData/0411Dut.json";//
         public string LowPattern1 { get; set; } = "VisionConfig/0411LowPattern1.shm";//
         public string LowPattern2 { get; set; } = "VisionConfig/0411LowPattern2.shm";//
         public string HighPattern1 { get; set; } = "VisionConfig/0411HighPattern1.shm";//

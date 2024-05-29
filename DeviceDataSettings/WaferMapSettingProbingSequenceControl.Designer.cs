@@ -31,16 +31,18 @@
             Insert = new Button();
             Automatic = new Button();
             DeleteCurrent = new Button();
-            DeleteAll = new Button();
+            Button_DeleteAll = new Button();
             label1 = new Label();
             TotalNum = new TextBox();
             CurrentNum = new TextBox();
             label2 = new Label();
+            panel1 = new Panel();
+            ButtonReorder = new Button();
             SuspendLayout();
             // 
             // Insert
             // 
-            Insert.Location = new Point(19, 128);
+            Insert.Location = new Point(14, 75);
             Insert.Name = "Insert";
             Insert.Size = new Size(114, 47);
             Insert.TabIndex = 1;
@@ -50,7 +52,7 @@
             // 
             // Automatic
             // 
-            Automatic.Location = new Point(19, 181);
+            Automatic.Location = new Point(14, 128);
             Automatic.Name = "Automatic";
             Automatic.Size = new Size(114, 51);
             Automatic.TabIndex = 2;
@@ -60,28 +62,28 @@
             // 
             // DeleteCurrent
             // 
-            DeleteCurrent.Location = new Point(156, 128);
+            DeleteCurrent.Location = new Point(14, 184);
             DeleteCurrent.Name = "DeleteCurrent";
-            DeleteCurrent.Size = new Size(103, 47);
+            DeleteCurrent.Size = new Size(114, 43);
             DeleteCurrent.TabIndex = 3;
-            DeleteCurrent.Text = "Delecte Current Seq";
+            DeleteCurrent.Text = "  Delecte   Current Seq";
             DeleteCurrent.UseVisualStyleBackColor = true;
             DeleteCurrent.Click += DeleteCurrent_Click;
             // 
-            // DeleteAll
+            // Button_DeleteAll
             // 
-            DeleteAll.Location = new Point(156, 181);
-            DeleteAll.Name = "DeleteAll";
-            DeleteAll.Size = new Size(103, 51);
-            DeleteAll.TabIndex = 4;
-            DeleteAll.Text = "Delete All Probe Seq";
-            DeleteAll.UseVisualStyleBackColor = true;
-            DeleteAll.Click += DeleteAll_Click;
+            Button_DeleteAll.Location = new Point(14, 234);
+            Button_DeleteAll.Name = "Button_DeleteAll";
+            Button_DeleteAll.Size = new Size(114, 53);
+            Button_DeleteAll.TabIndex = 4;
+            Button_DeleteAll.Text = "Delete \nAll Probe Seq";
+            Button_DeleteAll.UseVisualStyleBackColor = true;
+            Button_DeleteAll.Click += DeleteAll_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(101, 269);
+            label1.Location = new Point(28, 10);
             label1.Name = "label1";
             label1.Size = new Size(105, 17);
             label1.TabIndex = 5;
@@ -89,7 +91,7 @@
             // 
             // TotalNum
             // 
-            TotalNum.Location = new Point(212, 266);
+            TotalNum.Location = new Point(139, 10);
             TotalNum.Name = "TotalNum";
             TotalNum.ReadOnly = true;
             TotalNum.Size = new Size(56, 23);
@@ -97,7 +99,7 @@
             // 
             // CurrentNum
             // 
-            CurrentNum.Location = new Point(142, 43);
+            CurrentNum.Location = new Point(139, 39);
             CurrentNum.Name = "CurrentNum";
             CurrentNum.ReadOnly = true;
             CurrentNum.Size = new Size(56, 23);
@@ -106,21 +108,42 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(21, 46);
+            label2.Location = new Point(14, 43);
             label2.Name = "label2";
             label2.Size = new Size(119, 17);
             label2.TabIndex = 8;
             label2.Text = "Current Seq. Num :";
             // 
+            // panel1
+            // 
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Location = new Point(139, 75);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(141, 272);
+            panel1.TabIndex = 9;
+            panel1.Paint += panel1_Paint;
+            // 
+            // ButtonReorder
+            // 
+            ButtonReorder.Location = new Point(14, 293);
+            ButtonReorder.Name = "ButtonReorder";
+            ButtonReorder.Size = new Size(114, 53);
+            ButtonReorder.TabIndex = 10;
+            ButtonReorder.Text = "Reorder";
+            ButtonReorder.UseVisualStyleBackColor = true;
+            ButtonReorder.Click += ButtonReorder_Click;
+            // 
             // WaferMapSettingProbingSequenceControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ButtonReorder);
+            Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(CurrentNum);
             Controls.Add(TotalNum);
             Controls.Add(label1);
-            Controls.Add(DeleteAll);
+            Controls.Add(Button_DeleteAll);
             Controls.Add(DeleteCurrent);
             Controls.Add(Automatic);
             Controls.Add(Insert);
@@ -134,10 +157,14 @@
         private Button Insert;
         private Button Automatic;
         private Button DeleteCurrent;
-        private Button DeleteAll;
+        private Button Button_DeleteAll;
         private Label label1;
         private TextBox TotalNum;
         private TextBox CurrentNum;
         private Label label2;
+        private Panel panel1;
+        private CheckBox checkBox1;
+        private CheckBox checkBox2;
+        private Button ButtonReorder;
     }
 }

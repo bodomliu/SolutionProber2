@@ -6,12 +6,12 @@ namespace MainForm
 {
     public partial class PadRegistrationForm : Form
     {
+        private readonly PadCanvas _padCanvas = new();
         public PadRegistrationForm()
         {
             this.TopLevel = false; this.FormBorderStyle = FormBorderStyle.None;
             InitializeComponent();
-            panel2.Controls.Add(new PadCanvas());
-            panelMag.Controls.Add(new WaferMagControl());
+            panel2.Controls.Add(_padCanvas);
             //WaferMapLibrary.Load("Pad.json");
         }
         private void PadRegistrationForm_Load(object sender, EventArgs e)
@@ -53,6 +53,7 @@ namespace MainForm
                 TxtCurrentPad.Text = PadData.CurrentIndex.ToString();
                 TxtTotalPad.Text = PadData.Entity.Pads.Count.ToString();
             }
+            _padCanvas.DrawPad();
         }
         private void btnReadyToApply_Click(object sender, EventArgs e)
         {

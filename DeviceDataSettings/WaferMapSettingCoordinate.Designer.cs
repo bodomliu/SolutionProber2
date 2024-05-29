@@ -67,7 +67,7 @@
             button1.TabIndex = 5;
             button1.Text = "Set Cur Die as ";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += Button1_Click;
             // 
             // originY
             // 
@@ -137,7 +137,7 @@
             upOrDown.TabIndex = 4;
             upOrDown.Text = "UP";
             upOrDown.UseVisualStyleBackColor = true;
-            upOrDown.Click += upOrDown_Click;
+            upOrDown.Click += UpOrDown_Click;
             // 
             // leftOrRight
             // 
@@ -147,7 +147,7 @@
             leftOrRight.TabIndex = 3;
             leftOrRight.Text = "RIGHT";
             leftOrRight.UseVisualStyleBackColor = true;
-            leftOrRight.Click += leftOrRight_Click;
+            leftOrRight.Click += LeftOrRight_Click;
             // 
             // label4
             // 

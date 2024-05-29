@@ -32,6 +32,15 @@ namespace WaferMapLibrary
         /// </summary>
         public int Order { get; set; }
     }
+
+    public class OrderClass
+    {
+        public int IndexX { get; set; }
+
+        public int IndexY { get; set; }
+
+        public List<int>? PMI { get; set; }
+    }
     /// <summary>
     /// 代表注册的WaferMap信息
     /// </summary>
@@ -82,6 +91,8 @@ namespace WaferMapLibrary
         public double Org2PatIIX { get; set; } = 0;//Die Pattern2 - DieOrg : 转换到UserPos下
         public double Org2PatIIY { get; set; } = 0;//Die Pattern2 - DieOrg : 转换到UserPos下
         public List<MappingPoint>? MappingPoints { get; set; }
+
+        public List<OrderClass>? OrderClasses { get; set; }
     }
     /// <summary>
     /// 当前测试的这张Wafer信息

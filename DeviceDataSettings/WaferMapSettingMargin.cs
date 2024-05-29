@@ -14,7 +14,7 @@ namespace DeviceDataSettings
 {
     public partial class WaferMapSettingMargin : UserControl
     {
-        private WaferMapCanvas _wmc;
+        private readonly WaferMapCanvas _wmc;
         public WaferMapSettingMargin(WaferMapCanvas wmc)
         {
             InitializeComponent();
