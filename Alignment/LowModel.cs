@@ -22,7 +22,7 @@ namespace MainForm
             int L = int.Parse(txtL.Text);
             int R = int.Parse(txtR.Text);
 
-            int res = Alignment.AlignX(Vision.WaferLowMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX);
+            int res = CommonFunctions.AlignX(Vision.WaferLowMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX,out _);
             if (res != 0) MessageBox.Show(res.ToString());
         }
 

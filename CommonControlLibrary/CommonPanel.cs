@@ -5,18 +5,27 @@ namespace CommonComponentLibrary
 {
     public partial class CommonPanel : UserControl
     {
-        public static CommonPanel Entity = new CommonPanel();//改为静态变量，避免消耗太多资源
+        //public static CommonPanel Entity = new CommonPanel();//这个写法有问题
+        public static CommonPanel Entity = new ();//改为静态变量，避免消耗太多资源
         public static int IndexX = 0;//独立的用于显示的Index
         public static int IndexY = 0;//独立的用于显示的Index
         private double ZeroX = 0, ZeroY = 0, ZeroZ = 0;//临时用户坐标系
         public CommonPanel()
         {
             InitializeComponent();
+
+            //优化为在构造函数添加
+            canvas.Controls.Add(Vision.m_HSmartWindowControl);
+            Vision.m_HSmartWindowControl.Dock = DockStyle.Fill;
+
             canvas.MouseWheel += M_HSmartWindowControl_HMouseWheel;
+
+
         }
         private void UserControl_Load(object sender, EventArgs e)
         {
-            TimMotion.Enabled = true;
+            TimMotion.Start();
+
             BtnSetZeroPosition.Visible = false;
 
             JogSlow_Click(JogSlow, e);//初始slow速度
@@ -90,44 +99,53 @@ namespace CommonComponentLibrary
             {
                 Motion.GetUserPos(Motion.CurrentArea, out ZeroX, out ZeroY);
             }
-            else 
+            else
             {
-                Motion.XY_GetEncPos(out ZeroX, out ZeroY); 
+                Motion.XY_GetEncPos(out ZeroX, out ZeroY);
             }
             ZeroZ = Motion.GetEncPos(1, 3);
         }
+
+        //跨线程调用
+        private delegate void delegateLabelUI(bool isAlign);
+        private void UpdateLabelUI(bool isAlign)
+        {
+            LblIsProbingArea.Text = (isAlign)? "Align Area":"Probing Area";
+            LblIsProbingArea.BackColor = (isAlign) ? Color.LimeGreen : Color.Red;
+        }
+        private delegate void delegateTextboxUI(double[] pos);
+        private void UpdateTextboxUI(double[] pos)
+        {
+            txtEncodeX.Text = (pos[0] - ZeroX).ToString("F0");
+            txtEncodeY.Text = (pos[1] - ZeroY).ToString("F0");
+            txtEncodeZ.Text = (pos[2] - ZeroZ).ToString("F0");
+            txtEncodeR.Text = pos[3].ToString("F0");
+
+            TxtIndex.Text = "X:" + WaferMap.CurrentIndexX.ToString() +
+                "      Y:" + WaferMap.CurrentIndexY.ToString();
+        }
+
         private void TimMotion_Tick(object sender, EventArgs e)
         {
+
             //当Y值很大时，Area变更
             Motion.XY_GetEncPos(out double X, out double Y);
-            if (Y > Motion.parameter.ALIGNDIVIDEY)
-            {
-                Motion.CurrentArea = Compensation.Area.Probing;
-                LblIsProbingArea.Text = "Probing Area";
-                LblIsProbingArea.BackColor = Color.Red;
-            }
-            else
-            {
-                Motion.CurrentArea = Compensation.Area.Align;
-                LblIsProbingArea.Text = "Align Area";
-                LblIsProbingArea.BackColor = Color.LimeGreen;
-            }
+            if (IsHandleCreated) BeginInvoke(new delegateLabelUI(UpdateLabelUI), (Y < Motion.parameter.PROBEDIVIDEY));
+
             //如果使用用户坐标系
             if (CbCompensation.Checked)
             {
                 Motion.GetUserPos(Motion.CurrentArea, out X, out Y);
             }
-            //注意当跨区使用时，不能用户坐标系
-            txtEncodeX.Text = (X - ZeroX).ToString("F0");
-            txtEncodeY.Text = (Y - ZeroY).ToString("F0");
-
             double Z = Motion.GetEncPos(1, 3);
-            txtEncodeZ.Text = (Z - ZeroZ).ToString("F0");
             double R = Motion.GetEncPos(1, 4);
-            txtEncodeR.Text = R.ToString("F0");
 
-            TxtIndex.Text = "X: " + IndexX.ToString() + "    Y: " + IndexY.ToString();
+            //注意当跨区使用时，不能用户坐标系
+            if (IsHandleCreated) BeginInvoke(new delegateTextboxUI(UpdateTextboxUI), new double[] { X, Y, Z, R });
+
+
         }
+
         private void BtnUp_MouseDown(object? sender, MouseEventArgs e)
         {
             Motion.AxisJog(1, 2, JogSpeed, Acc, Dec, 0);
@@ -143,11 +161,6 @@ namespace CommonComponentLibrary
         private void BtnDown_MouseUp(object? sender, MouseEventArgs e)
         {
             Motion.AxisStop(1, 2, 0);
-        }
-        private void canvas_Paint(object sender, PaintEventArgs e)
-        {
-            canvas.Controls.Add(Vision.m_HSmartWindowControl);
-            Vision.m_HSmartWindowControl.Dock = DockStyle.Fill;
         }
         private void M_HSmartWindowControl_HMouseWheel(object? sender, MouseEventArgs e)
         {
@@ -251,7 +264,7 @@ namespace CommonComponentLibrary
             if (CbCompensation.Checked)
             {
                 Motion.UserPosMoveRel(Motion.CurrentArea, X * WaferMap.Entity.DieSizeX, Y * WaferMap.Entity.DieSizeY);
-}
+            }
             else
             {
                 Motion.XY_AxisMoveRel(1, -X * WaferMap.Entity.DieSizeX, Y * WaferMap.Entity.DieSizeY, 600, 20, 20, 10);

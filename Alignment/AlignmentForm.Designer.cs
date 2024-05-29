@@ -133,6 +133,7 @@
             // BtnLowMag
             // 
             BtnLowMag.BackColor = Color.Teal;
+            BtnLowMag.ForeColor = Color.White;
             BtnLowMag.Location = new Point(1454, 13);
             BtnLowMag.Name = "BtnLowMag";
             BtnLowMag.Size = new Size(120, 104);
@@ -155,6 +156,7 @@
             // BtnHighMag
             // 
             BtnHighMag.BackColor = Color.Teal;
+            BtnHighMag.ForeColor = Color.White;
             BtnHighMag.Location = new Point(1321, 11);
             BtnHighMag.Name = "BtnHighMag";
             BtnHighMag.Size = new Size(120, 105);
@@ -273,7 +275,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Black;
-            panel1.Location = new Point(2, 3);
+            panel1.Location = new Point(1, 1);
             panel1.Name = "panel1";
             panel1.Size = new Size(1080, 1003);
             panel1.TabIndex = 62;
@@ -365,6 +367,7 @@
             Text = "AlignmentForm";
             Load += AlignmentForm_Load;
             VisibleChanged += AlignmentForm_VisibleChanged;
+            ParentChanged += AlignmentForm_ParentChanged;
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             ResumeLayout(false);

@@ -1159,30 +1159,57 @@ namespace VisionLibrary
         /// </summary>
         /// <param name="X"></param>
         /// <param name="Y"></param>
-        /// <param name="Index"></param>
-        public void PaintPins(double[]? X, double[]? Y,int CurrentIndex)
+        /// <param name="CurrentIndex"></param>
+        /// <param name="Angle"></param>
+        public void PaintPins(double[]? X, double[]? Y, int CurrentIndex, double Angle)
         {
-            if (X == null||Y==null) return;
-            HOperatorSet.SetColor(m_Window, "white");
+            if (X == null || Y == null) return;
+            //先转好角度
+            rotatePoints(X, Y, Angle, out double[] Xout, out double[] Yout);
             //获得整张图像的中心点，即视野中心
             HOperatorSet.AreaCenter(m_Image, out _, out HTuple Row_imageCenter, out HTuple Column_imageCenter);
-            m_Calibration.AffineTransPoint2d(Row_imageCenter, Column_imageCenter, out double CenterX, out double CenterY);
-            double DeltaX = X[CurrentIndex] - CenterX;//求其他点到当前index的距离
-            double DeltaY = Y[CurrentIndex] - CenterY;
-            //int count = X.Length;
+            //中心点对应的encodeX和encodeY
+            m_Calibration.AffineTransPoint2d(Row_imageCenter, Column_imageCenter, out double EncodeCenterX, out double EncodeCenterY);
+            //index点移动到图像中心，其他点跟随平移
+            double DeltaX = Xout[CurrentIndex] - EncodeCenterX;
+            double DeltaY = Yout[CurrentIndex] - EncodeCenterY;
+            //开始绘图
+            HOperatorSet.SetColor(m_Window, "white");
             for (int i = 0; i < X.Length; i++)
             {
-                X[i] -= DeltaX; Y[i] -= DeltaY;//变换坐标系
-                m_Calibration.AffineTransPoint2dInvert(X[i], Y[i], out double Row, out double Column);
+                Xout[i] -= DeltaX; Yout[i] -= DeltaY;//变换坐标系，所有点平移
+                m_Calibration.AffineTransPoint2dInvert(Xout[i], Yout[i], out double Row, out double Column);
                 if (Row > 1024 || Row < 0) continue;
                 if (Column > 1280 || Column < 0) continue;
-                HOperatorSet.GenCircleContourXld(out HObject conCircle, Row, Column, 10, 0, 2 * Math.PI, "positive", 1.0);
+                HOperatorSet.GenCircleContourXld(out HObject conCircle, Row, Column, 6, 0, 2 * Math.PI, "positive", 1.0);
+                HTuple str =(i == 0)? "#REF":"#"+i.ToString();
                 HOperatorSet.DispXld(conCircle, m_Window);
+                HOperatorSet.SetTposition(m_Window, Row + 6, Column - 3);
+                HOperatorSet.WriteString(m_Window, str);
             }
-            //HOperatorSet.DispText(m_Window, "test", "window", Row_imageCenter, Column_imageCenter, "white", "", "");// ch 显示 || en: display
+
             //绘制完以后，将颜色改回默认白色
             HOperatorSet.SetColor(m_Window, "white");
         }
+
+        /// <summary>
+        /// 所有点绕原点旋转Angle角度
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <param name="Angle">10000 = 1 degree，逆时针为正</param>
+        private void rotatePoints(double[] X, double[] Y, double Angle,out double[] Xout,out double[] Yout)
+        {
+            int cnt = X.Length;
+            double ang = Angle * Math.PI / 10000 / 180;
+            Xout = new double[cnt];Yout = new double[cnt];
+            for (int i = 0;i < cnt;i++) 
+            {
+                Xout[i] = X[i] * Math.Cos(ang) - Y[i] * Math.Sin(ang);
+                Yout[i] = X[i] * Math.Sin(ang) + Y[i] * Math.Cos(ang);
+            }
+        }
+
         #endregion
     }
 }

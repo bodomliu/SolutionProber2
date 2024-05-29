@@ -2,10 +2,16 @@
 using VisionLibrary;
 using MotionLibrary;
 using WaferMapLibrary;
+using log4net;
+using log4net.Config;
 namespace MainForm
 {
     public partial class AlignmentForm : Form
     {
+        // Define a static logger variable so that it references the
+        // Logger instance named "MainForm".
+        private static readonly ILog log = LogManager.GetLogger(typeof(AlignmentForm));
+
         LowModel lowModel = new LowModel();
         HighModel highModel = new HighModel();
         public AlignmentForm()
@@ -14,6 +20,9 @@ namespace MainForm
 
             InitializeComponent();
 
+            GlobalContext.Properties["name"] = this.GetType().Name;//指定文件名
+            XmlConfigurator.Configure(new FileInfo("log4net.config"));//读取配置
+            log.Info("Entering AlignmentForm.");
             //low model
             panelModel.Controls.Add(lowModel);
             lowModel.Dock = DockStyle.Fill;
@@ -25,14 +34,14 @@ namespace MainForm
             panelMap.Controls.Add(waferMapCanvas);
             waferMapCanvas.SetRatio(1, 1);
             waferMapCanvas.LoadCanvas();
-            
+
         }
         /// <summary>
         /// 更新界面上控件的状态
         /// </summary>
         public void UpdateUI()
         {
-            bool isLowModel = (Vision.activeCamera == Camera.WaferLowMag) ? true : false;//确认当前的相机是什么
+            //bool isLowModel = (Vision.activeCamera == Camera.WaferLowMag) ? true : false;//确认当前的相机是什么
             BtnLowMag.Enabled = !isLowModel;
             BtnHighMag.Enabled = isLowModel;
             BtnGoForModel.Text = (isLowModel) ? "Go For High Model" : "Go For Low Model";
@@ -42,13 +51,10 @@ namespace MainForm
             txtIndexSizeX.Text = WaferMap.Entity.DieSizeX.ToString();
             txtIndexSizeY.Text = WaferMap.Entity.DieSizeY.ToString();
         }
+
+        public bool isLowModel = true;//默认是低倍模式
         private void AlignmentForm_Load(object sender, EventArgs e)
         {
-            //默认是低倍相机启动
-            Vision.ChangeCamera(Vision.WaferLowMag);
-            Thread.Sleep(200);
-            Vision.WaferLowMag.halconClass.SetPart(1280, 1024);//1280*1024显示
-
             WaferMap.OnAlignChange += UpdateAlignFlag;//注册flag事件
             UpdateUI();
         }
@@ -62,34 +68,32 @@ namespace MainForm
         }
         private void BtnGoForModel_Click(object sender, EventArgs e)
         {
-            WaitingControl wf = new WaitingControl();
-            this.Controls.Add(wf);
-            wf.Show();
+            WaitingControl.WF.Start();
 
             BtnGoForModel.Enabled = false;
-            if (BtnGoForModel.Text == "Go For Low Model") GoForLowModel();
+            if (!isLowModel) GoForLowModel();
             else GoForHighModel();
             BtnGoForModel.Enabled = true;
 
-            wf.Dispose();
+            WaitingControl.WF.Hide();
         }
         private void GoForLowModel()
         {
             Vision.ChangeCamera(Vision.WaferLowMag);
             Motion.TogglePosition(1);
+            isLowModel = true;
             UpdateUI();
         }
         private void GoForHighModel()
         {
             Vision.ChangeCamera(Vision.WaferHighMag);
             Motion.TogglePosition(0);
+            isLowModel = false;
             UpdateUI();
         }
         private void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
         {
-            WaitingControl wf = new WaitingControl();
-            this.Controls.Add(wf);
-            wf.Show();
+            WaitingControl.WF.Start();
 
             if (Vision.activeCamera == Camera.WaferLowMag)
             {
@@ -100,7 +104,7 @@ namespace MainForm
                 CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
             }
 
-            wf.Dispose();
+            WaitingControl.WF.End();
         }
         private void txtIndexSizeX_TextChanged(object sender, EventArgs e)
         {
@@ -161,13 +165,38 @@ namespace MainForm
             Motion.AxisMoveAbs(1, 3, height, 600, 20, 20, 10);
             lblAvgZ.Text = Z.Average().ToString();
             lblDiffZ.Text = (Z.Max() - Z.Min()).ToString();
+
+            //TODO 高度插补
+            WaferMap.WaferHeight = height;//将平均值赋值给WaferHeight
+        }
+
+        private void AlignmentForm_ParentChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void AlignmentForm_VisibleChanged(object sender, EventArgs e)
         {
-            //静态添加commonpanel
-            if(this.Visible)panel1.Controls.Add(CommonPanel.Entity);
-            //TODO 会出现多次
+            //会进两次
+            if (Visible)
+            {
+                panel1.Controls.Add(CommonPanel.Entity);//静态
+                if (isLowModel)
+                {
+                    //默认是低倍相机启动
+                    Vision.ChangeCamera(Vision.WaferLowMag);
+                    CommonFunctions.Delay(200);
+                    Vision.WaferLowMag.halconClass.SetPart(1280, 1024);//1280*1024显示
+                }
+                else
+                {
+                    Vision.ChangeCamera(Vision.WaferHighMag);
+                    CommonFunctions.Delay(200);
+                    Vision.WaferHighMag.halconClass.SetPart(1280, 1024);//1280*1024显示
+                }
+                UpdateUI();
+            }
+            else {}
         }
     }
 }

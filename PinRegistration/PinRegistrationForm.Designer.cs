@@ -33,6 +33,9 @@
             BtnNeedleTipFocus = new Button();
             BtnMovePinToTheCenter = new Button();
             groupBox1 = new GroupBox();
+            label5 = new Label();
+            label4 = new Label();
+            TxtTotal = new TextBox();
             TxtIndex = new TextBox();
             BtnGoToPin = new Button();
             button2 = new Button();
@@ -54,13 +57,18 @@
             panel1 = new Panel();
             CBShowPins = new CheckBox();
             panel2 = new Panel();
+            NumRefPinOffsetR = new NumericUpDown();
+            label6 = new Label();
+            BtnUpdateDegree = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)NumRefPinOffsetR).BeginInit();
             SuspendLayout();
             // 
             // BtnLowMag
             // 
             BtnLowMag.BackColor = Color.Teal;
+            BtnLowMag.ForeColor = Color.White;
             BtnLowMag.Location = new Point(1335, 2);
             BtnLowMag.Name = "BtnLowMag";
             BtnLowMag.Size = new Size(100, 65);
@@ -72,6 +80,7 @@
             // BtnHighMag
             // 
             BtnHighMag.BackColor = Color.Teal;
+            BtnHighMag.ForeColor = Color.White;
             BtnHighMag.Location = new Point(1223, 2);
             BtnHighMag.Name = "BtnHighMag";
             BtnHighMag.Size = new Size(106, 65);
@@ -102,6 +111,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(TxtTotal);
             groupBox1.Controls.Add(TxtIndex);
             groupBox1.Controls.Add(BtnGoToPin);
             groupBox1.Controls.Add(button2);
@@ -115,11 +127,38 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Pin Search";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(142, 84);
+            label5.Name = "label5";
+            label5.Size = new Size(37, 17);
+            label5.TabIndex = 28;
+            label5.Text = "Total";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(76, 84);
+            label4.Name = "label4";
+            label4.Size = new Size(40, 17);
+            label4.TabIndex = 28;
+            label4.Text = "Index";
+            // 
+            // TxtTotal
+            // 
+            TxtTotal.Location = new Point(142, 104);
+            TxtTotal.Name = "TxtTotal";
+            TxtTotal.ReadOnly = true;
+            TxtTotal.Size = new Size(60, 23);
+            TxtTotal.TabIndex = 27;
+            TxtTotal.Text = "0";
+            // 
             // TxtIndex
             // 
-            TxtIndex.Location = new Point(76, 101);
+            TxtIndex.Location = new Point(76, 104);
             TxtIndex.Name = "TxtIndex";
-            TxtIndex.Size = new Size(62, 23);
+            TxtIndex.Size = new Size(60, 23);
             TxtIndex.TabIndex = 27;
             TxtIndex.Text = "0";
             // 
@@ -141,6 +180,7 @@
             button2.TabIndex = 26;
             button2.Text = "Next Pin";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // BtnGoToRefPin
             // 
@@ -150,6 +190,7 @@
             BtnGoToRefPin.TabIndex = 26;
             BtnGoToRefPin.Text = "Ref Pin";
             BtnGoToRefPin.UseVisualStyleBackColor = true;
+            BtnGoToRefPin.Click += BtnGoToRefPin_Click;
             // 
             // button1
             // 
@@ -193,6 +234,7 @@
             BtnUpdatePinWPad.TabIndex = 0;
             BtnUpdatePinWPad.Text = "Update Pin WPad";
             BtnUpdatePinWPad.UseVisualStyleBackColor = true;
+            BtnUpdatePinWPad.Click += BtnUpdatePinWPad_Click;
             // 
             // BtnRefreshPinDataFromPadData
             // 
@@ -247,7 +289,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(1089, 48);
+            label2.Location = new Point(1089, 37);
             label2.Name = "label2";
             label2.Size = new Size(70, 17);
             label2.TabIndex = 28;
@@ -256,7 +298,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(1089, 88);
+            label3.Location = new Point(1089, 63);
             label3.Name = "label3";
             label3.Size = new Size(70, 17);
             label3.TabIndex = 28;
@@ -274,7 +316,7 @@
             // LblPinOffsetY
             // 
             LblPinOffsetY.AutoSize = true;
-            LblPinOffsetY.Location = new Point(1166, 48);
+            LblPinOffsetY.Location = new Point(1166, 37);
             LblPinOffsetY.Name = "LblPinOffsetY";
             LblPinOffsetY.Size = new Size(15, 17);
             LblPinOffsetY.TabIndex = 28;
@@ -283,7 +325,7 @@
             // LblPinOffsetZ
             // 
             LblPinOffsetZ.AutoSize = true;
-            LblPinOffsetZ.Location = new Point(1166, 88);
+            LblPinOffsetZ.Location = new Point(1166, 63);
             LblPinOffsetZ.Name = "LblPinOffsetZ";
             LblPinOffsetZ.Size = new Size(15, 17);
             LblPinOffsetZ.TabIndex = 28;
@@ -300,7 +342,7 @@
             // CBShowPins
             // 
             CBShowPins.AutoSize = true;
-            CBShowPins.Location = new Point(1089, 125);
+            CBShowPins.Location = new Point(1089, 143);
             CBShowPins.Name = "CBShowPins";
             CBShowPins.Size = new Size(85, 21);
             CBShowPins.TabIndex = 65;
@@ -316,17 +358,47 @@
             panel2.Size = new Size(399, 387);
             panel2.TabIndex = 65;
             // 
+            // NumRefPinOffsetR
+            // 
+            NumRefPinOffsetR.Location = new Point(1092, 190);
+            NumRefPinOffsetR.Name = "NumRefPinOffsetR";
+            NumRefPinOffsetR.Size = new Size(89, 23);
+            NumRefPinOffsetR.TabIndex = 66;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(1089, 170);
+            label6.Name = "label6";
+            label6.Size = new Size(58, 17);
+            label6.TabIndex = 28;
+            label6.Text = "PinAngle";
+            // 
+            // BtnUpdateDegree
+            // 
+            BtnUpdateDegree.BackColor = Color.Orange;
+            BtnUpdateDegree.Location = new Point(1093, 221);
+            BtnUpdateDegree.Name = "BtnUpdateDegree";
+            BtnUpdateDegree.Size = new Size(88, 48);
+            BtnUpdateDegree.TabIndex = 67;
+            BtnUpdateDegree.Text = "Update Degree";
+            BtnUpdateDegree.UseVisualStyleBackColor = false;
+            BtnUpdateDegree.Click += BtnUpdateDegree_Click;
+            // 
             // PinRegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1847, 1126);
+            Controls.Add(BtnUpdateDegree);
+            Controls.Add(NumRefPinOffsetR);
             Controls.Add(panel2);
             Controls.Add(CBShowPins);
             Controls.Add(panel1);
             Controls.Add(LblPinOffsetZ);
             Controls.Add(LblPinOffsetY);
             Controls.Add(LblPinOffsetX);
+            Controls.Add(label6);
             Controls.Add(label3);
             Controls.Add(BtnMovePinToTheCenter);
             Controls.Add(label2);
@@ -338,10 +410,12 @@
             Name = "PinRegistrationForm";
             Text = "PinRegistrationForm";
             Load += PinRegistrationForm_Load;
+            VisibleChanged += PinRegistrationForm_VisibleChanged;
             ParentChanged += PinRegistrationForm_ParentChanged;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)NumRefPinOffsetR).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -374,5 +448,11 @@
         private CheckBox CBShowPins;
         private Button BtnGoToRefPin;
         private Panel panel2;
+        private Label label5;
+        private Label label4;
+        private TextBox TxtTotal;
+        private NumericUpDown NumRefPinOffsetR;
+        private Label label6;
+        private Button BtnUpdateDegree;
     }
 }

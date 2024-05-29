@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.ComponentModel.Design;
+using System.Text.Json;
 using static GTN.mc;
 
 namespace MotionLibrary
@@ -20,6 +21,9 @@ namespace MotionLibrary
         public double XORIGIN { get; set; } = 2106910;
         public double YORIGIN { get; set; } = 1701615;
         public double ZORIGIN { get; set; } = 46000;
+        //设备参数，Chuck旋转中心，区别于物理中心，这个参数需要标定后再定，故使用的用户坐标系定，再转为encode坐标系存储
+        public double XROTATE { get; set; } = 2113182;
+        public double YROTATE { get; set; } = 1620140;
 
         //设备参数，粗定位晶圆相机到精定位晶圆相机
         public double XWAFERLOW2HIGHT { get; set; } = -370578;
@@ -42,22 +46,19 @@ namespace MotionLibrary
         public double[] EdgeX { get; set; } = new double[] { 3540000, 1410000, 1400000, 3560000 };
         public double[] EdgeY { get; set; } = new double[] { 580000, 580000, 2660000, 2660000 };
         //设备参数，标定区和探针区的分界线
-        public double ALIGNDIVIDEY { get; set; } = 3700000;
+        public double PROBEDIVIDEY { get; set; } = 3700000;//高于3700000，表示可以能在扎针区域
+        public double PROBEDIVIDEZ { get; set; } = 50000;//高于50000，表示可以能在扎针状态
         public PinPadContact PROBING { get; set; } = new PinPadContact();
     }
     public class PinPadContact
     {
-        public double XAbsPin { get; set; } = 2970651;//定机台参数时，Abspin X
-        public double YAbsPin { get; set; } = 4129205;//定机台参数时，refpin Y
-        public double ZAbsPin { get; set; } = 73979;//定机台参数时，refpin高度
-        public double ZAbsWaferHeight { get; set; } = 38422;//定机台参数时，wafer高度
-        public double XPad2Pin { get; set; } = 13083;//定机台参数时，pin需要位移Xpin2Pad才能扎到中心      
-        public double YPad2Pin { get; set; } = -3937;//定机台参数时，pin需要位移Ypin2Pad才能扎到中心            
-        public double ZClearance { get; set; } = 88000;//定机台参数时，晶圆从Zwafer上升Clearance时，正好扎到针        
-        public double FirstContactHeight { get; set; } = 0;
-        public double AllContactHeight { get; set; } = 0;
-        public double ProbingShiftX { get; set; } = 0;
-        public double ProbingShiftY { get; set; } = 0;
+        public double XOrgPin { get; set; } = 2970651;//定机台参数时，Abspin X
+        public double YOrgPin { get; set; } = 4129205;//定机台参数时，refpin Y
+        public double ZOrgPin { get; set; } = 73979;//定机台参数时，refpin高度
+        public double ZOrgWaferHeight { get; set; } = 38422;//定机台参数时，wafer高度
+        public double XPad2Pin { get; set; } = 13083;//定机台参数时，pad需要位移XPad2Pin才能扎到中心      
+        public double YPad2Pin { get; set; } = -3937;//定机台参数时，pad需要位移YPad2Pin才能扎到中心            
+        public double ZPad2Pin { get; set; } = 88000;//定机台参数时，pad从Zwafer上升ZPad2Pin时，正好扎到针
     }
 
     static public class Motion
@@ -399,6 +400,8 @@ namespace MotionLibrary
             CommandHandler("GTN_Stop", Res);
         }
 
+        public static int commandIn = 0;
+        public static int commandOut = 0;
         /// <summary>
         /// 单轴绝对运动
         /// </summary>
@@ -411,6 +414,7 @@ namespace MotionLibrary
         /// <param name="smoothtime">平滑时间[0,50]</param>
         public static void AxisMoveAbs(short core, short axis, double pulse, double vel, double acc, double dec, short smoothtime)
         {
+            commandIn++;
             GTN.mc.TTrapPrm trap = new GTN.mc.TTrapPrm();
             Res = GTN.mc.GTN_PrfTrap(core, axis); //将轴设置为点位运动模式
             CommandHandler("GTN_PrfTrap", Res);
@@ -430,11 +434,11 @@ namespace MotionLibrary
             int pStatus;
             do
             {
+                Application.DoEvents();//用于对焦.TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, axis, out pStatus, 1, out uint pClock);
-                Thread.Sleep(10);
-                Application.DoEvents();//方便调用，不卡界面
             } while ((pStatus & 0x800) == 0);//等待轴到位
             Thread.Sleep(parameter.POSTSLEEP);
+            commandOut++;
         }
 
         /// <summary>
@@ -449,6 +453,7 @@ namespace MotionLibrary
         /// <param name="smoothtime">平滑时间[0,50]</param>
         public static void XY_AxisMoveAbs(short core, double pulseX, double pulseY, double vel, double acc, double dec, short smoothtime)
         {
+            commandIn++;
             GTN.mc.TTrapPrm trap = new GTN.mc.TTrapPrm();
             Res = GTN.mc.GTN_PrfTrap(core, 1); //将轴设置为点位运动模式
             Res = GTN.mc.GTN_PrfTrap(core, 2); //将轴设置为点位运动模式
@@ -469,11 +474,11 @@ namespace MotionLibrary
             int[] pStatus = new int[2];
             do
             {
+                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 2, out uint pClock);
-                Thread.Sleep(10);
-                Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0));//等待轴到位
             Thread.Sleep(parameter.POSTSLEEP);
+            commandOut++;
         }
 
         /// <summary>
@@ -489,6 +494,7 @@ namespace MotionLibrary
         /// <param name="smoothtime">平滑时间[0,50]</param>
         public static void XYZ_AxisMoveAbs(short core, double pulseX, double pulseY, double pulseZ, double vel, double acc, double dec, short smoothtime)
         {
+            commandIn++;
             GTN.mc.TTrapPrm trap = new GTN.mc.TTrapPrm();
             Res = GTN.mc.GTN_PrfTrap(core, 1); //将轴设置为点位运动模式
             Res = GTN.mc.GTN_PrfTrap(core, 2); //将轴设置为点位运动模式
@@ -512,12 +518,12 @@ namespace MotionLibrary
             int[] pStatus = new int[3];
             do
             {
+                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 3, out uint pClock);
-                Thread.Sleep(10);
-                Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0) || ((pStatus[2] & 0x800) == 0));//等待轴到位
 
             Thread.Sleep(parameter.POSTSLEEP);
+            commandOut++;
         }
 
         /// <summary>
@@ -531,6 +537,7 @@ namespace MotionLibrary
         /// <param name="smoothtime">250us控制周期[0，50]；500us控制周期[0，100]；1ms控制周期[0，200]；</param>
         public static void AxisMoveRel(short core, short axis, double pulse, double vel, double acc, double dec, short smoothtime)
         {
+            commandIn++;
             GTN.mc.TTrapPrm trap = new GTN.mc.TTrapPrm();
             Res = GTN.mc.GTN_PrfTrap(core, axis); //将轴设置为点位运动模式
             CommandHandler("GTN_PrfTrap", Res);
@@ -552,12 +559,12 @@ namespace MotionLibrary
             int pStatus;
             do
             {
+                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, axis, out pStatus, 1, out pClock);
-                Thread.Sleep(10);
-                Application.DoEvents();//方便调用，不卡界面
             } while ((pStatus & 0x800) == 0);//等待轴到位
 
             Thread.Sleep(parameter.POSTSLEEP);
+            commandOut++;
         }
 
         /// <summary>
@@ -572,6 +579,7 @@ namespace MotionLibrary
         /// <param name="smoothtime">平滑时间[0,50]</param>
         public static void XY_AxisMoveRel(short core, double pulseX, double pulseY, double vel, double acc, double dec, short smoothtime)
         {
+            commandIn++;
             GTN.mc.TTrapPrm trap = new GTN.mc.TTrapPrm();
             Res = GTN.mc.GTN_PrfTrap(core, 1); //将轴设置为点位运动模式
             Res = GTN.mc.GTN_PrfTrap(core, 2); //将轴设置为点位运动模式
@@ -595,12 +603,12 @@ namespace MotionLibrary
             int[] pStatus = new int[2];
             do
             {
+                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 2, out pClock);
-                Thread.Sleep(10);
-                Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0));//等待轴到位
 
             Thread.Sleep(parameter.POSTSLEEP);
+            commandOut++;
         }
 
         /// <summary>
@@ -616,6 +624,7 @@ namespace MotionLibrary
         /// <param name="smoothtime">平滑时间[0,50]</param>
         public static void XYZ_AxisMoveRel(short core, double pulseX, double pulseY, double pulseZ, double vel, double acc, double dec, short smoothtime)
         {
+            commandIn++;
             GTN.mc.TTrapPrm trap = new GTN.mc.TTrapPrm();
             Res = GTN.mc.GTN_PrfTrap(core, 1); //将轴设置为点位运动模式
             Res = GTN.mc.GTN_PrfTrap(core, 2); //将轴设置为点位运动模式
@@ -638,17 +647,16 @@ namespace MotionLibrary
             Res = GTN.mc.GTN_SetPos(core, 3, (int)(pulseZ + prfPosZ));//设置目标位置
 
             Res = GTN.mc.GTN_Update(core, 7);//更新XYZ轴运动
-
             Thread.Sleep(parameter.PRESLEEP);
             int[] pStatus = new int[3];
             do
             {
+                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 3, out pClock);
-                Thread.Sleep(10);
-                Application.DoEvents();//方便调用，不卡界面
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0) || ((pStatus[2] & 0x800) == 0));//等待轴到位
 
             Thread.Sleep(parameter.POSTSLEEP);
+            commandOut++;
         }
 
         //Thread threadHome;//回零线程

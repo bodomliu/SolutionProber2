@@ -41,7 +41,6 @@
             BtnRight = new Button();
             BtnLeft = new Button();
             BtnUp = new Button();
-            TimMotion = new System.Windows.Forms.Timer(components);
             JogFast = new Button();
             JogSlow = new Button();
             BtnJogZup = new Button();
@@ -52,6 +51,7 @@
             BtnScan = new Button();
             LblIsProbingArea = new Label();
             CbCompensation = new CheckBox();
+            TimMotion = new System.Windows.Forms.Timer(components);
             canvas.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,7 +67,6 @@
             canvas.Name = "canvas";
             canvas.Size = new Size(960, 768);
             canvas.TabIndex = 2;
-            canvas.Paint += canvas_Paint;
             // 
             // TxtIndex
             // 
@@ -176,10 +175,6 @@
             BtnUp.MouseDown += BtnUp_MouseDown;
             BtnUp.MouseUp += BtnUp_MouseUp;
             // 
-            // TimMotion
-            // 
-            TimMotion.Tick += TimMotion_Tick;
-            // 
             // JogFast
             // 
             JogFast.Location = new Point(915, 874);
@@ -285,6 +280,10 @@
             CbCompensation.Text = "Compensation";
             CbCompensation.UseVisualStyleBackColor = true;
             // 
+            // TimMotion
+            // 
+            TimMotion.Tick += this.TimMotion_Tick;
+            // 
             // CommonPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -329,7 +328,6 @@
         private Button BtnRight;
         private Button BtnLeft;
         private Button BtnUp;
-        private System.Windows.Forms.Timer TimMotion;
         private Button JogFast;
         private Button JogSlow;
         private Button BtnJogZup;
@@ -341,5 +339,6 @@
         private TextBox TxtIndex;
         private Label LblIsProbingArea;
         private CheckBox CbCompensation;
+        private System.Windows.Forms.Timer TimMotion;
     }
 }

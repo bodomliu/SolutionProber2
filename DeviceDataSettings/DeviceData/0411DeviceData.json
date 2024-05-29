@@ -13,6 +13,20 @@
   },
   "PinAlignment": {
     "PadDataPath": "DeviceData/0411PadData.json",
-    "PadPatten": "VisionConfig/0411Pad.shm"
+    "PadPatten": "VisionConfig/0411Pad.shm",
+    "PinDataPath": "DeviceData/0411PinData.json",
+    "NeddleTipFocusOffset": 60000,
+    "TipFocusXArea": 100,
+    "TipFocusYArea": 100
+  },
+  "Probing": {
+    "Overdrive": -2000,
+    "ZClearance": -50000,
+    "ZUpPosition": 0,
+    "ZDownPosition": 0,
+    "FirstContactHeight": 0,
+    "AllContactHeight": 0,
+    "ProbingShiftX": 0,
+    "ProbingShiftY": 0
   }
 }

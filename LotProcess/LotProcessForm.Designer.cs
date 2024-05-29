@@ -50,7 +50,7 @@
             panelMenu.Dock = DockStyle.Top;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(800, 100);
+            panelMenu.Size = new Size(800, 82);
             panelMenu.TabIndex = 0;
             // 
             // BtnCassette
@@ -112,9 +112,9 @@
             // 
             panelForm.BackColor = Color.Black;
             panelForm.Dock = DockStyle.Fill;
-            panelForm.Location = new Point(0, 100);
+            panelForm.Location = new Point(0, 82);
             panelForm.Name = "panelForm";
-            panelForm.Size = new Size(800, 350);
+            panelForm.Size = new Size(800, 368);
             panelForm.TabIndex = 1;
             // 
             // LotProcessForm

@@ -60,20 +60,6 @@ namespace MainForm
             PadData.Save(DeviceData.Entity.PinAlignment.PadDataPath);
             MessageBox.Show("Pads Saved!");
         }
-        private void BtnHighMag_Click(object sender, EventArgs e)
-        {
-            Vision.ChangeCamera(Vision.WaferHighMag);
-            Motion.TogglePosition(0);
-            BtnLowMag.Enabled = true; BtnHighMag.Enabled = false;
-            //Vision.WaferHighMag.halconClass.bDisplayPad = true;
-        }
-        private void BtnLowMag_Click(object sender, EventArgs e)
-        {
-            //Vision.WaferHighMag.halconClass.bDisplayPad = false;
-            Vision.ChangeCamera(Vision.WaferLowMag);
-            Motion.TogglePosition(1);
-            BtnLowMag.Enabled = false; BtnHighMag.Enabled = true;
-        }
         private void btnAddPad_Click(object sender, EventArgs e)
         {
             //获得当前XY坐标
@@ -130,7 +116,10 @@ namespace MainForm
             PadData.CurrentIndex = 0;
             //求带offset的坐标
             CommonFunctions.IndexUserPosAfterAlign(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, out double X, out double Y);
+            WaitingControl wf = new WaitingControl();
+            this.Controls.Add(wf);
             Motion.UserPosMoveAbs(Compensation.Area.Align, X + PadData.Entity.DieOrg2RefPadX, Y + PadData.Entity.DieOrg2RefPadY);
+            wf.Dispose();
         }
         private void btnRefDie_Click(object sender, EventArgs e)
         {
@@ -151,6 +140,8 @@ namespace MainForm
         }
         private void PadMoveFromRefPad(int Index)
         {
+            WaitingControl wf = new WaitingControl();
+            this.Controls.Add(wf);
             if (PadData.Entity.Pads == null) return;
             //先获得当前Die Org的用户坐标
             CommonFunctions.IndexUserPosAfterAlign(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double X, out double Y);
@@ -160,6 +151,7 @@ namespace MainForm
             //运动到Pad
             Motion.UserPosMoveAbs(Compensation.Area.Align, X, Y);
             PadData.CurrentIndex = Index;//改Index
+            wf.Dispose();
         }
         private void btnMoveToPad_Click(object sender, EventArgs e)
         {
@@ -175,7 +167,12 @@ namespace MainForm
         }
         private void PadRegistrationForm_ParentChanged(object sender, EventArgs e)
         {
-            if (this.Parent!=null)
+            
+        }
+
+        private void PadRegistrationForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
             {
                 panel1.Controls.Add(CommonPanel.Entity);
                 Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, PadData.Entity.PadWidth, PadData.Entity.PadHeight);
@@ -187,6 +184,7 @@ namespace MainForm
                 Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, 400, 400);
                 Vision.WaferHighMag.halconClass.m_Roi.Color = "red";
             }
+
         }
     }
 }

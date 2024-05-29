@@ -23,15 +23,28 @@ namespace WaferMapLibrary
     {
         public string PadDataPath { get; set; } = "DeviceData/0411PadData.json";
         public string PadPatten { get; set; } = "VisionConfig/pad.shm";//for pad model
+        public string PinDataPath { get; set; } = "DeviceData/0411PinData.json";
+        public double NeddleTipFocusOffset { get; set; } = 60000;//neddle tip to probe card upper plate base is 6mm
         public int TipFocusXArea { get; set; } = 100;
         public int TipFocusYArea { get; set; } = 100;
-        public double NeddleTipFocusOffset { get; set; } = 60000;//neddle tip to probe card upper plate base is 6mm
+    }
+    public class Probing
+    {
+        public double Overdrive { get; set; } = -2000;//默认负值，需要再增加
+        public double ZClearance { get; set; } = -50000;//先放-5mm，默认-0.5mm
+        public double ZUpPosition { get; set; } = 0;//根据Wafer和Pin的校准数据，计算两个postion，相差ZClearance
+        public double ZDownPosition { get; set; } = 0;//根据Wafer和Pin的校准数据，计算两个postion，相差ZClearance
+        public double FirstContactHeight { get; set; } = 0;//FistContactHeight - RefPinZ 通常小于等于0
+        public double AllContactHeight { get; set; } = 0;//AllContactHeight - RefPinZ 通常大于等于0
+        public double ProbingShiftX { get; set; } = 0;
+        public double ProbingShiftY { get; set; } = 0;
     }
     public class DeviceDataClass
     {
         public PhysicalInformation PhysicalInformation { get; set; } = new PhysicalInformation();
         public WaferAlignment WaferAlignment { get; set; } = new WaferAlignment();
         public PinAlignment PinAlignment { get; set; } = new PinAlignment();
+        public Probing Probing { get; set;} = new Probing();
     }
 
     //静态类方便操作

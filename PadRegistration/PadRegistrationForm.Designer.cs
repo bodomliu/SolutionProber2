@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BtnLowMag = new Button();
-            BtnHighMag = new Button();
             btnAngN = new Button();
             btnAngP = new Button();
             btnPadNarrow = new Button();
@@ -60,29 +58,8 @@
             label4 = new Label();
             label2 = new Label();
             btnAddPad = new Button();
+            panelMag = new Panel();
             SuspendLayout();
-            // 
-            // BtnLowMag
-            // 
-            BtnLowMag.BackColor = Color.Teal;
-            BtnLowMag.Location = new Point(1385, 12);
-            BtnLowMag.Name = "BtnLowMag";
-            BtnLowMag.Size = new Size(102, 73);
-            BtnLowMag.TabIndex = 21;
-            BtnLowMag.Text = "Low Mag";
-            BtnLowMag.UseVisualStyleBackColor = false;
-            BtnLowMag.Click += BtnLowMag_Click;
-            // 
-            // BtnHighMag
-            // 
-            BtnHighMag.BackColor = Color.Teal;
-            BtnHighMag.Location = new Point(1276, 12);
-            BtnHighMag.Name = "BtnHighMag";
-            BtnHighMag.Size = new Size(103, 73);
-            BtnHighMag.TabIndex = 22;
-            BtnHighMag.Text = "High Mag";
-            BtnHighMag.UseVisualStyleBackColor = false;
-            BtnHighMag.Click += BtnHighMag_Click;
             // 
             // btnAngN
             // 
@@ -229,7 +206,7 @@
             // panel2
             // 
             panel2.BackColor = Color.Black;
-            panel2.Location = new Point(1089, 559);
+            panel2.Location = new Point(1089, 542);
             panel2.Name = "panel2";
             panel2.Size = new Size(399, 399);
             panel2.TabIndex = 64;
@@ -366,11 +343,20 @@
             btnAddPad.UseVisualStyleBackColor = true;
             btnAddPad.Click += btnAddPad_Click;
             // 
+            // panelMag
+            // 
+            panelMag.BackColor = Color.Black;
+            panelMag.Location = new Point(1266, 2);
+            panelMag.Name = "panelMag";
+            panelMag.Size = new Size(235, 83);
+            panelMag.TabIndex = 76;
+            // 
             // PadRegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1574, 1126);
+            Controls.Add(panelMag);
             Controls.Add(btnMoveToPad);
             Controls.Add(btnRefDie);
             Controls.Add(btnNextPad);
@@ -401,20 +387,16 @@
             Controls.Add(btnPadEnlarge);
             Controls.Add(btnPadN);
             Controls.Add(btnPadP);
-            Controls.Add(BtnLowMag);
-            Controls.Add(BtnHighMag);
             Name = "PadRegistrationForm";
             Text = "PadForm";
             Load += PadRegistrationForm_Load;
+            VisibleChanged += PadRegistrationForm_VisibleChanged;
             ParentChanged += PadRegistrationForm_ParentChanged;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Button BtnLowMag;
-        private Button BtnHighMag;
         private Button btnAngN;
         private Button btnAngP;
         private Button btnPadNarrow;
@@ -445,5 +427,6 @@
         private Label label4;
         private Label label2;
         private Button btnAddPad;
+        private Panel panelMag;
     }
 }

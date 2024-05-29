@@ -1,10 +1,12 @@
 ﻿using WaferMapLibrary;
 using VisionLibrary;
 using MotionLibrary;
+using log4net;
 namespace CommonComponentLibrary
 {
     public static class CommonFunctions
     {
+
         /// <summary>
         /// 对焦函数
         /// </summary>
@@ -19,6 +21,7 @@ namespace CommonComponentLibrary
             List<double> def = new();
             List<double> pos = new();
             bool SlowFlag = false;
+
 
             for (double z = start; z < end;)
             {
@@ -132,6 +135,13 @@ namespace CommonComponentLibrary
                 endStep = 10000;
                 slopThreshold = 1;
             }
+            else if (Mag == Vision.PinLowMag)
+            {
+                slowStep = 1000;
+                fastStep = 3000;
+                endStep = 100000;
+                slopThreshold = 1;
+            }
             else
             {
                 slowStep = 1000;
@@ -141,6 +151,7 @@ namespace CommonComponentLibrary
             }
         }
 
+        #region WaferAlignment
         /// <summary>
         /// TriggerExe 模板匹配 then 运动到位
         /// </summary>
@@ -149,7 +160,7 @@ namespace CommonComponentLibrary
         /// <param name="DeltaX">X轴Match过程相对位移</param>
         /// <param name="DeltaY">Y轴Match过程相对位移</param>
         /// <returns>0：匹配成功  1：没有图像  2：匹配失败</returns>
-        public static int Match(string pattenModel, CameraClass Mag,out double DeltaX, out double DeltaY)
+        public static int Match(string pattenModel, CameraClass Mag, out double DeltaX, out double DeltaY)
         {
             Mag.TriggerMode();//单拍模式，对相机模式的切换写在这里合适吗？
             Mag.TriggerExec();//触发一帧
@@ -162,7 +173,7 @@ namespace CommonComponentLibrary
                 return res;//若匹配失败，直接返回findShapeModel错误结果
             }
             //相对运动到匹配点
-            Motion.XYZ_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 0, 600, 10, 10, 20);
+            Motion.XY_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 600, 10, 10, 20);
 
             Mag.TriggerExec();//触发一帧
             Thread.Sleep(500);//显示补偿效果
@@ -181,7 +192,7 @@ namespace CommonComponentLibrary
         /// <param name="encodeX"></param>
         /// <param name="encodeY"></param>
         /// <returns></returns>
-        public static int FastMatch(string pattenModel, CameraClass Mag, out double deltaX,out double deltaY,out double encodeX, out double encodeY)
+        public static int FastMatch(string pattenModel, CameraClass Mag, out double deltaX, out double deltaY, out double encodeX, out double encodeY)
         {
             Mag.TriggerExec();//触发一帧
             //匹配pattenModel
@@ -191,9 +202,108 @@ namespace CommonComponentLibrary
             encodeX += deltaX;
             encodeY += deltaY;
             if (res != 0)
-            {                
+            {
                 return res;//若匹配失败，直接返回findShapeModel错误结果
             }
+            return 0;
+        }
+
+        /// <summary>
+        /// X向校平
+        /// </summary>
+        /// <param name="Mag"></param>
+        /// <param name="pattenModel"></param>
+        /// <param name="L"></param>
+        /// <param name="R"></param>
+        /// <param name="dieSizeX"></param>
+        /// <param name="RotateX">旋转中心X</param>
+        /// <returns>0：匹配成功  1：没有图像  2：匹配失败  3：水平角度大于5度 </returns>
+        public static int AlignX(CameraClass Mag, string pattenModel, int L, int R, double dieSizeX, out double RotateX)
+        {
+            int res = 0; RotateX = double.NaN;
+            //记录初始位置
+            Motion.GetUserPos(Compensation.Area.Align, out double X0, out double Y0);
+
+            //运动到L点做精定位
+            Motion.UserPosMoveAbs(Compensation.Area.Align, X0 - L * dieSizeX, Y0);
+            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
+            if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
+            Motion.GetUserPos(Compensation.Area.Align, out double X1, out double Y1);
+
+            //运动到R点做精定位
+            Motion.UserPosMoveAbs(Compensation.Area.Align, X0 + R * dieSizeX, Y0);
+            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
+            if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
+            Motion.GetUserPos(Compensation.Area.Align, out double X2, out double Y2);
+
+            //计算结果
+            double[] feedbackX = new double[2] { X1, X2 };
+            double[] feedbackY = new double[2] { Y1, Y2 };
+
+            Mag.halconClass.GetWaferAngle2Points(feedbackX, feedbackY, out double Angle);
+            //txtAngle.Text = Angle.ToString();
+
+            if (Math.Abs(Angle) > 5)
+            {
+                MessageBox.Show("Error Angle");
+                return 3;//角度错误
+            }
+            int feedbackR = (int)Math.Round(Angle * 10000, 0);//TODO:如果用轴运动坐标系，符号相反，待兼容
+            Motion.AxisMoveRel(1, 4, feedbackR, 600, 10, 10, 20);
+
+            //移回中点处
+            Motion.UserPosMoveAbs(Compensation.Area.Align, X0, Y0);
+            RotateX = (X1 * (Y0 - Y1) - X2 * (Y0 - Y2)) / (Y1 - Y2);
+            return 0;
+        }
+
+        /// <summary>
+        /// Y向校平
+        /// </summary>
+        /// <param name="Mag"></param>
+        /// <param name="pattenModel"></param>
+        /// <param name="U"></param>
+        /// <param name="D"></param>
+        /// <param name="dieSizeY"></param>
+        /// <param name="RotateY">旋转中心X</param>
+        /// <returns>0：匹配成功  1：没有图像  2：匹配失败  3：水平角度大于5度 </returns>
+        public static int AlignY(CameraClass Mag, string pattenModel, int U, int D, double dieSizeY, out double RotateY)
+        {
+            int res = 0; RotateY = double.NaN;
+            //记录初始位置
+            Motion.GetUserPos(Compensation.Area.Align, out double X0, out double Y0);
+
+            //运动到L点做精定位
+            Motion.UserPosMoveAbs(Compensation.Area.Align, X0, Y0 - U * dieSizeY);
+            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
+            if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
+            Motion.GetUserPos(Compensation.Area.Align, out double X1, out double Y1);
+
+            //运动到R点做精定位
+            Motion.UserPosMoveAbs(Compensation.Area.Align, X0, Y0 + D * dieSizeY);
+            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
+            if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
+            Motion.GetUserPos(Compensation.Area.Align, out double X2, out double Y2);
+
+            //计算结果
+            double[] feedbackX = new double[2] { X1, X2 };
+            double[] feedbackY = new double[2] { Y1, Y2 };
+
+            Mag.halconClass.GetWaferAngle2Points(feedbackX, feedbackY, out double Angle);
+            //txtAngle.Text = Angle.ToString();
+
+            if ((90 - Math.Abs(Angle)) > 5)
+            {
+                MessageBox.Show("Error Angle");
+                return 3;//角度错误
+            }
+            double ToRotate = (Angle > 0) ? (90 - Angle) : (90 + Angle);
+            int feedbackR = (int)Math.Round(ToRotate * 10000, 0);//TODO:如果用轴运动坐标系，符号相反，待兼容
+            Motion.AxisMoveRel(1, 4, feedbackR, 600, 10, 10, 20);
+
+            //移回中点处
+            Motion.UserPosMoveAbs(Compensation.Area.Align, X0, Y0);
+            RotateY = (Y1 * (X0 - X2) - Y2 * (X0 - X1)) / (X1 - X2);
             return 0;
         }
 
@@ -224,13 +334,13 @@ namespace CommonComponentLibrary
         /// <param name="area"></param>
         /// <param name="indexX"></param>
         /// <param name="indexY"></param>
-        public static void IndexMove(Compensation.Area area,int indexX, int indexY)
+        public static void IndexMove(Compensation.Area area, int indexX, int indexY)
         {
             //TODO：需要知道是粗定位还是精定位下的坐标
             IndexUserPosAfterAlign(indexX, indexY, out double UserPosX, out double UserPosY);
             Motion.UserPosMoveAbs(area, UserPosX, UserPosY);
             //刷新当前位置
-            WaferMap.CurrentIndexX = indexX;WaferMap.CurrentIndexY = indexY;
+            WaferMap.CurrentIndexX = indexX; WaferMap.CurrentIndexY = indexY;
             CommonPanel.IndexX = indexX; CommonPanel.IndexY = indexY;
         }
 
@@ -253,6 +363,8 @@ namespace CommonComponentLibrary
             //加offset
             userPosX += WaferMap.WaferOffsetX; userPosY += WaferMap.WaferOffsetY;
         }
+        #endregion
+
         /// <summary>
         /// 根据index值，获得轴坐标系坐标
         /// </summary>
@@ -336,23 +448,47 @@ namespace CommonComponentLibrary
                     if (WaferMap.Entity.MappingPoints != null) WaferMap.Entity.MappingPoints.Add(point);
                 }
             }
+        }
 
-            //for (int x = 2; x < 116; x++)
-            //{
-            //    for (int y = 43; y < 46; y++)
-            //    {
-            //        MappingPoint Point = ErrorMap.Find(e => e.IndexX == x && e.IndexY == y);
-            //        Point.Coordinates = 2;
-            //    }
-            //}
-            //for (int x = 57; x < 60; x++)
-            //{
-            //    for (int y = 1; y < 88; y++)
-            //    {
-            //        MappingPoint Point = ErrorMap.Find(e => e.IndexX == x && e.IndexY == y);
-            //        Point.Coordinates = 2;
-            //    }
-            //}           
+        #region PinAlignment
+        public static void MovePinToCenter()
+        {
+            Vision.PinHighMag.TriggerMode();
+            Vision.PinHighMag.TriggerExec();
+
+            int res = Vision.PinHighMag.halconClass.GetPin(out double DeltaX, out double DeltaY);
+            if (res != 0) { MessageBox.Show("Move To Pin Error."); return; }
+
+            Motion.XYZ_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 0, 600, 10, 10, 20);
+            Vision.PinHighMag.ContinuesMode();
+        }
+        public static void GoToPin(int index)
+        {
+            if (index > PinData.Entity.Pins.Count) return;
+            //TODO 根据粗精模式走点
+
+            double X = PinData.Entity.RefPinX + PinData.Entity.Pins[index].PosX;
+            double Y = PinData.Entity.RefPinY + PinData.Entity.Pins[index].PosY;
+            Motion.XY_AxisMoveAbs(1, X, Y, 600, 10, 10, 20);
+            PinData.CurrentIndex = index;
+        }
+        public static void UpdateProbePosition()
+        {
+            double waferOffset = WaferMap.WaferHeight - Motion.parameter.PROBING.ZOrgWaferHeight;//wafer比注册高了waferOffset
+            double pinOffset = PinData.Entity.RefPinZ - Motion.parameter.PROBING.ZOrgPin;//pin比注册高了pinOffset
+            double upPos = Motion.parameter.PROBING.ZOrgWaferHeight + Motion.parameter.PROBING.ZPad2Pin;//注册时候upPos
+
+            DeviceData.Entity.Probing.ZUpPosition = upPos - waferOffset + pinOffset;//当前的upPos理论值
+            DeviceData.Entity.Probing.ZDownPosition = DeviceData.Entity.Probing.ZUpPosition + DeviceData.Entity.Probing.ZClearance;
+        }
+        #endregion
+        public static void Delay(int mm)
+        {
+            while (DateTime.Now.AddMilliseconds((double)mm) > DateTime.Now)
+            {
+              Thread.Sleep(1);
+              Application.DoEvents();
+            }
         }
     }
 }
