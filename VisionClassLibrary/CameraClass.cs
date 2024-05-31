@@ -232,8 +232,8 @@ namespace VisionLibrary
                     // ch: 控件操作 || en: Control operation
                     //SetCtrlWhenOpen();
 
-                    //打开相机后开始采集
-                    StartGrab();
+                    //打开相机后开始采集，手动采集
+                    //StartGrab();
 
                     return 1;
                 }
@@ -306,7 +306,7 @@ namespace VisionLibrary
         /// <summary>
         /// 开始采集
         /// </summary>
-        private void StartGrab()
+        public void StartGrab()
         {
             // ch:前置配置 | en:pre-operation
             int nRet = NecessaryOperBeforeGrab();
@@ -334,7 +334,7 @@ namespace VisionLibrary
         /// <summary>
         /// 停止采集
         /// </summary>
-        private void StopGrab()
+        public void StopGrab()
         {
             // ch:停止抓图 || en:Stop grab image
             int nRet = m_MyCamera.StopGrabbing();

@@ -6,7 +6,7 @@ namespace CommonComponentLibrary
     public partial class CommonPanel : UserControl
     {
         //public static CommonPanel Entity = new CommonPanel();//这个写法有问题
-        public static CommonPanel Entity = new ();//改为静态变量，避免消耗太多资源
+        public static CommonPanel Entity => new();//改为静态变量，避免消耗太多资源
         public static int IndexX = 0;//独立的用于显示的Index
         public static int IndexY = 0;//独立的用于显示的Index
         private double ZeroX = 0, ZeroY = 0, ZeroZ = 0;//临时用户坐标系
@@ -19,8 +19,6 @@ namespace CommonComponentLibrary
             Vision.m_HSmartWindowControl.Dock = DockStyle.Fill;
 
             canvas.MouseWheel += M_HSmartWindowControl_HMouseWheel;
-
-
         }
         private void UserControl_Load(object sender, EventArgs e)
         {
@@ -105,12 +103,11 @@ namespace CommonComponentLibrary
             }
             ZeroZ = Motion.GetEncPos(1, 3);
         }
-
         //跨线程调用
         private delegate void delegateLabelUI(bool isAlign);
         private void UpdateLabelUI(bool isAlign)
         {
-            LblIsProbingArea.Text = (isAlign)? "Align Area":"Probing Area";
+            LblIsProbingArea.Text = (isAlign) ? "Align Area" : "Probing Area";
             LblIsProbingArea.BackColor = (isAlign) ? Color.LimeGreen : Color.Red;
         }
         private delegate void delegateTextboxUI(double[] pos);
@@ -124,28 +121,21 @@ namespace CommonComponentLibrary
             TxtIndex.Text = "X:" + WaferMap.CurrentIndexX.ToString() +
                 "      Y:" + WaferMap.CurrentIndexY.ToString();
         }
-
         private void TimMotion_Tick(object sender, EventArgs e)
         {
-
             //当Y值很大时，Area变更
-            Motion.XY_GetEncPos(out double X, out double Y);
-            if (IsHandleCreated) BeginInvoke(new delegateLabelUI(UpdateLabelUI), (Y < Motion.parameter.PROBEDIVIDEY));
+            bool isAlign = (Motion.CurrentArea == Compensation.Area.Align) ? true : false;
+            if (IsHandleCreated) BeginInvoke(new delegateLabelUI(UpdateLabelUI), isAlign);
 
             //如果使用用户坐标系
-            if (CbCompensation.Checked)
-            {
-                Motion.GetUserPos(Motion.CurrentArea, out X, out Y);
-            }
-            double Z = Motion.GetEncPos(1, 3);
-            double R = Motion.GetEncPos(1, 4);
+            double X = (CbCompensation.Checked) ? Motion.UserX : Motion.EncodeX;
+            double Y = (CbCompensation.Checked) ? Motion.UserY : Motion.EncodeY;
+            double Z = Motion.EncodeZ;
+            double R = Motion.EncodeR;
 
             //注意当跨区使用时，不能用户坐标系
             if (IsHandleCreated) BeginInvoke(new delegateTextboxUI(UpdateTextboxUI), new double[] { X, Y, Z, R });
-
-
         }
-
         private void BtnUp_MouseDown(object? sender, MouseEventArgs e)
         {
             Motion.AxisJog(1, 2, JogSpeed, Acc, Dec, 0);
@@ -271,6 +261,11 @@ namespace CommonComponentLibrary
             }
             IndexX += X;
             IndexY += Y;
+        }
+
+        private void CommonPanel_ParentChanged(object sender, EventArgs e)
+        {
+          
         }
     }
 }

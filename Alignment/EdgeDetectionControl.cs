@@ -117,7 +117,7 @@ namespace MainForm
             if (BigROI) Vision.WaferLowMag.halconClass.m_Roi.Resize2(512, 640, 600, 600);
             Vision.WaferLowMag.TriggerExec();
             int res = Vision.WaferLowMag.halconClass.GetWaferEdge(out DeltaX, out DeltaY);
-            Application.DoEvents();
+            //Application.DoEvents();
             Thread.Sleep(100);//显示效果            
             //完成后缩小ROI
             Vision.WaferLowMag.halconClass.m_Roi.Resize2(512, 640, 400, 400);

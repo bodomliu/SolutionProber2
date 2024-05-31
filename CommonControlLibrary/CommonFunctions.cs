@@ -341,7 +341,7 @@ namespace CommonComponentLibrary
         }
 
         /// <summary>
-        /// 指定区域，和index，进行补偿运动
+        /// 指定区域，和index，进行补偿运动，不包含Z向运动，仅在精定位相机下，用于某些快速定位要求
         /// </summary>
         /// <param name="area"></param>
         /// <param name="indexX"></param>
@@ -355,6 +355,30 @@ namespace CommonComponentLibrary
             WaferMap.CurrentIndexX = indexX; WaferMap.CurrentIndexY = indexY;
             CommonPanel.IndexX = indexX; CommonPanel.IndexY = indexY;
         }
+
+        /// <summary>
+        /// WaferHeight已经确定，包含Z向运动，仅限于标定区域
+        /// </summary>
+        /// <param name="area"></param>
+        /// <param name="indexX"></param>
+        /// <param name="indexY"></param>
+        public static void GoToDie(int indexX, int indexY, bool isLowMode = false)
+        {
+            IndexUserPosAfterAlign(indexX, indexY, out double X, out double Y);
+            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, X, Y, out X, out Y);
+            double Z = WaferMap.WaferHeight;
+            if (isLowMode)
+            {
+                X -= Motion.parameter.XWAFERLOW2HIGHT;
+                Y -= Motion.parameter.YWAFERLOW2HIGHT;
+                Z -= Motion.parameter.ZWAFERLOW2HIGHT;
+            }
+            Motion.XYZ_AxisMoveAbs(1, X, Y, Z, 600, 10, 10, 20);
+            //刷新当前位置
+            WaferMap.CurrentIndexX = indexX; WaferMap.CurrentIndexY = indexY;
+            CommonPanel.IndexX = indexX; CommonPanel.IndexY = indexY;
+        }
+
 
         /// <summary>
         /// 带了Offset的精确定位
@@ -531,7 +555,7 @@ namespace CommonComponentLibrary
             while (DateTime.Now.AddMilliseconds((double)mm) > DateTime.Now)
             {
               Thread.Sleep(1);
-              Application.DoEvents();
+              //Application.DoEvents();
             }
         }
     }

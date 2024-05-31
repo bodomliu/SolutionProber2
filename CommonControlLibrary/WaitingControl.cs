@@ -29,7 +29,7 @@ namespace CommonComponentLibrary
         {
             BringToFront();
             Show();
-            Application.DoEvents();//TODO 待优化
+            //Application.DoEvents();//TODO 待优化
         }
 
         public void End()

@@ -386,7 +386,7 @@ namespace VisionLibrary
         /// <param name="WindowControl"></param>
         public void DisplayWindowsBind(HSmartWindowControl WindowControl)
         {
-            m_Window = WindowControl.HalconWindow;
+            m_Window = WindowControl.HalconWindow;            
         }
 
         /// <summary>

@@ -23,14 +23,8 @@ namespace MainForm
             panelCamera.Controls.Add(new WaferMagControl());
             paneIndexControl.Controls.Add(new WaferMapIndexControl());
 
-            WaferMapCanvas waferMapCanvas = WaferMapCanvas.Canvas;
-            panelMap.Controls.Add(waferMapCanvas);
-            waferMapCanvas.SetRatio(1, 1);
-            waferMapCanvas.LoadCanvas();
-
             PadData.OnIndexChange += PadData_OnIndexChange;
         }
-
         private void InspectionForm_Load(object sender, EventArgs e)
         {
             TxtShiftX.Text = DeviceData.Entity.Probing.ProbingShiftX.ToString();
@@ -40,7 +34,6 @@ namespace MainForm
         {
             TxtIndex.Text = index.ToString();
         }
-
         private void btnNextPad_Click(object sender, EventArgs e)
         {
             if (PadData.Entity.Pads == null) return;
@@ -49,7 +42,6 @@ namespace MainForm
             CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
             WaitingControl.WF.End();
         }
-
         private void btnPrevPad_Click(object sender, EventArgs e)
         {
             if (PadData.Entity.Pads == null) return;
@@ -65,10 +57,9 @@ namespace MainForm
             CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
             WaitingControl.WF.End();
         }
-
         private void BtnMoveToDie_Click(object sender, EventArgs e)
         {
-            CommonFunctions.IndexMove(Compensation.Area.Align, WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
+            CommonFunctions.GoToDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
         }
         private double SetFromX = 0;
         private double SetFromY = 0;
@@ -102,16 +93,23 @@ namespace MainForm
         }
         private void InspectionForm_ParentChanged(object sender, EventArgs e)
         {
-            
-        }
-
-        private void InspectionForm_VisibleChanged(object sender, EventArgs e)
-        {
-            if (Visible)
+            if (Parent!=null)
             {
                 panel1.Controls.Clear();
                 panel1.Controls.Add(CommonPanel.Entity);
+
+                panelMap.Controls.Clear();
+                WaferMapCanvas waferMapCanvas = WaferMapCanvas.Canvas;
+                panelMap.Controls.Add(waferMapCanvas);
+                waferMapCanvas.SetRatio(1, 1);
+                waferMapCanvas.LoadCanvas();
+
+                Vision.ChangeCamera(Camera.WaferHighMag);
             }
+        }
+        private void InspectionForm_VisibleChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

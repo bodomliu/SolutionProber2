@@ -61,6 +61,7 @@
             label6 = new Label();
             BtnUpdateDegree = new Button();
             BtnFocusInitial = new Button();
+            BtnOrgPinInitial = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumRefPinOffsetR).BeginInit();
@@ -397,6 +398,16 @@
             BtnFocusInitial.UseVisualStyleBackColor = true;
             BtnFocusInitial.Click += BtnFocusInitial_Click;
             // 
+            // BtnOrgPinInitial
+            // 
+            BtnOrgPinInitial.Location = new Point(1441, 106);
+            BtnOrgPinInitial.Name = "BtnOrgPinInitial";
+            BtnOrgPinInitial.Size = new Size(99, 54);
+            BtnOrgPinInitial.TabIndex = 25;
+            BtnOrgPinInitial.Text = "Org Pin Initial";
+            BtnOrgPinInitial.UseVisualStyleBackColor = true;
+            BtnOrgPinInitial.Click += BtnOrgPinInitial_Click;
+            // 
             // PinRegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -410,6 +421,7 @@
             Controls.Add(LblPinOffsetZ);
             Controls.Add(LblPinOffsetY);
             Controls.Add(LblPinOffsetX);
+            Controls.Add(BtnOrgPinInitial);
             Controls.Add(BtnFocusInitial);
             Controls.Add(label6);
             Controls.Add(label3);
@@ -422,7 +434,6 @@
             Controls.Add(BtnHighMag);
             Name = "PinRegistrationForm";
             Text = "PinRegistrationForm";
-            Load += PinRegistrationForm_Load;
             VisibleChanged += PinRegistrationForm_VisibleChanged;
             ParentChanged += PinRegistrationForm_ParentChanged;
             groupBox1.ResumeLayout(false);
@@ -468,5 +479,6 @@
         private Label label6;
         private Button BtnUpdateDegree;
         private Button BtnFocusInitial;
+        private Button BtnOrgPinInitial;
     }
 }

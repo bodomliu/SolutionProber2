@@ -17,7 +17,7 @@ namespace MainForm
             panel1.Controls.Add(new WaferMapIndexControl());
         }
 
-        private void BtnIstantHighAlign_Click(object sender, EventArgs e)
+        private async void BtnIstantHighAlign_Click(object sender, EventArgs e)
         {
             Vision.WaferHighMag.halconClass.CreateShapeModel(PattenModel1);
             //做模板完了后加延时 TODO 增加校验处理
@@ -26,7 +26,11 @@ namespace MainForm
             int L = int.Parse(txtL.Text);
             int R = int.Parse(txtR.Text);
 
-            CommonFunctions.AlignX(Vision.WaferHighMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX,out _);
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+                CommonFunctions.AlignX(Vision.WaferHighMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX, out _)
+            );
+            WaitingControl.WF.End();
         }
 
         private void BtnMoveToRefDie_Click(object sender, EventArgs e)

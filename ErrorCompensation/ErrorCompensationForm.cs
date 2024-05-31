@@ -2,15 +2,14 @@
 using VisionLibrary;
 using MotionLibrary;
 using WaferMapLibrary;
+using ErrorCompensation;
 
 namespace MainForm
 {
     public partial class ErrorCompensationForm : Form
     {
-        //WaferMapCanvas mapCanvas = new();
-        CommonPanel commonPanel = CommonPanel.Entity;//引入通用的CommonPanel
-
         bool StopFlag = true;//连续运行的flag
+        
         public ErrorCompensationForm()
         {
             this.TopLevel = false; this.FormBorderStyle = FormBorderStyle.None;
@@ -19,10 +18,6 @@ namespace MainForm
 
             WaferMapIndexControl indexControl = new WaferMapIndexControl();
             panelIndexControl.Controls.Add(indexControl);
-
-            WaferMapCanvas mapCanvas = WaferMapCanvas.Canvas;
-            panelMap.Controls.Add(mapCanvas);
-            mapCanvas.LoadCanvas();
 
             WaferMapCanvas mapCanvas1 = WaferMapCanvas.Canvas;
             panelMapMini.Controls.Add(mapCanvas1);
@@ -33,27 +28,27 @@ namespace MainForm
             //默认是Align Camera
             Vision.ChangeCamera(Vision.WaferHighMag);
             RbtnWaferCamera.Checked = true;
-
-            //默认
-            commonPanel.Visible = false;
-
-            RefreshChart();
         }
         private void ErrorCompensationForm_VisibleChanged(object sender, EventArgs e)
         {
-            //静态添加
-            if (Visible)
-            {
-                this.Controls.Add(commonPanel);
-                commonPanel.BringToFront();
-            }
-            else { commonPanel.Visible = true; }
+           
         }
         private void BtnMapScreen_Click(object sender, EventArgs e)
         {
-            commonPanel.Visible = !commonPanel.Visible;
-            BtnMapScreen.Text = (commonPanel.Visible) ? "Map Screen" : "Camera Screen";
+            panel1.Controls.Clear();
+            if (BtnMapScreen.Text == "Map Screen")
+            {
+                BtnMapScreen.Text = "Camera Screen";
+                panel1.Controls.Add(ErrorCanvas.Entity);
+            }
+            else
+            {
+                BtnMapScreen.Text = "Map Screen";
+                panel1.Controls.Add(CommonPanel.Entity);
+
+            }
         }
+
         private void RbtnWaferCamera_CheckedChanged(object sender, EventArgs e)
         {
             //两个radio button都会指向同一个事件
@@ -66,51 +61,7 @@ namespace MainForm
                 Vision.ChangeCamera(Vision.JigCamera);
             }
         }
-        private void RefreshChart()
-        {
-            float penWidth = 1;//画线条的粗细，默认=1
-            Bitmap bitmap = new Bitmap(pbX.Width, pbX.Height);
-            Graphics gp = Graphics.FromImage(bitmap);
-            for (int i = 0; i < 9; i++)
-            {
-                penWidth = (i == 4) ? 3 : 1;//中间一根线粗一点
-                gp.DrawLine(new Pen(Color.Black, penWidth), 0, (i + 1) * pbX.Height / 10, pbX.Width, (i + 1) * pbX.Height / 10);
-            }
-            pbX.Image = bitmap;
 
-
-            Bitmap bitmap2 = new Bitmap(pbY.Width, pbY.Height);
-            Graphics gp2 = Graphics.FromImage(bitmap2);
-            gp2.Clear(Color.White);
-            for (int i = 0; i < 9; i++)
-            {
-                penWidth = (i == 4) ? 3 : 1;//中间一根线粗一点
-                gp2.DrawLine(new Pen(Color.Black, penWidth), (i + 1) * pbY.Width / 10, 0, (i + 1) * pbY.Width / 10, pbY.Height);
-            }
-            pbY.Image = bitmap2;
-        }
-        private void DrawPoint(int indexX, int indexY, double errorX, double errorY)
-        {
-            Graphics gp = Graphics.FromImage(pbX.Image);
-            float PointX = (indexX + 1) * pbX.Width / (WaferMap.Entity.DieNumX + 1);
-            float PointY = (float)(pbX.Height / 2 + errorY / 10 * pbX.Height / 10);
-            gp.FillEllipse(new SolidBrush(Color.Blue), PointX, PointY, 4, 4);
-            pbX.Refresh();
-
-            gp = Graphics.FromImage(pbY.Image);
-            PointY = (indexY + 1) * pbY.Height / (WaferMap.Entity.DieNumY + 1);
-            PointX = (float)(pbY.Width / 2 + errorX / 10 * pbY.Width / 10);
-            gp.FillEllipse(new SolidBrush(Color.Blue), PointX, PointY, 4, 4);
-            pbY.Refresh();
-        }
-        private void ErrorCompensationForm_Paint(object sender, PaintEventArgs e)
-        {
-            //panelMap.Controls.Add(WaferMap.Canvas);
-            //WaferMap.Canvas.Dock = DockStyle.Fill;
-            //WaferMap.Canvas.RefreshCanvas();
-
-            //panelIndexControl.Controls.Add(WaferMap.IndexControl);
-        }
         private void BtnStart_Click(object sender, EventArgs e)
         {
             CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
@@ -184,7 +135,7 @@ namespace MainForm
             if (RbtnCheckOnly.Checked)
             {
                 //绘制点，插值计算后的走点 - 校准后的理想点 = 差异
-                DrawPoint(indexX, indexY, deltaX, deltaY);
+                ErrorCanvas.Entity.DrawPoint(indexX, indexY, deltaX, deltaY);
                 WaferMap.SetBIN(indexX, indexY, 4);
             }
             else if (RbtnWriteData.Checked)
@@ -216,17 +167,6 @@ namespace MainForm
             WaferMap.Load("DeviceData/" + DeviceData.Entity.PhysicalInformation.DeviceName + "WaferMap.json");
             WaferMapCanvas.Canvas.RefreshCanvas();
         }
-        private void BtnClearPicturebox_Click(object sender, EventArgs e)
-        {
-            RefreshChart();
-        }
-        private void BtnSim_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 85; i++)
-            {
-                //DrawPoint(i, WaferMap.Entity.RefDieIndexY, 10, 5);
-            }
-        }
         private void BtnApply_Click(object sender, EventArgs e)
         {
             BtnApply.Enabled = false;
@@ -241,9 +181,9 @@ namespace MainForm
             BtnZ.Enabled = false;//临时性禁止点击
             //如果当前不在probe区，则去往probe；如果当前在Probe区，则回来Align
             if (Motion.CurrentArea == Compensation.Area.Align)
-            {             
-                Motion.GetUserPos(Compensation.Area.Align,out double userPosX,out double userPosY);                
-                Motion.UserPosMoveAbs(Compensation.Area.Probing,userPosX,userPosY);
+            {
+                Motion.GetUserPos(Compensation.Area.Align, out double userPosX, out double userPosY);
+                Motion.UserPosMoveAbs(Compensation.Area.Probing, userPosX, userPosY);
                 Motion.AxisMoveRel(1, 3, Motion.parameter.ZALIGN2PROBE, 600, 10, 10, 20);
                 BtnZ.Text = "Z down";
                 BtnZ.BackColor = Color.Green;
@@ -291,6 +231,18 @@ namespace MainForm
             CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
 
             CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double DeltaX, out double DeltaY);
+        }
+
+        private void ErrorCompensationForm_ParentChanged(object sender, EventArgs e)
+        {
+            //静态添加
+            if (Parent!=null)
+            {
+                panel1.Controls.Clear();
+                panel1.Controls.Add(CommonPanel.Entity);
+                BtnMapScreen.Text = "Map Screen" ;
+            }
+            else { }
         }
     }
 }

@@ -67,6 +67,8 @@
             Name = "WaferMagControl";
             Size = new Size(253, 83);
             Load += WaferMagControl_Load;
+            VisibleChanged += WaferMagControl_VisibleChanged;
+            ParentChanged += WaferMagControl_ParentChanged;
             ResumeLayout(false);
         }
 

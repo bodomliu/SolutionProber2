@@ -22,16 +22,22 @@ namespace MainForm
 
         private void UtilityForm_VisibleChanged(object sender, EventArgs e)
         {
-            if (panel1.Visible)
-            {
-                panel1.Controls.Add(CommonPanel.Entity);
-            }
+           
         }
 
         private void BtnChuckCenter_Click(object sender, EventArgs e)
         {
             panel2.Controls.Clear();
             panel2.Controls.Add(centerControl);
+        }
+
+        private void UtilityForm_ParentChanged(object sender, EventArgs e)
+        {
+            if (Parent!=null)
+            {
+                panel1.Controls.Clear();
+                panel1.Controls.Add(CommonPanel.Entity);
+            }
         }
     }
 }

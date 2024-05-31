@@ -37,12 +37,12 @@
   "PROBEDIVIDEY": 3700000,
   "PROBEDIVIDEZ": 70000,
   "PROBING": {
-    "XOrgPin": 2970651,
-    "YOrgPin": 4129205,
-    "ZOrgPin": 73979,
-    "ZOrgWaferHeight": 38422,
-    "XPad2Pin": 13083,
-    "YPad2Pin": -3937,
-    "ZClearance": 88000
+    "XOrgPin": 2982579,
+    "YOrgPin": 4125531,
+    "ZOrgPin": 76958,
+    "ZOrgWaferHeight": 37759,
+    "XPad2Pin": 21705,
+    "YPad2Pin": 75604,
+    "ZPad2Pin": 90000
   }
 }

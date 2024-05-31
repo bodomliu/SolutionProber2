@@ -21,10 +21,10 @@
     "TipFocusExposureTime": 200,
     "GetPinXArea": 800,
     "GetPinYArea": 800,
-    "GetPinExposureTime": 500
+    "GetPinExposureTime": 800
   },
   "Probing": {
-    "Overdrive": -2000,
+    "Overdrive": 0,
     "ZClearance": -50000,
     "ZUpPosition": 0,
     "ZDownPosition": 0,
