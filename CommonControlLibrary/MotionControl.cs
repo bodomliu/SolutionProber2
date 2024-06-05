@@ -617,11 +617,13 @@ namespace CommonComponentLibrary
         private void BtnLoadParameter_Click(object sender, EventArgs e)
         {
             Motion.Load("Config/MotionParameter.json");
+            MessageBox.Show("Motion Parameter Loaded Successfully.");
         }
 
         private void BtnSaveParameter_Click(object sender, EventArgs e)
         {
             Motion.Save("Config/MotionParameter.json");
+            MessageBox.Show("Motion Parameter Saved Successfully.");
         }
     }
 }

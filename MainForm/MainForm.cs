@@ -13,7 +13,7 @@ namespace MainForm
         // Logger instance named "MainForm".
         private static readonly ILog log = LogManager.GetLogger(typeof(MainForm));
 
-        readonly LotProcessForm lotProcessForm = new ();
+        readonly LotProcessForm lotProcessForm = new();
         readonly ErrorCompensationForm errorCompensatioForm = new();
         readonly MotionControl motionControl = new();
         readonly AlignmentForm alignmentForm = new();

@@ -11,6 +11,11 @@
       "Enable": true
     },
     {
+      "X": 2,
+      "Y": 0,
+      "Enable": true
+    },
+    {
       "X": 0,
       "Y": 1,
       "Enable": true
@@ -21,13 +26,8 @@
       "Enable": true
     },
     {
-      "X": 0,
-      "Y": 2,
-      "Enable": true
-    },
-    {
-      "X": 1,
-      "Y": 2,
+      "X": 2,
+      "Y": 1,
       "Enable": true
     }
   ],

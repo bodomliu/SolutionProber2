@@ -1,44 +1,549 @@
 {
-  "RefPinX": 2795200,
-  "RefPinY": 4296491,
-  "RefPinZ": 73432,
-  "NeddleTipFocusOffset": 60000,
+  "RefPinX": 2795140,
+  "RefPinY": 4296480,
+  "RefPinZ": 73829,
+  "PinsAvgHeight": 0,
+  "PinsAngle": -1505,
   "Pins": [
     {
       "PosX": 0,
-      "PosY": 0
+      "PosY": 0,
+      "PosZ": 0,
+      "CurrentPosX": 2.0002225303906016,
+      "CurrentPosY": 0.9993744899984449,
+      "CurrentPosZ": 73808,
+      "AlignResult": 0,
+      "AlignMode": 1
     },
     {
-      "PosX": 10655.441569171031,
-      "PosY": 2033.76682294684
+      "PosX": 10650.06267881415,
+      "PosY": 2061.74864167945,
+      "PosZ": 0,
+      "CurrentPosX": 10636.969120654394,
+      "CurrentPosY": 2035.4423624204937,
+      "CurrentPosZ": 73918,
+      "AlignResult": 0,
+      "AlignMode": 0
     },
     {
-      "PosX": 8847.623528453776,
-      "PosY": 18347.619003937056
+      "PosX": 8799.398993682744,
+      "PosY": 18370.79591538854,
+      "PosZ": 0,
+      "CurrentPosX": 8905.026721439033,
+      "CurrentPosY": 18418.58634899673,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
     },
     {
-      "PosX": 110586.10325350688,
-      "PosY": -13.800416139827576
+      "PosX": 110585.75800022487,
+      "PosY": 276.6780845481612,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
     },
     {
-      "PosX": 121246.13659091313,
-      "PosY": 2044.0560307909036
+      "PosX": 121240.34915479652,
+      "PosY": 2362.5283283844274,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
     },
     {
-      "PosX": 119440.18299670408,
-      "PosY": 18348.097344068352
+      "PosX": 119391.5756801192,
+      "PosY": 18661.76966560081,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
     },
     {
-      "PosX": 110588.01021559846,
-      "PosY": 140844.28811627819
+      "PosX": 110217.67054905581,
+      "PosY": 141134.2856897865,
+      "PosZ": 0,
+      "CurrentPosX": 110489.68374155299,
+      "CurrentPosY": 141178.84146574582,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
     },
     {
-      "PosX": 121242.61710906077,
-      "PosY": 142889.52422703977
+      "PosX": 120866.86842846159,
+      "PosY": 143207.50138725637,
+      "PosZ": 0,
+      "CurrentPosX": 121127.48054913874,
+      "CurrentPosY": 143193.15919697774,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
     },
     {
-      "PosX": 119438.01818215537,
-      "PosY": 159205.57726888143
+      "PosX": 119019.41806499702,
+      "PosY": 159518.75796992687,
+      "PosZ": 0,
+      "CurrentPosX": 119332.27642465779,
+      "CurrentPosY": 159537.6135236679,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 126564.96337109213,
+      "PosY": 332.45155153930045,
+      "PosZ": 0,
+      "CurrentPosX": 126466.16935889353,
+      "CurrentPosY": 490.15604933327995,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 137215.0260499062,
+      "PosY": 2394.2001932187372,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 135364.36236477483,
+      "PosY": 18703.247466927838,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 237150.72137131693,
+      "PosY": 609.1296360874435,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 247805.3125258883,
+      "PosY": 2694.979879923699,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 245956.53905121138,
+      "PosY": 18994.221217140133,
+      "PosZ": 0,
+      "CurrentPosX": 246027.3694187114,
+      "CurrentPosY": 18867.424337362172,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 236782.633920148,
+      "PosY": 141466.73724132578,
+      "PosZ": 0,
+      "CurrentPosX": 236892.629529787,
+      "CurrentPosY": 141456.93580538617,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 247431.8317995537,
+      "PosY": 143539.9529387956,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 245584.381436089,
+      "PosY": 159851.20952146623,
+      "PosZ": 0,
+      "CurrentPosX": 245699.17758911813,
+      "CurrentPosY": 159782.51305107074,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 253129.92674218427,
+      "PosY": 664.9031030786009,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 263779.9894209981,
+      "PosY": 2726.6517447580513,
+      "PosZ": 0,
+      "CurrentPosX": 263877.5810052806,
+      "CurrentPosY": 2438.3431500848383,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 261929.32573586682,
+      "PosY": 19035.699018467134,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 363715.68474240904,
+      "PosY": 941.5811876267475,
+      "PosZ": 0,
+      "CurrentPosX": 363794.1103269815,
+      "CurrentPosY": 879.8307140215766,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 374370.2758969805,
+      "PosY": 3027.431431462988,
+      "PosZ": 0,
+      "CurrentPosX": 374031.58752407867,
+      "CurrentPosY": 3137.7550018804614,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 372521.5024223033,
+      "PosY": 19326.67276867946,
+      "PosZ": 0,
+      "CurrentPosX": 372651.7410355214,
+      "CurrentPosY": 19290.35578189511,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 363347.5972912401,
+      "PosY": 141799.18879286508,
+      "PosZ": 0,
+      "CurrentPosX": 363377.2572731731,
+      "CurrentPosY": 141655.28534513502,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 373996.79517064575,
+      "PosY": 143872.404490335,
+      "PosZ": 0,
+      "CurrentPosX": 374005.47130856744,
+      "CurrentPosY": 143686.43268920924,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 372149.34480718133,
+      "PosY": 160183.66107300553,
+      "PosZ": 0,
+      "CurrentPosX": 372166.9272505918,
+      "CurrentPosY": 159950.75924596144,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": -425.85683795463746,
+      "PosY": 162124.54069623005,
+      "PosZ": 0,
+      "CurrentPosX": -302.9186105472618,
+      "CurrentPosY": 162416.09824878932,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 10224.205840859515,
+      "PosY": 164186.28933790963,
+      "PosZ": 0,
+      "CurrentPosX": 10403.893079388596,
+      "CurrentPosY": 164468.35993622476,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 8373.542155728082,
+      "PosY": 180495.3366116186,
+      "PosZ": 0,
+      "CurrentPosX": 8537.788066816924,
+      "CurrentPosY": 180803.28781141248,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 110159.90116227028,
+      "PosY": 162401.2187807783,
+      "PosZ": 0,
+      "CurrentPosX": 110404.27440779586,
+      "CurrentPosY": 162584.4178265885,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 120814.49231684177,
+      "PosY": 164487.06902461458,
+      "PosZ": 0,
+      "CurrentPosX": 121109.19090649742,
+      "CurrentPosY": 164597.14255633974,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 118965.71884216447,
+      "PosY": 180786.3103618309,
+      "PosZ": 0,
+      "CurrentPosX": 119214.95483305445,
+      "CurrentPosY": 180964.76067658747,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 109791.81371110123,
+      "PosY": 303258.8263860166,
+      "PosZ": 0,
+      "CurrentPosX": 110069.33701054205,
+      "CurrentPosY": 303509.2704894359,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 120441.01159050706,
+      "PosY": 305332.04208348657,
+      "PosZ": 0,
+      "CurrentPosX": 120777.98314786551,
+      "CurrentPosY": 305551.3783056501,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 118593.56122704233,
+      "PosY": 321643.29866615706,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 126139.10653313743,
+      "PosY": 162456.99224776923,
+      "PosZ": 0,
+      "CurrentPosX": 126384.75963016832,
+      "CurrentPosY": 162623.76059307856,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 136789.1692119516,
+      "PosY": 164518.7408894487,
+      "PosZ": 0,
+      "CurrentPosX": 137076.69795954926,
+      "CurrentPosY": 164697.40028190543,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 134938.50552682005,
+      "PosY": 180827.78816315785,
+      "PosZ": 0,
+      "CurrentPosX": 135202.5809361647,
+      "CurrentPosY": 180991.39808758046,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 236724.8645333623,
+      "PosY": 162733.67033231747,
+      "PosZ": 0,
+      "CurrentPosX": 236883.75487978477,
+      "CurrentPosY": 162831.33666530252,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 247379.45568793375,
+      "PosY": 164819.52057615385,
+      "PosZ": 0,
+      "CurrentPosX": 247451.14564677817,
+      "CurrentPosY": 164878.60989163886,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 245530.68221325657,
+      "PosY": 181118.7619133702,
+      "PosZ": 0,
+      "CurrentPosX": 245640.79871322634,
+      "CurrentPosY": 181209.53517382755,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 236356.7770821932,
+      "PosY": 303591.2779375559,
+      "PosZ": 0,
+      "CurrentPosX": 236799.07320116588,
+      "CurrentPosY": 304167.9301447598,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 247005.974961599,
+      "PosY": 305664.4936350259,
+      "PosZ": 0,
+      "CurrentPosX": 247480.7405350129,
+      "CurrentPosY": 306243.84166092356,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 245158.52459813427,
+      "PosY": 321975.7502176962,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 252704.06990422952,
+      "PosY": 162789.44379930868,
+      "PosZ": 0,
+      "CurrentPosX": 252817.14996638324,
+      "CurrentPosY": 162883.88736677147,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 263354.13258304336,
+      "PosY": 164851.19244098806,
+      "PosZ": 0,
+      "CurrentPosX": 263457.34839446296,
+      "CurrentPosY": 164902.02427228796,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 261503.4688979123,
+      "PosY": 181160.23971469715,
+      "PosZ": 0,
+      "CurrentPosX": 261594.30210713623,
+      "CurrentPosY": 181224.4264911653,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 363289.82790445426,
+      "PosY": 163066.1218838568,
+      "PosZ": 0,
+      "CurrentPosX": 363292.4465088642,
+      "CurrentPosY": 162992.79317629943,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 373944.41905902576,
+      "PosY": 165151.97212769304,
+      "PosZ": 0,
+      "CurrentPosX": 373945.93840026413,
+      "CurrentPosY": 165038.4067523398,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 372095.6455843489,
+      "PosY": 181451.21346490955,
+      "PosZ": 0,
+      "CurrentPosX": 372110.4602696311,
+      "CurrentPosY": 181375.78164731013,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 362921.7404532852,
+      "PosY": 303923.729489095,
+      "PosZ": 0,
+      "CurrentPosX": 362869.28774585866,
+      "CurrentPosY": 303862.5499775002,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 373570.9383326909,
+      "PosY": 305996.94518656516,
+      "PosZ": 0,
+      "CurrentPosX": 373489.3504964553,
+      "CurrentPosY": 305929.8749231978,
+      "CurrentPosZ": 73828,
+      "AlignResult": 0,
+      "AlignMode": 1
+    },
+    {
+      "PosX": 371723.48796922655,
+      "PosY": 322308.20176923554,
+      "PosZ": 0,
+      "CurrentPosX": 371782.3688519227,
+      "CurrentPosY": 322240.6509969146,
+      "CurrentPosZ": 73428,
+      "AlignResult": 0,
+      "AlignMode": 0
     }
   ]
 }

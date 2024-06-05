@@ -24,7 +24,8 @@
       "IndexX": 0,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -34,7 +35,8 @@
       "IndexX": 0,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -44,7 +46,8 @@
       "IndexX": 0,
       "IndexY": 2,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -54,7 +57,8 @@
       "IndexX": 0,
       "IndexY": 3,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -64,7 +68,8 @@
       "IndexX": 0,
       "IndexY": 4,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -74,7 +79,8 @@
       "IndexX": 0,
       "IndexY": 5,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -84,7 +90,8 @@
       "IndexX": 0,
       "IndexY": 6,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -94,7 +101,8 @@
       "IndexX": 0,
       "IndexY": 7,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -104,7 +112,8 @@
       "IndexX": 0,
       "IndexY": 8,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -114,7 +123,8 @@
       "IndexX": 0,
       "IndexY": 9,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -124,7 +134,8 @@
       "IndexX": 0,
       "IndexY": 10,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -134,7 +145,8 @@
       "IndexX": 0,
       "IndexY": 11,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -144,7 +156,8 @@
       "IndexX": 0,
       "IndexY": 12,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -154,7 +167,8 @@
       "IndexX": 0,
       "IndexY": 13,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -164,7 +178,8 @@
       "IndexX": 0,
       "IndexY": 14,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -174,7 +189,8 @@
       "IndexX": 0,
       "IndexY": 15,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -184,7 +200,8 @@
       "IndexX": 0,
       "IndexY": 16,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -194,7 +211,8 @@
       "IndexX": 0,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1515472.0327061913,
@@ -204,7 +222,8 @@
       "IndexX": 0,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -214,7 +233,8 @@
       "IndexX": 1,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -224,7 +244,8 @@
       "IndexX": 1,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -234,7 +255,8 @@
       "IndexX": 1,
       "IndexY": 2,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -244,7 +266,8 @@
       "IndexX": 1,
       "IndexY": 3,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -254,7 +277,8 @@
       "IndexX": 1,
       "IndexY": 4,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -264,7 +288,8 @@
       "IndexX": 1,
       "IndexY": 5,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -274,7 +299,8 @@
       "IndexX": 1,
       "IndexY": 6,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -284,7 +310,8 @@
       "IndexX": 1,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -294,7 +321,8 @@
       "IndexX": 1,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -304,7 +332,8 @@
       "IndexX": 1,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -314,7 +343,8 @@
       "IndexX": 1,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -324,7 +354,8 @@
       "IndexX": 1,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -334,7 +365,8 @@
       "IndexX": 1,
       "IndexY": 12,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -344,7 +376,8 @@
       "IndexX": 1,
       "IndexY": 13,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -354,7 +387,8 @@
       "IndexX": 1,
       "IndexY": 14,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -364,7 +398,8 @@
       "IndexX": 1,
       "IndexY": 15,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -374,7 +409,8 @@
       "IndexX": 1,
       "IndexY": 16,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -384,7 +420,8 @@
       "IndexX": 1,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -394,7 +431,8 @@
       "IndexX": 1,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -404,7 +442,8 @@
       "IndexX": 2,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -414,7 +453,8 @@
       "IndexX": 2,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -424,7 +464,8 @@
       "IndexX": 2,
       "IndexY": 2,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -434,7 +475,8 @@
       "IndexX": 2,
       "IndexY": 3,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -444,7 +486,8 @@
       "IndexX": 2,
       "IndexY": 4,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -454,7 +497,8 @@
       "IndexX": 2,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -464,7 +508,8 @@
       "IndexX": 2,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -474,7 +519,8 @@
       "IndexX": 2,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -484,7 +530,8 @@
       "IndexX": 2,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -494,7 +541,8 @@
       "IndexX": 2,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -504,7 +552,8 @@
       "IndexX": 2,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -514,7 +563,8 @@
       "IndexX": 2,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -524,7 +574,8 @@
       "IndexX": 2,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -534,7 +585,8 @@
       "IndexX": 2,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -544,7 +596,8 @@
       "IndexX": 2,
       "IndexY": 14,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -554,7 +607,8 @@
       "IndexX": 2,
       "IndexY": 15,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -564,7 +618,8 @@
       "IndexX": 2,
       "IndexY": 16,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -574,7 +629,8 @@
       "IndexX": 2,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -584,7 +640,8 @@
       "IndexX": 2,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -594,7 +651,8 @@
       "IndexX": 3,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -604,7 +662,8 @@
       "IndexX": 3,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -614,7 +673,8 @@
       "IndexX": 3,
       "IndexY": 2,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -624,7 +684,8 @@
       "IndexX": 3,
       "IndexY": 3,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -634,7 +695,8 @@
       "IndexX": 3,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -644,7 +706,8 @@
       "IndexX": 3,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -654,7 +717,8 @@
       "IndexX": 3,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -664,7 +728,8 @@
       "IndexX": 3,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -674,7 +739,8 @@
       "IndexX": 3,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -684,7 +750,8 @@
       "IndexX": 3,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -694,7 +761,8 @@
       "IndexX": 3,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -704,7 +772,8 @@
       "IndexX": 3,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -714,7 +783,8 @@
       "IndexX": 3,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -724,7 +794,8 @@
       "IndexX": 3,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -734,7 +805,8 @@
       "IndexX": 3,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -744,7 +816,8 @@
       "IndexX": 3,
       "IndexY": 15,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -754,7 +827,8 @@
       "IndexX": 3,
       "IndexY": 16,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -764,7 +838,8 @@
       "IndexX": 3,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -774,7 +849,8 @@
       "IndexX": 3,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -784,7 +860,8 @@
       "IndexX": 4,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -794,7 +871,8 @@
       "IndexX": 4,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -804,7 +882,8 @@
       "IndexX": 4,
       "IndexY": 2,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -814,7 +893,8 @@
       "IndexX": 4,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -824,7 +904,8 @@
       "IndexX": 4,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -834,7 +915,8 @@
       "IndexX": 4,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -844,7 +926,8 @@
       "IndexX": 4,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -854,7 +937,8 @@
       "IndexX": 4,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -864,7 +948,8 @@
       "IndexX": 4,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -874,7 +959,8 @@
       "IndexX": 4,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -884,7 +970,8 @@
       "IndexX": 4,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -894,7 +981,8 @@
       "IndexX": 4,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -904,7 +992,8 @@
       "IndexX": 4,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -914,7 +1003,8 @@
       "IndexX": 4,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -924,7 +1014,8 @@
       "IndexX": 4,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -934,7 +1025,8 @@
       "IndexX": 4,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -944,7 +1036,8 @@
       "IndexX": 4,
       "IndexY": 16,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -954,7 +1047,8 @@
       "IndexX": 4,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -964,7 +1058,8 @@
       "IndexX": 4,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -974,7 +1069,8 @@
       "IndexX": 5,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -984,7 +1080,8 @@
       "IndexX": 5,
       "IndexY": 1,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -994,7 +1091,8 @@
       "IndexX": 5,
       "IndexY": 2,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1004,7 +1102,8 @@
       "IndexX": 5,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1014,7 +1113,8 @@
       "IndexX": 5,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1024,7 +1124,8 @@
       "IndexX": 5,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1034,7 +1135,8 @@
       "IndexX": 5,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1044,7 +1146,8 @@
       "IndexX": 5,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1054,7 +1157,8 @@
       "IndexX": 5,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1064,7 +1168,8 @@
       "IndexX": 5,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1074,7 +1179,8 @@
       "IndexX": 5,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1084,7 +1190,8 @@
       "IndexX": 5,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1094,7 +1201,8 @@
       "IndexX": 5,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1104,7 +1212,8 @@
       "IndexX": 5,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1114,7 +1223,8 @@
       "IndexX": 5,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1124,7 +1234,8 @@
       "IndexX": 5,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1134,7 +1245,8 @@
       "IndexX": 5,
       "IndexY": 16,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1144,7 +1256,8 @@
       "IndexX": 5,
       "IndexY": 17,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1154,7 +1267,8 @@
       "IndexX": 5,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1164,7 +1278,8 @@
       "IndexX": 6,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1174,7 +1289,8 @@
       "IndexX": 6,
       "IndexY": 1,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1184,7 +1300,8 @@
       "IndexX": 6,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1194,7 +1311,8 @@
       "IndexX": 6,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1204,7 +1322,8 @@
       "IndexX": 6,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1214,7 +1333,8 @@
       "IndexX": 6,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1224,7 +1344,8 @@
       "IndexX": 6,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1234,7 +1355,8 @@
       "IndexX": 6,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1244,7 +1366,8 @@
       "IndexX": 6,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1254,7 +1377,8 @@
       "IndexX": 6,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1264,7 +1388,8 @@
       "IndexX": 6,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1274,7 +1399,8 @@
       "IndexX": 6,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1284,7 +1410,8 @@
       "IndexX": 6,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1294,7 +1421,8 @@
       "IndexX": 6,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1304,7 +1432,8 @@
       "IndexX": 6,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1314,7 +1443,8 @@
       "IndexX": 6,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1324,7 +1454,8 @@
       "IndexX": 6,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1334,7 +1465,8 @@
       "IndexX": 6,
       "IndexY": 17,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1344,7 +1476,8 @@
       "IndexX": 6,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1354,7 +1487,8 @@
       "IndexX": 7,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1364,7 +1498,8 @@
       "IndexX": 7,
       "IndexY": 1,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1374,7 +1509,8 @@
       "IndexX": 7,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1384,7 +1520,8 @@
       "IndexX": 7,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1394,7 +1531,8 @@
       "IndexX": 7,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1404,7 +1542,8 @@
       "IndexX": 7,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1414,7 +1553,8 @@
       "IndexX": 7,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1424,7 +1564,8 @@
       "IndexX": 7,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1434,7 +1575,8 @@
       "IndexX": 7,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1444,7 +1586,8 @@
       "IndexX": 7,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1454,7 +1597,8 @@
       "IndexX": 7,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1464,7 +1608,8 @@
       "IndexX": 7,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1474,7 +1619,8 @@
       "IndexX": 7,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1484,7 +1630,8 @@
       "IndexX": 7,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1494,7 +1641,8 @@
       "IndexX": 7,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1504,7 +1652,8 @@
       "IndexX": 7,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1514,7 +1663,8 @@
       "IndexX": 7,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1524,7 +1674,8 @@
       "IndexX": 7,
       "IndexY": 17,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1534,7 +1685,8 @@
       "IndexX": 7,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1544,7 +1696,8 @@
       "IndexX": 8,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1554,7 +1707,8 @@
       "IndexX": 8,
       "IndexY": 1,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1564,7 +1718,8 @@
       "IndexX": 8,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1574,7 +1729,8 @@
       "IndexX": 8,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1584,7 +1740,8 @@
       "IndexX": 8,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1594,7 +1751,8 @@
       "IndexX": 8,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1604,7 +1762,8 @@
       "IndexX": 8,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1614,7 +1773,8 @@
       "IndexX": 8,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1624,7 +1784,8 @@
       "IndexX": 8,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1634,7 +1795,8 @@
       "IndexX": 8,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1644,7 +1806,8 @@
       "IndexX": 8,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1654,7 +1817,8 @@
       "IndexX": 8,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1664,7 +1828,8 @@
       "IndexX": 8,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1674,7 +1839,8 @@
       "IndexX": 8,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1684,7 +1850,8 @@
       "IndexX": 8,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1694,7 +1861,8 @@
       "IndexX": 8,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1704,7 +1872,8 @@
       "IndexX": 8,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1714,7 +1883,8 @@
       "IndexX": 8,
       "IndexY": 17,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -502948.83270619146,
@@ -1724,7 +1894,8 @@
       "IndexX": 8,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1734,7 +1905,8 @@
       "IndexX": 9,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1744,7 +1916,8 @@
       "IndexX": 9,
       "IndexY": 1,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1754,7 +1927,8 @@
       "IndexX": 9,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1764,7 +1938,8 @@
       "IndexX": 9,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1774,7 +1949,8 @@
       "IndexX": 9,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1784,7 +1960,8 @@
       "IndexX": 9,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1794,7 +1971,8 @@
       "IndexX": 9,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1804,7 +1982,8 @@
       "IndexX": 9,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1814,7 +1993,8 @@
       "IndexX": 9,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1824,7 +2004,8 @@
       "IndexX": 9,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1834,7 +2015,8 @@
       "IndexX": 9,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1844,7 +2026,8 @@
       "IndexX": 9,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1854,7 +2037,8 @@
       "IndexX": 9,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1864,7 +2048,8 @@
       "IndexX": 9,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1874,7 +2059,8 @@
       "IndexX": 9,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1884,7 +2070,8 @@
       "IndexX": 9,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1894,7 +2081,8 @@
       "IndexX": 9,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1904,7 +2092,8 @@
       "IndexX": 9,
       "IndexY": 17,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -376383.43270619144,
@@ -1914,7 +2103,8 @@
       "IndexX": 9,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -1924,7 +2114,8 @@
       "IndexX": 10,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -1934,7 +2125,8 @@
       "IndexX": 10,
       "IndexY": 1,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -1944,7 +2136,8 @@
       "IndexX": 10,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -1954,7 +2147,8 @@
       "IndexX": 10,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -1964,7 +2158,8 @@
       "IndexX": 10,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -1974,7 +2169,8 @@
       "IndexX": 10,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -1984,7 +2180,8 @@
       "IndexX": 10,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -1994,7 +2191,8 @@
       "IndexX": 10,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2004,7 +2202,8 @@
       "IndexX": 10,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2014,7 +2213,8 @@
       "IndexX": 10,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2024,7 +2224,8 @@
       "IndexX": 10,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2034,7 +2235,8 @@
       "IndexX": 10,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2044,7 +2246,8 @@
       "IndexX": 10,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2054,7 +2257,8 @@
       "IndexX": 10,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2064,7 +2268,8 @@
       "IndexX": 10,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2074,7 +2279,8 @@
       "IndexX": 10,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2084,7 +2290,8 @@
       "IndexX": 10,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2094,7 +2301,8 @@
       "IndexX": 10,
       "IndexY": 17,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2104,7 +2312,8 @@
       "IndexX": 10,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2114,7 +2323,8 @@
       "IndexX": 11,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2124,7 +2334,8 @@
       "IndexX": 11,
       "IndexY": 1,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2134,7 +2345,8 @@
       "IndexX": 11,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2144,7 +2356,8 @@
       "IndexX": 11,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2154,7 +2367,8 @@
       "IndexX": 11,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2164,7 +2378,8 @@
       "IndexX": 11,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2174,7 +2389,8 @@
       "IndexX": 11,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2184,7 +2400,8 @@
       "IndexX": 11,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2194,7 +2411,8 @@
       "IndexX": 11,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2204,7 +2422,8 @@
       "IndexX": 11,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2214,7 +2433,8 @@
       "IndexX": 11,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2224,7 +2444,8 @@
       "IndexX": 11,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2234,7 +2455,8 @@
       "IndexX": 11,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2244,7 +2466,8 @@
       "IndexX": 11,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2254,7 +2477,8 @@
       "IndexX": 11,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2264,7 +2488,8 @@
       "IndexX": 11,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2274,7 +2499,8 @@
       "IndexX": 11,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2284,7 +2510,8 @@
       "IndexX": 11,
       "IndexY": 17,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2294,7 +2521,8 @@
       "IndexX": 11,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2304,7 +2532,8 @@
       "IndexX": 12,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2314,7 +2543,8 @@
       "IndexX": 12,
       "IndexY": 1,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2324,7 +2554,8 @@
       "IndexX": 12,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2334,7 +2565,8 @@
       "IndexX": 12,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2344,7 +2576,8 @@
       "IndexX": 12,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2354,7 +2587,8 @@
       "IndexX": 12,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2364,7 +2598,8 @@
       "IndexX": 12,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2374,7 +2609,8 @@
       "IndexX": 12,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2384,7 +2620,8 @@
       "IndexX": 12,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2394,7 +2631,8 @@
       "IndexX": 12,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2404,7 +2642,8 @@
       "IndexX": 12,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2414,7 +2653,8 @@
       "IndexX": 12,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2424,7 +2664,8 @@
       "IndexX": 12,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2434,7 +2675,8 @@
       "IndexX": 12,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2444,7 +2686,8 @@
       "IndexX": 12,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2454,7 +2697,8 @@
       "IndexX": 12,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2464,7 +2708,8 @@
       "IndexX": 12,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2474,7 +2719,8 @@
       "IndexX": 12,
       "IndexY": 17,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2484,7 +2730,8 @@
       "IndexX": 12,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2494,7 +2741,8 @@
       "IndexX": 13,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2504,7 +2752,8 @@
       "IndexX": 13,
       "IndexY": 1,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2514,7 +2763,8 @@
       "IndexX": 13,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2524,7 +2774,8 @@
       "IndexX": 13,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2534,7 +2785,8 @@
       "IndexX": 13,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2544,7 +2796,8 @@
       "IndexX": 13,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2554,7 +2807,8 @@
       "IndexX": 13,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2564,7 +2818,8 @@
       "IndexX": 13,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2574,7 +2829,8 @@
       "IndexX": 13,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2584,7 +2840,8 @@
       "IndexX": 13,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2594,7 +2851,8 @@
       "IndexX": 13,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2604,7 +2862,8 @@
       "IndexX": 13,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2614,7 +2873,8 @@
       "IndexX": 13,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2624,7 +2884,8 @@
       "IndexX": 13,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2634,7 +2895,8 @@
       "IndexX": 13,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2644,7 +2906,8 @@
       "IndexX": 13,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2654,7 +2917,8 @@
       "IndexX": 13,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2664,7 +2928,8 @@
       "IndexX": 13,
       "IndexY": 17,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 129878.16729380851,
@@ -2674,7 +2939,8 @@
       "IndexX": 13,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2684,7 +2950,8 @@
       "IndexX": 14,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2694,7 +2961,8 @@
       "IndexX": 14,
       "IndexY": 1,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2704,7 +2972,8 @@
       "IndexX": 14,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2714,7 +2983,8 @@
       "IndexX": 14,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2724,7 +2994,8 @@
       "IndexX": 14,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2734,7 +3005,8 @@
       "IndexX": 14,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2744,7 +3016,8 @@
       "IndexX": 14,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2754,7 +3027,8 @@
       "IndexX": 14,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2764,7 +3038,8 @@
       "IndexX": 14,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2774,7 +3049,8 @@
       "IndexX": 14,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2784,7 +3060,8 @@
       "IndexX": 14,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2794,7 +3071,8 @@
       "IndexX": 14,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2804,7 +3082,8 @@
       "IndexX": 14,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2814,7 +3093,8 @@
       "IndexX": 14,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2824,7 +3104,8 @@
       "IndexX": 14,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2834,7 +3115,8 @@
       "IndexX": 14,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2844,7 +3126,8 @@
       "IndexX": 14,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2854,7 +3137,8 @@
       "IndexX": 14,
       "IndexY": 17,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 256443.5672938085,
@@ -2864,7 +3148,8 @@
       "IndexX": 14,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2874,7 +3159,8 @@
       "IndexX": 15,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2884,7 +3170,8 @@
       "IndexX": 15,
       "IndexY": 1,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2894,7 +3181,8 @@
       "IndexX": 15,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2904,7 +3192,8 @@
       "IndexX": 15,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2914,7 +3203,8 @@
       "IndexX": 15,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2924,7 +3214,8 @@
       "IndexX": 15,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2934,7 +3225,8 @@
       "IndexX": 15,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2944,7 +3236,8 @@
       "IndexX": 15,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2954,7 +3247,8 @@
       "IndexX": 15,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2964,7 +3258,8 @@
       "IndexX": 15,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2974,7 +3269,8 @@
       "IndexX": 15,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2984,7 +3280,8 @@
       "IndexX": 15,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -2994,7 +3291,8 @@
       "IndexX": 15,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -3004,7 +3302,8 @@
       "IndexX": 15,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -3014,7 +3313,8 @@
       "IndexX": 15,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -3024,7 +3324,8 @@
       "IndexX": 15,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -3034,7 +3335,8 @@
       "IndexX": 15,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -3044,7 +3346,8 @@
       "IndexX": 15,
       "IndexY": 17,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 383008.96729380847,
@@ -3054,7 +3357,8 @@
       "IndexX": 15,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3064,7 +3368,8 @@
       "IndexX": 16,
       "IndexY": 0,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3074,7 +3379,8 @@
       "IndexX": 16,
       "IndexY": 1,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3084,7 +3390,8 @@
       "IndexX": 16,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3094,7 +3401,8 @@
       "IndexX": 16,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3104,7 +3412,8 @@
       "IndexX": 16,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3114,7 +3423,8 @@
       "IndexX": 16,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3124,7 +3434,8 @@
       "IndexX": 16,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3134,7 +3445,8 @@
       "IndexX": 16,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3144,7 +3456,8 @@
       "IndexX": 16,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3154,7 +3467,8 @@
       "IndexX": 16,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3164,7 +3478,8 @@
       "IndexX": 16,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3174,7 +3489,8 @@
       "IndexX": 16,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3184,7 +3500,8 @@
       "IndexX": 16,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3194,7 +3511,8 @@
       "IndexX": 16,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3204,7 +3522,8 @@
       "IndexX": 16,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3214,7 +3533,8 @@
       "IndexX": 16,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3224,7 +3544,8 @@
       "IndexX": 16,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3234,7 +3555,8 @@
       "IndexX": 16,
       "IndexY": 17,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3244,7 +3566,8 @@
       "IndexX": 16,
       "IndexY": 18,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3254,7 +3577,8 @@
       "IndexX": 17,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3264,7 +3588,8 @@
       "IndexX": 17,
       "IndexY": 1,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3274,7 +3599,8 @@
       "IndexX": 17,
       "IndexY": 2,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3284,7 +3610,8 @@
       "IndexX": 17,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3294,7 +3621,8 @@
       "IndexX": 17,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3304,7 +3632,8 @@
       "IndexX": 17,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3314,7 +3643,8 @@
       "IndexX": 17,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3324,7 +3654,8 @@
       "IndexX": 17,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3334,7 +3665,8 @@
       "IndexX": 17,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3344,7 +3676,8 @@
       "IndexX": 17,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3354,7 +3687,8 @@
       "IndexX": 17,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3364,7 +3698,8 @@
       "IndexX": 17,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3374,7 +3709,8 @@
       "IndexX": 17,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3384,7 +3720,8 @@
       "IndexX": 17,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3394,7 +3731,8 @@
       "IndexX": 17,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3404,7 +3742,8 @@
       "IndexX": 17,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3414,7 +3753,8 @@
       "IndexX": 17,
       "IndexY": 16,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3424,7 +3764,8 @@
       "IndexX": 17,
       "IndexY": 17,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3434,7 +3775,8 @@
       "IndexX": 17,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3444,7 +3786,8 @@
       "IndexX": 18,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3454,7 +3797,8 @@
       "IndexX": 18,
       "IndexY": 1,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3464,7 +3808,8 @@
       "IndexX": 18,
       "IndexY": 2,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3474,7 +3819,8 @@
       "IndexX": 18,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3484,7 +3830,8 @@
       "IndexX": 18,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3494,7 +3841,8 @@
       "IndexX": 18,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3504,7 +3852,8 @@
       "IndexX": 18,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3514,7 +3863,8 @@
       "IndexX": 18,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3524,7 +3874,8 @@
       "IndexX": 18,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3534,7 +3885,8 @@
       "IndexX": 18,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3544,7 +3896,8 @@
       "IndexX": 18,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3554,7 +3907,8 @@
       "IndexX": 18,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3564,7 +3918,8 @@
       "IndexX": 18,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3574,7 +3929,8 @@
       "IndexX": 18,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3584,7 +3940,8 @@
       "IndexX": 18,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3594,7 +3951,8 @@
       "IndexX": 18,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3604,7 +3962,8 @@
       "IndexX": 18,
       "IndexY": 16,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3614,7 +3973,8 @@
       "IndexX": 18,
       "IndexY": 17,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 762705.1672938084,
@@ -3624,7 +3984,8 @@
       "IndexX": 18,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3634,7 +3995,8 @@
       "IndexX": 19,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3644,7 +4006,8 @@
       "IndexX": 19,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3654,7 +4017,8 @@
       "IndexX": 19,
       "IndexY": 2,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3664,7 +4028,8 @@
       "IndexX": 19,
       "IndexY": 3,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3674,7 +4039,8 @@
       "IndexX": 19,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3684,7 +4050,8 @@
       "IndexX": 19,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3694,7 +4061,8 @@
       "IndexX": 19,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3704,7 +4072,8 @@
       "IndexX": 19,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3714,7 +4083,8 @@
       "IndexX": 19,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3724,7 +4094,8 @@
       "IndexX": 19,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3734,7 +4105,8 @@
       "IndexX": 19,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3744,7 +4116,8 @@
       "IndexX": 19,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3754,7 +4127,8 @@
       "IndexX": 19,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3764,7 +4138,8 @@
       "IndexX": 19,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3774,7 +4149,8 @@
       "IndexX": 19,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3784,7 +4160,8 @@
       "IndexX": 19,
       "IndexY": 15,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3794,7 +4171,8 @@
       "IndexX": 19,
       "IndexY": 16,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3804,7 +4182,8 @@
       "IndexX": 19,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 889270.5672938084,
@@ -3814,7 +4193,8 @@
       "IndexX": 19,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3824,7 +4204,8 @@
       "IndexX": 20,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3834,7 +4215,8 @@
       "IndexX": 20,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3844,7 +4226,8 @@
       "IndexX": 20,
       "IndexY": 2,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3854,7 +4237,8 @@
       "IndexX": 20,
       "IndexY": 3,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3864,7 +4248,8 @@
       "IndexX": 20,
       "IndexY": 4,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3874,7 +4259,8 @@
       "IndexX": 20,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3884,7 +4270,8 @@
       "IndexX": 20,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3894,7 +4281,8 @@
       "IndexX": 20,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3904,7 +4292,8 @@
       "IndexX": 20,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3914,7 +4303,8 @@
       "IndexX": 20,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3924,7 +4314,8 @@
       "IndexX": 20,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3934,7 +4325,8 @@
       "IndexX": 20,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3944,7 +4336,8 @@
       "IndexX": 20,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3954,7 +4347,8 @@
       "IndexX": 20,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3964,7 +4358,8 @@
       "IndexX": 20,
       "IndexY": 14,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3974,7 +4369,8 @@
       "IndexX": 20,
       "IndexY": 15,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3984,7 +4380,8 @@
       "IndexX": 20,
       "IndexY": 16,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -3994,7 +4391,8 @@
       "IndexX": 20,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -4004,7 +4402,8 @@
       "IndexX": 20,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4014,7 +4413,8 @@
       "IndexX": 21,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4024,7 +4424,8 @@
       "IndexX": 21,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4034,7 +4435,8 @@
       "IndexX": 21,
       "IndexY": 2,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4044,7 +4446,8 @@
       "IndexX": 21,
       "IndexY": 3,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4054,7 +4457,8 @@
       "IndexX": 21,
       "IndexY": 4,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4064,7 +4468,8 @@
       "IndexX": 21,
       "IndexY": 5,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4074,7 +4479,8 @@
       "IndexX": 21,
       "IndexY": 6,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4084,7 +4490,8 @@
       "IndexX": 21,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4094,7 +4501,8 @@
       "IndexX": 21,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4104,7 +4512,8 @@
       "IndexX": 21,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4114,7 +4523,8 @@
       "IndexX": 21,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4124,7 +4534,8 @@
       "IndexX": 21,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4134,7 +4545,8 @@
       "IndexX": 21,
       "IndexY": 12,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4144,7 +4556,8 @@
       "IndexX": 21,
       "IndexY": 13,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4154,7 +4567,8 @@
       "IndexX": 21,
       "IndexY": 14,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4164,7 +4578,8 @@
       "IndexX": 21,
       "IndexY": 15,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4174,7 +4589,8 @@
       "IndexX": 21,
       "IndexY": 16,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4184,7 +4600,8 @@
       "IndexX": 21,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4194,7 +4611,8 @@
       "IndexX": 21,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4204,7 +4622,8 @@
       "IndexX": 22,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4214,7 +4633,8 @@
       "IndexX": 22,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4224,7 +4644,8 @@
       "IndexX": 22,
       "IndexY": 2,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4234,7 +4655,8 @@
       "IndexX": 22,
       "IndexY": 3,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4244,7 +4666,8 @@
       "IndexX": 22,
       "IndexY": 4,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4254,7 +4677,8 @@
       "IndexX": 22,
       "IndexY": 5,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4264,7 +4688,8 @@
       "IndexX": 22,
       "IndexY": 6,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4274,7 +4699,8 @@
       "IndexX": 22,
       "IndexY": 7,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4284,7 +4710,8 @@
       "IndexX": 22,
       "IndexY": 8,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4294,7 +4721,8 @@
       "IndexX": 22,
       "IndexY": 9,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4304,7 +4732,8 @@
       "IndexX": 22,
       "IndexY": 10,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4314,7 +4743,8 @@
       "IndexX": 22,
       "IndexY": 11,
       "BIN": 1,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4324,7 +4754,8 @@
       "IndexX": 22,
       "IndexY": 12,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4334,7 +4765,8 @@
       "IndexX": 22,
       "IndexY": 13,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4344,7 +4776,8 @@
       "IndexX": 22,
       "IndexY": 14,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4354,7 +4787,8 @@
       "IndexX": 22,
       "IndexY": 15,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4364,7 +4798,8 @@
       "IndexX": 22,
       "IndexY": 16,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4374,7 +4809,8 @@
       "IndexX": 22,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -4384,7 +4820,8 @@
       "IndexX": 22,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4394,7 +4831,8 @@
       "IndexX": 23,
       "IndexY": 0,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4404,7 +4842,8 @@
       "IndexX": 23,
       "IndexY": 1,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4414,7 +4853,8 @@
       "IndexX": 23,
       "IndexY": 2,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4424,7 +4864,8 @@
       "IndexX": 23,
       "IndexY": 3,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4434,7 +4875,8 @@
       "IndexX": 23,
       "IndexY": 4,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4444,7 +4886,8 @@
       "IndexX": 23,
       "IndexY": 5,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4454,7 +4897,8 @@
       "IndexX": 23,
       "IndexY": 6,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4464,7 +4908,8 @@
       "IndexX": 23,
       "IndexY": 7,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4474,7 +4919,8 @@
       "IndexX": 23,
       "IndexY": 8,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4484,7 +4930,8 @@
       "IndexX": 23,
       "IndexY": 9,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4494,7 +4941,8 @@
       "IndexX": 23,
       "IndexY": 10,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4504,7 +4952,8 @@
       "IndexX": 23,
       "IndexY": 11,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4514,7 +4963,8 @@
       "IndexX": 23,
       "IndexY": 12,
       "BIN": 3,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4524,7 +4974,8 @@
       "IndexX": 23,
       "IndexY": 13,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4534,7 +4985,8 @@
       "IndexX": 23,
       "IndexY": 14,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4544,7 +4996,8 @@
       "IndexX": 23,
       "IndexY": 15,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4554,7 +5007,8 @@
       "IndexX": 23,
       "IndexY": 16,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4564,7 +5018,8 @@
       "IndexX": 23,
       "IndexY": 17,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     },
     {
       "UserPosX": 1395532.1672938084,
@@ -4574,7 +5029,9 @@
       "IndexX": 23,
       "IndexY": 18,
       "BIN": 0,
-      "Coordinates": 0
+      "Coordinates": 0,
+      "Order": 0
     }
-  ]
+  ],
+  "OrderClasses": null
 }

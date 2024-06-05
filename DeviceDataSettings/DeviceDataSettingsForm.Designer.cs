@@ -37,6 +37,7 @@
             CbxDeviceData = new ComboBox();
             BtnSave = new Button();
             BtnLoad = new Button();
+            BtnSettings = new Button();
             panelMenu.SuspendLayout();
             panelFile.SuspendLayout();
             SuspendLayout();
@@ -85,6 +86,7 @@
             panelFile.BackColor = SystemColors.ActiveBorder;
             panelFile.Controls.Add(label1);
             panelFile.Controls.Add(CbxDeviceData);
+            panelFile.Controls.Add(BtnSettings);
             panelFile.Controls.Add(BtnSave);
             panelFile.Controls.Add(BtnLoad);
             panelFile.Dock = DockStyle.Right;
@@ -132,6 +134,17 @@
             BtnLoad.UseVisualStyleBackColor = false;
             BtnLoad.Click += BtnLoad_Click;
             // 
+            // BtnSettings
+            // 
+            BtnSettings.BackColor = Color.Orange;
+            BtnSettings.Location = new Point(0, 257);
+            BtnSettings.Name = "BtnSettings";
+            BtnSettings.Size = new Size(188, 60);
+            BtnSettings.TabIndex = 0;
+            BtnSettings.Text = "Settings";
+            BtnSettings.UseVisualStyleBackColor = false;
+            BtnSettings.Click += BtnSettings_Click;
+            // 
             // DeviceDataSettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -160,5 +173,6 @@
         private Button BtnLoad;
         private ComboBox CbxDeviceData;
         private Label label1;
+        private Button BtnSettings;
     }
 }

@@ -28,19 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BtnLowMag = new Button();
-            BtnHighMag = new Button();
-            BtnNeedleTipFocus = new Button();
-            BtnMovePinToTheCenter = new Button();
             groupBox1 = new GroupBox();
-            label5 = new Label();
-            label4 = new Label();
-            TxtTotal = new TextBox();
-            TxtIndex = new TextBox();
-            BtnGoToPin = new Button();
-            BtnGoToNextPin = new Button();
-            BtnGoToRefPin = new Button();
-            BtnGoToPrevPin = new Button();
             groupBox2 = new GroupBox();
             BtnDeletePinWPad = new Button();
             BtnUpdatePinWPad = new Button();
@@ -62,147 +50,25 @@
             BtnUpdateDegree = new Button();
             BtnFocusInitial = new Button();
             BtnOrgPinInitial = new Button();
-            groupBox1.SuspendLayout();
+            BtnPinData = new Button();
+            panelMag = new Panel();
+            BtnAdjustAngle = new Button();
+            groupBox3 = new GroupBox();
+            Rbtn4Pins = new RadioButton();
+            RbtnAllPins = new RadioButton();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumRefPinOffsetR).BeginInit();
+            groupBox3.SuspendLayout();
             SuspendLayout();
-            // 
-            // BtnLowMag
-            // 
-            BtnLowMag.BackColor = Color.Teal;
-            BtnLowMag.ForeColor = Color.White;
-            BtnLowMag.Location = new Point(1335, 2);
-            BtnLowMag.Name = "BtnLowMag";
-            BtnLowMag.Size = new Size(100, 65);
-            BtnLowMag.TabIndex = 23;
-            BtnLowMag.Text = "LowMag";
-            BtnLowMag.UseVisualStyleBackColor = false;
-            BtnLowMag.Click += BtnLowMag_Click;
-            // 
-            // BtnHighMag
-            // 
-            BtnHighMag.BackColor = Color.Teal;
-            BtnHighMag.ForeColor = Color.White;
-            BtnHighMag.Location = new Point(1223, 2);
-            BtnHighMag.Name = "BtnHighMag";
-            BtnHighMag.Size = new Size(106, 65);
-            BtnHighMag.TabIndex = 24;
-            BtnHighMag.Text = "HighMag";
-            BtnHighMag.UseVisualStyleBackColor = false;
-            BtnHighMag.Click += BtnHighMag_Click;
-            // 
-            // BtnNeedleTipFocus
-            // 
-            BtnNeedleTipFocus.Location = new Point(7, 146);
-            BtnNeedleTipFocus.Name = "BtnNeedleTipFocus";
-            BtnNeedleTipFocus.Size = new Size(99, 54);
-            BtnNeedleTipFocus.TabIndex = 25;
-            BtnNeedleTipFocus.Text = "Needle Tip Focus";
-            BtnNeedleTipFocus.UseVisualStyleBackColor = true;
-            BtnNeedleTipFocus.Click += BtnNeedleTipFocus_Click;
-            // 
-            // BtnMovePinToTheCenter
-            // 
-            BtnMovePinToTheCenter.Location = new Point(1335, 442);
-            BtnMovePinToTheCenter.Name = "BtnMovePinToTheCenter";
-            BtnMovePinToTheCenter.Size = new Size(94, 54);
-            BtnMovePinToTheCenter.TabIndex = 25;
-            BtnMovePinToTheCenter.Text = "Move Pin To The Center";
-            BtnMovePinToTheCenter.UseVisualStyleBackColor = true;
-            BtnMovePinToTheCenter.Click += BtnMovePinToTheCenter_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(TxtTotal);
-            groupBox1.Controls.Add(TxtIndex);
-            groupBox1.Controls.Add(BtnGoToPin);
-            groupBox1.Controls.Add(BtnGoToNextPin);
-            groupBox1.Controls.Add(BtnGoToRefPin);
-            groupBox1.Controls.Add(BtnGoToPrevPin);
-            groupBox1.Controls.Add(BtnNeedleTipFocus);
-            groupBox1.Location = new Point(1223, 296);
+            groupBox1.Location = new Point(1187, 321);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(212, 209);
+            groupBox1.Size = new Size(284, 263);
             groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
             groupBox1.Text = "Pin Search";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(142, 84);
-            label5.Name = "label5";
-            label5.Size = new Size(37, 17);
-            label5.TabIndex = 28;
-            label5.Text = "Total";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(76, 84);
-            label4.Name = "label4";
-            label4.Size = new Size(40, 17);
-            label4.TabIndex = 28;
-            label4.Text = "Index";
-            // 
-            // TxtTotal
-            // 
-            TxtTotal.Location = new Point(142, 104);
-            TxtTotal.Name = "TxtTotal";
-            TxtTotal.ReadOnly = true;
-            TxtTotal.Size = new Size(60, 23);
-            TxtTotal.TabIndex = 27;
-            TxtTotal.Text = "0";
-            // 
-            // TxtIndex
-            // 
-            TxtIndex.Location = new Point(76, 104);
-            TxtIndex.Name = "TxtIndex";
-            TxtIndex.Size = new Size(60, 23);
-            TxtIndex.TabIndex = 27;
-            TxtIndex.Text = "0";
-            // 
-            // BtnGoToPin
-            // 
-            BtnGoToPin.Location = new Point(6, 84);
-            BtnGoToPin.Name = "BtnGoToPin";
-            BtnGoToPin.Size = new Size(64, 56);
-            BtnGoToPin.TabIndex = 26;
-            BtnGoToPin.Text = "Go To Pin #";
-            BtnGoToPin.UseVisualStyleBackColor = true;
-            BtnGoToPin.Click += BtnGoToPin_Click;
-            // 
-            // BtnGoToNextPin
-            // 
-            BtnGoToNextPin.Location = new Point(142, 22);
-            BtnGoToNextPin.Name = "BtnGoToNextPin";
-            BtnGoToNextPin.Size = new Size(64, 56);
-            BtnGoToNextPin.TabIndex = 26;
-            BtnGoToNextPin.Text = "Next Pin";
-            BtnGoToNextPin.UseVisualStyleBackColor = true;
-            BtnGoToNextPin.Click += BtnGoToNextPin_Click;
-            // 
-            // BtnGoToRefPin
-            // 
-            BtnGoToRefPin.Location = new Point(74, 22);
-            BtnGoToRefPin.Name = "BtnGoToRefPin";
-            BtnGoToRefPin.Size = new Size(62, 56);
-            BtnGoToRefPin.TabIndex = 26;
-            BtnGoToRefPin.Text = "Ref Pin";
-            BtnGoToRefPin.UseVisualStyleBackColor = true;
-            BtnGoToRefPin.Click += BtnGoToRefPin_Click;
-            // 
-            // BtnGoToPrevPin
-            // 
-            BtnGoToPrevPin.Location = new Point(6, 22);
-            BtnGoToPrevPin.Name = "BtnGoToPrevPin";
-            BtnGoToPrevPin.Size = new Size(62, 56);
-            BtnGoToPrevPin.TabIndex = 26;
-            BtnGoToPrevPin.Text = "Prev Pin";
-            BtnGoToPrevPin.UseVisualStyleBackColor = true;
-            BtnGoToPrevPin.Click += BtnGoToPrevPin_Click;
             // 
             // groupBox2
             // 
@@ -212,9 +78,9 @@
             groupBox2.Controls.Add(BtnReadyToApply);
             groupBox2.Controls.Add(BtnRefPinRegistration);
             groupBox2.Controls.Add(BtnAddPinWPad);
-            groupBox2.Location = new Point(1223, 73);
+            groupBox2.Location = new Point(1187, 98);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(212, 217);
+            groupBox2.Size = new Size(214, 217);
             groupBox2.TabIndex = 27;
             groupBox2.TabStop = false;
             groupBox2.Text = "Registration";
@@ -356,7 +222,7 @@
             // panel2
             // 
             panel2.BackColor = Color.Black;
-            panel2.Location = new Point(1089, 511);
+            panel2.Location = new Point(1089, 618);
             panel2.Name = "panel2";
             panel2.Size = new Size(399, 387);
             panel2.TabIndex = 65;
@@ -392,9 +258,9 @@
             // 
             // BtnFocusInitial
             // 
-            BtnFocusInitial.Location = new Point(1118, 442);
+            BtnFocusInitial.Location = new Point(1093, 381);
             BtnFocusInitial.Name = "BtnFocusInitial";
-            BtnFocusInitial.Size = new Size(99, 54);
+            BtnFocusInitial.Size = new Size(88, 54);
             BtnFocusInitial.TabIndex = 25;
             BtnFocusInitial.Text = "Focus Initial";
             BtnFocusInitial.UseVisualStyleBackColor = true;
@@ -402,7 +268,8 @@
             // 
             // BtnOrgPinInitial
             // 
-            BtnOrgPinInitial.Location = new Point(1441, 106);
+            BtnOrgPinInitial.Enabled = false;
+            BtnOrgPinInitial.Location = new Point(1407, 98);
             BtnOrgPinInitial.Name = "BtnOrgPinInitial";
             BtnOrgPinInitial.Size = new Size(99, 54);
             BtnOrgPinInitial.TabIndex = 25;
@@ -410,11 +277,79 @@
             BtnOrgPinInitial.UseVisualStyleBackColor = true;
             BtnOrgPinInitial.Click += BtnOrgPinInitial_Click;
             // 
+            // BtnPinData
+            // 
+            BtnPinData.BackColor = Color.Teal;
+            BtnPinData.ForeColor = Color.White;
+            BtnPinData.Location = new Point(1093, 321);
+            BtnPinData.Name = "BtnPinData";
+            BtnPinData.Size = new Size(88, 54);
+            BtnPinData.TabIndex = 25;
+            BtnPinData.Text = "m_Pin";
+            BtnPinData.UseVisualStyleBackColor = false;
+            BtnPinData.Click += BtnPinData_Click;
+            // 
+            // panelMag
+            // 
+            panelMag.BackColor = Color.Black;
+            panelMag.Location = new Point(1187, 9);
+            panelMag.Name = "panelMag";
+            panelMag.Size = new Size(253, 83);
+            panelMag.TabIndex = 68;
+            // 
+            // BtnAdjustAngle
+            // 
+            BtnAdjustAngle.BackColor = Color.Orange;
+            BtnAdjustAngle.Location = new Point(6, 203);
+            BtnAdjustAngle.Name = "BtnAdjustAngle";
+            BtnAdjustAngle.Size = new Size(99, 54);
+            BtnAdjustAngle.TabIndex = 25;
+            BtnAdjustAngle.Text = "Adjust Angle";
+            BtnAdjustAngle.UseVisualStyleBackColor = false;
+            BtnAdjustAngle.Click += BtnAdjustAngle_Click;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(Rbtn4Pins);
+            groupBox3.Controls.Add(RbtnAllPins);
+            groupBox3.Controls.Add(BtnAdjustAngle);
+            groupBox3.Location = new Point(1477, 321);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(111, 263);
+            groupBox3.TabIndex = 69;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "AdjustAngle";
+            // 
+            // Rbtn4Pins
+            // 
+            Rbtn4Pins.AutoSize = true;
+            Rbtn4Pins.Location = new Point(14, 52);
+            Rbtn4Pins.Name = "Rbtn4Pins";
+            Rbtn4Pins.Size = new Size(60, 21);
+            Rbtn4Pins.TabIndex = 26;
+            Rbtn4Pins.TabStop = true;
+            Rbtn4Pins.Text = "4 Pins";
+            Rbtn4Pins.UseVisualStyleBackColor = true;
+            // 
+            // RbtnAllPins
+            // 
+            RbtnAllPins.AutoSize = true;
+            RbtnAllPins.Checked = true;
+            RbtnAllPins.Location = new Point(14, 25);
+            RbtnAllPins.Name = "RbtnAllPins";
+            RbtnAllPins.Size = new Size(67, 21);
+            RbtnAllPins.TabIndex = 26;
+            RbtnAllPins.TabStop = true;
+            RbtnAllPins.Text = "All Pins";
+            RbtnAllPins.UseVisualStyleBackColor = true;
+            // 
             // PinRegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1847, 1126);
+            Controls.Add(groupBox3);
+            Controls.Add(panelMag);
             Controls.Add(BtnUpdateDegree);
             Controls.Add(NumRefPinOffsetR);
             Controls.Add(panel2);
@@ -424,39 +359,29 @@
             Controls.Add(LblPinOffsetY);
             Controls.Add(LblPinOffsetX);
             Controls.Add(BtnOrgPinInitial);
+            Controls.Add(BtnPinData);
             Controls.Add(BtnFocusInitial);
             Controls.Add(label6);
             Controls.Add(label3);
-            Controls.Add(BtnMovePinToTheCenter);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(BtnLowMag);
-            Controls.Add(BtnHighMag);
             Name = "PinRegistrationForm";
             Text = "PinRegistrationForm";
+            Load += PinRegistrationForm_Load;
             VisibleChanged += PinRegistrationForm_VisibleChanged;
             ParentChanged += PinRegistrationForm_ParentChanged;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)NumRefPinOffsetR).EndInit();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Button BtnLowMag;
-        private Button BtnHighMag;
-        private Button BtnNeedleTipFocus;
-        private Button BtnMovePinToTheCenter;
         private GroupBox groupBox1;
-        private Button BtnGoToNextPin;
-        private Button BtnGoToPrevPin;
-        private Button BtnGoToPin;
-        private TextBox TxtIndex;
         private GroupBox groupBox2;
         private Button BtnDeletePinWPad;
         private Button BtnUpdatePinWPad;
@@ -472,15 +397,17 @@
         private Label LblPinOffsetZ;
         private Panel panel1;
         private CheckBox CBShowPins;
-        private Button BtnGoToRefPin;
         private Panel panel2;
-        private Label label5;
-        private Label label4;
-        private TextBox TxtTotal;
         private NumericUpDown NumRefPinOffsetR;
         private Label label6;
         private Button BtnUpdateDegree;
         private Button BtnFocusInitial;
         private Button BtnOrgPinInitial;
+        private Button BtnPinData;
+        private Panel panelMag;
+        private Button BtnAdjustAngle;
+        private GroupBox groupBox3;
+        private RadioButton Rbtn4Pins;
+        private RadioButton RbtnAllPins;
     }
 }

@@ -52,15 +52,14 @@ namespace WaferMapLibrary
     }
     public class Pin
     {
-        public double PosX { get; set; }//用户坐标系下的值Area=Probing,PinsAngle变化后，计算刷新posX
+        public double PosX { get; set; }//用户坐标系下的值Area=Probing,PinsAngle变化后，计算刷新posX(posX = currentposX)
         public double PosY { get; set; }//用户坐标系下的值Area=Probing,PinsAngle变化后，计算刷新posX
         public double PosZ { get; set; }//用户坐标系下的值Area=Probing,PinsAngle变化后，计算刷新posX
-        public double PresentPosX { get; set; }//直接采集到的坐标，用以和padData计算并修正PinsAngle
-        public double PresentPosY { get; set; }
-        public double PresentPosZ { get; set; }
-        public int Result { get; set; } = 0;
-        public bool Pin4Enable { get; set; }
-        public bool AllpinEnable { get; set; }
+        public double CurrentPosX { get; set; }//直接采集到的坐标，用以和padData计算并修正PinsAngle
+        public double CurrentPosY { get; set; }
+        public double CurrentPosZ { get; set; }
+        public int AlignResult { get; set; } = 0;
+        public int AlignMode { get; set; } = 0;//0 = All Pins; 1 = 4 pins
     };
     public class PinClass
     {
@@ -76,7 +75,7 @@ namespace WaferMapLibrary
     public static class PinData
     {
         public static PinClass Entity = new();
-        private static int currentIndex = 0;
+        private static int currentIndex = 0;//所有DUT里的Pin合计序列
         public static int CurrentIndex
         {
             get

@@ -18,10 +18,11 @@
     "NeddleTipFocusOffset": 60000,
     "TipFocusXArea": 100,
     "TipFocusYArea": 100,
-    "TipFocusExposureTime": 200,
+    "TipFocusExposureTime": 6000,
     "GetPinXArea": 800,
     "GetPinYArea": 800,
-    "GetPinExposureTime": 800
+    "GetPinExposureTime": 8000,
+    "PinAlignmentMode": 0
   },
   "Probing": {
     "Overdrive": 0,

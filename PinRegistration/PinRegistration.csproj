@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommonControlLibrary\CommonComponentLibrary.csproj" />
+    <ProjectReference Include="..\JsonDataShow\JsonDataShow.csproj" />
     <ProjectReference Include="..\MotionLibrary\MotionLibrary.csproj" />
     <ProjectReference Include="..\VisionClassLibrary\VisionLibrary.csproj" />
   </ItemGroup>

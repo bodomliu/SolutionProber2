@@ -524,7 +524,8 @@ namespace CommonComponentLibrary
         }
         public static void GoToPin(int index,bool isLowMode = false)
         {
-            if (index > PinData.Entity.Pins.Count) return;
+            if (PinData.Entity.Pins == null) return;
+            if (index > PinData.Entity.Pins.Count || index < 0) return;
             //根据粗精模式走点
             double refPinX = PinData.Entity.RefPinX;
             double refPinY = PinData.Entity.RefPinY;
@@ -541,15 +542,12 @@ namespace CommonComponentLibrary
             //第二步，得到目标Pin用户坐标
             double X = X0 - PinData.Entity.Pins[index].PosX;//标定时，目标点在(dX,dY)位置时的encode1，与目标从中点运动到(dX,dY)位置的encode符号相反
             double Y = Y0 - PinData.Entity.Pins[index].PosY;
-            //第三步，目标Pin绕RefPin旋转Angle得到的坐标X,Y
-            RotatePin(X,Y,X0,Y0,PinData.Entity.PinsAngle,out X,out Y );
-            //第四步，走用户坐标
+            //第三步，走用户坐标
             Motion.UserPosMoveAbs(Compensation.Area.Probing,X,Y);
             //第四步，上针
             Motion.AxisMoveAbs(1, 3, refPinZ, 600, 10, 10, 20);
             PinData.CurrentIndex = index;
         }
-
         /// <summary>
         /// 所有点绕RefPin(X0,Y0)旋转Angle角度
         /// </summary>
@@ -582,15 +580,5 @@ namespace CommonComponentLibrary
             Yout = (X - X0) * Math.Sin(ang) + (Y - Y0) * Math.Cos(ang) + Y0;
         }
         #endregion
-
-        public static void Delay(int mm)
-        {
-            //慎用
-            while (DateTime.Now.AddMilliseconds((double)mm) > DateTime.Now)
-            {
-              Thread.Sleep(1);
-              //Application.DoEvents();
-            }
-        }
     }
 }

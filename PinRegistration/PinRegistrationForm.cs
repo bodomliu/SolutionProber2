@@ -1,5 +1,10 @@
 ﻿using CommonComponentLibrary;
+using JsonDataShow;
 using MotionLibrary;
+using PinRegistration;//需要pinMagControl控件
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Forms;
 using VisionLibrary;
 using WaferMapLibrary;
 namespace MainForm
@@ -13,62 +18,15 @@ namespace MainForm
         }
         private void PinRegistrationForm_Load(object sender, EventArgs e)
         {
-            NumRefPinOffsetR.Maximum = 50000;
-            NumRefPinOffsetR.Minimum = -50000;
-
-
-            //PinRegistration.LoadPins("pin.json");
+            NumRefPinOffsetR.Maximum = 100000;
+            NumRefPinOffsetR.Minimum = -100000;
+            groupBox1.Controls.Add(new PinRegistration.PinSearchControl());
+            panelMag.Controls.Add(new PinMagControl());
         }
         bool isPinMag = false;
         private void UpdateUI()
         {
-            if (Vision.activeCamera == Camera.PinLowMag)
-            {
-                BtnLowMag.Enabled = false;
-                BtnHighMag.Enabled = true;
-                isPinMag=true;
-            }
-            else if (Vision.activeCamera == Camera.PinHighMag)
-            {
-                BtnLowMag.Enabled = true;
-                BtnHighMag.Enabled = false;
-                isPinMag = true;
-            }
-            else
-            {
-                BtnLowMag.Enabled = true;
-                BtnHighMag.Enabled = true;
-                isPinMag = false;
-            }
-
-            //LblPinOffsetX.Text = PinData.RefPinOffsetX.ToString();
-            //LblPinOffsetY.Text = PinData.RefPinOffsetY.ToString();
-            //LblPinOffsetZ.Text = PinData.RefPinOffsetZ.ToString();
-
-            TxtIndex.Text = PinData.CurrentIndex.ToString();
-            TxtTotal.Text = PinData.Entity.Pins.Count.ToString();
-        }
-        private async void BtnHighMag_Click(object sender, EventArgs e)
-        {
-            WaitingControl.WF.Start();
-            await Task.Run(() =>
-            {
-                Vision.ChangeCamera(Vision.PinHighMag);
-                if(isPinMag)Motion.TogglePosition(2);
-            });
-            WaitingControl.WF.End();
-            UpdateUI();
-        }
-        private async void BtnLowMag_Click(object sender, EventArgs e)
-        {
-            WaitingControl.WF.Start();
-            await Task.Run(() =>
-            {
-                Vision.ChangeCamera(Vision.PinLowMag);
-                if (isPinMag) Motion.TogglePosition(3);
-            });
-            WaitingControl.WF.End();
-            UpdateUI();
+            NumRefPinOffsetR.Value = decimal.Parse(PinData.Entity.PinsAngle.ToString());
         }
         private void BtnFocusInitial_Click(object sender, EventArgs e)
         {
@@ -84,34 +42,6 @@ namespace MainForm
                 WaitingControl.WF.End();
             }
         }
-        private async void BtnNeedleTipFocus_Click(object sender, EventArgs e)
-        {
-            if (Vision.activeCamera == Camera.PinLowMag)
-            {
-                //CommonFunctions.AdjustHeight(37000, 39000, Vision.PinLowMag);
-                MessageBox.Show("Change to High Mag!"); return;
-            }
-            else if (Vision.activeCamera == Camera.PinHighMag)
-            {
-                WaitingControl.WF.Start();
-                await Task.Run(() => CommonFunctions.AdjustPinHeight(false));
-                WaitingControl.WF.End();
-            }
-        }
-        private async void BtnMovePinToTheCenter_Click(object sender, EventArgs e)
-        {
-            WaitingControl.WF.Start();
-            await Task.Run(() => CommonFunctions.MovePinToCenter());
-            WaitingControl.WF.End();
-            
-            UpdateUI();
-        }
-        private void BtnGoToPin_Click(object sender, EventArgs e)
-        {
-            bool islowMode = (Vision.activeCamera == Camera.PinLowMag);
-            CommonFunctions.GoToPin(int.Parse(TxtIndex.Text));
-            UpdateUI();
-        }
         private void BtnRefPinRegistration_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Reference pin will be located and all the other pins will follow the ref.",
@@ -123,19 +53,16 @@ namespace MainForm
                 PinData.Entity.RefPinX = encodeX;
                 PinData.Entity.RefPinY = encodeY;
                 PinData.Entity.RefPinZ = encodeZ;
-                //当前REfPin与机台调参时候RefPin的差异
-                //PinData.RefPinOffsetX = PinData.Entity.RefPinX - Motion.parameter.PROBING.XOrgPin;
-                //PinData.RefPinOffsetY = PinData.Entity.RefPinY - Motion.parameter.PROBING.YOrgPin;
-                //PinData.RefPinOffsetZ = PinData.Entity.RefPinZ - Motion.parameter.PROBING.ZOrgPin;
+
+                PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
                 UpdateUI();
             }
         }
         private void BtnReadyToApply_Click(object sender, EventArgs e)
         {
-            PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
             UpdateProbePosition();//更新Probe参数
             PinData.IsPinAlignCompleted = true;
-            MessageBox.Show("Pins Saved!");
+            MessageBox.Show("Pin Alignment Compeleted!");
         }
         public void UpdateProbePosition()
         {
@@ -149,10 +76,21 @@ namespace MainForm
         private void BtnRefreshPinDataFromPadData_Click(object sender, EventArgs e)
         {
             PinData.Entity.Pins.Clear();
-            foreach (var pad in PadData.Entity.Pads)
+            PinData.Entity.PinsAngle = 0;
+            for (int dutIndex = 0; dutIndex < DUTData.Entity.DUTs.Count; dutIndex++)
             {
-                PinData.Entity.Pins.Add(new Pin { PosX = pad.PosX, PosY = pad.PosY });
+                for (int padIndex = 0; padIndex < PadData.Entity.Pads.Count; padIndex++)
+                {
+                    double x = PadData.Entity.Pads[padIndex].PosX
+                        + DUTData.Entity.DUTs[dutIndex].X * WaferMap.Entity.DieSizeX;
+                    double y = PadData.Entity.Pads[padIndex].PosY
+                        + DUTData.Entity.DUTs[dutIndex].Y * WaferMap.Entity.DieSizeY;
+                    PinData.Entity.Pins.Add(new Pin { PosX = x, PosY = y });
+                }
             }
+
+            PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
+            MessageBox.Show("All Pins are refreshed from pad data!");
             UpdateUI();
         }
         private void BtnDeletePinWPad_Click(object sender, EventArgs e)
@@ -168,19 +106,9 @@ namespace MainForm
             double posX = X - RefX;//以refpin为原点的坐标
             double posY = Y - RefY;//以refpin为原点的坐标
 
-            PinData.Entity.Pins.Add(new Pin { PosX = posX, PosY = posY });
+            PinData.Entity.Pins.Add(new Pin { PosX = -posX, PosY = -posY });//标定用的坐标系，和探针卡方向相反
             PinData.CurrentIndex = PinData.Entity.Pins.Count - 1;
-            UpdateUI();
-        }
-        private async void BtnGoToRefPin_Click(object sender, EventArgs e)
-        {
-            bool islowMode = (Vision.activeCamera == Camera.PinLowMag);
-            WaitingControl.WF.Start();
-            await Task.Run(() =>
-            {
-                CommonFunctions.GoToPin(0, islowMode);
-            });
-            WaitingControl.WF.End();
+            PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
             UpdateUI();
         }
         private void BtnUpdatePinWPad_Click(object sender, EventArgs e)
@@ -192,14 +120,16 @@ namespace MainForm
             double posX = X - RefX;//以refpin为原点的坐标
             double posY = Y - RefY;//以refpin为原点的坐标
 
-            PinData.Entity.Pins[PinData.CurrentIndex].PosX = posX;
-            PinData.Entity.Pins[PinData.CurrentIndex].PosY = posY;
+            PinData.Entity.Pins[PinData.CurrentIndex].PosX = -posX;//标定用的坐标系，和探针卡方向相反
+            PinData.Entity.Pins[PinData.CurrentIndex].PosY = -posY;//标定用的坐标系，和探针卡方向相反
+            PinData.Entity.Pins[PinData.CurrentIndex].PosZ = Motion.EncodeZ;
+            PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
             UpdateUI();
         }
         #region 绘图
         private void PinRegistrationForm_ParentChanged(object sender, EventArgs e)
         {
-            if (Parent!=null)
+            if (Parent != null)
             {
                 panel1.Controls.Clear();
                 panel1.Controls.Add(CommonPanel.Entity);
@@ -217,79 +147,75 @@ namespace MainForm
         /// </summary>
         private void PaintPins()
         {
-           
             Vision.PinLowMag.halconClass.PaintPins(EncodeX, EncodeY, PinData.CurrentIndex);
         }
         double[]? EncodeX;
         double[]? EncodeY;
-        private void TransForm()
+        private void PaintPrepare()
         {
             //对PinData先预处理，用于绘画
-            int PinCount = PinData.Entity.Pins.Count;
-            EncodeX = new double[PinCount];
-            EncodeY = new double[PinCount];
-            //这一步比较费时，先转好
-            for (int i = 0; i < PinCount; i++)
+            int pinCount = PinData.Entity.Pins.Count;
+            EncodeX = new double[pinCount];
+            EncodeY = new double[pinCount];
+            //将所有pin转到encode坐标系下，方便绘图
+            for(int i =0;i<pinCount;i++)
             {
                 //粗定位画图，精度不要紧，主要为了变换坐标系，确保符号方向一致。标定过程是用的encode坐标，所以画图最好也用encode坐标
-                Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.User2Encode, PinData.Entity.Pins[i].PosX,
-                    PinData.Entity.Pins[i].PosY, out double Xout, out double Yout);
-                EncodeX[i] = Xout;
-                EncodeY[i] = Yout;
+                Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.User2Encode,
+                    PinData.Entity.Pins[i].PosX, PinData.Entity.Pins[i].PosY, out double outx, out double outy);
+                EncodeX[i] = outx; EncodeY[i] = outy;
             }
-            //旋转好点位，用于绘画
-            CommonFunctions.RotatePins(EncodeX, EncodeY, PinData.Entity.PinsAngle, out EncodeX, out EncodeY);
+        }
+
+        private void RotatePins(double Angle)
+        {
+            //根据预设的angle，并旋转所有pins
+            for (int i = 0; i < PinData.Entity.Pins.Count; i++)
+            {
+                //encode坐标系是标准笛卡尔坐标系，用户坐标系Y轴反向，导致旋转方向反向
+                CommonFunctions.RotatePin(PinData.Entity.Pins[i].PosX, PinData.Entity.Pins[i].PosY, 0, 0,
+                    -Angle + PinData.Entity.PinsAngle, out double posX, out double posY);
+                PinData.Entity.Pins[i].PosX = posX; PinData.Entity.Pins[i].PosY = posY;
+            }
+            PinData.Entity.PinsAngle = Angle;
+        }
+        private void UpdatePinRegist(double Angle)
+        {
+
 
         }
+
         private void CBShowPins_CheckedChanged(object sender, EventArgs e)
         {
             if (CBShowPins.Checked)
             {
-                TransForm();
+                PaintPrepare();
                 Vision.PinLowMag.halconClass.OnPaintEvent += PaintPins;
+                Vision.PinLowMag.halconClass.bDisplayROI = true;
+                Vision.PinLowMag.halconClass.bDisplayCross = true;
             }
             else
             {
                 Vision.PinLowMag.halconClass.OnPaintEvent -= PaintPins;
+                Vision.PinLowMag.halconClass.bDisplayROI = false;
+                Vision.PinLowMag.halconClass.bDisplayCross = false;
             }
         }
         #endregion
+
         private void BtnUpdateDegree_Click(object sender, EventArgs e)
         {
-            PinData.Entity.PinsAngle = double.Parse(NumRefPinOffsetR.Text);
+           double newAngle = double.Parse(NumRefPinOffsetR.Value.ToString());
+           RotatePins(newAngle);//改变角度和所有点位
+
+           PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
+           PaintPrepare();
         }
         private void PinRegistrationForm_VisibleChanged(object sender, EventArgs e)
         {
-           
-        }
-        private async void BtnGoToNextPin_Click(object sender, EventArgs e)
-        {
-            if (PinData.Entity.Pins == null) return;
-            int Index = (PinData.CurrentIndex >= PinData.Entity.Pins.Count - 1) ? 0 : PinData.CurrentIndex + 1;
 
-            bool islowMode = (Vision.activeCamera == Camera.PinLowMag);
-            WaitingControl.WF.Start();
-            await Task.Run(() =>
-            {
-                CommonFunctions.GoToPin(Index, islowMode);
-            });
-            WaitingControl.WF.End();
-            UpdateUI();
         }
-        private async void BtnGoToPrevPin_Click(object sender, EventArgs e)
-        {
-            if (PinData.Entity.Pins == null) return;
-            int Index = (PinData.CurrentIndex <= 0) ? PinData.Entity.Pins.Count - 1 : PinData.CurrentIndex - 1;
 
-            bool islowMode = (Vision.activeCamera == Camera.PinLowMag);
-            WaitingControl.WF.Start();
-            await Task.Run(() =>
-            {
-                CommonFunctions.GoToPin(Index, islowMode);
-            });
-            WaitingControl.WF.End();
-            UpdateUI();
-        }
         private void BtnOrgPinInitial_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Reference pin will be located and all the other pins will follow the ref.",
@@ -306,8 +232,78 @@ namespace MainForm
                 Motion.parameter.PROBING.YOrgPin = encodeY;
                 Motion.parameter.PROBING.ZOrgPin = encodeZ;
                 Motion.parameter.PROBING.ZOrgWaferHeight = WaferMap.WaferHeight;
+                PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
                 UpdateUI();
             }
+        }
+
+        private void BtnPinData_Click(object sender, EventArgs e)
+        {
+            //JsonDataForm form = new JsonDataForm(DeviceData.Entity.PinAlignment.PinDataPath, m_Pin.Entity);
+            PinDataForm form = new ();
+            DialogResult res = form.ShowDialog();
+        }
+
+        //currentPos直接和理想的pad位置做匹配求角度，不能和pin匹配的原因是累计求几次deltaAngle后，可能存在累计误差
+        public static int AdjustAngle(int AlignMode,out double PinAngle)
+        {
+            PinAngle = 0;
+
+            int cntPins = PinData.Entity.Pins.Count;
+            int cntPads = PadData.Entity.Pads.Count;
+            int cntDut = DUTData.Entity.DUTs.Count;
+            if (cntDut * cntPads != cntPins) return 1;//数量不匹配
+
+            List<Pin> Pads = new List<Pin>();
+            //寻pin时，按dut顺序找，所以pads和pins顺序一致 
+            //Step1: 先构造pads队列
+            for (int dutIndex = 0; dutIndex < cntDut; dutIndex++)
+            {
+                for (int padIndex = 0; padIndex < cntPads; padIndex++)
+                {
+                    int pinIndex = dutIndex * cntPads + padIndex;
+                    if (PinData.Entity.Pins[pinIndex].AlignMode == AlignMode)
+                    {
+                        double posX = PadData.Entity.Pads[padIndex].PosX + DUTData.Entity.DUTs[dutIndex].X * WaferMap.Entity.DieSizeX;
+                        double posY = PadData.Entity.Pads[padIndex].PosY + DUTData.Entity.DUTs[dutIndex].Y * WaferMap.Entity.DieSizeY;
+
+                        Pads.Add(new Pin { PosX = posX, PosY = posY });
+                    }
+                }
+            }
+            //Step2: 再对pins筛选
+            List<Pin> Pins = PinData.Entity.Pins.Where(p => p.AlignMode == AlignMode).ToList();
+
+
+            //Step3: 求每个 pad/pin 到 refpad/refpin 的角度/距离
+            int pinsSelect = Pins.Count;
+            double[] anglePad = new double[pinsSelect];
+            double[] anglePin = new double[pinsSelect];
+            double[] deltaAngle = new double[pinsSelect];
+            double[] distance = new double[pinsSelect];
+            for (int index = 1; index < pinsSelect; index++)
+            {
+                anglePad[index] = Math.Atan2(Pads[index].PosY, Pads[index].PosX);
+                anglePin[index] = Math.Atan2(Pins[index].CurrentPosY, Pins[index].CurrentPosX);
+                deltaAngle[index] = anglePin[index] - anglePad[index];
+                //Console.WriteLine()
+                distance[index] = Math.Sqrt(Pads[index].PosX * Pads[index].PosX + Pads[index].PosY * Pads[index].PosY);
+            }
+            //Step4: 根据权重，求deltaAngle的赋值，当前为一次平均
+            double distSum = distance.Sum();
+            for (int index = 0; index < pinsSelect; index++)
+            {
+                PinAngle += deltaAngle[index] * distance[index] / distance.Sum();
+            }
+            PinAngle = - PinAngle / Math.PI * 180 *10000;//返回角度，因为用用户坐标系计算的角度，与标准笛卡尔坐标系差一个符号
+            Console.WriteLine("{0} points Matched, Pin Angle = {1} degree.", pinsSelect, PinAngle);
+            return 0;
+        }
+
+        private void BtnAdjustAngle_Click(object sender, EventArgs e)
+        {
+            AdjustAngle(1, out double deltaAngle);
+            Console.WriteLine(deltaAngle.ToString());
         }
     }
 }

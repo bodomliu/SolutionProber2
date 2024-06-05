@@ -346,9 +346,9 @@
             // panelMag
             // 
             panelMag.BackColor = Color.Black;
-            panelMag.Location = new Point(1266, 2);
+            panelMag.Location = new Point(1250, 2);
             panelMag.Name = "panelMag";
-            panelMag.Size = new Size(235, 83);
+            panelMag.Size = new Size(253, 83);
             panelMag.TabIndex = 76;
             // 
             // PadRegistrationForm
