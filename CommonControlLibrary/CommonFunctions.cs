@@ -533,22 +533,56 @@ namespace CommonComponentLibrary
             {
                 refPinX -= Motion.parameter.XPINLOW2HIGH;
                 refPinY -= Motion.parameter.YPINLOW2HIGH;
+                refPinZ -= Motion.parameter.ZPINLOW2HIGH;
             }
-            //第一步，将refpin转成用户坐标
-            Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.Encode2User,
-                refPinX, refPinY, out double userX, out double userY);
+            //第一步，得到refPin用户坐标X,Y
+            Compensation.Transform(Compensation.Area.Probing,Compensation.Dir.Encode2User, refPinX, refPinY,
+                out double X0,out double Y0);
             //第二步，得到目标Pin用户坐标
-            userX += PinData.Entity.Pins[index].PosX;
-            userY += PinData.Entity.Pins[index].PosY;
-            //第三步，走用户坐标
-            Motion.UserPosMoveAbs(Compensation.Area.Probing,userX,userY);
+            double X = X0 - PinData.Entity.Pins[index].PosX;//标定时，目标点在(dX,dY)位置时的encode1，与目标从中点运动到(dX,dY)位置的encode符号相反
+            double Y = Y0 - PinData.Entity.Pins[index].PosY;
+            //第三步，目标Pin绕RefPin旋转Angle得到的坐标X,Y
+            RotatePin(X,Y,X0,Y0,PinData.Entity.PinsAngle,out X,out Y );
+            //第四步，走用户坐标
+            Motion.UserPosMoveAbs(Compensation.Area.Probing,X,Y);
             //第四步，上针
             Motion.AxisMoveAbs(1, 3, refPinZ, 600, 10, 10, 20);
             PinData.CurrentIndex = index;
         }
 
+        /// <summary>
+        /// 所有点绕RefPin(X0,Y0)旋转Angle角度
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <param name="Angle">10000 = 1 degree，逆时针为正。当使用用户坐标系注意正反手坐标系</param>
+        public static void RotatePins(double[] X, double[] Y, double Angle, out double[] Xout, out double[] Yout)
+        {
+            int cnt = X.Length;
+            Xout = new double[cnt]; Yout = new double[cnt];
+            for (int i = 0; i < cnt; i++)
+            {
+                RotatePin(X[i], Y[i], X[0], Y[0], Angle, out Xout[i], out Yout[i]);
+            }
+        }
+        /// <summary>
+        /// 点（X，Y）绕RefPin(X0,Y0)旋转Angle角度，后的坐标(Xout,Yout)
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <param name="X0"></param>
+        /// <param name="Y0"></param>
+        /// <param name="Angle"></param>
+        /// <param name="Xout"></param>
+        /// <param name="Yout"></param>
+        public static void RotatePin(double X, double Y, double X0,double Y0,double Angle, out double Xout, out double Yout)
+        {
+            double ang = Angle * Math.PI / 10000 / 180;
+            Xout = (X - X0) * Math.Cos(ang) - (Y - Y0) * Math.Sin(ang) + X0;
+            Yout = (X - X0) * Math.Sin(ang) + (Y - Y0) * Math.Cos(ang) + Y0;
+        }
         #endregion
-        
+
         public static void Delay(int mm)
         {
             //慎用

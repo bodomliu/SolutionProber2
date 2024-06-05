@@ -31,6 +31,8 @@ namespace WaferMapLibrary
         public int GetPinXArea { get; set; } = 800;
         public int GetPinYArea { get; set; } = 800;
         public float GetPinExposureTime { get; set; } = 500;
+
+
     }
     public class Probing
     {

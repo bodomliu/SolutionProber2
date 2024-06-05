@@ -40,6 +40,7 @@ namespace MotionLibrary
         //设备参数，粗定位探针相机到精定位探针相机
         public double XPINLOW2HIGH { get; set; } = 769641;
         public double YPINLOW2HIGH { get; set; } = -1627;
+        public double ZPINLOW2HIGH { get; set; } = -4150;
 
         //设备参数，探针卡Plate的高度
         public double ZPROBECARDUPPERPLATEBASE { get; set; } = 133500;
@@ -907,7 +908,7 @@ namespace MotionLibrary
             tHomePrm.moveDir = -1;//回零方向
             tHomePrm.indexDir = 1;//搜索index方向
             tHomePrm.edge = 1;//0：下降沿，非0：上升沿
-            tHomePrm.velHigh = 100;//一段速
+            tHomePrm.velHigh = 200;//一段速
             tHomePrm.velLow = 10;//二段速
             tHomePrm.acc = 1;//回零加速度
             tHomePrm.dec = 1;//回零减速度
@@ -1115,10 +1116,10 @@ namespace MotionLibrary
                     XYZ_AxisMoveRel(1, -parameter.XWAFERLOW2HIGHT, -parameter.YWAFERLOW2HIGHT, -parameter.ZWAFERLOW2HIGHT, 600, 10, 10, 20);
                     break;
                 case 2:
-                    XYZ_AxisMoveRel(1, parameter.XPINLOW2HIGH, parameter.YPINLOW2HIGH, 0, 600, 10, 10, 20);
+                    XYZ_AxisMoveRel(1, parameter.XPINLOW2HIGH, parameter.YPINLOW2HIGH, parameter.ZPINLOW2HIGH, 600, 10, 10, 20);
                     break;
                 case 3:
-                    XYZ_AxisMoveRel(1, -parameter.XPINLOW2HIGH, -parameter.YPINLOW2HIGH, 0, 600, 10, 10, 20);
+                    XYZ_AxisMoveRel(1, -parameter.XPINLOW2HIGH, -parameter.YPINLOW2HIGH, -parameter.ZPINLOW2HIGH, 600, 10, 10, 20);
                     //AxisMoveAbs(1, 3, Motion.parameter.ZPROBER, 600, 10, 10, 20);
                     break;
                 default:

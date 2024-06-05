@@ -19,22 +19,26 @@ namespace MainForm
 
             //PinRegistration.LoadPins("pin.json");
         }
+        bool isPinMag = false;
         private void UpdateUI()
         {
             if (Vision.activeCamera == Camera.PinLowMag)
             {
                 BtnLowMag.Enabled = false;
                 BtnHighMag.Enabled = true;
+                isPinMag=true;
             }
             else if (Vision.activeCamera == Camera.PinHighMag)
             {
                 BtnLowMag.Enabled = true;
                 BtnHighMag.Enabled = false;
+                isPinMag = true;
             }
             else
             {
                 BtnLowMag.Enabled = true;
                 BtnHighMag.Enabled = true;
+                isPinMag = false;
             }
 
             //LblPinOffsetX.Text = PinData.RefPinOffsetX.ToString();
@@ -50,7 +54,7 @@ namespace MainForm
             await Task.Run(() =>
             {
                 Vision.ChangeCamera(Vision.PinHighMag);
-                Motion.TogglePosition(2);
+                if(isPinMag)Motion.TogglePosition(2);
             });
             WaitingControl.WF.End();
             UpdateUI();
@@ -61,7 +65,7 @@ namespace MainForm
             await Task.Run(() =>
             {
                 Vision.ChangeCamera(Vision.PinLowMag);
-                Motion.TogglePosition(3);
+                if (isPinMag) Motion.TogglePosition(3);
             });
             WaitingControl.WF.End();
             UpdateUI();
@@ -200,7 +204,7 @@ namespace MainForm
                 panel1.Controls.Clear();
                 panel1.Controls.Add(CommonPanel.Entity);
                 //默认是低倍相机启动
-                Vision.ChangeCamera(Vision.PinLowMag);//默认粗定位
+                //Vision.ChangeCamera(Vision.PinLowMag);//默认粗定位
                 UpdateUI();
             }
             else
@@ -208,32 +212,40 @@ namespace MainForm
 
             }
         }
+        /// <summary>
+        /// 将转换后的坐标丢进去显示
+        /// </summary>
         private void PaintPins()
         {
-            Vision.PinLowMag.halconClass.PaintPins(PinEncodeX, PinEncodeY, 0, PinData.Entity.PinsAngle);
+           
+            Vision.PinLowMag.halconClass.PaintPins(EncodeX, EncodeY, PinData.CurrentIndex);
         }
-        double[]? PinEncodeX;
-        double[]? PinEncodeY;
-        private void TransformPins()
+        double[]? EncodeX;
+        double[]? EncodeY;
+        private void TransForm()
         {
+            //对PinData先预处理，用于绘画
             int PinCount = PinData.Entity.Pins.Count;
-            PinEncodeX = new double[PinCount];
-            PinEncodeY = new double[PinCount];
+            EncodeX = new double[PinCount];
+            EncodeY = new double[PinCount];
             //这一步比较费时，先转好
             for (int i = 0; i < PinCount; i++)
             {
                 //粗定位画图，精度不要紧，主要为了变换坐标系，确保符号方向一致。标定过程是用的encode坐标，所以画图最好也用encode坐标
-                Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, PinData.Entity.Pins[i].PosX,
+                Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.User2Encode, PinData.Entity.Pins[i].PosX,
                     PinData.Entity.Pins[i].PosY, out double Xout, out double Yout);
-                PinEncodeX[i] = Xout;
-                PinEncodeY[i] = Yout;
+                EncodeX[i] = Xout;
+                EncodeY[i] = Yout;
             }
+            //旋转好点位，用于绘画
+            CommonFunctions.RotatePins(EncodeX, EncodeY, PinData.Entity.PinsAngle, out EncodeX, out EncodeY);
+
         }
         private void CBShowPins_CheckedChanged(object sender, EventArgs e)
         {
             if (CBShowPins.Checked)
             {
-                TransformPins();
+                TransForm();
                 Vision.PinLowMag.halconClass.OnPaintEvent += PaintPins;
             }
             else
@@ -250,15 +262,34 @@ namespace MainForm
         {
            
         }
-        private void BtnGoToNextPin_Click(object sender, EventArgs e)
+        private async void BtnGoToNextPin_Click(object sender, EventArgs e)
         {
+            if (PinData.Entity.Pins == null) return;
+            int Index = (PinData.CurrentIndex >= PinData.Entity.Pins.Count - 1) ? 0 : PinData.CurrentIndex + 1;
 
+            bool islowMode = (Vision.activeCamera == Camera.PinLowMag);
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+            {
+                CommonFunctions.GoToPin(Index, islowMode);
+            });
+            WaitingControl.WF.End();
+            UpdateUI();
         }
-        private void BtnGoToPrevPin_Click(object sender, EventArgs e)
+        private async void BtnGoToPrevPin_Click(object sender, EventArgs e)
         {
+            if (PinData.Entity.Pins == null) return;
+            int Index = (PinData.CurrentIndex <= 0) ? PinData.Entity.Pins.Count - 1 : PinData.CurrentIndex - 1;
 
+            bool islowMode = (Vision.activeCamera == Camera.PinLowMag);
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+            {
+                CommonFunctions.GoToPin(Index, islowMode);
+            });
+            WaitingControl.WF.End();
+            UpdateUI();
         }
-
         private void BtnOrgPinInitial_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Reference pin will be located and all the other pins will follow the ref.",

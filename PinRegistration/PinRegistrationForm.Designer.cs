@@ -364,6 +364,8 @@
             // NumRefPinOffsetR
             // 
             NumRefPinOffsetR.Location = new Point(1092, 190);
+            NumRefPinOffsetR.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            NumRefPinOffsetR.Minimum = new decimal(new int[] { 100000, 0, 0, int.MinValue });
             NumRefPinOffsetR.Name = "NumRefPinOffsetR";
             NumRefPinOffsetR.Size = new Size(89, 23);
             NumRefPinOffsetR.TabIndex = 66;

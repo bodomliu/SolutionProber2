@@ -122,9 +122,7 @@ namespace ManualForm
             //获得当前Encode位置
             Motion.XY_GetEncPos(out double encodeX,out double encodeY);
             //将当前点位进行虚拟pad2pin移动
-            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User,encodeX + deltaX, encodeY + deltaY,out encodeX,out encodeY);
-            //计算平移后的用户坐标
-            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User, encodeX, encodeY, out double userPosX, out double userPosY);
+            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User, encodeX + deltaX, encodeY + deltaY, out double userPosX, out double userPosY);
             //运行到Proing位置
             await Task.Run(() =>
             {
@@ -152,6 +150,7 @@ namespace ManualForm
         private void BtnSetOverDrive_Click(object sender, EventArgs e)
         {
             DeviceData.Entity.Probing.Overdrive = int.Parse(TxtOverDrive.Text);
+            
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
