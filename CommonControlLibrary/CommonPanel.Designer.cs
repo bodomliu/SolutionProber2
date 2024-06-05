@@ -282,7 +282,7 @@
             // 
             // TimMotion
             // 
-            TimMotion.Tick += this.TimMotion_Tick;
+            TimMotion.Tick += TimMotion_Tick;
             // 
             // CommonPanel
             // 
@@ -309,6 +309,7 @@
             Name = "CommonPanel";
             Size = new Size(1080, 1000);
             Load += UserControl_Load;
+            ParentChanged += CommonPanel_ParentChanged;
             canvas.ResumeLayout(false);
             canvas.PerformLayout();
             ResumeLayout(false);

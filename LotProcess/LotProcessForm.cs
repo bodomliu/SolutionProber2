@@ -21,21 +21,27 @@ namespace MainForm
 
         private void BtnVision_Click(object sender, EventArgs e)
         {
-            VisionControl visionControl = new VisionControl();
             panelForm.Controls.Clear();
+            VisionControl visionControl = new VisionControl();
             panelForm.Controls.Add(visionControl);
             visionControl.Dock = DockStyle.Right;
 
-            //Ìí¼ÓcommonPanel¾²Ì¬Ìí¼Ó
-            CommonPanel visionPanel = CommonPanel.Entity;
-            panelForm.Controls.Add(visionPanel);
-            visionPanel.Dock = DockStyle.Fill;
+            panelForm.Controls.Add(CommonPanel.Entity);
         }
 
         private void LotProcessForm_Load(object sender, EventArgs e)
         {
             log.Debug("Entering LotProcessForm.");
             Dock = DockStyle.Fill;
+        }
+
+        private void LotProcessForm_ParentChanged(object sender, EventArgs e)
+        {
+            if (Parent != null)
+            {
+                panelForm.Controls.Clear();
+            }
+
         }
     }
 }

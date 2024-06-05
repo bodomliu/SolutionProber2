@@ -386,7 +386,7 @@ namespace VisionLibrary
         /// <param name="WindowControl"></param>
         public void DisplayWindowsBind(HSmartWindowControl WindowControl)
         {
-            m_Window = WindowControl.HalconWindow;
+            m_Window = WindowControl.HalconWindow;            
         }
 
         /// <summary>
@@ -1161,28 +1161,28 @@ namespace VisionLibrary
         /// <param name="Y"></param>
         /// <param name="CurrentIndex"></param>
         /// <param name="Angle"></param>
-        public void PaintPins(double[]? X, double[]? Y, int CurrentIndex, double Angle)
+        public void PaintPins(double[]? X, double[]? Y, int CurrentIndex)
         {
-            if (X == null || Y == null) return;
-            //先转好角度
-            rotatePoints(X, Y, Angle, out double[] Xout, out double[] Yout);
+            if (X == null || Y == null) return;            
             //获得整张图像的中心点，即视野中心
             HOperatorSet.AreaCenter(m_Image, out _, out HTuple Row_imageCenter, out HTuple Column_imageCenter);
             //中心点对应的encodeX和encodeY
             m_Calibration.AffineTransPoint2d(Row_imageCenter, Column_imageCenter, out double EncodeCenterX, out double EncodeCenterY);
-            //index点移动到图像中心，其他点跟随平移
-            double DeltaX = Xout[CurrentIndex] - EncodeCenterX;
-            double DeltaY = Yout[CurrentIndex] - EncodeCenterY;
-            //开始绘图
-            HOperatorSet.SetColor(m_Window, "white");
+            //CurrentIndex运动至原点（0，0）时，其余各点坐标
+            int cnt = X.Length;
+            double[] Xout = new double[cnt];
+            double[] Yout = new double[cnt];
+            //所有点跟随currentIndex再平移到 EncodeCenterX，EncodeCenterY，并开始绘图
+            HOperatorSet.SetColor(m_Window, "blue");
             for (int i = 0; i < X.Length; i++)
             {
-                Xout[i] -= DeltaX; Yout[i] -= DeltaY;//变换坐标系，所有点平移
+                Xout[i] = EncodeCenterX - X[i] + X[CurrentIndex];//标定时，目标点在(dX,dY)位置时的encode1，与目标从中点运动到(dX,dY)位置的encode符号相反
+                Yout[i] = EncodeCenterY - Y[i] + Y[CurrentIndex];
                 m_Calibration.AffineTransPoint2dInvert(Xout[i], Yout[i], out double Row, out double Column);
                 if (Row > 1024 || Row < 0) continue;
                 if (Column > 1280 || Column < 0) continue;
                 HOperatorSet.GenCircleContourXld(out HObject conCircle, Row, Column, 6, 0, 2 * Math.PI, "positive", 1.0);
-                HTuple str =(i == 0)? "#REF":"#"+i.ToString();
+                HTuple str = (i == 0) ? "#REF" : "#" + i.ToString();
                 HOperatorSet.DispXld(conCircle, m_Window);
                 HOperatorSet.SetTposition(m_Window, Row + 6, Column - 3);
                 HOperatorSet.WriteString(m_Window, str);
@@ -1192,23 +1192,7 @@ namespace VisionLibrary
             HOperatorSet.SetColor(m_Window, "white");
         }
 
-        /// <summary>
-        /// 所有点绕原点旋转Angle角度
-        /// </summary>
-        /// <param name="X"></param>
-        /// <param name="Y"></param>
-        /// <param name="Angle">10000 = 1 degree，逆时针为正</param>
-        private void rotatePoints(double[] X, double[] Y, double Angle,out double[] Xout,out double[] Yout)
-        {
-            int cnt = X.Length;
-            double ang = Angle * Math.PI / 10000 / 180;
-            Xout = new double[cnt];Yout = new double[cnt];
-            for (int i = 0;i < cnt;i++) 
-            {
-                Xout[i] = X[i] * Math.Cos(ang) - Y[i] * Math.Sin(ang);
-                Yout[i] = X[i] * Math.Sin(ang) + Y[i] * Math.Cos(ang);
-            }
-        }
+
 
         #endregion
     }

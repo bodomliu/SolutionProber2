@@ -19,22 +19,26 @@ namespace MainForm
 
             //PinRegistration.LoadPins("pin.json");
         }
+        bool isPinMag = false;
         private void UpdateUI()
         {
             if (Vision.activeCamera == Camera.PinLowMag)
             {
                 BtnLowMag.Enabled = false;
                 BtnHighMag.Enabled = true;
+                isPinMag=true;
             }
             else if (Vision.activeCamera == Camera.PinHighMag)
             {
                 BtnLowMag.Enabled = true;
                 BtnHighMag.Enabled = false;
+                isPinMag = true;
             }
             else
             {
                 BtnLowMag.Enabled = true;
                 BtnHighMag.Enabled = true;
+                isPinMag = false;
             }
 
             //LblPinOffsetX.Text = PinData.RefPinOffsetX.ToString();
@@ -44,19 +48,25 @@ namespace MainForm
             TxtIndex.Text = PinData.CurrentIndex.ToString();
             TxtTotal.Text = PinData.Entity.Pins.Count.ToString();
         }
-        private void BtnHighMag_Click(object sender, EventArgs e)
+        private async void BtnHighMag_Click(object sender, EventArgs e)
         {
             WaitingControl.WF.Start();
-            Vision.ChangeCamera(Vision.PinHighMag);
-            Motion.TogglePosition(2);
+            await Task.Run(() =>
+            {
+                Vision.ChangeCamera(Vision.PinHighMag);
+                if(isPinMag)Motion.TogglePosition(2);
+            });
             WaitingControl.WF.End();
             UpdateUI();
         }
-        private void BtnLowMag_Click(object sender, EventArgs e)
+        private async void BtnLowMag_Click(object sender, EventArgs e)
         {
             WaitingControl.WF.Start();
-            Vision.ChangeCamera(Vision.PinLowMag);
-            Motion.TogglePosition(3);
+            await Task.Run(() =>
+            {
+                Vision.ChangeCamera(Vision.PinLowMag);
+                if (isPinMag) Motion.TogglePosition(3);
+            });
             WaitingControl.WF.End();
             UpdateUI();
         }
@@ -74,23 +84,26 @@ namespace MainForm
                 WaitingControl.WF.End();
             }
         }
-        private void BtnNeedleTipFocus_Click(object sender, EventArgs e)
+        private async void BtnNeedleTipFocus_Click(object sender, EventArgs e)
         {
             if (Vision.activeCamera == Camera.PinLowMag)
             {
                 //CommonFunctions.AdjustHeight(37000, 39000, Vision.PinLowMag);
                 MessageBox.Show("Change to High Mag!"); return;
-        }
+            }
             else if (Vision.activeCamera == Camera.PinHighMag)
             {
                 WaitingControl.WF.Start();
-                CommonFunctions.AdjustPinHeight(false);
+                await Task.Run(() => CommonFunctions.AdjustPinHeight(false));
                 WaitingControl.WF.End();
             }
         }
-        private void BtnMovePinToTheCenter_Click(object sender, EventArgs e)
+        private async void BtnMovePinToTheCenter_Click(object sender, EventArgs e)
         {
-            CommonFunctions.MovePinToCenter();
+            WaitingControl.WF.Start();
+            await Task.Run(() => CommonFunctions.MovePinToCenter());
+            WaitingControl.WF.End();
+            
             UpdateUI();
         }
         private void BtnGoToPin_Click(object sender, EventArgs e)
@@ -128,9 +141,9 @@ namespace MainForm
         {
             double waferOffset = WaferMap.WaferHeight - Motion.parameter.PROBING.ZOrgWaferHeight;//wafer比注册高了waferOffset
             double pinOffset = PinData.Entity.RefPinZ - Motion.parameter.PROBING.ZOrgPin;//pin比注册高了pinOffset
-            double upPos = Motion.parameter.PROBING.ZOrgWaferHeight + Motion.parameter.PROBING.ZPad2Pin;//注册时候upPos
+            double orgZUp = Motion.parameter.PROBING.ZOrgWaferHeight + Motion.parameter.PROBING.ZPad2Pin;//注册时候upPos
 
-            DeviceData.Entity.Probing.ZUpPosition = upPos - waferOffset + pinOffset;//当前的upPos理论值
+            DeviceData.Entity.Probing.ZUpPosition = orgZUp - waferOffset + pinOffset;//当前的upPos理论值
             DeviceData.Entity.Probing.ZDownPosition = DeviceData.Entity.Probing.ZUpPosition + DeviceData.Entity.Probing.ZClearance;
         }
         private void BtnRefreshPinDataFromPadData_Click(object sender, EventArgs e)
@@ -159,14 +172,19 @@ namespace MainForm
             PinData.CurrentIndex = PinData.Entity.Pins.Count - 1;
             UpdateUI();
         }
-        private void BtnGoToRefPin_Click(object sender, EventArgs e)
+        private async void BtnGoToRefPin_Click(object sender, EventArgs e)
         {
             bool islowMode = (Vision.activeCamera == Camera.PinLowMag);
-            CommonFunctions.GoToPin(0, islowMode);
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+            {
+                CommonFunctions.GoToPin(0, islowMode);
+            });
+            WaitingControl.WF.End();
             UpdateUI();
         }
         private void BtnUpdatePinWPad_Click(object sender, EventArgs e)
-            {
+        {
             //获得当前XY坐标
             Motion.GetUserPos(Compensation.Area.Probing, out double X, out double Y);
             Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.Encode2User,
@@ -181,34 +199,53 @@ namespace MainForm
         #region 绘图
         private void PinRegistrationForm_ParentChanged(object sender, EventArgs e)
         {
+            if (Parent!=null)
+            {
+                panel1.Controls.Clear();
+                panel1.Controls.Add(CommonPanel.Entity);
+                //默认是低倍相机启动
+                //Vision.ChangeCamera(Vision.PinLowMag);//默认粗定位
+                UpdateUI();
+            }
+            else
+            {
 
+            }
         }
+        /// <summary>
+        /// 将转换后的坐标丢进去显示
+        /// </summary>
         private void PaintPins()
         {
-            Vision.PinLowMag.halconClass.PaintPins(PinEncodeX, PinEncodeY, 0, PinData.Entity.PinsAngle);
+           
+            Vision.PinLowMag.halconClass.PaintPins(EncodeX, EncodeY, PinData.CurrentIndex);
         }
-        double[]? PinEncodeX;
-        double[]? PinEncodeY;
-        private void TransformPins()
+        double[]? EncodeX;
+        double[]? EncodeY;
+        private void TransForm()
         {
+            //对PinData先预处理，用于绘画
             int PinCount = PinData.Entity.Pins.Count;
-            PinEncodeX = new double[PinCount];
-            PinEncodeY = new double[PinCount];
+            EncodeX = new double[PinCount];
+            EncodeY = new double[PinCount];
             //这一步比较费时，先转好
             for (int i = 0; i < PinCount; i++)
             {
                 //粗定位画图，精度不要紧，主要为了变换坐标系，确保符号方向一致。标定过程是用的encode坐标，所以画图最好也用encode坐标
-                Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, PinData.Entity.Pins[i].PosX,
+                Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.User2Encode, PinData.Entity.Pins[i].PosX,
                     PinData.Entity.Pins[i].PosY, out double Xout, out double Yout);
-                PinEncodeX[i] = Xout;
-                PinEncodeY[i] = Yout;
+                EncodeX[i] = Xout;
+                EncodeY[i] = Yout;
             }
+            //旋转好点位，用于绘画
+            CommonFunctions.RotatePins(EncodeX, EncodeY, PinData.Entity.PinsAngle, out EncodeX, out EncodeY);
+
         }
         private void CBShowPins_CheckedChanged(object sender, EventArgs e)
         {
             if (CBShowPins.Checked)
             {
-                TransformPins();
+                TransForm();
                 Vision.PinLowMag.halconClass.OnPaintEvent += PaintPins;
             }
             else
@@ -223,25 +260,54 @@ namespace MainForm
         }
         private void PinRegistrationForm_VisibleChanged(object sender, EventArgs e)
         {
-            if (Visible)
+           
+        }
+        private async void BtnGoToNextPin_Click(object sender, EventArgs e)
+        {
+            if (PinData.Entity.Pins == null) return;
+            int Index = (PinData.CurrentIndex >= PinData.Entity.Pins.Count - 1) ? 0 : PinData.CurrentIndex + 1;
+
+            bool islowMode = (Vision.activeCamera == Camera.PinLowMag);
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
             {
-                panel1.Controls.Add(CommonPanel.Entity);
-                //默认是低倍相机启动
-                Vision.ChangeCamera(Vision.PinLowMag);//默认粗定位
+                CommonFunctions.GoToPin(Index, islowMode);
+            });
+            WaitingControl.WF.End();
+            UpdateUI();
+        }
+        private async void BtnGoToPrevPin_Click(object sender, EventArgs e)
+        {
+            if (PinData.Entity.Pins == null) return;
+            int Index = (PinData.CurrentIndex <= 0) ? PinData.Entity.Pins.Count - 1 : PinData.CurrentIndex - 1;
+
+            bool islowMode = (Vision.activeCamera == Camera.PinLowMag);
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+            {
+                CommonFunctions.GoToPin(Index, islowMode);
+            });
+            WaitingControl.WF.End();
+            UpdateUI();
+        }
+        private void BtnOrgPinInitial_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Reference pin will be located and all the other pins will follow the ref.",
+               "Ref Pin Registration", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (res == DialogResult.OK)
+            {
+                Motion.XYZ_GetEncPos(out double encodeX, out double encodeY, out double encodeZ);
+                //当前RefPin的位置，是否需要保存呢？
+                PinData.Entity.RefPinX = encodeX;
+                PinData.Entity.RefPinY = encodeY;
+                PinData.Entity.RefPinZ = encodeZ;
+                //将orgpin也定义一下
+                Motion.parameter.PROBING.XOrgPin = encodeX;
+                Motion.parameter.PROBING.YOrgPin = encodeY;
+                Motion.parameter.PROBING.ZOrgPin = encodeZ;
+                Motion.parameter.PROBING.ZOrgWaferHeight = WaferMap.WaferHeight;
                 UpdateUI();
             }
-            else
-            {
-
-            }
-        }
-        private void BtnGoToNextPin_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void BtnGoToPrevPin_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

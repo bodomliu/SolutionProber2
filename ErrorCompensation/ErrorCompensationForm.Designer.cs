@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             BtnMapScreen = new Button();
-            panelMap = new Panel();
             groupBox1 = new GroupBox();
             RbtnJigCamera = new RadioButton();
             RbtnWaferCamera = new RadioButton();
@@ -46,25 +45,19 @@
             groupBox5 = new GroupBox();
             BtnStop = new Button();
             BtnStart = new Button();
-            pbX = new PictureBox();
-            pbY = new PictureBox();
-            BtnClearPicturebox = new Button();
             groupBox6 = new GroupBox();
             BtnApply = new Button();
             BtnClear = new Button();
             BtnZ = new Button();
             BtnAdjustWaferHeight = new Button();
             panelMapMini = new Panel();
-            BtnSim = new Button();
-            BtnResetErrorTable = new Button();
             BtnMatch = new Button();
+            panel1 = new Panel();
             groupBox1.SuspendLayout();
             GboxIndexControl.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbX).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbY).BeginInit();
             groupBox6.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,14 +71,6 @@
             BtnMapScreen.Text = "Camera Screen";
             BtnMapScreen.UseVisualStyleBackColor = false;
             BtnMapScreen.Click += BtnMapScreen_Click;
-            // 
-            // panelMap
-            // 
-            panelMap.BackColor = Color.Black;
-            panelMap.Location = new Point(63, 214);
-            panelMap.Name = "panelMap";
-            panelMap.Size = new Size(750, 750);
-            panelMap.TabIndex = 57;
             // 
             // groupBox1
             // 
@@ -257,34 +242,6 @@
             BtnStart.UseVisualStyleBackColor = false;
             BtnStart.Click += BtnStart_Click;
             // 
-            // pbX
-            // 
-            pbX.BorderStyle = BorderStyle.FixedSingle;
-            pbX.Location = new Point(63, 7);
-            pbX.Name = "pbX";
-            pbX.Size = new Size(750, 200);
-            pbX.TabIndex = 64;
-            pbX.TabStop = false;
-            // 
-            // pbY
-            // 
-            pbY.BorderStyle = BorderStyle.FixedSingle;
-            pbY.Location = new Point(819, 214);
-            pbY.Name = "pbY";
-            pbY.Size = new Size(200, 750);
-            pbY.TabIndex = 65;
-            pbY.TabStop = false;
-            // 
-            // BtnClearPicturebox
-            // 
-            BtnClearPicturebox.Location = new Point(819, 151);
-            BtnClearPicturebox.Name = "BtnClearPicturebox";
-            BtnClearPicturebox.Size = new Size(99, 56);
-            BtnClearPicturebox.TabIndex = 66;
-            BtnClearPicturebox.Text = "Refresh";
-            BtnClearPicturebox.UseVisualStyleBackColor = true;
-            BtnClearPicturebox.Click += BtnClearPicturebox_Click;
-            // 
             // groupBox6
             // 
             groupBox6.Controls.Add(BtnApply);
@@ -346,27 +303,6 @@
             panelMapMini.Size = new Size(373, 375);
             panelMapMini.TabIndex = 71;
             // 
-            // BtnSim
-            // 
-            BtnSim.Location = new Point(924, 151);
-            BtnSim.Name = "BtnSim";
-            BtnSim.Size = new Size(95, 56);
-            BtnSim.TabIndex = 66;
-            BtnSim.Text = "Simulation";
-            BtnSim.UseVisualStyleBackColor = true;
-            BtnSim.Click += BtnSim_Click;
-            // 
-            // BtnResetErrorTable
-            // 
-            BtnResetErrorTable.BackColor = Color.Red;
-            BtnResetErrorTable.Location = new Point(924, 92);
-            BtnResetErrorTable.Name = "BtnResetErrorTable";
-            BtnResetErrorTable.Size = new Size(95, 53);
-            BtnResetErrorTable.TabIndex = 72;
-            BtnResetErrorTable.Text = "Reset Error Table";
-            BtnResetErrorTable.UseVisualStyleBackColor = false;
-            BtnResetErrorTable.Click += BtnResetErrorTable_Click;
-            // 
             // BtnMatch
             // 
             BtnMatch.Location = new Point(1099, 496);
@@ -377,20 +313,24 @@
             BtnMatch.UseVisualStyleBackColor = true;
             BtnMatch.Click += BtnMatch_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Black;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1077, 960);
+            panel1.TabIndex = 73;
+            // 
             // ErrorCompensationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1764, 1026);
-            Controls.Add(BtnResetErrorTable);
+            Controls.Add(panel1);
             Controls.Add(panelMapMini);
             Controls.Add(BtnAdjustWaferHeight);
             Controls.Add(BtnZ);
             Controls.Add(groupBox6);
-            Controls.Add(BtnSim);
-            Controls.Add(BtnClearPicturebox);
-            Controls.Add(pbY);
-            Controls.Add(pbX);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
@@ -398,12 +338,12 @@
             Controls.Add(BtnWaferAlignment);
             Controls.Add(GboxIndexControl);
             Controls.Add(groupBox1);
-            Controls.Add(panelMap);
             Controls.Add(BtnMapScreen);
             Name = "ErrorCompensationForm";
             Text = "ErrorCompensationForm";
             Load += ErrorCompensationForm_Load;
             VisibleChanged += ErrorCompensationForm_VisibleChanged;
+            ParentChanged += ErrorCompensationForm_ParentChanged;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             GboxIndexControl.ResumeLayout(false);
@@ -412,15 +352,12 @@
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbX).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbY).EndInit();
             groupBox6.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
         private Button BtnMapScreen;
-        private Panel panelMap;
         private GroupBox groupBox1;
         private RadioButton RbtnJigCamera;
         private RadioButton RbtnWaferCamera;
@@ -435,10 +372,7 @@
         private GroupBox groupBox5;
         private Button BtnStop;
         private Button BtnStart;
-        private PictureBox pbX;
-        private PictureBox pbY;
         private RadioButton RbtnWriteData;
-        private Button BtnClearPicturebox;
         private GroupBox groupBox6;
         private Button BtnClear;
         private Button BtnApply;
@@ -446,8 +380,7 @@
         private Button BtnZ;
         private Button BtnAdjustWaferHeight;
         private Panel panelMapMini;
-        private Button BtnSim;
-        private Button BtnResetErrorTable;
         private Button BtnMatch;
+        private Panel panel1;
     }
 }

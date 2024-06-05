@@ -127,7 +127,7 @@ namespace MainForm
 
             for (int i = 0; i < 9; i++)
             {
-                Application.DoEvents();
+                //Application.DoEvents();
                 if (RbtnWaferCamera.Checked) Motion.UserPosMoveAbs(Compensation.Area.Align, userX[i], userY[i]);
                 double thickness = (RbtnWithWafer.Checked) ? DeviceData.Entity.PhysicalInformation.Thickness : 0;
                 int res = CommonFunctions.AdjustWaferHeight(thickness, Vision.WaferHighMag);

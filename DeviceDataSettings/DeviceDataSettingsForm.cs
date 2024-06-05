@@ -33,6 +33,7 @@ namespace MainForm
             WaferMap.Save(DeviceData.Entity.WaferAlignment.WaferMapPath);
             PadData.Save(DeviceData.Entity.PinAlignment.PadDataPath);
             PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
+            DUTData.Save(DeviceData.Entity.WaferAlignment.DutPath);
             MessageBox.Show("File Save Success!","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 

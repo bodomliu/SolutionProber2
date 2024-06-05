@@ -14,7 +14,7 @@ namespace MainForm
             InitializeComponent();
             panelIndex.Controls.Add(new WaferMapIndexControl());
         }
-        private void BtnIstantLowAlign_Click(object sender, EventArgs e)
+        private async void BtnIstantLowAlign_Click(object sender, EventArgs e)
         {
             Vision.WaferLowMag.halconClass.CreateShapeModel(PattenModel1);
             //做模板完了后加延时,TODO 增加校验步骤，延时不太可靠
@@ -22,8 +22,11 @@ namespace MainForm
             int L = int.Parse(txtL.Text);
             int R = int.Parse(txtR.Text);
 
-            int res = CommonFunctions.AlignX(Vision.WaferLowMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX,out _);
-            if (res != 0) MessageBox.Show(res.ToString());
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+                CommonFunctions.AlignX(Vision.WaferLowMag, PattenModel1, L, R, WaferMap.Entity.DieSizeX, out _)
+            );
+            WaitingControl.WF.End();
         }
 
         private void BtnTeachLowerLeftCorner_Click(object sender, EventArgs e)

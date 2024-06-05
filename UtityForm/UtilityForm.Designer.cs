@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
+            BtnChuckCenter = new Button();
             BtnChuckFlatness = new Button();
             panelForm = new Panel();
             panel2 = new Panel();
             panel1 = new Panel();
-            BtnChuckCenter = new Button();
             panelMenu.SuspendLayout();
             panelForm.SuspendLayout();
             SuspendLayout();
@@ -48,6 +48,16 @@
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(1792, 66);
             panelMenu.TabIndex = 0;
+            // 
+            // BtnChuckCenter
+            // 
+            BtnChuckCenter.Location = new Point(150, 14);
+            BtnChuckCenter.Name = "BtnChuckCenter";
+            BtnChuckCenter.Size = new Size(120, 36);
+            BtnChuckCenter.TabIndex = 0;
+            BtnChuckCenter.Text = "Chuck Center";
+            BtnChuckCenter.UseVisualStyleBackColor = true;
+            BtnChuckCenter.Click += BtnChuckCenter_Click;
             // 
             // BtnChuckFlatness
             // 
@@ -85,16 +95,6 @@
             panel1.Size = new Size(1080, 1000);
             panel1.TabIndex = 0;
             // 
-            // BtnChuckCenter
-            // 
-            BtnChuckCenter.Location = new Point(150, 14);
-            BtnChuckCenter.Name = "BtnChuckCenter";
-            BtnChuckCenter.Size = new Size(120, 36);
-            BtnChuckCenter.TabIndex = 0;
-            BtnChuckCenter.Text = "Chuck Center";
-            BtnChuckCenter.UseVisualStyleBackColor = true;
-            BtnChuckCenter.Click += BtnChuckCenter_Click;
-            // 
             // UtilityForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -105,6 +105,7 @@
             Name = "UtilityForm";
             Text = "Form1";
             VisibleChanged += UtilityForm_VisibleChanged;
+            ParentChanged += UtilityForm_ParentChanged;
             panelMenu.ResumeLayout(false);
             panelForm.ResumeLayout(false);
             ResumeLayout(false);

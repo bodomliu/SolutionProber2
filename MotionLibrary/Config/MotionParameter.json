@@ -21,6 +21,7 @@
   "ZALIGN2PROBE": 45900,
   "XPINLOW2HIGH": 763746,
   "YPINLOW2HIGH": -1511,
+  "ZPINLOW2HIGH": -4150,
   "ZPROBECARDUPPERPLATEBASE": 133500,
   "EdgeX": [
     3550000,
@@ -37,12 +38,12 @@
   "PROBEDIVIDEY": 3700000,
   "PROBEDIVIDEZ": 70000,
   "PROBING": {
-    "XOrgPin": 2970651,
-    "YOrgPin": 4129205,
-    "ZOrgPin": 73979,
-    "ZOrgWaferHeight": 38422,
-    "XPad2Pin": 13083,
-    "YPad2Pin": -3937,
-    "ZClearance": 88000
+    "XOrgPin": 2982603,
+    "YOrgPin": 4125483,
+    "ZOrgPin": 76740,
+    "ZOrgWaferHeight": 37670,
+    "XPad2Pin": 21900,
+    "YPad2Pin": 76118,
+    "ZPad2Pin": 93000
   }
 }

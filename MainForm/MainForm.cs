@@ -23,7 +23,7 @@ namespace MainForm
         readonly PinRegistrationForm pinRegistrationFrom = new();
         readonly InspectionForm inspectionForm = new();
         readonly ManualForm manualForm = new();
-
+        //readonly CommonPanel commonPanel = new();
         public MainForm()
         {
             InitializeComponent();
@@ -41,21 +41,22 @@ namespace MainForm
             this.WindowState = FormWindowState.Maximized;
 
             Vision.Initial();
+            Compensation.Initial();
             Motion.Initial();
             Motion.MultiAxisOn(1, 4);
-            Compensation.Initial();
 
+            //Controls.Add(CommonPanel.Entity);
             Controls.Add(WaitingControl.WF);
-            panelForm.Controls.Add(lotProcessForm);
-            panelForm.Controls.Add(errorCompensatioForm);
-            panelForm.Controls.Add(motionControl);
-            panelForm.Controls.Add(alignmentForm);
-            panelForm.Controls.Add(deviceDataSettingsForm);
-            panelForm.Controls.Add(utilityForm);
-            panelForm.Controls.Add(padRegistrationFrom);
-            panelForm.Controls.Add(pinRegistrationFrom);
-            panelForm.Controls.Add(inspectionForm);
-            panelForm.Controls.Add(manualForm);
+            //panelForm.Controls.Add(lotProcessForm);
+            //panelForm.Controls.Add(errorCompensatioForm);
+            //panelForm.Controls.Add(motionControl);
+            //panelForm.Controls.Add(alignmentForm);
+            //panelForm.Controls.Add(deviceDataSettingsForm);
+            //panelForm.Controls.Add(utilityForm);
+            //panelForm.Controls.Add(padRegistrationFrom);
+            //panelForm.Controls.Add(pinRegistrationFrom);
+            //panelForm.Controls.Add(inspectionForm);
+            //panelForm.Controls.Add(manualForm);
         }
 
         private void BtnLotProcess_Click(object sender, EventArgs e)
@@ -90,17 +91,19 @@ namespace MainForm
         private void ChangeForm(Control form)
         {
             //Clear 和 Add会触发Control.VisibleChange事件两次，Visible从false到true            
-            lotProcessForm.Hide();
-            errorCompensatioForm.Hide();
-            motionControl.Hide();
-            alignmentForm.Hide();
-            deviceDataSettingsForm.Hide();
-            utilityForm.Hide();
-            padRegistrationFrom.Hide();
-            pinRegistrationFrom.Hide();
-            inspectionForm.Hide();
-            manualForm.Hide(); 
-            
+            //lotProcessForm.Hide();
+            //errorCompensatioForm.Hide();
+            //motionControl.Hide();
+            //alignmentForm.Hide();
+            //deviceDataSettingsForm.Hide();
+            //utilityForm.Hide();
+            //padRegistrationFrom.Hide();
+            //pinRegistrationFrom.Hide();
+            //inspectionForm.Hide();
+            //manualForm.Hide();
+            //CommonPanel.Entity.Hide();
+            panelForm.Controls.Clear();
+            panelForm.Controls.Add(form);
             form.Show();
             form.Dock = DockStyle.Fill;
         }

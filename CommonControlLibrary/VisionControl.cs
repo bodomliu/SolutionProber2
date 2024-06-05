@@ -68,7 +68,7 @@ namespace CommonComponentLibrary
                 dataGridView1.DataSource = null;//删掉报错
                 dataGridView1.DataSource = MatchPoints;
             }
-            Application.DoEvents();
+            //Application.DoEvents();
             Thread.Sleep(500);//显示下绘图再返回连拍
             mag.ContinuesMode();//连拍模式，匹配完，切回连拍模式
             return;//若匹配失败，直接返回findShapeModel错误结果

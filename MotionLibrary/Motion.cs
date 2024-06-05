@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Text.Json;
 using static GTN.mc;
 
@@ -39,6 +40,7 @@ namespace MotionLibrary
         //设备参数，粗定位探针相机到精定位探针相机
         public double XPINLOW2HIGH { get; set; } = 769641;
         public double YPINLOW2HIGH { get; set; } = -1627;
+        public double ZPINLOW2HIGH { get; set; } = -4150;
 
         //设备参数，探针卡Plate的高度
         public double ZPROBECARDUPPERPLATEBASE { get; set; } = 133500;
@@ -53,13 +55,13 @@ namespace MotionLibrary
     }
     public class PinPadContact
     {
-        public double XOrgPin { get; set; } = 2982674;//定机台参数时，Abspin X
-        public double YOrgPin { get; set; } = 4125571;//定机台参数时，refpin Y
-        public double ZOrgPin { get; set; } = 77120;//定机台参数时，refpin高度
-        public double ZOrgWaferHeight { get; set; } = 38422;//定机台参数时，wafer高度
+        public double XOrgPin { get; set; } = 0;//定机台参数时，orgPin X = 2982674
+        public double YOrgPin { get; set; } = 0;//定机台参数时，orgPin Y = 4125571
+        public double ZOrgPin { get; set; } = 0;//定机台参数时，orgPin Z = 77120
+        public double ZOrgWaferHeight { get; set; } = 0;//定机台参数时，waferHeight = 38422
         public double XPad2Pin { get; set; } = 0;//13083定机台参数时，pad需要位移XPad2Pin才能扎到中心      
         public double YPad2Pin { get; set; } = 0;//-3937定机台参数时，pad需要位移YPad2Pin才能扎到中心            
-        public double ZPad2Pin { get; set; } = 0;//88000定机台参数时，pad从Zwafer上升ZPad2Pin时，正好扎到针
+        public double ZPad2Pin { get; set; } = 0;//定机台参数时，pad从Zwafer上升ZPad2Pin时，正好扎到针88000
     }
 
     static public class Motion
@@ -98,7 +100,39 @@ namespace MotionLibrary
             OpenCard();
             MultiAxisOn(1, 4);
             MultiAxisOn(2, 6);
+            Task m_task = new Task(()=> PositionThread());
+            m_task.Start();
         }
+        public static double UserX = 0;
+        public static double UserY = 0;
+        public static double EncodeX = 0;
+        public static double EncodeY = 0;
+        public static double EncodeZ = 0;
+        public static double EncodeR = 0;
+
+       
+        private static void PositionThread()
+        { 
+            Stopwatch stopwatch = new Stopwatch();
+            
+            while (true) 
+            {
+                stopwatch.Restart();
+                double[] pEncPos = new double[4];
+                Res = GTN.mc.GTN_GetEncPos(1, 1, out pEncPos[0], 4, out uint pClock);
+                EncodeX = pEncPos[0];
+                EncodeY = pEncPos[1];
+                EncodeZ = pEncPos[2];
+                EncodeR = pEncPos[3];
+
+                CurrentArea = (EncodeY < parameter.PROBEDIVIDEY) ? Compensation.Area.Align : Compensation.Area.Probing;
+                GetUserPos(CurrentArea, out UserX, out UserY);
+                Thread.Sleep(200);
+                stopwatch.Stop();
+                //Console.WriteLine("Compensation time = {0} ms", stopwatch.ElapsedMilliseconds);
+            }
+        }
+
         public static void Save(string filePath)
         {
             JsonSerializerOptions options = new()
@@ -435,7 +469,7 @@ namespace MotionLibrary
             int pStatus;
             do
             {
-                Application.DoEvents();//用于对焦.TODO:不好的方式，容易卡死界面，待优化
+                //Application.DoEvents();//用于对焦.TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, axis, out pStatus, 1, out uint pClock);
             } while ((pStatus & 0x800) == 0);//等待轴到位
             Thread.Sleep(parameter.POSTSLEEP);
@@ -475,7 +509,7 @@ namespace MotionLibrary
             int[] pStatus = new int[2];
             do
             {
-                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
+                //Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 2, out uint pClock);
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0));//等待轴到位
             Thread.Sleep(parameter.POSTSLEEP);
@@ -519,7 +553,7 @@ namespace MotionLibrary
             int[] pStatus = new int[3];
             do
             {
-                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
+                //Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 3, out uint pClock);
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0) || ((pStatus[2] & 0x800) == 0));//等待轴到位
 
@@ -560,7 +594,7 @@ namespace MotionLibrary
             int pStatus;
             do
             {
-                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
+                //Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, axis, out pStatus, 1, out pClock);
             } while ((pStatus & 0x800) == 0);//等待轴到位
 
@@ -604,7 +638,7 @@ namespace MotionLibrary
             int[] pStatus = new int[2];
             do
             {
-                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
+                //Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 2, out pClock);
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0));//等待轴到位
 
@@ -652,7 +686,7 @@ namespace MotionLibrary
             int[] pStatus = new int[3];
             do
             {
-                Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
+                //Application.DoEvents();//TODO:不好的方式，容易卡死界面，待优化
                 Res = GTN.mc.GTN_GetSts(core, 1, out pStatus[0], 3, out pClock);
             } while (((pStatus[0] & 0x800) == 0) || ((pStatus[1] & 0x800) == 0) || ((pStatus[2] & 0x800) == 0));//等待轴到位
 
@@ -874,7 +908,7 @@ namespace MotionLibrary
             tHomePrm.moveDir = -1;//回零方向
             tHomePrm.indexDir = 1;//搜索index方向
             tHomePrm.edge = 1;//0：下降沿，非0：上升沿
-            tHomePrm.velHigh = 100;//一段速
+            tHomePrm.velHigh = 200;//一段速
             tHomePrm.velLow = 10;//二段速
             tHomePrm.acc = 1;//回零加速度
             tHomePrm.dec = 1;//回零减速度
@@ -1082,10 +1116,10 @@ namespace MotionLibrary
                     XYZ_AxisMoveRel(1, -parameter.XWAFERLOW2HIGHT, -parameter.YWAFERLOW2HIGHT, -parameter.ZWAFERLOW2HIGHT, 600, 10, 10, 20);
                     break;
                 case 2:
-                    XYZ_AxisMoveRel(1, parameter.XPINLOW2HIGH, parameter.YPINLOW2HIGH, 0, 600, 10, 10, 20);
+                    XYZ_AxisMoveRel(1, parameter.XPINLOW2HIGH, parameter.YPINLOW2HIGH, parameter.ZPINLOW2HIGH, 600, 10, 10, 20);
                     break;
                 case 3:
-                    XYZ_AxisMoveRel(1, -parameter.XPINLOW2HIGH, -parameter.YPINLOW2HIGH, 0, 600, 10, 10, 20);
+                    XYZ_AxisMoveRel(1, -parameter.XPINLOW2HIGH, -parameter.YPINLOW2HIGH, -parameter.ZPINLOW2HIGH, 600, 10, 10, 20);
                     //AxisMoveAbs(1, 3, Motion.parameter.ZPROBER, 600, 10, 10, 20);
                     break;
                 default:

@@ -4,6 +4,8 @@ using MotionLibrary;
 using WaferMapLibrary;
 using log4net;
 using log4net.Config;
+using System.Windows.Forms;
+using MathNet.Numerics;
 namespace MainForm
 {
     public partial class AlignmentForm : Form
@@ -75,31 +77,42 @@ namespace MainForm
 
             WaitingControl.WF.Hide();
         }
-        private void GoForLowModel()
+        private async void GoForLowModel()
         {
-            Vision.ChangeCamera(Vision.WaferLowMag);
-            Motion.TogglePosition(1);
+            await Task.Run(() =>
+            {
+                Vision.ChangeCamera(Vision.WaferLowMag);
+                Motion.TogglePosition(1);
+            });
             isLowModel = true;
             UpdateUI();
         }
-        private void GoForHighModel()
+        private async void GoForHighModel()
         {
-            Vision.ChangeCamera(Vision.WaferHighMag);
-            Motion.TogglePosition(0);
+            await Task.Run(() => 
+            {
+                Vision.ChangeCamera(Vision.WaferHighMag);
+                Motion.TogglePosition(0);
+
+            });           
             isLowModel = false;
             UpdateUI();
         }
-        private void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
+        private async void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
         {
             WaitingControl.WF.Start();
 
             if (Vision.activeCamera == Camera.WaferLowMag)
             {
-                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferLowMag);
+                await Task.Run(() => 
+                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferLowMag)
+                );
             }
             else if (Vision.activeCamera == Camera.WaferHighMag)
             {
-                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
+                await Task.Run(() =>
+                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag)
+                );
             }
 
             WaitingControl.WF.End();
@@ -170,31 +183,30 @@ namespace MainForm
 
         private void AlignmentForm_ParentChanged(object sender, EventArgs e)
         {
-            
-        }
-
-        private void AlignmentForm_VisibleChanged(object sender, EventArgs e)
-        {
             //会进两次
-            if (Visible)
-            {
-                panel1.Controls.Add(CommonPanel.Entity);//静态
+            if (Parent!=null)
+            {               
+                panel1.Controls.Clear();
+                panel1.Controls.Add(CommonPanel.Entity);
                 if (isLowModel)
                 {
                     //默认是低倍相机启动
                     Vision.ChangeCamera(Vision.WaferLowMag);
-                    Thread.Sleep(200);
                     Vision.WaferLowMag.halconClass.SetPart(1280, 1024);//1280*1024显示
                 }
                 else
                 {
                     Vision.ChangeCamera(Vision.WaferHighMag);
-                    Thread.Sleep(200);
                     Vision.WaferHighMag.halconClass.SetPart(1280, 1024);//1280*1024显示
                 }
                 UpdateUI();
             }
-            else {}
+            else { }
+        }
+
+        private void AlignmentForm_VisibleChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

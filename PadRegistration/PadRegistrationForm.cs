@@ -12,6 +12,7 @@ namespace MainForm
             this.TopLevel = false; this.FormBorderStyle = FormBorderStyle.None;
             InitializeComponent();
             panel2.Controls.Add(_padCanvas);
+            panelMag.Controls.Add(new WaferMagControl());
             //WaferMapLibrary.Load("Pad.json");
         }
         private void PadRegistrationForm_Load(object sender, EventArgs e)
@@ -153,14 +154,11 @@ namespace MainForm
         }
         private void PadRegistrationForm_ParentChanged(object sender, EventArgs e)
         {
-            
-        }
-
-        private void PadRegistrationForm_VisibleChanged(object sender, EventArgs e)
-        {
-            if (Visible)
+            if (Parent!=null)
             {
+                panel1.Controls.Clear();
                 panel1.Controls.Add(CommonPanel.Entity);
+                Vision.ChangeCamera(Vision.WaferLowMag);
                 Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, PadData.Entity.PadWidth, PadData.Entity.PadHeight);
                 Vision.WaferHighMag.halconClass.m_Roi.Color = "green";
                 UpdateUI();
@@ -170,6 +168,11 @@ namespace MainForm
                 Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, 400, 400);
                 Vision.WaferHighMag.halconClass.m_Roi.Color = "red";
             }
+        }
+
+        private void PadRegistrationForm_VisibleChanged(object sender, EventArgs e)
+        {
+            
 
         }
     }

@@ -127,6 +127,7 @@
             Name = "LotProcessForm";
             Text = "LotProcessForm";
             Load += LotProcessForm_Load;
+            ParentChanged += LotProcessForm_ParentChanged;
             panelMenu.ResumeLayout(false);
             ResumeLayout(false);
         }

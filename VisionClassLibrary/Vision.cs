@@ -192,15 +192,14 @@ namespace VisionLibrary
             //获取当前激活的相机
             int index = (int)activeCamera;//index初始值=-1
             CameraList[index].halconClass.DisplayWindowsUnbind();
-
-            //绑定halconwindow
-            camera.halconClass.DisplayWindowsBind(m_HSmartWindowControl);
-
+            CameraList[index].StopGrab();//TODO：待优化
+            camera.halconClass.DisplayWindowsBind(m_HSmartWindowControl);//绑定halconwindow
+            camera.StartGrab();//TODO：待优化
             //相机打到连拍模式
             camera.ContinuesMode();
-
             //获得camera在CamraList下的编号
             activeCamera = (Camera)CameraList.IndexOf(camera);
+            Thread.Sleep(200);//确认生效
         }
 
         public static void ChangeCamera(Camera camera)
