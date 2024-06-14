@@ -47,7 +47,7 @@ namespace PinRegistration
             await Task.Run(() =>
             {
                 int index = (int)NumIndex.Value;
-                CommonFunctions.GoToPin(index, islowMode);
+                PinAlignLib.GoToPin(index, islowMode);
             });
             WaitingControl.WF.End();
             UpdateUI();
@@ -65,7 +65,7 @@ namespace PinRegistration
             WaitingControl.WF.Start();
             await Task.Run(() =>
             {
-                CommonFunctions.GoToPin(Index, islowMode);
+                PinAlignLib.GoToPin(Index, islowMode);
             });
             WaitingControl.WF.End();
             UpdateUI();
@@ -76,7 +76,7 @@ namespace PinRegistration
             WaitingControl.WF.Start();
             await Task.Run(() =>
             {
-                CommonFunctions.GoToPin(0, islowMode);
+                PinAlignLib.GoToPin(0, islowMode);
             });
             WaitingControl.WF.End();
             UpdateUI();
@@ -90,7 +90,7 @@ namespace PinRegistration
             WaitingControl.WF.Start();
             await Task.Run(() =>
             {
-                CommonFunctions.GoToPin(Index, islowMode);
+                PinAlignLib.GoToPin(Index, islowMode);
             });
             WaitingControl.WF.End();
             UpdateUI();
@@ -112,7 +112,7 @@ namespace PinRegistration
         private async void BtnMovePinToTheCenter_Click(object sender, EventArgs e)
         {
             WaitingControl.WF.Start();
-            await Task.Run(() => CommonFunctions.MovePinToCenter());
+            await Task.Run(() => PinAlignLib.MovePinToCenter());
             WaitingControl.WF.End();
 
             UpdateUI();

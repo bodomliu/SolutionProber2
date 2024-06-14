@@ -1,12 +1,14 @@
 ﻿using WaferMapLibrary;
 using MotionLibrary;
+using System;
 namespace CommonComponentLibrary
 {
     public partial class WaferMapIndexControl : UserControl
     {
-        public WaferMapIndexControl()
+        public WaferMapIndexControl(bool BtnMatchVisible = false)
         {
             InitializeComponent();
+            BtnPinPadMatch.Visible = BtnMatchVisible;
         }
 
         private void WaferMapIndexControl_Load(object sender, EventArgs e)
@@ -21,9 +23,18 @@ namespace CommonComponentLibrary
 
         private void onIndexChange(int x, int y)
         {
-            TxtIndexX.Text = x.ToString();
-            TxtIndexY.Text = y.ToString();
+            if (this.TxtIndexX.InvokeRequired || this.TxtIndexY.InvokeRequired)
+            {
+                SetIndexCallBack sicb = new SetIndexCallBack(onIndexChange);
+                this.Invoke(sicb, new object[] { x, y });
+            }
+            else
+            {
+                TxtIndexX.Text = x.ToString();
+                TxtIndexY.Text = y.ToString();
+            }
         }
+        delegate void SetIndexCallBack(int x, int y);
 
         public void UpdateIndex()
         {
@@ -64,6 +75,16 @@ namespace CommonComponentLibrary
         {
             WaferMap.setCurrentIndex(int.Parse(TxtIndexX.Text), int.Parse(TxtIndexY.Text));
             CommonFunctions.IndexMove(Motion.CurrentArea, WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
+        }
+
+        private async void BtnPinPadMatch_Click(object sender, EventArgs e)
+        {
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+            {
+                CommonFunctions.PinPadMatch();
+            });
+            WaitingControl.WF.End();
         }
     }
 }

@@ -1,0 +1,13 @@
+{
+  "DieOrg2RefPadX": 993.0282970043045,
+  "DieOrg2RefPadY": -1182.2102724528377,
+  "PadWidth": 106,
+  "PadHeight": 106,
+  "PadAngle": 0,
+  "Pads": [
+    {
+      "PosX": 0,
+      "PosY": 0
+    }
+  ]
+}

@@ -91,10 +91,15 @@ namespace MainForm
             //当关闭时，销毁
             this.Dispose();
         }
-        private void BtnToCenter_Click(object sender, EventArgs e)
+        private async void BtnToCenter_Click(object sender, EventArgs e)
         {
             //粗定位 TODO：确认方向，暂时这么处理，X反向，Y同向
-            Motion.UserPosMoveAbs(Compensation.Area.Align, WaferMap.WaferCenterX, WaferMap.WaferCenterY);
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+            {
+                Motion.UserPosMoveAbs(Compensation.Area.Align, WaferMap.WaferCenterX, WaferMap.WaferCenterY);
+            });
+            WaitingControl.WF.End();
         }
         private void BtnBlob_Click(object sender, EventArgs e)
         {

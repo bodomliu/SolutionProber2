@@ -27,7 +27,7 @@ namespace MainForm
         {
             //获得当前XY坐标
             Motion.GetUserPos(Compensation.Area.Align, out double RefPadX, out double RefPadY);
-            CommonFunctions.IndexUserPosAfterAlign(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double X, out double Y);
+            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double X, out double Y,out _,out _);
             double DieOrg2RefPadX = RefPadX - X;
             double DieOrg2RefPadY = RefPadY - Y;
             string str = "DieOrg2RefPadX: " + PadData.Entity.DieOrg2RefPadX.ToString() + " → " + DieOrg2RefPadX.ToString() + "\r\n";
@@ -65,7 +65,7 @@ namespace MainForm
         {
             //获得当前XY坐标
             Motion.GetUserPos(Compensation.Area.Align, out double RefPadX, out double RefPadY);
-            CommonFunctions.IndexUserPosAfterAlign(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY);
+            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY,out _,out _);
             double posX = RefPadX - (OrgX + PadData.Entity.DieOrg2RefPadX);//以refdie为原点的坐标
             double posY = RefPadY - (OrgY + PadData.Entity.DieOrg2RefPadY);//以refdie为原点的坐标
 
@@ -77,7 +77,7 @@ namespace MainForm
         {
             //获得当前XY坐标
             Motion.GetUserPos(Compensation.Area.Align, out double RefPadX, out double RefPadY);
-            CommonFunctions.IndexUserPosAfterAlign(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY);
+            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY, out _, out _);
             double posX = RefPadX - (OrgX + PadData.Entity.DieOrg2RefPadX);//以refdie为原点的坐标
             double posY = RefPadY - (OrgY + PadData.Entity.DieOrg2RefPadY);//以refdie为原点的坐标
 
@@ -101,7 +101,7 @@ namespace MainForm
         {
             //获得当前XY坐标
             Motion.GetUserPos(Compensation.Area.Align, out double RefPadX, out double RefPadY);
-            CommonFunctions.IndexUserPosAfterAlign(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY);
+            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY, out _, out _);
             double posX = RefPadX - (OrgX + PadData.Entity.DieOrg2RefPadX);//以refdie为原点的坐标
             double posY = RefPadY - (OrgY + PadData.Entity.DieOrg2RefPadY);//以refdie为原点的坐标
 

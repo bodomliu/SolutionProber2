@@ -50,6 +50,10 @@
             panelCamera = new Panel();
             groupBox2 = new GroupBox();
             label4 = new Label();
+            TxtAngle = new TextBox();
+            BtnRotate = new Button();
+            BtnMoveWithAngle = new Button();
+            BtnCheckPads = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -145,6 +149,7 @@
             BtnClear.TabIndex = 2;
             BtnClear.Text = "Clear";
             BtnClear.UseVisualStyleBackColor = false;
+            BtnClear.Click += BtnClear_Click;
             // 
             // BtnApply
             // 
@@ -252,11 +257,53 @@
             label4.TabIndex = 1;
             label4.Text = "Index";
             // 
+            // TxtAngle
+            // 
+            TxtAngle.Location = new Point(1128, 396);
+            TxtAngle.Name = "TxtAngle";
+            TxtAngle.Size = new Size(92, 23);
+            TxtAngle.TabIndex = 67;
+            TxtAngle.Text = "0";
+            // 
+            // BtnRotate
+            // 
+            BtnRotate.Location = new Point(1128, 347);
+            BtnRotate.Name = "BtnRotate";
+            BtnRotate.Size = new Size(92, 43);
+            BtnRotate.TabIndex = 68;
+            BtnRotate.Text = "Rotate";
+            BtnRotate.UseVisualStyleBackColor = true;
+            BtnRotate.Click += BtnRotate_Click;
+            // 
+            // BtnMoveWithAngle
+            // 
+            BtnMoveWithAngle.Location = new Point(1128, 425);
+            BtnMoveWithAngle.Name = "BtnMoveWithAngle";
+            BtnMoveWithAngle.Size = new Size(92, 43);
+            BtnMoveWithAngle.TabIndex = 68;
+            BtnMoveWithAngle.Text = "Move With Angle";
+            BtnMoveWithAngle.UseVisualStyleBackColor = true;
+            BtnMoveWithAngle.Click += BtnMoveWithAngle_Click;
+            // 
+            // BtnCheckPads
+            // 
+            BtnCheckPads.Location = new Point(1450, 372);
+            BtnCheckPads.Name = "BtnCheckPads";
+            BtnCheckPads.Size = new Size(88, 40);
+            BtnCheckPads.TabIndex = 69;
+            BtnCheckPads.Text = "Check Pads";
+            BtnCheckPads.UseVisualStyleBackColor = true;
+            BtnCheckPads.Click += BtnCheckPads_Click;
+            // 
             // InspectionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1847, 1126);
+            Controls.Add(BtnCheckPads);
+            Controls.Add(BtnMoveWithAngle);
+            Controls.Add(BtnRotate);
+            Controls.Add(TxtAngle);
             Controls.Add(groupBox2);
             Controls.Add(panelCamera);
             Controls.Add(panel1);
@@ -274,6 +321,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -298,5 +346,9 @@
         private Panel panelCamera;
         private GroupBox groupBox2;
         private Label label4;
+        private TextBox TxtAngle;
+        private Button BtnRotate;
+        private Button BtnMoveWithAngle;
+        private Button BtnCheckPads;
     }
 }

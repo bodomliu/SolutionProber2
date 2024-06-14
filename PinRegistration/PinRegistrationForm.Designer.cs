@@ -56,6 +56,7 @@
             groupBox3 = new GroupBox();
             Rbtn4Pins = new RadioButton();
             RbtnAllPins = new RadioButton();
+            BtnM_Pin = new Button();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumRefPinOffsetR).BeginInit();
             groupBox3.SuspendLayout();
@@ -258,7 +259,7 @@
             // 
             // BtnFocusInitial
             // 
-            BtnFocusInitial.Location = new Point(1093, 381);
+            BtnFocusInitial.Location = new Point(1093, 439);
             BtnFocusInitial.Name = "BtnFocusInitial";
             BtnFocusInitial.Size = new Size(88, 54);
             BtnFocusInitial.TabIndex = 25;
@@ -281,11 +282,11 @@
             // 
             BtnPinData.BackColor = Color.Teal;
             BtnPinData.ForeColor = Color.White;
-            BtnPinData.Location = new Point(1093, 321);
+            BtnPinData.Location = new Point(1092, 379);
             BtnPinData.Name = "BtnPinData";
             BtnPinData.Size = new Size(88, 54);
             BtnPinData.TabIndex = 25;
-            BtnPinData.Text = "m_Pin";
+            BtnPinData.Text = "Pin Data";
             BtnPinData.UseVisualStyleBackColor = false;
             BtnPinData.Click += BtnPinData_Click;
             // 
@@ -343,6 +344,18 @@
             RbtnAllPins.Text = "All Pins";
             RbtnAllPins.UseVisualStyleBackColor = true;
             // 
+            // BtnM_Pin
+            // 
+            BtnM_Pin.BackColor = Color.Teal;
+            BtnM_Pin.ForeColor = Color.White;
+            BtnM_Pin.Location = new Point(1093, 321);
+            BtnM_Pin.Name = "BtnM_Pin";
+            BtnM_Pin.Size = new Size(88, 54);
+            BtnM_Pin.TabIndex = 25;
+            BtnM_Pin.Text = "m_Pin";
+            BtnM_Pin.UseVisualStyleBackColor = false;
+            BtnM_Pin.Click += BtnM_Pin_Click;
+            // 
             // PinRegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -359,6 +372,7 @@
             Controls.Add(LblPinOffsetY);
             Controls.Add(LblPinOffsetX);
             Controls.Add(BtnOrgPinInitial);
+            Controls.Add(BtnM_Pin);
             Controls.Add(BtnPinData);
             Controls.Add(BtnFocusInitial);
             Controls.Add(label6);
@@ -409,5 +423,6 @@
         private GroupBox groupBox3;
         private RadioButton Rbtn4Pins;
         private RadioButton RbtnAllPins;
+        private Button BtnM_Pin;
     }
 }

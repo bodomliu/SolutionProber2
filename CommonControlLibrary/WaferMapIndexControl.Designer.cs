@@ -40,11 +40,12 @@ namespace CommonComponentLibrary
             TxtIndexY = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            BtnPinPadMatch = new Button();
             SuspendLayout();
             // 
             // BtnUp
             // 
-            BtnUp.Location = new System.Drawing.Point(118, 3);
+            BtnUp.Location = new Point(119, 3);
             BtnUp.Name = "BtnUp";
             BtnUp.Size = new Size(40, 40);
             BtnUp.TabIndex = 0;
@@ -54,7 +55,7 @@ namespace CommonComponentLibrary
             // 
             // BtnDown
             // 
-            BtnDown.Location = new System.Drawing.Point(118, 85);
+            BtnDown.Location = new Point(119, 46);
             BtnDown.Name = "BtnDown";
             BtnDown.Size = new Size(40, 40);
             BtnDown.TabIndex = 0;
@@ -64,7 +65,7 @@ namespace CommonComponentLibrary
             // 
             // BtnLeft
             // 
-            BtnLeft.Location = new System.Drawing.Point(77, 44);
+            BtnLeft.Location = new Point(76, 45);
             BtnLeft.Name = "BtnLeft";
             BtnLeft.Size = new Size(40, 40);
             BtnLeft.TabIndex = 0;
@@ -74,7 +75,7 @@ namespace CommonComponentLibrary
             // 
             // BtnRight
             // 
-            BtnRight.Location = new System.Drawing.Point(159, 44);
+            BtnRight.Location = new Point(162, 46);
             BtnRight.Name = "BtnRight";
             BtnRight.Size = new Size(40, 40);
             BtnRight.TabIndex = 0;
@@ -85,24 +86,24 @@ namespace CommonComponentLibrary
             // BtnEnter
             // 
             BtnEnter.BackColor = Color.Orange;
-            BtnEnter.Location = new System.Drawing.Point(118, 44);
+            BtnEnter.Location = new Point(3, 87);
             BtnEnter.Name = "BtnEnter";
-            BtnEnter.Size = new Size(40, 40);
+            BtnEnter.Size = new Size(95, 40);
             BtnEnter.TabIndex = 0;
-            BtnEnter.Text = "ENT";
+            BtnEnter.Text = "Go To Die";
             BtnEnter.UseVisualStyleBackColor = false;
             BtnEnter.Click += BtnEnter_Click;
             // 
             // TxtIndexX
             // 
-            TxtIndexX.Location = new System.Drawing.Point(25, 6);
+            TxtIndexX.Location = new Point(24, 12);
             TxtIndexX.Name = "TxtIndexX";
             TxtIndexX.Size = new Size(42, 23);
             TxtIndexX.TabIndex = 1;
             // 
             // TxtIndexY
             // 
-            TxtIndexY.Location = new System.Drawing.Point(25, 35);
+            TxtIndexY.Location = new Point(24, 46);
             TxtIndexY.Name = "TxtIndexY";
             TxtIndexY.Size = new Size(42, 23);
             TxtIndexY.TabIndex = 1;
@@ -110,7 +111,7 @@ namespace CommonComponentLibrary
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(5, 9);
+            label1.Location = new Point(5, 18);
             label1.Name = "label1";
             label1.Size = new Size(16, 17);
             label1.TabIndex = 2;
@@ -119,17 +120,29 @@ namespace CommonComponentLibrary
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(5, 38);
+            label2.Location = new Point(3, 49);
             label2.Name = "label2";
             label2.Size = new Size(15, 17);
             label2.TabIndex = 2;
             label2.Text = "Y";
+            // 
+            // BtnPinPadMatch
+            // 
+            BtnPinPadMatch.BackColor = Color.Orange;
+            BtnPinPadMatch.Location = new Point(101, 87);
+            BtnPinPadMatch.Name = "BtnPinPadMatch";
+            BtnPinPadMatch.Size = new Size(101, 40);
+            BtnPinPadMatch.TabIndex = 59;
+            BtnPinPadMatch.Text = "Pin Pad Match";
+            BtnPinPadMatch.UseVisualStyleBackColor = false;
+            BtnPinPadMatch.Click += BtnPinPadMatch_Click;
             // 
             // WaferMapIndexControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
+            Controls.Add(BtnPinPadMatch);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(TxtIndexY);
@@ -140,7 +153,7 @@ namespace CommonComponentLibrary
             Controls.Add(BtnDown);
             Controls.Add(BtnUp);
             Name = "WaferMapIndexControl";
-            Size = new Size(205, 132);
+            Size = new Size(207, 130);
             Load += WaferMapIndexControl_Load;
             Paint += WaferMapIndexControl_Paint;
             ResumeLayout(false);
@@ -158,5 +171,6 @@ namespace CommonComponentLibrary
         private TextBox TxtIndexY;
         private Label label1;
         private Label label2;
+        private Button BtnPinPadMatch;
     }
 }

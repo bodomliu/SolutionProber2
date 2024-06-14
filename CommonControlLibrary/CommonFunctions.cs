@@ -1,6 +1,6 @@
-﻿using WaferMapLibrary;
+﻿using MotionLibrary;
 using VisionLibrary;
-using MotionLibrary;
+using WaferMapLibrary;
 
 namespace CommonComponentLibrary
 {
@@ -349,7 +349,7 @@ namespace CommonComponentLibrary
         public static void IndexMove(Compensation.Area area, int indexX, int indexY)
         {
             //TODO：需要知道是粗定位还是精定位下的坐标
-            IndexUserPosAfterAlign(indexX, indexY, out double UserPosX, out double UserPosY);
+            LocateDie(indexX, indexY, out double UserPosX, out double UserPosY,out _,out _);
             Motion.UserPosMoveAbs(area, UserPosX, UserPosY);
             //刷新当前位置
             WaferMap.CurrentIndexX = indexX; WaferMap.CurrentIndexY = indexY;
@@ -364,8 +364,7 @@ namespace CommonComponentLibrary
         /// <param name="indexY"></param>
         public static void GoToDie(int indexX, int indexY, bool isLowMode = false)
         {
-            IndexUserPosAfterAlign(indexX, indexY, out double X, out double Y);
-            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, X, Y, out X, out Y);
+            LocateDie(indexX, indexY, out _, out _,out double X,out double Y);
             double Z = WaferMap.WaferHeight;
             if (isLowMode)
             {
@@ -379,25 +378,25 @@ namespace CommonComponentLibrary
             CommonPanel.IndexX = indexX; CommonPanel.IndexY = indexY;
         }
 
-
         /// <summary>
         /// 带了Offset的精确定位
         /// </summary>
         /// <param name="indexX"></param>
         /// <param name="indexY"></param>
-        /// <param name="userPosX"></param>
-        /// <param name="userPosY"></param>
-        public static void IndexUserPosAfterAlign(int indexX, int indexY, out double userPosX, out double userPosY)
+        /// <param name="userX"></param>
+        /// <param name="userY"></param>
+        public static void LocateDie(int indexX, int indexY, out double userX, out double userY,out double encodeX,out double encodeY)
         {
             //TODO：需要知道是粗定位还是精定位下的坐标
             //求refDieOrg的坐标
             double refDieOrgX = 0 + WaferMap.Entity.Center2RefDieCornerX + WaferMap.Entity.Corner2OrgX;
             double refDieOrgY = 0 + WaferMap.Entity.Center2RefDieCornerY + WaferMap.Entity.Corner2OrgY;
             //求DieOrg的坐标
-            userPosX = (indexX - WaferMap.Entity.RefDieX) * WaferMap.Entity.DieSizeX + refDieOrgX;
-            userPosY = (indexY - WaferMap.Entity.RefDieY) * WaferMap.Entity.DieSizeY + refDieOrgY;
+            userX = (indexX - WaferMap.Entity.RefDieX) * WaferMap.Entity.DieSizeX + refDieOrgX;
+            userY = (indexY - WaferMap.Entity.RefDieY) * WaferMap.Entity.DieSizeY + refDieOrgY;
             //加offset
-            userPosX += WaferMap.WaferOffsetX; userPosY += WaferMap.WaferOffsetY;
+            userX += WaferMap.WaferOffsetX; userY += WaferMap.WaferOffsetY;
+            Compensation.Transform(Compensation.Area.Align,Compensation.Dir.User2Encode,userX,userY,out encodeX,out encodeY);
         }
         #endregion
 
@@ -486,14 +485,17 @@ namespace CommonComponentLibrary
             }
         }
         #region PinAlignment
+        /// <summary>
+        /// 运动到Align区域的pad，Probing区域无意义
+        /// </summary>
+        /// <param name="DieX"></param>
+        /// <param name="DieY"></param>
+        /// <param name="PadIndex"></param>
         public static void GotoPad(int DieX,int DieY,int PadIndex)
         {
             if (PadData.Entity.Pads == null) return;
             //先获得当前Die Org的用户坐标
-            IndexUserPosAfterAlign(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double X, out double Y);
-            //获得Pad的坐标
-            X += PadData.Entity.DieOrg2RefPadX + PadData.Entity.Pads[PadIndex].PosX;
-            Y += PadData.Entity.DieOrg2RefPadY + PadData.Entity.Pads[PadIndex].PosY;
+            LoactePad(DieX,DieY,PadIndex,out double X,out double Y,out _,out _);
             //运动到Pad
             Motion.UserPosMoveAbs(Compensation.Area.Align, X, Y);
             //上升
@@ -501,70 +503,22 @@ namespace CommonComponentLibrary
             WaferMap.CurrentIndexX = DieX;WaferMap.CurrentIndexY = DieY;
             PadData.CurrentIndex = PadIndex;//改Index
         }
-        public static void MovePinToCenter()
+        private static void LoactePad(int DieX, int DieY, int PadIndex, out double userX,out double userY, out double encodeX, out double encodeY)
         {
-            int GetPinXArea = DeviceData.Entity.PinAlignment.GetPinXArea;
-            int GetPinYArea = DeviceData.Entity.PinAlignment.GetPinYArea;
-            Vision.PinHighMag.halconClass.m_Roi.Resize2(512, 640, GetPinXArea, GetPinYArea);//blobROI
-            float expo = DeviceData.Entity.PinAlignment.GetPinExposureTime;
-            Vision.PinHighMag.SetExposureTime(expo);//blob曝光
-            Thread.Sleep(500);//避免没生效
-            Vision.PinHighMag.TriggerMode();
-            Vision.PinHighMag.TriggerExec();
-            int res = Vision.PinHighMag.halconClass.GetPin(out double DeltaX, out double DeltaY);
-            if (res != 0)
-            {
-                MessageBox.Show("Move To Pin Error.");
-            }
-            else 
-            {
-                Motion.XY_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 600, 10, 10, 20);
-            }
-            Vision.PinHighMag.ContinuesMode();
-        }
-        public static void GoToPin(int index,bool isLowMode = false)
-        {
-            if (PinData.Entity.Pins == null) return;
-            if (index > PinData.Entity.Pins.Count || index < 0) return;
-            //根据粗精模式走点
-            double refPinX = PinData.Entity.RefPinX;
-            double refPinY = PinData.Entity.RefPinY;
-            double refPinZ = PinData.Entity.RefPinZ;
-            if (isLowMode)
-            {
-                refPinX -= Motion.parameter.XPINLOW2HIGH;
-                refPinY -= Motion.parameter.YPINLOW2HIGH;
-                refPinZ -= Motion.parameter.ZPINLOW2HIGH;
-            }
-            //第一步，得到refPin用户坐标X,Y
-            Compensation.Transform(Compensation.Area.Probing,Compensation.Dir.Encode2User, refPinX, refPinY,
-                out double X0,out double Y0);
-            //第二步，得到目标Pin用户坐标
-            double X = X0 - PinData.Entity.Pins[index].PosX;//标定时，目标点在(dX,dY)位置时的encode1，与目标从中点运动到(dX,dY)位置的encode符号相反
-            double Y = Y0 - PinData.Entity.Pins[index].PosY;
-            //第三步，走用户坐标
-            Motion.UserPosMoveAbs(Compensation.Area.Probing,X,Y);
-            //第四步，上针
-            Motion.AxisMoveAbs(1, 3, refPinZ, 600, 10, 10, 20);
-            PinData.CurrentIndex = index;
+            //先获得当前Die Org的用户坐标
+            LocateDie(DieX, DieY, out double X, out double Y, out _, out _);
+            //获得Pad的用户坐标
+            X += PadData.Entity.DieOrg2RefPadX + PadData.Entity.Pads[PadIndex].PosX;
+            Y += PadData.Entity.DieOrg2RefPadY + PadData.Entity.Pads[PadIndex].PosY;
+            //求pad因为旋转产生的位移，将旋转点转到用户坐标系
+            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User, 
+                Motion.parameter.XROTATE, Motion.parameter.YROTATE, out double rotateX, out double rotateY);
+            //TODO用户坐标系的角度临时取反//先算user，再输出encode
+            RotatePoint(X, Y, rotateX, rotateY,-PinData.Entity.PinsAngle, out userX, out userY);           
+            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, userX, userY, out encodeX, out encodeY);
         }
         /// <summary>
-        /// 所有点绕RefPin(X0,Y0)旋转Angle角度
-        /// </summary>
-        /// <param name="X"></param>
-        /// <param name="Y"></param>
-        /// <param name="Angle">10000 = 1 degree，逆时针为正。当使用用户坐标系注意正反手坐标系</param>
-        public static void RotatePins(double[] X, double[] Y, double Angle, out double[] Xout, out double[] Yout)
-        {
-            int cnt = X.Length;
-            Xout = new double[cnt]; Yout = new double[cnt];
-            for (int i = 0; i < cnt; i++)
-            {
-                RotatePin(X[i], Y[i], X[0], Y[0], Angle, out Xout[i], out Yout[i]);
-            }
-        }
-        /// <summary>
-        /// 点（X，Y）绕RefPin(X0,Y0)旋转Angle角度，后的坐标(Xout,Yout)
+        /// 点（X，Y）绕点(X0,Y0)旋转Angle角度，后的坐标(Xout,Yout)
         /// </summary>
         /// <param name="X"></param>
         /// <param name="Y"></param>
@@ -573,11 +527,38 @@ namespace CommonComponentLibrary
         /// <param name="Angle"></param>
         /// <param name="Xout"></param>
         /// <param name="Yout"></param>
-        public static void RotatePin(double X, double Y, double X0,double Y0,double Angle, out double Xout, out double Yout)
+        public static void RotatePoint(double X, double Y, double X0, double Y0, double Angle, out double Xout, out double Yout)
         {
             double ang = Angle * Math.PI / 10000 / 180;
             Xout = (X - X0) * Math.Cos(ang) - (Y - Y0) * Math.Sin(ang) + X0;
             Yout = (X - X0) * Math.Sin(ang) + (Y - Y0) * Math.Cos(ang) + Y0;
+        }
+
+        #endregion
+        #region Probing
+        /// <summary>
+        /// 将currentDie对齐到RefPin
+        /// </summary>
+        public static void PinPadMatch()
+        {
+            //考虑Pad需要再运行offset才能被珍扎到，该offset为机台最初标定时确定
+            //Pin针位置也与最初标定时发生变化
+            //旋转pinAngle导致的位移
+            //最外层的ProbingShift
+            //获得所有的offset合计
+            double deltaX = Motion.parameter.PROBING.XPad2Pin + PinData.Entity.RefPinX
+               - Motion.parameter.PROBING.XOrgPin + DeviceData.Entity.Probing.ProbingShiftX;
+            double deltaY = Motion.parameter.PROBING.YPad2Pin + PinData.Entity.RefPinY
+                - Motion.parameter.PROBING.YOrgPin + DeviceData.Entity.Probing.ProbingShiftY;
+            //当前Die的RefPad的encode坐标
+            LoactePad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, 0,out _,out _,out double encodeX,out double encodeY);
+            //将当前点位进行虚拟pad2pin移动，这个匹配在Align区域进行，因为标定用的pad2pin、ProbingShift是在标定区计算得到
+            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User,
+                encodeX + deltaX , encodeY + deltaY, out double userPosX, out double userPosY);
+            //运行到Proing位置
+            Motion.UserPosMoveAbs(Compensation.Area.Probing, userPosX, userPosY);
+            Motion.AxisMoveRel(1, 4, PinData.Entity.PinsAngle, 600, 10, 10, 20);
+            Motion.AxisMoveAbs(1, 3, DeviceData.Entity.Probing.ZDownPosition, 600, 10, 10, 20);
         }
         #endregion
     }

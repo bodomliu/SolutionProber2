@@ -1,0 +1,69 @@
+{
+  "RefPinX": 3075259,
+  "RefPinY": 4138447,
+  "RefPinZ": 76991,
+  "PinsAvgHeight": 0,
+  "PinsAngle": 0,
+  "Pins": [
+    {
+      "PosX": 0,
+      "PosY": 0,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 126565.4,
+      "PosY": 0,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 253130.8,
+      "PosY": 0,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 0,
+      "PosY": 162125.1,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 126565.4,
+      "PosY": 162125.1,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    },
+    {
+      "PosX": 253130.8,
+      "PosY": 162125.1,
+      "PosZ": 0,
+      "CurrentPosX": 0,
+      "CurrentPosY": 0,
+      "CurrentPosZ": 0,
+      "AlignResult": 0,
+      "AlignMode": 0
+    }
+  ]
+}

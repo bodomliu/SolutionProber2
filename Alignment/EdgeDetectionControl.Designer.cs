@@ -139,22 +139,22 @@
             // 
             // lblWaferCenterX
             // 
-            lblWaferCenterX.Location = new Point(260, 213);
+            lblWaferCenterX.Location = new Point(276, 213);
             lblWaferCenterX.Name = "lblWaferCenterX";
-            lblWaferCenterX.Size = new Size(100, 23);
+            lblWaferCenterX.Size = new Size(75, 23);
             lblWaferCenterX.TabIndex = 3;
             // 
             // lblWaferCenterY
             // 
-            lblWaferCenterY.Location = new Point(260, 242);
+            lblWaferCenterY.Location = new Point(276, 242);
             lblWaferCenterY.Name = "lblWaferCenterY";
-            lblWaferCenterY.Size = new Size(100, 23);
+            lblWaferCenterY.Size = new Size(75, 23);
             lblWaferCenterY.TabIndex = 3;
             // 
-            // Blob
+            // BtnBlob
             // 
             BtnBlob.Location = new Point(51, 184);
-            BtnBlob.Name = "Blob";
+            BtnBlob.Name = "BtnBlob";
             BtnBlob.Size = new Size(62, 52);
             BtnBlob.TabIndex = 0;
             BtnBlob.Text = "Blob";

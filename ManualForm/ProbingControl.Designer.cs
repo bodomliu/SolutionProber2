@@ -51,29 +51,32 @@
             BtnAllContact = new Button();
             groupBox3 = new GroupBox();
             CbCompensation = new CheckBox();
+            txtPad2PinY = new TextBox();
             label4 = new Label();
+            TxtZDownPosition = new TextBox();
             label3 = new Label();
+            txtPad2PinX = new TextBox();
             label2 = new Label();
+            TxtZUpPosition = new TextBox();
+            label8 = new Label();
             label1 = new Label();
+            label6 = new Label();
             txtEncodeX = new TextBox();
+            label7 = new Label();
             txtEncodeR = new TextBox();
+            label5 = new Label();
             txtEncodeY = new TextBox();
             txtEncodeZ = new TextBox();
-            panelIndexControl = new Panel();
             groupBox4 = new GroupBox();
-            label5 = new Label();
-            label6 = new Label();
-            TxtZUpPosition = new TextBox();
-            TxtZDownPosition = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
-            label7 = new Label();
-            label8 = new Label();
-            txtPad2PinX = new TextBox();
-            txtPad2PinY = new TextBox();
+            groupBox5 = new GroupBox();
+            panel2 = new Panel();
+            BtnShowZRepeatUtility = new Button();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -87,7 +90,7 @@
             // BtnWaferPinAlign
             // 
             BtnWaferPinAlign.BackColor = SystemColors.Control;
-            BtnWaferPinAlign.Location = new Point(955, 610);
+            BtnWaferPinAlign.Location = new Point(993, 740);
             BtnWaferPinAlign.Name = "BtnWaferPinAlign";
             BtnWaferPinAlign.Size = new Size(118, 62);
             BtnWaferPinAlign.TabIndex = 61;
@@ -98,7 +101,7 @@
             // BtnInspection
             // 
             BtnInspection.BackColor = Color.YellowGreen;
-            BtnInspection.Location = new Point(1111, 610);
+            BtnInspection.Location = new Point(1117, 740);
             BtnInspection.Name = "BtnInspection";
             BtnInspection.Size = new Size(118, 62);
             BtnInspection.TabIndex = 62;
@@ -112,7 +115,7 @@
             groupBox2.Controls.Add(Rbtn1um);
             groupBox2.Controls.Add(BtnJogDown);
             groupBox2.Controls.Add(BtnJogUp);
-            groupBox2.Location = new Point(1098, 184);
+            groupBox2.Location = new Point(1101, 364);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(134, 179);
             groupBox2.TabIndex = 60;
@@ -174,7 +177,7 @@
             groupBox1.Controls.Add(TxtOverDrive);
             groupBox1.Controls.Add(BtnDown);
             groupBox1.Controls.Add(BtnUp);
-            groupBox1.Location = new Point(815, 184);
+            groupBox1.Location = new Point(814, 364);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(277, 179);
             groupBox1.TabIndex = 59;
@@ -242,7 +245,7 @@
             // BtnApply
             // 
             BtnApply.BackColor = Color.Orange;
-            BtnApply.Location = new Point(1042, 369);
+            BtnApply.Location = new Point(1041, 549);
             BtnApply.Name = "BtnApply";
             BtnApply.Size = new Size(95, 109);
             BtnApply.TabIndex = 56;
@@ -252,7 +255,7 @@
             // 
             // BtnReset
             // 
-            BtnReset.Location = new Point(1143, 369);
+            BtnReset.Location = new Point(1140, 549);
             BtnReset.Name = "BtnReset";
             BtnReset.Size = new Size(89, 109);
             BtnReset.TabIndex = 53;
@@ -282,17 +285,25 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(CbCompensation);
+            groupBox3.Controls.Add(txtPad2PinY);
             groupBox3.Controls.Add(label4);
+            groupBox3.Controls.Add(TxtZDownPosition);
             groupBox3.Controls.Add(label3);
+            groupBox3.Controls.Add(txtPad2PinX);
             groupBox3.Controls.Add(label2);
+            groupBox3.Controls.Add(TxtZUpPosition);
+            groupBox3.Controls.Add(label8);
             groupBox3.Controls.Add(label1);
+            groupBox3.Controls.Add(label6);
             groupBox3.Controls.Add(txtEncodeX);
+            groupBox3.Controls.Add(label7);
             groupBox3.Controls.Add(txtEncodeR);
+            groupBox3.Controls.Add(label5);
             groupBox3.Controls.Add(txtEncodeY);
             groupBox3.Controls.Add(txtEncodeZ);
-            groupBox3.Location = new Point(1062, 3);
+            groupBox3.Location = new Point(814, 188);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(170, 170);
+            groupBox3.Size = new Size(421, 170);
             groupBox3.TabIndex = 64;
             groupBox3.TabStop = false;
             groupBox3.Text = "Current Machine Position";
@@ -309,6 +320,14 @@
             CbCompensation.Text = "Compensation";
             CbCompensation.UseVisualStyleBackColor = true;
             // 
+            // txtPad2PinY
+            // 
+            txtPad2PinY.Location = new Point(242, 131);
+            txtPad2PinY.Name = "txtPad2PinY";
+            txtPad2PinY.ReadOnly = true;
+            txtPad2PinY.Size = new Size(81, 23);
+            txtPad2PinY.TabIndex = 67;
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -317,6 +336,14 @@
             label4.Size = new Size(19, 17);
             label4.TabIndex = 57;
             label4.Text = "R:";
+            // 
+            // TxtZDownPosition
+            // 
+            TxtZDownPosition.Location = new Point(242, 71);
+            TxtZDownPosition.Name = "TxtZDownPosition";
+            TxtZDownPosition.ReadOnly = true;
+            TxtZDownPosition.Size = new Size(81, 23);
+            TxtZDownPosition.TabIndex = 67;
             // 
             // label3
             // 
@@ -327,6 +354,14 @@
             label3.TabIndex = 57;
             label3.Text = "Z:";
             // 
+            // txtPad2PinX
+            // 
+            txtPad2PinX.Location = new Point(242, 101);
+            txtPad2PinX.Name = "txtPad2PinX";
+            txtPad2PinX.ReadOnly = true;
+            txtPad2PinX.Size = new Size(81, 23);
+            txtPad2PinX.TabIndex = 67;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -335,6 +370,23 @@
             label2.Size = new Size(18, 17);
             label2.TabIndex = 57;
             label2.Text = "Y:";
+            // 
+            // TxtZUpPosition
+            // 
+            TxtZUpPosition.Location = new Point(242, 42);
+            TxtZUpPosition.Name = "TxtZUpPosition";
+            TxtZUpPosition.ReadOnly = true;
+            TxtZUpPosition.Size = new Size(81, 23);
+            TxtZUpPosition.TabIndex = 67;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(180, 134);
+            label8.Name = "label8";
+            label8.Size = new Size(63, 17);
+            label8.TabIndex = 66;
+            label8.Text = "pad2pinY";
             // 
             // label1
             // 
@@ -345,6 +397,15 @@
             label1.TabIndex = 57;
             label1.Text = "X:";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(186, 77);
+            label6.Name = "label6";
+            label6.Size = new Size(52, 17);
+            label6.TabIndex = 66;
+            label6.Text = "Z Down";
+            // 
             // txtEncodeX
             // 
             txtEncodeX.Location = new Point(49, 41);
@@ -353,6 +414,15 @@
             txtEncodeX.Size = new Size(100, 23);
             txtEncodeX.TabIndex = 56;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(179, 107);
+            label7.Name = "label7";
+            label7.Size = new Size(64, 17);
+            label7.TabIndex = 66;
+            label7.Text = "pad2pinX";
+            // 
             // txtEncodeR
             // 
             txtEncodeR.Location = new Point(49, 131);
@@ -360,6 +430,15 @@
             txtEncodeR.RightToLeft = RightToLeft.No;
             txtEncodeR.Size = new Size(100, 23);
             txtEncodeR.TabIndex = 53;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(200, 48);
+            label5.Name = "label5";
+            label5.Size = new Size(36, 17);
+            label5.TabIndex = 66;
+            label5.Text = "Z Up";
             // 
             // txtEncodeY
             // 
@@ -377,115 +456,61 @@
             txtEncodeZ.Size = new Size(100, 23);
             txtEncodeZ.TabIndex = 54;
             // 
-            // panelIndexControl
-            // 
-            panelIndexControl.BackColor = Color.Black;
-            panelIndexControl.Location = new Point(815, 10);
-            panelIndexControl.Name = "panelIndexControl";
-            panelIndexControl.Size = new Size(221, 131);
-            panelIndexControl.TabIndex = 63;
-            // 
             // groupBox4
             // 
             groupBox4.Controls.Add(TxtFirstContact);
             groupBox4.Controls.Add(BtnAllContact);
             groupBox4.Controls.Add(BtnFirstContact);
             groupBox4.Controls.Add(TxtAllContact);
-            groupBox4.Location = new Point(815, 369);
+            groupBox4.Location = new Point(814, 549);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(221, 109);
             groupBox4.TabIndex = 65;
             groupBox4.TabStop = false;
             groupBox4.Text = "Setup Contact Height";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(814, 497);
-            label5.Name = "label5";
-            label5.Size = new Size(36, 17);
-            label5.TabIndex = 66;
-            label5.Text = "Z Up";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(814, 527);
-            label6.Name = "label6";
-            label6.Size = new Size(52, 17);
-            label6.TabIndex = 66;
-            label6.Text = "Z Down";
-            // 
-            // TxtZUpPosition
-            // 
-            TxtZUpPosition.Location = new Point(872, 491);
-            TxtZUpPosition.Name = "TxtZUpPosition";
-            TxtZUpPosition.ReadOnly = true;
-            TxtZUpPosition.Size = new Size(64, 23);
-            TxtZUpPosition.TabIndex = 67;
-            // 
-            // TxtZDownPosition
-            // 
-            TxtZDownPosition.Location = new Point(872, 524);
-            TxtZDownPosition.Name = "TxtZDownPosition";
-            TxtZDownPosition.ReadOnly = true;
-            TxtZDownPosition.Size = new Size(65, 23);
-            TxtZDownPosition.TabIndex = 67;
-            // 
             // timer1
             // 
             timer1.Tick += timer1_Tick;
             // 
-            // label7
+            // groupBox5
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(955, 497);
-            label7.Name = "label7";
-            label7.Size = new Size(64, 17);
-            label7.TabIndex = 66;
-            label7.Text = "pad2pinX";
+            groupBox5.Controls.Add(panel2);
+            groupBox5.Location = new Point(814, 5);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(418, 177);
+            groupBox5.TabIndex = 68;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Current Index Coordinate";
             // 
-            // label8
+            // panel2
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(955, 527);
-            label8.Name = "label8";
-            label8.Size = new Size(63, 17);
-            label8.TabIndex = 66;
-            label8.Text = "pad2pinY";
+            panel2.BackColor = Color.Black;
+            panel2.Location = new Point(4, 21);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(208, 121);
+            panel2.TabIndex = 0;
             // 
-            // txtPad2PinX
+            // BtnShowZRepeatUtility
             // 
-            txtPad2PinX.Location = new Point(1028, 491);
-            txtPad2PinX.Name = "txtPad2PinX";
-            txtPad2PinX.ReadOnly = true;
-            txtPad2PinX.Size = new Size(64, 23);
-            txtPad2PinX.TabIndex = 67;
-            // 
-            // txtPad2PinY
-            // 
-            txtPad2PinY.Location = new Point(1028, 524);
-            txtPad2PinY.Name = "txtPad2PinY";
-            txtPad2PinY.ReadOnly = true;
-            txtPad2PinY.Size = new Size(65, 23);
-            txtPad2PinY.TabIndex = 67;
+            BtnShowZRepeatUtility.BackColor = Color.Orange;
+            BtnShowZRepeatUtility.Location = new Point(814, 740);
+            BtnShowZRepeatUtility.Name = "BtnShowZRepeatUtility";
+            BtnShowZRepeatUtility.Size = new Size(129, 62);
+            BtnShowZRepeatUtility.TabIndex = 69;
+            BtnShowZRepeatUtility.Text = "Show Z Repeat Utility";
+            BtnShowZRepeatUtility.UseVisualStyleBackColor = false;
+            BtnShowZRepeatUtility.Click += BtnShowZRepeatUtility_Click;
             // 
             // ProbingControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DimGray;
-            Controls.Add(txtPad2PinY);
-            Controls.Add(TxtZDownPosition);
-            Controls.Add(txtPad2PinX);
-            Controls.Add(TxtZUpPosition);
-            Controls.Add(label8);
-            Controls.Add(label6);
-            Controls.Add(label7);
-            Controls.Add(label5);
+            BackColor = Color.Gray;
+            Controls.Add(BtnShowZRepeatUtility);
+            Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
-            Controls.Add(panelIndexControl);
             Controls.Add(BtnReset);
             Controls.Add(BtnWaferPinAlign);
             Controls.Add(BtnApply);
@@ -505,8 +530,8 @@
             groupBox3.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
+            groupBox5.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -540,7 +565,6 @@
         private TextBox txtEncodeR;
         private TextBox txtEncodeY;
         private TextBox txtEncodeZ;
-        private Panel panelIndexControl;
         private GroupBox groupBox4;
         private Label label5;
         private Label label6;
@@ -552,5 +576,8 @@
         private Label label8;
         private TextBox txtPad2PinX;
         private TextBox txtPad2PinY;
+        private GroupBox groupBox5;
+        private Panel panel2;
+        private Button BtnShowZRepeatUtility;
     }
 }

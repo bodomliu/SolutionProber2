@@ -30,10 +30,21 @@ namespace MainForm
             TxtShiftX.Text = DeviceData.Entity.Probing.ProbingShiftX.ToString();
             TxtShiftY.Text = DeviceData.Entity.Probing.ProbingShiftY.ToString();
         }
+
+        delegate void SetIndexCallBack(int index);
         private void PadData_OnIndexChange(int index)
         {
-            TxtIndex.Text = index.ToString();
+            if (this.TxtIndex.InvokeRequired)
+            {
+                SetIndexCallBack sicb = new SetIndexCallBack(PadData_OnIndexChange);
+                this.Invoke(sicb, new object[] { index });
+            }
+            else
+            {
+                this.TxtIndex.Text = index.ToString(); ;
+            }
         }
+
         private void btnNextPad_Click(object sender, EventArgs e)
         {
             if (PadData.Entity.Pads == null) return;
@@ -93,7 +104,7 @@ namespace MainForm
         }
         private void InspectionForm_ParentChanged(object sender, EventArgs e)
         {
-            if (Parent!=null)
+            if (Parent != null)
             {
                 panel1.Controls.Clear();
                 panel1.Controls.Add(CommonPanel.Entity);
@@ -109,7 +120,66 @@ namespace MainForm
         }
         private void InspectionForm_VisibleChanged(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void BtnRotate_Click(object sender, EventArgs e)
+        {
+            double R = double.Parse(TxtAngle.Text);
+            Motion.AxisMoveRel(1, 4, R, 600, 10, 10, 20);
+        }
+
+        private void BtnMoveWithAngle_Click(object sender, EventArgs e)
+        {
+            int Index = int.Parse(TxtAngle.Text);
+            //获得当前Encode位置，因为后面算成encode补偿，所以直接用encode坐标得了
+            Motion.XY_GetEncPos(out double encodeX, out double encodeY);
+            //求pad因为旋转产生的位移
+            CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XROTATE, Motion.parameter.YROTATE,
+                Index, out double Xout, out double Yout);
+            Motion.XYZ_AxisMoveRel(1, Xout - encodeX, Yout - encodeY, 0, 600, 10, 10, 20);
+        }
+
+        private async void BtnCheckPads_Click(object sender, EventArgs e)
+        {
+            WaitingControl.WF.Start();
+            if (!Directory.Exists("Img"))
+            {
+                Directory.CreateDirectory("Img");
+            }
+            Vision.WaferHighMag.TriggerMode();
+
+            if (WaferMap.Entity.MappingPoints == null) return;
+            //遍历ErrorMap，选取所有Coordinates = 1
+            List<MappingPoint> toChkPts = WaferMap.Entity.MappingPoints.Where(p => p.Order != 0).ToList();
+            var sortList = toChkPts.OrderBy(o => o.Order).ToList();
+            for (int i = 0; i < sortList.Count; i++)
+            {
+                await Task.Run(() =>
+                {
+                    CommonFunctions.GotoPad(sortList[i].IndexX, sortList[i].IndexY, 0);
+                });
+
+                Vision.WaferHighMag.TriggerExec();
+
+                string Path = System.Environment.CurrentDirectory + "/Img/"
+                    + WaferMap.CurrentIndexX.ToString() + "_"
+                    + WaferMap.CurrentIndexY.ToString() + "_"
+                    + i.ToString() + "_"
+                    + System.DateTime.Now.ToString("yyMMdd")
+                    + System.DateTime.Now.ToString("HHmmss.bmp");
+                Vision.WaferHighMag.halconClass.SaveResultImage(Path);
+            }
+            Vision.WaferHighMag.ContinuesMode();
+            WaitingControl.WF.End();
+        }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            TxtShiftX.Text ="";
+            TxtShiftY.Text = "";
+            DeviceData.Entity.Probing.ProbingShiftX = 0;
+            DeviceData.Entity.Probing.ProbingShiftY = 0;
         }
     }
 }

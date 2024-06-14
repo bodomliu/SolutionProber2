@@ -66,6 +66,10 @@ namespace VisionLibrary
         bool m_Busy =false;
 
         /// <summary>
+        /// 照片回调事件
+        /// </summary>
+        public cbOutputExdelegate cbImage = new cbOutputExdelegate(ImageCallBack);
+        /// <summary>
         /// 相机的序列号
         /// </summary>
         public string? DeviceID { get; set; }
@@ -231,6 +235,12 @@ namespace VisionLibrary
                     m_MyCamera.SetIntValue("GevHeartbeatTimeout", 3000);
                     // ch: 控件操作 || en: Control operation
                     //SetCtrlWhenOpen();
+
+                    //ch: 设置合适的缓存节点数量 | en: Setting the appropriate number of image nodes
+                    //m_MyCamera.SetImageNodeNum(5);
+
+                    // ch:注册回调函数 | en:Register image callback
+                    //m_MyCamera.RegisterImageCallBackEx(cbImage, (IntPtr)i);
 
                     //打开相机后开始采集，手动采集
                     //StartGrab();
@@ -449,11 +459,39 @@ namespace VisionLibrary
             }
         }
 
+        //ImageCallBack的定义
+        private static void ImageCallBack(IntPtr pData, ref MV_FRAME_OUT_INFO_EX pFrameInfo, IntPtr pUser)
+        {
+            int nIndex = (int)pUser;
+            string time = System.DateTime.Now.ToString("yyMMdd")+ System.DateTime.Now.ToString("HHmmss");
+            Console.WriteLine("one frame captured at " + time);
+
+            // ch:抓取的帧数 | en:Aquired Frame Number
+            //++m_nFrames[nIndex];
+
+            //ch:判断是否需要保存图片 | en:Determine whether to save image
+            //if (m_bSaveImg[nIndex])
+            //{
+            //    SaveImage(pData, pFrameInfo, nIndex);
+            //    m_bSaveImg[nIndex] = false;
+            //}
+
+            //MV_DISPLAY_FRAME_INFO stDisplayInfo = new MV_DISPLAY_FRAME_INFO();
+            //stDisplayInfo.hWnd = m_hDisplayHandle[nIndex];
+            //stDisplayInfo.pData = pData;
+            //stDisplayInfo.nDataLen = pFrameInfo.nFrameLen;
+            //stDisplayInfo.nWidth = pFrameInfo.nWidth;
+            //stDisplayInfo.nHeight = pFrameInfo.nHeight;
+            //stDisplayInfo.enPixelType = pFrameInfo.enPixelType;
+
+            //m_pMyCamera[nIndex].MV_CC_DisplayOneFrame_NET(ref stDisplayInfo);
+        }
+
         /// <summary>
-            /// mono格式图像的处理
-            /// </summary>
-            /// <param name="enType">图像色彩格式</param>
-            /// <returns></returns>
+        /// mono格式图像的处理
+        /// </summary>
+        /// <param name="enType">图像色彩格式</param>
+        /// <returns></returns>
         private bool IsMonoPixelFormat(MvGvspPixelType enType)
         {
             switch (enType)

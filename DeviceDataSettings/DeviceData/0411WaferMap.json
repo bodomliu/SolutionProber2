@@ -344,7 +344,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 1
     },
     {
       "UserPosX": -1388906.6327061914,
@@ -553,7 +553,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 2
     },
     {
       "UserPosX": -1262341.2327061915,
@@ -762,7 +762,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 3
     },
     {
       "UserPosX": -1135775.8327061916,
@@ -971,7 +971,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 4
     },
     {
       "UserPosX": -1009210.4327061914,
@@ -1180,7 +1180,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 5
     },
     {
       "UserPosX": -882645.0327061914,
@@ -1389,7 +1389,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 6
     },
     {
       "UserPosX": -756079.6327061914,
@@ -1598,7 +1598,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 7
     },
     {
       "UserPosX": -629514.2327061915,
@@ -1807,7 +1807,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 8
     },
     {
       "UserPosX": -502948.83270619146,
@@ -2016,7 +2016,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 9
     },
     {
       "UserPosX": -376383.43270619144,
@@ -2225,7 +2225,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 10
     },
     {
       "UserPosX": -249818.03270619147,
@@ -2335,7 +2335,7 @@
       "IndexY": 1,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 23
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2346,7 +2346,7 @@
       "IndexY": 2,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 24
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2357,7 +2357,7 @@
       "IndexY": 3,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 25
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2368,7 +2368,7 @@
       "IndexY": 4,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 26
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2379,7 +2379,7 @@
       "IndexY": 5,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 27
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2390,7 +2390,7 @@
       "IndexY": 6,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 28
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2401,7 +2401,7 @@
       "IndexY": 7,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 29
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2412,7 +2412,7 @@
       "IndexY": 8,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 30
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2423,7 +2423,7 @@
       "IndexY": 9,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 31
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2434,7 +2434,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 11
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2445,7 +2445,7 @@
       "IndexY": 11,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 32
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2456,7 +2456,7 @@
       "IndexY": 12,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 33
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2467,7 +2467,7 @@
       "IndexY": 13,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 34
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2478,7 +2478,7 @@
       "IndexY": 14,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 35
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2489,7 +2489,7 @@
       "IndexY": 15,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 36
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2500,7 +2500,7 @@
       "IndexY": 16,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 37
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2511,7 +2511,7 @@
       "IndexY": 17,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 38
     },
     {
       "UserPosX": -123252.63270619148,
@@ -2643,7 +2643,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 12
     },
     {
       "UserPosX": 3312.767293808516,
@@ -2852,7 +2852,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 13
     },
     {
       "UserPosX": 129878.16729380851,
@@ -3061,7 +3061,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 14
     },
     {
       "UserPosX": 256443.5672938085,
@@ -3270,7 +3270,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 15
     },
     {
       "UserPosX": 383008.96729380847,
@@ -3479,7 +3479,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 16
     },
     {
       "UserPosX": 509574.3672938085,
@@ -3688,7 +3688,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 17
     },
     {
       "UserPosX": 636139.7672938085,
@@ -3897,7 +3897,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 18
     },
     {
       "UserPosX": 762705.1672938084,
@@ -4106,7 +4106,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 19
     },
     {
       "UserPosX": 889270.5672938084,
@@ -4315,7 +4315,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 20
     },
     {
       "UserPosX": 1015835.9672938085,
@@ -4524,7 +4524,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 21
     },
     {
       "UserPosX": 1142401.3672938081,
@@ -4733,7 +4733,7 @@
       "IndexY": 10,
       "BIN": 1,
       "Coordinates": 0,
-      "Order": 0
+      "Order": 22
     },
     {
       "UserPosX": 1268966.7672938085,
@@ -5033,5 +5033,272 @@
       "Order": 0
     }
   ],
-  "OrderClasses": null
+  "OrderClasses": [
+    {
+      "IndexX": 1,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 2,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 3,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 4,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 5,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 6,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 7,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 8,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 9,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 10,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 12,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 13,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 14,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 15,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 16,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 17,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 18,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 19,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 20,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 21,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 22,
+      "IndexY": 10,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 1,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 2,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 3,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 4,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 5,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 6,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 7,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 8,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 9,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 11,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 12,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 13,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 14,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 15,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 16,
+      "PMI": [
+        0
+      ]
+    },
+    {
+      "IndexX": 11,
+      "IndexY": 17,
+      "PMI": [
+        0
+      ]
+    }
+  ]
 }
