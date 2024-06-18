@@ -35,6 +35,9 @@ namespace JsonDataShow
 
         //public JsonNode? m_showMainNode { get; set; }
 
+        /// <summary>
+        /// 主选项的名字
+        /// </summary>
         public string m_showMainName { get; set; }
 
         /// <summary>
@@ -689,85 +692,99 @@ namespace JsonDataShow
             {
                 if (row > 0 && col == 3)
                 {
-                    JsonNode? selectNode = null;
-                    if (m_Shownode.GetType().Name == "JsonObject")      // 当前为类的显示
+                    if (dataGridView_JsonShow.Rows[row].Cells[col].Value.ToString() != null)
                     {
-                        selectNode = m_Shownode.AsObject().ElementAt(row - 1).Value;
-                        if (selectNode != null)
+                        if (dataGridView_JsonShow.Rows[row].Cells[col].Value.ToString().Length > 0)
                         {
-                            if (selectNode.GetType().Name != "JsonObject" && selectNode.GetType().Name != "JsonArray")
+                            JsonNode? selectNode = null;
+                            if (m_Shownode.GetType().Name == "JsonObject")      // 当前为类的显示
                             {
-                                string setstr = m_Shownode.AsObject().ElementAt(row - 1).Key;
-                                object value = dataGridView_JsonShow.Rows[row].Cells[col].Value;
-                                JsonDataType type = GetJsonDataType(selectNode);
-                                switch (type)
+                                selectNode = m_Shownode.AsObject().ElementAt(row - 1).Value;
+                                if (selectNode != null)
                                 {
-                                    case JsonDataType.NULL:
-                                        break;
-                                    case JsonDataType.String:
-                                        m_Shownode[setstr] = value.ToString();
-                                        break;
-                                    case JsonDataType.Int:
-                                        int intvalue;
-                                        double intdvalue;
-                                        if (int.TryParse(value.ToString(), out intvalue))
+                                    if (selectNode.GetType().Name != "JsonObject" && selectNode.GetType().Name != "JsonArray")
+                                    {
+                                        string setstr = m_Shownode.AsObject().ElementAt(row - 1).Key;
+                                        object value = dataGridView_JsonShow.Rows[row].Cells[col].Value;
+                                        JsonDataType type = GetJsonDataType(selectNode);
+                                        switch (type)
                                         {
-                                            m_Shownode[setstr] = intvalue;
+                                            case JsonDataType.NULL:
+                                                break;
+                                            case JsonDataType.String:
+                                                m_Shownode[setstr] = value.ToString();
+                                                break;
+                                            case JsonDataType.Int:
+                                                int intvalue;
+                                                double intdvalue;
+                                                if (int.TryParse(value.ToString(), out intvalue))
+                                                {
+                                                    m_Shownode[setstr] = intvalue;
+                                                }
+                                                else if (double.TryParse(value.ToString(), out intdvalue))  // int保存失败再尝试保存为double
+                                                {
+                                                    m_Shownode[setstr] = intdvalue;
+                                                }
+                                                else        // double保存失败则报错
+                                                {
+                                                    MessageBox.Show("数据类型错误！请改成int类型数据！");
+                                                }
+                                                break;
+                                            case JsonDataType.Double:
+                                                double doublevalue;
+                                                if (double.TryParse(value.ToString(), out doublevalue))
+                                                {
+                                                    m_Shownode[setstr] = doublevalue;
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("数据类型错误！请改成Double类型数据！");
+                                                }
+                                                break;
+                                            case JsonDataType.Bool:
+                                                bool boolvalue;
+                                                if (bool.TryParse(value.ToString(), out boolvalue))
+                                                {
+                                                    m_Shownode[setstr] = boolvalue;
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("数据类型错误！请改成Bool类型数据！");
+                                                }
+                                                break;
+                                            default:
+                                                break;
                                         }
-                                        else if (double.TryParse(value.ToString(), out intdvalue))  // int保存失败再尝试保存为double
-                                        {
-                                            m_Shownode[setstr] = intdvalue;
-                                        }
-                                        else        // double保存失败则报错
-                                        {
-                                            MessageBox.Show("数据类型错误！请改成int类型数据！");
-                                        }
-                                        break;
-                                    case JsonDataType.Double:
-                                        double doublevalue;
-                                        if (double.TryParse(value.ToString(), out doublevalue))
-                                        {
-                                            m_Shownode[setstr] = doublevalue;
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("数据类型错误！请改成Double类型数据！");
-                                        }
-                                        break;
-                                    case JsonDataType.Bool:
-                                        bool boolvalue;
-                                        if (bool.TryParse(value.ToString(), out boolvalue))
-                                        {
-                                            m_Shownode[setstr] = boolvalue;
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("数据类型错误！请改成Bool类型数据！");
-                                        }
-                                        break;
-                                    default:
-                                        break;
-                                }
 
-                                UpdateJsonTextShow();
-                                if (checkBox_autoSave.Checked)
-                                {
-                                    SaveJsonData(m_jsonFilePath);
+                                        UpdateJsonTextShow();
+                                        if (checkBox_autoSave.Checked)
+                                        {
+                                            SaveJsonData(m_jsonFilePath);
+                                        }
+                                    }
                                 }
                             }
+                            else if (m_Shownode.GetType().Name == "JsonArray")      // 当前为数组显示
+                            {
+                                //selectNode = m_Shownode.AsArray().ElementAt(row - 1);
+                            }
+                            //if (selectNode != null)
+                            //{
+                            //    if (selectNode.GetType().Name != "JsonObject" && selectNode.GetType().Name != "JsonArray")
+                            //    {
+                            //        selectNode = dataGridView_JsonShow.Rows[row].Cells[col].Value.ToString();
+                            //    }
+                            //}
+                        }
+                        else
+                        {
+                            MessageBox.Show("修改错误！值为空！");
                         }
                     }
-                    else if (m_Shownode.GetType().Name == "JsonArray")      // 当前为数组显示
+                    else
                     {
-                        //selectNode = m_Shownode.AsArray().ElementAt(row - 1);
+                        MessageBox.Show("修改错误！值为空！");
                     }
-                    //if (selectNode != null)
-                    //{
-                    //    if (selectNode.GetType().Name != "JsonObject" && selectNode.GetType().Name != "JsonArray")
-                    //    {
-                    //        selectNode = dataGridView_JsonShow.Rows[row].Cells[col].Value.ToString();
-                    //    }
-                    //}
                 }
             }
         }
