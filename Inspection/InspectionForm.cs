@@ -11,6 +11,8 @@ using VisionLibrary;
 using CommonComponentLibrary;
 using MotionLibrary;
 using WaferMapLibrary;
+using JsonDataShow;
+using Inspection;
 
 namespace MainForm
 {
@@ -22,7 +24,7 @@ namespace MainForm
             InitializeComponent();
             panelCamera.Controls.Add(new WaferMagControl());
             paneIndexControl.Controls.Add(new WaferMapIndexControl());
-
+            groupBoxPMI.Controls.Add(new PmiControl());
             PadData.OnIndexChange += PadData_OnIndexChange;
         }
         private void InspectionForm_Load(object sender, EventArgs e)
@@ -61,16 +63,24 @@ namespace MainForm
             CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
             WaitingControl.WF.End();
         }
-        private void btnMoveToPad_Click(object sender, EventArgs e)
+        private async void btnMoveToPad_Click(object sender, EventArgs e)
         {
             int Index = int.Parse(TxtIndex.Text);
             WaitingControl.WF.Start();
-            CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            await Task.Run(() =>
+            {
+                CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
+            });
             WaitingControl.WF.End();
         }
-        private void BtnMoveToDie_Click(object sender, EventArgs e)
+        private async void BtnMoveToDie_Click(object sender, EventArgs e)
         {
-            CommonFunctions.GoToDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+            {
+                CommonFunctions.GoToDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
+            });
+            WaitingControl.WF.End();
         }
         private double SetFromX = 0;
         private double SetFromY = 0;
@@ -117,10 +127,6 @@ namespace MainForm
 
                 Vision.ChangeCamera(Camera.WaferHighMag);
             }
-        }
-        private void InspectionForm_VisibleChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void BtnRotate_Click(object sender, EventArgs e)
@@ -176,10 +182,8 @@ namespace MainForm
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            TxtShiftX.Text ="";
-            TxtShiftY.Text = "";
-            DeviceData.Entity.Probing.ProbingShiftX = 0;
-            DeviceData.Entity.Probing.ProbingShiftY = 0;
+            TxtShiftX.Text = "0";
+            TxtShiftY.Text = "0";
         }
     }
 }

@@ -21,7 +21,7 @@ namespace MainForm
         {
             NumRefPinOffsetR.Maximum = 100000;
             NumRefPinOffsetR.Minimum = -100000;
-            groupBox1.Controls.Add(new PinRegistration.PinSearchControl());
+            groupBox1.Controls.Add(new PinSearchControl());
             panelMag.Controls.Add(new PinMagControl());
         }
 

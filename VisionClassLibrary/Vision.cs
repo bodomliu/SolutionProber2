@@ -11,6 +11,8 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using HalconDotNet;
+using log4net;
+using log4net.Config;
 using MathNet.Numerics.Distributions;
 using MvCamCtrl.NET;
 //using Yolov7net;
@@ -72,6 +74,8 @@ namespace VisionLibrary
     /// </summary>
     public static class Vision
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Vision));
+
         private static VisionConfig config = new();//定义一个config
         public static List<CameraClass> CameraList = new();//定义一个相机List，方便操作相机
 
@@ -193,6 +197,7 @@ namespace VisionLibrary
             int index = (int)activeCamera;//index初始值=-1
             CameraList[index].halconClass.DisplayWindowsUnbind();
             CameraList[index].StopGrab();//TODO：待优化
+            Thread.Sleep(200);//这个延时增加前，如果切换MainForm页面，commonPanel绑定的是同一个相机，大概率造成后者页面中相机采相极慢
             camera.halconClass.DisplayWindowsBind(m_HSmartWindowControl);//绑定halconwindow
             camera.StartGrab();//TODO：待优化
             //相机打到连拍模式

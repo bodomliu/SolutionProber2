@@ -1,4 +1,4 @@
-namespace test
+namespace testVision2
 {
     internal static class Program
     {

@@ -1,11 +1,17 @@
 using CommonComponentLibrary;
+using log4net;
+using log4net.Config;
+using Microsoft.VisualBasic.Logging;
 using MotionLibrary;
+using System.IO;
 using VisionLibrary;
+using WaferMapLibrary;
 
-namespace test
+namespace testVision2
 {
     public partial class Form1 : Form
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Form1));
         public Form1()
         {
             InitializeComponent();
@@ -15,6 +21,10 @@ namespace test
             //form2.Show();
 
             panel1.Controls.Add(new CommonPanel());
+            GlobalContext.Properties["name"] = this.GetType().Name;//指定文件名
+            XmlConfigurator.Configure(new FileInfo("log4net.config"));//读取配置
+
+            
         }
 
         //Form2 form2 = new Form2();
@@ -26,8 +36,9 @@ namespace test
             Compensation.Initial();
             Motion.Initial();
             Motion.MultiAxisOn(1, 4);
-            
+            log.Debug("Entering application.");
             //WaitingControl.WF.Start();
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -113,14 +124,14 @@ namespace test
                 Console.WriteLine(i.ToString());
             }
         }
-        private async void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                await Task.Run(() => work());
-            }
-
-            Console.WriteLine("done");
+            DeviceData.Load("DeviceData/" + "0411DeviceData.json");
+            WaferMap.Load(DeviceData.Entity.WaferAlignment.WaferMapPath);
+            PadData.Load(DeviceData.Entity.PinAlignment.PadDataPath);
+            PinData.Load(DeviceData.Entity.PinAlignment.PinDataPath);
+            DUTData.Load(DeviceData.Entity.WaferAlignment.DutPath);
+            MessageBox.Show("File Load Success!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -138,9 +149,15 @@ namespace test
 
         private  void button2_Click(object sender, EventArgs e)
         {
-            WaitingControl.WF.Start();           
-            Thread.Sleep(3000);
-            WaitingControl.WF.End();
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Vision.CameraList[comboBox1.SelectedIndex].halconClass.LoadImage(ofd.FileName);
+            }
+            
+            Vision.CameraList[comboBox1.SelectedIndex].halconClass.GetProbeMark(150,6000,1000,
+                out double up,out double down,out double left,out double right,out double deltaX,out double deltaY);
+            Console.WriteLine(up.ToString() + " " + down.ToString() + " " + left.ToString() + " " + right.ToString() + " " + deltaX.ToString() + " " + deltaY.ToString());
         }
     }
 }

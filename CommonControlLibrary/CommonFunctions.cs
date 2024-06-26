@@ -539,17 +539,17 @@ namespace CommonComponentLibrary
         /// <summary>
         /// 将currentDie对齐到RefPin
         /// </summary>
-        public static void PinPadMatch()
+        public static void PinPadMatch(double incX = 0 ,double incY = 0)
         {
             //考虑Pad需要再运行offset才能被珍扎到，该offset为机台最初标定时确定
             //Pin针位置也与最初标定时发生变化
             //旋转pinAngle导致的位移
-            //最外层的ProbingShift
+            //最外层的ProbingShift + Pmi的插补(pmi值表示针的offset，因此pad需同向移动)
             //获得所有的offset合计
             double deltaX = Motion.parameter.PROBING.XPad2Pin + PinData.Entity.RefPinX
-               - Motion.parameter.PROBING.XOrgPin + DeviceData.Entity.Probing.ProbingShiftX;
+                - Motion.parameter.PROBING.XOrgPin + DeviceData.Entity.Probing.ProbingShiftX + incX;
             double deltaY = Motion.parameter.PROBING.YPad2Pin + PinData.Entity.RefPinY
-                - Motion.parameter.PROBING.YOrgPin + DeviceData.Entity.Probing.ProbingShiftY;
+                - Motion.parameter.PROBING.YOrgPin + DeviceData.Entity.Probing.ProbingShiftY + incY;
             //当前Die的RefPad的encode坐标
             LoactePad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, 0,out _,out _,out double encodeX,out double encodeY);
             //将当前点位进行虚拟pad2pin移动，这个匹配在Align区域进行，因为标定用的pad2pin、ProbingShift是在标定区计算得到
@@ -557,7 +557,7 @@ namespace CommonComponentLibrary
                 encodeX + deltaX , encodeY + deltaY, out double userPosX, out double userPosY);
             //运行到Proing位置
             Motion.UserPosMoveAbs(Compensation.Area.Probing, userPosX, userPosY);
-            Motion.AxisMoveRel(1, 4, PinData.Entity.PinsAngle, 600, 10, 10, 20);
+            Motion.AxisMoveRel(1, 4, PinData.Entity.PinsAngle, 600, 10, 10, 20);//
             Motion.AxisMoveAbs(1, 3, DeviceData.Entity.Probing.ZDownPosition, 600, 10, 10, 20);
         }
         #endregion

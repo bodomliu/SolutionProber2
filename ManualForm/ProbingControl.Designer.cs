@@ -72,6 +72,7 @@
             groupBox5 = new GroupBox();
             panel2 = new Panel();
             BtnShowZRepeatUtility = new Button();
+            CbWithPmi = new CheckBox();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -502,11 +503,22 @@
             BtnShowZRepeatUtility.UseVisualStyleBackColor = false;
             BtnShowZRepeatUtility.Click += BtnShowZRepeatUtility_Click;
             // 
+            // CbWithPmi
+            // 
+            CbWithPmi.AutoSize = true;
+            CbWithPmi.Location = new Point(814, 713);
+            CbWithPmi.Name = "CbWithPmi";
+            CbWithPmi.Size = new Size(80, 21);
+            CbWithPmi.TabIndex = 70;
+            CbWithPmi.Text = "With PMI";
+            CbWithPmi.UseVisualStyleBackColor = true;
+            // 
             // ProbingControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
+            Controls.Add(CbWithPmi);
             Controls.Add(BtnShowZRepeatUtility);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
@@ -532,6 +544,7 @@
             groupBox4.PerformLayout();
             groupBox5.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -579,5 +592,6 @@
         private GroupBox groupBox5;
         private Panel panel2;
         private Button BtnShowZRepeatUtility;
+        private CheckBox CbWithPmi;
     }
 }

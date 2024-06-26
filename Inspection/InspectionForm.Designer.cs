@@ -54,6 +54,7 @@
             BtnRotate = new Button();
             BtnMoveWithAngle = new Button();
             BtnCheckPads = new Button();
+            groupBoxPMI = new GroupBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -61,7 +62,7 @@
             // panelMap
             // 
             panelMap.BackColor = Color.Gray;
-            panelMap.Location = new Point(1161, 665);
+            panelMap.Location = new Point(1217, 705);
             panelMap.Name = "panelMap";
             panelMap.Size = new Size(300, 300);
             panelMap.TabIndex = 26;
@@ -108,16 +109,16 @@
             // paneIndexControl
             // 
             paneIndexControl.BackColor = Color.Gray;
-            paneIndexControl.Location = new Point(1242, 528);
+            paneIndexControl.Location = new Point(1296, 568);
             paneIndexControl.Name = "paneIndexControl";
             paneIndexControl.Size = new Size(221, 131);
             paneIndexControl.TabIndex = 47;
             // 
             // BtnMoveToDie
             // 
-            BtnMoveToDie.Location = new Point(1161, 528);
+            BtnMoveToDie.Location = new Point(1296, 529);
             BtnMoveToDie.Name = "BtnMoveToDie";
-            BtnMoveToDie.Size = new Size(76, 131);
+            BtnMoveToDie.Size = new Size(221, 33);
             BtnMoveToDie.TabIndex = 48;
             BtnMoveToDie.Text = "Move To Die";
             BtnMoveToDie.UseVisualStyleBackColor = true;
@@ -133,7 +134,7 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(TxtShiftY);
             groupBox1.Controls.Add(TxtShiftX);
-            groupBox1.Location = new Point(1242, 154);
+            groupBox1.Location = new Point(1108, 161);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(202, 180);
             groupBox1.TabIndex = 49;
@@ -241,7 +242,7 @@
             groupBox2.Controls.Add(btnNextPad);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(TxtIndex);
-            groupBox2.Location = new Point(1243, 347);
+            groupBox2.Location = new Point(1089, 568);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(201, 125);
             groupBox2.TabIndex = 66;
@@ -259,7 +260,7 @@
             // 
             // TxtAngle
             // 
-            TxtAngle.Location = new Point(1128, 396);
+            TxtAngle.Location = new Point(1114, 398);
             TxtAngle.Name = "TxtAngle";
             TxtAngle.Size = new Size(92, 23);
             TxtAngle.TabIndex = 67;
@@ -267,7 +268,7 @@
             // 
             // BtnRotate
             // 
-            BtnRotate.Location = new Point(1128, 347);
+            BtnRotate.Location = new Point(1114, 349);
             BtnRotate.Name = "BtnRotate";
             BtnRotate.Size = new Size(92, 43);
             BtnRotate.TabIndex = 68;
@@ -277,7 +278,7 @@
             // 
             // BtnMoveWithAngle
             // 
-            BtnMoveWithAngle.Location = new Point(1128, 425);
+            BtnMoveWithAngle.Location = new Point(1114, 427);
             BtnMoveWithAngle.Name = "BtnMoveWithAngle";
             BtnMoveWithAngle.Size = new Size(92, 43);
             BtnMoveWithAngle.TabIndex = 68;
@@ -287,19 +288,29 @@
             // 
             // BtnCheckPads
             // 
-            BtnCheckPads.Location = new Point(1450, 372);
+            BtnCheckPads.Location = new Point(1215, 349);
             BtnCheckPads.Name = "BtnCheckPads";
-            BtnCheckPads.Size = new Size(88, 40);
+            BtnCheckPads.Size = new Size(95, 40);
             BtnCheckPads.TabIndex = 69;
             BtnCheckPads.Text = "Check Pads";
             BtnCheckPads.UseVisualStyleBackColor = true;
             BtnCheckPads.Click += BtnCheckPads_Click;
+            // 
+            // groupBoxPMI
+            // 
+            groupBoxPMI.Location = new Point(1316, 161);
+            groupBoxPMI.Name = "groupBoxPMI";
+            groupBoxPMI.Size = new Size(201, 331);
+            groupBoxPMI.TabIndex = 70;
+            groupBoxPMI.TabStop = false;
+            groupBoxPMI.Text = "PMI";
             // 
             // InspectionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1847, 1126);
+            Controls.Add(groupBoxPMI);
             Controls.Add(BtnCheckPads);
             Controls.Add(BtnMoveWithAngle);
             Controls.Add(BtnRotate);
@@ -314,7 +325,6 @@
             Name = "InspectionForm";
             Text = "InspectionForm";
             Load += InspectionForm_Load;
-            VisibleChanged += InspectionForm_VisibleChanged;
             ParentChanged += InspectionForm_ParentChanged;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -350,5 +360,6 @@
         private Button BtnRotate;
         private Button BtnMoveWithAngle;
         private Button BtnCheckPads;
+        private GroupBox groupBoxPMI;
     }
 }

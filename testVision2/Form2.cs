@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VisionLibrary;
 
-namespace test
+namespace testVision2
 {
     public partial class Form2 : Form
     {

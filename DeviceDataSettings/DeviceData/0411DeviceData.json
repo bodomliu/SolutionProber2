@@ -34,5 +34,12 @@
     "AllContactHeight": 0,
     "ProbingShiftX": -150,
     "ProbingShiftY": 0
+  },
+  "ProbeMarkInspection": {
+    "Threshold": 150,
+    "AreaPad": 8000,
+    "AreaMark": 1000,
+    "RoiWidth": 200,
+    "RoiHeight": 200
   }
 }

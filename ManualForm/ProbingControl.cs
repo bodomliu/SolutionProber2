@@ -13,6 +13,7 @@ using CommonComponentLibrary;
 using MotionLibrary;
 using VisionLibrary;
 using WaferMapLibrary;
+using Inspection;
 namespace ManualForm
 {
     public partial class ProbingControl : UserControl
@@ -21,7 +22,7 @@ namespace ManualForm
         {
             InitializeComponent();
             panel1.Controls.Add(WaferMapCanvas.Canvas);
-            groupBox5.Controls.Add(new WaferMapIndexControl(true));
+            panel2.Controls.Add(new WaferMapIndexControl(true));
             this.Dock = DockStyle.Fill;
         }
         private void ProbingControl_Load(object sender, EventArgs e)
@@ -205,7 +206,7 @@ namespace ManualForm
             WaitingControl.WF.Start();
 
             if (WaferMap.Entity.MappingPoints == null) return;
-            //遍历ErrorMap，选取所有Coordinates = 1
+            //遍历ErrorMap，选取所有有队伍序号的值
             List<MappingPoint> toChkPts = WaferMap.Entity.MappingPoints.Where(p => p.Order != 0).ToList();
             var sortList = toChkPts.OrderBy(o => o.Order).ToList();
             for (int i = 0; i < sortList.Count; i++)
@@ -214,7 +215,10 @@ namespace ManualForm
                 {
                     WaferMap.CurrentIndexX = sortList[i].IndexX;
                     WaferMap.CurrentIndexY = sortList[i].IndexY;
-                    CommonFunctions.PinPadMatch();
+                    //增加一个针痕补偿
+                    double incX = 0;double incY = 0;
+                    if (CbWithPmi.Checked) PmiData.Interpolation(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY,out incX, out incY);
+                    CommonFunctions.PinPadMatch(incX,incY);
                 });
                 Motion.AxisMoveAbs(1, 3, DeviceData.Entity.Probing.ZUpPosition + DeviceData.Entity.Probing.Overdrive, 600, 10, 10, 20);                
                 Thread.Sleep(1000);

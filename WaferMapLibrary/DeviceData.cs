@@ -44,14 +44,22 @@ namespace WaferMapLibrary
         public double ProbingShiftX { get; set; } = 0;
         public double ProbingShiftY { get; set; } = 0;
     }
+    public class ProbeMarkInspection
+    {
+        public int Threshold { get; set; } = 150;//Pad : 0 - 150 ; Mark = 150 - 255
+        public int AreaPad { get; set; } = 8000;//pixel
+        public int AreaMark { get; set; } = 1000;//pixel
+        public int RoiWidth { get; set; } = 200;
+        public int RoiHeight { get; set; } = 200;
+    }
     public class DeviceDataClass
     {
         public PhysicalInformation PhysicalInformation { get; set; } = new PhysicalInformation();
         public WaferAlignment WaferAlignment { get; set; } = new WaferAlignment();
         public PinAlignment PinAlignment { get; set; } = new PinAlignment();
         public Probing Probing { get; set;} = new Probing();
+        public ProbeMarkInspection ProbeMarkInspection { get; set; } = new ProbeMarkInspection();
     }
-
     //静态类方便操作
     public static class DeviceData
     {

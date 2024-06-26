@@ -157,8 +157,7 @@ namespace MainForm
             if (Parent!=null)
             {
                 panel1.Controls.Clear();
-                panel1.Controls.Add(CommonPanel.Entity);
-                Vision.ChangeCamera(Vision.WaferLowMag);
+                panel1.Controls.Add(CommonPanel.Entity);               
                 Vision.WaferHighMag.halconClass.m_Roi.Resize2(512, 640, PadData.Entity.PadWidth, PadData.Entity.PadHeight);
                 Vision.WaferHighMag.halconClass.m_Roi.Color = "green";
                 UpdateUI();

@@ -1,4 +1,6 @@
 ﻿using HalconDotNet;
+using log4net;
+using log4net.Config;
 using MathNet.Numerics;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -244,6 +247,8 @@ namespace VisionLibrary
     /// </summary>
     public class HalconClass
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(HalconClass));
+
         /// <summary>
         /// 图像显示的窗口句柄
         /// </summary>
@@ -285,6 +290,9 @@ namespace VisionLibrary
         /// </summary>
         public HalconClass()
         {
+            GlobalContext.Properties["name"] = this.GetType().Name;//存log时，自定义文件名
+            XmlConfigurator.Configure(new FileInfo("log4net.config"));//读取配置
+
             bDisplayCross = true;
             bDisplayROI = true;
             m_Roi.Resize1(512 - 200, 640 - 200, 512 + 200, 640 + 200);
@@ -839,7 +847,7 @@ namespace VisionLibrary
 
         #endregion
 
-        #region Edge相关
+        #region Blob相关
         /// <summary>
         /// 获取Wafer在Roi内的Blob，并计算Blob质心到画面中心的位移XY
         /// </summary>
@@ -848,7 +856,7 @@ namespace VisionLibrary
         /// <returns>0:计算成功 1：obj数量不唯一</returns>
         public int GetWaferEdge(out double DeltaX, out double DeltaY)
         {
-            return Blob(0, 20, 15000, 100000, out DeltaX, out DeltaY, out _, out _);           
+            return Blob(0, 20, 15000, 100000, true,out DeltaX, out DeltaY, out _, out _);           
         }
 
         /// <summary>
@@ -860,31 +868,75 @@ namespace VisionLibrary
         /// <returns>0：计算成功，结果保存到Definition  1：图像不存在  2：ROI未指定</returns>
         public int GetPin(out double DeltaX, out double DeltaY)
         {
-            return Blob(200, 255, 800, 20000, out DeltaX, out DeltaY, out _, out _);
+            return Blob(200, 255, 800, 20000, true, out DeltaX, out DeltaY, out _, out _);
         }
 
-        /// <summary>
-        /// Blob
-        /// </summary>
-        /// <param name="tresholdMin"></param>
-        /// <param name="tresholdMax"></param>
-        /// <param name="areaMin"></param>
-        /// <param name="areaMax"></param>
-        /// <param name="DeltaX"></param>
-        /// <param name="DeltaY"></param>
-        /// <param name="Row"></param>
-        /// <param name="Column"></param>
-        /// <returns>0: 计算成功 1：Object数量不唯一</returns>
-        public int Blob(int tresholdMin, int tresholdMax, double areaMin, double areaMax,
-            out double DeltaX, out double DeltaY, out double Row, out double Column)
-        {
-            DeltaX = 0;
-            DeltaY = 0;
-            Row = 512;
-            Column = 640;
-            //获得整张图像的中心点，即视野中心
-            HOperatorSet.AreaCenter(m_Image, out HTuple Area, out HTuple Row_imageCenter, out HTuple Column_imageCenter);
+        //针痕检测
+        public int GetProbeMark(int Threshold, int AreaPad, int AreaMark,
+            out double Top, out double Bottom, out double Left, out double Right, out double DeltaX, out double DeltaY)
+        {           
+            int res = 0;
+            Top = 0; Bottom = 0; Left = 0; Right = 0; DeltaX = 0; DeltaY = 0;
 
+            //缩放ROI
+            m_Roi.Resize2(512, 640, 200, 200);
+            //找Pad,0-Threshold
+            res = NearestRectangle(Threshold, 255, AreaPad * 0.5, AreaPad * 2, "blue", 
+                out HTuple Row1, out HTuple Column1, out HTuple Row2, out HTuple Column2,out HTuple RowCenter1,out HTuple columnCenter1);
+            if (res != 0) return res;
+            log.Debug("Pad Found.");
+            //找Mark,Threshold - 255
+            res = NearestRectangle(0, Threshold, AreaMark * 0.5, AreaMark * 2, "red", 
+                out HTuple Row3, out HTuple Column3, out HTuple Row4, out HTuple Column4, out HTuple RowCenter2, out HTuple columnCenter2);
+            if (res != 0) return res;
+            log.Debug("Mark Found.");
+            m_Calibration.AffineTransPoint2d(Row1, Column1, out double encodeX1, out double encodeY1);//pad左上
+            m_Calibration.AffineTransPoint2d(Row2, Column2, out double encodeX2, out double encodeY2);//pad右下
+            m_Calibration.AffineTransPoint2d(Row3, Column3, out double encodeX3, out double encodeY3);//Mark左上
+            m_Calibration.AffineTransPoint2d(Row4, Column4, out double encodeX4, out double encodeY4);//Mark右下
+            m_Calibration.AffineTransPoint2d(RowCenter1, columnCenter1, out double encodeCenterX1, out double encodeCenterY1);//Pad中心
+            m_Calibration.AffineTransPoint2d(RowCenter2, columnCenter2, out double encodeCenterX2, out double encodeCenterY2);//Pad中心
+
+            Top = Math.Abs(encodeY1 - encodeY3);
+            Bottom = Math.Abs(encodeY2 - encodeY4);
+            Left = Math.Abs(encodeX1 - encodeX3);
+            Right = Math.Abs(encodeX2 - encodeX4);
+            DeltaX = encodeCenterX2 - encodeCenterX1;
+            DeltaY = encodeCenterY2 - encodeCenterY1;
+
+            return 0;
+        }
+
+        private int NearestRectangle(int tresholdMin, int tresholdMax, double areaMin, double areaMax, string paintColor,
+             out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2,out HTuple RowCenter,out HTuple ColumnCenter)
+        {
+            row1 = new HTuple();column1 = new HTuple(); row2 = new HTuple(); column2 = new HTuple(); RowCenter = new HTuple(); ColumnCenter = new HTuple();
+            int res = Blob(tresholdMin, tresholdMax, areaMin, areaMax, out HObject SelectedRegions);
+            if (res != 0) { return res; }
+            //获得最小外接矩形
+            HOperatorSet.SmallestRectangle1(SelectedRegions, out row1, out column1, out row2, out column2);
+            //其他数据
+            RowCenter = row1 * 0.5 + row2 * 0.5;
+            ColumnCenter = column1 * 0.5 + column2 * 0.5;
+            HTuple WidthRectHalf = column2 * 0.5 - column1 * 0.5;
+            HTuple HeightRectHalf = row2 * 0.5 - row1 * 0.5;
+            //GetDeltaFromCenter(RowCenter, ColumnCenter, out double DeltaX, out double DeltaY);
+            //Row1 = row1.D; Column1 = column1.D; Row2 = row2.D; Column2 = column2.D;
+
+            //画图
+            if (paintColor != "")
+            {
+                HOperatorSet.GenRectangle2ContourXld(out HObject rectangle ,RowCenter,ColumnCenter,0, WidthRectHalf, HeightRectHalf);
+                HOperatorSet.SetColor(m_Window, paintColor);
+                HOperatorSet.DispObj(rectangle, m_Window);// ch 显示 || en: display
+                HOperatorSet.SetColor(m_Window, "white");
+            }
+
+            return 0;
+        }
+
+        private int Blob(int tresholdMin, int tresholdMax, double areaMin, double areaMax, out HObject obj)
+        {
             //剪切图片ROI
             HOperatorSet.GenRectangle1(out HObject m_Rect, m_Roi.Row1, m_Roi.Column1, m_Roi.Row2, m_Roi.Column2);
             //Reduce图像,得到m_ImageReduced(原始图像尺寸大小)
@@ -900,24 +952,73 @@ namespace VisionLibrary
             HOperatorSet.SelectShape(ConnectedRegions, out HObject SelectedRegions, "area", "and", areaMin, areaMax);
             //如果number != 1 错误跳出
             HOperatorSet.CountObj(SelectedRegions, out HTuple number);
-            if (number != 1) return 1;
-            //计算形心
-            HOperatorSet.AreaCenter(SelectedRegions, out _, out HTuple Row_edge, out HTuple Column_edge);
 
+            obj = SelectedRegions;
+            if (number == 1)
+            { 
+                return 0; 
+            }
+            else 
+            {
+                return 1;
+            }
+        }
+
+        /// <summary>
+        /// Blob 给外界调用
+        /// </summary>
+        /// <param name="tresholdMin"></param>
+        /// <param name="tresholdMax"></param>
+        /// <param name="areaMin"></param>
+        /// <param name="areaMax"></param>
+        /// <param name="DeltaX"></param>
+        /// <param name="DeltaY"></param>
+        /// <param name="Row"></param>
+        /// <param name="Column"></param>
+        /// <returns>0: 计算成功 1：Object数量不唯一</returns>
+        public int Blob(int tresholdMin, int tresholdMax, double areaMin, double areaMax,bool paintObj,
+            out double DeltaX, out double DeltaY, out double Row, out double Column)
+        {
+            DeltaX = 0;DeltaY = 0;Row = 512;Column = 640;
+
+            int res = Blob(tresholdMin, tresholdMax, areaMin, areaMax, out HObject SelectedRegions);
+            if (res != 0) { return res; }
+            //计算形心
+            HOperatorSet.AreaCenter(SelectedRegions, out _, out HTuple Row_Obj, out HTuple Column_Obj);
+
+            //计算中心偏移
+            GetDeltaFromCenter(Row_Obj, Column_Obj, out DeltaX, out DeltaY);
+
+            Row = Row_Obj.D;
+            Column = Column_Obj.D;
+
+            if (paintObj)
+            {
+                HOperatorSet.SetColor(m_Window, "red");
+                HOperatorSet.DispObj(SelectedRegions, m_Window);// ch 显示 || en: display
+                HOperatorSet.SetColor(m_Window, "white");
+            }
+           
+            return 0;
+        }
+
+        /// <summary>
+        /// 计算目标点到中心的偏移，经过比例系数换算
+        /// </summary>
+        /// <param name="Row_Obj"></param>
+        /// <param name="Column_Obj"></param>
+        /// <param name="DeltaX"></param>
+        /// <param name="DeltaY"></param>
+        private void GetDeltaFromCenter(HTuple Row_Obj, HTuple Column_Obj, out double DeltaX, out double DeltaY)
+        {
+            DeltaX = 0; DeltaY = 0;
+            //获得整张图像的中心点，即视野中心
+            HOperatorSet.AreaCenter(m_Image, out HTuple Area, out HTuple Row_imageCenter, out HTuple Column_imageCenter);
             m_Calibration.AffineTransPoint2d(Row_imageCenter, Column_imageCenter, out double CenterX, out double CenterY);
-            m_Calibration.AffineTransPoint2d(Row_edge, Column_edge, out double PresentX, out double PresentY);
+            m_Calibration.AffineTransPoint2d(Row_Obj, Column_Obj, out double PresentX, out double PresentY);
 
             DeltaX = CenterX - PresentX;
             DeltaY = CenterY - PresentY;
-
-            Row = Row_edge.D;
-            Column = Column_edge.D;
-
-            HOperatorSet.SetColor(m_Window, "red");
-            HOperatorSet.DispObj(SelectedRegions, m_Window);// ch 显示 || en: display
-            //绘制完以后，将颜色改回默认白色
-            HOperatorSet.SetColor(m_Window, "white");
-            return 0;
         }
 
         /// <summary>
@@ -1191,9 +1292,6 @@ namespace VisionLibrary
             //绘制完以后，将颜色改回默认白色
             HOperatorSet.SetColor(m_Window, "white");
         }
-
-
-
         #endregion
     }
 }
