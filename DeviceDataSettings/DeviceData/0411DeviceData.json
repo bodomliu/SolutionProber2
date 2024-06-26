@@ -19,20 +19,20 @@
     "NeddleTipFocusOffset": 60000,
     "TipFocusXArea": 100,
     "TipFocusYArea": 100,
-    "TipFocusExposureTime": 200,
+    "TipFocusExposureTime": 1000,
     "GetPinXArea": 800,
     "GetPinYArea": 800,
-    "GetPinExposureTime": 1000,
+    "GetPinExposureTime": 5000,
     "PinAlingmentMode": 0
   },
   "Probing": {
-    "Overdrive": 0,
+    "Overdrive": -2100,
     "ZClearance": -50000,
-    "ZUpPosition": 0,
-    "ZDownPosition": 0,
+    "ZUpPosition": 130661,
+    "ZDownPosition": 80661,
     "FirstContactHeight": 0,
     "AllContactHeight": 0,
-    "ProbingShiftX": 0,
+    "ProbingShiftX": -150,
     "ProbingShiftY": 0
   }
 }

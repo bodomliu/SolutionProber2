@@ -217,9 +217,8 @@ namespace ManualForm
                     CommonFunctions.PinPadMatch();
                 });
                 Motion.AxisMoveAbs(1, 3, DeviceData.Entity.Probing.ZUpPosition + DeviceData.Entity.Probing.Overdrive, 600, 10, 10, 20);                
-                Thread.Sleep(3000);
-                Motion.AxisMoveAbs(1, 3, DeviceData.Entity.Probing.ZDownPosition, 600, 10, 10, 20);
                 Thread.Sleep(1000);
+                Motion.AxisMoveAbs(1, 3, DeviceData.Entity.Probing.ZDownPosition, 600, 10, 10, 20);
             }
             
             WaitingControl.WF.End();
