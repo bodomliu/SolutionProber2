@@ -21,7 +21,7 @@ namespace ManualForm
         {
             InitializeComponent();
             panel1.Controls.Add(WaferMapCanvas.Canvas);
-            groupBox5.Controls.Add(new WaferMapIndexControl(true));
+            panel2.Controls.Add(new WaferMapIndexControl(true));
             this.Dock = DockStyle.Fill;
         }
         private void ProbingControl_Load(object sender, EventArgs e)
