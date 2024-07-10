@@ -2,6 +2,7 @@
 using VisionLibrary;
 using MotionLibrary;
 using WaferMapLibrary;
+using UtilityForm;
 namespace MainForm
 {
     public partial class PlanarityControl : UserControl
@@ -26,6 +27,7 @@ namespace MainForm
         public PlanarityControl()
         {
             InitializeComponent();
+            panel1.Controls.Add(new WaferMagControl());
         }
         private void PlanarityControl_Load(object sender, EventArgs e)
         {
@@ -159,23 +161,22 @@ namespace MainForm
             Y8.Text = userY[7].ToString();
             X9.Text = userX[8].ToString();
             Y9.Text = userY[8].ToString();
+
+            Planarity.Gen9Points(12,out _,out _);
         }
         private void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
         {
-            WaitingControl wf = new WaitingControl();
-            this.Controls.Add(wf);
-            wf.Show();
-
+            WaitingControl.WF.Start();
+            double Thickness = (RbtnNoWafer.Checked) ? 0 : DeviceData.Entity.PhysicalInformation.Thickness;
             if (Vision.activeCamera == Camera.WaferLowMag)
             {
-                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferLowMag);
+                CommonFunctions.AdjustWaferHeight(Thickness, Vision.WaferLowMag);
             }
             else if (Vision.activeCamera == Camera.WaferHighMag)
             {
-                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
+                CommonFunctions.AdjustWaferHeight(Thickness, Vision.WaferHighMag);
             }
-
-            wf.Dispose();
+            WaitingControl.WF.End();
         }
         private void RbtnWaferCamera_CheckedChanged(object sender, EventArgs e)
         {

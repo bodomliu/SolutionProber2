@@ -45,7 +45,6 @@
             label7 = new Label();
             BtnGetPos1 = new Button();
             BtnGetPos2 = new Button();
-            CbCompensation = new CheckBox();
             BtnRNeg = new Button();
             TxtPulse = new TextBox();
             BtnRPlus = new Button();
@@ -53,17 +52,22 @@
             panel1 = new Panel();
             BtnMatch = new Button();
             label9 = new Label();
-            BtnAlignY = new Button();
-            BtnAlignX = new Button();
-            groupBox1 = new GroupBox();
-            label11 = new Label();
-            label10 = new Label();
-            TxtUD = new TextBox();
-            TxtLR = new TextBox();
             groupBox2 = new GroupBox();
-            BtnAuto = new Button();
-            groupBox1.SuspendLayout();
+            groupBox3 = new GroupBox();
+            progressBar1 = new ProgressBar();
+            BtnRepeatRotate = new Button();
+            TxtTimes = new TextBox();
+            label12 = new Label();
+            BtnRegPattern = new Button();
+            BtnResetPostion = new Button();
+            labelX = new Label();
+            labelY = new Label();
+            labelR = new Label();
+            label15 = new Label();
+            label17 = new Label();
+            label18 = new Label();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // TxtX1
@@ -132,22 +136,22 @@
             // 
             // TxtX
             // 
-            TxtX.Location = new Point(297, 439);
+            TxtX.Location = new Point(313, 527);
             TxtX.Name = "TxtX";
-            TxtX.Size = new Size(100, 23);
+            TxtX.Size = new Size(77, 23);
             TxtX.TabIndex = 0;
             // 
             // TxtY
             // 
-            TxtY.Location = new Point(297, 468);
+            TxtY.Location = new Point(313, 556);
             TxtY.Name = "TxtY";
-            TxtY.Size = new Size(100, 23);
+            TxtY.Size = new Size(77, 23);
             TxtY.TabIndex = 0;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(269, 442);
+            label5.Location = new Point(291, 530);
             label5.Name = "label5";
             label5.Size = new Size(16, 17);
             label5.TabIndex = 1;
@@ -156,7 +160,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(269, 468);
+            label6.Location = new Point(291, 556);
             label6.Name = "label6";
             label6.Size = new Size(15, 17);
             label6.TabIndex = 1;
@@ -208,18 +212,6 @@
             BtnGetPos2.UseVisualStyleBackColor = true;
             BtnGetPos2.Click += BtnGetPos2_Click;
             // 
-            // CbCompensation
-            // 
-            CbCompensation.AutoSize = true;
-            CbCompensation.Checked = true;
-            CbCompensation.CheckState = CheckState.Checked;
-            CbCompensation.Location = new Point(274, 137);
-            CbCompensation.Name = "CbCompensation";
-            CbCompensation.Size = new Size(111, 21);
-            CbCompensation.TabIndex = 5;
-            CbCompensation.Text = "Compensation";
-            CbCompensation.UseVisualStyleBackColor = true;
-            // 
             // BtnRNeg
             // 
             BtnRNeg.Location = new Point(11, 100);
@@ -267,9 +259,9 @@
             // 
             // BtnMatch
             // 
-            BtnMatch.Location = new Point(272, 9);
+            BtnMatch.Location = new Point(185, 418);
             BtnMatch.Name = "BtnMatch";
-            BtnMatch.Size = new Size(93, 85);
+            BtnMatch.Size = new Size(67, 60);
             BtnMatch.TabIndex = 10;
             BtnMatch.Text = "Match";
             BtnMatch.UseVisualStyleBackColor = true;
@@ -283,75 +275,6 @@
             label9.Size = new Size(61, 17);
             label9.TabIndex = 8;
             label9.Text = "1 degree";
-            // 
-            // BtnAlignY
-            // 
-            BtnAlignY.Location = new Point(123, 22);
-            BtnAlignY.Name = "BtnAlignY";
-            BtnAlignY.Size = new Size(103, 44);
-            BtnAlignY.TabIndex = 12;
-            BtnAlignY.Text = "AlignY";
-            BtnAlignY.UseVisualStyleBackColor = true;
-            BtnAlignY.Click += BtnAlignY_Click;
-            // 
-            // BtnAlignX
-            // 
-            BtnAlignX.Location = new Point(6, 22);
-            BtnAlignX.Name = "BtnAlignX";
-            BtnAlignX.Size = new Size(103, 44);
-            BtnAlignX.TabIndex = 12;
-            BtnAlignX.Text = "AlignX";
-            BtnAlignX.UseVisualStyleBackColor = true;
-            BtnAlignX.Click += BtnAlignX_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(label11);
-            groupBox1.Controls.Add(label10);
-            groupBox1.Controls.Add(TxtUD);
-            groupBox1.Controls.Add(TxtLR);
-            groupBox1.Controls.Add(BtnAlignX);
-            groupBox1.Controls.Add(BtnAlignY);
-            groupBox1.Location = new Point(11, 378);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(232, 100);
-            groupBox1.TabIndex = 13;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Method2";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(118, 77);
-            label11.Name = "label11";
-            label11.Size = new Size(26, 17);
-            label11.TabIndex = 1;
-            label11.Text = "UD";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(9, 77);
-            label10.Name = "label10";
-            label10.Size = new Size(22, 17);
-            label10.TabIndex = 1;
-            label10.Text = "LR";
-            // 
-            // TxtUD
-            // 
-            TxtUD.Location = new Point(148, 71);
-            TxtUD.Name = "TxtUD";
-            TxtUD.Size = new Size(78, 23);
-            TxtUD.TabIndex = 13;
-            TxtUD.Text = "8";
-            // 
-            // TxtLR
-            // 
-            TxtLR.Location = new Point(31, 71);
-            TxtLR.Name = "TxtLR";
-            TxtLR.Size = new Size(78, 23);
-            TxtLR.TabIndex = 13;
-            TxtLR.Text = "10";
             // 
             // groupBox2
             // 
@@ -375,23 +298,141 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Method1";
             // 
-            // BtnAuto
+            // groupBox3
             // 
-            BtnAuto.Location = new Point(320, 171);
-            BtnAuto.Name = "BtnAuto";
-            BtnAuto.Size = new Size(75, 70);
-            BtnAuto.TabIndex = 15;
-            BtnAuto.Text = "Auto";
-            BtnAuto.UseVisualStyleBackColor = true;
-            BtnAuto.Click += BtnAuto_Click;
+            groupBox3.Controls.Add(progressBar1);
+            groupBox3.Controls.Add(BtnRepeatRotate);
+            groupBox3.Controls.Add(TxtTimes);
+            groupBox3.Controls.Add(label12);
+            groupBox3.Location = new Point(11, 484);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(255, 105);
+            groupBox3.TabIndex = 16;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Method3";
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(93, 63);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(148, 23);
+            progressBar1.TabIndex = 2;
+            // 
+            // BtnRepeatRotate
+            // 
+            BtnRepeatRotate.Location = new Point(9, 22);
+            BtnRepeatRotate.Name = "BtnRepeatRotate";
+            BtnRepeatRotate.Size = new Size(75, 64);
+            BtnRepeatRotate.TabIndex = 1;
+            BtnRepeatRotate.Text = "Repeat Rotate";
+            BtnRepeatRotate.UseVisualStyleBackColor = true;
+            BtnRepeatRotate.Click += BtnRepeatRotate_Click;
+            // 
+            // TxtTimes
+            // 
+            TxtTimes.Location = new Point(184, 22);
+            TxtTimes.Name = "TxtTimes";
+            TxtTimes.Size = new Size(57, 23);
+            TxtTimes.TabIndex = 0;
+            TxtTimes.Text = "10";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(93, 28);
+            label12.Name = "label12";
+            label12.Size = new Size(42, 17);
+            label12.TabIndex = 1;
+            label12.Text = "Times";
+            // 
+            // BtnRegPattern
+            // 
+            BtnRegPattern.Location = new Point(20, 418);
+            BtnRegPattern.Name = "BtnRegPattern";
+            BtnRegPattern.Size = new Size(75, 60);
+            BtnRegPattern.TabIndex = 17;
+            BtnRegPattern.Text = "Reg Pattern";
+            BtnRegPattern.UseVisualStyleBackColor = true;
+            BtnRegPattern.Click += BtnRegPattern_Click;
+            // 
+            // BtnResetPostion
+            // 
+            BtnResetPostion.Location = new Point(258, 418);
+            BtnResetPostion.Name = "BtnResetPostion";
+            BtnResetPostion.Size = new Size(75, 60);
+            BtnResetPostion.TabIndex = 17;
+            BtnResetPostion.Text = "Reset Postion";
+            BtnResetPostion.UseVisualStyleBackColor = true;
+            BtnResetPostion.Click += BtnResetPostion_Click;
+            // 
+            // labelX
+            // 
+            labelX.AutoSize = true;
+            labelX.Location = new Point(125, 418);
+            labelX.Name = "labelX";
+            labelX.Size = new Size(50, 17);
+            labelX.TabIndex = 18;
+            labelX.Text = "label13";
+            // 
+            // labelY
+            // 
+            labelY.AutoSize = true;
+            labelY.Location = new Point(125, 435);
+            labelY.Name = "labelY";
+            labelY.Size = new Size(50, 17);
+            labelY.TabIndex = 18;
+            labelY.Text = "label13";
+            // 
+            // labelR
+            // 
+            labelR.AutoSize = true;
+            labelR.Location = new Point(125, 452);
+            labelR.Name = "labelR";
+            labelR.Size = new Size(50, 17);
+            labelR.TabIndex = 18;
+            labelR.Text = "label13";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(103, 418);
+            label15.Name = "label15";
+            label15.Size = new Size(16, 17);
+            label15.TabIndex = 18;
+            label15.Text = "X";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(103, 452);
+            label17.Name = "label17";
+            label17.Size = new Size(16, 17);
+            label17.TabIndex = 18;
+            label17.Text = "R";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(103, 435);
+            label18.Name = "label18";
+            label18.Size = new Size(15, 17);
+            label18.TabIndex = 18;
+            label18.Text = "Y";
             // 
             // CenterControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(BtnAuto);
+            Controls.Add(label17);
+            Controls.Add(labelR);
+            Controls.Add(label15);
+            Controls.Add(label18);
+            Controls.Add(labelY);
+            Controls.Add(labelX);
+            Controls.Add(BtnResetPostion);
+            Controls.Add(BtnRegPattern);
+            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
             Controls.Add(BtnMatch);
             Controls.Add(panel1);
             Controls.Add(label9);
@@ -399,18 +440,17 @@
             Controls.Add(BtnRPlus);
             Controls.Add(TxtPulse);
             Controls.Add(BtnRNeg);
-            Controls.Add(CbCompensation);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(TxtY);
             Controls.Add(TxtX);
             Name = "CenterControl";
-            Size = new Size(408, 505);
+            Size = new Size(443, 656);
             Load += CenterControl_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -434,7 +474,6 @@
         private Label label7;
         private Button BtnGetPos1;
         private Button BtnGetPos2;
-        private CheckBox CbCompensation;
         private Button BtnRNeg;
         private TextBox TxtPulse;
         private Button BtnRPlus;
@@ -442,14 +481,19 @@
         private Panel panel1;
         private Button BtnMatch;
         private Label label9;
-        private Button BtnAlignY;
-        private Button BtnAlignX;
-        private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private Label label11;
-        private Label label10;
-        private TextBox TxtUD;
-        private TextBox TxtLR;
-        private Button BtnAuto;
+        private GroupBox groupBox3;
+        private TextBox TxtTimes;
+        private Button BtnRepeatRotate;
+        private Label label12;
+        private ProgressBar progressBar1;
+        private Button BtnRegPattern;
+        private Button BtnResetPostion;
+        private Label labelX;
+        private Label labelY;
+        private Label labelR;
+        private Label label15;
+        private Label label17;
+        private Label label18;
     }
 }

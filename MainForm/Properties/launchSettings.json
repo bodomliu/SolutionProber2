@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MainForm": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false,
+      "remoteDebugMachine": "DESKTOP-E3A7H37:4026",
+      "authenticationMode": "None"
+    }
+  }
+}

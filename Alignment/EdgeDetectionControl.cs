@@ -35,7 +35,7 @@ namespace MainForm
         private int DetecetEdge(int index)
         {
             //运动到Edge 定位并获取值
-            Motion.XYZ_AxisMoveAbs(1, Motion.parameter.EdgeX[index], Motion.parameter.EdgeY[index], 54000, 600, 10, 10, 20);//运动到边缘点
+            Motion.XYZ_AxisMoveAbs(1, Motion.parameter.EdgeX[index], Motion.parameter.EdgeY[index], Motion.parameter.ZORIGIN, 600, 10, 10, 20);//运动到边缘点
             //执行Blob
             int res = Blob(true, out double DeltaX, out double DeltaY);//先bigROI找
             if (res != 0) { MessageBox.Show("Edge Detected Error."); return res; }

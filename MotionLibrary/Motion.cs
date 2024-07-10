@@ -18,13 +18,10 @@ namespace MotionLibrary
         public int ZLIMITP { get; set; } = 150000;
         public int ZLIMITN { get; set; } = -090000;
 
-        //设备参数，精定位下的原始位置坐标：X，Y为chuck到达highMag视野中心，Z为对焦完成（无晶圆）
-        public double XORIGIN { get; set; } = 2106910;
-        public double YORIGIN { get; set; } = 1701615;
+        //设备参数，Chuck原点，通过求其旋转中心得到：X，Y为chuck的旋转中心与highMag视野中心重合，Z为对焦完成（无晶圆）
+        public double XORIGIN { get; set; } = 2113182;
+        public double YORIGIN { get; set; } = 1620140;
         public double ZORIGIN { get; set; } = 46000;
-        //设备参数，Chuck旋转中心，区别于物理中心，这个参数需要标定后再定，故使用的用户坐标系定，再转为encode坐标系存储
-        public double XROTATE { get; set; } = 2113182;
-        public double YROTATE { get; set; } = 1620140;
 
         //设备参数，粗定位晶圆相机到精定位晶圆相机
         public double XWAFERLOW2HIGHT { get; set; } = -370578;

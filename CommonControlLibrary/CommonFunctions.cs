@@ -512,7 +512,7 @@ namespace CommonComponentLibrary
             Y += PadData.Entity.DieOrg2RefPadY + PadData.Entity.Pads[PadIndex].PosY;
             //求pad因为旋转产生的位移，将旋转点转到用户坐标系
             Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User, 
-                Motion.parameter.XROTATE, Motion.parameter.YROTATE, out double rotateX, out double rotateY);
+                Motion.parameter.XORIGIN, Motion.parameter.YORIGIN, out double rotateX, out double rotateY);
             //TODO用户坐标系的角度临时取反//先算user，再输出encode
             RotatePoint(X, Y, rotateX, rotateY,-PinData.Entity.PinsAngle, out userX, out userY);           
             Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, userX, userY, out encodeX, out encodeY);

@@ -79,6 +79,8 @@
             Diff7 = new Label();
             Diff8 = new Label();
             Diff9 = new Label();
+            panel1 = new Panel();
+            panel2 = new Panel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -347,17 +349,17 @@
             // btnCheckAllPos
             // 
             btnCheckAllPos.BackColor = Color.Orange;
-            btnCheckAllPos.Location = new Point(374, 599);
+            btnCheckAllPos.Location = new Point(376, 872);
             btnCheckAllPos.Name = "btnCheckAllPos";
             btnCheckAllPos.Size = new Size(112, 48);
             btnCheckAllPos.TabIndex = 3;
-            btnCheckAllPos.Text = "CheckAllPos";
+            btnCheckAllPos.Text = "Check All Pos";
             btnCheckAllPos.UseVisualStyleBackColor = false;
             btnCheckAllPos.Click += btnCheckAllPos_Click;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(247, 624);
+            btnSave.Location = new Point(295, 897);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 4;
@@ -367,7 +369,7 @@
             // 
             // btnLoad
             // 
-            btnLoad.Location = new Point(157, 624);
+            btnLoad.Location = new Point(295, 872);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(75, 23);
             btnLoad.TabIndex = 4;
@@ -420,9 +422,9 @@
             // 
             // BtnAdjustWaferHeight
             // 
-            BtnAdjustWaferHeight.Location = new Point(374, 255);
+            BtnAdjustWaferHeight.Location = new Point(374, 262);
             BtnAdjustWaferHeight.Name = "BtnAdjustWaferHeight";
-            BtnAdjustWaferHeight.Size = new Size(112, 47);
+            BtnAdjustWaferHeight.Size = new Size(112, 74);
             BtnAdjustWaferHeight.TabIndex = 60;
             BtnAdjustWaferHeight.Text = "Adjust Wafer Height";
             BtnAdjustWaferHeight.UseVisualStyleBackColor = true;
@@ -578,10 +580,28 @@
             Diff9.TabIndex = 66;
             Diff9.Text = "label1";
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Black;
+            panel1.Location = new Point(11, 859);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(255, 85);
+            panel1.TabIndex = 67;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.Black;
+            panel2.Location = new Point(11, 606);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(492, 238);
+            panel2.TabIndex = 68;
+            // 
             // PlanarityControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(Diff9);
             Controls.Add(Diff8);
             Controls.Add(Diff7);
@@ -630,7 +650,7 @@
             Controls.Add(X9);
             Controls.Add(X1);
             Name = "PlanarityControl";
-            Size = new Size(530, 682);
+            Size = new Size(530, 959);
             Load += PlanarityControl_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -692,5 +712,7 @@
         private Label Diff7;
         private Label Diff8;
         private Label Diff9;
+        private Panel panel1;
+        private Panel panel2;
     }
 }

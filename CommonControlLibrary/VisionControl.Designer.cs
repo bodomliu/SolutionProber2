@@ -39,6 +39,7 @@
             button1 = new Button();
             BtnGenCalibration = new Button();
             dataGridView1 = new DataGridView();
+            BtnReloadCalibration = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -148,11 +149,22 @@
             dataGridView1.Size = new Size(219, 218);
             dataGridView1.TabIndex = 37;
             // 
+            // BtnReloadCalibration
+            // 
+            BtnReloadCalibration.Location = new Point(231, 400);
+            BtnReloadCalibration.Name = "BtnReloadCalibration";
+            BtnReloadCalibration.Size = new Size(92, 47);
+            BtnReloadCalibration.TabIndex = 38;
+            BtnReloadCalibration.Text = "Reload Calibration";
+            BtnReloadCalibration.UseVisualStyleBackColor = true;
+            BtnReloadCalibration.Click += BtnReloadCalibration_Click;
+            // 
             // VisionControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
+            Controls.Add(BtnReloadCalibration);
             Controls.Add(dataGridView1);
             Controls.Add(BtnGenCalibration);
             Controls.Add(button1);
@@ -184,5 +196,6 @@
         private Button button1;
         private Button BtnGenCalibration;
         private DataGridView dataGridView1;
+        private Button BtnReloadCalibration;
     }
 }

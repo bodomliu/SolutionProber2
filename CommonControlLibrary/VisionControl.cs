@@ -122,5 +122,10 @@ namespace CommonComponentLibrary
             dataGridView1.DataSource = null;//删掉报错
             dataGridView1.DataSource = MatchPoints;
         }
+
+        private void BtnReloadCalibration_Click(object sender, EventArgs e)
+        {
+            Vision.LoadHomMat2d();//标定文件生效
+        }
     }
 }

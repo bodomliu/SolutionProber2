@@ -1,17 +1,8 @@
 ﻿using CommonComponentLibrary;
 using MotionLibrary;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using VisionLibrary;
 using WaferMapLibrary;
+using static GTN.mc;
 
 namespace UtilityForm
 {
@@ -70,32 +61,14 @@ namespace UtilityForm
 
         private void BtnGetPos1_Click(object sender, EventArgs? e)
         {
-            double X; double Y;
-            if (CbCompensation.Checked)
-            {
-                Motion.GetUserPos(Compensation.Area.Align, out X, out Y);
-            }
-            else
-            {
-                Motion.XY_GetEncPos(out X, out Y);
-            }
-            TxtX1.Text = X.ToString();
-            TxtY1.Text = Y.ToString();
+            TxtX1.Text = Motion.EncodeX.ToString();
+            TxtY1.Text = Motion.EncodeY.ToString();
         }
 
         private void BtnGetPos2_Click(object sender, EventArgs? e)
         {
-            double X; double Y;
-            if (CbCompensation.Checked)
-            {
-                Motion.GetUserPos(Compensation.Area.Align, out X, out Y);
-            }
-            else
-            {
-                Motion.XY_GetEncPos(out X, out Y);
-            }
-            TxtX2.Text = X.ToString();
-            TxtY2.Text = Y.ToString();
+            TxtX2.Text = Motion.EncodeX.ToString();
+            TxtY2.Text = Motion.EncodeY.ToString();
         }
 
         private void BtnRNeg_Click(object sender, EventArgs e)
@@ -108,94 +81,86 @@ namespace UtilityForm
             Motion.AxisMoveRel(1, 4, double.Parse(TxtPulse.Text), 600, 10, 10, 20);
         }
 
-        private void BtnAlignX_Click(object sender, EventArgs e)
+        //作为临时性的shm模板
+        public string PattenModel1 = "tempSHM";
+        public double OrgX = 0;
+        public double OrgY = 0;
+        public double OrgZ = 0;
+        public double OrgR = 0;
+        private async void BtnRepeatRotate_Click(object sender, EventArgs e)
         {
-            int interval = int.Parse(TxtLR.Text);
-            CommonFunctions.AlignX(Vision.WaferHighMag, DeviceData.Entity.WaferAlignment.HighPattern1, interval, interval,
-                WaferMap.Entity.DieSizeX, out double RotateX);
-            TxtX.Text = RotateX.ToString("F0");
+            RegPattern();
+
+            int times = int.Parse(TxtTimes.Text);
+            double pulse = double.Parse(TxtPulse.Text);
+
+            Vision.WaferHighMag.TriggerMode();
+            WaitingControl.WF.Start();
+            for (int i = 0; i < times; i++)
+            {
+                await Task.Run(() =>
+                {
+                    Motion.AxisMoveRel(1, 4, pulse, 600, 10, 10, 20);
+                });
+
+                double DeltaX = 0;
+                double DeltaY = 0;
+                //var res = await Task.Run<int>(() =>
+                //{
+                //    return 
+                //});
+                int res = CommonFunctions.FastMatch(PattenModel1, Vision.WaferHighMag, out DeltaX, out DeltaY, out _, out _);
+                if (res != 0)
+                {
+                    WaitingControl.WF.End();
+                    Vision.WaferHighMag.ContinuesMode();
+                    return;
+                }
+                Motion.XY_AxisMoveRel(1, DeltaX, DeltaY, 600, 10, 10, 20);
+                Vision.WaferHighMag.TriggerExec();
+
+                progressBar1.Value = (i + 1) * 100 / times;
+            }
+            progressBar1.Value = 100;
+            WaitingControl.WF.End();
+            Vision.WaferHighMag.ContinuesMode();
         }
 
-        private void BtnAlignY_Click(object sender, EventArgs e)
+        private void BtnRegPattern_Click(object sender, EventArgs e)
         {
-            int interval = int.Parse(TxtUD.Text);
-            CommonFunctions.AlignY(Vision.WaferHighMag, DeviceData.Entity.WaferAlignment.HighPattern1, interval, interval,
-                WaferMap.Entity.DieSizeY, out double RotateY);
-            TxtY.Text = RotateY.ToString("F0");
+            RegPattern();
+        }
+
+        private void RegPattern()
+        {
+            Vision.WaferHighMag.halconClass.CreateShapeModel(PattenModel1);
+            OrgX = Motion.EncodeX;
+            OrgY = Motion.EncodeY;
+            OrgZ = Motion.EncodeZ;
+            OrgR = Motion.EncodeR;
+
+            labelX.Text = OrgX.ToString("F0");
+            labelY.Text = OrgY.ToString("F0");
+            labelR.Text = OrgR.ToString("F0");
         }
 
         private void BtnMatch_Click(object sender, EventArgs e)
         {
             if (Vision.activeCamera == Camera.WaferLowMag)
             {
-                CommonFunctions.Match(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out _, out _);
+                //CommonFunctions.Match(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out _, out _);
+                return;
             }
             else if (Vision.activeCamera == Camera.WaferHighMag)
             {
-                CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, Vision.WaferHighMag, out _, out _);
+                CommonFunctions.Match(PattenModel1, Vision.WaferHighMag, out _, out _);
             }
         }
 
-        private void BtnAuto_Click(object sender, EventArgs e)
+        private void BtnResetPostion_Click(object sender, EventArgs e)
         {
-            //12,1
-            double RotatePulse = double.Parse(TxtPulse.Text);
-            double Origin_X; double Origin_Y;
-            Motion.GetUserPos(Compensation.Area.Align, out Origin_X, out Origin_Y);
-            Motion.AxisMoveRel(1, 4, RotatePulse, 600, 10, 10, 20);
-            Thread.Sleep(2000);
-            //Motion.XY_GetEncPos(out double AfterRotation_X, out double AfterRotation_Y);
-            double R1 = RotatePulse / 10000 / 180 * Math.PI;
-            double cosR = Math.Cos(-R1);
-            double sinR = Math.Sin(-R1);
-            //X2 - X = cosR * (X1 - X) - sinR * (Y1 - Y)
-            //Y2 - Y = sinR * (X1 - X) + cosR * (Y1 - Y)
-            double AfterRotation_X = cosR * (Origin_X - Motion.parameter.XROTATE) - sinR * (Origin_Y - Motion.parameter.YROTATE) + Motion.parameter.XROTATE;
-            double AfterRotation_Y = sinR * (Origin_X - Motion.parameter.XROTATE) + cosR * (Origin_Y - Motion.parameter.YROTATE) + Motion.parameter.YROTATE;
-            double DeltaX = AfterRotation_X - Origin_X;
-            double DeltaY = AfterRotation_Y - Origin_Y;
-            Thread.Sleep(2000);
-            Motion.UserPosMoveAbs(Compensation.Area.Align, AfterRotation_X, AfterRotation_Y);
-            Thread.Sleep(3000);
-
-            if (Vision.activeCamera == Camera.WaferLowMag)
-            {
-                CommonFunctions.Match(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out _, out _);
-            }
-            else if (Vision.activeCamera == Camera.WaferHighMag)
-            {
-                CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, Vision.WaferHighMag, out _, out _);
-            }
-            //BtnMatchLow_Click_1(this, null);
-
-            BtnGetPos1_Click(this, null);
-            Motion.AxisMoveRel(1, 4, (-2 * RotatePulse), 600, 10, 10, 20);
-            Thread.Sleep(2000);
-
-            double cosR2 = Math.Cos(R1);
-            double sinR2 = Math.Sin(R1);
-            //X2 - X = cosR * (X1 - X) - sinR * (Y1 - Y)
-            //Y2 - Y = sinR * (X1 - X) + cosR * (Y1 - Y)
-            double AfterRotation_X2 = cosR2 * (Origin_X - Motion.parameter.XROTATE) - sinR2 * (Origin_Y - Motion.parameter.YROTATE) + Motion.parameter.XROTATE;
-            double AfterRotation_Y2 = sinR2 * (Origin_X - Motion.parameter.XROTATE) + cosR2 * (Origin_Y - Motion.parameter.YROTATE) + Motion.parameter.YROTATE;
-
-
-            Motion.UserPosMoveAbs(Compensation.Area.Align, AfterRotation_X2, AfterRotation_Y2);
-
-            Thread.Sleep(2000);
-            if (Vision.activeCamera == Camera.WaferLowMag)
-            {
-                CommonFunctions.Match(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out _, out _);
-            }
-            else if (Vision.activeCamera == Camera.WaferHighMag)
-            {
-                CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, Vision.WaferHighMag, out _, out _);
-            }
-            //BtnMatchLow_Click_1(this, null);
-            Thread.Sleep(2000);
-            BtnGetPos2_Click(this, null);
-            //Thread.Sleep(2000);
-            BtnGetRotateCenter_Click(this, null);
+            Motion.XYZ_AxisMoveAbs(1, OrgX, OrgY, OrgZ, 600, 10, 10, 20);
+            Motion.AxisMoveAbs(1, 4, OrgR, 600, 10, 10, 20);            
         }
     }
 }

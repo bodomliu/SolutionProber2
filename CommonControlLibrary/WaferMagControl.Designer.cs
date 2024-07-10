@@ -36,7 +36,7 @@
             // 
             BtnLowMag.BackColor = Color.Teal;
             BtnLowMag.ForeColor = Color.White;
-            BtnLowMag.Location = new Point(128, 1);
+            BtnLowMag.Location = new Point(129, 2);
             BtnLowMag.Name = "BtnLowMag";
             BtnLowMag.Size = new Size(120, 80);
             BtnLowMag.TabIndex = 21;
@@ -48,7 +48,7 @@
             // 
             BtnHighMag.BackColor = Color.Teal;
             BtnHighMag.ForeColor = Color.White;
-            BtnHighMag.Location = new Point(2, 1);
+            BtnHighMag.Location = new Point(3, 2);
             BtnHighMag.Name = "BtnHighMag";
             BtnHighMag.Size = new Size(120, 80);
             BtnHighMag.TabIndex = 22;
@@ -65,7 +65,7 @@
             Controls.Add(BtnHighMag);
             ForeColor = Color.Black;
             Name = "WaferMagControl";
-            Size = new Size(253, 83);
+            Size = new Size(255, 85);
             Load += WaferMagControl_Load;
             VisibleChanged += WaferMagControl_VisibleChanged;
             ParentChanged += WaferMagControl_ParentChanged;

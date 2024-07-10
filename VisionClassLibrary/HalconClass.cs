@@ -1032,9 +1032,9 @@ namespace VisionLibrary
         /// <returns>0：计算成功  1：数组长度出错</returns>
         public int FitCircle(double[] EdgeXs, double[] EdgeYs, out double CircleCenterX, out double CircleCenterY, out double Radius)
         {
-            CircleCenterX = 65535;
-            CircleCenterY = 65535;
-            Radius = 65535;
+            CircleCenterX = double.NaN;
+            CircleCenterY = double.NaN;
+            Radius = double.NaN;
 
             //M = 数据长度，数据长度不符合要求时
             int M = EdgeXs.Length;

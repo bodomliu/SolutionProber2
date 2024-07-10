@@ -141,7 +141,7 @@ namespace MainForm
             //获得当前Encode位置，因为后面算成encode补偿，所以直接用encode坐标得了
             Motion.XY_GetEncPos(out double encodeX, out double encodeY);
             //求pad因为旋转产生的位移
-            CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XROTATE, Motion.parameter.YROTATE,
+            CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XORIGIN, Motion.parameter.YORIGIN,
                 Index, out double Xout, out double Yout);
             Motion.XYZ_AxisMoveRel(1, Xout - encodeX, Yout - encodeY, 0, 600, 10, 10, 20);
         }

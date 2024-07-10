@@ -115,7 +115,7 @@ namespace ManualForm
             encodeX -= deltaX; encodeY -= deltaY;
 
             //求pad因为旋转产生的位移
-            CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XROTATE, Motion.parameter.YROTATE,
+            CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XORIGIN, Motion.parameter.YORIGIN,
                 -PinData.Entity.PinsAngle, out double Xout, out double Yout);
 
             await Task.Run(() =>
@@ -141,7 +141,7 @@ namespace ManualForm
             //获得当前Encode位置
             Motion.XY_GetEncPos(out double encodeX, out double encodeY);
             //求pad因为旋转产生的位移
-            CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XROTATE, Motion.parameter.YROTATE,
+            CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XORIGIN, Motion.parameter.YORIGIN,
                 PinData.Entity.PinsAngle, out double Xout, out double Yout);
             double xCausedByAngle = Xout - encodeX; double yCausedByAngle = Yout - encodeY;
 

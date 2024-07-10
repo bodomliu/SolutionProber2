@@ -150,15 +150,18 @@ namespace VisionLibrary
             JigCamera.DeviceID = config.cameraSettings.JigCamera.DeviceID;
 
             //载入标定文件
-            WaferLowMag.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/WaferLowMag.bin");            
+            LoadHomMat2d();
+            OpenAllCamera();
+        }
+
+        public static void LoadHomMat2d()
+        {
+            WaferLowMag.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/WaferLowMag.bin");
             WaferHighMag.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/WaferHighMag.bin");
             PinLowMag.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/PinLowMag.bin");
             PinHighMag.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/PinHighMag.bin");
             JigCamera.halconClass.m_Calibration.LoadHomMat2d("VisionConfig/JigCamera.bin");
-
-            OpenAllCamera();
         }
-
         public static void OpenAllCamera()
         {
             foreach (var camera in CameraList) camera.OpenCamera();
