@@ -29,10 +29,12 @@ namespace CommonComponentLibrary
                 pos.Add(z);
                 def.Add(Definition);
 
+                Console.Write("pos= " + z + "  def= " + Definition);
+
                 //判断斜率，然后看i是否要增加
                 z += NextStep(pos, def, Mag, ref SlowFlag);
 
-                Console.WriteLine("pos= " + z + "  def= " + Definition + " Slowflag= " + SlowFlag);
+                Console.WriteLine(" Slowflag= " + SlowFlag);
             }
             int maxIndex = def.IndexOf(def.Max());//找Def最大处的index值
             double Target = pos[maxIndex];
@@ -56,7 +58,7 @@ namespace CommonComponentLibrary
             double targetLow = targetHigh - Motion.parameter.ZWAFERLOW2HIGHT;//38000 - （-8000）= 46000
             double targetJig = targetHigh + Motion.parameter.ZALIGN2PROBE;//38000 + 45823 = 83823
             double rangeHigh = 1000;
-            double rangeLow = 15000;
+            double rangeLow = 10000;
 
             if (Mag == Vision.WaferLowMag)
             {

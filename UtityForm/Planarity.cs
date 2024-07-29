@@ -86,6 +86,23 @@ namespace UtilityForm
                 //OnWaferMapChange?.Invoke();
             }
         }
+        //重置CPI
+        private static void Reset(string filePath,int waferSize)
+        {
+            Gen9Points(waferSize, out double[]x,out double[]y);
+            PointsToSet = new List<Point3D>();
+            for (int i = 0; i < 9; i++)
+            {
+                PointsToSet.Add(new Point3D { x = x[i], y = y[i], z=0 });
+            }
+            Save(filePath, waferSize);
+        }
+        public static void ResetAll(string filePath)
+        {
+            Reset(filePath, 6);
+            Reset(filePath, 8);
+            Reset(filePath, 12);
+        }
         public static void UpdateHeightAndDiff()
         {
             //do with PointsToSet
@@ -140,12 +157,7 @@ namespace UtilityForm
                 y[i] = y[0] + r * Math.Cos(i * deltaAng - Math.PI);
                 x[i] = Math.Round(x[i] / 10000) * 10000;//取整
                 y[i] = Math.Round(y[i] / 10000) * 10000;//取整
-                Console.WriteLine(x[i] + "  " + y[i]);
             }
-
         }
     }
-
-
-   
 }

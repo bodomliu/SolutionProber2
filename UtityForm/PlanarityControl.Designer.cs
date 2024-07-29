@@ -28,24 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            X1 = new TextBox();
-            X2 = new TextBox();
-            X3 = new TextBox();
-            X4 = new TextBox();
-            X5 = new TextBox();
-            X6 = new TextBox();
-            X7 = new TextBox();
-            X8 = new TextBox();
-            Y1 = new TextBox();
-            Y2 = new TextBox();
-            X9 = new TextBox();
-            Y9 = new TextBox();
-            Y3 = new TextBox();
-            Y4 = new TextBox();
-            Y5 = new TextBox();
-            Y6 = new TextBox();
-            Y7 = new TextBox();
-            Y8 = new TextBox();
             btn1 = new Button();
             btn2 = new Button();
             btn3 = new Button();
@@ -66,10 +48,6 @@
             groupBox2 = new GroupBox();
             RbtnNoWafer = new RadioButton();
             RbtnWithWafer = new RadioButton();
-            label9 = new Label();
-            label6 = new Label();
-            lblDiffZ = new Label();
-            lblAvgZ = new Label();
             Diff1 = new Label();
             Diff2 = new Label();
             Diff3 = new Label();
@@ -81,175 +59,15 @@
             Diff9 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
+            CbWaferSize = new ComboBox();
+            BtnResetAll = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // X1
-            // 
-            X1.BorderStyle = BorderStyle.FixedSingle;
-            X1.Location = new Point(178, 27);
-            X1.Name = "X1";
-            X1.ReadOnly = true;
-            X1.Size = new Size(60, 23);
-            X1.TabIndex = 1;
-            // 
-            // X2
-            // 
-            X2.BorderStyle = BorderStyle.FixedSingle;
-            X2.Location = new Point(286, 65);
-            X2.Name = "X2";
-            X2.ReadOnly = true;
-            X2.Size = new Size(60, 23);
-            X2.TabIndex = 1;
-            // 
-            // X3
-            // 
-            X3.BorderStyle = BorderStyle.FixedSingle;
-            X3.Location = new Point(360, 117);
-            X3.Name = "X3";
-            X3.ReadOnly = true;
-            X3.Size = new Size(60, 23);
-            X3.TabIndex = 1;
-            // 
-            // X4
-            // 
-            X4.BorderStyle = BorderStyle.FixedSingle;
-            X4.Location = new Point(286, 180);
-            X4.Name = "X4";
-            X4.ReadOnly = true;
-            X4.Size = new Size(60, 23);
-            X4.TabIndex = 1;
-            // 
-            // X5
-            // 
-            X5.BorderStyle = BorderStyle.FixedSingle;
-            X5.Location = new Point(178, 213);
-            X5.Name = "X5";
-            X5.ReadOnly = true;
-            X5.Size = new Size(60, 23);
-            X5.TabIndex = 1;
-            // 
-            // X6
-            // 
-            X6.BorderStyle = BorderStyle.FixedSingle;
-            X6.Location = new Point(56, 166);
-            X6.Name = "X6";
-            X6.ReadOnly = true;
-            X6.Size = new Size(60, 23);
-            X6.TabIndex = 1;
-            // 
-            // X7
-            // 
-            X7.BorderStyle = BorderStyle.FixedSingle;
-            X7.Location = new Point(11, 117);
-            X7.Name = "X7";
-            X7.ReadOnly = true;
-            X7.Size = new Size(60, 23);
-            X7.TabIndex = 1;
-            // 
-            // X8
-            // 
-            X8.BorderStyle = BorderStyle.FixedSingle;
-            X8.Location = new Point(63, 65);
-            X8.Name = "X8";
-            X8.ReadOnly = true;
-            X8.Size = new Size(60, 23);
-            X8.TabIndex = 1;
-            // 
-            // Y1
-            // 
-            Y1.BorderStyle = BorderStyle.FixedSingle;
-            Y1.Location = new Point(247, 27);
-            Y1.Name = "Y1";
-            Y1.ReadOnly = true;
-            Y1.Size = new Size(60, 23);
-            Y1.TabIndex = 1;
-            // 
-            // Y2
-            // 
-            Y2.BorderStyle = BorderStyle.FixedSingle;
-            Y2.Location = new Point(352, 65);
-            Y2.Name = "Y2";
-            Y2.ReadOnly = true;
-            Y2.Size = new Size(60, 23);
-            Y2.TabIndex = 1;
-            // 
-            // X9
-            // 
-            X9.BorderStyle = BorderStyle.FixedSingle;
-            X9.Location = new Point(178, 117);
-            X9.Name = "X9";
-            X9.ReadOnly = true;
-            X9.Size = new Size(60, 23);
-            X9.TabIndex = 1;
-            // 
-            // Y9
-            // 
-            Y9.BorderStyle = BorderStyle.FixedSingle;
-            Y9.Location = new Point(244, 117);
-            Y9.Name = "Y9";
-            Y9.ReadOnly = true;
-            Y9.Size = new Size(60, 23);
-            Y9.TabIndex = 1;
-            // 
-            // Y3
-            // 
-            Y3.BorderStyle = BorderStyle.FixedSingle;
-            Y3.Location = new Point(426, 117);
-            Y3.Name = "Y3";
-            Y3.ReadOnly = true;
-            Y3.Size = new Size(60, 23);
-            Y3.TabIndex = 1;
-            // 
-            // Y4
-            // 
-            Y4.BorderStyle = BorderStyle.FixedSingle;
-            Y4.Location = new Point(352, 180);
-            Y4.Name = "Y4";
-            Y4.ReadOnly = true;
-            Y4.Size = new Size(60, 23);
-            Y4.TabIndex = 1;
-            // 
-            // Y5
-            // 
-            Y5.BorderStyle = BorderStyle.FixedSingle;
-            Y5.Location = new Point(244, 213);
-            Y5.Name = "Y5";
-            Y5.ReadOnly = true;
-            Y5.Size = new Size(60, 23);
-            Y5.TabIndex = 1;
-            // 
-            // Y6
-            // 
-            Y6.BorderStyle = BorderStyle.FixedSingle;
-            Y6.Location = new Point(122, 166);
-            Y6.Name = "Y6";
-            Y6.ReadOnly = true;
-            Y6.Size = new Size(60, 23);
-            Y6.TabIndex = 1;
-            // 
-            // Y7
-            // 
-            Y7.BorderStyle = BorderStyle.FixedSingle;
-            Y7.Location = new Point(77, 117);
-            Y7.Name = "Y7";
-            Y7.ReadOnly = true;
-            Y7.Size = new Size(60, 23);
-            Y7.TabIndex = 1;
-            // 
-            // Y8
-            // 
-            Y8.BorderStyle = BorderStyle.FixedSingle;
-            Y8.Location = new Point(129, 65);
-            Y8.Name = "Y8";
-            Y8.ReadOnly = true;
-            Y8.Size = new Size(60, 23);
-            Y8.TabIndex = 1;
-            // 
             // btn1
             // 
-            btn1.Location = new Point(262, 356);
+            btn1.Location = new Point(314, 193);
             btn1.Name = "btn1";
             btn1.Size = new Size(75, 23);
             btn1.TabIndex = 2;
@@ -260,7 +78,7 @@
             // 
             // btn2
             // 
-            btn2.Location = new Point(352, 381);
+            btn2.Location = new Point(404, 218);
             btn2.Name = "btn2";
             btn2.Size = new Size(75, 23);
             btn2.TabIndex = 2;
@@ -271,7 +89,7 @@
             // 
             // btn3
             // 
-            btn3.Location = new Point(416, 457);
+            btn3.Location = new Point(441, 294);
             btn3.Name = "btn3";
             btn3.Size = new Size(75, 23);
             btn3.TabIndex = 2;
@@ -282,7 +100,7 @@
             // 
             // btn4
             // 
-            btn4.Location = new Point(352, 520);
+            btn4.Location = new Point(380, 350);
             btn4.Name = "btn4";
             btn4.Size = new Size(75, 23);
             btn4.TabIndex = 2;
@@ -293,7 +111,7 @@
             // 
             // btn5
             // 
-            btn5.Location = new Point(259, 560);
+            btn5.Location = new Point(307, 384);
             btn5.Name = "btn5";
             btn5.Size = new Size(75, 23);
             btn5.TabIndex = 2;
@@ -304,7 +122,7 @@
             // 
             // btn6
             // 
-            btn6.Location = new Point(187, 508);
+            btn6.Location = new Point(239, 345);
             btn6.Name = "btn6";
             btn6.Size = new Size(75, 23);
             btn6.TabIndex = 2;
@@ -315,7 +133,7 @@
             // 
             // btn7
             // 
-            btn7.Location = new Point(107, 457);
+            btn7.Location = new Point(191, 294);
             btn7.Name = "btn7";
             btn7.Size = new Size(75, 23);
             btn7.TabIndex = 2;
@@ -326,7 +144,7 @@
             // 
             // btn8
             // 
-            btn8.Location = new Point(177, 381);
+            btn8.Location = new Point(229, 218);
             btn8.Name = "btn8";
             btn8.Size = new Size(75, 23);
             btn8.TabIndex = 2;
@@ -337,7 +155,7 @@
             // 
             // btn9
             // 
-            btn9.Location = new Point(259, 457);
+            btn9.Location = new Point(311, 294);
             btn9.Name = "btn9";
             btn9.Size = new Size(75, 23);
             btn9.TabIndex = 2;
@@ -349,9 +167,9 @@
             // btnCheckAllPos
             // 
             btnCheckAllPos.BackColor = Color.Orange;
-            btnCheckAllPos.Location = new Point(376, 872);
+            btnCheckAllPos.Location = new Point(214, 864);
             btnCheckAllPos.Name = "btnCheckAllPos";
-            btnCheckAllPos.Size = new Size(112, 48);
+            btnCheckAllPos.Size = new Size(99, 56);
             btnCheckAllPos.TabIndex = 3;
             btnCheckAllPos.Text = "Check All Pos";
             btnCheckAllPos.UseVisualStyleBackColor = false;
@@ -359,9 +177,9 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(295, 897);
+            btnSave.Location = new Point(385, 859);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(75, 23);
+            btnSave.Size = new Size(58, 61);
             btnSave.TabIndex = 4;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
@@ -369,9 +187,9 @@
             // 
             // btnLoad
             // 
-            btnLoad.Location = new Point(295, 872);
+            btnLoad.Location = new Point(449, 859);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(75, 23);
+            btnLoad.Size = new Size(59, 61);
             btnLoad.TabIndex = 4;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
@@ -379,12 +197,12 @@
             // 
             // btnUpdatePos
             // 
-            btnUpdatePos.BackColor = Color.Orange;
-            btnUpdatePos.Location = new Point(12, 12);
+            btnUpdatePos.BackColor = Color.YellowGreen;
+            btnUpdatePos.Location = new Point(118, 864);
             btnUpdatePos.Name = "btnUpdatePos";
-            btnUpdatePos.Size = new Size(125, 38);
+            btnUpdatePos.Size = new Size(90, 56);
             btnUpdatePos.TabIndex = 10;
-            btnUpdatePos.Text = "Update Pos";
+            btnUpdatePos.Text = "Reg Postion";
             btnUpdatePos.UseVisualStyleBackColor = false;
             btnUpdatePos.Click += btnUpdatePos_Click;
             // 
@@ -392,7 +210,7 @@
             // 
             groupBox1.Controls.Add(RbtnJigCamera);
             groupBox1.Controls.Add(RbtnWaferCamera);
-            groupBox1.Location = new Point(21, 259);
+            groupBox1.Location = new Point(279, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(159, 77);
             groupBox1.TabIndex = 59;
@@ -422,19 +240,20 @@
             // 
             // BtnAdjustWaferHeight
             // 
-            BtnAdjustWaferHeight.Location = new Point(374, 262);
+            BtnAdjustWaferHeight.BackColor = Color.Orange;
+            BtnAdjustWaferHeight.Location = new Point(15, 864);
             BtnAdjustWaferHeight.Name = "BtnAdjustWaferHeight";
-            BtnAdjustWaferHeight.Size = new Size(112, 74);
+            BtnAdjustWaferHeight.Size = new Size(97, 56);
             BtnAdjustWaferHeight.TabIndex = 60;
             BtnAdjustWaferHeight.Text = "Adjust Wafer Height";
-            BtnAdjustWaferHeight.UseVisualStyleBackColor = true;
+            BtnAdjustWaferHeight.UseVisualStyleBackColor = false;
             BtnAdjustWaferHeight.Click += BtnAdjustWaferHeight_Click;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(RbtnNoWafer);
             groupBox2.Controls.Add(RbtnWithWafer);
-            groupBox2.Location = new Point(196, 259);
+            groupBox2.Location = new Point(286, 95);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(158, 77);
             groupBox2.TabIndex = 61;
@@ -463,46 +282,10 @@
             RbtnWithWafer.Text = "With Wafer";
             RbtnWithWafer.UseVisualStyleBackColor = true;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(17, 533);
-            label9.Name = "label9";
-            label9.Size = new Size(52, 17);
-            label9.TabIndex = 64;
-            label9.Text = "DiffZ = ";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(17, 502);
-            label6.Name = "label6";
-            label6.Size = new Size(54, 17);
-            label6.TabIndex = 65;
-            label6.Text = "AvgZ = ";
-            // 
-            // lblDiffZ
-            // 
-            lblDiffZ.AutoSize = true;
-            lblDiffZ.Location = new Point(77, 533);
-            lblDiffZ.Name = "lblDiffZ";
-            lblDiffZ.Size = new Size(35, 17);
-            lblDiffZ.TabIndex = 63;
-            lblDiffZ.Text = "DiffZ";
-            // 
-            // lblAvgZ
-            // 
-            lblAvgZ.AutoSize = true;
-            lblAvgZ.Location = new Point(77, 502);
-            lblAvgZ.Name = "lblAvgZ";
-            lblAvgZ.Size = new Size(37, 17);
-            lblAvgZ.TabIndex = 62;
-            lblAvgZ.Text = "AvgZ";
-            // 
             // Diff1
             // 
             Diff1.AutoSize = true;
-            Diff1.Location = new Point(278, 382);
+            Diff1.Location = new Point(330, 219);
             Diff1.Name = "Diff1";
             Diff1.Size = new Size(43, 17);
             Diff1.TabIndex = 66;
@@ -511,7 +294,7 @@
             // Diff2
             // 
             Diff2.AutoSize = true;
-            Diff2.Location = new Point(374, 407);
+            Diff2.Location = new Point(426, 244);
             Diff2.Name = "Diff2";
             Diff2.Size = new Size(43, 17);
             Diff2.TabIndex = 66;
@@ -520,7 +303,7 @@
             // Diff3
             // 
             Diff3.AutoSize = true;
-            Diff3.Location = new Point(416, 483);
+            Diff3.Location = new Point(441, 320);
             Diff3.Name = "Diff3";
             Diff3.Size = new Size(43, 17);
             Diff3.TabIndex = 66;
@@ -529,7 +312,7 @@
             // Diff4
             // 
             Diff4.AutoSize = true;
-            Diff4.Location = new Point(374, 543);
+            Diff4.Location = new Point(402, 373);
             Diff4.Name = "Diff4";
             Diff4.Size = new Size(43, 17);
             Diff4.TabIndex = 66;
@@ -538,7 +321,7 @@
             // Diff5
             // 
             Diff5.AutoSize = true;
-            Diff5.Location = new Point(279, 586);
+            Diff5.Location = new Point(327, 410);
             Diff5.Name = "Diff5";
             Diff5.Size = new Size(43, 17);
             Diff5.TabIndex = 66;
@@ -547,7 +330,7 @@
             // Diff6
             // 
             Diff6.AutoSize = true;
-            Diff6.Location = new Point(207, 534);
+            Diff6.Location = new Point(259, 371);
             Diff6.Name = "Diff6";
             Diff6.Size = new Size(43, 17);
             Diff6.TabIndex = 66;
@@ -556,7 +339,7 @@
             // Diff7
             // 
             Diff7.AutoSize = true;
-            Diff7.Location = new Point(121, 483);
+            Diff7.Location = new Point(205, 320);
             Diff7.Name = "Diff7";
             Diff7.Size = new Size(43, 17);
             Diff7.TabIndex = 66;
@@ -565,7 +348,7 @@
             // Diff8
             // 
             Diff8.AutoSize = true;
-            Diff8.Location = new Point(187, 407);
+            Diff8.Location = new Point(239, 244);
             Diff8.Name = "Diff8";
             Diff8.Size = new Size(43, 17);
             Diff8.TabIndex = 66;
@@ -574,7 +357,7 @@
             // Diff9
             // 
             Diff9.AutoSize = true;
-            Diff9.Location = new Point(274, 483);
+            Diff9.Location = new Point(326, 320);
             Diff9.Name = "Diff9";
             Diff9.Size = new Size(43, 17);
             Diff9.TabIndex = 66;
@@ -583,7 +366,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Black;
-            panel1.Location = new Point(11, 859);
+            panel1.Location = new Point(11, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(255, 85);
             panel1.TabIndex = 67;
@@ -591,15 +374,37 @@
             // panel2
             // 
             panel2.BackColor = Color.Black;
-            panel2.Location = new Point(11, 606);
+            panel2.Location = new Point(11, 579);
             panel2.Name = "panel2";
-            panel2.Size = new Size(492, 238);
+            panel2.Size = new Size(492, 265);
             panel2.TabIndex = 68;
+            // 
+            // CbWaferSize
+            // 
+            CbWaferSize.FormattingEnabled = true;
+            CbWaferSize.Items.AddRange(new object[] { "6", "8", "12" });
+            CbWaferSize.Location = new Point(11, 103);
+            CbWaferSize.Name = "CbWaferSize";
+            CbWaferSize.Size = new Size(121, 25);
+            CbWaferSize.TabIndex = 69;
+            CbWaferSize.SelectedIndexChanged += CbWaferSize_SelectedIndexChanged;
+            // 
+            // BtnResetAll
+            // 
+            BtnResetAll.Location = new Point(314, 866);
+            BtnResetAll.Name = "BtnResetAll";
+            BtnResetAll.Size = new Size(65, 54);
+            BtnResetAll.TabIndex = 70;
+            BtnResetAll.Text = "Reset All";
+            BtnResetAll.UseVisualStyleBackColor = true;
+            BtnResetAll.Click += BtnResetAll_Click;
             // 
             // PlanarityControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(BtnResetAll);
+            Controls.Add(CbWaferSize);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(Diff9);
@@ -611,10 +416,6 @@
             Controls.Add(Diff3);
             Controls.Add(Diff2);
             Controls.Add(Diff1);
-            Controls.Add(label9);
-            Controls.Add(label6);
-            Controls.Add(lblDiffZ);
-            Controls.Add(lblAvgZ);
             Controls.Add(groupBox2);
             Controls.Add(BtnAdjustWaferHeight);
             Controls.Add(groupBox1);
@@ -631,24 +432,6 @@
             Controls.Add(btn3);
             Controls.Add(btn2);
             Controls.Add(btn1);
-            Controls.Add(X8);
-            Controls.Add(X7);
-            Controls.Add(X6);
-            Controls.Add(X5);
-            Controls.Add(X4);
-            Controls.Add(X3);
-            Controls.Add(X2);
-            Controls.Add(Y8);
-            Controls.Add(Y7);
-            Controls.Add(Y6);
-            Controls.Add(Y5);
-            Controls.Add(Y4);
-            Controls.Add(Y3);
-            Controls.Add(Y2);
-            Controls.Add(Y1);
-            Controls.Add(Y9);
-            Controls.Add(X9);
-            Controls.Add(X1);
             Name = "PlanarityControl";
             Size = new Size(530, 959);
             Load += PlanarityControl_Load;
@@ -661,24 +444,6 @@
         }
 
         #endregion
-        private TextBox X1;
-        private TextBox X2;
-        private TextBox X3;
-        private TextBox X4;
-        private TextBox X5;
-        private TextBox X6;
-        private TextBox X7;
-        private TextBox X8;
-        private TextBox Y1;
-        private TextBox Y2;
-        private TextBox X9;
-        private TextBox Y9;
-        private TextBox Y3;
-        private TextBox Y4;
-        private TextBox Y5;
-        private TextBox Y6;
-        private TextBox Y7;
-        private TextBox Y8;
         private Button btn1;
         private Button btn2;
         private Button btn3;
@@ -699,10 +464,6 @@
         private GroupBox groupBox2;
         private RadioButton RbtnNoWafer;
         private RadioButton RbtnWithWafer;
-        private Label label9;
-        private Label label6;
-        private Label lblDiffZ;
-        private Label lblAvgZ;
         private Label Diff1;
         private Label Diff2;
         private Label Diff3;
@@ -714,5 +475,7 @@
         private Label Diff9;
         private Panel panel1;
         private Panel panel2;
+        private ComboBox CbWaferSize;
+        private Button BtnResetAll;
     }
 }
