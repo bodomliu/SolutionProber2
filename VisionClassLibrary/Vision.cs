@@ -199,10 +199,10 @@ namespace VisionLibrary
             //获取当前激活的相机
             int index = (int)activeCamera;//index初始值=-1
             CameraList[index].halconClass.DisplayWindowsUnbind();
-            CameraList[index].StopGrab();//TODO：待优化
-            Thread.Sleep(200);//这个延时增加前，如果切换MainForm页面，commonPanel绑定的是同一个相机，大概率造成后者页面中相机采相极慢
+            CameraList[index].TriggerMode();//切入后台的相机改成单帧采集模式，continues mode占用内存较大
+            Thread.Sleep(200);//这个延时增加前，如果切换MainForm页面，commonPanel绑定的是同一个相机，大概率造成后者页面中相机采相极慢：待确认
             camera.halconClass.DisplayWindowsBind(m_HSmartWindowControl);//绑定halconwindow
-            camera.StartGrab();//TODO：待优化
+            camera.StartGrab();//该函数做了重复调用的处理机制，当没关闭时，会先stopGrab再StartGrab
             //相机打到连拍模式
             camera.ContinuesMode();
             //获得camera在CamraList下的编号

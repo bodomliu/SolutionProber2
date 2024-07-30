@@ -243,7 +243,7 @@ namespace VisionLibrary
                     //m_MyCamera.RegisterImageCallBackEx(cbImage, (IntPtr)i);
 
                     //打开相机后开始采集，手动采集
-                    //StartGrab();
+                    StartGrab();
 
                     return 1;
                 }
@@ -325,6 +325,14 @@ namespace VisionLibrary
               //  MessageBox.Show("Start Grabbing Fail");
                 return;
             }
+            //防止重复调用 StartGrab
+            if (m_bGrabbing)
+            {
+                // 如果已经在采集，先停止
+                StopGrab();
+                Thread.Sleep(200);
+            }
+
             m_bGrabbing = true;
 
             m_hReceiveThread = new Thread(ReceiveImageWorkThread);

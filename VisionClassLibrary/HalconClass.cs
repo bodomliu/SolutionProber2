@@ -370,6 +370,7 @@ namespace VisionLibrary
                 //返回白色
                 m_Window.SetColor("white");
             }
+
             return 0;
         }
 

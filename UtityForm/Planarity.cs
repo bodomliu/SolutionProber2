@@ -1,12 +1,5 @@
-﻿using MathNet.Numerics.Statistics.Mcmc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using MotionLibrary;
 using System.Text.Json;
-using System.Threading.Tasks;
-using WaferMapLibrary;
-using MotionLibrary;
 namespace UtilityForm
 {
     public class Point3D
@@ -51,7 +44,7 @@ namespace UtilityForm
         public static int Index { get; set; } = 0;//位置
         public static double AverageHeight { get; set; } = 0;//当前Wafer的平均高度
         public static double Difference { get; set; } = 0;//当前Wafer的高度差
-        public static void Save(string filePath,int waferSize)
+        public static void Save(string filePath, int waferSize)
         {
             //保存的时候先将PointsToSet存入Entity,再写入文件
             switch (waferSize)
@@ -87,13 +80,13 @@ namespace UtilityForm
             }
         }
         //重置CPI
-        private static void Reset(string filePath,int waferSize)
+        private static void Reset(string filePath, int waferSize)
         {
-            Gen9Points(waferSize, out double[]x,out double[]y);
+            Gen9Points(waferSize, out double[] x, out double[] y);
             PointsToSet = new List<Point3D>();
             for (int i = 0; i < 9; i++)
             {
-                PointsToSet.Add(new Point3D { x = x[i], y = y[i], z=0 });
+                PointsToSet.Add(new Point3D { x = x[i], y = y[i], z = 0});
             }
             Save(filePath, waferSize);
         }
@@ -108,19 +101,20 @@ namespace UtilityForm
             //do with PointsToSet
             List<double> doubles = PointsToSet.Select(point => point.z).ToList();
             AverageHeight = doubles.Average();
-            Difference = doubles.Max()-doubles.Min();
+            Difference = doubles.Max() - doubles.Min();
         }
-        public static void RegHeight(int index,double height)
+        public static void RegHeight(int index, double height)
         {
             //reg height of current Point
             PointsToSet[index].z = height;
         }
-        public static void RegPosition(int index, double x,double y)
+
+        public static void RegPosition(int index, double x, double y)
         {
             PointsToSet[index].x = x;
             PointsToSet[index].y = y;
         }
-        public static void Gen9Points(int waferSize ,out double[] x, out double[] y)
+        public static void Gen9Points(int waferSize, out double[] x, out double[] y)
         {
             x = new double[9];
             y = new double[9];
@@ -129,13 +123,13 @@ namespace UtilityForm
             switch (waferSize)
             {
                 case 6:
-                    r = 1300000;
+                    r = 1350000;
                     break;
                 case 8:
-                    r = 1300000;
+                    r = 1350000;
                     break;
                 case 12:
-                    r = 1300000;
+                    r = 1350000;
                     break;
                 default:
                     throw new Exception("WaferSize must be 6/8/12");
@@ -153,8 +147,8 @@ namespace UtilityForm
             //极坐标，换算角度方向后
             for (int i = 1; i < 9; i++)
             {
-                x[i] = x[0] + r * Math.Sin(i * deltaAng - Math.PI);
-                y[i] = y[0] + r * Math.Cos(i * deltaAng - Math.PI);
+                x[i] = x[0] + r * Math.Sin((i-1) * deltaAng - Math.PI);
+                y[i] = y[0] + r * Math.Cos((i-1) * deltaAng - Math.PI);
                 x[i] = Math.Round(x[i] / 10000) * 10000;//取整
                 y[i] = Math.Round(y[i] / 10000) * 10000;//取整
             }
