@@ -32,7 +32,6 @@ namespace UtilityForm
             }
             else
             {
-            {
                 for (int i = 0; i < 9; i++)
                 {
                     X[i] = Planarity.PointsToSet[i].x;

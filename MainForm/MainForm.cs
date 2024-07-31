@@ -18,11 +18,11 @@ namespace MainForm
         readonly MotionControl motionControl = new();
         readonly AlignmentForm alignmentForm = new();
         readonly DeviceDataSettingsForm deviceDataSettingsForm = new();
-        readonly UtilityForm utilityForm = new();
+        readonly UtilityForm.UtilityForm utilityForm = new();
         readonly PadRegistrationForm padRegistrationFrom = new();
         readonly PinRegistrationForm pinRegistrationFrom = new();
         readonly InspectionForm inspectionForm = new();
-        readonly ManualForm manualForm = new();
+        readonly ManualForm.ManualForm manualForm = new();
         //readonly CommonPanel commonPanel = new();
         public MainForm()
         {

@@ -38,7 +38,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alignment", "Alignment\Alig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotionLibrary", "MotionLibrary\MotionLibrary.csproj", "{EBDA895A-4FDF-4511-B90E-5476E3936CDE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilityForm", "UtityForm\UtilityForm.csproj", "{C72D0235-D190-4A7E-9BFA-F0E74D10C402}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilityForm", "UtilityForm\UtilityForm.csproj", "{C72D0235-D190-4A7E-9BFA-F0E74D10C402}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PadRegistration", "PadRegistration\PadRegistration.csproj", "{699F1003-C0B7-4BCC-B385-A8E97C093370}"
 EndProject

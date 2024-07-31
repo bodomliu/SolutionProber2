@@ -21,21 +21,8 @@ namespace UtilityForm
         public void updateUI_Z()
         {         
             Planarity.UpdateHeightAndDiff();
-            double[] z = new double[9];
-            if (checkBox1.Checked)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    z[i] = Planarity.PointsToSet[i].z - Motion.parameter.ZORIGIN;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    z[i] = Planarity.PointsToSet[i].z;
-                }
-            }
+            
+            double[] z = Planarity.PointsToSet.Select(p => p.z - (checkBox1.Checked ? Motion.parameter.ZORIGIN : 0)).ToArray();
             tb_DiffZ.Text = Planarity.Difference.ToString();
 
             var ZButton = new Button[] { Z0, Z1, Z2, Z3, Z4, Z5, Z6, Z7, Z8 };

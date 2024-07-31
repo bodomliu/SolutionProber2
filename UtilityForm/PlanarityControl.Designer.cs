@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace UtilityForm
 {
     partial class PlanarityControl
     {

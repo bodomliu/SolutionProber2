@@ -4,7 +4,7 @@ using System.Threading;
 using UtilityForm;
 using VisionLibrary;
 using WaferMapLibrary;
-namespace MainForm
+namespace UtilityForm
 {
     public partial class PlanarityControl : UserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace ManualForm
 {
     partial class ManualForm
     {

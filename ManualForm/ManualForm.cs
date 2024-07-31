@@ -1,6 +1,6 @@
 using ManualForm;
 
-namespace MainForm
+namespace ManualForm
 {
     public partial class ManualForm : Form
     {

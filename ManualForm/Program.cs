@@ -1,4 +1,4 @@
-namespace MainForm
+namespace ManualForm
 {
     internal static class Program
     {

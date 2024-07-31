@@ -1,7 +1,6 @@
 using CommonComponentLibrary;
-using UtilityForm;
 
-namespace MainForm
+namespace UtilityForm
 {
     public partial class UtilityForm : Form
     {
