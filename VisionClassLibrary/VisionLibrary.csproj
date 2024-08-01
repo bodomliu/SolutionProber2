@@ -24,8 +24,8 @@
     <Reference Include="halcondotnet">
       <HintPath>D:\Program Files\MVTec\HALCON-20.11-Steady\bin\dotnet35\halcondotnet.dll</HintPath>
     </Reference>
-    <Reference Include="MvCamCtrl.Net">
-      <HintPath>D:\Program Files (x86)\MVS\Development\DotNet\win64\MvCamCtrl.Net.dll</HintPath>
+    <Reference Include="MvCameraControl.Net">
+      <HintPath>D:\Program Files (x86)\MVS\Development\DotNet\win64\MvCameraControl.Net.dll</HintPath>
     </Reference>
   </ItemGroup>
 

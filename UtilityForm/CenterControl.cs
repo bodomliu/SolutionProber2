@@ -109,7 +109,7 @@ namespace UtilityForm
                 //{
                 //    return 
                 //});
-                int res = CommonFunctions.FastMatch(PattenModel1, Vision.WaferHighMag, out DeltaX, out DeltaY, out _, out _);
+                int res = CommonFunctions.Match_Without_Move(PattenModel1, Vision.WaferHighMag, out DeltaX, out DeltaY, out _, out _);
                 if (res != 0)
                 {
                     WaitingControl.WF.End();
@@ -148,12 +148,12 @@ namespace UtilityForm
         {
             if (Vision.activeCamera == Camera.WaferLowMag)
             {
-                //CommonFunctions.Match(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out _, out _);
+                //CommonFunctions.Match_With_Move(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out _, out _);
                 return;
             }
             else if (Vision.activeCamera == Camera.WaferHighMag)
             {
-                CommonFunctions.Match(PattenModel1, Vision.WaferHighMag, out _, out _);
+                CommonFunctions.Match_With_Move(PattenModel1, Vision.WaferHighMag, out _, out _);
             }
         }
 

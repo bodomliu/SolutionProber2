@@ -98,12 +98,12 @@ namespace MainForm
 
         private void BtnMatch1_Click(object sender, EventArgs e)
         {
-            CommonFunctions.Match(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out _, out _);
+            CommonFunctions.Match_With_Move(DeviceData.Entity.WaferAlignment.LowPattern1, Vision.WaferLowMag, out _, out _);
         }
 
         private void BtnMatch2_Click(object sender, EventArgs e)
         {
-            CommonFunctions.Match(DeviceData.Entity.WaferAlignment.LowPattern2, Vision.WaferLowMag, out _, out _);
+            CommonFunctions.Match_With_Move(DeviceData.Entity.WaferAlignment.LowPattern2, Vision.WaferLowMag, out _, out _);
         }
     }
 }

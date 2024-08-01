@@ -42,7 +42,7 @@ namespace UtilityForm
 
             int index = int.Parse(str);
             Planarity.Index = index;
-            await Task.Run(() =>  Motion.XY_AxisMoveAbs(1, Planarity.PointsToSet[index].x, Planarity.PointsToSet[index].y,100,100,100,0));
+            await Task.Run(() =>  Motion.XY_AxisMoveAbs(1, Planarity.PointsToSet[index].x, Planarity.PointsToSet[index].y,600,10,10,20));
         }
         private void btn_Refresh_Click(object sender, EventArgs e)
         {

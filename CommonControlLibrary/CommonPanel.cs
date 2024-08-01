@@ -86,7 +86,7 @@ namespace CommonComponentLibrary
             else
             {
                 //如果置零按钮不可见，说明要切换到Zero 用户配置模式
-                BtnTogglePosition.Text = "Toggle Position (Match)";
+                BtnTogglePosition.Text = "Toggle Position (Match_With_Move)";
             }
             BtnSetZeroPosition.Visible = !BtnSetZeroPosition.Visible;//变更ZeroPosion可见性
         }

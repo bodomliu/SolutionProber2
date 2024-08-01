@@ -94,7 +94,7 @@
             BtnIstantHighAlign.Name = "BtnIstantHighAlign";
             BtnIstantHighAlign.Size = new Size(85, 56);
             BtnIstantHighAlign.TabIndex = 44;
-            BtnIstantHighAlign.Text = "Istant High Match";
+            BtnIstantHighAlign.Text = "Istant High Match_With_Move";
             BtnIstantHighAlign.UseVisualStyleBackColor = true;
             BtnIstantHighAlign.Click += BtnIstantHighAlign_Click;
             // 
@@ -138,7 +138,7 @@
             BtnAlignConfirm.Name = "BtnAlignConfirm";
             BtnAlignConfirm.Size = new Size(156, 101);
             BtnAlignConfirm.TabIndex = 52;
-            BtnAlignConfirm.Text = "Match Confirm";
+            BtnAlignConfirm.Text = "Match_With_Move Confirm";
             BtnAlignConfirm.UseVisualStyleBackColor = false;
             BtnAlignConfirm.Click += BtnAlignConfirm_Click;
             // 
@@ -149,7 +149,7 @@
             BtnLowMagAlign.Name = "BtnLowMagAlign";
             BtnLowMagAlign.Size = new Size(214, 79);
             BtnLowMagAlign.TabIndex = 51;
-            BtnLowMagAlign.Text = "Low Mag Match";
+            BtnLowMagAlign.Text = "Low Mag Match_With_Move";
             BtnLowMagAlign.UseVisualStyleBackColor = false;
             BtnLowMagAlign.Click += BtnLowMagAlign_Click;
             // 
@@ -160,7 +160,7 @@
             BtnMatch1.Name = "BtnMatch1";
             BtnMatch1.Size = new Size(70, 46);
             BtnMatch1.TabIndex = 51;
-            BtnMatch1.Text = "Match";
+            BtnMatch1.Text = "Match_With_Move";
             BtnMatch1.UseVisualStyleBackColor = false;
             BtnMatch1.Click += BtnMatch1_Click;
             // 
@@ -179,7 +179,7 @@
             BtnMatch2.Name = "BtnMatch2";
             BtnMatch2.Size = new Size(70, 45);
             BtnMatch2.TabIndex = 51;
-            BtnMatch2.Text = "Match";
+            BtnMatch2.Text = "Match_With_Move";
             BtnMatch2.UseVisualStyleBackColor = false;
             BtnMatch2.Click += BtnMatch2_Click;
             // 

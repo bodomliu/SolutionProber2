@@ -106,7 +106,7 @@
             BtnMatch.Name = "BtnMatch";
             BtnMatch.Size = new Size(92, 50);
             BtnMatch.TabIndex = 35;
-            BtnMatch.Text = "Match";
+            BtnMatch.Text = "Match_With_Move";
             BtnMatch.UseVisualStyleBackColor = true;
             BtnMatch.Click += BtnMatch_Click;
             // 

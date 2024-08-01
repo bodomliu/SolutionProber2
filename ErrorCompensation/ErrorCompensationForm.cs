@@ -128,7 +128,7 @@ namespace MainForm
             //去做运动校准
             CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
 
-            int res = CommonFunctions.FastMatch(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double deltaX, out double deltaY, out double encodeX, out double encodeY);
+            int res = CommonFunctions.Match_Without_Move(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double deltaX, out double deltaY, out double encodeX, out double encodeY);
             //未匹配到模板
             if (res != 0) { WaferMap.SetBIN(indexX, indexY, 5); return; }
 
@@ -206,12 +206,11 @@ namespace MainForm
 
             if (Vision.activeCamera == Camera.JigCamera)
             {
-                //jigcamera thickness = 
-                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.JigCamera);
+                AdjustHeight.WaferFocus(Vision.JigCamera, true);              
             }
             else if (Vision.activeCamera == Camera.WaferHighMag)
             {
-                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
+                AdjustHeight.WaferFocus(Vision.WaferHighMag, true);
             }
 
             wf.Dispose();
@@ -230,7 +229,7 @@ namespace MainForm
             //去做运动校准
             CameraClass mag = (RbtnWaferCamera.Checked) ? Vision.WaferHighMag : Vision.JigCamera;
 
-            CommonFunctions.Match(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double DeltaX, out double DeltaY);
+            CommonFunctions.Match_With_Move(DeviceData.Entity.WaferAlignment.HighPattern1, mag, out double DeltaX, out double DeltaY);
         }
 
         private void ErrorCompensationForm_ParentChanged(object sender, EventArgs e)

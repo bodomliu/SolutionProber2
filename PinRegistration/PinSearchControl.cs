@@ -105,7 +105,7 @@ namespace PinRegistration
             else if (Vision.activeCamera == Camera.PinHighMag)
             {
                 WaitingControl.WF.Start();
-                await Task.Run(() => CommonFunctions.AdjustPinHeight(false));
+                await Task.Run(() => AdjustHeight.PinFocus(false));
                 WaitingControl.WF.End();
             }
         }

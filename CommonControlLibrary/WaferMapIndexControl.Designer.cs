@@ -133,7 +133,7 @@ namespace CommonComponentLibrary
             BtnPinPadMatch.Name = "BtnPinPadMatch";
             BtnPinPadMatch.Size = new Size(101, 40);
             BtnPinPadMatch.TabIndex = 59;
-            BtnPinPadMatch.Text = "Pin Pad Match";
+            BtnPinPadMatch.Text = "Pin Pad Match_With_Move";
             BtnPinPadMatch.UseVisualStyleBackColor = false;
             BtnPinPadMatch.Click += BtnPinPadMatch_Click;
             // 

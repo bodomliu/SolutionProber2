@@ -39,7 +39,7 @@ namespace MainForm
             else if (Vision.activeCamera == Camera.PinHighMag)
             {
                 WaitingControl.WF.Start();
-                CommonFunctions.AdjustPinHeight(true);
+                AdjustHeight.PinFocus(true);
                 WaitingControl.WF.End();
             }
         }

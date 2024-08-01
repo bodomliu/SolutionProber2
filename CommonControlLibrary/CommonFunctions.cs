@@ -6,165 +6,6 @@ namespace CommonComponentLibrary
 {
     public static class CommonFunctions
     {
-        /// <summary>
-        /// 对焦函数
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <param name="Mag"></param>
-        /// <returns></returns>
-        public static int AdjustHeight(double start, double end, CameraClass Mag)
-        {
-            Mag.TriggerMode();
-
-            List<double> def = new();
-            List<double> pos = new();
-            bool SlowFlag = false;
-
-            for (double z = start; z < end;)
-            {
-                Motion.AxisMoveAbs(1, 3, z, 600, 20, 20, 10);
-                Mag.TriggerExec();
-                Mag.halconClass.EvaluateDefinition(out double Definition);//计算清晰度
-                pos.Add(z);
-                def.Add(Definition);
-
-                Console.Write("pos= " + z + "  def= " + Definition);
-
-                //判断斜率，然后看i是否要增加
-                z += NextStep(pos, def, Mag, ref SlowFlag);
-
-                Console.WriteLine(" Slowflag= " + SlowFlag);
-            }
-            int maxIndex = def.IndexOf(def.Max());//找Def最大处的index值
-            double Target = pos[maxIndex];
-            Motion.AxisMoveAbs(1, 3, Target, 600, 20, 20, 10);
-            //Console.WriteLine(Target);
-
-            Mag.ContinuesMode();
-            int res = (maxIndex == 0 || maxIndex == pos.Count - 1) ? 1 : 0;//如果最大值在两端，则报1
-            return res;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="range"></param>
-        /// <param name="Mag"></param>
-        /// <returns></returns>
-        public static int AdjustWaferHeight(double waferThickness, CameraClass Mag)
-        {
-            double targetHigh = Motion.parameter.ZORIGIN - waferThickness;//46000 - 8000 = 38000
-            double targetLow = targetHigh - Motion.parameter.ZWAFERLOW2HIGHT;//38000 - （-8000）= 46000
-            double targetJig = targetHigh + Motion.parameter.ZALIGN2PROBE;//38000 + 45823 = 83823
-            double rangeHigh = 1000;
-            double rangeLow = 10000;
-
-            if (Mag == Vision.WaferLowMag)
-            {
-                return AdjustHeight(targetLow - rangeLow, targetLow + rangeLow, Mag);
-            }
-            else if (Mag == Vision.WaferHighMag)
-            {
-                return AdjustHeight(targetHigh - rangeHigh, targetHigh + rangeHigh, Mag);
-            }
-            else if (Mag == Vision.JigCamera)
-            {
-                return AdjustHeight(targetJig - rangeHigh, targetJig + rangeHigh, Mag);
-            }
-            else return -1;
-        }
-        public static int AdjustPinHeight(bool FocusInitial = true)
-        {
-            int TipFocusXArea = DeviceData.Entity.PinAlignment.TipFocusXArea;
-            int TipFocusYArea = DeviceData.Entity.PinAlignment.TipFocusYArea;
-            Vision.PinHighMag.halconClass.m_Roi.Resize2(512, 640, TipFocusXArea, TipFocusYArea);//blobROI
-            Vision.PinHighMag.SetExposureTime(DeviceData.Entity.PinAlignment.TipFocusExposureTime);//blob曝光
-            Thread.Sleep(500);//避免没生效
-            //FocusInitial = 133500 - 60000 = 73500
-            double target = (FocusInitial) ?
-                Motion.parameter.ZPROBECARDUPPERPLATEBASE - DeviceData.Entity.PinAlignment.NeddleTipFocusOffset
-                : PinData.Entity.RefPinZ;
-            double range = (FocusInitial) ? 10000 : 1000;
-            return AdjustHeight(target - range, target + range, Vision.PinHighMag);
-        }
-        /// <summary>
-        /// 计算下次Step值
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <param name="def"></param>
-        /// <param name="Mag"></param>
-        /// <param name="SlowDownFlag"></param>
-        /// <returns></returns>
-        private static double NextStep(List<double> pos, List<double> def, CameraClass Mag, ref bool SlowDownFlag)
-        {
-            GetNextStepPara(Mag, out double slowStep, out double fastStep, out double endStep, out double slopThreshold);
-
-            int cnt = def.Count;
-
-            if (cnt == 1) return slowStep;//次数不够,算不出斜率
-
-            double slop = (def[cnt - 1] - def[cnt - 2]) / (pos[cnt - 1] - pos[cnt - 2]);
-
-            if (slop > slopThreshold)
-            {
-                SlowDownFlag = true;
-                return slowStep;//斜率在上升，step改小
-            }
-            else if (slop >= -slopThreshold && slop <= slopThreshold && !SlowDownFlag)
-            {
-                return fastStep;//斜率平稳，没有降过速step改大
-            }
-            //else if (slop < -slopThreshold)
-            //{
-            //    return endStep;//斜率在下降，焦点已经没了，直接step到最大退出
-            //}
-            else if (def[cnt - 1] < def.Max() * 0.7)
-            {
-                return endStep;//当前的def已经小于最大值的70%，直接step到最大退出
-            }
-            else { return slowStep; }
-        }
-        private static void GetNextStepPara(CameraClass Mag, out double slowStep, out double fastStep, out double endStep, out double slopThreshold)
-        {
-            //是否时高分辨率相机
-            if (Mag == Vision.WaferHighMag || Mag == Vision.JigCamera)
-            {
-                slowStep = 10;
-                fastStep = 100;
-                endStep = 10000;
-                slopThreshold = 10;
-            }
-            else if (Mag == Vision.WaferLowMag)
-            {
-                slowStep = 1000;
-                fastStep = 3000;
-                endStep = 100000;
-                slopThreshold = 1;
-            }
-            else if (Mag == Vision.PinHighMag)
-            {
-                slowStep = 20;
-                fastStep = 200;
-                endStep = 10000;
-                slopThreshold = 1;
-            }
-            else if (Mag == Vision.PinLowMag)
-            {
-                slowStep = 1000;
-                fastStep = 3000;
-                endStep = 10000;
-                slopThreshold = 1;
-            }
-            else
-            {
-                slowStep = 1000;
-                fastStep = 3000;
-                endStep = 100000;
-                slopThreshold = 1;
-            }
-        }
-
         #region WaferAlignment
         /// <summary>
         /// TriggerExe 模板匹配 then 运动到位
@@ -174,7 +15,7 @@ namespace CommonComponentLibrary
         /// <param name="DeltaX">X轴Match过程相对位移</param>
         /// <param name="DeltaY">Y轴Match过程相对位移</param>
         /// <returns>0：匹配成功  1：没有图像  2：匹配失败</returns>
-        public static int Match(string pattenModel, CameraClass Mag, out double DeltaX, out double DeltaY)
+        public static int Match_With_Move(string pattenModel, CameraClass Mag, out double DeltaX, out double DeltaY)
         {
             Mag.TriggerMode();//单拍模式，对相机模式的切换写在这里合适吗？
             Mag.TriggerExec();//触发一帧
@@ -206,7 +47,7 @@ namespace CommonComponentLibrary
         /// <param name="encodeX"></param>
         /// <param name="encodeY"></param>
         /// <returns></returns>
-        public static int FastMatch(string pattenModel, CameraClass Mag, out double deltaX, out double deltaY, out double encodeX, out double encodeY)
+        public static int Match_Without_Move(string pattenModel, CameraClass Mag, out double deltaX, out double deltaY, out double encodeX, out double encodeY)
         {
             Mag.TriggerExec();//触发一帧
             //匹配pattenModel
@@ -240,13 +81,13 @@ namespace CommonComponentLibrary
 
             //运动到L点做精定位
             Motion.UserPosMoveAbs(Compensation.Area.Align, X0 - L * dieSizeX, Y0);
-            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
+            res = Match_With_Move(pattenModel, Mag, out _, out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
             Motion.GetUserPos(Compensation.Area.Align, out double X1, out double Y1);
 
             //运动到R点做精定位
             Motion.UserPosMoveAbs(Compensation.Area.Align, X0 + R * dieSizeX, Y0);
-            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
+            res = Match_With_Move(pattenModel, Mag, out _, out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
             Motion.GetUserPos(Compensation.Area.Align, out double X2, out double Y2);
 
@@ -289,13 +130,13 @@ namespace CommonComponentLibrary
 
             //运动到L点做精定位
             Motion.UserPosMoveAbs(Compensation.Area.Align, X0, Y0 - U * dieSizeY);
-            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
+            res = CommonFunctions.Match_With_Move(pattenModel, Mag, out _, out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
             Motion.GetUserPos(Compensation.Area.Align, out double X1, out double Y1);
 
             //运动到R点做精定位
             Motion.UserPosMoveAbs(Compensation.Area.Align, X0, Y0 + D * dieSizeY);
-            res = CommonFunctions.Match(pattenModel, Mag, out _, out _);
+            res = CommonFunctions.Match_With_Move(pattenModel, Mag, out _, out _);
             if (res != 0) return res;//若匹配失败，直接返回findShapeModel错误结果
             Motion.GetUserPos(Compensation.Area.Align, out double X2, out double Y2);
 
@@ -322,28 +163,7 @@ namespace CommonComponentLibrary
         }
 
         /// <summary>
-        /// 根据index值，获得用户坐标系坐标
-        /// </summary>
-        /// <param name="indexX"></param>
-        /// <param name="intexY"></param>
-        /// <param name="userPosX"></param>
-        /// <param name="userPosY"></param>
-        /// <returns></returns>
-        public static int GetMapUserPos(int indexX, int intexY, out double userPosX, out double userPosY)
-        {
-            userPosX = double.NaN; userPosY = double.NaN;
-            if (WaferMap.Entity.MappingPoints == null) return 1;
-
-            var point = WaferMap.Entity.MappingPoints.Find(p => p.IndexX == indexX && p.IndexY == intexY);
-            if (point == null) return 2;
-
-            userPosX = point.UserPosX;
-            userPosY = point.UserPosY;
-            return 0;
-        }
-
-        /// <summary>
-        /// 指定区域，和index，进行补偿运动，不包含Z向运动，仅在精定位相机下，用于某些快速定位要求
+        /// 指定区域，和index，进行补偿运动，用于Z保持静止的运动，例如标定
         /// </summary>
         /// <param name="area"></param>
         /// <param name="indexX"></param>
@@ -351,7 +171,7 @@ namespace CommonComponentLibrary
         public static void IndexMove(Compensation.Area area, int indexX, int indexY)
         {
             //TODO：需要知道是粗定位还是精定位下的坐标
-            LocateDie(indexX, indexY, out double UserPosX, out double UserPosY,out _,out _);
+            LocateDie(indexX, indexY, out double UserPosX, out double UserPosY, out _, out _);
             Motion.UserPosMoveAbs(area, UserPosX, UserPosY);
             //刷新当前位置
             WaferMap.CurrentIndexX = indexX; WaferMap.CurrentIndexY = indexY;
@@ -366,7 +186,8 @@ namespace CommonComponentLibrary
         /// <param name="indexY"></param>
         public static void GoToDie(int indexX, int indexY, bool isLowMode = false)
         {
-            LocateDie(indexX, indexY, out _, out _,out double X,out double Y);
+            //先根据index定位
+            LocateDie(indexX, indexY, out _, out _, out double X, out double Y);
             double Z = WaferMap.WaferHeight;
             if (isLowMode)
             {
@@ -381,47 +202,25 @@ namespace CommonComponentLibrary
         }
 
         /// <summary>
-        /// 带了Offset的精确定位
+        /// 带了Offset的精确定位，但不移动
         /// </summary>
         /// <param name="indexX"></param>
         /// <param name="indexY"></param>
         /// <param name="userX"></param>
         /// <param name="userY"></param>
-        public static void LocateDie(int indexX, int indexY, out double userX, out double userY,out double encodeX,out double encodeY)
+        public static void LocateDie(int indexX, int indexY, out double userX, out double userY, out double encodeX, out double encodeY)
         {
-            //TODO：需要知道是粗定位还是精定位下的坐标
             //求refDieOrg的坐标
             double refDieOrgX = 0 + WaferMap.Entity.Center2RefDieCornerX + WaferMap.Entity.Corner2OrgX;
             double refDieOrgY = 0 + WaferMap.Entity.Center2RefDieCornerY + WaferMap.Entity.Corner2OrgY;
             //求DieOrg的坐标
             userX = (indexX - WaferMap.Entity.RefDieX) * WaferMap.Entity.DieSizeX + refDieOrgX;
             userY = (indexY - WaferMap.Entity.RefDieY) * WaferMap.Entity.DieSizeY + refDieOrgY;
-            //加offset
+            //加晶圆偏移offset
             userX += WaferMap.WaferOffsetX; userY += WaferMap.WaferOffsetY;
-            Compensation.Transform(Compensation.Area.Align,Compensation.Dir.User2Encode,userX,userY,out encodeX,out encodeY);
+            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, userX, userY, out encodeX, out encodeY);
         }
         #endregion
-
-        /// <summary>
-        /// 根据index值，获得轴坐标系坐标
-        /// </summary>
-        /// <param name="indexX"></param>
-        /// <param name="indexY"></param>
-        /// <param name="encodeX"></param>
-        /// <param name="encodeY"></param>
-        /// <returns></returns>
-        public static int GetMapEncode(int indexX, int indexY, out double encodeX, out double encodeY)
-        {
-            encodeX = double.NaN; encodeY = double.NaN;
-            if (WaferMap.Entity.MappingPoints == null) return 1;
-
-            var point = WaferMap.Entity.MappingPoints.Find(p => p.IndexX == indexX && p.IndexY == indexY);
-            if (point == null) return 2;
-
-            encodeX = point.EncodeX;
-            encodeY = point.EncodeY;
-            return 0;
-        }
 
         /// <summary>
         /// 返回当前wafer的9点
@@ -442,15 +241,15 @@ namespace CommonComponentLibrary
             int refX = WaferMap.Entity.RefDieX;
             int refY = WaferMap.Entity.RefDieY;
 
-            GetMapUserPos(refX, refY - dltY, out X[0], out Y[0]);//点0
-            GetMapUserPos(refX + dltX2, refY - dltY2, out X[1], out Y[1]);//点1
-            GetMapUserPos(refX + dltX, refY, out X[2], out Y[2]);//点2
-            GetMapUserPos(refX + dltX2, refY + dltY2, out X[3], out Y[3]);//点3
-            GetMapUserPos(refX, refY + dltY, out X[4], out Y[4]);//点4
-            GetMapUserPos(refX - dltX2, refY + dltY2, out X[5], out Y[5]);//点5
-            GetMapUserPos(refX - dltX, refY, out X[6], out Y[6]);//点6
-            GetMapUserPos(refX - dltX2, refY - dltY2, out X[7], out Y[7]);//点7
-            GetMapUserPos(refX, refY, out X[8], out Y[8]);//点8
+            WaferMap.QueryUserPos(refX, refY - dltY, out X[0], out Y[0]);//点0
+            WaferMap.QueryUserPos(refX + dltX2, refY - dltY2, out X[1], out Y[1]);//点1
+            WaferMap.QueryUserPos(refX + dltX, refY, out X[2], out Y[2]);//点2
+            WaferMap.QueryUserPos(refX + dltX2, refY + dltY2, out X[3], out Y[3]);//点3
+            WaferMap.QueryUserPos(refX, refY + dltY, out X[4], out Y[4]);//点4
+            WaferMap.QueryUserPos(refX - dltX2, refY + dltY2, out X[5], out Y[5]);//点5
+            WaferMap.QueryUserPos(refX - dltX, refY, out X[6], out Y[6]);//点6
+            WaferMap.QueryUserPos(refX - dltX2, refY - dltY2, out X[7], out Y[7]);//点7
+            WaferMap.QueryUserPos(refX, refY, out X[8], out Y[8]);//点8
 
             for (int i = 0; i < 9; i++)
             {
@@ -493,19 +292,19 @@ namespace CommonComponentLibrary
         /// <param name="DieX"></param>
         /// <param name="DieY"></param>
         /// <param name="PadIndex"></param>
-        public static void GotoPad(int DieX,int DieY,int PadIndex)
+        public static void GotoPad(int DieX, int DieY, int PadIndex)
         {
             if (PadData.Entity.Pads == null) return;
             //先获得当前Die Org的用户坐标
-            LoactePad(DieX,DieY,PadIndex,out double X,out double Y,out _,out _);
+            LoactePad(DieX, DieY, PadIndex, out double X, out double Y, out _, out _);
             //运动到Pad
             Motion.UserPosMoveAbs(Compensation.Area.Align, X, Y);
             //上升
-            Motion.AxisMoveAbs(1, 3, WaferMap.WaferHeight,600,10,10,20);
-            WaferMap.CurrentIndexX = DieX;WaferMap.CurrentIndexY = DieY;
+            Motion.AxisMoveAbs(1, 3, WaferMap.WaferHeight, 600, 10, 10, 20);
+            WaferMap.CurrentIndexX = DieX; WaferMap.CurrentIndexY = DieY;
             PadData.CurrentIndex = PadIndex;//改Index
         }
-        private static void LoactePad(int DieX, int DieY, int PadIndex, out double userX,out double userY, out double encodeX, out double encodeY)
+        private static void LoactePad(int DieX, int DieY, int PadIndex, out double userX, out double userY, out double encodeX, out double encodeY)
         {
             //先获得当前Die Org的用户坐标
             LocateDie(DieX, DieY, out double X, out double Y, out _, out _);
@@ -513,10 +312,10 @@ namespace CommonComponentLibrary
             X += PadData.Entity.DieOrg2RefPadX + PadData.Entity.Pads[PadIndex].PosX;
             Y += PadData.Entity.DieOrg2RefPadY + PadData.Entity.Pads[PadIndex].PosY;
             //求pad因为旋转产生的位移，将旋转点转到用户坐标系
-            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User, 
+            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User,
                 Motion.parameter.XORIGIN, Motion.parameter.YORIGIN, out double rotateX, out double rotateY);
             //TODO用户坐标系的角度临时取反//先算user，再输出encode
-            RotatePoint(X, Y, rotateX, rotateY,-PinData.Entity.PinsAngle, out userX, out userY);           
+            RotatePoint(X, Y, rotateX, rotateY, -PinData.Entity.PinsAngle, out userX, out userY);
             Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, userX, userY, out encodeX, out encodeY);
         }
         /// <summary>
@@ -541,7 +340,7 @@ namespace CommonComponentLibrary
         /// <summary>
         /// 将currentDie对齐到RefPin
         /// </summary>
-        public static void PinPadMatch(double incX = 0 ,double incY = 0)
+        public static void PinPadMatch(double incX = 0, double incY = 0)
         {
             //考虑Pad需要再运行offset才能被珍扎到，该offset为机台最初标定时确定
             //Pin针位置也与最初标定时发生变化
@@ -553,10 +352,10 @@ namespace CommonComponentLibrary
             double deltaY = Motion.parameter.PROBING.YPad2Pin + PinData.Entity.RefPinY
                 - Motion.parameter.PROBING.YOrgPin + DeviceData.Entity.Probing.ProbingShiftY + incY;
             //当前Die的RefPad的encode坐标
-            LoactePad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, 0,out _,out _,out double encodeX,out double encodeY);
+            LoactePad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, 0, out _, out _, out double encodeX, out double encodeY);
             //将当前点位进行虚拟pad2pin移动，这个匹配在Align区域进行，因为标定用的pad2pin、ProbingShift是在标定区计算得到
             Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User,
-                encodeX + deltaX , encodeY + deltaY, out double userPosX, out double userPosY);
+                encodeX + deltaX, encodeY + deltaY, out double userPosX, out double userPosY);
             //运行到Proing位置
             Motion.UserPosMoveAbs(Compensation.Area.Probing, userPosX, userPosY);
             Motion.AxisMoveRel(1, 4, PinData.Entity.PinsAngle, 600, 10, 10, 20);//

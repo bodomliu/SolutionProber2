@@ -68,7 +68,7 @@ namespace UtilityForm
                 var res = await Task.Run<int>(() =>
                 {
                     if (RbtnWaferCamera.Checked) Motion.XY_AxisMoveAbs(1, Planarity.PointsToSet[i].x, Planarity.PointsToSet[i].y, 600, 10, 10, 20);
-                    return CommonFunctions.AdjustWaferHeight(Thickness, Vision.WaferHighMag);
+                    return AdjustHeight.WaferFocus(Vision.WaferHighMag, RbtnWithWafer.Checked);
                 });
 
                 if (res != 0) { MessageBox.Show("Adjust Wafer Height wrong "); return; }
@@ -93,14 +93,13 @@ namespace UtilityForm
         private async void BtnAdjustWaferHeight_Click(object sender, EventArgs e)
         {
             WaitingControl.WF.Start();
-            double Thickness = (RbtnNoWafer.Checked) ? 0 : DeviceData.Entity.PhysicalInformation.Thickness;
             if (Vision.activeCamera == Camera.WaferLowMag)
             {
-                await Task.Run(() => CommonFunctions.AdjustWaferHeight(Thickness, Vision.WaferLowMag));
+                await Task.Run(() => AdjustHeight.WaferFocus(Vision.WaferLowMag, RbtnWithWafer.Checked));
             }
             else if (Vision.activeCamera == Camera.WaferHighMag)
             {
-                await Task.Run(() => CommonFunctions.AdjustWaferHeight(Thickness, Vision.WaferHighMag));
+                await Task.Run(() => AdjustHeight.WaferFocus(Vision.WaferHighMag, RbtnWithWafer.Checked));
             }
             WaitingControl.WF.End();
         }

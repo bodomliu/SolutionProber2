@@ -105,13 +105,13 @@ namespace MainForm
             if (Vision.activeCamera == Camera.WaferLowMag)
             {
                 await Task.Run(() => 
-                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferLowMag)
+                AdjustHeight.WaferFocus( Vision.WaferLowMag,true)
                 );
             }
             else if (Vision.activeCamera == Camera.WaferHighMag)
             {
                 await Task.Run(() =>
-                CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag)
+                AdjustHeight.WaferFocus(Vision.WaferHighMag, true)
                 );
             }
 
@@ -166,7 +166,7 @@ namespace MainForm
 
                 Motion.UserPosMoveAbs(Compensation.Area.Align, userX[i], userY[i]);
 
-                int res = CommonFunctions.AdjustWaferHeight(DeviceData.Entity.PhysicalInformation.Thickness, Vision.WaferHighMag);
+                int res = AdjustHeight.WaferFocus(Vision.WaferHighMag,true);
                 if (res != 0) { MessageBox.Show("Focus Error"); return; }
 
                 Z[i] = Motion.GetEncPos(1, 3);

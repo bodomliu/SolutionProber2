@@ -6,6 +6,7 @@ namespace MotionLibrary
     {
         public static WaferMapClass ErrorMapAlign = new();
         public static WaferMapClass ErrorMapProbing = new();
+        // 构建字典以加速查找:TODO ToDictionary
         public static List<Grid>? CalibrationGrids = new();//为了给测试用来可视化Grids，所以pulbic
         public static List<Grid>? WorkingGrids = new();//为了给测试用来可视化Grids，所以pulbic
 
@@ -61,29 +62,25 @@ namespace MotionLibrary
         /// <returns>0 = 完整；1 = 标定区点位缺失；2 = 工作区点位缺失</returns>
         public static int Initial()
         {
-            try
-            {
-                LoadMap(out ErrorMapAlign, "Config/ErrorMapAlign.json");
-                //筛选可用的标定点，组成网格Grids
-                CalibrationGrids = GridsAvailable(ErrorMapAlign);
-                if (CalibrationGrids == null) return 1;
-                if (CalibrationGrids.Count == 0) { return 1; }
-            }
-            catch (Exception)
-            {
-                return 1;
-            }
+            int result = LoadAndCheckMap("Config/ErrorMapAlign.json", out ErrorMapAlign, out CalibrationGrids);
+            if (result != 0) return result;
 
+            result = LoadAndCheckMap("Config/ErrorMapProbing.json", out ErrorMapProbing, out WorkingGrids);
+            return result;
+        }
+        private static int LoadAndCheckMap(string filePath, out WaferMapClass map, out List<Grid>? grids)
+        {
             try
             {
-                LoadMap(out ErrorMapProbing, "Config/ErrorMapProbing.json");
-                //筛选可用的标定点，组成网格Grids
-                WorkingGrids = GridsAvailable(ErrorMapProbing);
-                if (WorkingGrids == null) return 2;
-                if (WorkingGrids.Count == 0) { return 2; }
+                LoadMap(out map, filePath);
+                grids = GridsAvailable(map);
+
+                if (grids == null || grids.Count == 0) return 1;
             }
             catch (Exception)
             {
+                grids = null;
+                map = new WaferMapClass();
                 return 2;
             }
             return 0;
@@ -96,10 +93,10 @@ namespace MotionLibrary
         /// <returns></returns>
         private static List<Grid>? GridsAvailable(WaferMapClass map)
         {
-            if (map.MappingPoints == null) { return null; }
-            //遍历ErrorMap，选取所有Coordinates = 1
-            List<MappingPoint> CoordinatesPoints = map.MappingPoints.Where(p => p.BIN == 4).ToList();
-            if (CoordinatesPoints.Count == 0) { return null; }
+            if (map.MappingPoints == null) return null; 
+            //遍历ErrorMap，选取所有Bin = 4
+            var CoordinatesPoints = map.MappingPoints.Where(p => p.BIN == 4).ToList();
+            if (CoordinatesPoints.Count == 0) return null;
 
             //遍历CoordinatesPoints，选取所有能形成Grid（该点为左下角）的点            
             List<Grid> grids = new();
