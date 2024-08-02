@@ -1,14 +1,5 @@
 ﻿using CommonComponentLibrary;
 using MotionLibrary;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using VisionLibrary;
 using WaferMapLibrary;
 namespace PinRegistration
@@ -129,7 +120,7 @@ namespace PinRegistration
                 PinData.Entity.RefPinY = encodeY;
                 PinData.Entity.RefPinZ = encodeZ;
             }
-            else 
+            else
             {
                 //获得当前XY坐标
                 Motion.GetUserPos(Compensation.Area.Probing, out double X, out double Y);
@@ -142,7 +133,7 @@ namespace PinRegistration
                 PinData.Entity.Pins[PinData.CurrentIndex].CurrentPosY = -posY;//标定用的坐标系，和探针卡方向相反
                 PinData.Entity.Pins[PinData.CurrentIndex].CurrentPosZ = Motion.EncodeZ;
             }
-           
+
             PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
             MessageBox.Show("The pin has been teached.");
             UpdateUI();

@@ -64,9 +64,9 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(384, 721);
+            btnSave.Location = new Point(417, 665);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(54, 50);
+            btnSave.Size = new Size(75, 50);
             btnSave.TabIndex = 4;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
@@ -74,9 +74,9 @@
             // 
             // btnLoad
             // 
-            btnLoad.Location = new Point(444, 721);
+            btnLoad.Location = new Point(417, 721);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(49, 50);
+            btnLoad.Size = new Size(76, 50);
             btnLoad.TabIndex = 4;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
@@ -197,9 +197,9 @@
             // 
             // BtnResetAll
             // 
-            BtnResetAll.Location = new Point(384, 667);
+            BtnResetAll.Location = new Point(321, 665);
             BtnResetAll.Name = "BtnResetAll";
-            BtnResetAll.Size = new Size(109, 50);
+            BtnResetAll.Size = new Size(91, 50);
             BtnResetAll.TabIndex = 70;
             BtnResetAll.Text = "Reset All";
             BtnResetAll.UseVisualStyleBackColor = true;
@@ -235,7 +235,7 @@
             // BtnRegHeight
             // 
             BtnRegHeight.BackColor = Color.YellowGreen;
-            BtnRegHeight.Location = new Point(220, 665);
+            BtnRegHeight.Location = new Point(218, 665);
             BtnRegHeight.Name = "BtnRegHeight";
             BtnRegHeight.Size = new Size(100, 50);
             BtnRegHeight.TabIndex = 10;

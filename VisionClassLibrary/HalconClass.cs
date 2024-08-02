@@ -908,6 +908,27 @@ namespace VisionLibrary
             return 0;
         }
 
+        /// <summary>
+        /// 检测pad
+        /// </summary>
+        /// <param name="Threshold"></param>
+        /// <param name="AreaPad"></param>
+        /// <param name="DeltaX"></param>
+        /// <param name="DeltaY"></param>
+        /// <returns></returns>
+        public int GetPad(int Threshold, int AreaPad, out double DeltaX, out double DeltaY)
+        {
+            DeltaX = 0; DeltaY = 0;
+            //找Pad,0-Threshold
+            int res = NearestRectangle(Threshold, 255, AreaPad * 0.5, AreaPad * 2, "blue",
+                out HTuple Row1, out HTuple Column1, out HTuple Row2, out HTuple Column2, out HTuple RowCenter1, out HTuple columnCenter1);
+            if (res != 0) return res;
+            log.Debug("Pad Found.");
+            GetDeltaFromCenter(RowCenter1, columnCenter1, out DeltaX, out DeltaY);
+            return 0;
+
+        }
+
         private int NearestRectangle(int tresholdMin, int tresholdMax, double areaMin, double areaMax, string paintColor,
              out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2,out HTuple RowCenter,out HTuple ColumnCenter)
         {
@@ -955,14 +976,7 @@ namespace VisionLibrary
             HOperatorSet.CountObj(SelectedRegions, out HTuple number);
 
             obj = SelectedRegions;
-            if (number == 1)
-            { 
-                return 0; 
-            }
-            else 
-            {
-                return 1;
-            }
+            return (number == 1) ? 0 : 1;//找到唯一blob则返回0
         }
 
         /// <summary>

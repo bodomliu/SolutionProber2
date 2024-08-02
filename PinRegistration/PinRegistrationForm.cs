@@ -24,7 +24,6 @@ namespace MainForm
             groupBox1.Controls.Add(new PinSearchControl());
             panelMag.Controls.Add(new PinMagControl());
         }
-
         private void UpdateUI()
         {
             NumRefPinOffsetR.Value = decimal.Parse(PinData.Entity.PinsAngle.ToString());
@@ -65,6 +64,9 @@ namespace MainForm
             PinData.IsPinAlignCompleted = true;
             MessageBox.Show("Pin Alignment Compeleted!");
         }
+        /// <summary>
+        /// 更新所有Probe所需要的参数
+        /// </summary>
         public void UpdateProbePosition()
         {
             double waferOffset = WaferMap.WaferHeight - Motion.parameter.PROBING.ZOrgWaferHeight;//wafer比注册高了waferOffset
@@ -78,14 +80,22 @@ namespace MainForm
         {
             PinData.Entity.Pins.Clear();
             PinData.Entity.PinsAngle = 0;
-            for (int dutIndex = 0; dutIndex < DUTData.Entity.DUTs.Count; dutIndex++)
+            // 获取相关实体数据的引用以减少重复访问
+            var duts = DUTData.Entity.DUTs;
+            var pads = PadData.Entity.Pads;
+            var dieSizeX = WaferMap.Entity.DieSizeX;
+            var dieSizeY = WaferMap.Entity.DieSizeY;
+
+            // 遍历 DUT 和 Pad 并更新 PinData
+            foreach (var dut in duts)
             {
-                for (int padIndex = 0; padIndex < PadData.Entity.Pads.Count; padIndex++)
+                foreach (var pad in pads)
                 {
-                    double x = PadData.Entity.Pads[padIndex].PosX
-                        + DUTData.Entity.DUTs[dutIndex].X * WaferMap.Entity.DieSizeX;
-                    double y = PadData.Entity.Pads[padIndex].PosY
-                        + DUTData.Entity.DUTs[dutIndex].Y * WaferMap.Entity.DieSizeY;
+                    // 计算每个 Pin 的位置
+                    double x = pad.PosX + dut.X * dieSizeX;
+                    double y = pad.PosY + dut.Y * dieSizeY;
+
+                    // 添加计算后的 Pin 到 Pins 列表中
                     PinData.Entity.Pins.Add(new Pin { PosX = x, PosY = y });
                 }
             }
@@ -127,6 +137,7 @@ namespace MainForm
             PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
             UpdateUI();
         }
+
         #region 绘图
         private void PinRegistrationForm_ParentChanged(object sender, EventArgs e)
         {
@@ -148,26 +159,28 @@ namespace MainForm
         /// </summary>
         private void PaintPins()
         {
-            Vision.PinLowMag.halconClass.PaintPins(EncodeX, EncodeY, PinData.CurrentIndex);
+            // Prepare data before painting
+            (double[] encodeX, double[] encodeY) = PaintPrepare();
+            // Use the prepared data for painting
+            Vision.PinLowMag.halconClass.PaintPins(encodeX, encodeY, PinData.CurrentIndex);
         }
-        double[]? EncodeX;
-        double[]? EncodeY;
-        private void PaintPrepare()
+        //绘图准备，获得encode值
+        private (double[] encodeX, double[] encodeY)PaintPrepare()
         {
             //对PinData先预处理，用于绘画
             int pinCount = PinData.Entity.Pins.Count;
-            EncodeX = new double[pinCount];
-            EncodeY = new double[pinCount];
+            double[] encodeX = new double[pinCount];
+            double[] encodeY = new double[pinCount];
             //将所有pin转到encode坐标系下，方便绘图
             for (int i = 0; i < pinCount; i++)
             {
                 //粗定位画图，精度不要紧，主要为了变换坐标系，确保符号方向一致。标定过程是用的encode坐标，所以画图最好也用encode坐标
                 Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.User2Encode,
                     PinData.Entity.Pins[i].PosX, PinData.Entity.Pins[i].PosY, out double outx, out double outy);
-                EncodeX[i] = outx; EncodeY[i] = outy;
+                encodeX[i] = outx; encodeY[i] = outy;
             }
+            return (encodeX, encodeY);
         }
-
         private void RotatePins(double Angle)
         {
             //根据预设的angle，并旋转所有pins
@@ -185,7 +198,6 @@ namespace MainForm
 
 
         }
-
         private void CBShowPins_CheckedChanged(object sender, EventArgs e)
         {
             if (CBShowPins.Checked)
@@ -216,7 +228,6 @@ namespace MainForm
         {
 
         }
-
         private void BtnOrgPinInitial_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Reference pin will be located and all the other pins will follow the ref.",
@@ -237,7 +248,6 @@ namespace MainForm
                 UpdateUI();
             }
         }
-
         private void BtnPinData_Click(object sender, EventArgs e)
         {
             JsonDataForm form = new JsonDataForm(DeviceData.Entity.PinAlignment.PinDataPath, PinData.Entity);
@@ -299,13 +309,11 @@ namespace MainForm
             Console.WriteLine("{0} points Matched, Pin Angle = {1} degree.", pinsSelect, PinAngle);
             return 0;
         }
-
         private void BtnAdjustAngle_Click(object sender, EventArgs e)
         {
             AdjustAngle(1, out double deltaAngle);
             Console.WriteLine(deltaAngle.ToString());
         }
-
         private void BtnM_Pin_Click(object sender, EventArgs e)
         {            
             PinDataForm form = new();

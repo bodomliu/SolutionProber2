@@ -7,7 +7,7 @@ using WaferMapLibrary;
 namespace UtilityForm
 {
     public partial class PlanarityControl : UserControl
-    {
+    {        
         public PlanarityControl()
         {
             InitializeComponent();
@@ -82,7 +82,7 @@ namespace UtilityForm
         private bool cts = false;//中断任务
         private void BtnAbort_Click(object sender, EventArgs e)
         {
-            cts = true;
+            //cts = true;
         }
         private void btnUpdatePos_Click(object sender, EventArgs e)
         {

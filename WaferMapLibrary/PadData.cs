@@ -10,9 +10,9 @@ namespace WaferMapLibrary
     {
         public double DieOrg2RefPadX { get; set; }
         public double DieOrg2RefPadY { get; set; }
-        public int PadWidth { get; set; } = 106;
-        public int PadHeight { get; set; } = 106;
-        public int PadAngle { get; set; }
+        public int PadWidth { get; set; } = 106;//像素
+        public int PadHeight { get; set; } = 106;//像素
+        public int PadAngle { get; set; }//针卡整体的角度
         public List<Pad> Pads { get; set; } = new List<Pad>();
     }
     public static class PadData
@@ -60,8 +60,9 @@ namespace WaferMapLibrary
         public double CurrentPosZ { get; set; }
         public int AlignResult { get; set; } = 0;
         public int AlignMode { get; set; } = 0;//0 = All Pins; 1 = 4 pins
+        public int DUTindex { get; set; } = 0;
     };
-    public class PinClass
+    public class PinCard
     {
         public double RefPinX { get; set; }//注册RefPinX encode值，为了下次快速定位refpin，理想条件下针卡为校平后的角度
         public double RefPinY { get; set; }//注册RefPinY encode值
@@ -72,9 +73,10 @@ namespace WaferMapLibrary
         public List<Pin> Pins { get; set; } = new List<Pin>();//均为用户系下的坐标系下的值，Area = Probing，
                                                               //这样的好处是pin的坐标系方向和pad相同
     }
+
     public static class PinData
     {
-        public static PinClass Entity = new();
+        public static PinCard Entity = new();
         private static int currentIndex = 0;//所有DUT里的Pin合计序列
         public static int CurrentIndex
         {
@@ -109,7 +111,7 @@ namespace WaferMapLibrary
         public static void Load(string filePath)
         {
             string jsonString = File.ReadAllText(filePath);
-            var item = JsonSerializer.Deserialize<PinClass>(jsonString);
+            var item = JsonSerializer.Deserialize<PinCard>(jsonString);
             if (item != null) Entity = item;
             //Vision.WaferHighMag.halconClass.m_Pad.Resize2(512, 640, Entity.PadWidth, Entity.PadHeight);
         }

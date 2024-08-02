@@ -12,7 +12,9 @@ namespace MainForm
             this.TopLevel = false; this.FormBorderStyle = FormBorderStyle.None;
             InitializeComponent();
             panel2.Controls.Add(_padCanvas);
+
             panelMag.Controls.Add(new WaferMagControl());
+            
             //WaferMapLibrary.Load("Pad.json");
         }
         private void PadRegistrationForm_Load(object sender, EventArgs e)
@@ -21,26 +23,6 @@ namespace MainForm
         }
         private void PadData_OnIndexChange(int index)
         {
-            UpdateUI();
-        }
-        private void btnRefPadReg_Click(object sender, EventArgs e)
-        {
-            //获得当前XY坐标
-            Motion.GetUserPos(Compensation.Area.Align, out double RefPadX, out double RefPadY);
-            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double X, out double Y,out _,out _);
-            double DieOrg2RefPadX = RefPadX - X;
-            double DieOrg2RefPadY = RefPadY - Y;
-            string str = "DieOrg2RefPadX: " + PadData.Entity.DieOrg2RefPadX.ToString() + " → " + DieOrg2RefPadX.ToString() + "\r\n";
-            str += "DieOrg2RefPadY: " + PadData.Entity.DieOrg2RefPadY.ToString() + " → " + DieOrg2RefPadY.ToString();
-
-            DialogResult res = MessageBox.Show(str, "Caution", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (res == DialogResult.OK)
-            {
-                PadData.Entity.DieOrg2RefPadX = DieOrg2RefPadX;
-                PadData.Entity.DieOrg2RefPadY = DieOrg2RefPadY;
-                Vision.WaferHighMag.halconClass.CreateShapeModel(DeviceData.Entity.PinAlignment.PadPatten);
-            }
-            PadData.Entity.Pads.Add(new Pad { PosX = 0, PosY = 0 });
             UpdateUI();
         }
         private void UpdateUI()
@@ -56,6 +38,28 @@ namespace MainForm
             }
             _padCanvas.DrawPad();
         }
+
+        #region Registration
+        private void btnRefPadReg_Click(object sender, EventArgs e)
+        {
+            //获得当前XY坐标
+            Motion.GetUserPos(Compensation.Area.Align, out double RefPadX, out double RefPadY);
+            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double X, out double Y, out _, out _);
+            double DieOrg2RefPadX = RefPadX - X;
+            double DieOrg2RefPadY = RefPadY - Y;
+            string str = "DieOrg2RefPadX: " + PadData.Entity.DieOrg2RefPadX.ToString() + " → " + DieOrg2RefPadX.ToString() + "\r\n";
+            str += "DieOrg2RefPadY: " + PadData.Entity.DieOrg2RefPadY.ToString() + " → " + DieOrg2RefPadY.ToString();
+
+            DialogResult res = MessageBox.Show(str, "Caution", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (res == DialogResult.OK)
+            {
+                PadData.Entity.DieOrg2RefPadX = DieOrg2RefPadX;
+                PadData.Entity.DieOrg2RefPadY = DieOrg2RefPadY;
+                //Vision.WaferHighMag.halconClass.CreateShapeModel(DeviceData.Entity.PinAlignment.PadPatten);
+            }
+            PadData.Entity.Pads.Add(new Pad { PosX = 0, PosY = 0 });
+            UpdateUI();
+        }
         private void btnReadyToApply_Click(object sender, EventArgs e)
         {
             PadData.Save(DeviceData.Entity.PinAlignment.PadDataPath);
@@ -63,24 +67,14 @@ namespace MainForm
         }
         private void btnAddPad_Click(object sender, EventArgs e)
         {
-            //获得当前XY坐标
-            Motion.GetUserPos(Compensation.Area.Align, out double RefPadX, out double RefPadY);
-            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY,out _,out _);
-            double posX = RefPadX - (OrgX + PadData.Entity.DieOrg2RefPadX);//以refdie为原点的坐标
-            double posY = RefPadY - (OrgY + PadData.Entity.DieOrg2RefPadY);//以refdie为原点的坐标
-
+            UserPosFromRefPad(out double posX, out double posY);//获得当前Pad相对位置
             PadData.Entity.Pads.Add(new Pad { PosX = posX, PosY = posY });
             PadData.CurrentIndex = PadData.Entity.Pads.Count - 1;
             UpdateUI();
         }
         private void btnUpdatePad_Click(object sender, EventArgs e)
         {
-            //获得当前XY坐标
-            Motion.GetUserPos(Compensation.Area.Align, out double RefPadX, out double RefPadY);
-            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY, out _, out _);
-            double posX = RefPadX - (OrgX + PadData.Entity.DieOrg2RefPadX);//以refdie为原点的坐标
-            double posY = RefPadY - (OrgY + PadData.Entity.DieOrg2RefPadY);//以refdie为原点的坐标
-
+            UserPosFromRefPad(out double posX, out double posY);//获得当前Pad相对位置
             PadData.Entity.Pads[PadData.CurrentIndex].PosX = posX;
             PadData.Entity.Pads[PadData.CurrentIndex].PosY = posY;
             UpdateUI();
@@ -99,12 +93,7 @@ namespace MainForm
         }
         private void BtnInsertPad_Click(object sender, EventArgs e)
         {
-            //获得当前XY坐标
-            Motion.GetUserPos(Compensation.Area.Align, out double RefPadX, out double RefPadY);
-            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY, out _, out _);
-            double posX = RefPadX - (OrgX + PadData.Entity.DieOrg2RefPadX);//以refdie为原点的坐标
-            double posY = RefPadY - (OrgY + PadData.Entity.DieOrg2RefPadY);//以refdie为原点的坐标
-
+            UserPosFromRefPad(out double posX, out double posY);//获得当前Pad相对位置
             PadData.Entity.Pads.Insert(PadData.CurrentIndex, new Pad { PosX = posX, PosY = posY });
             UpdateUI();
         }
@@ -112,16 +101,29 @@ namespace MainForm
         {
             //PadData.Entity.PadWidth--;
         }
+        //获取当前Pad的注册坐标，当RefDie已存在时
+        private void UserPosFromRefPad(out double posX,out double posY)
+        {
+            //获得当前XY坐标
+            Motion.GetUserPos(Compensation.Area.Align, out double UserX, out double UserY);
+            //获得当前die Org坐标
+            CommonFunctions.LocateDie(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, out double OrgX, out double OrgY, out _, out _);
+            posX = UserX - (OrgX + PadData.Entity.DieOrg2RefPadX);//以refdie为原点的坐标
+            posY = UserY - (OrgY + PadData.Entity.DieOrg2RefPadY);//以refdie为原点的坐标
+        }
+        #endregion
+
+        #region Searching
+        private void btnRefDie_Click(object sender, EventArgs e)
+        {
+            //已好精定位，直接IndexMove
+            CommonFunctions.GoToDie(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, true);
+        }
         private void btnRefPad_Click(object sender, EventArgs e)
         {
             WaitingControl.WF.Start();
             CommonFunctions.GotoPad(WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY, 0);
             WaitingControl.WF.End();
-        }
-        private void btnRefDie_Click(object sender, EventArgs e)
-        {
-            //已好精定位，直接IndexMove
-            CommonFunctions.IndexMove(Compensation.Area.Align, WaferMap.Entity.RefDieX, WaferMap.Entity.RefDieY);
         }
         private void btnPrevPad_Click(object sender, EventArgs e)
         {
@@ -139,19 +141,22 @@ namespace MainForm
             CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
             WaitingControl.WF.End();
         }
-       
         private void btnMoveToPad_Click(object sender, EventArgs e)
         {
             Vision.WaferHighMag.TriggerMode();
             Vision.WaferHighMag.TriggerExec();
 
-            int res = Vision.WaferHighMag.halconClass.FindShapeModel(DeviceData.Entity.PinAlignment.PadPatten,
-                0, PadData.Entity.PadWidth, PadData.Entity.PadHeight, out double DeltaX, out double DeltaY);
+            //int res = Vision.WaferHighMag.halconClass.FindShapeModel(DeviceData.Entity.PinAlignment.PadPatten,
+            //    0, PadData.Entity.PadWidth, PadData.Entity.PadHeight, out double DeltaX, out double DeltaY);
+            int res = Vision.WaferHighMag.halconClass.GetPad(DeviceData.Entity.ProbeMarkInspection.Threshold,
+                PadData.Entity.PadWidth*PadData.Entity.PadHeight,out double DeltaX,out double DeltaY);
             if (res != 0) { MessageBox.Show("Move To Pad Error."); return; }
 
             Motion.XY_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 600, 10, 10, 20);
             Vision.WaferHighMag.ContinuesMode();
         }
+        #endregion
+
         private void PadRegistrationForm_ParentChanged(object sender, EventArgs e)
         {
             if (Parent!=null)
@@ -168,7 +173,6 @@ namespace MainForm
                 Vision.WaferHighMag.halconClass.m_Roi.Color = "red";
             }
         }
-
         private void PadRegistrationForm_VisibleChanged(object sender, EventArgs e)
         {
             
