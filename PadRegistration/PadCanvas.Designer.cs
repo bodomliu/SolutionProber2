@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace PadRegistration
 {
     partial class PadCanvas
     {

@@ -1,9 +1,6 @@
-﻿using CommonComponentLibrary;
-using WaferMapLibrary;
-using MotionLibrary;
-using System.Reflection;
+﻿using WaferMapLibrary;
 
-namespace MainForm
+namespace PadRegistration
 {
     public partial class PadCanvas : UserControl
     {
@@ -16,7 +13,7 @@ namespace MainForm
             Init();
         }
         private void Init()
-        {          
+        {
             this.panel2.Controls.Add(PictureBox);
             PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 
@@ -38,7 +35,7 @@ namespace MainForm
         {
             DrawPad();
             label_index.Text = PadData.CurrentIndex.ToString();
-            pic_size = PictureBox.Size;          
+            pic_size = PictureBox.Size;
         }
         #region 图片缩放
         private double ratio = 1;        // 图片的起始显示比例
@@ -47,10 +44,10 @@ namespace MainForm
 
         private bool isDragging = false; // 用于跟踪是否正在拖拽图片
         private Point MousePoint; // 用于跟踪最后一次拖拽的位置
-         
+
         private void PictureBox_MouseClick(object? sender, MouseEventArgs e)
         {
-            if (e.Button== MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 ResetPicturebox();
             }
@@ -104,8 +101,8 @@ namespace MainForm
         }
         private void PictureBox_MouseWheel(object? sender, MouseEventArgs e)
         {
-            int relativeX=e.Location.X-PictureBox.Location.X;
-            int relativeY=e.Location.Y-PictureBox.Location.Y;
+            int relativeX = e.Location.X - PictureBox.Location.X;
+            int relativeY = e.Location.Y - PictureBox.Location.Y;
 
             // 计算新的缩放比例
             double newRatio = ratio;
@@ -161,7 +158,7 @@ namespace MainForm
             // 更新PictureBox的大小和位置
             PictureBox.Size = new Size(newWidth, newHeight);
             PictureBox.Location = new Point(newX, newY);
-            
+
             // 更新当前位置信息
             ratio = newRatio;
         }
@@ -186,11 +183,11 @@ namespace MainForm
 
             double unitPerPixel = WaferMap.Entity.DieSizeX / w;
 
-            double deltaX = WaferMap.Entity.Corner2OrgX + PadData.Entity.DieOrg2RefPadX - PadData.Entity.PadWidth / 2;
-            double deltaY = WaferMap.Entity.Corner2OrgY + PadData.Entity.DieOrg2RefPadY - PadData.Entity.PadHeight / 2;
+            double deltaX = WaferMap.Entity.Corner2OrgX + PadData.Entity.DieOrg2RefPadX - DeviceData.Entity.PinAlignment.PadWidth / 2;
+            double deltaY = WaferMap.Entity.Corner2OrgY + PadData.Entity.DieOrg2RefPadY - DeviceData.Entity.PinAlignment.PadHeight / 2;
 
-            int hu = (int)(PadData.Entity.PadWidth / unitPerPixel);
-            int hv = (int)(PadData.Entity.PadHeight / unitPerPixel);
+            int hu = (int)(DeviceData.Entity.PinAlignment.PadWidth / unitPerPixel);
+            int hv = (int)(DeviceData.Entity.PinAlignment.PadHeight / unitPerPixel);
 
             hu = Math.Max(hu, 6);
             hv = Math.Max(hv, 6);
@@ -204,10 +201,10 @@ namespace MainForm
                 if (0 == i)
                     pen.Color = Color.Red;
                 if (PadData.CurrentIndex == i)
-                { 
+                {
                     pen.Color = Color.Green;
-                    g.DrawLine(pen, x, 0, x,PictureBox.Size.Height);
-                    g.DrawLine(pen, 0, y+h , PictureBox.Size.Width, y+h);
+                    g.DrawLine(pen, x, 0, x, PictureBox.Size.Height);
+                    g.DrawLine(pen, 0, y + h, PictureBox.Size.Width, y + h);
 
                 }
                 g.DrawRectangle(pen, x - 3, h + y - 3, hu, hv);
@@ -217,8 +214,8 @@ namespace MainForm
             Bitmap b = new(Width, Height);
             using Graphics g2 = Graphics.FromImage(b);
             g2.DrawImage(bitmap, (Width - bitmap.Width) / 2, (Height - bitmap.Height) / 2, bitmap.Width, bitmap.Height);
-            PictureBox.Size= new Size(Width, Height);
-            PictureBox.Image= b;
+            PictureBox.Size = new Size(Width, Height);
+            PictureBox.Image = b;
         }
         #endregion
 

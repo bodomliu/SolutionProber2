@@ -65,6 +65,7 @@
             label8 = new Label();
             label9 = new Label();
             btn_Refresh = new Button();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -561,5 +562,6 @@
         private Label label8;
         private Label label9;
         private Button btn_Refresh;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

@@ -25,7 +25,7 @@ namespace MainForm
             panelCamera.Controls.Add(new WaferMagControl());
             paneIndexControl.Controls.Add(new WaferMapIndexControl());
             groupBoxPMI.Controls.Add(new PmiControl());
-            PadData.OnIndexChange += PadData_OnIndexChange;
+            PinData.OnIndexChange += PadData_OnIndexChange;
         }
         private void InspectionForm_Load(object sender, EventArgs e)
         {
@@ -49,16 +49,16 @@ namespace MainForm
 
         private void btnNextPad_Click(object sender, EventArgs e)
         {
-            if (PadData.Entity.Pads == null) return;
-            int Index = (PadData.CurrentIndex >= PadData.Entity.Pads.Count - 1) ? 0 : PadData.CurrentIndex + 1;
+            if (PinData.Entity.Pins == null) return;
+            int Index = (PinData.CurrentIndex >= PinData.Entity.Pins.Count - 1) ? 0 : PinData.CurrentIndex + 1;
             WaitingControl.WF.Start();
             CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
             WaitingControl.WF.End();
         }
         private void btnPrevPad_Click(object sender, EventArgs e)
         {
-            if (PadData.Entity.Pads == null) return;
-            int Index = (PadData.CurrentIndex <= 0) ? PadData.Entity.Pads.Count - 1 : PadData.CurrentIndex - 1;
+            if (PinData.Entity.Pins == null) return;
+            int Index = (PinData.CurrentIndex <= 0) ? PinData.Entity.Pins.Count - 1 : PinData.CurrentIndex - 1;
             WaitingControl.WF.Start();
             CommonFunctions.GotoPad(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, Index);
             WaitingControl.WF.End();

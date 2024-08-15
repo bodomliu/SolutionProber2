@@ -111,28 +111,12 @@ namespace PinRegistration
 
         private void BtnTeachPin_Click(object sender, EventArgs e)
         {
-            //teach时候，如果是refpin则执行注册refpin，否则执行校准
-            if (PinData.CurrentIndex == 0)
-            {
-                Motion.XYZ_GetEncPos(out double encodeX, out double encodeY, out double encodeZ);
-                //当前RefPin的位置，是否需要保存呢？
-                PinData.Entity.RefPinX = encodeX;
-                PinData.Entity.RefPinY = encodeY;
-                PinData.Entity.RefPinZ = encodeZ;
-            }
-            else
-            {
-                //获得当前XY坐标
-                Motion.GetUserPos(Compensation.Area.Probing, out double X, out double Y);
-                Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.Encode2User,
-                    PinData.Entity.RefPinX, PinData.Entity.RefPinY, out double RefX, out double RefY);
-                double posX = X - RefX;//以refpin为原点的坐标
-                double posY = Y - RefY;//以refpin为原点的坐标
+            //获取当前位置
+            Motion.XYZ_GetEncPos(out double encodeX, out double encodeY, out double encodeZ);
 
-                PinData.Entity.Pins[PinData.CurrentIndex].CurrentPosX = -posX;//标定用的坐标系，和探针卡方向相反
-                PinData.Entity.Pins[PinData.CurrentIndex].CurrentPosY = -posY;//标定用的坐标系，和探针卡方向相反
-                PinData.Entity.Pins[PinData.CurrentIndex].CurrentPosZ = Motion.EncodeZ;
-            }
+            PinData.Entity.Pins[PinData.CurrentIndex].CurrentPosX = encodeX - PinData.Entity.RefPinX;
+            PinData.Entity.Pins[PinData.CurrentIndex].CurrentPosY = encodeY - PinData.Entity.RefPinY;
+            PinData.Entity.Pins[PinData.CurrentIndex].CurrentPosZ = Motion.EncodeZ;
 
             PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
             MessageBox.Show("The pin has been teached.");

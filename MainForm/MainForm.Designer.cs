@@ -47,6 +47,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.DimGray;
+            panelMenu.BorderStyle = BorderStyle.Fixed3D;
             panelMenu.Controls.Add(BtnPinRegistration);
             panelMenu.Controls.Add(BtnPadRegistration);
             panelMenu.Controls.Add(BtnDeviceSettings);
@@ -186,7 +187,8 @@
             // panelStatus
             // 
             panelStatus.AccessibleName = "";
-            panelStatus.BackColor = Color.DarkGray;
+            panelStatus.BackColor = Color.DimGray;
+            panelStatus.BorderStyle = BorderStyle.Fixed3D;
             panelStatus.Dock = DockStyle.Top;
             panelStatus.Location = new Point(0, 0);
             panelStatus.Name = "panelStatus";

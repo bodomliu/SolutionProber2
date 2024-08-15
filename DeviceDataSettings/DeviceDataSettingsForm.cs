@@ -30,18 +30,18 @@ namespace MainForm
         {
             DeviceData.Save("DeviceData/" + CbxDeviceData.SelectedItem);
             WaferMap.Save(DeviceData.Entity.WaferAlignment.WaferMapPath);
+            DUTData.Save(DeviceData.Entity.WaferAlignment.DutPath);
             PadData.Save(DeviceData.Entity.PinAlignment.PadDataPath);
             PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
-            DUTData.Save(DeviceData.Entity.WaferAlignment.DutPath);
             MessageBox.Show("File Save Success!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void BtnLoad_Click(object sender, EventArgs e)
         {
             DeviceData.Load("DeviceData/" + CbxDeviceData.SelectedItem);
             WaferMap.Load(DeviceData.Entity.WaferAlignment.WaferMapPath);
-            PadData.Load(DeviceData.Entity.PinAlignment.PadDataPath);
-            PinData.Load(DeviceData.Entity.PinAlignment.PinDataPath);
             DUTData.Load(DeviceData.Entity.WaferAlignment.DutPath);
+            PadData.Load(DeviceData.Entity.PinAlignment.PadDataPath);
+            PinData.Load(DeviceData.Entity.PinAlignment.PinDataPath);           
             MessageBox.Show("File Load Success!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void DeviceDataSettingsForm_Load(object sender, EventArgs e)

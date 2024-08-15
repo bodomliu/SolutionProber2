@@ -6,23 +6,22 @@
   },
   "WaferAlignment": {
     "WaferMapPath": "DeviceData/0411WaferMap.json",
-    "DutPath": "DeviceData/OrgDut.json",
+    "DutPath": "DeviceData/0411Dut.json",
     "LowPattern1": "VisionConfig/0411LowPattern1.shm",
     "LowPattern2": "VisionConfig/0411LowPattern2.shm",
     "HighPattern1": "VisionConfig/0411HighPattern1.shm",
     "HighPattern2": "VisionConfig/0411HighPattern2.shm"
   },
   "PinAlignment": {
-    "PadDataPath": "DeviceData/OrgPadData.json",
-    "PadPatten": "VisionConfig/0411Pad.shm",
-    "PinDataPath": "DeviceData/OrgPinData.json",
+    "PadDataPath": "DeviceData/0411PadData.json",
+    "PinDataPath": "DeviceData/0411PinData.json",
     "NeddleTipFocusOffset": 60000,
     "TipFocusXArea": 100,
     "TipFocusYArea": 100,
     "TipFocusExposureTime": 200,
     "GetPinXArea": 800,
     "GetPinYArea": 800,
-    "GetPinExposureTime": 5000,
+    "GetPinExposureTime": 500,
     "PinAlingmentMode": 0
   },
   "Probing": {

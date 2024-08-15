@@ -39,7 +39,7 @@ namespace Inspection
             Vision.WaferHighMag.TriggerMode();
             await Task.Run(() =>
             {
-                PmiSingle(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, PadData.CurrentIndex, true);
+                PmiSingle(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, PinData.CurrentIndex, true);
                 Thread.Sleep(500);
             });
             Vision.WaferHighMag.ContinuesMode();
@@ -139,7 +139,7 @@ namespace Inspection
             Vision.WaferHighMag.TriggerMode();
             await Task.Run(() =>
             {
-                PmiSingle(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, PadData.CurrentIndex, true,true);
+                PmiSingle(WaferMap.CurrentIndexX, WaferMap.CurrentIndexY, PinData.CurrentIndex, true,true);
             });
             Vision.WaferHighMag.ContinuesMode();
             WaitingControl.WF.End();

@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace PinRegistration
 {
     partial class PinCanvas
     {
@@ -36,7 +36,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             Name = "PinCanvas";
-            Size = new Size(443, 384);
+            Size = new Size(399, 387);
+            Load += PinCanvas_Load;
             ResumeLayout(false);
         }
 

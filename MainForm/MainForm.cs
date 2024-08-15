@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using VisionLibrary;
 using CommonComponentLibrary;
 using MotionLibrary;
+using PinRegistration;
+using PadRegistration;
 namespace MainForm
 {
     public partial class MainForm : Form
@@ -23,7 +25,7 @@ namespace MainForm
         readonly PinRegistrationForm pinRegistrationFrom = new();
         readonly InspectionForm inspectionForm = new();
         readonly ManualForm.ManualForm manualForm = new();
-        //readonly CommonPanel commonPanel = new();
+        readonly StatusBar statusBar = new ();
         public MainForm()
         {
             InitializeComponent();
@@ -31,7 +33,7 @@ namespace MainForm
             //BasicConfigurator.Configure();
             GlobalContext.Properties["name"] = this.GetType().Name;//指定文件名
             XmlConfigurator.Configure(new FileInfo("log4net.config"));//读取配置
-
+            panelStatus.Controls.Add(statusBar);
             log.Info("Entering application.");
         }
 

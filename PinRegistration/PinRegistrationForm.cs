@@ -1,14 +1,10 @@
 ﻿using CommonComponentLibrary;
 using JsonDataShow;
 using MotionLibrary;
-using PinRegistration;//需要pinMagControl控件
-using System.ComponentModel;
-using System.Linq;
-using System.Windows.Forms;
 using VisionLibrary;
 using WaferMapLibrary;
 
-namespace MainForm
+namespace PinRegistration
 {
     public partial class PinRegistrationForm : Form
     {
@@ -23,6 +19,7 @@ namespace MainForm
             NumRefPinOffsetR.Minimum = -100000;
             groupBox1.Controls.Add(new PinSearchControl());
             panelMag.Controls.Add(new PinMagControl());
+            panelPinMap.Controls.Add(new PinCanvas());
         }
         private void UpdateUI()
         {
@@ -110,17 +107,17 @@ namespace MainForm
         }
         private void BtnAddPinWPad_Click(object sender, EventArgs e)
         {
-            //获得当前XY坐标
-            Motion.GetUserPos(Compensation.Area.Probing, out double X, out double Y);
-            Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.Encode2User,
-                PinData.Entity.RefPinX, PinData.Entity.RefPinY, out double RefX, out double RefY);
-            double posX = X - RefX;//以refpin为原点的坐标
-            double posY = Y - RefY;//以refpin为原点的坐标
+            ////获得当前XY坐标
+            //Motion.GetUserPos(Compensation.Area.Probing, out double X, out double Y);
+            //Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.Encode2User,
+            //    PinData.Entity.RefPinX, PinData.Entity.RefPinY, out double RefX, out double RefY);
+            //double posX = X - RefX;//以refpin为原点的坐标
+            //double posY = Y - RefY;//以refpin为原点的坐标
 
-            PinData.Entity.Pins.Add(new Pin { PosX = -posX, PosY = -posY });//标定用的坐标系，和探针卡方向相反
-            PinData.CurrentIndex = PinData.Entity.Pins.Count - 1;
-            PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
-            UpdateUI();
+            //PinData.Entity.Pins.Add(new Pin { PosX = -posX, PosY = -posY });//标定用的坐标系，和探针卡方向相反
+            //PinData.CurrentIndex = PinData.Entity.Pins.Count - 1;
+            //PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
+            //UpdateUI();
         }
         private void BtnUpdatePinWPad_Click(object sender, EventArgs e)
         {
@@ -144,7 +141,7 @@ namespace MainForm
             if (Parent != null)
             {
                 panel1.Controls.Clear();
-                panel1.Controls.Add(CommonPanel.Entity);
+                panel1.Controls.Add(CommonPanel.Entity);                
                 //默认是低倍相机启动
                 //Vision.ChangeCamera(Vision.PinLowMag);//默认粗定位
                 UpdateUI();
@@ -160,69 +157,28 @@ namespace MainForm
         private void PaintPins()
         {
             // Prepare data before painting
-            (double[] encodeX, double[] encodeY) = PaintPrepare();
+            PinAlignLib.RotateAroundRefPin(out double[] encodeX,out double[] encodeY);
             // Use the prepared data for painting
             Vision.PinLowMag.halconClass.PaintPins(encodeX, encodeY, PinData.CurrentIndex);
         }
-        //绘图准备，获得encode值
-        private (double[] encodeX, double[] encodeY)PaintPrepare()
-        {
-            //对PinData先预处理，用于绘画
-            int pinCount = PinData.Entity.Pins.Count;
-            double[] encodeX = new double[pinCount];
-            double[] encodeY = new double[pinCount];
-            //将所有pin转到encode坐标系下，方便绘图
-            for (int i = 0; i < pinCount; i++)
-            {
-                //粗定位画图，精度不要紧，主要为了变换坐标系，确保符号方向一致。标定过程是用的encode坐标，所以画图最好也用encode坐标
-                Compensation.Transform(Compensation.Area.Probing, Compensation.Dir.User2Encode,
-                    PinData.Entity.Pins[i].PosX, PinData.Entity.Pins[i].PosY, out double outx, out double outy);
-                encodeX[i] = outx; encodeY[i] = outy;
-            }
-            return (encodeX, encodeY);
-        }
-        private void RotatePins(double Angle)
-        {
-            //根据预设的angle，并旋转所有pins
-            for (int i = 0; i < PinData.Entity.Pins.Count; i++)
-            {
-                //encode坐标系是标准笛卡尔坐标系，用户坐标系Y轴反向，导致旋转方向反向
-                CommonFunctions.RotatePoint(PinData.Entity.Pins[i].PosX, PinData.Entity.Pins[i].PosY, 0, 0,
-                    -Angle + PinData.Entity.PinsAngle, out double posX, out double posY);
-                PinData.Entity.Pins[i].PosX = posX; PinData.Entity.Pins[i].PosY = posY;
-            }
-            PinData.Entity.PinsAngle = Angle;
-        }
-        private void UpdatePinRegist(double Angle)
-        {
-
-
-        }
         private void CBShowPins_CheckedChanged(object sender, EventArgs e)
         {
-            if (CBShowPins.Checked)
+            bool isChecked = CBShowPins.Checked;
+            // 根据勾选状态注册或取消注册事件，并设置显示状态
+            Vision.PinLowMag.halconClass.OnPaintEvent -= PaintPins;
+            if (isChecked)
             {
-                PaintPrepare();
                 Vision.PinLowMag.halconClass.OnPaintEvent += PaintPins;
-                Vision.PinLowMag.halconClass.bDisplayROI = true;
-                Vision.PinLowMag.halconClass.bDisplayCross = true;
             }
-            else
-            {
-                Vision.PinLowMag.halconClass.OnPaintEvent -= PaintPins;
-                Vision.PinLowMag.halconClass.bDisplayROI = false;
-                Vision.PinLowMag.halconClass.bDisplayCross = false;
-            }
+            Vision.PinLowMag.halconClass.bDisplayROI = isChecked;
+            Vision.PinLowMag.halconClass.bDisplayCross = isChecked;
         }
         #endregion
 
         private void BtnUpdateDegree_Click(object sender, EventArgs e)
         {
-            double newAngle = double.Parse(NumRefPinOffsetR.Value.ToString());
-            RotatePins(newAngle);//改变角度和所有点位
-
-            PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
-            PaintPrepare();
+            PinData.Entity.PinsAngle = double.Parse(NumRefPinOffsetR.Value.ToString());
+            PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);//写入文件
         }
         private void PinRegistrationForm_VisibleChanged(object sender, EventArgs e)
         {
@@ -254,68 +210,14 @@ namespace MainForm
             DialogResult res = form.ShowDialog();
         }
 
-        //currentPos直接和理想的pad位置做匹配求角度，不能和pin匹配的原因是累计求几次deltaAngle后，可能存在累计误差
-        public static int AdjustAngle(int AlignMode, out double PinAngle) 
-        {
-            PinAngle = 0;
 
-            int cntPins = PinData.Entity.Pins.Count;
-            int cntPads = PadData.Entity.Pads.Count;
-            int cntDut = DUTData.Entity.DUTs.Count;
-            if (cntDut * cntPads != cntPins) return 1;//数量不匹配
-
-            List<Pin> Pads = new List<Pin>();
-            //寻pin时，按dut顺序找，所以pads和pins顺序一致 
-            //Step1: 先构造pads队列
-            for (int dutIndex = 0; dutIndex < cntDut; dutIndex++)
-            {
-                for (int padIndex = 0; padIndex < cntPads; padIndex++)
-                {
-                    int pinIndex = dutIndex * cntPads + padIndex;
-                    if (PinData.Entity.Pins[pinIndex].AlignMode == AlignMode)
-                    {
-                        double posX = PadData.Entity.Pads[padIndex].PosX + DUTData.Entity.DUTs[dutIndex].X * WaferMap.Entity.DieSizeX;
-                        double posY = PadData.Entity.Pads[padIndex].PosY + DUTData.Entity.DUTs[dutIndex].Y * WaferMap.Entity.DieSizeY;
-
-                        Pads.Add(new Pin { PosX = posX, PosY = posY });
-                    }
-                }
-            }
-            //Step2: 再对pins筛选
-            List<Pin> Pins = PinData.Entity.Pins.Where(p => p.AlignMode == AlignMode).ToList();
-
-
-            //Step3: 求每个 pad/pin 到 refpad/refpin 的角度/距离
-            int pinsSelect = Pins.Count;
-            double[] anglePad = new double[pinsSelect];
-            double[] anglePin = new double[pinsSelect];
-            double[] deltaAngle = new double[pinsSelect];
-            double[] distance = new double[pinsSelect];
-            for (int index = 1; index < pinsSelect; index++)
-            {
-                anglePad[index] = Math.Atan2(Pads[index].PosY, Pads[index].PosX);
-                anglePin[index] = Math.Atan2(Pins[index].CurrentPosY, Pins[index].CurrentPosX);
-                deltaAngle[index] = anglePin[index] - anglePad[index];
-                //Console.WriteLine()
-                distance[index] = Math.Sqrt(Pads[index].PosX * Pads[index].PosX + Pads[index].PosY * Pads[index].PosY);
-            }
-            //Step4: 根据权重，求deltaAngle的赋值，当前为一次平均
-            double distSum = distance.Sum();
-            for (int index = 0; index < pinsSelect; index++)
-            {
-                PinAngle += deltaAngle[index] * distance[index] / distance.Sum();
-            }
-            PinAngle = -PinAngle / Math.PI * 180 * 10000;//返回角度，因为用用户坐标系计算的角度，与标准笛卡尔坐标系差一个符号
-            Console.WriteLine("{0} points Matched, Pin Angle = {1} degree.", pinsSelect, PinAngle);
-            return 0;
-        }
         private void BtnAdjustAngle_Click(object sender, EventArgs e)
         {
-            AdjustAngle(1, out double deltaAngle);
+            PinAlignLib.AdjustAngle(1, out double deltaAngle);
             Console.WriteLine(deltaAngle.ToString());
         }
         private void BtnM_Pin_Click(object sender, EventArgs e)
-        {            
+        {
             PinDataForm form = new();
             DialogResult res = form.ShowDialog();
         }

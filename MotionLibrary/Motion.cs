@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Text.Json;
+using System.Threading;
 using static GTN.mc;
 
 namespace MotionLibrary
@@ -106,8 +107,9 @@ namespace MotionLibrary
         public static double EncodeY = 0;
         public static double EncodeZ = 0;
         public static double EncodeR = 0;
+        public static bool StageReady = false;
 
-       
+
         private static void PositionThread()
         { 
             Stopwatch stopwatch = new Stopwatch();
@@ -921,62 +923,54 @@ namespace MotionLibrary
             homeToken.Cancel();//如果之前有Task则取消之
             Thread.Sleep(1000);//需要紧跟sleep否则还没来得及取消，下个任务又来了，会出现两个task同时
             homeToken = new CancellationTokenSource();//新建一个cancelhome
-            Task taskHomeX = new Task(() =>
+
+            // 映射轴编号到轴名称
+            string[] axisNames = { "X", "Y", "Z" ,"R"};
+            CountdownEvent countdownEvent = new CountdownEvent(4); // 4个轴的任务计数器
+            StageReady = false;//全局标志
+            // 创建轴的回零任务
+            Action<short> startAxisHomeTask = (axis) =>
             {
-                SmartHome(1, 1, tHomePrm, out tHomeStatus);
-                try
+                Task taskHome = new Task(() =>
                 {
-                    homeToken.Token.ThrowIfCancellationRequested();
-                    Console.WriteLine("X home executed");
-                }
-                catch
-                {
-                    Console.WriteLine("X home cancelled");
-                }
-            }, homeToken.Token);
-            taskHomeX.Start();
-            Task taskHomeY = new Task(() =>
+                    if (axis == 4)
+                    {
+                        R_AxisHome(); // R轴专属的回零操作
+                    }
+                    else
+                    {
+                        SmartHome(1, axis, tHomePrm, out tHomeStatus); // 传递 CancellationToken
+                    }
+                    try
+                    {
+                        homeToken.Token.ThrowIfCancellationRequested();
+                        Console.WriteLine($"{axisNames[axis - 1]} home executed");
+                    }
+                    catch
+                    {
+                        Console.WriteLine($"{axisNames[axis - 1]} home cancelled");
+                    }
+                    finally
+                    {
+                        countdownEvent.Signal(); // 每个任务完成后，减少计数
+                    }
+
+                }, homeToken.Token);
+                taskHome.Start();
+            };
+
+            // 启动X、Y、Z轴的回零任务
+            for (short i = 1; i <= 4; i++)
             {
-                SmartHome(1, 2, tHomePrm, out tHomeStatus);
-                try
-                {
-                    homeToken.Token.ThrowIfCancellationRequested();
-                    Console.WriteLine("Y home executed");
-                }
-                catch
-                {
-                    Console.WriteLine("Y home cancelled");
-                }
-            }, homeToken.Token);
-            taskHomeY.Start();
-            Task taskHomeZ = new Task(() =>
+                startAxisHomeTask(i);
+            }
+            // 当所有任务完成时，将allAxesHomed置为true
+            Task.Run(() =>
             {
-                SmartHome(1, 3, tHomePrm, out tHomeStatus);
-                try
-                {
-                    homeToken.Token.ThrowIfCancellationRequested();
-                    Console.WriteLine("Z home executed");
-                }
-                catch
-                {
-                    Console.WriteLine("Z home cancelled");
-                }
-            }, homeToken.Token);
-            taskHomeZ.Start();
-            Task taskHomeR = new Task(() =>
-            {
-                R_AxisHome();
-                try
-                {
-                    homeToken.Token.ThrowIfCancellationRequested();
-                    Console.WriteLine("R home executed");
-                }
-                catch
-                {
-                    Console.WriteLine("R home cancelled");
-                }
-            }, homeToken.Token);
-            taskHomeR.Start();
+                countdownEvent.Wait(); // 等待所有轴回零完成
+                StageReady = true;//全局标志
+                Console.WriteLine("All axis homing completed.");
+            });           
         }
 
         public static void LoaderAxisHome()

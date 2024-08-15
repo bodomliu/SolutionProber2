@@ -1,4 +1,4 @@
-﻿namespace MainForm
+﻿namespace PinRegistration
 {
     partial class PinRegistrationForm
     {
@@ -44,7 +44,7 @@
             LblPinOffsetZ = new Label();
             panel1 = new Panel();
             CBShowPins = new CheckBox();
-            panel2 = new Panel();
+            panelPinMap = new Panel();
             NumRefPinOffsetR = new NumericUpDown();
             label6 = new Label();
             BtnUpdateDegree = new Button();
@@ -92,7 +92,7 @@
             BtnDeletePinWPad.Name = "BtnDeletePinWPad";
             BtnDeletePinWPad.Size = new Size(80, 53);
             BtnDeletePinWPad.TabIndex = 0;
-            BtnDeletePinWPad.Text = "Delete Pin WPad";
+            BtnDeletePinWPad.Text = "Delete Pin/Pad";
             BtnDeletePinWPad.UseVisualStyleBackColor = true;
             BtnDeletePinWPad.Click += BtnDeletePinWPad_Click;
             // 
@@ -102,7 +102,7 @@
             BtnUpdatePinWPad.Name = "BtnUpdatePinWPad";
             BtnUpdatePinWPad.Size = new Size(80, 57);
             BtnUpdatePinWPad.TabIndex = 0;
-            BtnUpdatePinWPad.Text = "Update Pin WPad";
+            BtnUpdatePinWPad.Text = "Update Pin/Pad";
             BtnUpdatePinWPad.UseVisualStyleBackColor = true;
             BtnUpdatePinWPad.Click += BtnUpdatePinWPad_Click;
             // 
@@ -143,7 +143,7 @@
             BtnAddPinWPad.Name = "BtnAddPinWPad";
             BtnAddPinWPad.Size = new Size(81, 57);
             BtnAddPinWPad.TabIndex = 0;
-            BtnAddPinWPad.Text = "Add Pin WPad";
+            BtnAddPinWPad.Text = "Add Pin/Pad";
             BtnAddPinWPad.UseVisualStyleBackColor = true;
             BtnAddPinWPad.Click += BtnAddPinWPad_Click;
             // 
@@ -220,13 +220,13 @@
             CBShowPins.UseVisualStyleBackColor = true;
             CBShowPins.CheckedChanged += CBShowPins_CheckedChanged;
             // 
-            // panel2
+            // panelPinMap
             // 
-            panel2.BackColor = Color.Black;
-            panel2.Location = new Point(1089, 618);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(399, 387);
-            panel2.TabIndex = 65;
+            panelPinMap.BackColor = Color.Black;
+            panelPinMap.Location = new Point(1089, 618);
+            panelPinMap.Name = "panelPinMap";
+            panelPinMap.Size = new Size(399, 387);
+            panelPinMap.TabIndex = 65;
             // 
             // NumRefPinOffsetR
             // 
@@ -365,7 +365,7 @@
             Controls.Add(panelMag);
             Controls.Add(BtnUpdateDegree);
             Controls.Add(NumRefPinOffsetR);
-            Controls.Add(panel2);
+            Controls.Add(panelPinMap);
             Controls.Add(CBShowPins);
             Controls.Add(panel1);
             Controls.Add(LblPinOffsetZ);
@@ -411,7 +411,7 @@
         private Label LblPinOffsetZ;
         private Panel panel1;
         private CheckBox CBShowPins;
-        private Panel panel2;
+        private Panel panelPinMap;
         private NumericUpDown NumRefPinOffsetR;
         private Label label6;
         private Button BtnUpdateDegree;

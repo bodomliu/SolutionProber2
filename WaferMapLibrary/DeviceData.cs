@@ -22,7 +22,8 @@ namespace WaferMapLibrary
     public class PinAlignment
     {
         public string PadDataPath { get; set; } = "DeviceData/0411PadData.json";
-        public string PadPatten { get; set; } = "VisionConfig/pad.shm";//for pad model
+        public int PadWidth { get; set; } = 106;//像素
+        public int PadHeight { get; set; } = 106;//像素
         public string PinDataPath { get; set; } = "DeviceData/0411PinData.json";
         public double NeddleTipFocusOffset { get; set; } = 60000;//neddle tip to probe card upper plate base is 6mm
         public int TipFocusXArea { get; set; } = 100;

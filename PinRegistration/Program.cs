@@ -1,4 +1,4 @@
-namespace MainForm
+namespace PinRegistration
 {
     internal static class Program
     {
