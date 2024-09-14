@@ -14,22 +14,32 @@ namespace PinRegistration
         {
             if (Visible)
             {
-                NumIndex.Maximum = PinData.Entity.Pins.Count - 1;
+                int cnt = PadData.Entity.Pads.Count;
+                LblIndex.Text = "Index: " + cnt.ToString();
+                NumIndex.Maximum = cnt - 1;
+
+                cnt = DUTData.Entity.DUTs.Count;
+                LblDut.Text = "Dut: " + cnt.ToString();
+                NumDut.Maximum = cnt - 1;
+
+                cnt = PinData.Entity.Pins.Count;
+                LblIndexTotal.Text = "Index Total: " + cnt.ToString();
+                NumIndexTotal.Maximum = PinData.Entity.Pins.Count - 1;
             }
         }
+
+        //根据PinData.currentIndex更新界面
         private void UpdateUI()
         {
             int indexTotal = PinData.CurrentIndex;//获得当前pin总序号
             int numEachSite = PadData.Entity.Pads.Count;//获得每个Site有多少根pin
             int dutCount = DUTData.Entity.DUTs.Count;//获得dut数
 
-            int indexOfDut = indexTotal / numEachSite;//除，得到pin属于几号dut
             int indexOfSite = indexTotal % numEachSite;//取余，得到是某个site第几号pin
 
-
-            TxtIndex.Text = indexOfSite.ToString() + " / " + numEachSite.ToString();
-            TxtDUT.Text = indexOfDut.ToString() + " / " + dutCount.ToString();
-            NumIndex.Value = PinData.CurrentIndex;
+            NumIndex.Value = indexOfSite;
+            NumDut.Value = PinData.Entity.Pins[PinData.CurrentIndex].DUTindex;
+            NumIndexTotal.Value = PinData.CurrentIndex;
         }
         private async void BtnGoToPin_Click(object sender, EventArgs e)
         {
@@ -37,7 +47,7 @@ namespace PinRegistration
             WaitingControl.WF.Start();
             await Task.Run(() =>
             {
-                int index = (int)NumIndex.Value;
+                int index = (int)NumIndexTotal.Value;
                 PinAlignLib.GoToPin(index, islowMode);
             });
             WaitingControl.WF.End();
@@ -130,6 +140,24 @@ namespace PinRegistration
         private void BtnPrevFail_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void NumDut_ValueChanged(object sender, EventArgs e)
+        {
+            ChangeIndexTotal();
+        }
+
+        private void NumIndex_ValueChanged(object sender, EventArgs e)
+        {
+            ChangeIndexTotal();
+        }
+
+        private void ChangeIndexTotal()
+        {
+            int dut = (int)NumDut.Value;
+            int index = (int)NumIndex.Value;
+            int numEachSite = PadData.Entity.Pads.Count;//获得每个Site有多少根pin 
+            NumIndexTotal.Value = dut * numEachSite + index;
         }
     }
 }

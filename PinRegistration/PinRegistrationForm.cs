@@ -89,11 +89,13 @@ namespace PinRegistration
                 foreach (var pad in pads)
                 {
                     // 计算每个 Pin 的位置
-                    double x = pad.PosX + dut.X * dieSizeX;
-                    double y = pad.PosY + dut.Y * dieSizeY;
+                    double x = -pad.PosX + dut.X * dieSizeX;
+                    double y = -pad.PosY - dut.Y * dieSizeY;
 
+                    // 计算该DUT的index
+                    int index = duts.IndexOf(dut);
                     // 添加计算后的 Pin 到 Pins 列表中
-                    PinData.Entity.Pins.Add(new Pin { PosX = x, PosY = y });
+                    PinData.Entity.Pins.Add(new Pin { PosX = x, PosY = y ,DUTindex = index});
                 }
             }
 

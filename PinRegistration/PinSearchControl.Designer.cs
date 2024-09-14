@@ -33,17 +33,19 @@
             BtnGoToRefPin = new Button();
             BtnGoToPrevPin = new Button();
             BtnMovePinToTheCenter = new Button();
-            label5 = new Label();
-            label4 = new Label();
-            TxtDUT = new TextBox();
-            TxtIndex = new TextBox();
-            NumIndex = new NumericUpDown();
-            label1 = new Label();
+            LblDut = new Label();
+            LblIndex = new Label();
+            NumIndexTotal = new NumericUpDown();
+            LblIndexTotal = new Label();
             BtnNeedleTipFocus = new Button();
             label2 = new Label();
             BtnPrevFail = new Button();
             BtnNextFail = new Button();
             BtnTeachPin = new Button();
+            NumDut = new NumericUpDown();
+            NumIndex = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)NumIndexTotal).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumDut).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumIndex).BeginInit();
             SuspendLayout();
             // 
@@ -97,56 +99,41 @@
             BtnMovePinToTheCenter.UseVisualStyleBackColor = true;
             BtnMovePinToTheCenter.Click += BtnMovePinToTheCenter_Click;
             // 
-            // label5
+            // LblDut
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(112, 28);
-            label5.Name = "label5";
-            label5.Size = new Size(33, 17);
-            label5.TabIndex = 36;
-            label5.Text = "DUT";
+            LblDut.AutoSize = true;
+            LblDut.Location = new Point(77, 28);
+            LblDut.Name = "LblDut";
+            LblDut.Size = new Size(33, 17);
+            LblDut.TabIndex = 36;
+            LblDut.Text = "DUT";
             // 
-            // label4
+            // LblIndex
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(7, 28);
-            label4.Name = "label4";
-            label4.Size = new Size(40, 17);
-            label4.TabIndex = 37;
-            label4.Text = "Index";
+            LblIndex.AutoSize = true;
+            LblIndex.Location = new Point(7, 28);
+            LblIndex.Name = "LblIndex";
+            LblIndex.Size = new Size(40, 17);
+            LblIndex.TabIndex = 37;
+            LblIndex.Text = "Index";
             // 
-            // TxtDUT
+            // NumIndexTotal
             // 
-            TxtDUT.Location = new Point(112, 48);
-            TxtDUT.Name = "TxtDUT";
-            TxtDUT.ReadOnly = true;
-            TxtDUT.Size = new Size(92, 23);
-            TxtDUT.TabIndex = 34;
-            TxtDUT.Text = "0";
+            NumIndexTotal.Location = new Point(151, 48);
+            NumIndexTotal.Name = "NumIndexTotal";
+            NumIndexTotal.ReadOnly = true;
+            NumIndexTotal.Size = new Size(124, 23);
+            NumIndexTotal.TabIndex = 38;
+            NumIndexTotal.ValueChanged += NumIndex_ValueChanged;
             // 
-            // TxtIndex
+            // LblIndexTotal
             // 
-            TxtIndex.Location = new Point(7, 48);
-            TxtIndex.Name = "TxtIndex";
-            TxtIndex.Size = new Size(97, 23);
-            TxtIndex.TabIndex = 35;
-            TxtIndex.Text = "0";
-            // 
-            // NumIndex
-            // 
-            NumIndex.Location = new Point(210, 48);
-            NumIndex.Name = "NumIndex";
-            NumIndex.Size = new Size(65, 23);
-            NumIndex.TabIndex = 38;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(202, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(73, 17);
-            label1.TabIndex = 37;
-            label1.Text = "Index Total";
+            LblIndexTotal.AutoSize = true;
+            LblIndexTotal.Location = new Point(151, 28);
+            LblIndexTotal.Name = "LblIndexTotal";
+            LblIndexTotal.Size = new Size(73, 17);
+            LblIndexTotal.TabIndex = 37;
+            LblIndexTotal.Text = "Index Total";
             // 
             // BtnNeedleTipFocus
             // 
@@ -198,19 +185,34 @@
             BtnTeachPin.UseVisualStyleBackColor = false;
             BtnTeachPin.Click += BtnTeachPin_Click;
             // 
+            // NumDut
+            // 
+            NumDut.Location = new Point(77, 48);
+            NumDut.Name = "NumDut";
+            NumDut.Size = new Size(68, 23);
+            NumDut.TabIndex = 41;
+            NumDut.ValueChanged += NumDut_ValueChanged;
+            // 
+            // NumIndex
+            // 
+            NumIndex.Location = new Point(7, 48);
+            NumIndex.Name = "NumIndex";
+            NumIndex.Size = new Size(64, 23);
+            NumIndex.TabIndex = 42;
+            // 
             // PinSearchControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
+            Controls.Add(NumIndex);
+            Controls.Add(NumDut);
             Controls.Add(label2);
             Controls.Add(BtnNeedleTipFocus);
-            Controls.Add(NumIndex);
-            Controls.Add(label5);
-            Controls.Add(label1);
-            Controls.Add(label4);
-            Controls.Add(TxtDUT);
-            Controls.Add(TxtIndex);
+            Controls.Add(NumIndexTotal);
+            Controls.Add(LblDut);
+            Controls.Add(LblIndexTotal);
+            Controls.Add(LblIndex);
             Controls.Add(BtnMovePinToTheCenter);
             Controls.Add(BtnGoToPin);
             Controls.Add(BtnGoToNextPin);
@@ -223,6 +225,8 @@
             Size = new Size(281, 263);
             Load += PinSearchControl_Load;
             VisibleChanged += PinSearchControl_VisibleChanged;
+            ((System.ComponentModel.ISupportInitialize)NumIndexTotal).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumDut).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumIndex).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -235,16 +239,17 @@
         private Button BtnGoToRefPin;
         private Button BtnGoToPrevPin;
         private Button BtnMovePinToTheCenter;
-        private Label label5;
-        private Label label4;
-        private TextBox TxtDUT;
+        private Label LblDut;
+        private Label LblIndex;
         private TextBox TxtIndex;
-        private NumericUpDown NumIndex;
-        private Label label1;
+        private NumericUpDown NumIndexTotal;
+        private Label LblIndexTotal;
         private Button BtnNeedleTipFocus;
         private Label label2;
         private Button BtnPrevFail;
         private Button BtnNextFail;
         private Button BtnTeachPin;
+        private NumericUpDown NumDut;
+        private NumericUpDown NumIndex;
     }
 }
