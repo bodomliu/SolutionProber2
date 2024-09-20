@@ -66,6 +66,7 @@
             label15 = new Label();
             label17 = new Label();
             label18 = new Label();
+            BtnTest = new Button();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             SuspendLayout();
@@ -419,6 +420,16 @@
             label18.TabIndex = 18;
             label18.Text = "Y";
             // 
+            // BtnTest
+            // 
+            BtnTest.Location = new Point(274, 100);
+            BtnTest.Name = "BtnTest";
+            BtnTest.Size = new Size(77, 60);
+            BtnTest.TabIndex = 6;
+            BtnTest.Text = "Test";
+            BtnTest.UseVisualStyleBackColor = true;
+            BtnTest.Click += BtnTest_Click;
+            // 
             // CenterControl
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -437,6 +448,7 @@
             Controls.Add(panel1);
             Controls.Add(label9);
             Controls.Add(label8);
+            Controls.Add(BtnTest);
             Controls.Add(BtnRPlus);
             Controls.Add(TxtPulse);
             Controls.Add(BtnRNeg);
@@ -495,5 +507,6 @@
         private Label label15;
         private Label label17;
         private Label label18;
+        private Button BtnTest;
     }
 }

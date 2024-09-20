@@ -2,6 +2,8 @@
 using MotionLibrary;
 using VisionLibrary;
 using WaferMapLibrary;
+using static GTN.mc;
+using static MotionLibrary.Compensation;
 namespace PinRegistration
 {
     public partial class PinSearchControl : UserControl
@@ -112,10 +114,8 @@ namespace PinRegistration
         }
         private async void BtnMovePinToTheCenter_Click(object sender, EventArgs e)
         {
-            WaitingControl.WF.Start();
-            await Task.Run(() => PinAlignLib.MovePinToCenter());
-            WaitingControl.WF.End();
-
+            var res = await Task.Run(() => PinAlignLib.MovePinToCenter());
+            if (res != 0) MessageBox.Show("Move To Pin Error.");
             UpdateUI();
         }
 

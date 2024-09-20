@@ -77,7 +77,19 @@ namespace ManualForm
         }
         private void BtnApply_Click(object sender, EventArgs e)
         {
+            //临时的代码，用于单pin实验
+            //考虑Pad需要再运行offset才能被珍扎到，该offset为机台最初标定时确定
+            //Pin针位置也与最初标定时发生变化
+            //旋转pinAngle导致的位移
+            //最外层的ProbingShift
+            //获得所有的offset合计
+            double deltaX = Motion.parameter.PROBING.XPad2Pin + PinData.Entity.RefPinX
+               - Motion.parameter.PROBING.XOrgPin + DeviceData.Entity.Probing.ProbingShiftX;
+            double deltaY = Motion.parameter.PROBING.YPad2Pin + PinData.Entity.RefPinY
+                - Motion.parameter.PROBING.YOrgPin + DeviceData.Entity.Probing.ProbingShiftY;
 
+            DeviceData.Entity.Probing.TotalOffsetX = deltaX;
+            DeviceData.Entity.Probing.TotalOffsetY = deltaY;
         }
         private void BtnZToggle_Click(object sender, EventArgs e)
         {
@@ -98,11 +110,6 @@ namespace ManualForm
         //public static event OnBtnInspectionClickHander? OnBtnInspectionClick;
         private async void BtnInspection_Click(object sender, EventArgs e)
         {
-            //临时的代码，用于单pin实验
-            double deltaX = Motion.parameter.PROBING.XPad2Pin + PinData.Entity.RefPinX
-                - Motion.parameter.PROBING.XOrgPin + DeviceData.Entity.Probing.ProbingShiftX;
-            double deltaY = Motion.parameter.PROBING.YPad2Pin + PinData.Entity.RefPinY
-                - Motion.parameter.PROBING.YOrgPin + DeviceData.Entity.Probing.ProbingShiftY;
             //先降至waferheight
 
             Motion.AxisMoveAbs(1, 3, WaferMap.WaferHeight, 600, 10, 10, 20);
@@ -112,7 +119,8 @@ namespace ManualForm
             Compensation.Transform(Compensation.Area.Align, Compensation.Dir.User2Encode, userPosX, userPosY, out double encodeX, out double encodeY);
 
             //将当前点位进行虚拟pad2pin的逆向移动
-            encodeX -= deltaX; encodeY -= deltaY;
+            encodeX -= DeviceData.Entity.Probing.TotalOffsetX; 
+            encodeY -= DeviceData.Entity.Probing.TotalOffsetY;
 
             //求pad因为旋转产生的位移
             CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XORIGIN, Motion.parameter.YORIGIN,
@@ -143,17 +151,17 @@ namespace ManualForm
             //求pad因为旋转产生的位移
             CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XORIGIN, Motion.parameter.YORIGIN,
                 PinData.Entity.PinsAngle, out double Xout, out double Yout);
-            double xCausedByAngle = Xout - encodeX; double yCausedByAngle = Yout - encodeY;
 
             //将当前点位进行虚拟pad2pin移动
             Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User,
-                encodeX + deltaX + xCausedByAngle, encodeY + deltaY + yCausedByAngle, out double userPosX, out double userPosY);
+                Xout + deltaX , Yout + deltaY, out double userPosX, out double userPosY);
             //运行到Proing位置
             await Task.Run(() =>
             {
+                Motion.AxisMoveRel(1, 4, PinData.Entity.PinsAngle, 600, 10, 10, 20);//R轴逆时针为正
                 Motion.UserPosMoveAbs(Compensation.Area.Probing, userPosX, userPosY);
             });
-            Motion.AxisMoveRel(1, 4, PinData.Entity.PinsAngle, 600, 10, 10, 20);
+            
             Motion.AxisMoveAbs(1, 3, DeviceData.Entity.Probing.ZDownPosition, 600, 10, 10, 20);
             UpdateUI();
         }

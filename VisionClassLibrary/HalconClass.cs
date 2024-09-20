@@ -857,7 +857,7 @@ namespace VisionLibrary
         /// <returns>0:计算成功 1：obj数量不唯一</returns>
         public int GetWaferEdge(out double DeltaX, out double DeltaY)
         {
-            return Blob(0, 20, 15000, 100000, true,out DeltaX, out DeltaY, out _, out _);           
+            return Blob(0, 20, 15000, 100000, true,out DeltaX, out DeltaY, out _,out _, out _);           
         }
 
         /// <summary>
@@ -867,9 +867,13 @@ namespace VisionLibrary
         /// 面积中心在视野中心上方，DeltaY < 0, DeltaRow < 0
         /// </summary>
         /// <returns>0：计算成功，结果保存到Definition  1：图像不存在  2：ROI未指定</returns>
-        public int GetPin(out double DeltaX, out double DeltaY)
+        public int GetPin(int threshold, double areaMin, double areaMax, int filter,bool paintObj,
+            out double deltaX, out double deltaY, out double area)
         {
-            return Blob(200, 255, 800, 20000, true, out DeltaX, out DeltaY, out _, out _);
+            //针尖进行闭运算
+            HTuple hv_filter = new HTuple(filter);
+            HOperatorSet.GrayClosingRect(m_Image, out m_Image, hv_filter, hv_filter);
+            return Blob(threshold, 255, areaMin, areaMax, paintObj,out deltaX, out deltaY, out area, out _, out _);
         }
 
         //针痕检测
@@ -992,21 +996,21 @@ namespace VisionLibrary
         /// <param name="Column"></param>
         /// <returns>0: 计算成功 1：Object数量不唯一</returns>
         public int Blob(int tresholdMin, int tresholdMax, double areaMin, double areaMax,bool paintObj,
-            out double DeltaX, out double DeltaY, out double Row, out double Column)
+            out double DeltaX, out double DeltaY, out double Area,out double Row, out double Column)
         {
-            DeltaX = 0;DeltaY = 0;Row = 512;Column = 640;
+            DeltaX = 0;DeltaY = 0; Area = 0; Row = 512;Column = 640;
 
             int res = Blob(tresholdMin, tresholdMax, areaMin, areaMax, out HObject SelectedRegions);
             if (res != 0) { return res; }
             //计算形心
-            HOperatorSet.AreaCenter(SelectedRegions, out _, out HTuple Row_Obj, out HTuple Column_Obj);
+            HOperatorSet.AreaCenter(SelectedRegions, out HTuple Area_Obj, out HTuple Row_Obj, out HTuple Column_Obj);
 
             //计算中心偏移
             GetDeltaFromCenter(Row_Obj, Column_Obj, out DeltaX, out DeltaY);
 
             Row = Row_Obj.D;
             Column = Column_Obj.D;
-
+            Area = Area_Obj.D;
             if (paintObj)
             {
                 HOperatorSet.SetColor(m_Window, "red");

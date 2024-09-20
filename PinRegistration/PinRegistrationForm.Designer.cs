@@ -36,12 +36,6 @@
             BtnReadyToApply = new Button();
             BtnRefPinRegistration = new Button();
             BtnAddPinWPad = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            LblPinOffsetX = new Label();
-            LblPinOffsetY = new Label();
-            LblPinOffsetZ = new Label();
             panel1 = new Panel();
             CBShowPins = new CheckBox();
             panelPinMap = new Panel();
@@ -57,6 +51,8 @@
             Rbtn4Pins = new RadioButton();
             RbtnAllPins = new RadioButton();
             BtnM_Pin = new Button();
+            BtnVisionPara = new Button();
+            BtnAutoFocusAll = new Button();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumRefPinOffsetR).BeginInit();
             groupBox3.SuspendLayout();
@@ -146,60 +142,6 @@
             BtnAddPinWPad.Text = "Add Pin/Pad";
             BtnAddPinWPad.UseVisualStyleBackColor = true;
             BtnAddPinWPad.Click += BtnAddPinWPad_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(1089, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(71, 17);
-            label1.TabIndex = 28;
-            label1.Text = "PinOffsetX:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(1089, 37);
-            label2.Name = "label2";
-            label2.Size = new Size(70, 17);
-            label2.TabIndex = 28;
-            label2.Text = "PinOffsetY:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(1089, 63);
-            label3.Name = "label3";
-            label3.Size = new Size(70, 17);
-            label3.TabIndex = 28;
-            label3.Text = "PinOffsetZ:";
-            // 
-            // LblPinOffsetX
-            // 
-            LblPinOffsetX.AutoSize = true;
-            LblPinOffsetX.Location = new Point(1166, 9);
-            LblPinOffsetX.Name = "LblPinOffsetX";
-            LblPinOffsetX.Size = new Size(15, 17);
-            LblPinOffsetX.TabIndex = 28;
-            LblPinOffsetX.Text = "0";
-            // 
-            // LblPinOffsetY
-            // 
-            LblPinOffsetY.AutoSize = true;
-            LblPinOffsetY.Location = new Point(1166, 37);
-            LblPinOffsetY.Name = "LblPinOffsetY";
-            LblPinOffsetY.Size = new Size(15, 17);
-            LblPinOffsetY.TabIndex = 28;
-            LblPinOffsetY.Text = "0";
-            // 
-            // LblPinOffsetZ
-            // 
-            LblPinOffsetZ.AutoSize = true;
-            LblPinOffsetZ.Location = new Point(1166, 63);
-            LblPinOffsetZ.Name = "LblPinOffsetZ";
-            LblPinOffsetZ.Size = new Size(15, 17);
-            LblPinOffsetZ.TabIndex = 28;
-            LblPinOffsetZ.Text = "0";
             // 
             // panel1
             // 
@@ -311,6 +253,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(BtnAutoFocusAll);
             groupBox3.Controls.Add(Rbtn4Pins);
             groupBox3.Controls.Add(RbtnAllPins);
             groupBox3.Controls.Add(BtnAdjustAngle);
@@ -356,11 +299,33 @@
             BtnM_Pin.UseVisualStyleBackColor = false;
             BtnM_Pin.Click += BtnM_Pin_Click;
             // 
+            // BtnVisionPara
+            // 
+            BtnVisionPara.BackColor = Color.Orange;
+            BtnVisionPara.Location = new Point(1093, 9);
+            BtnVisionPara.Name = "BtnVisionPara";
+            BtnVisionPara.Size = new Size(88, 46);
+            BtnVisionPara.TabIndex = 70;
+            BtnVisionPara.Text = "Vision Para";
+            BtnVisionPara.UseVisualStyleBackColor = false;
+            BtnVisionPara.Click += BtnVisionPara_Click;
+            // 
+            // BtnAutoFocusAll
+            // 
+            BtnAutoFocusAll.Location = new Point(6, 143);
+            BtnAutoFocusAll.Name = "BtnAutoFocusAll";
+            BtnAutoFocusAll.Size = new Size(99, 54);
+            BtnAutoFocusAll.TabIndex = 27;
+            BtnAutoFocusAll.Text = "Auto Focus All";
+            BtnAutoFocusAll.UseVisualStyleBackColor = true;
+            BtnAutoFocusAll.Click += BtnAutoFocusAll_Click;
+            // 
             // PinRegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1847, 1126);
+            Controls.Add(BtnVisionPara);
             Controls.Add(groupBox3);
             Controls.Add(panelMag);
             Controls.Add(BtnUpdateDegree);
@@ -368,17 +333,11 @@
             Controls.Add(panelPinMap);
             Controls.Add(CBShowPins);
             Controls.Add(panel1);
-            Controls.Add(LblPinOffsetZ);
-            Controls.Add(LblPinOffsetY);
-            Controls.Add(LblPinOffsetX);
             Controls.Add(BtnOrgPinInitial);
             Controls.Add(BtnM_Pin);
             Controls.Add(BtnPinData);
             Controls.Add(BtnFocusInitial);
             Controls.Add(label6);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "PinRegistrationForm";
@@ -403,12 +362,6 @@
         private Button BtnReadyToApply;
         private Button BtnRefPinRegistration;
         private Button BtnAddPinWPad;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label LblPinOffsetX;
-        private Label LblPinOffsetY;
-        private Label LblPinOffsetZ;
         private Panel panel1;
         private CheckBox CBShowPins;
         private Panel panelPinMap;
@@ -424,5 +377,7 @@
         private RadioButton Rbtn4Pins;
         private RadioButton RbtnAllPins;
         private Button BtnM_Pin;
+        private Button BtnVisionPara;
+        private Button BtnAutoFocusAll;
     }
 }

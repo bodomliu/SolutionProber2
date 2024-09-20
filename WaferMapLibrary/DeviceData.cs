@@ -32,6 +32,10 @@ namespace WaferMapLibrary
         public int GetPinXArea { get; set; } = 800;
         public int GetPinYArea { get; set; } = 800;
         public float GetPinExposureTime { get; set; } = 500;
+        public int GetPinThreshold { get; set; } = 200;
+        public int GetPinMinBlob { get; set; } = 800;
+        public int GetPinMaxBlob { get; set; } = 20000;
+        public int GetPinFilter { get; set; } = 1;//闭运算，1 = no filter
         public int PinAlingmentMode { get; set; } = 0;//0: Disable, 1:4 Pins, 2:All Pins, 3:Specific Pins
     }
     public class Probing
@@ -44,6 +48,8 @@ namespace WaferMapLibrary
         public double AllContactHeight { get; set; } = 0;//AllContactHeight - RefPinZ 通常大于等于0
         public double ProbingShiftX { get; set; } = 0;
         public double ProbingShiftY { get; set; } = 0;
+        public double TotalOffsetX { get; set; } = 0;//获得所有offset的合计
+        public double TotalOffsetY { get; set; } = 0;//获得所有offset的合计
     }
     public class ProbeMarkInspection
     {

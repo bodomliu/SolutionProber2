@@ -7,27 +7,31 @@ namespace PinRegistration
 {
     internal static class PinAlignLib
     {
-        public static void MovePinToCenter()
+        /// <summary>
+        /// 图像处理，获得pin
+        /// </summary>
+        /// <param name="deltaX"></param>
+        /// <param name="deltaY"></param>
+        public static int GetPin(bool paintObj, out double deltaX, out double deltaY, out double area)
         {
+            int GetPinThreshold = DeviceData.Entity.PinAlignment.GetPinThreshold;
             int GetPinXArea = DeviceData.Entity.PinAlignment.GetPinXArea;
             int GetPinYArea = DeviceData.Entity.PinAlignment.GetPinYArea;
+            int blobMin = DeviceData.Entity.PinAlignment.GetPinMinBlob;
+            int blobMax = DeviceData.Entity.PinAlignment.GetPinMaxBlob;
             Vision.PinHighMag.halconClass.m_Roi.Resize2(512, 640, GetPinXArea, GetPinYArea);//blobROI
             float expo = DeviceData.Entity.PinAlignment.GetPinExposureTime;
             Vision.PinHighMag.SetExposureTime(expo);//blob曝光
             Thread.Sleep(500);//避免没生效
             Vision.PinHighMag.TriggerMode();
             Vision.PinHighMag.TriggerExec();
-            int res = Vision.PinHighMag.halconClass.GetPin(out double DeltaX, out double DeltaY);
-            if (res != 0)
-            {
-                MessageBox.Show("Move To Pin Error.");
-            }
-            else
-            {
-                Motion.XY_AxisMoveRel(1, Convert.ToInt32(DeltaX), Convert.ToInt32(DeltaY), 600, 10, 10, 20);
-            }
+            int res = Vision.PinHighMag.halconClass.GetPin(GetPinThreshold, blobMin, blobMax, 5,paintObj,
+                out deltaX, out deltaY, out area);
+            Thread.Sleep(500);//给0.5秒看到paint
             Vision.PinHighMag.ContinuesMode();
+            return res;
         }
+
         public static void GoToPin(int index, bool isLowMode = false)
         {
             if (PinData.Entity.Pins.Count == 0) return;
@@ -52,10 +56,18 @@ namespace PinRegistration
 
             //第三步，上针，在waferAlign区，Z高度会到接近140000，pinAlign区90000
             Motion.AxisMoveAbs(1, 3, z, 600, 10, 10, 20);
-            //第三步，走用户坐标
+            //第三步，走encode坐标
             Motion.XY_AxisMoveAbs(1, x, y, 600, 10, 10, 20);
 
             PinData.CurrentIndex = index;
+        }
+
+        public static int MovePinToCenter()
+        {
+            var res = GetPin(true, out double deltaX, out double deltaY, out _);
+            if (res != 0) return res;
+            Motion.XY_AxisMoveRel(1, Convert.ToInt32(deltaX), Convert.ToInt32(deltaY), 600, 10, 10, 20);
+            return 0;
         }
         //测试用，后续取消
         public static void TestRotatePins()

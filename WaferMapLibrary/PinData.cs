@@ -74,5 +74,16 @@ namespace WaferMapLibrary
             string jsonString = JsonSerializer.Serialize(Entity, options);
             File.WriteAllText(filePath, jsonString);
         }
+
+        public static void ClearCurrentPos()
+        {
+            foreach (var pin in Entity.Pins)
+            {
+                pin.CurrentPosX = 0;
+                pin.CurrentPosY = 0;
+                pin.CurrentPosZ = 0;
+                pin.AlignResult = 0;
+            }
+        }
     }
 }

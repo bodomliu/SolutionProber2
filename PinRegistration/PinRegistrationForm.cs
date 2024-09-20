@@ -95,7 +95,7 @@ namespace PinRegistration
                     // 计算该DUT的index
                     int index = duts.IndexOf(dut);
                     // 添加计算后的 Pin 到 Pins 列表中
-                    PinData.Entity.Pins.Add(new Pin { PosX = x, PosY = y ,DUTindex = index});
+                    PinData.Entity.Pins.Add(new Pin { PosX = x, PosY = y, DUTindex = index });
                 }
             }
 
@@ -143,7 +143,7 @@ namespace PinRegistration
             if (Parent != null)
             {
                 panel1.Controls.Clear();
-                panel1.Controls.Add(CommonPanel.Entity);                
+                panel1.Controls.Add(CommonPanel.Entity);
                 //默认是低倍相机启动
                 //Vision.ChangeCamera(Vision.PinLowMag);//默认粗定位
                 UpdateUI();
@@ -159,7 +159,7 @@ namespace PinRegistration
         private void PaintPins()
         {
             // Prepare data before painting
-            PinAlignLib.RotateAroundRefPin(out double[] encodeX,out double[] encodeY);
+            PinAlignLib.RotateAroundRefPin(out double[] encodeX, out double[] encodeY);
             // Use the prepared data for painting
             Vision.PinLowMag.halconClass.PaintPins(encodeX, encodeY, PinData.CurrentIndex);
         }
@@ -222,6 +222,39 @@ namespace PinRegistration
         {
             PinDataForm form = new();
             DialogResult res = form.ShowDialog();
+        }
+
+        private void BtnVisionPara_Click(object sender, EventArgs e)
+        {
+            VisionParaControl visionPara = new VisionParaControl();
+            visionPara.Location = new Point(1150, 200);
+            this.Controls.Add(visionPara);
+            visionPara.BringToFront();
+        }
+
+        private async void BtnAutoFocusAll_Click(object sender, EventArgs e)
+        {
+            if (Vision.activeCamera != Camera.PinHighMag)
+            {
+                MessageBox.Show("Change to High Mag!"); return;
+            }
+
+            PinData.ClearCurrentPos(); 
+            WaitingControl.WF.Start();
+            for (int i = 0; i < PinData.Entity.Pins.Count; i++)
+            {
+                await Task.Run(() => PinAlignLib.GoToPin(i));
+                var result = await Task.Run(() => PinAlignLib.MovePinToCenter());
+                if (result != 0) continue;
+                result = await Task.Run(() => AdjustHeight.PinFocus(false));
+                if (result != 0) continue;
+                Motion.XYZ_GetEncPos(out double x, out double y, out double z);
+                PinData.Entity.Pins[i].CurrentPosX = x - PinData.Entity.RefPinX;
+                PinData.Entity.Pins[i].CurrentPosY = y - PinData.Entity.RefPinY;
+                PinData.Entity.Pins[i].CurrentPosZ = z - PinData.Entity.RefPinZ;
+            }
+            WaitingControl.WF.End();
+            PinData.Save(DeviceData.Entity.PinAlignment.PinDataPath);
         }
     }
 }

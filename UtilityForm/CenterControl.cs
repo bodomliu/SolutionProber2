@@ -160,7 +160,25 @@ namespace UtilityForm
         private void BtnResetPostion_Click(object sender, EventArgs e)
         {
             Motion.XYZ_AxisMoveAbs(1, OrgX, OrgY, OrgZ, 600, 10, 10, 20);
-            Motion.AxisMoveAbs(1, 4, OrgR, 600, 10, 10, 20);            
+            Motion.AxisMoveAbs(1, 4, OrgR, 600, 10, 10, 20);
+        }
+
+        private async void BtnTest_Click(object sender, EventArgs e)
+        {
+            //获得当前Encode位置
+            Motion.XY_GetEncPos(out double encodeX, out double encodeY);
+            //求pad因为旋转产生的位移
+            CommonFunctions.RotatePoint(encodeX, encodeY, Motion.parameter.XORIGIN, Motion.parameter.YORIGIN,
+                PinData.Entity.PinsAngle, out double Xout, out double Yout);
+            Motion.AxisMoveRel(1, 4, -PinData.Entity.PinsAngle, 600, 10, 10, 20);//R轴为反方向
+            //将当前点位进行虚拟pad2pin移动
+            Compensation.Transform(Compensation.Area.Align, Compensation.Dir.Encode2User,
+                Xout, Yout, out double userPosX, out double userPosY);
+            //运行到Proing位置
+            await Task.Run(() =>
+            {
+                Motion.UserPosMoveAbs(Compensation.Area.Align, userPosX, userPosY);
+            });
         }
     }
 }
