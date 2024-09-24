@@ -104,55 +104,99 @@ namespace PinRegistration
         {
             PinAngle = 0;
 
-            //int cntPins = PinData.Entity.Pins.Count;
-            //int cntPads = PadData.Entity.Pads.Count;
-            //int cntDut = DUTData.Entity.DUTs.Count;
-            //if (cntDut * cntPads != cntPins) return 1;//数量不匹配
+            List<Pin> pins = PinData.Entity.Pins.Where(e => e.CurrentPosX != 0 && e.CurrentPosY != 0 && e.CurrentPosZ != 0).ToList();
 
-            //List<Pin> Pads = new List<Pin>();
-            ////寻pin时，按dut顺序找，所以pads和pins顺序一致 
-            ////Step1: 先构造pads队列
-            //for (int dutIndex = 0; dutIndex < cntDut; dutIndex++)
-            //{
-            //    for (int padIndex = 0; padIndex < cntPads; padIndex++)
-            //    {
-            //        int pinIndex = dutIndex * cntPads + padIndex;
-            //        if (PinData.Entity.Pins[pinIndex].AlignMode == AlignMode)
-            //        {
-            //            double posX = PadData.Entity.Pads[padIndex].PosX + DUTData.Entity.DUTs[dutIndex].X * WaferMap.Entity.DieSizeX;
-            //            double posY = PadData.Entity.Pads[padIndex].PosY + DUTData.Entity.DUTs[dutIndex].Y * WaferMap.Entity.DieSizeY;
-
-            //            Pads.Add(new Pin { PosX = posX, PosY = posY });
-            //        }
-            //    }
-            //}
-            ////Step2: 再对pins筛选
-            //List<Pin> Pins = PinData.Entity.Pins.Where(p => p.AlignMode == AlignMode).ToList();
+            Point currentOrigin = new() { X = 0, Y = 0 };
+            Point posOrigin = new() { X = 0, Y = 0 };
+            foreach (var p in pins)
+            {
+                currentOrigin.X += p.CurrentPosX;
+                currentOrigin.Y += p.CurrentPosY;
+                posOrigin.X += p.PosX;
+                posOrigin.Y += p.PosY;
+            }
+            currentOrigin.X /= pins.Count;
+            currentOrigin.Y /= pins.Count;
+            posOrigin.X /= pins.Count;
+            posOrigin.Y /= pins.Count;
 
 
-            ////Step3: 求每个 pad/pin 到 refpad/refpin 的角度/距离
-            //int pinsSelect = Pins.Count;
-            //double[] anglePad = new double[pinsSelect];
-            //double[] anglePin = new double[pinsSelect];
-            //double[] deltaAngle = new double[pinsSelect];
-            //double[] distance = new double[pinsSelect];
-            //for (int index = 1; index < pinsSelect; index++)
-            //{
-            //    anglePad[index] = Math.Atan2(Pads[index].PosY, Pads[index].PosX);
-            //    anglePin[index] = Math.Atan2(Pins[index].CurrentPosY, Pins[index].CurrentPosX);
-            //    deltaAngle[index] = anglePin[index] - anglePad[index];
-            //    //Console.WriteLine()
-            //    distance[index] = Math.Sqrt(Pads[index].PosX * Pads[index].PosX + Pads[index].PosY * Pads[index].PosY);
-            //}
-            ////Step4: 根据权重，求deltaAngle的赋值，当前为一次平均
-            //double distSum = distance.Sum();
-            //for (int index = 0; index < pinsSelect; index++)
-            //{
-            //    PinAngle += deltaAngle[index] * distance[index] / distance.Sum();
-            //}
-            //PinAngle = -PinAngle / Math.PI * 180 * 10000;//返回角度，因为用用户坐标系计算的角度，与标准笛卡尔坐标系差一个符号
-            //Console.WriteLine("{0} points Matched, Pin Angle = {1} degree.", pinsSelect, PinAngle);
+            double[] xs = new double[pins.Count];
+            double[] ys = new double[pins.Count];
+
+            for (int i = 0; i < pins.Count; i++)
+            {
+                Pin p = pins[i];
+                Point point = InitPoint(
+                    new() { X = p.PosX - posOrigin.X, Y = p.PosY - posOrigin.Y },
+                    new() { X = p.CurrentPosX - currentOrigin.X, Y = p.CurrentPosY - currentOrigin.Y });
+                xs[i] = point.X;
+                ys[i] = point.Y;
+            }
+            Tuple<double, double> tuple = FitLine(xs, ys);
+            
+            double radians = Math.Atan(tuple.Item1);
+
+            PinAngle = radians * 180 / Math.PI * 10000;
+
             return 0;
         }
+
+        public static Tuple<double, double> RotatePoint(double x, double y, double angle)
+        {
+            double cosTheta = Math.Cos(angle);
+            double sinTheta = Math.Sin(angle);
+
+            double newX = x * cosTheta - y * sinTheta;
+            double newY = x * sinTheta + y * cosTheta;
+
+            return Tuple.Create(newX, newY);
+        }
+       
+
+        /// <summary>
+        /// 拟合直线
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        static Tuple<double, double> FitLine(double[] x, double[] y)
+        {
+            if (x.Length != y.Length)
+                throw new ArgumentException("x 和 y 数组的长度必须相同");
+
+            int n = x.Length;
+            double sumX = x.Sum();
+            double sumY = y.Sum();
+            double sumXY = x.Zip(y, (xi, yi) => xi * yi).Sum();
+            double sumX2 = x.Sum(xi => xi * xi);
+
+            double slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+            double intercept = (sumY - slope * sumX) / n;
+
+            return Tuple.Create(slope, intercept);
+        }
+
+        static Point InitPoint(Point pos, Point currentPos)
+        {
+            
+            double dotProduct = pos.X * currentPos.X + pos.Y * currentPos.Y;
+            double crossProduct = currentPos.X * pos.Y - pos.X * currentPos.Y;
+
+            double posLength = Math.Sqrt(pos.X * pos.X + pos.Y * pos.Y);
+            double currentPosLength = Math.Sqrt(currentPos.X * currentPos.X + currentPos.Y * currentPos.Y);
+
+            return new()
+            {
+                X = dotProduct / posLength,
+                Y = crossProduct / posLength
+            };
+        }
+        private class Point
+        {
+            public double X;
+            public double Y;
+        }
     }
+
+    
 }
