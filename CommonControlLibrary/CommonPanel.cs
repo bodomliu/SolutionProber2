@@ -39,16 +39,16 @@ namespace CommonComponentLibrary
         }
         private void JogMedium_Click(object sender, EventArgs e)
         {
-            JogSpeed = 5;
-            Acc = 5;
-            Dec = 5;
+            JogSpeed = 10;
+            Acc = 10;
+            Dec = 10;
             JogBackColor(sender);
         }
         private void JogFast_Click(object sender, EventArgs e)
         {
-            JogSpeed = 10;
-            Acc = 10;
-            Dec = 10;
+            JogSpeed = 20;
+            Acc = 20;
+            Dec = 20;
             JogBackColor(sender);
         }
         private void JogBackColor(object sender)
@@ -265,7 +265,27 @@ namespace CommonComponentLibrary
 
         private void CommonPanel_ParentChanged(object sender, EventArgs e)
         {
-          
+
+        }
+
+        private async void BtnMinorAdjustment_Click(object sender, EventArgs e)
+        {
+            WaitingControl.WF.Start();
+
+            if (Vision.activeCamera == Camera.WaferLowMag)
+            {
+                await Task.Run(() =>
+                AdjustHeight.MinorAdjustment(Vision.WaferLowMag)
+                );
+            }
+            else if (Vision.activeCamera == Camera.WaferHighMag)
+            {
+                await Task.Run(() =>
+                AdjustHeight.MinorAdjustment(Vision.WaferHighMag)
+                );
+            }
+
+            WaitingControl.WF.End();
         }
     }
 }

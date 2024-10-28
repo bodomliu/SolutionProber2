@@ -71,10 +71,16 @@ namespace CommonComponentLibrary
             //UpdateIndex();
         }
 
-        private void BtnEnter_Click(object sender, EventArgs e)
+        private async void BtnEnter_Click(object sender, EventArgs e)
         {
             WaferMap.setCurrentIndex(int.Parse(TxtIndexX.Text), int.Parse(TxtIndexY.Text));
-            CommonFunctions.IndexMove(Motion.CurrentArea, WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
+           
+            WaitingControl.WF.Start();
+            await Task.Run(() =>
+            {
+                CommonFunctions.IndexMove(Motion.CurrentArea, WaferMap.CurrentIndexX, WaferMap.CurrentIndexY);
+            });
+            WaitingControl.WF.End();
         }
 
         private async void BtnPinPadMatch_Click(object sender, EventArgs e)

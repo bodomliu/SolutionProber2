@@ -34,6 +34,7 @@
             panelForm = new Panel();
             panel2 = new Panel();
             panel1 = new Panel();
+            BtnGT2 = new Button();
             panelMenu.SuspendLayout();
             panelForm.SuspendLayout();
             SuspendLayout();
@@ -41,6 +42,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = SystemColors.ActiveBorder;
+            panelMenu.Controls.Add(BtnGT2);
             panelMenu.Controls.Add(BtnChuckCenter);
             panelMenu.Controls.Add(BtnChuckFlatness);
             panelMenu.Dock = DockStyle.Top;
@@ -95,6 +97,16 @@
             panel1.Size = new Size(1080, 1000);
             panel1.TabIndex = 0;
             // 
+            // BtnGT2
+            // 
+            BtnGT2.Location = new Point(276, 14);
+            BtnGT2.Name = "BtnGT2";
+            BtnGT2.Size = new Size(132, 36);
+            BtnGT2.TabIndex = 1;
+            BtnGT2.Text = "GT2";
+            BtnGT2.UseVisualStyleBackColor = true;
+            BtnGT2.Click += BtnGT2_Click;
+            // 
             // UtilityForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -119,5 +131,6 @@
         private Panel panel1;
         private Panel panel2;
         private Button BtnChuckCenter;
+        private Button BtnGT2;
     }
 }

@@ -50,6 +50,35 @@ namespace CommonComponentLibrary
 
             return AdjustHight(Mag, target, range, slowStep, fastStep, out _);
         }
+
+        //在当前高度进行微调
+        public static int MinorAdjustment(CameraClass Mag)
+        {
+            //均以精定位为准
+            double target = Motion.EncodeZ;//当前encodeZ就是目标
+            double range = 1000;//精定位1000
+            double slowStep = 10;
+            double fastStep = 100;
+
+            if (Mag == Vision.WaferLowMag)
+            {
+                range = 10000;//粗定位range = 1mm
+                slowStep = 100;//粗定位slowStep = 10um
+                fastStep = 1000;//粗定位fastStep = 100um
+            }
+            else if (Mag == Vision.WaferHighMag)
+            {
+
+            }
+            else if (Mag == Vision.JigCamera)
+            {
+                target += Motion.parameter.ZALIGN2PROBE;//38000 + 45823 = 83823
+            }
+
+            return AdjustHight(Mag, target, range, slowStep, fastStep, out _);
+        }
+
+
         private static int AdjustHight(CameraClass Mag, double target, double range, double slowStep, double fastStep, out double peak)
         {
             Mag.TriggerMode();

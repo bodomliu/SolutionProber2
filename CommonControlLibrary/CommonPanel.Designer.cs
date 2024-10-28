@@ -52,6 +52,7 @@
             LblIsProbingArea = new Label();
             CbCompensation = new CheckBox();
             TimMotion = new System.Windows.Forms.Timer(components);
+            BtnMinorAdjustment = new Button();
             canvas.SuspendLayout();
             SuspendLayout();
             // 
@@ -284,17 +285,28 @@
             // 
             TimMotion.Tick += TimMotion_Tick;
             // 
+            // BtnMinorAdjustment
+            // 
+            BtnMinorAdjustment.Location = new Point(743, 824);
+            BtnMinorAdjustment.Name = "BtnMinorAdjustment";
+            BtnMinorAdjustment.Size = new Size(252, 45);
+            BtnMinorAdjustment.TabIndex = 25;
+            BtnMinorAdjustment.Text = "Minor Adjustment";
+            BtnMinorAdjustment.UseVisualStyleBackColor = true;
+            BtnMinorAdjustment.Click += BtnMinorAdjustment_Click;
+            // 
             // CommonPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.Gray;
             Controls.Add(CbCompensation);
             Controls.Add(LblIsProbingArea);
             Controls.Add(BtnScan);
             Controls.Add(BtnIndex);
             Controls.Add(BtnStep);
             Controls.Add(JogMedium);
+            Controls.Add(BtnMinorAdjustment);
             Controls.Add(JogSlow);
             Controls.Add(BtnJogZdown);
             Controls.Add(BtnJogZup);
@@ -341,5 +353,6 @@
         private Label LblIsProbingArea;
         private CheckBox CbCompensation;
         private System.Windows.Forms.Timer TimMotion;
+        private Button BtnMinorAdjustment;
     }
 }
