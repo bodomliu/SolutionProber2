@@ -114,7 +114,7 @@ namespace PinRegistration
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PinPictureBox_Paint(object? sender, PaintEventArgs e)
-        {            
+        {
             e.Graphics.Clear(Color.Black);
             // 获取PictureBox的尺寸
             int PictureBoxWidth = PinPictureBox.Size.Width;
@@ -125,8 +125,8 @@ namespace PinRegistration
 
             // 计算缩放因子和平移量
             double scale = Math.Min(PictureBoxWidth / (maxX - minX), PictureBoxHeight / (maxY - minY)) * 0.9;
-            double offsetX = -minY * scale;
-            double offsetY = -minX * scale;
+            double offsetX = -minX * scale;
+            double offsetY = -minY * scale;
 
             // 绘制每个点
             foreach (var pin in PinData.Entity!.Pins)
