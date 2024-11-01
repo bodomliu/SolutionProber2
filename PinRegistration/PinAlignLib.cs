@@ -135,7 +135,7 @@ namespace PinRegistration
             }
             Tuple<double, double> tuple = FitLine(xs, ys);
             
-            double radians = Math.Atan(tuple.Item1);
+            double radians = -Math.Atan(tuple.Item1);
 
             PinAngle = radians * 180 / Math.PI * 10000;
 
